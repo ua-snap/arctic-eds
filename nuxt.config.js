@@ -46,6 +46,8 @@ export default {
     ["nuxt-buefy", { css: false }],
     // https://www.npmjs.com/package/nuxt-leaflet
     "nuxt-leaflet",
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
     "nuxt-vuex-router-sync"
   ],
 

@@ -2,13 +2,15 @@
   <div>
     <div class="toc--wrapper">
       <div class="toc--panel">
-        <h3>Physiography</h3>
-        <div class="toc--panel--image image--physiography"></div>
+        <NuxtLink to="/physiography">
+          <h3>Physiography</h3>
+          <div class="toc--panel--image image--physiography"></div>
+        </NuxtLink>
         <ul>
           <li>Physiographic Provinces</li>
           <li>Geology</li>
           <li>Earthquakes</li>
-          <li>Permafrost</li>
+          <li><NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink></li>
           <li>Glaciation</li>
           <li>Forest Types</li>
         </ul>
@@ -18,7 +20,7 @@
         <div class="toc--panel--image image--water"></div>
         <ul>
           <li>Coastal Waters</li>
-          <li>Sea Tempteratures</li>
+          <li>Sea Temperatures</li>
           <li>Sea Ice</li>
           <li>River and Coastal Ice</li>
           <li>Tides</li>

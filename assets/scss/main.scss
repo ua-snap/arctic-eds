@@ -7,3 +7,22 @@
 
 // Import buefy styles
 @import "~buefy/src/scss/buefy";
+
+// Some additional common styles.
+.content-wrapper {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.content-clamp {
+  max-width: 50rem;
+}
+
+// Underlines everywhere...
+a {
+  text-decoration: underline !important;
+}
+// ...but prevent unwanted underlines!
+.leaflet-control-zoom a {
+  text-decoration: none !important;
+}
