@@ -11,7 +11,7 @@
 				</p>
 			</template>
 			<template v-slot:legend>
-				<table class="table pfextent_jorgenson">
+				<table class="table pfextent">
 					<tbody>
 						<tr>
 							<td>
@@ -41,45 +41,466 @@
 				</table>
 			</template>
 			<template v-slot:explanation>
-				<strong>Continuous</strong> permafrost indicates continuous presence of permafrost throughout the region, and <strong>discontinuous</strong> regions have a significant but not continuous permafrost layer.  <strong>Isolated</strong> regions are characterized by occasional, significant permafrost areas, whereas <strong>sporadic</strong> regions are mostly free of permafrost.
+				<strong>Continuous</strong> permafrost indicates continuous
+				presence of permafrost throughout the region, and
+				<strong>discontinuous</strong> regions have a significant but
+				not continuous permafrost layer.
+				<strong>Isolated</strong> regions are characterized by
+				occasional, significant permafrost areas, whereas
+				<strong>sporadic</strong> regions are mostly free of permafrost.
 			</template>
 			<template v-slot:footer>
 				<p>
-					<a
-						href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
-						>Read detailed information about this dataset</a
-					>, or
-					<a
-						href="http://data.snap.uaf.edu/data/IEM/Outputs/GIPL/Gen_1a/v_2.0.0/"
-						>download it directly</a
-					>.
+					<a href="https://catalog.northslopescience.org/dataset/1725"
+						>Access detailed information about this dataset</a
+					>, including source data downloads.
 				</p>
 			</template>
 		</LegendItem>
 		<LegendItem v-show="activeLayerId == 'pfextent_obu'">
-			Permafrost extent (Obu et al., 2018)
+			<template v-slot:title
+				>Permafrost extent (Obu et al., 2018)</template
+			>
+			<template v-slot:introduction>
+				<p>
+					This layer shows the extent of permafrost across Alaska,
+					classified into four categories.
+				</p>
+			</template>
+			<template v-slot:legend>
+				<table class="table pfextent">
+					<tbody>
+						<tr>
+							<td>
+								<div class="colorbox continuous"></div>
+							</td>
+							<td>Continuous (&gt;90%)</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox discontinuous"></div>
+							</td>
+							<td>Discontinuous (50-90%)</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox isolated"></div>
+							</td>
+							<td>Isolated (10-50%)</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox sporadic"></div>
+							</td>
+							<td>Sporadic (&lt;10%)</td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-slot:explanation>
+				<strong>Continuous</strong> permafrost indicates continuous
+				presence of permafrost throughout the region, and
+				<strong>discontinuous</strong> regions have a significant but
+				not continuous permafrost layer.
+				<strong>Isolated</strong> regions are characterized by
+				occasional, significant permafrost areas, whereas
+				<strong>sporadic</strong> regions are mostly free of permafrost.
+			</template>
+			<template v-slot:footer>
+				<p>
+					<a href="https://doi.org/10.1594/PANGAEA.888600"
+						>Access detailed information about this dataset</a
+					>, including source data downloads.
+				</p>
+			</template>
 		</LegendItem>
 		<LegendItem v-show="activeLayerId == '3mgipl2010'">
-			Ground temperature, 3m depth, 2010 (GIPL model)
+			<template v-slot:title>Ground temperature, 3m depth, 2010</template>
+			<template v-slot:introduction>
+				<p>
+					This layer shows model output from the Geophysical Institute
+					Permafrost Lab model (GIPL), a landscape&ndash;scale
+					permafrost model. This layer shows modeled annual ground
+					temperature for 2010, with the NCAR-CCSM4 climate model and
+					RCP 8.5 emissions scenario.
+				</p>
+			</template>
+			<template v-slot:legend>
+				<table class="table temps">
+					<tbody>
+						<tr>
+							<td>
+								<div class="colorbox tas-10"></div>
+							</td>
+							<td>&minus;10&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-5"></div>
+							</td>
+							<td>&minus;5&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-1"></div>
+							</td>
+							<td>&minus;1&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas1"></div>
+							</td>
+							<td>1&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas3"></div>
+							</td>
+							<td>3&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas5"></div>
+							</td>
+							<td>5&deg;C</td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-slot:explanation></template>
+			<template v-slot:footer>
+				<p>
+					<a
+						href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
+						>Access detailed information about this dataset</a
+					>, including source data downloads.
+				</p>
+			</template>
 		</LegendItem>
 		<LegendItem v-show="activeLayerId == '3mgipl2050'">
-			Ground temperature, 3m depth, 2050 (GIPL model)
+			<template v-slot:title
+				>Ground temperature, 3m depth, 2050 (GIPL model)</template
+			>
+			<template v-slot:introduction>
+				<p>
+					This layer shows model output from the Geophysical Institute
+					Permafrost Lab model (GIPL), a landscape&ndash;scale
+					permafrost model. This layer shows modeled annual ground
+					temperature for 2050, with the NCAR-CCSM4 climate model and
+					RCP 8.5 emissions scenario.
+				</p>
+			</template>
+			<template v-slot:legend>
+				<table class="table temps">
+					<tbody>
+						<tr>
+							<td>
+								<div class="colorbox tas-10"></div>
+							</td>
+							<td>&minus;10&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-5"></div>
+							</td>
+							<td>&minus;5&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-1"></div>
+							</td>
+							<td>&minus;1&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas1"></div>
+							</td>
+							<td>1&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas3"></div>
+							</td>
+							<td>3&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas5"></div>
+							</td>
+							<td>5&deg;C</td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-slot:explanation></template>
+			<template v-slot:footer>
+				<p>
+					<a
+						href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
+						>Access detailed information about this dataset</a
+					>, including source data downloads.
+				</p>
+			</template>
 		</LegendItem>
 		<LegendItem v-show="activeLayerId == 'altGIPL2010'">
-			Active layer thickness, 2010 (GIPL model)
+			<template v-slot:title
+				>Active layer thickness, 2010 (GIPL model)</template
+			>
+			<template v-slot:introduction
+				><p>
+					This layer shows model outputs from the Geophysical
+					Institute Permafrost Lab model (GIPL), a landscape scale
+					permafrost model. Active layer thickness is defined
+					as the depth of summer seasonal thaw in perennially frozen
+					ground. This layer shows model output for 2010 with the
+					NCAR-CCSM4 climate model and RCP8.5 emissions scenario.
+				</p></template
+			>
+			<template v-slot:legend>
+				<table class="table thickness">
+					<tbody>
+						<tr>
+							<td>
+								<div class="colorbox none"></div>
+							</td>
+							<td>No active layer</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d0"></div>
+							</td>
+							<td>0m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d10"></div>
+							</td>
+							<td>10m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d20"></div>
+							</td>
+							<td>20m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d30"></div>
+							</td>
+							<td>30m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d40"></div>
+							</td>
+							<td>40m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d50"></div>
+							</td>
+							<td>50m</td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-slot:explanation> </template>
+			<template v-slot:footer
+				><p>
+					<a
+						href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
+						>Access detailed information about this dataset</a
+					>, including source data downloads.
+				</p></template
+			>
 		</LegendItem>
 		<LegendItem v-show="activeLayerId == 'altGIPL2050'">
-			Active layer thickness, 2050 (GIPL model)
+			<template v-slot:title
+				>Active layer thickness, 2050 (GIPL model)</template
+			>
+			<template v-slot:introduction
+				><p>
+					This layer shows model outputs from the Geophysical
+					Institute Permafrost Lab model (GIPL), a landscape scale
+					permafrost model. Active layer thickness is defined
+					as the depth of summer seasonal thaw in perennially frozen
+					ground. This layer shows model output for 2010 with the
+					NCAR-CCSM4 climate model and RCP8.5 emissions scenario.
+				</p></template
+			>
+			<template v-slot:legend
+				><table class="table thickness">
+					<tbody>
+						<tr>
+							<td>
+								<div class="colorbox none"></div>
+							</td>
+							<td>No active layer</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d0"></div>
+							</td>
+							<td>0m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d10"></div>
+							</td>
+							<td>10m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d20"></div>
+							</td>
+							<td>20m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d30"></div>
+							</td>
+							<td>30m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d40"></div>
+							</td>
+							<td>40m</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox d50"></div>
+							</td>
+							<td>50m</td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-slot:explanation> </template>
+			<template v-slot:footer
+				><p>
+					<a
+						href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
+						>Access detailed information about this dataset</a
+					>, including source data downloads.
+				</p></template
+			>
 		</LegendItem>
 		<LegendItem v-show="activeLayerId == 'obumagt'">
-			Mean annual ground temperature at top of permafrost, 2000-2016
-			(modeled)
+			<template v-slot:title
+				>Mean annual ground temperature at top of permafrost, 2000-2016
+				(modeled)</template
+			>
+			<template v-slot:introduction
+				>This layer provides modeled mean annual ground temperatures
+				(MAGT) at the top of the permafrost, at 1km spatial
+				resolution.</template
+			>
+			<template v-slot:legend>
+				<table class="table temps">
+					<tbody>
+						<tr>
+							<td>
+								<div class="colorbox tas-10"></div>
+							</td>
+							<td>&minus;10&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-5"></div>
+							</td>
+							<td>&minus;5&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-1"></div>
+							</td>
+							<td>&minus;1&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas1"></div>
+							</td>
+							<td>1&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas3"></div>
+							</td>
+							<td>3&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas5"></div>
+							</td>
+							<td>5&deg;C</td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-slot:explanation> </template>
+			<template v-slot:footer>
+				<p>
+					<a href="https://doi.org/10.1594/PANGAEA.888600"
+						>Access detailed information about this dataset</a
+					>, including source data access.
+				</p>
+			</template>
 		</LegendItem>
 		<LegendItem
 			v-show="activeLayerId == 'icevol_jorgenson'"
 			class="map--legend-item"
 		>
-			Ground ice volume (Jorgenson et al., 2008)
+			<template v-slot:title
+				>Ground ice volume (Jorgenson et al., 2008)</template
+			>
+			<template v-slot:introduction>This data set shows the ground ice volume.</template>
+			<template v-slot:legend><table class="table volume">
+					<tbody>
+						<tr>
+							<td>
+								<div class="colorbox unfrozen"></div>
+							</td>
+							<td>Unfrozen</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox low"></div>
+							</td>
+							<td>Low</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox moderate"></div>
+							</td>
+							<td>Moderate</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox high"></div>
+							</td>
+							<td>High</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox glacier"></div>
+							</td>
+							<td>Glacier</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox variable"></div>
+							</td>
+							<td>Variable</td>
+						</tr>
+					</tbody>
+				</table></template>
+			<template v-slot:explanation></template>
+			<template v-slot:footer><p>
+					<a href="https://catalog.northslopescience.org/dataset/1725"
+						>Access detailed information about this dataset</a
+					>, including source data downloads.
+				</p></template>
 		</LegendItem>
 	</div>
 </template>
@@ -92,7 +513,7 @@ table.table td {
 	height: 2rem;
 	width: 2rem;
 }
-.pfextent_jorgenson .colorbox {
+.pfextent .colorbox {
 	&.continuous {
 		background-color: #eafdfd;
 		border: 1px solid #98a09c;
@@ -105,6 +526,72 @@ table.table td {
 	}
 	&.isolated {
 		background-color: #383873;
+	}
+}
+.temps .colorbox {
+	&.tas-10 {
+		background-color: #08306b;
+	}
+	&.tas-5 {
+		background-color: #3787c0;
+	}
+	&.tas-1 {
+		background-color: #94c4df;
+	}
+	&.tas1 {
+		background-color: #f14432;
+	}
+	&.tas3 {
+		background-color: #bc141a;
+	}
+	&.tas5 {
+		background-color: #67000d;
+	}
+}
+
+.thickness .colorbox {
+	&.none {
+		background-color: #aaaaaa;
+	}
+	&.d0 {
+		background-color: #fdfecc;
+	}
+	&.d10 {
+		background-color: #92d8a4;
+	}
+	&.d20 {
+		background-color: #52a9a3;
+	}
+	&.d30 {
+		background-color: #417799;
+	}
+	&.d40 {
+		background-color: #424380;
+	}
+	&.d50 {
+		background-color: #2b1d32;
+	}
+}
+
+.volume .colorbox {
+	&.unfrozen {
+		background-color: #7fc97f;
+	}
+	&.low {
+		background-color: #2171b5;
+	}
+	&.moderate {
+		background-color: #6baed6;
+	}
+	&.high {
+		background-color: #bdd7e7;
+	}
+	&.glacier {
+		background-color: #ffffff;
+		border: 1px solid #98a09c;
+	}
+	&.variable {
+		background-color: #beaed4;
 	}
 }
 </style>
