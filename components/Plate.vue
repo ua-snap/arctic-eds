@@ -1,29 +1,27 @@
 <template>
 	<div>
-		<div class="columns" v-bind:class="{ hidden: hidden }">
+		<div class="columns">
 			<div class="column is-one-quarter">
 				<LayerList :layers="layers" />
 			</div>
 			<div class="column">
-				<Map/>
+				<Map />
+				<!-- Legend slot -->
+				<slot />
 			</div>
 		</div>
 	</div>
 </template>
 
-<style lang="scss" scoped>
-	.hidden {
-		display: none;
-	}
-</style>
+<style lang="scss" scoped></style>
 
 <script>
-import Map from '~/components/Map'
-import LayerList from '~/components/LayerList'
+import Map from "~/components/Map";
+import LayerList from "~/components/LayerList";
 
 export default {
-	name: 'Plate',
+	name: "Plate",
 	components: { Map },
-	props: ['layers', 'hidden']
-}
+	props: ["layers", "hidden"]
+};
 </script>

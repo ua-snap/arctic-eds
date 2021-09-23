@@ -13,8 +13,6 @@
 #report--minimmap--map {
 	height: 20vw;
 	width: 20vw;
-	border: 1px solid red;
-	z-index: 500;
 }
 </style>
 
