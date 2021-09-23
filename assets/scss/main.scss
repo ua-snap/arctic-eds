@@ -17,12 +17,3 @@
 .content-clamp {
   max-width: 50rem;
 }
-
-// Underlines everywhere...
-a {
-  text-decoration: underline !important;
-}
-// ...but prevent unwanted underlines!
-.leaflet-control-zoom a {
-  text-decoration: none !important;
-}

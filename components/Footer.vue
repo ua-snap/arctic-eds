@@ -6,6 +6,20 @@
 					<img src="~/assets/images/UAF.svg" alt="UAF Logo" />
 				</div>
 				<div class="column is-four-fifths">
+					<p class="lead">
+						Arctic Environmental and Engineering Data + Design
+						Support System
+					</p>
+
+					<p>
+						Engineers and scientists working in the Arctic need
+						easily obtainable engineering and environmental data.
+						The Arctic-EDS is a system of online technologies that
+						curate and dynamically update relevant Arctic
+						environmental data in a central repository for use in
+						web-based maps, modules, and notebooks.
+					</p>
+
 					<p>
 						This tool was developed by the
 						<a href="https://www.snap.uaf.edu/" title="👍"
@@ -14,31 +28,33 @@
 						at the
 						<a href="https://uaf-iarc.org"
 							>International Arctic Research Center</a
-						>.
+						>
+						.
 					</p>
 
 					<p>
-						Funding provided by the <a href="https://serdp-estcp.org">Department of Defense ESTCP</a> program.
+						Funding provided by the U.S. Department of Defense
+						Environmental Security Technology Certification Program
+						(<a href="https://serdp-estcp.org">ESTCP</a>).
 					</p>
+
 					<p>
 						Please contact
 						<a href="mailto:uaf-snap-data-tools@alaska.edu"
 							>uaf-snap-data-tools@alaska.edu</a
 						>
-						if you have questions or would like to provide feedback for this
-						tool.
-						<a href="https://uaf-snap.org/tools-overview/"
-							>Visit the SNAP Climate + Weather Tools page</a
-						>
-						to see our full suite of interactive web tools.
+						if you have questions or would like to provide feedback
+						for this tool.
 					</p>
+
 					<p>
-						Copyright &copy; {{ year }} University of Alaska Fairbanks. All
-						rights reserved.
+						Copyright &copy; {{ year }} University of Alaska
+						Fairbanks. All rights reserved.
 					</p>
+
 					<p>
-						UA is an AA/EO employer and educational institution and prohibits
-						illegal discrimination against any individual.
+						UA is an AA/EO employer and educational institution and
+						prohibits illegal discrimination against any individual.
 						<a href="https://www.alaska.edu/nondiscrimination/"
 							>Statement of Nondiscrimination</a
 						>
@@ -56,13 +72,13 @@
 
 <script>
 export default {
-	name: 'Footer',
+	name: "Footer",
 	data() {
 		return {
-			year: new Date().getFullYear(),
-		}
-	},
-}
+			year: new Date().getFullYear()
+		};
+	}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -84,6 +100,11 @@ export default {
 
 	p {
 		margin: 1rem;
+	}
+
+	.lead {
+		font-size: 1.5rem;
+		font-weight: 700;
 	}
 }
 </style>

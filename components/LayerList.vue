@@ -14,6 +14,7 @@ ul {
 
   li {
     margin-bottom: 0.5rem;
+    font-size: 1.1rem;
   }
 }
 </style>

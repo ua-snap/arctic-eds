@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderBanner />
-    <div>Logosomething here</div>
+    <Navbar />
     <Breadcrumbs />
     <nuxt />
     <Footer />
@@ -10,10 +10,11 @@
 <style lang="scss" scoped></style>
 <script>
 import HeaderBanner from "~/components/HeaderBanner";
-import Footer from "~/components/Footer";
+import Navbar from "~/components/Navbar";
 import Breadcrumbs from "~/components/Breadcrumbs";
+import Footer from "~/components/Footer";
 
 export default {
-  components: { HeaderBanner, Footer }
+  components: { HeaderBanner, Navbar, Breadcrumbs, Footer }
 };
 </script>

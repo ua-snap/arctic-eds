@@ -3,6 +3,7 @@
 		<client-only>
 			<div class="back">
 				<b-button
+					v-on:click="close"
 					class="default"
 					type="is-info"
 					icon-left="arrow-left-circle"
@@ -23,7 +24,11 @@
 					Oh no! Something&rsquo;s amiss and the report for this place
 					couldn&rsquo;t be loaded.
 				</p>
-				<b-button class="is-warning" icon-left="emoticon-sad-outline">
+				<b-button
+					v-on:click="close"
+					class="is-warning"
+					icon-left="emoticon-sad-outline"
+				>
 					<strong>We&rsquo;re sorry</strong>, please try
 					again</b-button
 				>
@@ -33,6 +38,8 @@
 				<h3 class="title is-3">
 					Permafrost data for {{ latLng.lat }}, {{ latLng.lng }}
 				</h3>
+
+				<MiniMap :latLng="this.latLng" />
 
 				<h4 class="title is-4">
 					GIPL Mean Annual Ground Temperature (&deg;C)
@@ -147,6 +154,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import MiniMap from "~/components/MiniMap";
 
 export default {
 	name: "PermafrostReport",
@@ -194,6 +202,12 @@ export default {
 				magt_2018: res["obu_magt"]["temp"],
 				pe_2018: res["obupfx"]["pfx"]
 			};
+		}
+	},
+
+	methods: {
+		close() {
+			this.$parent.$emit("CloseReport");
 		}
 	}
 };

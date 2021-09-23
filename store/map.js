@@ -2,8 +2,11 @@ import _ from "lodash";
 
 // This needs to be outside of the Store or there's problems
 // because Leaflet mutates the state of the map, and Vuex
-// throws a "Don't do that" error.
+// throws a "Don't do that" error; plus, having these objects
+// within the scope of the Nuxt/Vue reactivity decoration causes
+// unpredictable buggy behavior ("too much recursion")
 var map;
+var layerObject;
 
 function getBaseMapAndLayers() {
 	var baseLayer = new L.tileLayer.wms(process.env.geoserverUrl, {
@@ -42,19 +45,24 @@ function getBaseMapAndLayers() {
 }
 
 export default {
-	state: {
-		// Layer definitions which are active on the map.
-		layers: {},
-		// Currently active/clicked location
-		latLng: {
-			lat: undefined,
-			lng: undefined
-		}
+	state() {
+		return {
+			// Layer definition which is active on the map.
+			layer: undefined,
+			// Currently active/clicked location
+			latLng: {
+				lat: undefined,
+				lng: undefined
+			}
+		};
 	},
 
 	getters: {
 		latLng: state => {
 			return state.latLng;
+		},
+		getActiveLayer(state) {
+			return state.layer;
 		}
 	},
 
@@ -65,30 +73,38 @@ export default {
 		},
 		destroy(state) {
 			map.remove();
-			state.layers = undefined;
+			state.layer = undefined;
 		},
 		toggleLayer(state, layer) {
-			if (state.layers[layer.id]) {
-				// Remove if already present
-				map.removeLayer(state.layers[layer.id].layerObject);
-				delete state.layers[layer.id];
-			} else {
-				// Add to map!
-				state.layers[layer.id] = layer;
-				state.layers[layer.id].layerObject = L.tileLayer.wms(
-					process.env.geoserverUrl,
-					{
-						continuousWorld: true,
-						transparent: true,
-						tiled: "true",
-						format: "image/png",
-						version: "1.3.0",
-						layers: layer.wmsLayerName,
-						id: layer.id
-					}
-				);
-				state.layers[layer.id].layerObject.addTo(map);
+			// Remove existing layer: right now, we only
+			// want one layer to be visible on any plate in the Atlas.
+			// Need to test explicitly for the existence of the
+			// layerObject because this code can get run while
+			// the full DOM is hydrating, see MapLayer / mounted().
+			// if (state.layer && state.layer.layerObject) {
+			if (state.layer && layerObject) {
+				map.removeLayer(layerObject);
 			}
+
+			// Add to map!
+			state.layer = layer;
+			let layerConfiguration = {
+				continuousWorld: true,
+				transparent: true,
+				tiled: "true",
+				format: "image/png",
+				version: "1.3.0",
+				layers: layer.wmsLayerName,
+				id: layer.id
+			};
+			if (layer.style) {
+				layerConfiguration.styles = layer.style;
+			}
+			layerObject = L.tileLayer.wms(
+				process.env.geoserverUrl,
+				layerConfiguration
+			);
+			map.addLayer(layerObject)
 		},
 		addEventHandler(state, handler) {
 			// Attach an event listener to the map.
