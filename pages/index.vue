@@ -95,36 +95,38 @@
       background-size: cover;
       transition: background-image 0.2s ease-in-out;
 
+      // The color background image is listed twice so it pre-loads
+      // to prevent a flicker when the image is hovered.
       &.image--physiography {
-        background-image: url("~/assets/images/PHYS_alaska_dem.jpg");
+        background-image: url("~/assets/images/PHYS_alaska_dem.jpg"), url("~/assets/images/PHYS_alaska_dem_COLOR.jpg");
         &:hover {
           background-image: url("~/assets/images/PHYS_alaska_dem_COLOR.jpg");
         }
       }
 
       &.image--water {
-        background-image: url("~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash.jpg");
+        background-image: url("~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash.jpg"), url("~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash_COLOR.jpg");
         &:hover {
           background-image: url("~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash_COLOR.jpg");
         }
       }
 
       &.image--light {
-        background-image: url("~/assets/images/LIGHT_suns_todd-paris.jpg");
+        background-image: url("~/assets/images/LIGHT_suns_todd-paris.jpg"), url("~/assets/images/LIGHT_suns_todd-paris_COLOR.jpg");
         &:hover {
           background-image: url("~/assets/images/LIGHT_suns_todd-paris_COLOR.jpg");
         }
       }
 
       &.image--climate {
-        background-image: url("~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash.jpg");
+        background-image: url("~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash.jpg"), url("~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash_COLOR.jpg");
         &:hover {
           background-image: url("~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash_COLOR.jpg");
         }
       }
 
       &.image--engineering {
-        background-image: url("~/assets/images/ENG_tanana-river-bridge.jpg");
+        background-image: url("~/assets/images/ENG_tanana-river-bridge.jpg"), url("~/assets/images/ENG_tanana-river-bridge_COLOR.jpg");
         &:hover {
           background-image: url("~/assets/images/ENG_tanana-river-bridge_COLOR.jpg");
         }
