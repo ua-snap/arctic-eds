@@ -6,14 +6,12 @@
 			</section>
 		</div>
 
-		<Plate :layers="layers" v-show="!reportIsVisible">
-			<component :is="legend"></component>
-		</Plate>
+		<Plate :layers="layers" v-show="!reportIsVisible"></Plate>
 
 		<div class="container">
 			<section class="section">
 				<div v-show="this.reportIsVisible" class="report-wrapper">
-					<PermafrostReport />
+					<GeologyReport />
 				</div>
 			</section>
 		</div>
@@ -22,18 +20,16 @@
 <script lang="scss" scoped></script>
 <script>
 import Plate from "~/components/Plate";
-import PermafrostReport from "~/components/plates/permafrost/Report";
-import PermafrostLegend from "~/components/plates/permafrost/Legend";
+import GeologyReport from "~/components/plates/geology/Report";
 import LatLngPicker from "~/components/LatLngPicker";
-import layers from "~/components/plates/permafrost/layers";
+import layers from "~/components/plates/geology/layers";
 import { mapGetters } from "vuex";
 
 export default {
-	name: "PermafrostController",
-	components: { Plate, PermafrostReport, PermafrostLegend },
+	name: "GeologyController",
+	components: { Plate, GeologyReport },
 	data() {
 		return {
-			legend: PermafrostLegend,
 			layers: layers
 		};
 	},
@@ -60,7 +56,7 @@ export default {
 		},
 		activateReport: function(latLng) {
 			this.$store.commit("map/setLatLng", latLng);
-			this.$store.commit("openReport");
+			this.$store.commit("openReport", latLng);
 		}
 	}
 };

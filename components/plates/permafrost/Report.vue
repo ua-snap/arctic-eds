@@ -39,7 +39,7 @@
 					Permafrost data for {{ latLng.lat }}, {{ latLng.lng }}
 				</h3>
 
-				<MiniMap :latLng="this.latLng" />
+				<MiniMap />
 
 				<h4 class="title is-4">
 					GIPL Mean Annual Ground Temperature (&deg;C)
@@ -207,7 +207,7 @@ export default {
 
 	methods: {
 		close() {
-			this.$parent.$emit("CloseReport");
+			this.$store.commit("closeReport");
 		}
 	}
 };
