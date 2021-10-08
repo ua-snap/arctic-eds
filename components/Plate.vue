@@ -1,7 +1,10 @@
 <template>
 	<div>
 		<div class="columns">
-			<div class="column is-one-quarter">
+			<div
+				:class="{ hide: layers.length == 1 }"
+				class="column is-one-quarter"
+			>
 				<LayerList :layers="layers" />
 			</div>
 			<div class="column">
@@ -13,7 +16,14 @@
 	</div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// If the map only has one layer, hide the sidebar;
+// We still want that component to exist, because it
+// manages default layer visibility.
+.hide {
+	display: none;
+}
+</style>
 
 <script>
 import Map from "~/components/Map";

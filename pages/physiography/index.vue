@@ -7,7 +7,7 @@
           <div class="content is-size-5">
             <ul>
               <li>Earthquakes</li>
-              <li>Geology</li>
+              <li><NuxtLink to="/physiography/geology">Geology</NuxtLink></li>
               <li>Forest Types</li>
               <li>Glaciation</li>
               <li>
