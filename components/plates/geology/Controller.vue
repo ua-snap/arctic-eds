@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<div class="container">
+		<div v-show="!reportIsVisible" class="container">
 			<section class="section">
-				<LatLngPicker v-show="!reportIsVisible" />
+				<LatLngPicker />
 			</section>
 		</div>
 
