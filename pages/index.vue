@@ -12,7 +12,7 @@
           <li><NuxtLink to="/physiography/geology">Geology</NuxtLink></li>
           <li>Glaciation</li>
           <li><NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink></li>
-          <li>Physiographic Provinces</li>
+          <li><NuxtLink to="/physiography/physiography">Physiographic Provinces</NuxtLink></li>
         </ul>
       </div>
       <div class="toc--panel">

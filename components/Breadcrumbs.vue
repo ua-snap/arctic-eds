@@ -44,7 +44,12 @@ export default {
       return this.$route.name.split("-")[0];
     },
     plate: function() {
-      return this.$route.name.split("-")[1]
+      // Handle custom names independent of route
+      let plate = this.$route.name.split("-")[1];
+      switch (plate) {
+        case "physiography":
+          return "Physiographic Provinces";
+      }
     }
   }
 };

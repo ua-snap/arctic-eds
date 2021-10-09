@@ -4,25 +4,12 @@
 		<hr />
 		<LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending && !$fetchState.error">
+		<div v-if="!$fetchState.pending & !$fetchState.error">
 			<h3 class="title is-3">
-				Geological unit for {{ latLng.lat }}, {{ latLng.lng }}
+				Ecoregion for {{ latLng.lat }}, {{ latLng.lng }}
 			</h3>
-
+			<h4 class="subtitle is-3">{{ results.name }}</h4>
 			<MiniMap />
-
-			<table class="table">
-				<tbody>
-					<tr>
-						<th scope="row">Age</th>
-						<td>{{ results.age }}</td>
-					</tr>
-					<tr>
-						<th scope="row">Classification</th>
-						<td>{{ results.name }}</td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
 	</div>
 </template>
@@ -30,6 +17,7 @@
 <script>
 import { mapGetters } from "vuex";
 import MiniMap from "~/components/MiniMap";
+import LoadingStatus from "~/components/LoadingStatus";
 
 export default {
 	name: "PermafrostReport",
@@ -39,6 +27,7 @@ export default {
 			results: {}
 		};
 	},
+
 	computed: {
 		state: function() {
 			return this.$fetchState;
@@ -59,7 +48,7 @@ export default {
 		if (this.latLng.lat && this.latLng.lng) {
 			this.results = await this.$axios.$get(
 				process.env.apiUrl +
-					"/geology/point/" +
+					"/physiography/point/" +
 					this.latLng.lat +
 					"/" +
 					this.latLng.lng

@@ -176,12 +176,6 @@ export default {
 				pe_2018: res["obupfx"]["pfx"]
 			};
 		}
-	},
-
-	methods: {
-		close() {
-			this.$store.commit("closeReport");
-		}
 	}
 };
 </script>
