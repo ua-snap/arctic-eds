@@ -26,15 +26,18 @@ export default {
 			latLng: "map/latLng"
 		})
 	},
-	data () {
+	data() {
 		return {
 			map: undefined,
 			marker: undefined
-		}
+		};
 	},
 	mounted() {
 		if (this.latLng.lat && this.latLng.lng) {
-			this.map = L.map("report--minimmap--map", this.getBaseMapAndLayers());
+			this.map = L.map(
+				"report--minimmap--map",
+				this.getBaseMapAndLayers()
+			);
 
 			this.marker = L.marker(this.latLng).addTo(this.map);
 			this.map.panTo(this.latLng);
@@ -48,32 +51,23 @@ export default {
 	},
 	methods: {
 		getBaseMapAndLayers() {
-			var baseLayer = new L.tileLayer.wms(process.env.geoserverUrl, {
-				transparent: true,
-				srs: "EPSG:3338",
-				format: "image/png",
-				version: "1.3.0",
-				layers: ["atlas_mapproxy:alaska_osm"]
-			});
-
-			// Projection definition.
-			var proj = new L.Proj.CRS(
-				"EPSG:3338",
-				"+proj=aea +lat_1=55 +lat_2=65 +lat_0=50 +lon_0=-154 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs",
+			var baseLayer = new L.tileLayer.wms(
+				"https://basemap.nationalmap.gov:443/arcgis/services/USGSTopo/MapServer/WmsServer?",
 				{
-					resolutions: [4096, 2048, 1024, 512, 256, 128, 64]
+					transparent: true,
+					format: "image/png",
+					version: "1.3.0",
+					layers: ["0"]
 				}
 			);
 
 			// Map base configuration
 			var config = {
-				zoom: 3,
+				zoom: 11,
 				minZoom: 0,
 				maxZoom: 6,
 				center: [64.7, -155],
 				scrollWheelZoom: false,
-				crs: proj,
-				continuousWorld: true,
 				zoomControl: false,
 				doubleClickZoom: false,
 				attributionControl: false,
