@@ -52,7 +52,7 @@ export default {
 	methods: {
 		getBaseMapAndLayers() {
 			var baseLayer = new L.tileLayer.wms(
-				"https://basemap.nationalmap.gov:443/arcgis/services/USGSTopo/MapServer/WmsServer?",
+				"https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WmsServer?",
 				{
 					transparent: true,
 					format: "image/png",
