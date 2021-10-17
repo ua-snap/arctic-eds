@@ -22,7 +22,13 @@ function getBaseMapAndLayers() {
 		"EPSG:3338",
 		"+proj=aea +lat_1=55 +lat_2=65 +lat_0=50 +lon_0=-154 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs",
 		{
-			resolutions: [4096, 2048, 1024, 512, 256, 128, 64]
+			resolutions: [4096, 2048, 1024, 512, 256, 128, 64],
+
+			// Origin should be lower-left coordinate
+			// in projected space.  Use GeoServer to
+			// find this:
+			// TileSet > Gridset Bounds > compute from maximum extent of SRS
+			origin: [-4648005.934316417, 444809.882955059]
 		}
 	);
 
@@ -104,7 +110,7 @@ export default {
 				process.env.geoserverUrl,
 				layerConfiguration
 			);
-			map.addLayer(layerObject)
+			map.addLayer(layerObject);
 		},
 		addEventHandler(state, handler) {
 			// Attach an event listener to the map.
