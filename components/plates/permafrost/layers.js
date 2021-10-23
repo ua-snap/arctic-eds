@@ -51,6 +51,6 @@ export default [
 		title: "Ground ice volume (Jorgenson et al., 2008)",
 		wmsLayerName:
 			"permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume",
-		style: "ground_ice_volume"
+		style: "permafrost_beta:ground_ice_volume"
 	}
 ];
