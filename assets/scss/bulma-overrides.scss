@@ -5,4 +5,7 @@
 // Update Bulma's global variables
 $family-sans-serif: "Overpass", sans-serif;
 
-$link: #d43f16;
+$link: #0033CC;
+a:hover, a:focus {
+	text-decoration: underline;
+}
