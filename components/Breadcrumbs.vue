@@ -49,6 +49,8 @@ export default {
       switch (plate) {
         case "physiography":
           return "Physiographic Provinces";
+        default:
+          if (plate) return plate
       }
     }
   }
