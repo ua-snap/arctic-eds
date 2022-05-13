@@ -12,7 +12,11 @@
           <li><NuxtLink to="/physiography/geology">Geology</NuxtLink></li>
           <li>Glaciation</li>
           <li><NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink></li>
-          <li><NuxtLink to="/physiography/physiography">Physiographic Provinces</NuxtLink></li>
+          <li>
+            <NuxtLink to="/physiography/physiography"
+              >Physiographic Provinces</NuxtLink
+            >
+          </li>
         </ul>
       </div>
       <div class="toc--panel">
@@ -38,11 +42,13 @@
         </ul>
       </div>
       <div class="toc--panel">
-        <h3>Climate</h3>
-        <div class="toc--panel--image image--climate"></div>
+        <NuxtLink to="/climate">
+          <h3>Climate</h3>
+          <div class="toc--panel--image image--climate"></div>
+        </NuxtLink>
         <ul>
           <li>Climatic Zones</li>
-          <li>Precipitation</li>
+          <li><NuxtLink to="/climate/precipitation">Precipitation</NuxtLink></li>
           <li>Wet Days per Year</li>
           <li>Snowfall</li>
           <li>Temperature</li>
@@ -143,6 +149,6 @@
 <script>
 export default {
   name: "HomePage",
-  layout: "home"
+  layout: "home",
 };
 </script>
