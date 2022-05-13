@@ -14,7 +14,7 @@ function getBaseMapAndLayers() {
 		srs: "EPSG:3338",
 		format: "image/png",
 		version: "1.3.0",
-		layers: ["atlas_mapproxy:alaska_osm"]
+		layers: ["atlas_mapproxy:alaska_osm_retina"],
 	});
 
 	// Projection definition.
@@ -28,7 +28,7 @@ function getBaseMapAndLayers() {
 			// in projected space.  Use GeoServer to
 			// find this:
 			// TileSet > Gridset Bounds > compute from maximum extent of SRS
-			origin: [-4648005.934316417, 444809.882955059]
+			origin: [-4648005.934316417, 444809.882955059],
 		}
 	);
 
@@ -44,7 +44,7 @@ function getBaseMapAndLayers() {
 		zoomControl: false,
 		doubleClickZoom: false,
 		attributionControl: false,
-		layers: [baseLayer]
+		layers: [baseLayer],
 	};
 
 	return config;
@@ -58,18 +58,18 @@ export default {
 			// Currently active/clicked location
 			latLng: {
 				lat: undefined,
-				lng: undefined
-			}
+				lng: undefined,
+			},
 		};
 	},
 
 	getters: {
-		latLng: state => {
+		latLng: (state) => {
 			return state.latLng;
 		},
 		getActiveLayer(state) {
 			return state.layer;
-		}
+		},
 	},
 
 	mutations: {
@@ -87,7 +87,6 @@ export default {
 			// Need to test explicitly for the existence of the
 			// layerObject because this code can get run while
 			// the full DOM is hydrating, see MapLayer / mounted().
-			// if (state.layer && state.layer.layerObject) {
 			if (state.layer && layerObject) {
 				map.removeLayer(layerObject);
 			}
@@ -95,21 +94,34 @@ export default {
 			// Add to map!
 			state.layer = layer;
 			let layerConfiguration = {
-				continuousWorld: true,
 				transparent: true,
-				tiled: "true",
 				format: "image/png",
 				version: "1.3.0",
 				layers: layer.wmsLayerName,
-				id: layer.id
+				id: layer.id,
 			};
+
 			if (layer.style) {
 				layerConfiguration.styles = layer.style;
 			}
+
+			if (layer.rasdamanConfiguration) {
+				layerConfiguration = {
+					...layerConfiguration,
+					...layer.rasdamanConfiguration,
+				};
+			}
+
+			let wmsUrl =
+				layer.source == "rasdaman"
+					? process.env.rasdamanUrl
+					: process.env.geoserverUrl;
+
 			layerObject = L.tileLayer.wms(
-				process.env.geoserverUrl,
+				wmsUrl,
 				layerConfiguration
 			);
+
 			map.addLayer(layerObject);
 		},
 		addEventHandler(state, handler) {
@@ -121,8 +133,8 @@ export default {
 			// latLng is an object with lat / lng properties.
 			state.latLng = {
 				lat: latLng.lat.toFixed(4),
-				lng: latLng.lng.toFixed(4)
+				lng: latLng.lng.toFixed(4),
 			};
-		}
-	}
+		},
+	},
 };

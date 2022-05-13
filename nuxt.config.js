@@ -6,15 +6,15 @@ export default {
   head: {
     title: "Arctic-EDS",
     htmlAttrs: {
-      lang: "en"
+      lang: "en",
     },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" }
+      { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -23,14 +23,13 @@ export default {
   env: {
     geoserverUrl:
       process.env.GEOSERVER_URL || "https://gs.mapventure.org/geoserver/wms",
-    apiUrl: process.env.SNAP_API_URL || "http://earthmaps.io"
+    apiUrl: process.env.SNAP_API_URL || "https://earthmaps.io",
+    rasdamanUrl:
+      process.env.RASDAMAN_URL || "https://zeus.snap.uaf.edu/rasdaman/ows",
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    "~/plugins/plotly.client",
-    "~/plugins/leaflet.client.js"
-  ],
+  plugins: ["~/plugins/plotly.client", "~/plugins/leaflet.client.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -47,10 +46,10 @@ export default {
     // https://www.npmjs.com/package/nuxt-leaflet
     "nuxt-leaflet",
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    "nuxt-vuex-router-sync"
+    "@nuxtjs/axios",
+    "nuxt-vuex-router-sync",
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
 };
