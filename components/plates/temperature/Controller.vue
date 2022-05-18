@@ -22,17 +22,17 @@
 <script lang="scss" scoped></script>
 <script>
 import Plate from "~/components/Plate";
-import PrecipitationLegend from "~/components/plates/precipitation/Legend";
+import TemperatureLegend from "~/components/plates/temperature/Legend";
 import LatLngPicker from "~/components/LatLngPicker";
-import layers from "~/components/plates/precipitation/layers";
+import layers from "~/components/plates/temperature/layers";
 import { mapGetters } from "vuex";
 
 export default {
-	name: "PrecipitationController",
-	components: { Plate, PrecipitationLegend },
+	name: "TemperatureController",
+	components: { Plate, TemperatureLegend },
 	data() {
 		return {
-			legend: PrecipitationLegend,
+			legend: TemperatureLegend,
 			layers: layers
 		};
 	},

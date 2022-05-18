@@ -5,7 +5,7 @@ export default [
 		source: "rasdaman",
 		wmsLayerName: "annual_precip_totals",
 		rasdamanConfiguration: {
-			dim_model: 1,
+			dim_model: 0,
 			dim_scenario: 0,
 			time: "1901-01-01T00:00:00.000Z",
 		},

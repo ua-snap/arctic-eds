@@ -51,7 +51,7 @@
           <li><NuxtLink to="/climate/precipitation">Precipitation</NuxtLink></li>
           <li>Wet Days per Year</li>
           <li>Snowfall</li>
-          <li>Temperature</li>
+          <li><NuxtLink to="/climate/temperature">Temperature</NuxtLink></li>
         </ul>
       </div>
       <div class="toc--panel">
