@@ -13,7 +13,7 @@ import { mapGetters } from "vuex";
 import LegendItem from "~/components/LegendItem";
 
 export default {
-	name: "PrecipitationLegend",
+	name: "TemperatureLegend",
 	components: { LegendItem },
 	computed: {
 		activeLayerId() {
