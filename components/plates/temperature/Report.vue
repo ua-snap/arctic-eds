@@ -39,9 +39,9 @@
 				<tbody>
 					<tr>
 						<th scope="row">Historical (1901-2015)</th>
-						<td>N/A</td>
-						<td>N/A</td>
-						<td>N/A</td>
+						<td>{{ results.hist_min }}</td>
+						<td>{{ results.hist_mean }}</td>
+						<td>{{ results.hist_max }}</td>
 						<td>{{ results.jan_hist_min }}</td>
 						<td>{{ results.jan_hist_mean }}</td>
 						<td>{{ results.jan_hist_max }}</td>
@@ -51,9 +51,9 @@
 					</tr>
 					<tr>
 						<th scope="row">Early Century (2010-2039)</th>
-						<td>N/A</td>
-						<td>N/A</td>
-						<td>N/A</td>
+						<td>{{ results.temp_2040_min }}</td>
+						<td>{{ results.temp_2040_mean }}</td>
+						<td>{{ results.temp_2040_max }}</td>
 						<td>{{ results.jan_2040_min }}</td>
 						<td>{{ results.jan_2040_mean }}</td>
 						<td>{{ results.jan_2040_max }}</td>
@@ -63,9 +63,9 @@
 					</tr>
 					<tr>
 						<th scope="row">Mid Century (2040-2069)</th>
-						<td>N/A</td>
-						<td>N/A</td>
-						<td>N/A</td>
+						<td>{{ results.temp_2070_min }}</td>
+						<td>{{ results.temp_2070_mean }}</td>
+						<td>{{ results.temp_2070_max }}</td>
 						<td>{{ results.jan_2070_min }}</td>
 						<td>{{ results.jan_2070_mean }}</td>
 						<td>{{ results.jan_2070_max }}</td>
@@ -75,9 +75,9 @@
 					</tr>
 					<tr>
 						<th scope="row">Late Century (2070-2099)</th>
-						<td>N/A</td>
-						<td>N/A</td>
-						<td>N/A</td>
+						<td>{{ results.temp_2100_min }}</td>
+						<td>{{ results.temp_2100_mean }}</td>
+						<td>{{ results.temp_2100_max }}</td>
 						<td>{{ results.jan_2100_min }}</td>
 						<td>{{ results.jan_2100_mean }}</td>
 						<td>{{ results.jan_2100_max }}</td>
@@ -123,6 +123,13 @@ export default {
 	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
+			let hist = await this.$axios.$get(
+				process.env.apiUrl +
+					"/mmm/temperature/historical/" +
+					this.latLng.lat +
+					"/" +
+					this.latLng.lng
+			);
 			let janhist = await this.$axios.$get(
 				process.env.apiUrl +
 					"/mmm/temperature/jan/historical/" +
@@ -136,6 +143,14 @@ export default {
 					this.latLng.lat +
 					"/" +
 					this.latLng.lng
+			);
+			let temp2040 = await this.$axios.$get(
+				process.env.apiUrl +
+					"/mmm/temperature/projected/" +
+					this.latLng.lat +
+					"/" +
+					this.latLng.lng +
+					"/2010/2039"
 			);
 			let jan2040 = await this.$axios.$get(
 				process.env.apiUrl +
@@ -153,6 +168,14 @@ export default {
 					this.latLng.lng +
 					"/2010/2039"
 			);
+			let temp2070 = await this.$axios.$get(
+				process.env.apiUrl +
+					"/mmm/temperature/projected/" +
+					this.latLng.lat +
+					"/" +
+					this.latLng.lng +
+					"/2040/2069"
+			);
 			let jan2070 = await this.$axios.$get(
 				process.env.apiUrl +
 					"/mmm/temperature/jan/projected/" +
@@ -168,6 +191,14 @@ export default {
 					"/" +
 					this.latLng.lng +
 					"/2040/2069"
+			);
+			let temp2100 = await this.$axios.$get(
+				process.env.apiUrl +
+					"/mmm/temperature/projected/" +
+					this.latLng.lat +
+					"/" +
+					this.latLng.lng +
+					"/2070/2099"
 			);
 			let jan2100 = await this.$axios.$get(
 				process.env.apiUrl +
@@ -187,24 +218,36 @@ export default {
 			);
 
 			this.results = {
+				hist_min: hist["historical"]["tasmin"],
+				hist_mean: hist["historical"]["tasmean"],
+				hist_max: hist["historical"]["tasmax"],
 				jan_hist_min: janhist["historical"]["tasmin"],
 				jan_hist_mean: janhist["historical"]["tasmean"],
 				jan_hist_max: janhist["historical"]["tasmax"],
 				july_hist_min: julyhist["historical"]["tasmin"],
 				july_hist_mean: julyhist["historical"]["tasmean"],
 				july_hist_max: julyhist["historical"]["tasmax"],
+				temp_2040_min: temp2040["projected"]["tasmin"],
+				temp_2040_mean: temp2040["projected"]["tasmean"],
+				temp_2040_max: temp2040["projected"]["tasmax"],
 				jan_2040_min: jan2040["projected"]["tasmin"],
 				jan_2040_mean: jan2040["projected"]["tasmean"],
 				jan_2040_max: jan2040["projected"]["tasmax"],
 				july_2040_min: july2040["projected"]["tasmin"],
 				july_2040_mean: july2040["projected"]["tasmean"],
 				july_2040_max: july2040["projected"]["tasmax"],
+				temp_2070_min: temp2070["projected"]["tasmin"],
+				temp_2070_mean: temp2070["projected"]["tasmean"],
+				temp_2070_max: temp2070["projected"]["tasmax"],
 				jan_2070_min: jan2070["projected"]["tasmin"],
 				jan_2070_mean: jan2070["projected"]["tasmean"],
 				jan_2070_max: jan2070["projected"]["tasmax"],
 				july_2070_min: july2070["projected"]["tasmin"],
 				july_2070_mean: july2070["projected"]["tasmean"],
 				july_2070_max: july2070["projected"]["tasmax"],
+				temp_2100_min: temp2100["projected"]["tasmin"],
+				temp_2100_mean: temp2100["projected"]["tasmean"],
+				temp_2100_max: temp2100["projected"]["tasmax"],
 				jan_2100_min: jan2100["projected"]["tasmin"],
 				jan_2100_mean: jan2100["projected"]["tasmean"],
 				jan_2100_max: jan2100["projected"]["tasmax"],
