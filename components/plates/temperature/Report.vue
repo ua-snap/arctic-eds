@@ -87,6 +87,17 @@
 					</tr>
 				</tbody>
 			</table>
+			<h4 class="title is-6">Access to Data</h4>
+			<div class="content">
+				<ul>
+					<li>
+						<a href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-temperature-products-downscaled-from-cru-ts-data-via-the-delta-m" target="_blank">Historical Monthly and Derived Temperature Products</a>
+					</li>
+					<li>
+						<a href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-temperature-products-2km-cmip5-ar5" target="_blank">Projected Monthly and Derived Temperature Products</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </template>
