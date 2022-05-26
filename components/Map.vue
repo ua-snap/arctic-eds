@@ -8,6 +8,7 @@
 #map {
 	height: 100vh;
 	width: 100%;
+	cursor: pointer;
 }
 </style>
 
