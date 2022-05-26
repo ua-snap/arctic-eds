@@ -51,54 +51,6 @@
 					</tr>
 				</tbody>
 			</table>
-
-			<!-- <h4 class="title is-4">GIPL Active Layer Thickness (m)</h4>
-			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">2010</th>
-						<th scope="col">2050</th>
-						<th scope="col">Change</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>{{ results.gipl_alt_2010 }}</td>
-						<td>{{ results.gipl_alt_2050 }}</td>
-						<td>
-							{{
-								"+" +
-									(
-										results.gipl_alt_2050 -
-										results.gipl_alt_2010
-									).toFixed(2)
-							}}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<h4 class="title is-6">Additional data</h4>
-			<div class="content">
-				<ul>
-					<li>
-						Obu et al. (2018) Mean Annual Ground Temperature (deg.
-						C) at Top of Permafrost:
-						<strong>{{ results.magt_2018 }}</strong>
-					</li>
-					<li>
-						Jorgenson et al. (2008) Ground Ice Volume:
-						<strong>{{ results.giv_2008 }}</strong>
-					</li>
-					<li>
-						Jorgenson et al. (2008) Permafrost Extent:
-						<strong>{{ results.pe_2008 }}</strong>
-					</li>
-					<li>
-						Obu et al. (2018) Permafrost Extent:
-						<strong>{{ results.pe_2018 }}</strong>
-					</li>
-				</ul>
-			</div> -->
 		</div>
 	</div>
 </template>
