@@ -98,6 +98,21 @@
 					</li>
 				</ul>
 			</div>
+			<DownloadCsvButton
+				text="Download annual temperature mean data as CSV"
+				endpoint="mmm/temperature/all"
+				class="mt-3 mb-5"
+			/>
+			<DownloadCsvButton
+				text="Download annual January temperature min-mean-max as CSV"
+				endpoint="mmm/temperature/jan/all"
+				class="mt-3 mb-5"
+			/>
+			<DownloadCsvButton
+				text="Download annual July temperature min-mean-max as CSV"
+				endpoint="mmm/temperature/july/all"
+				class="mt-3 mb-5"
+			/>
 		</div>
 	</div>
 </template>
@@ -105,10 +120,14 @@
 <script>
 import { mapGetters } from "vuex";
 import MiniMap from "~/components/MiniMap";
+import DownloadCsvButton from "~/components/DownloadCsvButton";
 import LoadingStatus from "~/components/LoadingStatus";
 
 export default {
-	name: "PrecipitationReport",
+	name: "TemperatureReport",
+	components: {
+		DownloadCsvButton
+	},
 	data() {
 		return {
 			// Will have the results of the data fetch.
