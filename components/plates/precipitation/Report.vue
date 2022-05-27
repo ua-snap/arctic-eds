@@ -62,17 +62,26 @@
 					</li>
 				</ul>
 			</div>
+			<DownloadCsvButton
+				text="Download precipitation data as CSV"
+				endpoint="mmm/precipitation/all"
+				class="mt-3 mb-5"
+			/>
 		</div>
 	</div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import DownloadCsvButton from "~/components/DownloadCsvButton";
 import MiniMap from "~/components/MiniMap";
 import LoadingStatus from "~/components/LoadingStatus";
 
 export default {
 	name: "PrecipitationReport",
+	components: {
+		DownloadCsvButton
+	},
 	data() {
 		return {
 			// Will have the results of the data fetch.
