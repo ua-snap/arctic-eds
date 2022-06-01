@@ -153,137 +153,51 @@ export default {
 	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
-			let hist = await this.$axios.$get(
+			let plate = await this.$axios.$get(
 				process.env.apiUrl +
-					"/mmm/temperature/historical/" +
+					"/eds/temperature/" +
 					this.latLng.lat +
 					"/" +
 					this.latLng.lng
-			);
-			let janhist = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/jan/historical/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng
-			);
-			let julyhist = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/july/historical/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng
-			);
-			let temp2040 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2010/2039"
-			);
-			let jan2040 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/jan/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2010/2039"
-			);
-			let july2040 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/july/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2010/2039"
-			);
-			let temp2070 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2040/2069"
-			);
-			let jan2070 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/jan/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2040/2069"
-			);
-			let july2070 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/july/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2040/2069"
-			);
-			let temp2100 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2070/2099"
-			);
-			let jan2100 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/jan/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2070/2099"
-			);
-			let july2100 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/temperature/july/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2070/2099"
 			);
 
 			this.results = {
-				hist_min: hist["historical"]["tasmin"],
-				hist_mean: hist["historical"]["tasmean"],
-				hist_max: hist["historical"]["tasmax"],
-				jan_hist_min: janhist["historical"]["tasmin"],
-				jan_hist_mean: janhist["historical"]["tasmean"],
-				jan_hist_max: janhist["historical"]["tasmax"],
-				july_hist_min: julyhist["historical"]["tasmin"],
-				july_hist_mean: julyhist["historical"]["tasmean"],
-				july_hist_max: julyhist["historical"]["tasmax"],
-				temp_2040_min: temp2040["projected"]["tasmin"],
-				temp_2040_mean: temp2040["projected"]["tasmean"],
-				temp_2040_max: temp2040["projected"]["tasmax"],
-				jan_2040_min: jan2040["projected"]["tasmin"],
-				jan_2040_mean: jan2040["projected"]["tasmean"],
-				jan_2040_max: jan2040["projected"]["tasmax"],
-				july_2040_min: july2040["projected"]["tasmin"],
-				july_2040_mean: july2040["projected"]["tasmean"],
-				july_2040_max: july2040["projected"]["tasmax"],
-				temp_2070_min: temp2070["projected"]["tasmin"],
-				temp_2070_mean: temp2070["projected"]["tasmean"],
-				temp_2070_max: temp2070["projected"]["tasmax"],
-				jan_2070_min: jan2070["projected"]["tasmin"],
-				jan_2070_mean: jan2070["projected"]["tasmean"],
-				jan_2070_max: jan2070["projected"]["tasmax"],
-				july_2070_min: july2070["projected"]["tasmin"],
-				july_2070_mean: july2070["projected"]["tasmean"],
-				july_2070_max: july2070["projected"]["tasmax"],
-				temp_2100_min: temp2100["projected"]["tasmin"],
-				temp_2100_mean: temp2100["projected"]["tasmean"],
-				temp_2100_max: temp2100["projected"]["tasmax"],
-				jan_2100_min: jan2100["projected"]["tasmin"],
-				jan_2100_mean: jan2100["projected"]["tasmean"],
-				jan_2100_max: jan2100["projected"]["tasmax"],
-				july_2100_min: july2100["projected"]["tasmin"],
-				july_2100_mean: july2100["projected"]["tasmean"],
-				july_2100_max: july2100["projected"]["tasmax"]
+				hist_min: plate[0]["historical"]["tasmin"],
+				hist_mean: plate[0]["historical"]["tasmean"],
+				hist_max: plate[0]["historical"]["tasmax"],
+				jan_hist_min: plate[1]["historical"]["tasmin"],
+				jan_hist_mean: plate[1]["historical"]["tasmean"],
+				jan_hist_max: plate[1]["historical"]["tasmax"],
+				july_hist_min: plate[2]["historical"]["tasmin"],
+				july_hist_mean: plate[2]["historical"]["tasmean"],
+				july_hist_max: plate[2]["historical"]["tasmax"],
+				temp_2040_min: plate[3]["projected"]["tasmin"],
+				temp_2040_mean: plate[3]["projected"]["tasmean"],
+				temp_2040_max: plate[3]["projected"]["tasmax"],
+				jan_2040_min: plate[4]["projected"]["tasmin"],
+				jan_2040_mean: plate[4]["projected"]["tasmean"],
+				jan_2040_max: plate[4]["projected"]["tasmax"],
+				july_2040_min: plate[5]["projected"]["tasmin"],
+				july_2040_mean: plate[5]["projected"]["tasmean"],
+				july_2040_max: plate[5]["projected"]["tasmax"],
+				temp_2070_min: plate[6]["projected"]["tasmin"],
+				temp_2070_mean: plate[6]["projected"]["tasmean"],
+				temp_2070_max: plate[6]["projected"]["tasmax"],
+				jan_2070_min: plate[7]["projected"]["tasmin"],
+				jan_2070_mean: plate[7]["projected"]["tasmean"],
+				jan_2070_max: plate[7]["projected"]["tasmax"],
+				july_2070_min: plate[8]["projected"]["tasmin"],
+				july_2070_mean: plate[8]["projected"]["tasmean"],
+				july_2070_max: plate[8]["projected"]["tasmax"],
+				temp_2100_min: plate[9]["projected"]["tasmin"],
+				temp_2100_mean: plate[9]["projected"]["tasmean"],
+				temp_2100_max: plate[9]["projected"]["tasmax"],
+				jan_2100_min: plate[10]["projected"]["tasmin"],
+				jan_2100_mean: plate[10]["projected"]["tasmean"],
+				jan_2100_max: plate[10]["projected"]["tasmax"],
+				july_2100_min: plate[11]["projected"]["tasmin"],
+				july_2100_mean: plate[11]["projected"]["tasmean"],
+				july_2100_max: plate[11]["projected"]["tasmax"]
 			};
 		}
 	}

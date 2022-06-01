@@ -107,51 +107,27 @@ export default {
 	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
-			let hist = await this.$axios.$get(
+			let plate = await this.$axios.$get(
 				process.env.apiUrl +
-					"/mmm/precipitation/historical/" +
+					"/eds/precipitation/" +
 					this.latLng.lat +
 					"/" +
 					this.latLng.lng
 			);
-			let pr2040 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/precipitation/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2010/2039"
-			);
-			let pr2070 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/precipitation/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2040/2069"
-			);
-			let pr2100 = await this.$axios.$get(
-				process.env.apiUrl +
-					"/mmm/precipitation/projected/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng +
-					"/2070/2099"
-			);
 
 			this.results = {
-				pr_hist_min: hist["historical"]["prmin"],
-				pr_hist_mean: hist["historical"]["prmean"],
-				pr_hist_max: hist["historical"]["prmax"],
-				pr_2040_min: pr2040["projected"]["prmin"],
-				pr_2040_mean: pr2040["projected"]["prmean"],
-				pr_2040_max: pr2040["projected"]["prmax"],
-				pr_2070_min: pr2070["projected"]["prmin"],
-				pr_2070_mean: pr2070["projected"]["prmean"],
-				pr_2070_max: pr2070["projected"]["prmax"],
-				pr_2100_min: pr2100["projected"]["prmin"],
-				pr_2100_mean: pr2100["projected"]["prmean"],
-				pr_2100_max: pr2100["projected"]["prmax"]
+				pr_hist_min: plate[0]["historical"]["prmin"],
+				pr_hist_mean: plate[0]["historical"]["prmean"],
+				pr_hist_max: plate[0]["historical"]["prmax"],
+				pr_2040_min: plate[1]["projected"]["prmin"],
+				pr_2040_mean: plate[1]["projected"]["prmean"],
+				pr_2040_max: plate[1]["projected"]["prmax"],
+				pr_2070_min: plate[2]["projected"]["prmin"],
+				pr_2070_mean: plate[2]["projected"]["prmean"],
+				pr_2070_max: plate[2]["projected"]["prmax"],
+				pr_2100_min: plate[3]["projected"]["prmin"],
+				pr_2100_mean: plate[3]["projected"]["prmean"],
+				pr_2100_max: plate[3]["projected"]["prmax"]
 			};
 		}
 	}
