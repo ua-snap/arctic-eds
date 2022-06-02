@@ -12,24 +12,33 @@
 
 		<div class="container">
 			<section class="section">
-				<div v-show="this.reportIsVisible" class="report-wrapper">
-					<!-- later -->
+				<div v-if="this.reportIsVisible" class="report-wrapper">
+					<TemperatureReport />
 				</div>
 			</section>
 		</div>
 	</div>
 </template>
-<script lang="scss" scoped></script>
+<style lang="scss" scoped>
+	td {
+		padding: 8px;
+		text-align: center;
+	}
+	th {
+		padding: 8px;
+	}
+</style>
 <script>
 import Plate from "~/components/Plate";
 import TemperatureLegend from "~/components/plates/temperature/Legend";
+import TemperatureReport from "~/components/plates/temperature/Report";
 import LatLngPicker from "~/components/LatLngPicker";
 import layers from "~/components/plates/temperature/layers";
 import { mapGetters } from "vuex";
 
 export default {
 	name: "TemperatureController",
-	components: { Plate, TemperatureLegend },
+	components: { Plate, TemperatureLegend, TemperatureReport },
 	data() {
 		return {
 			legend: TemperatureLegend,

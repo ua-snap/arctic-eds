@@ -48,6 +48,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     "nuxt-vuex-router-sync",
+    "@nuxt/http"
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

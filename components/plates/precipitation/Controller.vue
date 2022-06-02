@@ -13,23 +13,32 @@
 		<div class="container">
 			<section class="section">
 				<div v-show="this.reportIsVisible" class="report-wrapper">
-					<!-- later -->
+					<PrecipitationReport />
 				</div>
 			</section>
 		</div>
 	</div>
 </template>
-<script lang="scss" scoped></script>
+<style lang="scss" scoped>
+	td {
+		padding: 8px;
+		text-align: center;
+	}
+	th {
+		padding: 8px;
+	}
+</style>
 <script>
 import Plate from "~/components/Plate";
 import PrecipitationLegend from "~/components/plates/precipitation/Legend";
+import PrecipitationReport from "~/components/plates/precipitation/Report"
 import LatLngPicker from "~/components/LatLngPicker";
 import layers from "~/components/plates/precipitation/layers";
 import { mapGetters } from "vuex";
 
 export default {
 	name: "PrecipitationController",
-	components: { Plate, PrecipitationLegend },
+	components: { Plate, PrecipitationLegend, PrecipitationReport },
 	data() {
 		return {
 			legend: PrecipitationLegend,
