@@ -116,18 +116,18 @@ export default {
 			);
 
 			this.results = {
-				pr_hist_min: plate[0]["historical"]["prmin"],
-				pr_hist_mean: plate[0]["historical"]["prmean"],
-				pr_hist_max: plate[0]["historical"]["prmax"],
-				pr_2040_min: plate[1]["projected"]["prmin"],
-				pr_2040_mean: plate[1]["projected"]["prmean"],
-				pr_2040_max: plate[1]["projected"]["prmax"],
-				pr_2070_min: plate[2]["projected"]["prmin"],
-				pr_2070_mean: plate[2]["projected"]["prmean"],
-				pr_2070_max: plate[2]["projected"]["prmax"],
-				pr_2100_min: plate[3]["projected"]["prmin"],
-				pr_2100_mean: plate[3]["projected"]["prmean"],
-				pr_2100_max: plate[3]["projected"]["prmax"]
+				pr_hist_min: plate["historical"]["prmin"],
+				pr_hist_mean: plate["historical"]["prmean"],
+				pr_hist_max: plate["historical"]["prmax"],
+				pr_2040_min: plate["2010-2039"]["prmin"],
+				pr_2040_mean: plate["2010-2039"]["prmean"],
+				pr_2040_max: plate["2010-2039"]["prmax"],
+				pr_2070_min: plate["2040-2069"]["prmin"],
+				pr_2070_mean: plate["2040-2069"]["prmean"],
+				pr_2070_max: plate["2040-2069"]["prmax"],
+				pr_2100_min: plate["2070-2099"]["prmin"],
+				pr_2100_mean: plate["2070-2099"]["prmean"],
+				pr_2100_max: plate["2070-2099"]["prmax"]
 			};
 		}
 	}
