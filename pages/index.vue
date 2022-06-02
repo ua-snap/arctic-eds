@@ -48,7 +48,9 @@
         </NuxtLink>
         <ul>
           <li>Climatic Zones</li>
-          <li><NuxtLink to="/climate/precipitation">Precipitation</NuxtLink></li>
+          <li>
+            <NuxtLink to="/climate/precipitation">Precipitation</NuxtLink>
+          </li>
           <li>Wet Days per Year</li>
           <li>Snowfall</li>
           <li><NuxtLink to="/climate/temperature">Temperature</NuxtLink></li>
@@ -58,11 +60,27 @@
         <h3>Engineering</h3>
         <div class="toc--panel--image image--engineering"></div>
         <ul>
-          <li>Freezing Index</li>
-          <li>Design Freezing Index</li>
-          <li>Thawing Index</li>
-          <li>Design Thawing Index</li>
-          <li>Heating Degree Days</li>
+          <li>
+            <NuxtLink to="/engineering/freezing-index">Freezing Index</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/engineering/design-freezing-index"
+              >Design Freezing Index</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink to="/engineering/thawing-index">Thawing Index</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/engineering/design-thawing-index"
+              >Design Thawing Index</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink to="/engineering/heating-degree-days"
+              >Heating Degree Days</NuxtLink
+            >
+          </li>
           <li>Building Design Criteria</li>
         </ul>
       </div>
@@ -149,6 +167,6 @@
 <script>
 export default {
   name: "HomePage",
-  layout: "home",
+  layout: "home"
 };
 </script>

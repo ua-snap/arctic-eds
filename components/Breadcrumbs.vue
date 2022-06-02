@@ -37,6 +37,8 @@
 }
 </style>
 <script>
+import _ from "lodash";
+
 export default {
   name: "Breadcrumbs",
   computed: {
@@ -45,12 +47,13 @@ export default {
     },
     plate: function() {
       // Handle custom names independent of route
-      let plate = this.$route.name.split("-")[1];
+      let plate = _.slice(this.$route.path.split("/"), -1)[0];
+      plate = plate.replace(/-/g, " ");
       switch (plate) {
         case "physiography":
           return "Physiographic Provinces";
         default:
-          if (plate) return plate
+          if (plate) return plate;
       }
     }
   }
