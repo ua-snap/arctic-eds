@@ -2,7 +2,15 @@
 	<div>
 		<div v-show="!reportIsVisible" class="container">
 			<section class="section">
-				<LatLngPicker />
+			<div class="columns" id="controls">
+				<!-- ID above (#controls) is used as anchor target, don't remove -->
+				<div class="column is-one-half">
+					<PlaceSelector></PlaceSelector>
+				</div>
+				<div class="column is-one-half">
+					<LatLngPicker></LatLngPicker>
+				</div>
+			</div>
 			</section>
 		</div>
 
@@ -35,10 +43,11 @@ import PrecipitationReport from "~/components/plates/precipitation/Report"
 import LatLngPicker from "~/components/LatLngPicker";
 import layers from "~/components/plates/precipitation/layers";
 import { mapGetters } from "vuex";
+import PlaceSelector from "~/components/PlaceSelector";
 
 export default {
 	name: "PrecipitationController",
-	components: { Plate, PrecipitationLegend, PrecipitationReport },
+	components: { Plate, PrecipitationLegend, PrecipitationReport, LatLngPicker, PlaceSelector },
 	data() {
 		return {
 			legend: PrecipitationLegend,
@@ -50,6 +59,9 @@ export default {
 			reportIsVisible: "reportIsVisible"
 		})
 	},
+	async fetch() {
+    await this.$store.dispatch('map/fetchPlaces')
+  },
 	mounted() {
 		// Wire up click handler
 		this.$store.commit("map/addEventHandler", {

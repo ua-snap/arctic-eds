@@ -60,12 +60,16 @@ export default {
 				lat: undefined,
 				lng: undefined,
 			},
+			places: undefined,
 		};
 	},
 
 	getters: {
 		latLng: (state) => {
 			return state.latLng;
+		},
+		places(state) {
+			return state.places
 		},
 		getActiveLayer(state) {
 			return state.layer;
@@ -129,6 +133,9 @@ export default {
 			// Listener should be an object with two elements,
 			map.on(handler.event, handler.handler);
 		},
+		setPlaces(state, places) {
+			state.places = places
+		},
 		setLatLng(state, latLng) {
 			// latLng is an object with lat / lng properties.
 			state.latLng = {
@@ -137,4 +144,17 @@ export default {
 			};
 		},
 	},
+	actions: {
+		async fetchPlaces(context) {
+			// If we've already fetched this, don't do that again.
+			if (context.state.places) {
+				return
+			}
+	
+			// TODO: add error handling here for 404 (no data) etc.
+			let queryUrl = process.env.apiUrl + '/places/communities'
+			let places = await this.$http.$get(queryUrl)
+			context.commit('setPlaces', places)
+		}
+	}
 };
