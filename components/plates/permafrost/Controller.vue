@@ -1,9 +1,7 @@
 <template>
 	<div>
 		<div v-show="!reportIsVisible" class="container">
-			<section class="section">
-				<LatLngPicker />
-			</section>
+			<SearchControls />
 		</div>
 
 		<Plate :layers="layers" v-show="!reportIsVisible">
@@ -24,13 +22,13 @@
 import Plate from "~/components/Plate";
 import PermafrostReport from "~/components/plates/permafrost/Report";
 import PermafrostLegend from "~/components/plates/permafrost/Legend";
-import LatLngPicker from "~/components/LatLngPicker";
+import SearchControls from "~/components/SearchControls.vue";
 import layers from "~/components/plates/permafrost/layers";
 import { mapGetters } from "vuex";
 
 export default {
 	name: "PermafrostController",
-	components: { Plate, PermafrostReport, PermafrostLegend },
+	components: { Plate, PermafrostReport, PermafrostLegend, SearchControls },
 	data() {
 		return {
 			legend: PermafrostLegend,

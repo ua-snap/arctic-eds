@@ -1,17 +1,7 @@
 <template>
 	<div>
 		<div v-show="!reportIsVisible" class="container">
-			<section class="section">
-			<div class="columns" id="controls">
-				<!-- ID above (#controls) is used as anchor target, don't remove -->
-				<div class="column is-one-half">
-					<PlaceSelector></PlaceSelector>
-				</div>
-				<div class="column is-one-half">
-					<LatLngPicker></LatLngPicker>
-				</div>
-			</div>
-			</section>
+			<SearchControls />
 		</div>
 
 		<Plate :layers="layers" v-show="!reportIsVisible">
@@ -40,14 +30,13 @@
 import Plate from "~/components/Plate";
 import PrecipitationLegend from "~/components/plates/precipitation/Legend";
 import PrecipitationReport from "~/components/plates/precipitation/Report"
-import LatLngPicker from "~/components/LatLngPicker";
 import layers from "~/components/plates/precipitation/layers";
 import { mapGetters } from "vuex";
-import PlaceSelector from "~/components/PlaceSelector";
+import SearchControls from "~/components/SearchControls.vue";
 
 export default {
 	name: "PrecipitationController",
-	components: { Plate, PrecipitationLegend, PrecipitationReport, LatLngPicker, PlaceSelector },
+	components: { Plate, PrecipitationLegend, PrecipitationReport, SearchControls },
 	data() {
 		return {
 			legend: PrecipitationLegend,
@@ -59,9 +48,6 @@ export default {
 			reportIsVisible: "reportIsVisible"
 		})
 	},
-	async fetch() {
-    await this.$store.dispatch('map/fetchPlaces')
-  },
 	mounted() {
 		// Wire up click handler
 		this.$store.commit("map/addEventHandler", {
