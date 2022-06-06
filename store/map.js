@@ -61,6 +61,8 @@ export default {
 				lng: undefined,
 			},
 			places: undefined,
+			placeName: undefined,
+			reportIsVisible: false,
 		};
 	},
 
@@ -74,6 +76,12 @@ export default {
 		getActiveLayer(state) {
 			return state.layer;
 		},
+		placeName(state) {
+			return state.placeName;
+		},
+		reportIsVisible(state) {
+			return state.reportIsVisible;
+		}
 	},
 
 	mutations: {
@@ -84,6 +92,18 @@ export default {
 		destroy(state) {
 			map.remove();
 			state.layer = undefined;
+			state.latLng = { 
+				lat: undefined, 
+				lng: undefined 
+			};
+			state.placeName = undefined;
+			state.reportIsVisible = false;
+		},
+		openReport(state) {
+			state.reportIsVisible = true;
+		},
+		closeReport(state) {
+			state.reportIsVisible = false;
 		},
 		toggleLayer(state, layer) {
 			// Remove existing layer: right now, we only
@@ -132,6 +152,9 @@ export default {
 			// Attach an event listener to the map.
 			// Listener should be an object with two elements,
 			map.on(handler.event, handler.handler);
+		},
+		setPlaceName(state, name) {
+			state.placeName = name;
 		},
 		setPlaces(state, places) {
 			state.places = places

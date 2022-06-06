@@ -6,7 +6,7 @@
 
 		<div v-if="!$fetchState.pending & !$fetchState.error">
 			<h3 class="title is-3">
-				Precipitation data for {{ latLng.lat }}, {{ latLng.lng }}
+				Precipitation data for {{ results.place }}
 			</h3>
 
 			<MiniMap />
@@ -94,6 +94,7 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
+			placeName: "map/placeName",
 			latLng: "map/latLng"
 		})
 	},
@@ -115,7 +116,13 @@ export default {
 					this.latLng.lng
 			);
 
+			let place = this.latLng.lat + ', ' + this.latLng.lng;
+			if (this.placeName) {
+				place = this.placeName
+			}
+
 			this.results = {
+				place: place,
 				pr_hist_min: plate["historical"]["prmin"],
 				pr_hist_mean: plate["historical"]["prmean"],
 				pr_hist_max: plate["historical"]["prmax"],

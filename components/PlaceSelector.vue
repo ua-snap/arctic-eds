@@ -23,54 +23,9 @@
             <template slot-scope="props">
               <div class="search-item">
                 {{ props.option.name }}
-                <span class="area-additional-info" v-if="props.option.type == 'huc'"
-                  >Watershed, HUC ID {{ props.option.id }}</span
-                >
                 <span class="alt-name" v-if="props.option.alt_name"
                   >({{ props.option.alt_name }})</span
                 >
-                <span
-                  class="area-additional-info"
-                  v-if="props.option.type == 'protected_area'"
-                >
-                  {{ props.option.area_type }}
-                </span>
-                <span
-                  class="area-additional-info"
-                  v-if="props.option.type == 'corporation'"
-                >
-                  Native Corporation
-                </span>
-                <span
-                  class="area-additional-info"
-                  v-if="props.option.type == 'climate_division'"
-                >
-                  Climate Division
-                </span>
-                <span
-                  class="area-additional-info"
-                  v-if="props.option.type == 'ethnolinguistic_region'"
-                >
-                  Ethnolinguistic Region
-                </span>
-                <span
-                  class="area-additional-info"
-                  v-if="props.option.type == 'fire_zone'"
-                >
-                  Fire Management Unit
-                </span>
-                <span
-                  class="area-additional-info"
-                  v-if="props.option.type == 'first_nation'"
-                >
-                  First Nation Traditional Territory
-                </span>
-                <span
-                  class="area-additional-info"
-                  v-if="props.option.type == 'game_management_unit'"
-                >
-                  Game Management Unit
-                </span>
               </div>
             </template>
           </b-autocomplete>
@@ -112,11 +67,6 @@ export default {
     filteredDataObj() {
       // Guard in case the async loading of places isn't done yet.
       if (this.places) {
-        // Strip non-digit characters at the start to allow for
-        // searching by "huc 1901..." etc -- the numeric HucID will
-        // be searched.
-        let strippedHucSearch = this.selectedPlace.replace(/^[\D]*/g, '')
-
         return this.places.filter(option => {
           return (
             option.name
@@ -127,18 +77,7 @@ export default {
               option.alt_name
                 .toString()
                 .toLowerCase()
-                .indexOf(this.selectedPlace.toLowerCase()) >= 0) ||
-            (option.area_type &&
-              option.area_type
-                .toString()
-                .toLowerCase()
-                .indexOf(this.selectedPlace.toLowerCase()) >= 0) ||
-            // HUCID, check only if it's 4 digits or more
-            (this.selectedPlace.length > 3 &&
-              (option.id.toString().indexOf(this.selectedPlace) >= 0 ||
-                // Check for nonzero length of strippedHucSearch!
-                (strippedHucSearch &&
-                  option.id.toString().indexOf(strippedHucSearch) >= 0)))
+                .indexOf(this.selectedPlace.toLowerCase()) >= 0)
           )
         })
       }
@@ -154,6 +93,8 @@ export default {
           lat: selected.latitude,
           lng: selected.longitude
         }
+
+        this.$store.commit("map/setPlaceName", selected.name + ", " + selected.region);
 
         this.$store.commit("map/setLatLng", latLng);
 
