@@ -4,7 +4,7 @@
 		<hr />
 		<LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending & !$fetchState.error">
+		<div v-if="!$fetchState.pending && !$fetchState.error">
 			<h3 class="title is-3">
 				Temperature data for {{ latLng.lat }}, {{ latLng.lng }}
 			</h3>
