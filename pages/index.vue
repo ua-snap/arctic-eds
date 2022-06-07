@@ -57,8 +57,10 @@
         </ul>
       </div>
       <div class="toc--panel">
-        <h3>Engineering</h3>
-        <div class="toc--panel--image image--engineering"></div>
+        <NuxtLink to="/engineering">
+          <h3>Engineering</h3>
+          <div class="toc--panel--image image--engineering"></div>
+        </NuxtLink>
         <ul>
           <li>
             <NuxtLink to="/engineering/freezing-index">Freezing Index</NuxtLink>
