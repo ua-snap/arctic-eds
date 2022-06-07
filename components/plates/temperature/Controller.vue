@@ -1,9 +1,7 @@
 <template>
 	<div>
 		<div v-show="!reportIsVisible" class="container">
-			<section class="section">
-				<LatLngPicker />
-			</section>
+			<SearchControls />
 		</div>
 
 		<Plate :layers="layers" v-show="!reportIsVisible">
@@ -32,13 +30,13 @@
 import Plate from "~/components/Plate";
 import TemperatureLegend from "~/components/plates/temperature/Legend";
 import TemperatureReport from "~/components/plates/temperature/Report";
-import LatLngPicker from "~/components/LatLngPicker";
+import SearchControls from "~/components/SearchControls.vue";
 import layers from "~/components/plates/temperature/layers";
 import { mapGetters } from "vuex";
 
 export default {
 	name: "TemperatureController",
-	components: { Plate, TemperatureLegend, TemperatureReport },
+	components: { Plate, TemperatureLegend, TemperatureReport, SearchControls },
 	data() {
 		return {
 			legend: TemperatureLegend,
@@ -47,7 +45,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			reportIsVisible: "reportIsVisible"
+			reportIsVisible: "map/reportIsVisible"
 		})
 	},
 	mounted() {
@@ -68,7 +66,7 @@ export default {
 		},
 		activateReport: function(latLng) {
 			this.$store.commit("map/setLatLng", latLng);
-			this.$store.commit("openReport");
+			this.$store.commit("map/openReport");
 		}
 	}
 };

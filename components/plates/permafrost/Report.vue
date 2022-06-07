@@ -6,7 +6,7 @@
 
 		<div v-if="!$fetchState.pending & !$fetchState.error">
 			<h3 class="title is-3">
-				Permafrost data for {{ latLng.lat }}, {{ latLng.lng }}
+				Permafrost data for {{ results.place }}
 			</h3>
 
 			<MiniMap />
@@ -140,6 +140,7 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
+			placeName: "map/placeName",
 			latLng: "map/latLng"
 		})
 	},
@@ -161,7 +162,13 @@ export default {
 					this.latLng.lng
 			);
 
+			let place = this.latLng.lat + ', ' + this.latLng.lng;
+			if (this.placeName) {
+				place = this.placeName
+			}
+
 			this.results = {
+				place: place,
 				gipl_alt_2010: res["gipl_alt"][0]["thickness"],
 				gipl_alt_2050: res["gipl_alt"][1]["thickness"],
 				gipl_magt_2010_1m: res["gipl_magt"][0]["temp"],

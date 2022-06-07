@@ -6,7 +6,7 @@
 
 		<div v-if="!$fetchState.pending & !$fetchState.error">
 			<h3 class="title is-3">
-				Ecoregion for {{ latLng.lat }}, {{ latLng.lng }}
+				Ecoregion for {{ results.place }}
 			</h3>
 			<h4 class="subtitle is-3">{{ results.name }}</h4>
 			<MiniMap />
@@ -33,6 +33,7 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
+			placeName: "map/placeName",
 			latLng: "map/latLng"
 		})
 	},
@@ -53,6 +54,13 @@ export default {
 					"/" +
 					this.latLng.lng
 			);
+
+			let place = this.latLng.lat + ', ' + this.latLng.lng;
+			if (this.placeName) {
+				place = this.placeName
+			}
+			
+			this.results.place = place;
 		}
 	}
 };

@@ -6,7 +6,7 @@
 
 		<div v-if="!$fetchState.pending & !$fetchState.error">
 			<h3 class="title is-3">
-				Temperature data for {{ latLng.lat }}, {{ latLng.lng }}
+				Temperature data for {{ results.place }}
 			</h3>
 
 			<MiniMap />
@@ -140,6 +140,7 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
+			placeName: "map/placeName",
 			latLng: "map/latLng"
 		})
 	},
@@ -161,7 +162,13 @@ export default {
 					this.latLng.lng
 			);
 
+			let place = this.latLng.lat + ', ' + this.latLng.lng;
+			if (this.placeName) {
+				place = this.placeName
+			}
+
 			this.results = {
+				place: place,
 				hist_min: plate["historical"]["all"]["tasmin"],
 				hist_mean: plate["historical"]["all"]["tasmean"],
 				hist_max: plate["historical"]["all"]["tasmax"],

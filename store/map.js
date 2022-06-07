@@ -60,6 +60,10 @@ export default {
 				lat: undefined,
 				lng: undefined,
 			},
+			places: undefined,
+			placeName: undefined,
+			placeID: undefined,
+			reportIsVisible: false,
 		};
 	},
 
@@ -67,9 +71,21 @@ export default {
 		latLng: (state) => {
 			return state.latLng;
 		},
+		places(state) {
+			return state.places
+		},
 		getActiveLayer(state) {
 			return state.layer;
 		},
+		placeName(state) {
+			return state.placeName;
+		},
+		placeID(state) {
+			return state.placeID;
+		},
+		reportIsVisible(state) {
+			return state.reportIsVisible;
+		}
 	},
 
 	mutations: {
@@ -80,6 +96,19 @@ export default {
 		destroy(state) {
 			map.remove();
 			state.layer = undefined;
+			state.latLng = { 
+				lat: undefined, 
+				lng: undefined 
+			};
+			state.placeName = undefined;
+			state.placeID = undefined;
+			state.reportIsVisible = false;
+		},
+		openReport(state) {
+			state.reportIsVisible = true;
+		},
+		closeReport(state) {
+			state.reportIsVisible = false;
 		},
 		toggleLayer(state, layer) {
 			// Remove existing layer: right now, we only
@@ -129,6 +158,15 @@ export default {
 			// Listener should be an object with two elements,
 			map.on(handler.event, handler.handler);
 		},
+		setPlaceName(state, name) {
+			state.placeName = name;
+		},
+		setPlaceID(state, id) {
+			state.placeID = id;
+		},
+		setPlaces(state, places) {
+			state.places = places
+		},
 		setLatLng(state, latLng) {
 			// latLng is an object with lat / lng properties.
 			state.latLng = {
@@ -137,4 +175,17 @@ export default {
 			};
 		},
 	},
+	actions: {
+		async fetchPlaces(context) {
+			// If we've already fetched this, don't do that again.
+			if (context.state.places) {
+				return
+			}
+	
+			// TODO: add error handling here for 404 (no data) etc.
+			let queryUrl = process.env.apiUrl + '/places/communities'
+			let places = await this.$http.$get(queryUrl)
+			context.commit('setPlaces', places)
+		}
+	}
 };

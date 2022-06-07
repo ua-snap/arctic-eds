@@ -15,10 +15,12 @@ export default {
   props: ['text', 'endpoint'],
   computed: {
     ...mapGetters({
+      placeID: "map/placeID",
 			latLng: "map/latLng"
 		}),
     downloadTarget() {
       let endpointPath = this.endpoint
+      let communityID = this.placeID ? '&community=' + this.placeID : '';
 
       let url =
         process.env.apiUrl +
@@ -28,7 +30,10 @@ export default {
         this.latLng['lat'] +
         '/' +
         this.latLng['lng'] +
-        '?format=csv'
+        '?format=csv' +
+        communityID
+
+
 
       return url
     },

@@ -6,7 +6,7 @@
 
 		<div v-if="!$fetchState.pending && !$fetchState.error">
 			<h3 class="title is-3">
-				Geological unit for {{ latLng.lat }}, {{ latLng.lng }}
+				Geological unit for {{ results.place }}
 			</h3>
 
 			<MiniMap />
@@ -44,6 +44,7 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
+			placeName: "map/placeName",
 			latLng: "map/latLng"
 		})
 	},
@@ -64,6 +65,13 @@ export default {
 					"/" +
 					this.latLng.lng
 			);
+
+			let place = this.latLng.lat + ', ' + this.latLng.lng;
+			if (this.placeName) {
+				place = this.placeName
+			}
+
+			this.results.place = place;
 		}
 	}
 };

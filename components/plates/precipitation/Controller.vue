@@ -1,9 +1,7 @@
 <template>
 	<div>
 		<div v-show="!reportIsVisible" class="container">
-			<section class="section">
-				<LatLngPicker />
-			</section>
+			<SearchControls />
 		</div>
 
 		<Plate :layers="layers" v-show="!reportIsVisible">
@@ -32,13 +30,13 @@
 import Plate from "~/components/Plate";
 import PrecipitationLegend from "~/components/plates/precipitation/Legend";
 import PrecipitationReport from "~/components/plates/precipitation/Report"
-import LatLngPicker from "~/components/LatLngPicker";
 import layers from "~/components/plates/precipitation/layers";
 import { mapGetters } from "vuex";
+import SearchControls from "~/components/SearchControls.vue";
 
 export default {
 	name: "PrecipitationController",
-	components: { Plate, PrecipitationLegend, PrecipitationReport },
+	components: { Plate, PrecipitationLegend, PrecipitationReport, SearchControls },
 	data() {
 		return {
 			legend: PrecipitationLegend,
@@ -47,7 +45,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			reportIsVisible: "reportIsVisible"
+			reportIsVisible: "map/reportIsVisible"
 		})
 	},
 	mounted() {
@@ -68,7 +66,7 @@ export default {
 		},
 		activateReport: function(latLng) {
 			this.$store.commit("map/setLatLng", latLng);
-			this.$store.commit("openReport");
+			this.$store.commit("map/openReport");
 		}
 	}
 };

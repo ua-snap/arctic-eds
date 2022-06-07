@@ -1,9 +1,7 @@
 <template>
 	<div>
 		<div v-show="!reportIsVisible" class="container">
-			<section class="section">
-				<LatLngPicker />
-			</section>
+			<SearchControls />
 		</div>
 
 		<Plate :layers="layers" v-show="!reportIsVisible"></Plate>
@@ -21,13 +19,13 @@
 <script>
 import Plate from "~/components/Plate";
 import GeologyReport from "~/components/plates/geology/Report";
-import LatLngPicker from "~/components/LatLngPicker";
+import SearchControls from "~/components/SearchControls.vue";
 import layers from "~/components/plates/geology/layers";
 import { mapGetters } from "vuex";
 
 export default {
 	name: "GeologyController",
-	components: { Plate, GeologyReport },
+	components: { Plate, GeologyReport, SearchControls },
 	data() {
 		return {
 			layers: layers
@@ -35,7 +33,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			reportIsVisible: "reportIsVisible"
+			reportIsVisible: "map/reportIsVisible"
 		})
 	},
 	mounted() {
@@ -56,7 +54,7 @@ export default {
 		},
 		activateReport: function(latLng) {
 			this.$store.commit("map/setLatLng", latLng);
-			this.$store.commit("openReport", latLng);
+			this.$store.commit("map/openReport", latLng);
 		}
 	}
 };
