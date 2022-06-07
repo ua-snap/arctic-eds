@@ -30,9 +30,14 @@
 <script>
 import { mapGetters } from "vuex";
 import MiniMap from "~/components/MiniMap";
+import LoadingStatus from "~/components/LoadingStatus";
 
 export default {
 	name: "GeologyReport",
+	components: {
+    MiniMap,
+    LoadingStatus
+  },
 	data() {
 		return {
 			// Will have the results of the data fetch.

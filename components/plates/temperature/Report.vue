@@ -126,7 +126,9 @@ import LoadingStatus from "~/components/LoadingStatus";
 export default {
 	name: "TemperatureReport",
 	components: {
-		DownloadCsvButton
+		DownloadCsvButton,
+		MiniMap,
+		LoadingStatus
 	},
 	data() {
 		return {

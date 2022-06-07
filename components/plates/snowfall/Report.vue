@@ -68,7 +68,9 @@ import LoadingStatus from "~/components/LoadingStatus";
 export default {
 	name: "SnowfallReport",
 	components: {
-		DownloadCsvButton
+		DownloadCsvButton,
+		MiniMap,
+		LoadingStatus
 	},
 	data() {
 		return {

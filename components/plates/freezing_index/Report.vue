@@ -12,7 +12,7 @@
       "
     >
       <h3 class="title is-3">
-        Freezing index data for {{ latLng.lat }}, {{ latLng.lng }}
+        Freezing index data for {{ results.place }}
       </h3>
 
       <MiniMap />
@@ -88,7 +88,9 @@ import LoadingStatus from "~/components/LoadingStatus";
 export default {
   name: "FreezingIndexReport",
   components: {
-    DownloadCsvButton
+    DownloadCsvButton,
+    MiniMap,
+    LoadingStatus
   },
   data() {
     return {
@@ -102,6 +104,7 @@ export default {
       return this.$fetchState;
     },
     ...mapGetters({
+      placeName: "map/placeName",
       latLng: "map/latLng"
     })
   },
@@ -122,6 +125,13 @@ export default {
           "/" +
           this.latLng.lng
       );
+
+      let place = this.latLng.lat + ', ' + this.latLng.lng;
+			if (this.placeName) {
+				place = this.placeName
+			}
+
+      this.results.place = place;
     }
   }
 };
