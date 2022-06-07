@@ -9,13 +9,15 @@
         <ul>
           <li>Earthquakes</li>
           <li>Forest Types</li>
-          <li><NuxtLink to="/physiography/geology">Geology</NuxtLink></li>
-          <li>Glaciation</li>
-          <li><NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink></li>
           <li>
-            <NuxtLink to="/physiography/physiography"
-              >Physiographic Provinces</NuxtLink
-            >
+            <NuxtLink to="/physiography/geology">Geology</NuxtLink>
+          </li>
+          <li>Glaciation</li>
+          <li>
+            <NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/physiography/physiography">Physiographic Provinces</NuxtLink>
           </li>
         </ul>
       </div>
@@ -52,8 +54,12 @@
             <NuxtLink to="/climate/precipitation">Precipitation</NuxtLink>
           </li>
           <li>Wet Days per Year</li>
-          <li>Snowfall</li>
-          <li><NuxtLink to="/climate/temperature">Temperature</NuxtLink></li>
+          <li>
+            <NuxtLink to="/climate/temperature">Snowfall</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/climate/temperature">Temperature</NuxtLink>
+          </li>
         </ul>
       </div>
       <div class="toc--panel">
@@ -97,6 +103,7 @@
 
   .toc--panel {
     margin-right: 2vw;
+
     &:last-of-type {
       margin-right: 0;
     }
@@ -126,6 +133,7 @@
       &.image--physiography {
         background-image: url("~/assets/images/PHYS_alaska_dem.jpg"),
           url("~/assets/images/PHYS_alaska_dem_COLOR.jpg");
+
         &:hover {
           background-image: url("~/assets/images/PHYS_alaska_dem_COLOR.jpg");
         }
@@ -134,6 +142,7 @@
       &.image--water {
         background-image: url("~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash.jpg"),
           url("~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash_COLOR.jpg");
+
         &:hover {
           background-image: url("~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash_COLOR.jpg");
         }
@@ -142,6 +151,7 @@
       &.image--light {
         background-image: url("~/assets/images/LIGHT_suns_todd-paris.jpg"),
           url("~/assets/images/LIGHT_suns_todd-paris_COLOR.jpg");
+
         &:hover {
           background-image: url("~/assets/images/LIGHT_suns_todd-paris_COLOR.jpg");
         }
@@ -150,6 +160,7 @@
       &.image--climate {
         background-image: url("~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash.jpg"),
           url("~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash_COLOR.jpg");
+
         &:hover {
           background-image: url("~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash_COLOR.jpg");
         }
@@ -158,6 +169,7 @@
       &.image--engineering {
         background-image: url("~/assets/images/ENG_tanana-river-bridge.jpg"),
           url("~/assets/images/ENG_tanana-river-bridge_COLOR.jpg");
+
         &:hover {
           background-image: url("~/assets/images/ENG_tanana-river-bridge_COLOR.jpg");
         }
