@@ -4,7 +4,7 @@
 		<hr />
 		<LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending & !$fetchState.error">
+		<div v-if="!$fetchState.pending && !$fetchState.error">
 			<h3 class="title is-3">
 				Precipitation data for {{ results.place }}
 			</h3>

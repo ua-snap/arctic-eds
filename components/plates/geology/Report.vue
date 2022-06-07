@@ -32,7 +32,7 @@ import { mapGetters } from "vuex";
 import MiniMap from "~/components/MiniMap";
 
 export default {
-	name: "PermafrostReport",
+	name: "GeologyReport",
 	data() {
 		return {
 			// Will have the results of the data fetch.
