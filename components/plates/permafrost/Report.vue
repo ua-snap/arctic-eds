@@ -87,6 +87,10 @@ import LoadingStatus from "~/components/LoadingStatus";
 
 export default {
   name: "PermafrostReport",
+  components: {
+    MiniMap,
+    LoadingStatus
+  },
   data() {
     return {
       // Will have the results of the data fetch.

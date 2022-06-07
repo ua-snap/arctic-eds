@@ -1,9 +1,7 @@
 <template>
   <div>
     <div v-show="!reportIsVisible" class="container">
-      <section class="section">
-        <LatLngPicker />
-      </section>
+      <SearchControls />
     </div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
@@ -32,13 +30,13 @@ th {
 import Plate from "~/components/Plate";
 import DesignFreezingIndexLegend from "~/components/plates/design_freezing_index/Legend";
 import DesignFreezingIndexReport from "~/components/plates/design_freezing_index/Report";
-import LatLngPicker from "~/components/LatLngPicker";
+import SearchControls from "~/components/SearchControls";
 import layers from "~/components/plates/design_freezing_index/layers";
 import { mapGetters } from "vuex";
 
 export default {
   name: "DesignFreezingIndexController",
-  components: { Plate, DesignFreezingIndexLegend, DesignFreezingIndexReport },
+  components: { Plate, DesignFreezingIndexLegend, DesignFreezingIndexReport, SearchControls },
   data() {
     return {
       legend: DesignFreezingIndexLegend,
@@ -47,7 +45,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      reportIsVisible: "reportIsVisible"
+      reportIsVisible: "map/reportIsVisible"
     })
   },
   mounted() {
@@ -68,7 +66,7 @@ export default {
     },
     activateReport: function(latLng) {
       this.$store.commit("map/setLatLng", latLng);
-      this.$store.commit("openReport");
+      this.$store.commit("map/openReport");
     }
   }
 };

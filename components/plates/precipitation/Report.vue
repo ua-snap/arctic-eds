@@ -80,7 +80,9 @@ import LoadingStatus from "~/components/LoadingStatus";
 export default {
 	name: "PrecipitationReport",
 	components: {
-		DownloadCsvButton
+		DownloadCsvButton,
+		MiniMap,
+		LoadingStatus
 	},
 	data() {
 		return {
