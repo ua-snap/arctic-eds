@@ -4,9 +4,9 @@
 		<hr />
 		<LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending & !$fetchState.error">
+		<div v-if="!$fetchState.pending && !$fetchState.error">
 			<h3 class="title is-3">
-				Snowfall Equivalent data for {{ latLng.lat }}, {{ latLng.lng }}
+				Snowfall Equivalent data for {{ results.place }}
 			</h3>
 
 			<MiniMap />
@@ -82,6 +82,7 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
+			placeName: "map/placeName",
 			latLng: "map/latLng"
 		})
 	},
@@ -103,7 +104,13 @@ export default {
 				this.latLng.lng
 			);
 
+			let place = this.latLng.lat + ', ' + this.latLng.lng;
+			if (this.placeName) {
+				place = this.placeName
+			}
+
 			this.results = {
+				place: place,
 				sfe_hist_min: plate["historical"]["sfemin"],
 				sfe_hist_mean: plate["historical"]["sfemean"],
 				sfe_hist_max: plate["historical"]["sfemax"],
