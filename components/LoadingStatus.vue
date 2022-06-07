@@ -2,7 +2,7 @@
 	<div>
 		<div v-if="state && state.pending">
 			<!-- Drama dots -->
-			<h4 class="title is-5">Loading data&hellip;</h4>
+			<h4 class="title is-5">Loading data for {{ placeName ? placeName : latLng.lat + ', ' + latLng.lng }}&hellip;</h4>
 			<b-progress type="is-info"></b-progress>
 		</div>
 
@@ -23,9 +23,17 @@
 </template>
 <style lang="scss" scoped></style>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
 	name: "LoadingStatus",
 	props: ["state"],
+	computed: {
+    ...mapGetters({
+      placeName: "map/placeName",
+			latLng: "map/latLng"
+		})
+	},
 	methods: {
 		close() {
 			this.$store.commit("closeReport");
