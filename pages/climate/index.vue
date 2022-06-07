@@ -11,7 +11,9 @@
                 <NuxtLink to="/climate/precipitation">Precipitation</NuxtLink>
               </li>
               <li>Wet Days Per Year</li>
-              <li>Snowfall</li>
+              <li>
+                <NuxtLink to="/climate/snowfall">Snowfall</NuxtLink>
+              </li>
               <li>
                 <NuxtLink to="/climate/temperature">Temperature</NuxtLink>
               </li>
@@ -72,11 +74,12 @@
     </section>
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>
 <script>
 export default {
   name: "Physiography",
   layout: "category",
-  created: function() {},
+  created: function () { },
 };
 </script>
