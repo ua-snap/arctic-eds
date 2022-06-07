@@ -38,7 +38,7 @@ export default {
       return this.layer.default;
     },
   },
-  created() {
+  mounted() {
     if (this.layer.default) {
       // We need to wait for Vue to render the full DOM which
       // includes the `#map` element before we can trigger this.
