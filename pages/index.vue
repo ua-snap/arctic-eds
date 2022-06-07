@@ -55,7 +55,7 @@
           </li>
           <li>Wet Days per Year</li>
           <li>
-            <NuxtLink to="/climate/temperature">Snowfall</NuxtLink>
+            <NuxtLink to="/climate/snowfall">Snowfall</NuxtLink>
           </li>
           <li>
             <NuxtLink to="/climate/temperature">Temperature</NuxtLink>
