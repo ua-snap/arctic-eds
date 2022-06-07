@@ -101,6 +101,8 @@ export default {
 
         this.$store.commit("map/setPlaceName", placeName);
 
+        this.$store.commit("map/setPlaceID", selected.id);
+
         this.$store.commit("map/setLatLng", latLng);
 
         this.$parent.$emit("ValidLatLng", latLng);

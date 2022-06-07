@@ -62,6 +62,7 @@ export default {
 			},
 			places: undefined,
 			placeName: undefined,
+			placeID: undefined,
 			reportIsVisible: false,
 		};
 	},
@@ -78,6 +79,9 @@ export default {
 		},
 		placeName(state) {
 			return state.placeName;
+		},
+		placeID(state) {
+			return state.placeID;
 		},
 		reportIsVisible(state) {
 			return state.reportIsVisible;
@@ -97,6 +101,7 @@ export default {
 				lng: undefined 
 			};
 			state.placeName = undefined;
+			state.placeID = undefined;
 			state.reportIsVisible = false;
 		},
 		openReport(state) {
@@ -155,6 +160,9 @@ export default {
 		},
 		setPlaceName(state, name) {
 			state.placeName = name;
+		},
+		setPlaceID(state, id) {
+			state.placeID = id;
 		},
 		setPlaces(state, places) {
 			state.places = places
