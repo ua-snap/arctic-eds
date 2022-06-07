@@ -108,6 +108,8 @@ export default {
 			state.reportIsVisible = true;
 		},
 		closeReport(state) {
+			state.placeName = undefined;
+			state.placeID = undefined;
 			state.reportIsVisible = false;
 		},
 		toggleLayer(state, layer) {
