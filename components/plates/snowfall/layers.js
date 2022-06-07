@@ -9,7 +9,7 @@ export default [
 			dim_scenario: 0,
 			dim_decade: 0,
 		},
-		style: "precip",
+		style: "snowfall",
 		default: true,
 	},
 	{
@@ -20,8 +20,8 @@ export default [
 		rasdamanConfiguration: {
 			dim_model: 4,
 			dim_scenario: 3,
-			dim_decade: 19,
+			dim_decade: 18,
 		},
-		style: "precip",
+		style: "snowfall",
 	},
 ];

@@ -6,13 +6,13 @@
 
 		<div v-if="!$fetchState.pending & !$fetchState.error">
 			<h3 class="title is-3">
-				Precipitation data for {{ latLng.lat }}, {{ latLng.lng }}
+				Snowfall Equivalent data for {{ latLng.lat }}, {{ latLng.lng }}
 			</h3>
 
 			<MiniMap />
 
 			<h4 class="title is-4">
-				Annual Precipitation Totals (inches)
+				Annual Snowfall Equivalent Totals (inches water)
 			</h4>
 
 			<table class="table">
@@ -26,28 +26,16 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">Historical (1901-2015)</th>
-						<td>{{ results.pr_hist_min }}</td>
-						<td>{{ results.pr_hist_mean }}</td>
-						<td>{{ results.pr_hist_max }}</td>
+						<th scope="row">Historical (1910-2009)</th>
+						<td>{{ results.sfe_hist_min }}</td>
+						<td>{{ results.sfe_hist_mean }}</td>
+						<td>{{ results.sfe_hist_max }}</td>
 					</tr>
 					<tr>
-						<th scope="row">Early Century (2010-2039)</th>
-						<td>{{ results.pr_2040_min }}</td>
-						<td>{{ results.pr_2040_mean }}</td>
-						<td>{{ results.pr_2040_max }}</td>
-					</tr>
-					<tr>
-						<th scope="row">Mid Century (2040-2069)</th>
-						<td>{{ results.pr_2070_min }}</td>
-						<td>{{ results.pr_2070_mean }}</td>
-						<td>{{ results.pr_2070_max }}</td>
-					</tr>
-					<tr>
-						<th scope="row">Late Century (2070-2099)</th>
-						<td>{{ results.pr_2100_min }}</td>
-						<td>{{ results.pr_2100_mean }}</td>
-						<td>{{ results.pr_2100_max }}</td>
+						<th scope="row">Future Projections (2010-2099)</th>
+						<td>{{ results.sfe_proj_min }}</td>
+						<td>{{ results.sfe_proj_mean }}</td>
+						<td>{{ results.sfe_proj_max }}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -55,18 +43,18 @@
 			<div class="content">
 				<ul>
 					<li>
-						<a href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta" target="_blank">Historical Monthly and Derived Precipitation Products</a>
+						<a href="http://ckan.snap.uaf.edu/dataset/historical-decadal-averages-of-monthly-snowfall-equivalent-771m-cru-ts3-0-ts3-1"
+							target="_blank">Historical Decadal Averages of Monthly Snowfall Equivalent 771m CRU
+							TS3.0/TS3.1</a>
 					</li>
 					<li>
-						<a href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5" target="_blank">Projected Monthly and Derived Precipitation Products</a>
+						<a href="http://ckan.snap.uaf.edu/dataset/projected-decadal-averages-of-monthly-snowfall-equivalent-771m-cmip5-ar5"
+							target="_blank">Projected Decadal Averages of Monthly Snowfall Equivalent 771m CMIP5/AR5</a>
 					</li>
 				</ul>
 			</div>
-			<DownloadCsvButton
-				text="Download precipitation data as CSV"
-				endpoint="mmm/precipitation/all"
-				class="mt-3 mb-5"
-			/>
+			<DownloadCsvButton text="Download snowfall equivalent data as CSV"
+				endpoint="mmm/snow/snowfallequivalent/all" class="mt-3 mb-5" />
 		</div>
 	</div>
 </template>
@@ -78,7 +66,7 @@ import MiniMap from "~/components/MiniMap";
 import LoadingStatus from "~/components/LoadingStatus";
 
 export default {
-	name: "PrecipitationReport",
+	name: "SnowfallReport",
 	components: {
 		DownloadCsvButton
 	},
@@ -90,7 +78,7 @@ export default {
 	},
 
 	computed: {
-		state: function() {
+		state: function () {
 			return this.$fetchState;
 		},
 		...mapGetters({
@@ -99,7 +87,7 @@ export default {
 	},
 
 	watch: {
-		latLng: function() {
+		latLng: function () {
 			this.$fetch();
 		}
 	},
@@ -109,29 +97,24 @@ export default {
 		if (this.latLng.lat && this.latLng.lng) {
 			let plate = await this.$axios.$get(
 				process.env.apiUrl +
-					"/eds/precipitation/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng
+				"/mmm/snow/snowfallequivalent/hp/" +
+				this.latLng.lat +
+				"/" +
+				this.latLng.lng
 			);
 
 			this.results = {
-				pr_hist_min: plate["historical"]["prmin"],
-				pr_hist_mean: plate["historical"]["prmean"],
-				pr_hist_max: plate["historical"]["prmax"],
-				pr_2040_min: plate["2010-2039"]["prmin"],
-				pr_2040_mean: plate["2010-2039"]["prmean"],
-				pr_2040_max: plate["2010-2039"]["prmax"],
-				pr_2070_min: plate["2040-2069"]["prmin"],
-				pr_2070_mean: plate["2040-2069"]["prmean"],
-				pr_2070_max: plate["2040-2069"]["prmax"],
-				pr_2100_min: plate["2070-2099"]["prmin"],
-				pr_2100_mean: plate["2070-2099"]["prmean"],
-				pr_2100_max: plate["2070-2099"]["prmax"]
+				sfe_hist_min: plate["historical"]["sfemin"],
+				sfe_hist_mean: plate["historical"]["sfemean"],
+				sfe_hist_max: plate["historical"]["sfemax"],
+				sfe_proj_min: plate["projected"]["sfemin"],
+				sfe_proj_mean: plate["projected"]["sfemean"],
+				sfe_proj_max: plate["projected"]["sfemax"],
 			};
 		}
 	}
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>
