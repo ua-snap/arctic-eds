@@ -1,124 +1,83 @@
 <template>
-	<div>
-		<CloseReportButton />
-		<hr />
-		<LoadingStatus :state="state" />
+  <div>
+    <CloseReportButton />
+    <hr />
+    <LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending && !$fetchState.error">
-			<h3 class="title is-3">
-				Permafrost data for {{ results.place }}
-			</h3>
+    <div v-if="!$fetchState.pending && !$fetchState.error">
+      <h3 class="title is-3">Permafrost data for {{ results.place }}</h3>
 
-			<MiniMap />
+      <MiniMap />
 
-			<h4 class="title is-4">
-				GIPL Mean Annual Ground Temperature (&deg;C)
-			</h4>
+      <h4 class="title is-4">
+        GIPL Mean Annual Ground Temperature (&deg;C)
+      </h4>
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">Depth (m)</th>
-						<th scope="col">2010</th>
-						<th scope="col">2050</th>
-						<th scope="col">Change</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>{{ results.gipl_magt_2010_1m }}</td>
-						<td>{{ results.gipl_magt_2050_1m }}</td>
-						<td>
-							{{
-								"+" +
-									(
-										results.gipl_magt_2050_1m -
-										results.gipl_magt_2010_1m
-									).toFixed(2)
-							}}
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>{{ results.gipl_magt_2010_3m }}</td>
-						<td>{{ results.gipl_magt_2050_3m }}</td>
-						<td>
-							{{
-								"+" +
-									(
-										results.gipl_magt_2050_3m -
-										results.gipl_magt_2010_3m
-									).toFixed(2)
-							}}
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">5</th>
-						<td>{{ results.gipl_magt_2010_5m }}</td>
-						<td>{{ results.gipl_magt_2050_5m }}</td>
-						<td>
-							{{
-								"+" +
-									(
-										results.gipl_magt_2050_5m -
-										results.gipl_magt_2010_5m
-									).toFixed(2)
-							}}
-						</td>
-					</tr>
-				</tbody>
-			</table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">1995</th>
+            <th scope="col">2086 – 2100</th>
+            <th scope="col">Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ results.gipl_magt_1995 }}</td>
+            <td>{{ results.gipl_magt_2095 }}</td>
+            <td>
+              {{ magtDiff }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-			<h4 class="title is-4">GIPL Active Layer Thickness (m)</h4>
-			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">2010</th>
-						<th scope="col">2050</th>
-						<th scope="col">Change</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>{{ results.gipl_alt_2010 }}</td>
-						<td>{{ results.gipl_alt_2050 }}</td>
-						<td>
-							{{
-								"+" +
-									(
-										results.gipl_alt_2050 -
-										results.gipl_alt_2010
-									).toFixed(2)
-							}}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<h4 class="title is-6">Additional data</h4>
-			<div class="content">
-				<ul>
-					<li>
-						Obu et al. (2018) Mean Annual Ground Temperature (deg.
-						C) at Top of Permafrost:
-						<strong>{{ results.magt_2018 }}</strong>
-					</li>
-					<li>
-						Jorgenson et al. (2008) Ground Ice Volume:
-						<strong>{{ results.giv_2008 }}</strong>
-					</li>
-					<li>
-						Jorgenson et al. (2008) Permafrost Extent:
-						<strong>{{ results.pe_2008 }}</strong>
-					</li>
-					<li>
-						Obu et al. (2018) Permafrost Extent:
-						<strong>{{ results.pe_2018 }}</strong>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+      <div v-if="results.gipl_alt_1995">
+        <h4 class="title is-4">GIPL Active Layer Thickness (m)</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">1995</th>
+              <th scope="col">2086 - 2100</th>
+              <th scope="col">Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ results.gipl_alt_1995 }}</td>
+              <td>{{ results.gipl_alt_2095 }}</td>
+              <td>
+                {{ altDiff }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="title is-6 mt-5">Additional data</h4>
+      <div class="content">
+        <ul>
+          <li v-if="results.magt_2018">
+            Obu et al. (2018) Mean Annual Ground Temperature (deg. C) at Top of
+            Permafrost:
+            <strong>{{ results.magt_2018 }}</strong>
+          </li>
+          <li v-if="results.giv_2008">
+            Jorgenson et al. (2008) Ground Ice Volume:
+            <strong>{{ results.giv_2008 }}</strong>
+          </li>
+          <li v-if="results.pe_2008">
+            Jorgenson et al. (2008) Permafrost Extent:
+            <strong>{{ results.pe_2008 }}</strong>
+          </li>
+          <li v-if="results.pe_2018">
+            Obu et al. (2018) Permafrost Extent:
+            <strong>{{ results.pe_2018 }}</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -127,67 +86,93 @@ import MiniMap from "~/components/MiniMap";
 import LoadingStatus from "~/components/LoadingStatus";
 
 export default {
-	name: "PermafrostReport",
-	components: {
+  name: "PermafrostReport",
+  components: {
     MiniMap,
     LoadingStatus
   },
-	data() {
-		return {
-			// Will have the results of the data fetch.
-			results: {}
-		};
-	},
+  data() {
+    return {
+      // Will have the results of the data fetch.
+      results: {}
+    };
+  },
 
-	computed: {
-		state: function() {
-			return this.$fetchState;
-		},
-		...mapGetters({
-			placeName: "map/placeName",
-			latLng: "map/latLng"
-		})
-	},
+  computed: {
+    state: function() {
+      return this.$fetchState;
+    },
+    ...mapGetters({
+      placeName: "map/placeName",
+      latLng: "map/latLng"
+    }),
+    altDiff: function() {
+      return this.signedDiff(
+        this.results.gipl_alt_1995,
+        this.results.gipl_alt_2095
+      );
+    },
+    magtDiff: function() {
+      return this.signedDiff(
+        this.results.gipl_magt_1995,
+        this.results.gipl_magt_2095
+      );
+    }
+  },
+  methods: {
+    signedDiff(historical, projected) {
+      let rawDiff = (projected - historical).toFixed(2);
+      if (rawDiff > 0) {
+        return "+" + rawDiff;
+      } else {
+        return rawDiff;
+      }
+    }
+  },
+  watch: {
+    latLng: function() {
+      this.$fetch();
+    }
+  },
 
-	watch: {
-		latLng: function() {
-			this.$fetch();
-		}
-	},
+  fetchOnServer: false,
+  async fetch() {
+    if (this.latLng.lat && this.latLng.lng) {
+      let res = await this.$axios.$get(
+        process.env.apiUrl +
+          "/permafrost/point/" +
+          this.latLng.lat +
+          "/" +
+          this.latLng.lng
+      );
 
-	fetchOnServer: false,
-	async fetch() {
-		if (this.latLng.lat && this.latLng.lng) {
-			let res = await this.$axios.$get(
-				process.env.apiUrl +
-					"/permafrost/point/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng
-			);
+      let place = this.latLng.lat + ", " + this.latLng.lng;
+      if (this.placeName) {
+        place = this.placeName;
+      }
 
-			let place = this.latLng.lat + ', ' + this.latLng.lng;
-			if (this.placeName) {
-				place = this.placeName
-			}
+      this.results = {
+        place: place,
+        gipl_alt_1995: res["gipl"]["1995"]["cruts31"]["historical"]["alt"],
+        gipl_alt_2095: res["gipl"]["2095"]["ncarccsm4"]["rcp85"]["alt"],
+        gipl_magt_1995: res["gipl"]["1995"]["cruts31"]["historical"]["magt"],
+        gipl_magt_2095: res["gipl"]["2095"]["ncarccsm4"]["rcp85"]["magt"]
+      };
 
-			this.results = {
-				place: place,
-				gipl_alt_2010: res["gipl_alt"][0]["thickness"],
-				gipl_alt_2050: res["gipl_alt"][1]["thickness"],
-				gipl_magt_2010_1m: res["gipl_magt"][0]["temp"],
-				gipl_magt_2010_3m: res["gipl_magt"][2]["temp"],
-				gipl_magt_2010_5m: res["gipl_magt"][4]["temp"],
-				gipl_magt_2050_1m: res["gipl_magt"][1]["temp"],
-				gipl_magt_2050_3m: res["gipl_magt"][3]["temp"],
-				gipl_magt_2050_5m: res["gipl_magt"][5]["temp"],
-				giv_2008: res["jorg"]["ice"],
-				pe_2008: res["jorg"]["pfx"],
-				magt_2018: res["obu_magt"]["temp"],
-				pe_2018: res["obupfx"]["pfx"]
-			};
-		}
-	}
+      if (res["jorg"] != null) {
+        this.results["giv_2008"] = res["jorg"]["ice"];
+        this.results["pe_2008"] = res["jorg"]["pfx"];
+      }
+
+      if (res["obu_magt"] != null) {
+        this.results["magt_2018"] = res["obu_magt"]["temp"];
+      }
+
+      if (res["obupfx"] != null) {
+        this.results["pe_2018"] = res["obupfx"]["pfx"];
+      }
+    }
+  }
 };
 </script>
 
