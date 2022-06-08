@@ -64,6 +64,7 @@ export default {
 			placeName: undefined,
 			placeID: undefined,
 			reportIsVisible: false,
+			units: 'metric'
 		};
 	},
 
@@ -85,6 +86,9 @@ export default {
 		},
 		reportIsVisible(state) {
 			return state.reportIsVisible;
+		},
+		units(state) {
+			return state.units;
 		}
 	},
 
@@ -175,6 +179,12 @@ export default {
 				lat: latLng.lat.toFixed(4),
 				lng: latLng.lng.toFixed(4),
 			};
+		},
+		setMetric(state) {
+			state.units = 'metric'
+		},
+		setImperial(state) {
+			state.units = 'imperial'
 		},
 	},
 	actions: {

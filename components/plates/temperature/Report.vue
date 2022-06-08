@@ -12,8 +12,22 @@
 			<MiniMap />
 
 			<h4 class="title is-4">
-				Temperature (&deg;C)
+				Temperature (<UnitWidget />)
 			</h4>
+
+			<p>
+				You can display these visualizations in Imperial or metric units.
+			</p>
+			<div>
+				<b-field label="Units">
+					<b-radio v-model="radioUnits" name="radioUnits" native-value="imperial">
+						Imperial
+					</b-radio>
+					<b-radio v-model="radioUnits" name="radioUnits" native-value="metric">
+						Metric
+					</b-radio>
+				</b-field>
+			</div>
 
 			<table class="table">
 				<thead>
@@ -39,51 +53,51 @@
 				<tbody>
 					<tr>
 						<th scope="row">Historical (1901-2015)</th>
-						<td>{{ results.hist_min }}</td>
-						<td>{{ results.hist_mean }}</td>
-						<td>{{ results.hist_max }}</td>
-						<td>{{ results.jan_hist_min }}</td>
-						<td>{{ results.jan_hist_mean }}</td>
-						<td>{{ results.jan_hist_max }}</td>
-						<td>{{ results.july_hist_min }}</td>
-						<td>{{ results.july_hist_mean }}</td>
-						<td>{{ results.july_hist_max }}</td>
+						<td>{{ results.hist_min }} <UnitWidget/></td>
+						<td>{{ results.hist_mean }} <UnitWidget/></td>
+						<td>{{ results.hist_max }} <UnitWidget/></td>
+						<td>{{ results.jan_hist_min }} <UnitWidget/></td>
+						<td>{{ results.jan_hist_mean }} <UnitWidget/></td>
+						<td>{{ results.jan_hist_max }} <UnitWidget/></td>
+						<td>{{ results.july_hist_min }} <UnitWidget/></td>
+						<td>{{ results.july_hist_mean }} <UnitWidget/></td>
+						<td>{{ results.july_hist_max }} <UnitWidget/></td>
 					</tr>
 					<tr>
 						<th scope="row">Early Century (2010-2039)</th>
-						<td>{{ results.temp_2040_min }}</td>
-						<td>{{ results.temp_2040_mean }}</td>
-						<td>{{ results.temp_2040_max }}</td>
-						<td>{{ results.jan_2040_min }}</td>
-						<td>{{ results.jan_2040_mean }}</td>
-						<td>{{ results.jan_2040_max }}</td>
-						<td>{{ results.july_2040_min }}</td>
-						<td>{{ results.july_2040_mean }}</td>
-						<td>{{ results.july_2040_max }}</td>
+						<td>{{ results.temp_2040_min }} <UnitWidget/></td>
+						<td>{{ results.temp_2040_mean }} <UnitWidget/></td>
+						<td>{{ results.temp_2040_max }} <UnitWidget/></td>
+						<td>{{ results.jan_2040_min }} <UnitWidget/></td>
+						<td>{{ results.jan_2040_mean }} <UnitWidget/></td>
+						<td>{{ results.jan_2040_max }} <UnitWidget/></td>
+						<td>{{ results.july_2040_min }} <UnitWidget/></td>
+						<td>{{ results.july_2040_mean }} <UnitWidget/></td>
+						<td>{{ results.july_2040_max }} <UnitWidget/></td>
 					</tr>
 					<tr>
 						<th scope="row">Mid Century (2040-2069)</th>
-						<td>{{ results.temp_2070_min }}</td>
-						<td>{{ results.temp_2070_mean }}</td>
-						<td>{{ results.temp_2070_max }}</td>
-						<td>{{ results.jan_2070_min }}</td>
-						<td>{{ results.jan_2070_mean }}</td>
-						<td>{{ results.jan_2070_max }}</td>
-						<td>{{ results.july_2070_min }}</td>
-						<td>{{ results.july_2070_mean }}</td>
-						<td>{{ results.july_2070_max }}</td>
+						<td>{{ results.temp_2070_min }} <UnitWidget/></td>
+						<td>{{ results.temp_2070_mean }} <UnitWidget/></td>
+						<td>{{ results.temp_2070_max }} <UnitWidget/></td>
+						<td>{{ results.jan_2070_min }} <UnitWidget/></td>
+						<td>{{ results.jan_2070_mean }} <UnitWidget/></td>
+						<td>{{ results.jan_2070_max }} <UnitWidget/></td>
+						<td>{{ results.july_2070_min }} <UnitWidget/></td>
+						<td>{{ results.july_2070_mean }} <UnitWidget/></td>
+						<td>{{ results.july_2070_max }} <UnitWidget/></td>
 					</tr>
 					<tr>
 						<th scope="row">Late Century (2070-2099)</th>
-						<td>{{ results.temp_2100_min }}</td>
-						<td>{{ results.temp_2100_mean }}</td>
-						<td>{{ results.temp_2100_max }}</td>
-						<td>{{ results.jan_2100_min }}</td>
-						<td>{{ results.jan_2100_mean }}</td>
-						<td>{{ results.jan_2100_max }}</td>
-						<td>{{ results.july_2100_min }}</td>
-						<td>{{ results.july_2100_mean }}</td>
-						<td>{{ results.july_2100_max }}</td>
+						<td>{{ results.temp_2100_min }} <UnitWidget/></td>
+						<td>{{ results.temp_2100_mean }} <UnitWidget/></td>
+						<td>{{ results.temp_2100_max }} <UnitWidget/></td>
+						<td>{{ results.jan_2100_min }} <UnitWidget/></td>
+						<td>{{ results.jan_2100_mean }} <UnitWidget/></td>
+						<td>{{ results.jan_2100_max }} <UnitWidget/></td>
+						<td>{{ results.july_2100_min }} <UnitWidget/></td>
+						<td>{{ results.july_2100_mean }} <UnitWidget/></td>
+						<td>{{ results.july_2100_max }} <UnitWidget/></td>
 					</tr>
 				</tbody>
 			</table>
@@ -122,18 +136,21 @@ import { mapGetters } from "vuex";
 import MiniMap from "~/components/MiniMap";
 import DownloadCsvButton from "~/components/DownloadCsvButton";
 import LoadingStatus from "~/components/LoadingStatus";
+import UnitWidget from "~/components/UnitWidget";
 
 export default {
 	name: "TemperatureReport",
 	components: {
 		DownloadCsvButton,
 		MiniMap,
-		LoadingStatus
+		LoadingStatus,
+		UnitWidget
 	},
 	data() {
 		return {
 			// Will have the results of the data fetch.
-			results: {}
+			results: {},
+			radioUnits: 'metric'
 		};
 	},
 
@@ -142,17 +159,43 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
+			units: "map/units",
 			placeName: "map/placeName",
 			latLng: "map/latLng"
-		})
+		}),
 	},
 
 	watch: {
 		latLng: function() {
 			this.$fetch();
-		}
+		},
+		radioUnits: function () {
+      if (this.radioUnits == 'metric') {
+        this.$store.commit('map/setMetric')
+				this.convertUnits();
+      } else {
+        this.$store.commit('map/setImperial')
+				this.convertUnits();
+      }
+    },
 	},
-
+	methods: {
+		convertUnits: function() {
+			if (this.units == 'metric') {
+				Object.keys(this.results).forEach(key => {
+					if (key != 'place') {
+						this.results[key] = ((this.results[key] - 32) * (5/9)).toFixed(1);
+					}
+				});
+			} else {
+				Object.keys(this.results).forEach(key => {
+					if (key != 'place') {
+						this.results[key] = ((this.results[key] * (9/5)) + 32).toFixed(1);
+					}
+				});
+			}
+		},
+	},
 	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
