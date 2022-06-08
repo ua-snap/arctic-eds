@@ -16,17 +16,43 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">1995</th>
-            <th scope="col">2086 – 2100</th>
-            <th scope="col">Change</th>
+            <th scope="col"></th>
+            <th scope="col">MAGT</th>
+            <th scope="col">Change from Historical</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <th scope="row">Historical (1995)</th>
             <td>{{ results.gipl_magt_1995 }}</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">2011 - 2040</th>
+            <td>{{ results.gipl_magt_2025 }}</td>
+            <td>
+              {{ signedDiff(results.gipl_magt_1995, results.gipl_magt_2025) }}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2036 - 2065</th>
+            <td>{{ results.gipl_magt_2050 }}</td>
+            <td>
+              {{ signedDiff(results.gipl_magt_1995, results.gipl_magt_2050) }}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2061 – 2090</th>
+            <td>{{ results.gipl_magt_2075 }}</td>
+            <td>
+              {{ signedDiff(results.gipl_magt_1995, results.gipl_magt_2075) }}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2086 – 2100</th>
             <td>{{ results.gipl_magt_2095 }}</td>
             <td>
-              {{ magtDiff }}
+              {{ signedDiff(results.gipl_magt_1995, results.gipl_magt_2095) }}
             </td>
           </tr>
         </tbody>
@@ -37,17 +63,43 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">1995</th>
-              <th scope="col">2086 - 2100</th>
-              <th scope="col">Change</th>
+              <th scope="col"></th>
+              <th scope="col">ALT</th>
+              <th scope="col">Change from Historical</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <th scope="row">Historical (1995)</th>
               <td>{{ results.gipl_alt_1995 }}</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">2011 - 2040</th>
+              <td>{{ results.gipl_alt_2025 }}</td>
+              <td>
+                {{ signedDiff(results.gipl_alt_1995, results.gipl_alt_2025) }}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2036 - 2065</th>
+              <td>{{ results.gipl_alt_2050 }}</td>
+              <td>
+                {{ signedDiff(results.gipl_alt_1995, results.gipl_alt_2050) }}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2061 – 2090</th>
+              <td>{{ results.gipl_alt_2075 }}</td>
+              <td>
+                {{ signedDiff(results.gipl_alt_1995, results.gipl_alt_2075) }}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2086 – 2100</th>
               <td>{{ results.gipl_alt_2095 }}</td>
               <td>
-                {{ altDiff }}
+                {{ signedDiff(results.gipl_alt_1995, results.gipl_alt_2095) }}
               </td>
             </tr>
           </tbody>
@@ -105,19 +157,7 @@ export default {
     ...mapGetters({
       placeName: "map/placeName",
       latLng: "map/latLng"
-    }),
-    altDiff: function() {
-      return this.signedDiff(
-        this.results.gipl_alt_1995,
-        this.results.gipl_alt_2095
-      );
-    },
-    magtDiff: function() {
-      return this.signedDiff(
-        this.results.gipl_magt_1995,
-        this.results.gipl_magt_2095
-      );
-    }
+    })
   },
   methods: {
     signedDiff(historical, projected) {
@@ -154,8 +194,14 @@ export default {
       this.results = {
         place: place,
         gipl_alt_1995: res["gipl"]["1995"]["cruts31"]["historical"]["alt"],
+        gipl_alt_2025: res["gipl"]["2025"]["ncarccsm4"]["rcp85"]["alt"],
+        gipl_alt_2050: res["gipl"]["2050"]["ncarccsm4"]["rcp85"]["alt"],
+        gipl_alt_2075: res["gipl"]["2075"]["ncarccsm4"]["rcp85"]["alt"],
         gipl_alt_2095: res["gipl"]["2095"]["ncarccsm4"]["rcp85"]["alt"],
         gipl_magt_1995: res["gipl"]["1995"]["cruts31"]["historical"]["magt"],
+        gipl_magt_2025: res["gipl"]["2025"]["ncarccsm4"]["rcp85"]["magt"],
+        gipl_magt_2050: res["gipl"]["2050"]["ncarccsm4"]["rcp85"]["magt"],
+        gipl_magt_2075: res["gipl"]["2075"]["ncarccsm4"]["rcp85"]["magt"],
         gipl_magt_2095: res["gipl"]["2095"]["ncarccsm4"]["rcp85"]["magt"]
       };
 
