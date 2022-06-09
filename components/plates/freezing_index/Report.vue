@@ -11,9 +11,7 @@
           Object.keys(results).length > 0
       "
     >
-      <h3 class="title is-3">
-        Freezing index data for {{ results.place }}
-      </h3>
+      <h3 class="title is-3">Freezing index data for {{ results.place }}</h3>
 
       <MiniMap />
 
@@ -120,16 +118,16 @@ export default {
     if (this.latLng.lat && this.latLng.lng) {
       this.results = await this.$axios.$get(
         process.env.apiUrl +
-          "/eds/degree_days/thawing_index/" +
+          "/eds/degree_days/freezing_index/" +
           this.latLng.lat +
           "/" +
           this.latLng.lng
       );
 
-      let place = this.latLng.lat + ', ' + this.latLng.lng;
-			if (this.placeName) {
-				place = this.placeName
-			}
+      let place = this.latLng.lat + ", " + this.latLng.lng;
+      if (this.placeName) {
+        place = this.placeName;
+      }
 
       this.results.place = place;
     }
