@@ -64,6 +64,7 @@ export default {
 			placeName: undefined,
 			placeID: undefined,
 			reportIsVisible: false,
+			results: {},
 			units: 'metric'
 		};
 	},
@@ -87,6 +88,9 @@ export default {
 		reportIsVisible(state) {
 			return state.reportIsVisible;
 		},
+		results(state) {
+			return state.results;
+		},
 		units(state) {
 			return state.units;
 		}
@@ -107,6 +111,7 @@ export default {
 			state.placeName = undefined;
 			state.placeID = undefined;
 			state.reportIsVisible = false;
+			state.results = {};
 		},
 		openReport(state) {
 			state.reportIsVisible = true;
@@ -115,6 +120,7 @@ export default {
 			state.placeName = undefined;
 			state.placeID = undefined;
 			state.reportIsVisible = false;
+			state.results = {};
 		},
 		toggleLayer(state, layer) {
 			// Remove existing layer: right now, we only
@@ -163,6 +169,40 @@ export default {
 			// Attach an event listener to the map.
 			// Listener should be an object with two elements,
 			map.on(handler.event, handler.handler);
+		},
+		convertUnits(state, type) {
+			if (type == 'temperature') {
+				if (state.units == 'metric') {
+					Object.keys(state.results).forEach(key => {
+						if (key != 'place') {
+							state.results[key] = ((state.results[key] - 32) * (5/9)).toFixed(1);
+						}
+					});
+				} else {
+					Object.keys(state.results).forEach(key => {
+						if (key != 'place') {
+							state.results[key] = ((state.results[key] * (9/5)) + 32).toFixed(1);
+						}
+					});
+				}
+			} else {
+				if (state.units == 'metric') {
+					Object.keys(state.results).forEach(key => {
+						if (key != 'place') {
+							state.results[key] = (state.results[key] * 25.4).toFixed(1);
+						}
+					});
+				} else {
+					Object.keys(state.results).forEach(key => {
+						if (key != 'place') {
+							state.results[key] = (state.results[key] / 25.4).toFixed(1);
+						}
+					});
+				}
+			}
+		},
+		setResults(state, results) {
+			state.results = results;
 		},
 		setPlaceName(state, name) {
 			state.placeName = name;

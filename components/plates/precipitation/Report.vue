@@ -12,8 +12,22 @@
 			<MiniMap />
 
 			<h4 class="title is-4">
-				Annual Precipitation Totals (inches)
+				Annual Precipitation Totals (<UnitWidget variable="pr" />)
 			</h4>
+
+			<p>
+				You can display this table in Imperial or Metric units.
+			</p>
+			<div>
+				<b-field label="Units">
+					<b-radio v-model="radioUnits" name="radioUnits" native-value="imperial">
+						Imperial
+					</b-radio>
+					<b-radio v-model="radioUnits" name="radioUnits" native-value="metric">
+						Metric
+					</b-radio>
+				</b-field>
+			</div>
 
 			<table class="table">
 				<thead>
@@ -27,27 +41,27 @@
 				<tbody>
 					<tr>
 						<th scope="row">Historical (1901-2015)</th>
-						<td>{{ results.pr_hist_min }}</td>
-						<td>{{ results.pr_hist_mean }}</td>
-						<td>{{ results.pr_hist_max }}</td>
+						<td>{{ results.pr_hist_min }} <UnitWidget variable="pr" type="light" /></td>
+						<td>{{ results.pr_hist_mean }} <UnitWidget variable="pr" type="light" /></td>
+						<td>{{ results.pr_hist_max }} <UnitWidget variable="pr" type="light" /></td>
 					</tr>
 					<tr>
 						<th scope="row">Early Century (2010-2039)</th>
-						<td>{{ results.pr_2040_min }}</td>
-						<td>{{ results.pr_2040_mean }}</td>
-						<td>{{ results.pr_2040_max }}</td>
+						<td>{{ results.pr_2040_min }} <UnitWidget variable="pr" type="light" /></td>
+						<td>{{ results.pr_2040_mean }} <UnitWidget variable="pr" type="light" /></td>
+						<td>{{ results.pr_2040_max }} <UnitWidget variable="pr" type="light" /></td>
 					</tr>
 					<tr>
 						<th scope="row">Mid Century (2040-2069)</th>
-						<td>{{ results.pr_2070_min }}</td>
-						<td>{{ results.pr_2070_mean }}</td>
-						<td>{{ results.pr_2070_max }}</td>
+						<td>{{ results.pr_2070_min }} <UnitWidget variable="pr" type="light" /></td>
+						<td>{{ results.pr_2070_mean }} <UnitWidget variable="pr" type="light" /></td>
+						<td>{{ results.pr_2070_max }} <UnitWidget variable="pr" type="light" /></td>
 					</tr>
 					<tr>
 						<th scope="row">Late Century (2070-2099)</th>
-						<td>{{ results.pr_2100_min }}</td>
-						<td>{{ results.pr_2100_mean }}</td>
-						<td>{{ results.pr_2100_max }}</td>
+						<td>{{ results.pr_2100_min }} <UnitWidget variable="pr" type="light" /></td>
+						<td>{{ results.pr_2100_mean }} <UnitWidget variable="pr" type="light" /></td>
+						<td>{{ results.pr_2100_max }} <UnitWidget variable="pr" type="light" /></td>
 					</tr>
 				</tbody>
 			</table>
@@ -76,18 +90,19 @@ import { mapGetters } from "vuex";
 import DownloadCsvButton from "~/components/DownloadCsvButton";
 import MiniMap from "~/components/MiniMap";
 import LoadingStatus from "~/components/LoadingStatus";
+import UnitWidget from "~/components/UnitWidget";
 
 export default {
 	name: "PrecipitationReport",
 	components: {
-		DownloadCsvButton,
-		MiniMap,
-		LoadingStatus
-	},
+    DownloadCsvButton,
+    MiniMap,
+    LoadingStatus,
+    UnitWidget
+},
 	data() {
 		return {
-			// Will have the results of the data fetch.
-			results: {}
+			radioUnits: 'imperial'
 		};
 	},
 
@@ -96,6 +111,8 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
+			units: "map/units",
+			results: "map/results",
 			placeName: "map/placeName",
 			latLng: "map/latLng"
 		})
@@ -104,7 +121,16 @@ export default {
 	watch: {
 		latLng: function() {
 			this.$fetch();
-		}
+		},
+		radioUnits: function () {
+      if (this.radioUnits == 'metric') {
+        this.$store.commit('map/setMetric');
+				this.$store.commit('map/convertUnits', 'precipitation');
+      } else {
+        this.$store.commit('map/setImperial');
+				this.$store.commit('map/convertUnits', 'precipitation');
+      }
+    },
 	},
 
 	fetchOnServer: false,
@@ -123,7 +149,7 @@ export default {
 				place = this.placeName
 			}
 
-			this.results = {
+			let plateResults = {
 				place: place,
 				pr_hist_min: plate["historical"]["prmin"],
 				pr_hist_mean: plate["historical"]["prmean"],
@@ -138,6 +164,8 @@ export default {
 				pr_2100_mean: plate["2070-2099"]["prmean"],
 				pr_2100_max: plate["2070-2099"]["prmax"]
 			};
+
+			this.$store.commit("map/setResults", plateResults);
 		}
 	}
 };

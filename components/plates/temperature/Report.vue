@@ -148,8 +148,6 @@ export default {
 	},
 	data() {
 		return {
-			// Will have the results of the data fetch.
-			results: {},
 			radioUnits: 'metric'
 		};
 	},
@@ -160,6 +158,7 @@ export default {
 		},
 		...mapGetters({
 			units: "map/units",
+			results: "map/results",
 			placeName: "map/placeName",
 			latLng: "map/latLng"
 		}),
@@ -171,30 +170,13 @@ export default {
 		},
 		radioUnits: function () {
       if (this.radioUnits == 'metric') {
-        this.$store.commit('map/setMetric')
-				this.convertUnits();
+        this.$store.commit('map/setMetric');
+				this.$store.commit('map/convertUnits', 'temperature');
       } else {
-        this.$store.commit('map/setImperial')
-				this.convertUnits();
+        this.$store.commit('map/setImperial');
+				this.$store.commit('map/convertUnits', 'temperature');
       }
     },
-	},
-	methods: {
-		convertUnits: function() {
-			if (this.units == 'metric') {
-				Object.keys(this.results).forEach(key => {
-					if (key != 'place') {
-						this.results[key] = ((this.results[key] - 32) * (5/9)).toFixed(1);
-					}
-				});
-			} else {
-				Object.keys(this.results).forEach(key => {
-					if (key != 'place') {
-						this.results[key] = ((this.results[key] * (9/5)) + 32).toFixed(1);
-					}
-				});
-			}
-		},
 	},
 	fetchOnServer: false,
 	async fetch() {
@@ -212,7 +194,7 @@ export default {
 				place = this.placeName
 			}
 
-			this.results = {
+			let temp_results = {
 				place: place,
 				hist_min: plate["historical"]["all"]["tasmin"],
 				hist_mean: plate["historical"]["all"]["tasmean"],
@@ -251,6 +233,8 @@ export default {
 				july_2100_mean: plate["2070-2099"]["july"]["tasmean"],
 				july_2100_max: plate["2070-2099"]["july"]["tasmax"]
 			};
+
+			this.$store.commit("map/setResults", temp_results);
 		}
 	}
 };

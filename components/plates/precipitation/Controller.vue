@@ -66,6 +66,7 @@ export default {
 		},
 		activateReport: function(latLng) {
 			this.$store.commit("map/setLatLng", latLng);
+			this.$store.commit("map/setImperial");
 			this.$store.commit("map/openReport");
 		}
 	}
