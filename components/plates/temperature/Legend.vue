@@ -42,25 +42,25 @@
 	              <td>
 	                <div class="colorbox tas-30"></div>
 	              </td>
-	              <td>&lt; -30&deg;C</td>
+	              <td>&lt; &minus;30&deg;C</td>
 	            </tr>
 	            <tr>
 	              <td>
 	                <div class="colorbox tas-15"></div>
 	              </td>
-	              <td>-30&deg;C &ndash; -15&deg;C</td>
+	              <td>&minus;30&deg;C &ndash; &minus;15&deg;C</td>
 	            </tr>
 	            <tr>
 	              <td>
 	                <div class="colorbox tas-5"></div>
 	              </td>
-	              <td>-15&deg;C &ndash; -5&deg;C</td>
+	              <td>&minus;15&deg;C &ndash; &minus;5&deg;C</td>
 	            </tr>
 	            <tr>
 	              <td>
 	                <div class="colorbox tas0"></div>
 	              </td>
-	              <td>-5&deg;C &ndash; 0&deg;C</td>
+	              <td>&minus;5&deg;C &ndash; 0&deg;C</td>
 	            </tr>
 	            <tr>
 	              <td>
