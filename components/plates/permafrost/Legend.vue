@@ -74,25 +74,25 @@
 							<td>
 								<div class="colorbox continuous"></div>
 							</td>
-							<td>Continuous (&gt;90%)</td>
+							<td>Continuous (&gt; 90%)</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="colorbox discontinuous"></div>
 							</td>
-							<td>Discontinuous (50-90%)</td>
+							<td>Discontinuous (50 &ndash; 90%)</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="colorbox isolated"></div>
 							</td>
-							<td>Isolated (10-50%)</td>
+							<td>Isolated (10 &ndash; 50%)</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="colorbox sporadic"></div>
 							</td>
-							<td>Sporadic (&lt;10%)</td>
+							<td>Sporadic (&lt; 10%)</td>
 						</tr>
 					</tbody>
 				</table>
