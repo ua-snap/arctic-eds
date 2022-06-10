@@ -1,131 +1,85 @@
 export default [
 	{
-		id: "historical_annual_mean_temp",
-		title: "Historical Annual Mean Temperature (1901)",
+		id: "historical_era_annual_mean_temp",
+		title:
+			"Historical Modeled Annual Mean Temperature (1980&ndash;2009, CRU TS)",
 		source: "rasdaman",
 		wmsLayerName: "annual_mean_temp",
-		rasdamanConfiguration: {
-			dim_model: 0,
-			dim_scenario: 0,
-			time: "1901-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_historical_era",
 		default: true,
 	},
 	{
-		id: "projected_annual_mean_temp",
-		title: "Projected Annual Mean Temperature (2099)",
+		id: "midcentury_era_annual_mean_temp",
+		title:
+			"Projected Mid&ndash;Century Annual Mean Temperature (2040&ndash;2069, NCAR CCSM4, RCP 8.5)",
 		source: "rasdaman",
 		wmsLayerName: "annual_mean_temp",
-		rasdamanConfiguration: {
-			dim_model: 1,
-			dim_scenario: 3,
-			time: "2099-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_midcentury_era",
 	},
+
 	{
-		id: "jan_min_historical",
-		title: "January Minimum Temperature (Historical, 1901)",
+		id: "historical_era_january_min",
+		title:
+			"Historical Modeled January Minimum Temperature (1980&ndash;2009, CRU TS)",
 		source: "rasdaman",
 		wmsLayerName: "jan_min_max_mean_temp",
-		rasdamanConfiguration: {
-			dim_tempstat: 2,
-			dim_model: 0,
-			dim_scenario: 0,
-			time: "1901-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_historical_january_min",
 	},
 	{
-		id: "jan_min_projected",
-		title: "January Minimum Temperature (Projected, 2099)",
+		id: "midcentury_era_january_min",
+		title:
+			"Projected Mid&ndash;Century January Minimum Temperature (2040&ndash;2069, NCAR CCSM4, RCP 8.5)",
 		source: "rasdaman",
 		wmsLayerName: "jan_min_max_mean_temp",
-		rasdamanConfiguration: {
-			dim_tempstat: 2,
-			dim_model: 1,
-			dim_scenario: 3,
-			time: "2099-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_midcentury_january_min",
 	},
 	{
-		id: "jan_max_historical",
-		title: "January Maximum Temperature (Historical, 1901)",
+		id: "historical_era_january_max",
+		title:
+			"Historical Modeled January Maximum Temperature (1980&ndash;2009, CRU TS)",
 		source: "rasdaman",
 		wmsLayerName: "jan_min_max_mean_temp",
-		rasdamanConfiguration: {
-			dim_tempstat: 0,
-			dim_model: 0,
-			dim_scenario: 0,
-			time: "1901-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_historical_january_max",
 	},
 	{
-		id: "jan_max_projected",
-		title: "January Maximum Temperature (Projected, 2099)",
+		id: "midcentury_era_january_max",
+		title:
+			"Projected Mid&ndash;Century January Maximum Temperature (2040&ndash;2069, NCAR CCSM4, RCP 8.5)",
 		source: "rasdaman",
 		wmsLayerName: "jan_min_max_mean_temp",
-		rasdamanConfiguration: {
-			dim_tempstat: 0,
-			dim_model: 1,
-			dim_scenario: 3,
-			time: "2099-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_midcentury_january_max",
 	},
+
 	{
-		id: "july_min_historical",
-		title: "July Minimum Temperature (Historical, 1901)",
+		id: "historical_era_july_min",
+		title:
+			"Historical Modeled July Minimum Temperature (1980&ndash;2009, CRU TS)",
 		source: "rasdaman",
 		wmsLayerName: "july_min_max_mean_temp",
-		rasdamanConfiguration: {
-			dim_tempstat: 2,
-			dim_model: 0,
-			dim_scenario: 0,
-			time: "1901-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_historical_july_min",
 	},
 	{
-		id: "july_min_projected",
-		title: "July Minimum Temperature (Projected, 2099)",
+		id: "midcentury_era_july_min",
+		title:
+			"Projected Mid&ndash;Century July Minimum Temperature (2040&ndash;2069, NCAR CCSM4, RCP 8.5)",
 		source: "rasdaman",
 		wmsLayerName: "july_min_max_mean_temp",
-		rasdamanConfiguration: {
-			dim_tempstat: 2,
-			dim_model: 1,
-			dim_scenario: 3,
-			time: "2099-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_midcentury_july_min",
 	},
 	{
-		id: "july_max_historical",
-		title: "July Maximum Temperature (Historical, 1901)",
+		id: "historical_era_july_max",
+		title:
+			"Historical Modeled July Maximum Temperature (1980&ndash;2009, CRU TS)",
 		source: "rasdaman",
 		wmsLayerName: "july_min_max_mean_temp",
-		rasdamanConfiguration: {
-			dim_tempstat: 0,
-			dim_model: 0,
-			dim_scenario: 0,
-			time: "1901-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_historical_july_max",
 	},
 	{
-		id: "july_max_projected",
-		title: "July Maximum Temperature (Projected, 2099)",
+		id: "midcentury_era_july_max",
+		title:
+			"Projected Mid&ndash;Century July Maximum Temperature (2040&ndash;2069, NCAR CCSM4, RCP 8.5)",
 		source: "rasdaman",
 		wmsLayerName: "july_min_max_mean_temp",
-		rasdamanConfiguration: {
-			dim_tempstat: 0,
-			dim_model: 1,
-			dim_scenario: 3,
-			time: "2099-01-01T00:00:00.000Z",
-		},
-		style: "temp",
+		style: "temp_midcentury_july_max",
 	},
 ];
