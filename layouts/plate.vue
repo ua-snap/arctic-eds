@@ -3,6 +3,9 @@
     <HeaderBanner />
     <Navbar />
     <Breadcrumbs />
+    <div class="container">
+      <div class="section beta-feedback"><BetaFeedback /></div>
+    </div>
     <nuxt />
     <Footer />
   </div>
@@ -12,9 +15,10 @@
 import HeaderBanner from "~/components/HeaderBanner";
 import Navbar from "~/components/Navbar";
 import Breadcrumbs from "~/components/Breadcrumbs";
+import BetaFeedback from "~/components/BetaFeedback";
 import Footer from "~/components/Footer";
 
 export default {
-  components: { HeaderBanner, Navbar, Breadcrumbs, Footer }
+  components: { HeaderBanner, Navbar, Breadcrumbs, BetaFeedback, Footer }
 };
 </script>

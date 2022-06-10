@@ -1,0 +1,48 @@
+<template>
+  <div class="beta-feedback">
+    <b-message
+      title="This is a public beta test of this tool"
+      type="is-warning"
+      class="beta-feedback-box"
+      aria-close-label="Close message"
+      ><p>
+        Thanks for checking out this tool! Right now, this is a public beta,
+        which means that we&rsquo;re still gathering feedback, testing the data
+        outputs and fixing bugs. We&rsquo;d love to hear your feedback! Email us
+        at
+        <a href="mailto:uaf-snap-data-tools@alaska.edu"
+          >uaf-snap-data-tools@alaska.edu</a
+        >
+        if you encounter a problem.
+        <a
+          href="https://uaf.us10.list-manage.com/subscribe?u=e42f589030a3adcaddd9b3304&id=a7b255fdd5"
+          >Sign up for our occasional newsletter</a
+        >
+        to be notified when this tool is launched.
+      </p>
+    </b-message>
+  </div>
+</template>
+<style lang="scss" scoped>
+::v-deep .message-header p:not(:last-child) {
+  margin-bottom: 0;
+}
+.beta-feedback-box {
+  .section {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+  .media-content p {
+    color: #333;
+
+    a {
+      font-weight: 600;
+    }
+  }
+}
+</style>
+<script>
+export default {
+  name: "BetaFeedback"
+};
+</script>
