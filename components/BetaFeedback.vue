@@ -28,10 +28,6 @@
   margin-bottom: 0;
 }
 .beta-feedback-box {
-  .section {
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-  }
   .media-content p {
     color: #333;
 
