@@ -10,7 +10,7 @@
         which means that we&rsquo;re still gathering feedback, testing the data
         outputs and fixing bugs.
         <strong
-          >Data from this tool should not yet be used for engineering
+          >Data from this tool should not yet be used for engineering or 
           decision&ndash;making purposes.</strong
         >  <NuxtLink to="/beta">Read more</NuxtLink>
       </p>

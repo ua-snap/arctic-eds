@@ -3,9 +3,6 @@
     <HeaderBanner />
     <Navbar />
     <Breadcrumbs />
-    <section class="section">
-      <div class="container"><BetaFeedback /></div>
-    </section>
     <nuxt />
     <Footer />
   </div>
