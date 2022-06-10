@@ -5,6 +5,7 @@
       has-icon
       aria-close-label="Close notification"
       role="alert"
+      :closable="false"
       ><p>
         Thanks for checking out this tool! Right now, this is a public beta,
         which means that we&rsquo;re still gathering feedback, testing the data
