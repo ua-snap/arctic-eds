@@ -10,7 +10,12 @@
     <Footer />
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.section.beta-feedback {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+</style>
 <script>
 import HeaderBanner from "~/components/HeaderBanner";
 import Navbar from "~/components/Navbar";
