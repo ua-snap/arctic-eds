@@ -4,18 +4,13 @@
     <Navbar />
     <Breadcrumbs />
     <div class="container">
-      <div class="section beta-feedback"><BetaFeedback /></div>
+      <div class="section"><BetaFeedback /></div>
     </div>
     <nuxt />
     <Footer />
   </div>
 </template>
-<style lang="scss" scoped>
-.section.beta-feedback {
-  padding-top: 2rem;
-  padding-bottom: 1rem;
-}
-</style>
+<style lang="scss" scoped></style>
 <script>
 import HeaderBanner from "~/components/HeaderBanner";
 import Navbar from "~/components/Navbar";
