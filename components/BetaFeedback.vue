@@ -1,44 +1,29 @@
 <template>
   <div class="beta-feedback">
-    <b-message
-      title="This is a public beta test of this tool"
+    <b-notification
       type="is-warning"
-      class="beta-feedback-box"
-      aria-close-label="Close message"
+      has-icon
+      aria-close-label="Close notification"
+      role="alert"
       ><p>
         Thanks for checking out this tool! Right now, this is a public beta,
         which means that we&rsquo;re still gathering feedback, testing the data
-        outputs and fixing bugs. We&rsquo;d love to hear your feedback! Email us
-        at
-        <a href="mailto:uaf-snap-data-tools@alaska.edu"
-          >uaf-snap-data-tools@alaska.edu</a
-        >
-        if you encounter a problem.
-        <a
-          href="https://uaf.us10.list-manage.com/subscribe?u=e42f589030a3adcaddd9b3304&id=a7b255fdd5"
-          >Sign up for our occasional newsletter</a
-        >
-        to be notified when this tool is launched.
+        outputs and fixing bugs.
+        <strong
+          >Data from this tool should not yet be used for engineering
+          decision&ndash;making purposes.</strong
+        >  <NuxtLink to="/beta">Read more</NuxtLink>
       </p>
-    </b-message>
+    </b-notification>
   </div>
 </template>
 <style lang="scss" scoped>
-::v-deep .message-header p:not(:last-child) {
-  margin-bottom: 0;
-}
-.beta-feedback-box {
-  .media-content p {
-    color: #333;
-
-    a {
-      font-weight: 600;
-    }
-  }
+::v-deep p:not(:last-child) {
+  margin-bottom: 1rem;
 }
 </style>
 <script>
 export default {
-  name: "BetaFeedback"
+  name: "BetaFeedback",
 };
 </script>

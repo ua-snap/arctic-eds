@@ -52,10 +52,12 @@ export default {
       switch (plate) {
         case "physiography":
           return "Physiographic Provinces";
+        case "beta":
+          return false;
         default:
           if (plate) return plate;
       }
-    }
-  }
+    },
+  },
 };
 </script>
