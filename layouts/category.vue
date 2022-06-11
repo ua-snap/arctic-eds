@@ -12,9 +12,10 @@
 import HeaderBanner from "~/components/HeaderBanner";
 import Navbar from "~/components/Navbar";
 import Breadcrumbs from "~/components/Breadcrumbs";
+import BetaFeedback from "~/components/BetaFeedback";
 import Footer from "~/components/Footer";
 
 export default {
-  components: { HeaderBanner, Navbar, Breadcrumbs, Footer }
+  components: { HeaderBanner, Navbar, Breadcrumbs, BetaFeedback, Footer }
 };
 </script>
