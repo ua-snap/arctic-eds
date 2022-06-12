@@ -5,7 +5,9 @@
 		</div>
 
 		<Plate :layers="layers" v-show="!reportIsVisible">
-			<component :is="legend"></component>
+			<template v-slot:legend>
+				<component :is="legend"></component>
+			</template>
 		</Plate>
 
 		<div class="container">

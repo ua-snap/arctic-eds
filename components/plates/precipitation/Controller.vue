@@ -5,7 +5,9 @@
 		</div>
 
 		<Plate :layers="layers" v-show="!reportIsVisible">
-			<component :is="legend"></component>
+			<template v-slot:legend>
+				<component :is="legend"></component>
+			</template>
 		</Plate>
 
 		<div class="container">
@@ -18,41 +20,46 @@
 	</div>
 </template>
 <style lang="scss" scoped>
-	td {
-		padding: 8px;
-		text-align: center;
-	}
-	th {
-		padding: 8px;
-	}
+td {
+	padding: 8px;
+	text-align: center;
+}
+th {
+	padding: 8px;
+}
 </style>
 <script>
 import Plate from "~/components/Plate";
 import PrecipitationLegend from "~/components/plates/precipitation/Legend";
-import PrecipitationReport from "~/components/plates/precipitation/Report"
+import PrecipitationReport from "~/components/plates/precipitation/Report";
 import layers from "~/components/plates/precipitation/layers";
 import { mapGetters } from "vuex";
 import SearchControls from "~/components/SearchControls.vue";
 
 export default {
 	name: "PrecipitationController",
-	components: { Plate, PrecipitationLegend, PrecipitationReport, SearchControls },
+	components: {
+		Plate,
+		PrecipitationLegend,
+		PrecipitationReport,
+		SearchControls,
+	},
 	data() {
 		return {
 			legend: PrecipitationLegend,
-			layers: layers
+			layers: layers,
 		};
 	},
 	computed: {
 		...mapGetters({
-			reportIsVisible: "map/reportIsVisible"
-		})
+			reportIsVisible: "map/reportIsVisible",
+		}),
 	},
 	mounted() {
 		// Wire up click handler
 		this.$store.commit("map/addEventHandler", {
 			event: "click",
-			handler: this.handleMapClick
+			handler: this.handleMapClick,
 		});
 
 		// Listen for valid lat/lng, handle.
@@ -67,7 +74,7 @@ export default {
 		activateReport: function(latLng) {
 			this.$store.commit("map/setLatLng", latLng);
 			this.$store.commit("map/openReport");
-		}
-	}
+		},
+	},
 };
 </script>

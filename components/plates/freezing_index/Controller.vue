@@ -5,7 +5,9 @@
 		</div>
 
 		<Plate :layers="layers" v-show="!reportIsVisible">
-			<component :is="legend"></component>
+			<template v-slot:legend>
+				<component :is="legend"></component>
+			</template>
 		</Plate>
 
 		<div class="container">
@@ -18,41 +20,46 @@
 	</div>
 </template>
 <style lang="scss" scoped>
-	td {
-		padding: 8px;
-		text-align: center;
-	}
-	th {
-		padding: 8px;
-	}
+td {
+	padding: 8px;
+	text-align: center;
+}
+th {
+	padding: 8px;
+}
 </style>
 <script>
 import Plate from "~/components/Plate";
 import FreezingIndexLegend from "~/components/plates/freezing_index/Legend";
-import FreezingIndexReport from "~/components/plates/freezing_index/Report"
+import FreezingIndexReport from "~/components/plates/freezing_index/Report";
 import SearchControls from "~/components/SearchControls";
 import layers from "~/components/plates/freezing_index/layers";
 import { mapGetters } from "vuex";
 
 export default {
 	name: "FreezingIndexController",
-	components: { Plate, FreezingIndexLegend, FreezingIndexReport, SearchControls },
+	components: {
+		Plate,
+		FreezingIndexLegend,
+		FreezingIndexReport,
+		SearchControls,
+	},
 	data() {
 		return {
 			legend: FreezingIndexLegend,
-			layers: layers
+			layers: layers,
 		};
 	},
 	computed: {
 		...mapGetters({
-			reportIsVisible: "map/reportIsVisible"
-		})
+			reportIsVisible: "map/reportIsVisible",
+		}),
 	},
 	mounted() {
 		// Wire up click handler
 		this.$store.commit("map/addEventHandler", {
 			event: "click",
-			handler: this.handleMapClick
+			handler: this.handleMapClick,
 		});
 
 		// Listen for valid lat/lng, handle.
@@ -67,7 +74,7 @@ export default {
 		activateReport: function(latLng) {
 			this.$store.commit("map/setLatLng", latLng);
 			this.$store.commit("map/openReport");
-		}
-	}
+		},
+	},
 };
 </script>

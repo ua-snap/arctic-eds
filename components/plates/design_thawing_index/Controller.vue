@@ -5,7 +5,9 @@
     </div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
-      <component :is="legend"></component>
+      <template v-slot:legend>
+        <component :is="legend"></component>
+      </template>
     </Plate>
 
     <div class="container">
@@ -36,23 +38,28 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "DesignThawingIndexController",
-  components: { Plate, DesignThawingIndexLegend, DesignThawingIndexReport, SearchControls },
+  components: {
+    Plate,
+    DesignThawingIndexLegend,
+    DesignThawingIndexReport,
+    SearchControls,
+  },
   data() {
     return {
       legend: DesignThawingIndexLegend,
-      layers: layers
+      layers: layers,
     };
   },
   computed: {
     ...mapGetters({
-      reportIsVisible: "map/reportIsVisible"
-    })
+      reportIsVisible: "map/reportIsVisible",
+    }),
   },
   mounted() {
     // Wire up click handler
     this.$store.commit("map/addEventHandler", {
       event: "click",
-      handler: this.handleMapClick
+      handler: this.handleMapClick,
     });
 
     // Listen for valid lat/lng, handle.
@@ -67,7 +74,7 @@ export default {
     activateReport: function(latLng) {
       this.$store.commit("map/setLatLng", latLng);
       this.$store.commit("map/openReport");
-    }
-  }
+    },
+  },
 };
 </script>
