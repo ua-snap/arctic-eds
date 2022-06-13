@@ -1,4 +1,7 @@
 import _ from "lodash";
+import ak from '!raw-loader!../assets/alaska_3338.geojson'
+const akJson = JSON.parse(ak)
+
 
 // This needs to be outside of the Store or there's problems
 // because Leaflet mutates the state of the map, and Vuex
@@ -14,7 +17,7 @@ function getBaseMapAndLayers() {
 		srs: "EPSG:3338",
 		format: "image/png",
 		version: "1.3.0",
-		layers: ["atlas_mapproxy:alaska_osm_retina"],
+		layers: ["atlas_mapproxy:alaska_osm_retina", "ak_shadow_mask:ak_symmetric_difference"],
 	});
 
 	// Projection definition.
@@ -96,9 +99,9 @@ export default {
 		destroy(state) {
 			map.remove();
 			state.layer = undefined;
-			state.latLng = { 
-				lat: undefined, 
-				lng: undefined 
+			state.latLng = {
+				lat: undefined,
+				lng: undefined
 			};
 			state.placeName = undefined;
 			state.placeID = undefined;
@@ -183,7 +186,7 @@ export default {
 			if (context.state.places) {
 				return
 			}
-	
+
 			// TODO: add error handling here for 404 (no data) etc.
 			let queryUrl = process.env.apiUrl + '/places/communities'
 			let places = await this.$http.$get(queryUrl)
