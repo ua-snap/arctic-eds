@@ -16,7 +16,7 @@
 			</h4>
 
 			<p>
-				You can display these visualizations in Imperial or metric units.
+				You can display this table in Imperial or Metric units.
 			</p>
 			<div>
 				<b-field label="Units">
@@ -157,9 +157,8 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
-			units: "map/units",
-			results: "map/results",
-			placeName: "map/placeName",
+			results: "report/results",
+			placeName: "report/placeName",
 			latLng: "map/latLng"
 		}),
 	},
@@ -170,11 +169,11 @@ export default {
 		},
 		radioUnits: function () {
       if (this.radioUnits == 'metric') {
-        this.$store.commit('map/setMetric');
-				this.$store.commit('map/convertUnits', 'temperature');
+        this.$store.commit('report/setMetric');
+				this.$store.commit('report/convertUnits', 'temperature');
       } else {
-        this.$store.commit('map/setImperial');
-				this.$store.commit('map/convertUnits', 'temperature');
+        this.$store.commit('report/setImperial');
+				this.$store.commit('report/convertUnits', 'temperature');
       }
     },
 	},
@@ -194,7 +193,7 @@ export default {
 				place = this.placeName
 			}
 
-			let temp_results = {
+			let plateResults = {
 				place: place,
 				hist_min: plate["historical"]["all"]["tasmin"],
 				hist_mean: plate["historical"]["all"]["tasmean"],
@@ -234,7 +233,7 @@ export default {
 				july_2100_max: plate["2070-2099"]["july"]["tasmax"]
 			};
 
-			this.$store.commit("map/setResults", temp_results);
+			this.$store.commit("report/setResults", plateResults);
 		}
 	}
 };

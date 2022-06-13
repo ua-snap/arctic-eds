@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      units: 'map/units',
+      units: 'report/units',
     }),
   },
 }

@@ -15,7 +15,7 @@ export default {
   props: ['text', 'endpoint'],
   computed: {
     ...mapGetters({
-      placeID: "map/placeID",
+      placeID: "report/placeID",
 			latLng: "map/latLng"
 		}),
     downloadTarget() {

@@ -22,6 +22,7 @@ export default {
 	},
 	destroyed() {
 		this.$store.commit("map/destroy");
+		this.$store.commit("report/destroy");
 	}
 };
 </script>

@@ -4,7 +4,7 @@
 		<hr />
 		<LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending && !$fetchState.error">
+		<div v-if="!$fetchState.pending && !$fetchState.error && Object.keys(results).length > 0">
 			<h3 class="title is-3">
 				Precipitation data for {{ results.place }}
 			</h3>
@@ -15,19 +15,7 @@
 				Annual Precipitation Totals (<UnitWidget variable="pr" />)
 			</h4>
 
-			<p>
-				You can display this table in Imperial or Metric units.
-			</p>
-			<div>
-				<b-field label="Units">
-					<b-radio v-model="radioUnits" name="radioUnits" native-value="imperial">
-						Imperial
-					</b-radio>
-					<b-radio v-model="radioUnits" name="radioUnits" native-value="metric">
-						Metric
-					</b-radio>
-				</b-field>
-			</div>
+			<UnitRadio type="precipitation" />
 
 			<table class="table">
 				<thead>
@@ -91,6 +79,7 @@ import DownloadCsvButton from "~/components/DownloadCsvButton";
 import MiniMap from "~/components/MiniMap";
 import LoadingStatus from "~/components/LoadingStatus";
 import UnitWidget from "~/components/UnitWidget";
+import UnitRadio from "~/components/UnitRadio";
 
 export default {
 	name: "PrecipitationReport",
@@ -98,42 +87,24 @@ export default {
     DownloadCsvButton,
     MiniMap,
     LoadingStatus,
-    UnitWidget
-},
-	data() {
-		return {
-			radioUnits: 'imperial'
-		};
+    UnitWidget,
+		UnitRadio
 	},
-
 	computed: {
 		state: function() {
 			return this.$fetchState;
 		},
 		...mapGetters({
-			units: "map/units",
-			results: "map/results",
-			placeName: "map/placeName",
+			results: "report/results",
+			placeName: "report/placeName",
 			latLng: "map/latLng"
 		})
 	},
-
 	watch: {
 		latLng: function() {
 			this.$fetch();
-		},
-		radioUnits: function () {
-      if (this.radioUnits == 'metric') {
-        this.$store.commit('map/setMetric');
-				this.$store.commit('map/convertUnits', 'precipitation');
-      } else {
-        this.$store.commit('map/setImperial');
-				this.$store.commit('map/convertUnits', 'precipitation');
-      }
-    },
+		}
 	},
-
-	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
 			let plate = await this.$axios.$get(
@@ -146,26 +117,26 @@ export default {
 
 			let place = this.latLng.lat + ', ' + this.latLng.lng;
 			if (this.placeName) {
-				place = this.placeName
+				place = this.placeName;
 			}
 
 			let plateResults = {
 				place: place,
-				pr_hist_min: (plate["historical"]["prmin"]).toFixed(0),
-				pr_hist_mean: (plate["historical"]["prmean"]).toFixed(0),
-				pr_hist_max: (plate["historical"]["prmax"]).toFixed(0),
-				pr_2040_min: (plate["2010-2039"]["prmin"]).toFixed(0),
-				pr_2040_mean: (plate["2010-2039"]["prmean"]).toFixed(0),
-				pr_2040_max: (plate["2010-2039"]["prmax"]).toFixed(0),
-				pr_2070_min: (plate["2040-2069"]["prmin"]).toFixed(0),
-				pr_2070_mean: (plate["2040-2069"]["prmean"]).toFixed(0),
-				pr_2070_max: (plate["2040-2069"]["prmax"]).toFixed(0),
-				pr_2100_min: (plate["2070-2099"]["prmin"]).toFixed(0),
-				pr_2100_mean: (plate["2070-2099"]["prmean"]).toFixed(0),
-				pr_2100_max: (plate["2070-2099"]["prmax"]).toFixed(0)
+				pr_hist_min: plate["historical"]["prmin"],
+				pr_hist_mean: plate["historical"]["prmean"],
+				pr_hist_max: plate["historical"]["prmax"],
+				pr_2040_min: plate["2010-2039"]["prmin"],
+				pr_2040_mean: plate["2010-2039"]["prmean"],
+				pr_2040_max: plate["2010-2039"]["prmax"],
+				pr_2070_min: plate["2040-2069"]["prmin"],
+				pr_2070_mean: plate["2040-2069"]["prmean"],
+				pr_2070_max: plate["2040-2069"]["prmax"],
+				pr_2100_min: plate["2070-2099"]["prmin"],
+				pr_2100_mean: plate["2070-2099"]["prmean"],
+				pr_2100_max: plate["2070-2099"]["prmax"]
 			};
 
-			this.$store.commit("map/setResults", plateResults);
+			this.$store.commit("report/setResults", plateResults);
 		}
 	}
 };

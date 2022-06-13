@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      reportIsVisible: "map/reportIsVisible"
+      reportIsVisible: "report/reportIsVisible"
     })
   },
   mounted() {
@@ -66,7 +66,7 @@ export default {
     },
     activateReport: function(latLng) {
       this.$store.commit("map/setLatLng", latLng);
-      this.$store.commit("map/openReport");
+      this.$store.commit("report/openReport");
     }
   }
 };

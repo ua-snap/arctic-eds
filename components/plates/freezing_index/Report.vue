@@ -102,7 +102,7 @@ export default {
       return this.$fetchState;
     },
     ...mapGetters({
-      placeName: "map/placeName",
+      placeName: "report/placeName",
       latLng: "map/latLng"
     })
   },

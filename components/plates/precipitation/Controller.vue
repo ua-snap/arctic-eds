@@ -31,8 +31,9 @@ import Plate from "~/components/Plate";
 import PrecipitationLegend from "~/components/plates/precipitation/Legend";
 import PrecipitationReport from "~/components/plates/precipitation/Report"
 import layers from "~/components/plates/precipitation/layers";
+import SearchControls from "~/components/SearchControls";
 import { mapGetters } from "vuex";
-import SearchControls from "~/components/SearchControls.vue";
+
 
 export default {
 	name: "PrecipitationController",
@@ -45,7 +46,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			reportIsVisible: "map/reportIsVisible"
+			reportIsVisible: "report/reportIsVisible"
 		})
 	},
 	mounted() {
@@ -66,8 +67,8 @@ export default {
 		},
 		activateReport: function(latLng) {
 			this.$store.commit("map/setLatLng", latLng);
-			this.$store.commit("map/setImperial");
-			this.$store.commit("map/openReport");
+			this.$store.commit("report/setImperial");
+			this.$store.commit("report/openReport");
 		}
 	}
 };
