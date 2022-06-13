@@ -1,5 +1,5 @@
 import _ from "lodash";
-import ak from '!raw-loader!../assets/alaska_3338.geojson'
+import ak from '!raw-loader!../assets/alaska.geojson'
 const akJson = JSON.parse(ak)
 
 
@@ -158,10 +158,16 @@ export default {
 
 			map.addLayer(layerObject);
 		},
-		addEventHandler(state, handler) {
-			// Attach an event listener to the map.
-			// Listener should be an object with two elements,
-			map.on(handler.event, handler.handler);
+		addLayerEventHandler(state, handler) {
+			L.geoJSON(akJson, {
+        onEachFeature: function (feature, layer) {
+          layer.on(handler.event, handler.handler)
+        },
+        style: {
+          opacity: 0.0,
+          fillOpacity: 0.0,
+        },
+      }).addTo(map);
 		},
 		setPlaceName(state, name) {
 			state.placeName = name;
