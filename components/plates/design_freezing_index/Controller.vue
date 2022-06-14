@@ -72,8 +72,8 @@ export default {
       this.activateReport(event.latlng);
     },
     activateReport: function(latLng) {
-      this.$store.commit("map/setLatLng", latLng);
-      this.$store.commit("report/openReport");
+      this.$store.commit("report/setLatLng", latLng);
+      this.$store.commit("report/openReport", this.$route.fullPath);
     }
   }
 };

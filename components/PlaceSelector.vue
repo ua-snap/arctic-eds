@@ -83,8 +83,7 @@ export default {
       }
     },
     ...mapGetters({
-      places: 'report/places',
-      placeNam: 'report/placeName'
+      places: 'report/places'
     }),
   },
   watch: {
@@ -104,7 +103,7 @@ export default {
 
         this.$store.commit("report/setPlaceID", selected.id);
 
-        this.$store.commit("map/setLatLng", latLng);
+        this.$store.commit("report/setLatLng", latLng);
 
         this.$parent.$emit("ValidLatLng", latLng);
       }

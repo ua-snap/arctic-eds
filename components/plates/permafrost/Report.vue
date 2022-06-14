@@ -159,7 +159,7 @@ export default {
       units: "report/units",
 			results: "report/results",
       placeName: "report/placeName",
-      latLng: "map/latLng"
+      latLng: "report/latLng"
     })
   },
   methods: {

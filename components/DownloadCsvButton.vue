@@ -16,7 +16,7 @@ export default {
   computed: {
     ...mapGetters({
       placeID: "report/placeID",
-			latLng: "map/latLng"
+			latLng: "report/latLng"
 		}),
     downloadTarget() {
       let endpointPath = this.endpoint

@@ -8,12 +8,20 @@ export default {
 			placeID: undefined,
 			reportIsVisible: false,
 			results: {},
-			units: 'imperial'
+			units: 'imperial',
+			// Currently active/clicked location
+			latLng: {
+				lat: undefined,
+				lng: undefined,
+			}
 		};
 	},
 	getters: {
 		places(state) {
 			return state.places
+		},
+		latLng: (state) => {
+			return state.latLng;
 		},
 		placeName(state) {
 			return state.placeName;
@@ -29,7 +37,8 @@ export default {
 		},
 		units(state) {
 			return state.units;
-		}
+		},
+
 	},
 
 	mutations: {
@@ -38,15 +47,42 @@ export default {
 			state.placeID = undefined;
 			state.reportIsVisible = false;
 			state.results = {};
+			state.latLng = {
+				lat: undefined,
+				lng: undefined,
+			};
 		},
-		openReport(state) {
+		openReport(state, fullPath) {
 			state.reportIsVisible = true;
+			if (state.placeName) {
+				this.$router.push({
+					path:
+						fullPath +
+						'/community/' +
+						state.placeID,
+						hash: '#results'
+				})
+			} else {
+				this.$router.push({
+					path:
+						fullPath +
+						'/' +
+						state.latLng.lat +
+						'/' +
+						state.latLng.lng,
+						hash: '#results'
+				})
+			}
 		},
 		closeReport(state) {
 			state.placeName = undefined;
 			state.placeID = undefined;
 			state.reportIsVisible = false;
 			state.results = {};
+			state.latLng = {
+				lat: undefined,
+				lng: undefined,
+			};
 		},
 		convertUnits(state, type) {
 			if (type == 'temperature') {
@@ -91,6 +127,13 @@ export default {
 		},
 		setPlaces(state, places) {
 			state.places = places;
+		},
+		setLatLng(state, latLng) {
+			// latLng is an object with lat / lng properties.
+			state.latLng = {
+				lat: latLng.lat.toFixed(4),
+				lng: latLng.lng.toFixed(4),
+			};
 		},
 		setMetric(state) {
 			state.units = 'metric';

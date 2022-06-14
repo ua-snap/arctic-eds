@@ -113,19 +113,19 @@ export default {
       handler: this.handleMapClick
     });
 
-    // Listen for valid lat/lng, handle.
-    this.$on("ValidLatLng", function(latLng) {
-      this.activateReport(latLng);
-    });
-  },
-  methods: {
-    handleMapClick: function(event) {
-      this.activateReport(event.latlng);
-    },
-    activateReport: function(latLng) {
-      this.$store.commit("map/setLatLng", latLng);
-      this.$store.commit("report/openReport");
-    }
-  }
+		// Listen for valid lat/lng, handle.
+		this.$on("ValidLatLng", function(latLng) {
+			this.activateReport(latLng);
+		});
+	},
+	methods: {
+		handleMapClick: function(event) {
+			this.activateReport(event.latlng);
+		},
+		activateReport: function(latLng) {
+			this.$store.commit("report/setLatLng", latLng);
+      this.$store.commit("report/openReport", this.$route.fullPath);
+		}
+	}
 };
 </script>

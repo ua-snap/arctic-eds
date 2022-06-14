@@ -113,7 +113,7 @@ export default {
 		...mapGetters({
 			results: "report/results",
 			placeName: "report/placeName",
-			latLng: "map/latLng",
+			latLng: "report/latLng",
 		}),
 	},
 
