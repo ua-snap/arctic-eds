@@ -12,7 +12,7 @@
 			<MiniMap />
 
 			<h4 class="title is-4">
-				Annual Snowfall Equivalent Totals (inches water)
+				Annual Snowfall Equivalent Totals (millimeters water)
 			</h4>
 
 			<table class="table">
