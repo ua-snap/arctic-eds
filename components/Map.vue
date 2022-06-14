@@ -8,7 +8,6 @@
 #map {
 	height: 100vh;
 	width: 100%;
-	cursor: pointer;
 }
 </style>
 
@@ -22,6 +21,7 @@ export default {
 	},
 	destroyed() {
 		this.$store.commit("map/destroy");
+		this.$store.commit("report/destroy");
 	}
 };
 </script>

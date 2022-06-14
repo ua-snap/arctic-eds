@@ -42,19 +42,19 @@ export default {
   data() {
     return {
       legend: ThawingIndexLegend,
-      layers: layers,
+      layers: layers
     };
   },
   computed: {
     ...mapGetters({
-      reportIsVisible: "map/reportIsVisible",
-    }),
+      reportIsVisible: "report/reportIsVisible"
+    })
   },
   mounted() {
     // Wire up click handler
-    this.$store.commit("map/addEventHandler", {
+    this.$store.commit("map/addLayerEventHandler", {
       event: "click",
-      handler: this.handleMapClick,
+      handler: this.handleMapClick
     });
 
     // Listen for valid lat/lng, handle.
@@ -68,8 +68,8 @@ export default {
     },
     activateReport: function(latLng) {
       this.$store.commit("map/setLatLng", latLng);
-      this.$store.commit("map/openReport");
-    },
-  },
+      this.$store.commit("report/openReport");
+    }
+  }
 };
 </script>

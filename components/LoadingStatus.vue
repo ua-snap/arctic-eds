@@ -30,13 +30,13 @@ export default {
 	props: ["state"],
 	computed: {
     ...mapGetters({
-      placeName: "map/placeName",
+      placeName: "report/placeName",
 			latLng: "map/latLng"
 		})
 	},
 	methods: {
 		close() {
-			this.$store.commit("closeReport");
+			this.$store.commit("report/closeReport");
 		}
 	}
 };

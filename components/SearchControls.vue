@@ -19,7 +19,7 @@ export default {
 	name: "SearchControls",
 	components: { PlaceSelector, LatLngPicker },
 	async fetch() {
-    await this.$store.dispatch('map/fetchPlaces')
+    await this.$store.dispatch('report/fetchPlaces')
   },
   mounted() {
     this.$on("ValidLatLng", function(latLng) {

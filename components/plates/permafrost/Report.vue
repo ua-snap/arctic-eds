@@ -10,7 +10,7 @@
       <MiniMap />
 
       <h4 class="title is-4">
-        GIPL Mean Annual Ground Temperature (&deg;C)
+        GIPL Mean Annual Ground Temperature (<UnitWidget />)
       </h4>
 
       <table class="table">
@@ -24,7 +24,7 @@
         <tbody>
           <tr>
             <th scope="row">Historical (1995)</th>
-            <td>{{ results.gipl_magt_1995 }}</td>
+            <td>{{ results.gipl_magt_1995 }} </td>
             <td></td>
           </tr>
           <tr>
@@ -136,17 +136,18 @@
 import { mapGetters } from "vuex";
 import MiniMap from "~/components/MiniMap";
 import LoadingStatus from "~/components/LoadingStatus";
+import UnitWidget from "~/components/UnitWidget";
 
 export default {
   name: "PermafrostReport",
   components: {
     MiniMap,
-    LoadingStatus
+    LoadingStatus,
+    UnitWidget
   },
   data() {
     return {
-      // Will have the results of the data fetch.
-      results: {}
+      radioUnits: 'metric'
     };
   },
 
@@ -155,7 +156,9 @@ export default {
       return this.$fetchState;
     },
     ...mapGetters({
-      placeName: "map/placeName",
+      units: "report/units",
+			results: "report/results",
+      placeName: "report/placeName",
       latLng: "map/latLng"
     })
   },
@@ -191,7 +194,7 @@ export default {
         place = this.placeName;
       }
 
-      this.results = {
+      let plateResults = {
         place: place,
         gipl_alt_1995: res["gipl"]["1995"]["cruts31"]["historical"]["alt"],
         gipl_alt_2025: res["gipl"]["2025"]["ncarccsm4"]["rcp85"]["alt"],
@@ -206,17 +209,19 @@ export default {
       };
 
       if (res["jorg"] != null) {
-        this.results["giv_2008"] = res["jorg"]["ice"];
-        this.results["pe_2008"] = res["jorg"]["pfx"];
+        plateResults["giv_2008"] = res["jorg"]["ice"];
+        plateResults["pe_2008"] = res["jorg"]["pfx"];
       }
 
       if (res["obu_magt"] != null) {
-        this.results["magt_2018"] = res["obu_magt"]["temp"];
+        plateResults["magt_2018"] = res["obu_magt"]["temp"];
       }
 
       if (res["obupfx"] != null) {
-        this.results["pe_2018"] = res["obupfx"]["pfx"];
+        plateResults["pe_2018"] = res["obupfx"]["pfx"];
       }
+
+      this.$store.commit('report/setResults', plateResults);
     }
   }
 };
