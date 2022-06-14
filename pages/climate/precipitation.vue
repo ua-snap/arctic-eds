@@ -53,6 +53,6 @@ export default {
 	layout: "plate",
 	components: {
 		PrecipitationController,
-	},
+	}
 };
 </script>

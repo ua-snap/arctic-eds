@@ -173,7 +173,6 @@ export default {
 			}
 		},
 	},
-	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
 			let plate = await this.$axios.$get(

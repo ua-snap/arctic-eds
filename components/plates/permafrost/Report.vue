@@ -177,8 +177,6 @@ export default {
       this.$fetch();
     }
   },
-
-  fetchOnServer: false,
   async fetch() {
     if (this.latLng.lat && this.latLng.lng) {
       let res = await this.$axios.$get(

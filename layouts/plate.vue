@@ -2,7 +2,7 @@
   <div>
     <HeaderBanner />
     <Navbar />
-    <Breadcrumbs />
+    <!-- <Breadcrumbs /> -->
     <div class="container">
       <div class="section"><BetaFeedback /></div>
     </div>

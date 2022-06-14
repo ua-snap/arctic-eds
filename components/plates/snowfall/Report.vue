@@ -113,26 +113,26 @@ export default {
 		...mapGetters({
 			results: "report/results",
 			placeName: "report/placeName",
-			latLng: "report/latLng",
+			reportIsVisible: "report/reportIsVisible",
+			latLng: "report/latLng"
 		}),
 	},
 
 	watch: {
-		latLng: function() {
+		reportIsVisible: function() {
 			this.$fetch();
 		},
 	},
-
-	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
-			let plate = await this.$axios.$get(
-				process.env.apiUrl +
+			console.log(this.latLng)
+			let url = process.env.apiUrl +
 					"/mmm/snow/snowfallequivalent/hp/" +
 					this.latLng.lat +
 					"/" +
-					this.latLng.lng
-			);
+					this.latLng.lng;
+
+			await this.$store.dispatch("report/apiFetch", url);
 
 			let place = this.latLng.lat + ", " + this.latLng.lng;
 			if (this.placeName) {
@@ -141,12 +141,12 @@ export default {
 
 			let plateResults = {
 				place: place,
-				sfe_hist_min: plate["historical"]["sfemin"],
-				sfe_hist_mean: plate["historical"]["sfemean"],
-				sfe_hist_max: plate["historical"]["sfemax"],
-				sfe_proj_min: plate["projected"]["sfemin"],
-				sfe_proj_mean: plate["projected"]["sfemean"],
-				sfe_proj_max: plate["projected"]["sfemax"],
+				sfe_hist_min: this.results["historical"]["sfemin"],
+				sfe_hist_mean: this.results["historical"]["sfemean"],
+				sfe_hist_max: this.results["historical"]["sfemax"],
+				sfe_proj_min: this.results["projected"]["sfemin"],
+				sfe_proj_mean: this.results["projected"]["sfemean"],
+				sfe_proj_max: this.results["projected"]["sfemax"],
 			};
 			this.$store.commit("report/setResults", plateResults);
 		}

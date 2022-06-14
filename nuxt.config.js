@@ -29,7 +29,7 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["~/plugins/plotly.client", "~/plugins/leaflet.client.js"],
+  plugins: ["~/plugins/plotly.client", "~/plugins/leaflet.client.js", '~/plugins/vuex-router-sync',],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -47,7 +47,6 @@ export default {
     "nuxt-leaflet",
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    "nuxt-vuex-router-sync",
     "@nuxt/http"
   ],
 

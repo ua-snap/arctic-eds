@@ -20,8 +20,24 @@ export default {
 		places(state) {
 			return state.places
 		},
-		latLng: (state) => {
-			return state.latLng;
+		latLng(state, getters, rootState) {
+
+			if (rootState.route.params.lat && rootState.route.params.lng) {
+				let latLng = {lat: rootState.route.params.lat, lng: rootState.route.params.lng}
+				return latLng;
+			}
+	
+			// Look it up by place name.
+			if (rootState.route.params.communityId) {
+				let place = _.find(state.places, {
+					id: rootState.route.params.communityId,
+				})
+				if (place) {
+					let latLng = {lat: place.latitude, lng: place.longitude}
+					return latLng;
+				}
+				throw 'Could not find the community by ID.'
+			}
 		},
 		placeName(state) {
 			return state.placeName;
@@ -54,24 +70,25 @@ export default {
 		},
 		openReport(state, fullPath) {
 			state.reportIsVisible = true;
-			if (state.placeName) {
-				this.$router.push({
-					path:
-						fullPath +
-						'/community/' +
-						state.placeID,
-						hash: '#results'
-				})
-			} else {
-				this.$router.push({
-					path:
-						fullPath +
-						'/' +
-						state.latLng.lat +
-						'/' +
-						state.latLng.lng,
-						hash: '#results'
-				})
+			if (!fullPath.includes("report")) {
+				if (state.placeName) {
+					this.$router.push({
+						path:
+							fullPath +
+							'/report/community/' +
+							state.placeID,
+							hash: '#results'
+					})
+				} else {
+					this.$router.push({
+						path:
+							fullPath +
+							'/report/' +
+							state.latLng.lat +
+							'/' +
+							state.latLng.lng
+					})
+				}
 			}
 		},
 		closeReport(state) {
@@ -143,6 +160,10 @@ export default {
 		},
 	},
 	actions: {
+		async apiFetch(context, url) {
+			let results = await this.$axios.$get(url);
+			context.commit('setResults', results);
+		},
 		async fetchPlaces(context) {
 			// If we've already fetched this, don't do that again.
 			if (context.state.places) {
