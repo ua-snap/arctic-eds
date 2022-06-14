@@ -83,7 +83,8 @@ export default {
       }
     },
     ...mapGetters({
-      places: 'map/places'
+      places: 'report/places',
+      placeNam: 'report/placeName'
     }),
   },
   watch: {
@@ -99,9 +100,9 @@ export default {
           placeName = selected.name + " (" + selected.alt_name + "), " + selected.region;
         }
 
-        this.$store.commit("map/setPlaceName", placeName);
+        this.$store.commit("report/setPlaceName", placeName);
 
-        this.$store.commit("map/setPlaceID", selected.id);
+        this.$store.commit("report/setPlaceID", selected.id);
 
         this.$store.commit("map/setLatLng", latLng);
 
