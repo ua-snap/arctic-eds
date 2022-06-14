@@ -5,15 +5,15 @@
 		<LoadingStatus :state="state" />
 
 		<div v-if="!$fetchState.pending && !$fetchState.error">
-			<h3 class="title is-3">
-				Temperature data for {{ results.place }}
-			</h3>
+			<h3 class="title is-3">Temperature data for {{ results.place }}</h3>
 
 			<MiniMap />
 
 			<h4 class="title is-4">
-				Temperature (&deg;C)
+				Temperature
 			</h4>
+
+			<UnitRadio />
 
 			<table class="table">
 				<thead>
@@ -39,51 +39,51 @@
 				<tbody>
 					<tr>
 						<th scope="row">Historical (1901-2015)</th>
-						<td>{{ results.hist_min }}</td>
-						<td>{{ results.hist_mean }}</td>
-						<td>{{ results.hist_max }}</td>
-						<td>{{ results.jan_hist_min }}</td>
-						<td>{{ results.jan_hist_mean }}</td>
-						<td>{{ results.jan_hist_max }}</td>
-						<td>{{ results.july_hist_min }}</td>
-						<td>{{ results.july_hist_mean }}</td>
-						<td>{{ results.july_hist_max }}</td>
+						<td>{{ results.hist_min }}<UnitWidget /></td>
+						<td>{{ results.hist_mean }}<UnitWidget /></td>
+						<td>{{ results.hist_max }}<UnitWidget /></td>
+						<td>{{ results.jan_hist_min }}<UnitWidget /></td>
+						<td>{{ results.jan_hist_mean }}<UnitWidget /></td>
+						<td>{{ results.jan_hist_max }}<UnitWidget /></td>
+						<td>{{ results.july_hist_min }}<UnitWidget /></td>
+						<td>{{ results.july_hist_mean }}<UnitWidget /></td>
+						<td>{{ results.july_hist_max }}<UnitWidget /></td>
 					</tr>
 					<tr>
 						<th scope="row">Early Century (2010-2039)</th>
-						<td>{{ results.temp_2040_min }}</td>
-						<td>{{ results.temp_2040_mean }}</td>
-						<td>{{ results.temp_2040_max }}</td>
-						<td>{{ results.jan_2040_min }}</td>
-						<td>{{ results.jan_2040_mean }}</td>
-						<td>{{ results.jan_2040_max }}</td>
-						<td>{{ results.july_2040_min }}</td>
-						<td>{{ results.july_2040_mean }}</td>
-						<td>{{ results.july_2040_max }}</td>
+						<td>{{ results.temp_2040_min }}<UnitWidget /></td>
+						<td>{{ results.temp_2040_mean }}<UnitWidget /></td>
+						<td>{{ results.temp_2040_max }}<UnitWidget /></td>
+						<td>{{ results.jan_2040_min }}<UnitWidget /></td>
+						<td>{{ results.jan_2040_mean }}<UnitWidget /></td>
+						<td>{{ results.jan_2040_max }}<UnitWidget /></td>
+						<td>{{ results.july_2040_min }}<UnitWidget /></td>
+						<td>{{ results.july_2040_mean }}<UnitWidget /></td>
+						<td>{{ results.july_2040_max }}<UnitWidget /></td>
 					</tr>
 					<tr>
 						<th scope="row">Mid Century (2040-2069)</th>
-						<td>{{ results.temp_2070_min }}</td>
-						<td>{{ results.temp_2070_mean }}</td>
-						<td>{{ results.temp_2070_max }}</td>
-						<td>{{ results.jan_2070_min }}</td>
-						<td>{{ results.jan_2070_mean }}</td>
-						<td>{{ results.jan_2070_max }}</td>
-						<td>{{ results.july_2070_min }}</td>
-						<td>{{ results.july_2070_mean }}</td>
-						<td>{{ results.july_2070_max }}</td>
+						<td>{{ results.temp_2070_min }}<UnitWidget /></td>
+						<td>{{ results.temp_2070_mean }}<UnitWidget /></td>
+						<td>{{ results.temp_2070_max }}<UnitWidget /></td>
+						<td>{{ results.jan_2070_min }}<UnitWidget /></td>
+						<td>{{ results.jan_2070_mean }}<UnitWidget /></td>
+						<td>{{ results.jan_2070_max }}<UnitWidget /></td>
+						<td>{{ results.july_2070_min }}<UnitWidget /></td>
+						<td>{{ results.july_2070_mean }}<UnitWidget /></td>
+						<td>{{ results.july_2070_max }}<UnitWidget /></td>
 					</tr>
 					<tr>
 						<th scope="row">Late Century (2070-2099)</th>
-						<td>{{ results.temp_2100_min }}</td>
-						<td>{{ results.temp_2100_mean }}</td>
-						<td>{{ results.temp_2100_max }}</td>
-						<td>{{ results.jan_2100_min }}</td>
-						<td>{{ results.jan_2100_mean }}</td>
-						<td>{{ results.jan_2100_max }}</td>
-						<td>{{ results.july_2100_min }}</td>
-						<td>{{ results.july_2100_mean }}</td>
-						<td>{{ results.july_2100_max }}</td>
+						<td>{{ results.temp_2100_min }}<UnitWidget /></td>
+						<td>{{ results.temp_2100_mean }}<UnitWidget /></td>
+						<td>{{ results.temp_2100_max }}<UnitWidget /></td>
+						<td>{{ results.jan_2100_min }}<UnitWidget /></td>
+						<td>{{ results.jan_2100_mean }}<UnitWidget /></td>
+						<td>{{ results.jan_2100_max }}<UnitWidget /></td>
+						<td>{{ results.july_2100_min }}<UnitWidget /></td>
+						<td>{{ results.july_2100_mean }}<UnitWidget /></td>
+						<td>{{ results.july_2100_max }}<UnitWidget /></td>
 					</tr>
 				</tbody>
 			</table>
@@ -91,10 +91,18 @@
 			<div class="content">
 				<ul>
 					<li>
-						<a href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-temperature-products-downscaled-from-cru-ts-data-via-the-delta-m" target="_blank">Historical Monthly and Derived Temperature Products</a>
+						<a
+							href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-temperature-products-downscaled-from-cru-ts-data-via-the-delta-m"
+							target="_blank"
+							>Historical Monthly and Derived Temperature Products</a
+						>
 					</li>
 					<li>
-						<a href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-temperature-products-2km-cmip5-ar5" target="_blank">Projected Monthly and Derived Temperature Products</a>
+						<a
+							href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-temperature-products-2km-cmip5-ar5"
+							target="_blank"
+							>Projected Monthly and Derived Temperature Products</a
+						>
 					</li>
 				</ul>
 			</div>
@@ -122,18 +130,21 @@ import { mapGetters } from "vuex";
 import MiniMap from "~/components/MiniMap";
 import DownloadCsvButton from "~/components/DownloadCsvButton";
 import LoadingStatus from "~/components/LoadingStatus";
+import UnitWidget from "~/components/UnitWidget";
+import UnitRadio from "~/components/UnitRadio";
 
 export default {
 	name: "TemperatureReport",
 	components: {
 		DownloadCsvButton,
 		MiniMap,
-		LoadingStatus
+		LoadingStatus,
+		UnitWidget,
+		UnitRadio,
 	},
 	data() {
 		return {
-			// Will have the results of the data fetch.
-			results: {}
+			radioUnits: "metric",
 		};
 	},
 
@@ -142,17 +153,26 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
-			placeName: "map/placeName",
-			latLng: "map/latLng"
-		})
+			results: "report/results",
+			placeName: "report/placeName",
+			latLng: "map/latLng",
+		}),
 	},
 
 	watch: {
 		latLng: function() {
 			this.$fetch();
-		}
+		},
+		radioUnits: function() {
+			if (this.radioUnits == "metric") {
+				this.$store.commit("report/setMetric");
+				this.$store.commit("report/convertUnits", "temperature");
+			} else {
+				this.$store.commit("report/setImperial");
+				this.$store.commit("report/convertUnits", "temperature");
+			}
+		},
 	},
-
 	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
@@ -164,12 +184,12 @@ export default {
 					this.latLng.lng
 			);
 
-			let place = this.latLng.lat + ', ' + this.latLng.lng;
+			let place = this.latLng.lat + ", " + this.latLng.lng;
 			if (this.placeName) {
-				place = this.placeName
+				place = this.placeName;
 			}
 
-			this.results = {
+			let plateResults = {
 				place: place,
 				hist_min: plate["historical"]["all"]["tasmin"],
 				hist_mean: plate["historical"]["all"]["tasmean"],
@@ -206,10 +226,12 @@ export default {
 				jan_2100_max: plate["2070-2099"]["jan"]["tasmax"],
 				july_2100_min: plate["2070-2099"]["july"]["tasmin"],
 				july_2100_mean: plate["2070-2099"]["july"]["tasmean"],
-				july_2100_max: plate["2070-2099"]["july"]["tasmax"]
+				july_2100_max: plate["2070-2099"]["july"]["tasmax"],
 			};
+
+			this.$store.commit("report/setResults", plateResults);
 		}
-	}
+	},
 };
 </script>
 

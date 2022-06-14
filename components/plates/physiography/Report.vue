@@ -20,7 +20,7 @@ import MiniMap from "~/components/MiniMap";
 import LoadingStatus from "~/components/LoadingStatus";
 
 export default {
-	name: "PermafrostReport",
+	name: "PhysiographyReport",
 	components: {
     MiniMap,
     LoadingStatus
@@ -37,7 +37,7 @@ export default {
 			return this.$fetchState;
 		},
 		...mapGetters({
-			placeName: "map/placeName",
+			placeName: "report/placeName",
 			latLng: "map/latLng"
 		})
 	},

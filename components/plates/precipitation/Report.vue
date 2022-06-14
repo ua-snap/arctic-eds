@@ -12,8 +12,10 @@
 			<MiniMap />
 
 			<h4 class="title is-4">
-				Annual Precipitation Totals (inches)
+				Annual Precipitation Totals
 			</h4>
+
+			<UnitRadio type="precipitation" />
 
 			<table class="table">
 				<thead>
@@ -27,27 +29,63 @@
 				<tbody>
 					<tr>
 						<th scope="row">Historical (1901-2015)</th>
-						<td>{{ results.pr_hist_min }}</td>
-						<td>{{ results.pr_hist_mean }}</td>
-						<td>{{ results.pr_hist_max }}</td>
+						<td>
+							{{ results.pr_hist_min
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
+						<td>
+							{{ results.pr_hist_mean
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
+						<td>
+							{{ results.pr_hist_max
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
 					</tr>
 					<tr>
 						<th scope="row">Early Century (2010-2039)</th>
-						<td>{{ results.pr_2040_min }}</td>
-						<td>{{ results.pr_2040_mean }}</td>
-						<td>{{ results.pr_2040_max }}</td>
+						<td>
+							{{ results.pr_2040_min
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
+						<td>
+							{{ results.pr_2040_mean
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
+						<td>
+							{{ results.pr_2040_max
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
 					</tr>
 					<tr>
 						<th scope="row">Mid Century (2040-2069)</th>
-						<td>{{ results.pr_2070_min }}</td>
-						<td>{{ results.pr_2070_mean }}</td>
-						<td>{{ results.pr_2070_max }}</td>
+						<td>
+							{{ results.pr_2070_min
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
+						<td>
+							{{ results.pr_2070_mean
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
+						<td>
+							{{ results.pr_2070_max
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
 					</tr>
 					<tr>
 						<th scope="row">Late Century (2070-2099)</th>
-						<td>{{ results.pr_2100_min }}</td>
-						<td>{{ results.pr_2100_mean }}</td>
-						<td>{{ results.pr_2100_max }}</td>
+						<td>
+							{{ results.pr_2100_min
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
+						<td>
+							{{ results.pr_2100_mean
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
+						<td>
+							{{ results.pr_2100_max
+							}}<UnitWidget variable="pr" type="light" />
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -55,10 +93,20 @@
 			<div class="content">
 				<ul>
 					<li>
-						<a href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta" target="_blank">Historical Monthly and Derived Precipitation Products</a>
+						<a
+							href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta"
+							target="_blank"
+							>Historical Monthly and Derived Precipitation
+							Products</a
+						>
 					</li>
 					<li>
-						<a href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5" target="_blank">Projected Monthly and Derived Precipitation Products</a>
+						<a
+							href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5"
+							target="_blank"
+							>Projected Monthly and Derived Precipitation
+							Products</a
+						>
 					</li>
 				</ul>
 			</div>
@@ -76,38 +124,33 @@ import { mapGetters } from "vuex";
 import DownloadCsvButton from "~/components/DownloadCsvButton";
 import MiniMap from "~/components/MiniMap";
 import LoadingStatus from "~/components/LoadingStatus";
+import UnitWidget from "~/components/UnitWidget";
+import UnitRadio from "~/components/UnitRadio";
 
 export default {
 	name: "PrecipitationReport",
 	components: {
 		DownloadCsvButton,
 		MiniMap,
-		LoadingStatus
+		LoadingStatus,
+		UnitWidget,
+		UnitRadio,
 	},
-	data() {
-		return {
-			// Will have the results of the data fetch.
-			results: {}
-		};
-	},
-
 	computed: {
 		state: function() {
 			return this.$fetchState;
 		},
 		...mapGetters({
-			placeName: "map/placeName",
-			latLng: "map/latLng"
-		})
+			results: "report/results",
+			placeName: "report/placeName",
+			latLng: "map/latLng",
+		}),
 	},
-
 	watch: {
 		latLng: function() {
 			this.$fetch();
-		}
+		},
 	},
-
-	fetchOnServer: false,
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
 			let plate = await this.$axios.$get(
@@ -118,12 +161,12 @@ export default {
 					this.latLng.lng
 			);
 
-			let place = this.latLng.lat + ', ' + this.latLng.lng;
+			let place = this.latLng.lat + ", " + this.latLng.lng;
 			if (this.placeName) {
-				place = this.placeName
+				place = this.placeName;
 			}
 
-			this.results = {
+			let plateResults = {
 				place: place,
 				pr_hist_min: plate["historical"]["prmin"],
 				pr_hist_mean: plate["historical"]["prmean"],
@@ -136,10 +179,12 @@ export default {
 				pr_2070_max: plate["2040-2069"]["prmax"],
 				pr_2100_min: plate["2070-2099"]["prmin"],
 				pr_2100_mean: plate["2070-2099"]["prmean"],
-				pr_2100_max: plate["2070-2099"]["prmax"]
+				pr_2100_max: plate["2070-2099"]["prmax"],
 			};
+
+			this.$store.commit("report/setResults", plateResults);
 		}
-	}
+	},
 };
 </script>
 
