@@ -13,7 +13,7 @@
         >&deg;C</span
       ></span
     ><span class="units" v-if="variable == 'pr'"
-      ><span v-if="units == 'imperial' && type == 'heavy'">(in)</span
+      >&#8239;<span v-if="units == 'imperial' && type == 'heavy'">(in)</span
       ><span
         v-if="units == 'imperial' && type == 'light'"
         :class="{ light: type == 'light' }"
@@ -33,24 +33,24 @@
 }
 </style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
-  name: 'UnitWidget',
+  name: "UnitWidget",
   props: {
     variable: {
       type: String,
-      default: 'temp', // or pr for precip
+      default: "temp", // or pr for precip
     },
     // Type can be "light" (no parentheses) or "heavy" (parens).
     type: {
       type: String,
-      default: 'light',
+      default: "light",
     },
   },
   computed: {
     ...mapGetters({
-      units: 'report/units',
+      units: "report/units",
     }),
   },
-}
+};
 </script>

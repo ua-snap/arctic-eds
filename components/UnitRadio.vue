@@ -1,5 +1,5 @@
 <template>
-  <div> 
+  <div>
     <p>
       You can display this table in Imperial or Metric units.
     </p>
@@ -16,24 +16,34 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-	name: "UnitRadio",
-  props: ['type'],
+  name: "UnitRadio",
+  props: ["type"],
   data() {
-		return {
-			radioUnits: 'metric'
-		};
-	},
-	watch: {
-		radioUnits: function () {
-      if (this.radioUnits == 'metric') {
-        this.$store.commit('report/setMetric');
-				this.$store.commit('report/convertUnits', this.type);
+    return {
+      radioUnits: this.storeRadioUnits,
+    };
+  },
+  computed: {
+    ...mapGetters({
+      storeRadioUnits: "report/units",
+    }),
+  },
+  mounted() {
+    this.radioUnits = this.storeRadioUnits;
+  },
+  watch: {
+    radioUnits: function() {
+      if (this.radioUnits == "metric") {
+        this.$store.commit("report/setMetric");
+        this.$store.commit("report/convertUnits", this.type);
       } else {
-        this.$store.commit('report/setImperial');
-				this.$store.commit('report/convertUnits', this.type);
+        this.$store.commit("report/setImperial");
+        this.$store.commit("report/convertUnits", this.type);
       }
-    }
-	}
-}
+    },
+  },
+};
 </script>

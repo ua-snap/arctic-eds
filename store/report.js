@@ -8,7 +8,7 @@ export default {
 			placeID: undefined,
 			reportIsVisible: false,
 			results: {},
-			units: 'metric'
+			units: 'imperial'
 		};
 	},
 	getters: {
@@ -64,16 +64,17 @@ export default {
 					});
 				}
 			} else {
+				// Precipitation
 				if (state.units == 'metric') {
 					Object.keys(state.results).forEach(key => {
 						if (key != 'place') {
-							state.results[key] = (state.results[key] * 25.4);
+							state.results[key] = (state.results[key] * 25.4).toFixed(0);
 						}
 					});
 				} else {
 					Object.keys(state.results).forEach(key => {
 						if (key != 'place') {
-							state.results[key] = (state.results[key] / 25.4);
+							state.results[key] = (state.results[key] / 25.4).toFixed(1);
 						}
 					});
 				}
