@@ -5,7 +5,9 @@
     </div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
-      <component :is="legend"></component>
+      <template v-slot:legend>
+        <component :is="legend"></component>
+      </template>
     </Plate>
 
     <div class="container">
@@ -51,9 +53,9 @@ export default {
   mounted() {
     // Wire up click handler
     this.$store.commit("map/addLayerEventHandler", {
-			event: "click",
-			handler: this.handleMapClick
-		});
+      event: "click",
+      handler: this.handleMapClick
+    });
 
     // Listen for valid lat/lng, handle.
     this.$on("ValidLatLng", function(latLng) {

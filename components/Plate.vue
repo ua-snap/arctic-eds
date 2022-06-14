@@ -5,12 +5,14 @@
 				:class="{ hide: layers.length == 1 }"
 				class="column is-one-quarter"
 			>
-				<LayerList :layers="layers" />
+				<slot name="layers">
+					<LayerList :layers="layers" />
+				</slot>
 			</div>
 			<div class="column">
 				<Map />
 				<!-- Legend slot -->
-				<slot />
+				<slot name="legend" />
 			</div>
 		</div>
 	</div>

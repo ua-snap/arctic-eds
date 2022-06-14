@@ -1,22 +1,27 @@
 <template>
   <div>
-    <span v-if="active">&#10003;&nbsp;</span>
-    <span
-      class="map--layer"
-      :class="{ active: active }"
-      @click="toggleLayer"
-      v-html="layer.title"
-    >
+    <span class="map--layer" :class="{ active: active }">
+      <span v-if="active">&#10003;&nbsp;</span>
+      <span @click="toggleLayer" v-html="layer.title"> </span>
     </span>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .map--layer {
+  display: inline-block;
+  line-height: 1;
+  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
   cursor: pointer;
+  border-radius: 0.25rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
 
   &.active {
-    font-weight: 700;
+    font-weight: 900;
+    background-color: #fcfa88;
   }
 }
 </style>
