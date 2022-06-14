@@ -35,6 +35,11 @@ function getBaseMapAndLayers() {
 		}
 	);
 
+	// // Set maximum bounds of main map
+	let southWest = L.latLng("50", "-175");
+	let northEast = L.latLng("65", "-98");
+	let bounds = L.latLngBounds(southWest, northEast);
+
 	// Map base configuration
 	var config = {
 		zoom: 1,
@@ -48,6 +53,7 @@ function getBaseMapAndLayers() {
 		doubleClickZoom: false,
 		attributionControl: false,
 		layers: [baseLayer],
+		maxBounds: bounds
 	};
 
 	return config;
