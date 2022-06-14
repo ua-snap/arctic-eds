@@ -2,36 +2,36 @@
   <div class="map--legend" v-if="activeLayerId">
 		<LegendItem>
 	      <template v-slot:title>
-					<p v-show="activeLayerId.includes('_annual_mean_temp')">
-	          Mean annual temperature
+					<p v-show="activeLayerId.includes('_annual_mean_')">
+	          Annual mean temperature
 	        </p>
-					<p v-show="activeLayerId.includes('jan_min_')">
+					<p v-show="activeLayerId.includes('_january_min')">
 	          January minimum temperature
 	        </p>
-					<p v-show="activeLayerId.includes('july_min_')">
+					<p v-show="activeLayerId.includes('_july_min')">
 	          July minimum temperature
 	        </p>
-					<p v-show="activeLayerId.includes('jan_max_')">
+					<p v-show="activeLayerId.includes('_january_max')">
 	          January maximum temperature
 	        </p>
-					<p v-show="activeLayerId.includes('july_max_')">
+					<p v-show="activeLayerId.includes('_july_max')">
 	          July maximum temperature
 	        </p>
 				</template>
 	      <template v-slot:introduction>
 	        <p v-show="activeLayerId.includes('_annual_mean_temp')">
-	          This layer shows the mean annual temperature across Alaska.
+	          This layer shows the annual mean temperature across Alaska.
 	        </p>
-					<p v-show="activeLayerId.includes('jan_min_')">
+					<p v-show="activeLayerId.includes('_january_min')">
 	          This layer shows the minimum January temperature across Alaska.
 	        </p>
-					<p v-show="activeLayerId.includes('july_min_')">
+					<p v-show="activeLayerId.includes('_july_min')">
 	          This layer shows the minimum July temperature across Alaska.
 	        </p>
-					<p v-show="activeLayerId.includes('jan_max_')">
+					<p v-show="activeLayerId.includes('_january_max')">
 	          This layer shows the maximum January temperature across Alaska.
 	        </p>
-					<p v-show="activeLayerId.includes('july_max_')">
+					<p v-show="activeLayerId.includes('_july_max')">
 	          This layer shows the maximum July temperature across Alaska.
 	        </p>
 	      </template>

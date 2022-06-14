@@ -50,10 +50,10 @@ export default {
   },
   mounted() {
     // Wire up click handler
-    this.$store.commit("map/addEventHandler", {
-      event: "click",
-      handler: this.handleMapClick
-    });
+    this.$store.commit("map/addLayerEventHandler", {
+			event: "click",
+			handler: this.handleMapClick
+		});
 
     // Listen for valid lat/lng, handle.
     this.$on("ValidLatLng", function(latLng) {

@@ -1,4 +1,6 @@
 import _ from "lodash";
+import ak from "!raw-loader!../assets/alaska.geojson";
+const akJson = JSON.parse(ak);
 
 // This needs to be outside of the Store or there's problems
 // because Leaflet mutates the state of the map, and Vuex
@@ -14,7 +16,10 @@ function getBaseMapAndLayers() {
 		srs: "EPSG:3338",
 		format: "image/png",
 		version: "1.3.0",
-		layers: ["atlas_mapproxy:alaska_osm_retina"],
+		layers: [
+			"atlas_mapproxy:alaska_osm_retina",
+			"ak_shadow_mask:ak_symmetric_difference",
+		],
 	});
 
 	// Projection definition.
@@ -59,7 +64,7 @@ export default {
 			latLng: {
 				lat: undefined,
 				lng: undefined,
-			}
+			},
 		};
 	},
 
@@ -68,11 +73,11 @@ export default {
 			return state.latLng;
 		},
 		places(state) {
-			return state.places
+			return state.places;
 		},
 		getActiveLayer(state) {
 			return state.layer;
-		}
+		},
 	},
 
 	mutations: {
@@ -83,9 +88,9 @@ export default {
 		destroy(state) {
 			map.remove();
 			state.layer = undefined;
-			state.latLng = { 
-				lat: undefined, 
-				lng: undefined 
+			state.latLng = {
+				lat: undefined,
+				lng: undefined,
 			};
 		},
 		toggleLayer(state, layer) {
@@ -124,17 +129,20 @@ export default {
 					? process.env.rasdamanUrl
 					: process.env.geoserverUrl;
 
-			layerObject = L.tileLayer.wms(
-				wmsUrl,
-				layerConfiguration
-			);
+			layerObject = L.tileLayer.wms(wmsUrl, layerConfiguration);
 
 			map.addLayer(layerObject);
 		},
-		addEventHandler(state, handler) {
-			// Attach an event listener to the map.
-			// Listener should be an object with two elements,
-			map.on(handler.event, handler.handler);
+		addLayerEventHandler(state, handler) {
+			L.geoJSON(akJson, {
+				onEachFeature: function(feature, layer) {
+					layer.on(handler.event, handler.handler);
+				},
+				style: {
+					opacity: 0.0,
+					fillOpacity: 0.0,
+				},
+			}).addTo(map);
 		},
 		setLatLng(state, latLng) {
 			// latLng is an object with lat / lng properties.
@@ -143,5 +151,18 @@ export default {
 				lng: latLng.lng.toFixed(4),
 			};
 		},
-	}
+	},
+	actions: {
+		async fetchPlaces(context) {
+			// If we've already fetched this, don't do that again.
+			if (context.state.places) {
+				return;
+			}
+
+			// TODO: add error handling here for 404 (no data) etc.
+			let queryUrl = process.env.apiUrl + "/places/communities";
+			let places = await this.$http.$get(queryUrl);
+			context.commit("setPlaces", places);
+		},
+	},
 };

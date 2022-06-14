@@ -42,7 +42,7 @@ export default {
 	},
 	mounted() {
 		// Wire up click handler
-		this.$store.commit("map/addEventHandler", {
+		this.$store.commit("map/addLayerEventHandler", {
 			event: "click",
 			handler: this.handleMapClick
 		});
