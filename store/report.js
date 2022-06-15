@@ -38,6 +38,8 @@ export default {
 				}
 				throw 'Could not find the community by ID.'
 			}
+
+			return {lat: undefined, lng: undefined}
 		},
 		placeName(state) {
 			return state.placeName;
@@ -76,8 +78,7 @@ export default {
 						path:
 							fullPath +
 							'/report/community/' +
-							state.placeID,
-							hash: '#results'
+							state.placeID
 					})
 				} else {
 					this.$router.push({
@@ -86,13 +87,18 @@ export default {
 							'/report/' +
 							state.latLng.lat +
 							'/' +
-							state.latLng.lng,
-							hash: '#results'
+							state.latLng.lng
 					})
 				}
 			}
 		},
-		closeReport(state) {
+		closeReport(state, fullPath) {
+			if (fullPath.includes("report")) {
+				let pathArray = fullPath.split('/report')
+				this.$router.push({
+					path: fullPath.split('/report')[0]
+				})
+			}
 			state.placeName = undefined;
 			state.placeID = undefined;
 			state.reportIsVisible = false;

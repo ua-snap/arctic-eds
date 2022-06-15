@@ -2,7 +2,7 @@
 	<div>
 		<div v-if="state && state.pending">
 			<!-- Drama dots -->
-			<h4 class="title is-5">Loading data for {{ placeName ? placeName : latLng.lat + ', ' + latLng.lng }}&hellip;</h4>
+			<h4 class="title is-5">Loading data for {{ latLng != undefined && placeName ? placeName : latLng.lat + ', ' + latLng.lng }}&hellip;</h4>
 			<b-progress type="is-info"></b-progress>
 		</div>
 
@@ -36,7 +36,7 @@ export default {
 	},
 	methods: {
 		close() {
-			this.$store.commit("report/closeReport");
+			this.$store.commit("report/closeReport", this.$route.fullPath);
 		}
 	}
 };

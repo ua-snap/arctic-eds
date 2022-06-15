@@ -4,7 +4,7 @@
 		<hr />
 		<LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending && !$fetchState.error">
+		<div v-if="!$fetchState.pending && !$fetchState.error && Object.keys(results).length > 0">
 			<h3 class="title is-3">
 				Snowfall Equivalent data for {{ results.place }}
 			</h3>
@@ -124,7 +124,8 @@ export default {
 		},
 	},
 	async fetch() {
-		if (this.latLng.lat && this.latLng.lng) {
+		if (this.latLng != undefined) {
+			if (this.latLng.lat && this.latLng.lng) {
 			let url = process.env.apiUrl +
 					"/mmm/snow/snowfallequivalent/hp/" +
 					this.latLng.lat +
@@ -148,6 +149,7 @@ export default {
 				sfe_proj_max: this.results["projected"]["sfemax"],
 			};
 			this.$store.commit("report/setResults", plateResults);
+		}
 		}
 	},
 };

@@ -60,7 +60,7 @@ export default {
 		});
 
 		// Listen for valid lat/lng, handle.
-		if (this.latLng) {
+		if (this.latLng.lat) {
 			this.activateReport(this.latLng);
 		};
 	},
