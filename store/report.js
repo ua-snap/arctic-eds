@@ -41,11 +41,28 @@ export default {
 
 			return {lat: undefined, lng: undefined}
 		},
-		placeName(state) {
-			return state.placeName;
+		placeName(state, getters, rootState) {
+			if (rootState.route.params.communityId) {
+				let place = _.find(state.places, {
+					id: rootState.route.params.communityId,
+				})
+				if (place) {
+					let placeName = place.name + ", " + place.region
+					if (place.alt_name) {
+						placeName = place.name + " (" + place.alt_name + "), " + place.region;
+					}
+					return placeName;
+				}
+			}
+			return undefined;
+			// return state.placeName;
 		},
-		placeID(state) {
-			return state.placeID;
+		placeID(state, getters, rootState) {
+			if (rootState.route.params.communityId) {
+				return rootState.route.params.communityId;
+			}
+			return undefined;
+			// return state.placeID;
 		},
 		reportIsVisible(state) {
 			return state.reportIsVisible;
