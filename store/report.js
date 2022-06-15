@@ -166,6 +166,8 @@ export default {
 			state.results = results;
 		},
 		setPlaceID(state, id) {
+			// This is only used when originally setting the
+			// placeID for the purpose of Vue routing.
 			state.placeID = id;
 		},
 		setPlaces(state, places) {
