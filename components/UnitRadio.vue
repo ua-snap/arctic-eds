@@ -37,8 +37,10 @@ export default {
   watch: {
     radioUnits: function() {
       if (this.radioUnits == "metric") {
-        this.$store.commit("report/setMetric");
-        this.$store.commit("report/convertUnits", this.type);
+        if (this.storeRadioUnits != "metric") {
+          this.$store.commit("report/setMetric");
+          this.$store.commit("report/convertUnits", this.type);
+        }
       } else {
         this.$store.commit("report/setImperial");
         this.$store.commit("report/convertUnits", this.type);
