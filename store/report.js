@@ -4,7 +4,6 @@ export default {
 	state() {
 		return {
 			places: undefined,
-			placeName: undefined,
 			placeID: undefined,
 			reportIsVisible: false,
 			results: {},
@@ -36,7 +35,6 @@ export default {
 					let latLng = {lat: place.latitude, lng: place.longitude}
 					return latLng;
 				}
-				throw 'Could not find the community by ID.'
 			}
 
 			return {lat: undefined, lng: undefined}
@@ -87,8 +85,10 @@ export default {
 		},
 		openReport(state, fullPath) {
 			state.reportIsVisible = true;
+
+			// Check if URL contains report before pushing again
 			if (!fullPath.includes("report")) {
-				if (state.placeName) {
+				if (state.placeID) {
 					this.$router.push({
 						path:
 							fullPath +
@@ -108,8 +108,12 @@ export default {
 			}
 		},
 		closeReport(state, fullPath) {
+			// Ensure that report is in URL before attempting
+			// to remove it.
 			if (fullPath.includes("report")) {
 				let pathArray = fullPath.split('/report')
+
+				// Router push to base URL of plate
 				this.$router.push({
 					path: fullPath.split('/report')[0]
 				})
@@ -126,12 +130,14 @@ export default {
 		convertUnits(state, type) {
 			if (type == 'temperature') {
 				if (state.units == 'metric') {
+					// Celsius
 					Object.keys(state.results).forEach(key => {
 						if (key != 'place') {
 							state.results[key] = ((state.results[key] - 32) * (5/9)).toFixed(1);
 						}
 					});
 				} else {
+					// Fahrenheit
 					Object.keys(state.results).forEach(key => {
 						if (key != 'place') {
 							state.results[key] = ((state.results[key] * (9/5)) + 32).toFixed(1);
@@ -139,14 +145,15 @@ export default {
 					});
 				}
 			} else {
-				// Precipitation
 				if (state.units == 'metric') {
+					// Millimeters 
 					Object.keys(state.results).forEach(key => {
 						if (key != 'place') {
 							state.results[key] = (state.results[key] * 25.4).toFixed(0);
 						}
 					});
 				} else {
+					// Inches
 					Object.keys(state.results).forEach(key => {
 						if (key != 'place') {
 							state.results[key] = (state.results[key] / 25.4).toFixed(1);
@@ -158,9 +165,6 @@ export default {
 		setResults(state, results) {
 			state.results = results;
 		},
-		setPlaceName(state, name) {
-			state.placeName = name;
-		},
 		setPlaceID(state, id) {
 			state.placeID = id;
 		},
@@ -169,6 +173,8 @@ export default {
 		},
 		setLatLng(state, latLng) {
 			// latLng is an object with lat / lng properties.
+			// This is only used when originally setting the
+			// latLng for the purpose of Vue routing. 
 			state.latLng = {
 				lat: latLng.lat.toFixed(4),
 				lng: latLng.lng.toFixed(4),

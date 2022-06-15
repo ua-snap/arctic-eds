@@ -94,13 +94,6 @@ export default {
           lng: selected.longitude
         };
 
-        let placeName = selected.name + ", " + selected.region
-        if (selected.alt_name) {
-          placeName = selected.name + " (" + selected.alt_name + "), " + selected.region;
-        }
-
-        this.$store.commit("report/setPlaceName", placeName);
-
         this.$store.commit("report/setPlaceID", selected.id);
 
         this.$store.commit("report/setLatLng", latLng);
