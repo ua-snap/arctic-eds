@@ -46,7 +46,12 @@
 </style>
 <script>
 export default {
+<<<<<<< HEAD
   name: 'Physiography',
   layout: 'beta',
 }
+=======
+    layout: "content",
+};
+>>>>>>> Adds the climate info page
 </script>

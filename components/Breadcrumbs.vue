@@ -47,19 +47,17 @@ export default {
     },
     plate: function () {
       // Handle custom names independent of route
-      if (this.$route.path.split('/').length > 2) {
-        let plate = _.slice(this.$route.path.split('/'), 2)[0]
-        plate = plate.replace(/-/g, ' ')
-        switch (plate) {
-          case 'physiography':
-            return 'Physiographic Provinces'
-          case 'beta':
-            return false
-          default:
-            if (plate) return plate
-        }
-      } else {
-        return false
+      let plate = _.slice(this.$route.path.split('/'), -1)[0]
+      plate = plate.replace(/-/g, ' ')
+      switch (plate) {
+        case 'physiography':
+          return 'Physiographic Provinces'
+        case 'beta':
+          return false
+        case 'climate modeling':
+          return false
+        default:
+          if (plate) return plate
       }
     },
   },
