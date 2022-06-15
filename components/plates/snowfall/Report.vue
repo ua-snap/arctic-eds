@@ -125,7 +125,6 @@ export default {
 	},
 	async fetch() {
 		if (this.latLng.lat && this.latLng.lng) {
-			console.log(this.latLng)
 			let url = process.env.apiUrl +
 					"/mmm/snow/snowfallequivalent/hp/" +
 					this.latLng.lat +

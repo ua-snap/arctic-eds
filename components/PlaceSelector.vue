@@ -105,7 +105,7 @@ export default {
 
         this.$store.commit("report/setLatLng", latLng);
 
-        this.$parent.$emit("ValidLatLng", latLng);
+        this.$store.commit("report/openReport", this.$route.fullPath);
       }
     },
   },

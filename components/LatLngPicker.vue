@@ -76,7 +76,9 @@ export default {
 		},
 		processClick() {
 			if (this.isValid) {
-				this.$parent.$emit("ValidLatLng", this.latLng);
+				this.$store.commit("report/setLatLng", this.latLng);
+
+        this.$store.commit("report/openReport", this.$route.fullPath);
 			}
 		}
 	}

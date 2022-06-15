@@ -86,7 +86,8 @@ export default {
 							'/report/' +
 							state.latLng.lat +
 							'/' +
-							state.latLng.lng
+							state.latLng.lng,
+							hash: '#results'
 					})
 				}
 			}
