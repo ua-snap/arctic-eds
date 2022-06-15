@@ -60,90 +60,112 @@ export default {
       routes.push({
         path: '/physiography/geology/report/community/:communityId',
         component: resolve(__dirname, 'pages/physiography/geology'),
+        name: 'physiography-geology-community'
       })
       routes.push({
         path: '/physiography/geology/report/:lat/:lng',
         component: resolve(__dirname, 'pages/physiography/geology'),
+        name: 'physiography-geology-lat-lng'
       })
       routes.push({
         path: '/physiography/permafrost/report/community/:communityId',
         component: resolve(__dirname, 'pages/physiography/permafrost'),
+        name: 'physiography-permafrost-community'
       })
       routes.push({
         path: '/physiography/permafrost/report/:lat/:lng',
         component: resolve(__dirname, 'pages/physiography/permafrost'),
+        name: 'physiography-permafrost-lat-lng'
       })
       routes.push({
         path: '/physiography/physiography/report/community/:communityId',
         component: resolve(__dirname, 'pages/physiography/physiography'),
+        name: 'physiography-physiography-community'
       })
       routes.push({
         path: '/physiography/physiography/report/:lat/:lng',
         component: resolve(__dirname, 'pages/physiography/physiography'),
+        name: 'physiography-physiography-lat-lng'
       })
       routes.push({
         path: '/climate/precipitation/report/community/:communityId',
         component: resolve(__dirname, 'pages/climate/precipitation'),
+        name: 'climate-precipitation-community'
       })
       routes.push({
         path: '/climate/precipitation/report/:lat/:lng',
         component: resolve(__dirname, 'pages/climate/precipitation'),
+        name: 'climate-precipitation-lat-lng'
       })
       routes.push({
         path: '/climate/snowfall/report/community/:communityId',
         component: resolve(__dirname, 'pages/climate/snowfall'),
+        name: 'climate-snowfall-community'
       })
       routes.push({
         path: '/climate/snowfall/report/:lat/:lng',
         component: resolve(__dirname, 'pages/climate/snowfall'),
+        name: 'climate-snowfall-lat-lng'
       })
       routes.push({
         path: '/climate/temperature/report/community/:communityId',
         component: resolve(__dirname, 'pages/climate/temperature'),
+        name: 'climate-temperature-community'
       })
       routes.push({
         path: '/climate/temperature/report/:lat/:lng',
         component: resolve(__dirname, 'pages/climate/temperature'),
+        name: 'climate-temperature-lat-lng'
       })
       routes.push({
         path: '/engineering/freezing-index/report/community/:communityId',
         component: resolve(__dirname, 'pages/engineering/freezing-index'),
+        name: 'engineering-freezing-community'
       })
       routes.push({
         path: '/engineering/freezing-index/report/:lat/:lng',
         component: resolve(__dirname, 'pages/engineering/freezing-index'),
+        name: 'engineering-freezing-lat-lng'
       })
       routes.push({
         path: '/engineering/design-freezing-index/report/community/:communityId',
         component: resolve(__dirname, 'pages/engineering/design-freezing-index'),
+        name: 'engineering-design-freezing-community'
       })
       routes.push({
         path: '/engineering/design-freezing-index/report/:lat/:lng',
         component: resolve(__dirname, 'pages/engineering/design-freezing-index'),
+        name: 'engineering-design-freezing-lat-lng'
       })
       routes.push({
         path: '/engineering/thawing-index/report/community/:communityId',
         component: resolve(__dirname, 'pages/engineering/thawing-index'),
+        name: 'engineering-thawing-community'
       })
       routes.push({
         path: '/engineering/thawing-index/report/:lat/:lng',
         component: resolve(__dirname, 'pages/engineering/thawing-index'),
+        name: 'engineering-thawing-lat-lng'
       })
       routes.push({
         path: '/engineering/design-thawing-index/report/community/:communityId',
         component: resolve(__dirname, 'pages/engineering/design-thawing-index'),
+        name: 'engineering-design-thawing-community'
       })
       routes.push({
         path: '/engineering/design-thawing-index/report/:lat/:lng',
         component: resolve(__dirname, 'pages/engineering/design-thawing-index'),
+        name: 'engineering-design-thawing-lat-lng'
       })
       routes.push({
         path: '/engineering/heating-degree-days/report/community/:communityId',
         component: resolve(__dirname, 'pages/engineering/heating-degree-days'),
+        name: 'engineering-heating-degree-days-community'
       })
       routes.push({
         path: '/engineering/heating-degree-days/report/:lat/:lng',
         component: resolve(__dirname, 'pages/engineering/heating-degree-days'),
+        name: 'engineering-heating-degree-days-lat-lng'
       })
     }
   }
