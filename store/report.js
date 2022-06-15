@@ -8,7 +8,7 @@ export default {
 			placeID: undefined,
 			reportIsVisible: false,
 			results: {},
-			units: 'imperial',
+			units: 'metric',
 			// Currently active/clicked location
 			latLng: {
 				lat: undefined,
@@ -55,14 +55,12 @@ export default {
 				}
 			}
 			return undefined;
-			// return state.placeName;
 		},
 		placeID(state, getters, rootState) {
 			if (rootState.route.params.communityId) {
 				return rootState.route.params.communityId;
 			}
 			return undefined;
-			// return state.placeID;
 		},
 		reportIsVisible(state) {
 			return state.reportIsVisible;

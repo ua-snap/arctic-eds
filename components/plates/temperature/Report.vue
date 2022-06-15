@@ -4,7 +4,7 @@
 		<hr />
 		<LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending && !$fetchState.error">
+		<div v-if="!$fetchState.pending && !$fetchState.error && Object.keys(results).length > 0">
 			<h3 class="title is-3">Temperature data for {{ results.place }}</h3>
 
 			<MiniMap />
@@ -13,7 +13,7 @@
 				Temperature
 			</h4>
 
-			<UnitRadio />
+			<UnitRadio type="temperature" />
 
 			<table class="table">
 				<thead>
@@ -142,12 +142,6 @@ export default {
 		UnitWidget,
 		UnitRadio,
 	},
-	data() {
-		return {
-			radioUnits: "metric",
-		};
-	},
-
 	computed: {
 		state: function() {
 			return this.$fetchState;
@@ -155,82 +149,76 @@ export default {
 		...mapGetters({
 			results: "report/results",
 			placeName: "report/placeName",
-			latLng: "report/latLng",
+			reportIsVisible: "report/reportIsVisible",
+			latLng: "report/latLng"
 		}),
 	},
 
 	watch: {
-		latLng: function() {
+		reportIsVisible: function() {
 			this.$fetch();
-		},
-		radioUnits: function() {
-			if (this.radioUnits == "metric") {
-				this.$store.commit("report/setMetric");
-				this.$store.commit("report/convertUnits", "temperature");
-			} else {
-				this.$store.commit("report/setImperial");
-				this.$store.commit("report/convertUnits", "temperature");
-			}
-		},
-	},
-	async fetch() {
-		if (this.latLng.lat && this.latLng.lng) {
-			let plate = await this.$axios.$get(
-				process.env.apiUrl +
-					"/eds/temperature/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng
-			);
-
-			let place = this.latLng.lat + ", " + this.latLng.lng;
-			if (this.placeName) {
-				place = this.placeName;
-			}
-
-			let plateResults = {
-				place: place,
-				hist_min: plate["historical"]["all"]["tasmin"],
-				hist_mean: plate["historical"]["all"]["tasmean"],
-				hist_max: plate["historical"]["all"]["tasmax"],
-				jan_hist_min: plate["historical"]["jan"]["tasmin"],
-				jan_hist_mean: plate["historical"]["jan"]["tasmean"],
-				jan_hist_max: plate["historical"]["jan"]["tasmax"],
-				july_hist_min: plate["historical"]["july"]["tasmin"],
-				july_hist_mean: plate["historical"]["july"]["tasmean"],
-				july_hist_max: plate["historical"]["july"]["tasmax"],
-				temp_2040_min: plate["2010-2039"]["all"]["tasmin"],
-				temp_2040_mean: plate["2010-2039"]["all"]["tasmean"],
-				temp_2040_max: plate["2010-2039"]["all"]["tasmax"],
-				jan_2040_min: plate["2010-2039"]["jan"]["tasmin"],
-				jan_2040_mean: plate["2010-2039"]["jan"]["tasmean"],
-				jan_2040_max: plate["2010-2039"]["jan"]["tasmax"],
-				july_2040_min: plate["2010-2039"]["july"]["tasmin"],
-				july_2040_mean: plate["2010-2039"]["july"]["tasmean"],
-				july_2040_max: plate["2010-2039"]["july"]["tasmax"],
-				temp_2070_min: plate["2040-2069"]["all"]["tasmin"],
-				temp_2070_mean: plate["2040-2069"]["all"]["tasmean"],
-				temp_2070_max: plate["2040-2069"]["all"]["tasmax"],
-				jan_2070_min: plate["2040-2069"]["jan"]["tasmin"],
-				jan_2070_mean: plate["2040-2069"]["jan"]["tasmean"],
-				jan_2070_max: plate["2040-2069"]["jan"]["tasmax"],
-				july_2070_min: plate["2040-2069"]["july"]["tasmin"],
-				july_2070_mean: plate["2040-2069"]["july"]["tasmean"],
-				july_2070_max: plate["2040-2069"]["july"]["tasmax"],
-				temp_2100_min: plate["2070-2099"]["all"]["tasmin"],
-				temp_2100_mean: plate["2070-2099"]["all"]["tasmean"],
-				temp_2100_max: plate["2070-2099"]["all"]["tasmax"],
-				jan_2100_min: plate["2070-2099"]["jan"]["tasmin"],
-				jan_2100_mean: plate["2070-2099"]["jan"]["tasmean"],
-				jan_2100_max: plate["2070-2099"]["jan"]["tasmax"],
-				july_2100_min: plate["2070-2099"]["july"]["tasmin"],
-				july_2100_mean: plate["2070-2099"]["july"]["tasmean"],
-				july_2100_max: plate["2070-2099"]["july"]["tasmax"],
-			};
-
-			this.$store.commit("report/setResults", plateResults);
 		}
 	},
+	async fetch() {
+		if (this.latLng != undefined) {
+			if (this.latLng.lat && this.latLng.lng) {
+				let url = process.env.apiUrl +
+						"/eds/temperature/" +
+						this.latLng.lat +
+						"/" +
+						this.latLng.lng;
+
+				await this.$store.dispatch("report/apiFetch", url);
+
+				let place = this.latLng.lat + ", " + this.latLng.lng;
+				if (this.placeName) {
+					place = this.placeName;
+				}
+
+				let plateResults = {
+					place: place,
+					hist_min: this.results["historical"]["all"]["tasmin"],
+					hist_mean: this.results["historical"]["all"]["tasmean"],
+					hist_max: this.results["historical"]["all"]["tasmax"],
+					jan_hist_min: this.results["historical"]["jan"]["tasmin"],
+					jan_hist_mean: this.results["historical"]["jan"]["tasmean"],
+					jan_hist_max: this.results["historical"]["jan"]["tasmax"],
+					july_hist_min: this.results["historical"]["july"]["tasmin"],
+					july_hist_mean: this.results["historical"]["july"]["tasmean"],
+					july_hist_max: this.results["historical"]["july"]["tasmax"],
+					temp_2040_min: this.results["2010-2039"]["all"]["tasmin"],
+					temp_2040_mean: this.results["2010-2039"]["all"]["tasmean"],
+					temp_2040_max: this.results["2010-2039"]["all"]["tasmax"],
+					jan_2040_min: this.results["2010-2039"]["jan"]["tasmin"],
+					jan_2040_mean: this.results["2010-2039"]["jan"]["tasmean"],
+					jan_2040_max: this.results["2010-2039"]["jan"]["tasmax"],
+					july_2040_min: this.results["2010-2039"]["july"]["tasmin"],
+					july_2040_mean: this.results["2010-2039"]["july"]["tasmean"],
+					july_2040_max: this.results["2010-2039"]["july"]["tasmax"],
+					temp_2070_min: this.results["2040-2069"]["all"]["tasmin"],
+					temp_2070_mean: this.results["2040-2069"]["all"]["tasmean"],
+					temp_2070_max: this.results["2040-2069"]["all"]["tasmax"],
+					jan_2070_min: this.results["2040-2069"]["jan"]["tasmin"],
+					jan_2070_mean: this.results["2040-2069"]["jan"]["tasmean"],
+					jan_2070_max: this.results["2040-2069"]["jan"]["tasmax"],
+					july_2070_min: this.results["2040-2069"]["july"]["tasmin"],
+					july_2070_mean: this.results["2040-2069"]["july"]["tasmean"],
+					july_2070_max: this.results["2040-2069"]["july"]["tasmax"],
+					temp_2100_min: this.results["2070-2099"]["all"]["tasmin"],
+					temp_2100_mean: this.results["2070-2099"]["all"]["tasmean"],
+					temp_2100_max: this.results["2070-2099"]["all"]["tasmax"],
+					jan_2100_min: this.results["2070-2099"]["jan"]["tasmin"],
+					jan_2100_mean: this.results["2070-2099"]["jan"]["tasmean"],
+					jan_2100_max: this.results["2070-2099"]["jan"]["tasmax"],
+					july_2100_min: this.results["2070-2099"]["july"]["tasmin"],
+					july_2100_mean: this.results["2070-2099"]["july"]["tasmean"],
+					july_2100_max: this.results["2070-2099"]["july"]["tasmax"],
+				};
+
+				this.$store.commit("report/setResults", plateResults);
+			}
+		}
+	}
 };
 </script>
 

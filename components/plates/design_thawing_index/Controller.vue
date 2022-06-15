@@ -52,7 +52,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      reportIsVisible: "report/reportIsVisible"
+      reportIsVisible: "report/reportIsVisible",
+			latLng: "report/latLng"
     })
   },
   mounted() {
@@ -62,17 +63,18 @@ export default {
       handler: this.handleMapClick
     });
 
-    // Listen for valid lat/lng, handle.
-    this.$on("ValidLatLng", function(latLng) {
-      this.activateReport(latLng);
-    });
+    if (this.latLng.lat && this.latLng.lng) {
+			this.activateReport(this.latLng);
+		};
   },
   methods: {
     handleMapClick: function(event) {
       this.activateReport(event.latlng);
     },
     activateReport: function(latLng) {
-      this.$store.commit("report/setLatLng", latLng);
+      if (typeof(latLng.lat) == 'number') {
+				this.$store.commit("report/setLatLng", latLng);
+			}
       this.$store.commit("report/openReport", this.$route.fullPath);
     }
   }

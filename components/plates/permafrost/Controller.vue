@@ -29,37 +29,39 @@ import layers from "~/components/plates/permafrost/layers";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "PermafrostController",
-  components: { Plate, PermafrostReport, PermafrostLegend, SearchControls },
-  data() {
-    return {
-      legend: PermafrostLegend,
-      layers: layers
-    };
-  },
-  computed: {
-    ...mapGetters({
-      reportIsVisible: "report/reportIsVisible"
-    })
-  },
-  mounted() {
-    // Wire up click handler
-    this.$store.commit("map/addLayerEventHandler", {
-      event: "click",
-      handler: this.handleMapClick
-    });
-
-		// Listen for valid lat/lng, handle.
-		this.$on("ValidLatLng", function(latLng) {
-			this.activateReport(latLng);
+	name: "PermafrostController",
+	components: { Plate, PermafrostReport, PermafrostLegend, SearchControls },
+	data() {
+		return {
+			legend: PermafrostLegend,
+			layers: layers
+		};
+	},
+	computed: {
+		...mapGetters({
+			reportIsVisible: "report/reportIsVisible",
+			latLng: "report/latLng"
+		})
+	},
+	mounted() {
+		// Wire up click handler
+		this.$store.commit("map/addLayerEventHandler", {
+			event: "click",
+			handler: this.handleMapClick
 		});
+
+		if (this.latLng.lat && this.latLng.lng) {
+			this.activateReport(this.latLng);
+		};
 	},
 	methods: {
 		handleMapClick: function(event) {
 			this.activateReport(event.latlng);
 		},
 		activateReport: function(latLng) {
-			this.$store.commit("report/setLatLng", latLng);
+			if (typeof(latLng.lat) == 'number') {
+				this.$store.commit("report/setLatLng", latLng);
+			}
       this.$store.commit("report/openReport", this.$route.fullPath);
 		}
 	}
