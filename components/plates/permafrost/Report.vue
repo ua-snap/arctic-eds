@@ -152,7 +152,6 @@ export default {
     ...mapGetters({
 			results: "report/results",
       placeName: "report/placeName",
-      reportIsVisible: "report/reportIsVisible",
       latLng: "report/latLng"
     })
   },
@@ -167,7 +166,7 @@ export default {
     }
   },
   watch: {
-    reportIsVisible: function() {
+    latLng: function() {
       this.$fetch();
     }
   },

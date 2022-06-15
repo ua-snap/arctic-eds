@@ -109,7 +109,7 @@ export default {
   },
 
   watch: {
-    reportIsVisible: function() {
+    latLng: function() {
       this.$fetch();
     }
   },

@@ -38,13 +38,12 @@ export default {
 		},
 		...mapGetters({
 			placeName: "report/placeName",
-			reportIsVisible: "report/reportIsVisible",
 			latLng: "report/latLng"
 		})
 	},
 
 	watch: {
-		reportIsVisible: function() {
+		latLng: function() {
 			this.$fetch();
 		}
 	},
