@@ -29,54 +29,58 @@ th {
 }
 </style>
 <script>
-import Plate from "~/components/Plate";
-import HeatingDegreeDaysLegend from "~/components/plates/heating_degree_days/Legend";
-import HeatingDegreeDaysReport from "~/components/plates/heating_degree_days/Report";
-import SearchControls from "~/components/SearchControls";
-import layers from "~/components/plates/heating_degree_days/layers";
-import { mapGetters } from "vuex";
+import Plate from '~/components/Plate'
+import HeatingDegreeDaysLegend from '~/components/plates/heating_degree_days/Legend'
+import HeatingDegreeDaysReport from '~/components/plates/heating_degree_days/Report'
+import SearchControls from '~/components/SearchControls'
+import layers from '~/components/plates/heating_degree_days/layers'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "HeatingDegreeDaysController",
+  name: 'HeatingDegreeDaysController',
   components: {
     Plate,
     HeatingDegreeDaysLegend,
     HeatingDegreeDaysReport,
-    SearchControls
+    SearchControls,
   },
   data() {
     return {
       legend: HeatingDegreeDaysLegend,
-      layers: layers
-    };
+      layers: layers,
+    }
   },
   computed: {
     ...mapGetters({
-      reportIsVisible: "report/reportIsVisible",
-			latLng: "report/latLng"
-    })
+      reportIsVisible: 'report/reportIsVisible',
+      isPlaceDefined: 'report/isPlaceDefined',
+    }),
   },
   mounted() {
-    // Wire up click handler
-    this.$store.commit("map/addLayerEventHandler", {
-      event: "click",
-      handler: this.handleMapClick
-    });
+    this.$store.commit('map/addLayerEventHandler', {
+      event: 'click',
+      handler: this.handleMapClick,
+    })
 
-    if (this.latLng.lat && this.latLng.lng) {
-			this.activateReport(this.latLng);
-		};
+    if (this.isPlaceDefined) {
+      this.activateReport()
+    }
   },
   methods: {
-    handleMapClick: function(event) {
-      this.activateReport(event.latlng);
+    handleMapClick: function (event) {
+      this.$router.push({
+        path:
+          this.$route.path +
+          '/report/' +
+          event.latlng.lat.toFixed(4) +
+          '/' +
+          event.latlng.lng.toFixed(4),
+        hash: '#report',
+      })
     },
-    activateReport: function(latLng) {
-      if (typeof(latLng.lat) == 'number') {
-				this.$store.commit("report/setLatLng", latLng);
-			}
-      this.$store.commit("report/openReport", this.$route.fullPath);
-    }
-  }
-};
+    activateReport: function () {
+      this.$store.commit('report/openReport')
+    },
+  },
+}
 </script>

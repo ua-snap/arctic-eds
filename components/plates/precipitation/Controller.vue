@@ -29,50 +29,58 @@ th {
 }
 </style>
 <script>
-import Plate from "~/components/Plate";
-import PrecipitationLegend from "~/components/plates/precipitation/Legend";
-import PrecipitationReport from "~/components/plates/precipitation/Report";
-import layers from "~/components/plates/precipitation/layers";
-import SearchControls from "~/components/SearchControls";
-import { mapGetters } from "vuex";
+import Plate from '~/components/Plate'
+import PrecipitationLegend from '~/components/plates/precipitation/Legend'
+import PrecipitationReport from '~/components/plates/precipitation/Report'
+import layers from '~/components/plates/precipitation/layers'
+import SearchControls from '~/components/SearchControls'
+import { mapGetters } from 'vuex'
 
 export default {
-	name: "PrecipitationController",
-	components: { Plate, PrecipitationLegend, PrecipitationReport, SearchControls },
-	data() {
-		return {
-			legend: PrecipitationLegend,
-			layers: layers
-		};
-	},
-	computed: {
-		...mapGetters({
-			reportIsVisible: "report/reportIsVisible",
-			latLng: "report/latLng"
-		})
-	},
-	mounted() {
-		// Wire up click handler
-		this.$store.commit("map/addLayerEventHandler", {
-			event: "click",
-			handler: this.handleMapClick
-		});
+  name: 'PrecipitationController',
+  components: {
+    Plate,
+    PrecipitationLegend,
+    PrecipitationReport,
+    SearchControls,
+  },
+  data() {
+    return {
+      legend: PrecipitationLegend,
+      layers: layers,
+    }
+  },
+  computed: {
+    ...mapGetters({
+      reportIsVisible: 'report/reportIsVisible',
+      isPlaceDefined: 'report/isPlaceDefined',
+    }),
+  },
+  mounted() {
+    this.$store.commit('map/addLayerEventHandler', {
+      event: 'click',
+      handler: this.handleMapClick,
+    })
 
-		// Listen for valid lat/lng, handle.
-		if (this.latLng.lat && this.latLng.lng) {
-			this.activateReport(this.latLng);
-		};
-	},
-	methods: {
-		handleMapClick: function(event) {
-			this.activateReport(event.latlng);
-		},
-		activateReport: function(latLng) {
-			if (typeof(latLng.lat) == 'number') {
-				this.$store.commit("report/setLatLng", latLng);
-			}
-      this.$store.commit("report/openReport", this.$route.fullPath);
-		}
-	}
-};
+    if (this.isPlaceDefined) {
+      this.activateReport()
+    }
+  },
+  methods: {
+    handleMapClick: function (event) {
+      this.$router.push({
+        path:
+          this.$route.path +
+          '/report/' +
+          event.latlng.lat.toFixed(4) +
+          '/' +
+          event.latlng.lng.toFixed(4),
+        hash: '#report',
+      })
+    },
+    activateReport: function () {
+      this.$store.commit('report/openReport')
+    },
+  },
+}
 </script>

@@ -2,9 +2,7 @@
   <div class="place-selector--wrapper">
     <div class="content">
       <h4 class="title is-5">Find a place by name</h4>
-      <p>
-        Search below by <strong>community name</strong>:
-      </p>
+      <p>Search below by <strong>community name</strong>:</p>
       <p>
         <b-field>
           <b-autocomplete
@@ -83,22 +81,16 @@ export default {
       }
     },
     ...mapGetters({
-      places: 'report/places'
+      places: 'report/places',
     }),
   },
   watch: {
     selected: function (selected) {
-      if (selected && selected.type) {
-        let latLng = {
-          lat: selected.latitude,
-          lng: selected.longitude
-        };
-
-        this.$store.commit("report/setPlaceID", selected.id);
-
-        this.$store.commit("report/setLatLng", latLng);
-
-        this.$store.commit("report/openReport", this.$route.fullPath);
+      if (selected) {
+        this.$router.push({
+          path: this.$route.path + '/report/community/' + selected.id,
+          hash: '#report',
+        })
       }
     },
   },
