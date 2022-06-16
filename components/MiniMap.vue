@@ -23,7 +23,7 @@ export default {
 	name: "MiniMap",
 	computed: {
 		...mapGetters({
-			latLng: "map/latLng"
+			latLng: "report/latLng"
 		})
 	},
 	data() {

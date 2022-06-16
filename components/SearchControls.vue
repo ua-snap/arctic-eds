@@ -20,11 +20,6 @@ export default {
 	components: { PlaceSelector, LatLngPicker },
 	async fetch() {
     await this.$store.dispatch('report/fetchPlaces')
-  },
-  mounted() {
-    this.$on("ValidLatLng", function(latLng) {
-      this.$parent.$emit("ValidLatLng", latLng);
-		});
   }
 }
 </script>

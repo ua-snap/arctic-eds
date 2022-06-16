@@ -91,7 +91,7 @@ export default {
     },
     ...mapGetters({
       placeName: "report/placeName",
-      latLng: "map/latLng"
+      latLng: "report/latLng"
     })
   },
 
@@ -101,21 +101,23 @@ export default {
     }
   },
   async fetch() {
-    if (this.latLng.lat && this.latLng.lng) {
-      this.results = await this.$axios.$get(
-        process.env.apiUrl +
-          "/design_index/freezing/hp/point/" +
-          this.latLng.lat +
-          "/" +
-          this.latLng.lng
-      );
+    if (this.latLng != undefined) {
+			if (this.latLng.lat && this.latLng.lng) {
+        this.results = await this.$axios.$get(
+          process.env.apiUrl +
+            "/design_index/freezing/hp/point/" +
+            this.latLng.lat +
+            "/" +
+            this.latLng.lng
+        );
 
-      let place = this.latLng.lat + ', ' + this.latLng.lng;
-			if (this.placeName) {
-				place = this.placeName
-			}
+        let place = this.latLng.lat + ', ' + this.latLng.lng;
+        if (this.placeName) {
+          place = this.placeName
+        }
 
-      this.results.place = place;
+        this.results.place = place;
+      }
     }
   }
 };

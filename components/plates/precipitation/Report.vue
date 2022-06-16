@@ -4,7 +4,7 @@
 		<hr />
 		<LoadingStatus :state="state" />
 
-		<div v-if="!$fetchState.pending && !$fetchState.error">
+		<div v-if="!$fetchState.pending && !$fetchState.error && Object.keys(results).length > 0">
 			<h3 class="title is-3">
 				Precipitation data for {{ results.place }}
 			</h3>
@@ -143,7 +143,7 @@ export default {
 		...mapGetters({
 			results: "report/results",
 			placeName: "report/placeName",
-			latLng: "map/latLng",
+			latLng: "report/latLng",
 		}),
 	},
 	watch: {
@@ -152,37 +152,39 @@ export default {
 		},
 	},
 	async fetch() {
-		if (this.latLng.lat && this.latLng.lng) {
-			let plate = await this.$axios.$get(
-				process.env.apiUrl +
-					"/eds/precipitation/" +
-					this.latLng.lat +
-					"/" +
-					this.latLng.lng
-			);
+		if (this.latLng != undefined) {
+			if (this.latLng.lat && this.latLng.lng) {
+				let url = process.env.apiUrl +
+						"/eds/precipitation/" +
+						this.latLng.lat +
+						"/" +
+						this.latLng.lng;
 
-			let place = this.latLng.lat + ", " + this.latLng.lng;
-			if (this.placeName) {
-				place = this.placeName;
+				await this.$store.dispatch("report/apiFetch", url);
+
+				let place = this.latLng.lat + ", " + this.latLng.lng;
+				if (this.placeName) {
+					place = this.placeName;
+				}
+
+				let plateResults = {
+					place: place,
+					pr_hist_min: this.results["historical"]["prmin"],
+					pr_hist_mean: this.results["historical"]["prmean"],
+					pr_hist_max: this.results["historical"]["prmax"],
+					pr_2040_min: this.results["2010-2039"]["prmin"],
+					pr_2040_mean: this.results["2010-2039"]["prmean"],
+					pr_2040_max: this.results["2010-2039"]["prmax"],
+					pr_2070_min: this.results["2040-2069"]["prmin"],
+					pr_2070_mean: this.results["2040-2069"]["prmean"],
+					pr_2070_max: this.results["2040-2069"]["prmax"],
+					pr_2100_min: this.results["2070-2099"]["prmin"],
+					pr_2100_mean: this.results["2070-2099"]["prmean"],
+					pr_2100_max: this.results["2070-2099"]["prmax"],
+				};
+
+				this.$store.commit("report/setResults", plateResults);
 			}
-
-			let plateResults = {
-				place: place,
-				pr_hist_min: plate["historical"]["prmin"],
-				pr_hist_mean: plate["historical"]["prmean"],
-				pr_hist_max: plate["historical"]["prmax"],
-				pr_2040_min: plate["2010-2039"]["prmin"],
-				pr_2040_mean: plate["2010-2039"]["prmean"],
-				pr_2040_max: plate["2010-2039"]["prmax"],
-				pr_2070_min: plate["2040-2069"]["prmin"],
-				pr_2070_mean: plate["2040-2069"]["prmean"],
-				pr_2070_max: plate["2040-2069"]["prmax"],
-				pr_2100_min: plate["2070-2099"]["prmin"],
-				pr_2100_mean: plate["2070-2099"]["prmean"],
-				pr_2100_max: plate["2070-2099"]["prmax"],
-			};
-
-			this.$store.commit("report/setResults", plateResults);
 		}
 	},
 };

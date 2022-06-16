@@ -21,47 +21,53 @@
 </template>
 <script lang="scss" scoped></script>
 <script>
-import Plate from "~/components/Plate";
-import PermafrostReport from "~/components/plates/permafrost/Report";
-import PermafrostLegend from "~/components/plates/permafrost/Legend";
-import SearchControls from "~/components/SearchControls.vue";
-import layers from "~/components/plates/permafrost/layers";
-import { mapGetters } from "vuex";
+import Plate from '~/components/Plate'
+import PermafrostReport from '~/components/plates/permafrost/Report'
+import PermafrostLegend from '~/components/plates/permafrost/Legend'
+import SearchControls from '~/components/SearchControls.vue'
+import layers from '~/components/plates/permafrost/layers'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "PermafrostController",
+  name: 'PermafrostController',
   components: { Plate, PermafrostReport, PermafrostLegend, SearchControls },
   data() {
     return {
       legend: PermafrostLegend,
-      layers: layers
-    };
+      layers: layers,
+    }
   },
   computed: {
     ...mapGetters({
-      reportIsVisible: "report/reportIsVisible"
-    })
+      reportIsVisible: 'report/reportIsVisible',
+      isPlaceDefined: 'report/isPlaceDefined',
+    }),
   },
   mounted() {
-    // Wire up click handler
-    this.$store.commit("map/addLayerEventHandler", {
-      event: "click",
-      handler: this.handleMapClick
-    });
+    this.$store.commit('map/addLayerEventHandler', {
+      event: 'click',
+      handler: this.handleMapClick,
+    })
 
-    // Listen for valid lat/lng, handle.
-    this.$on("ValidLatLng", function(latLng) {
-      this.activateReport(latLng);
-    });
+    if (this.isPlaceDefined) {
+      this.activateReport()
+    }
   },
   methods: {
-    handleMapClick: function(event) {
-      this.activateReport(event.latlng);
+    handleMapClick: function (event) {
+      this.$router.push({
+        path:
+          this.$route.path +
+          '/report/' +
+          event.latlng.lat.toFixed(4) +
+          '/' +
+          event.latlng.lng.toFixed(4),
+        hash: '#report',
+      })
     },
-    activateReport: function(latLng) {
-      this.$store.commit("map/setLatLng", latLng);
-      this.$store.commit("report/openReport");
-    }
-  }
-};
+    activateReport: function () {
+      this.$store.commit('report/openReport')
+    },
+  },
+}
 </script>

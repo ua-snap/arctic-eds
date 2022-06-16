@@ -65,22 +65,11 @@ export default {
 	state() {
 		return {
 			// Layer definition which is active on the map.
-			layer: undefined,
-			// Currently active/clicked location
-			latLng: {
-				lat: undefined,
-				lng: undefined,
-			},
+			layer: undefined
 		};
 	},
 
 	getters: {
-		latLng: (state) => {
-			return state.latLng;
-		},
-		places(state) {
-			return state.places;
-		},
 		getActiveLayer(state) {
 			return state.layer;
 		},
@@ -94,10 +83,6 @@ export default {
 		destroy(state) {
 			map.remove();
 			state.layer = undefined;
-			state.latLng = {
-				lat: undefined,
-				lng: undefined,
-			};
 		},
 		toggleLayer(state, layer) {
 			// Remove existing layer: right now, we only
@@ -149,26 +134,6 @@ export default {
 					fillOpacity: 0.0,
 				},
 			}).addTo(map);
-		},
-		setLatLng(state, latLng) {
-			// latLng is an object with lat / lng properties.
-			state.latLng = {
-				lat: latLng.lat.toFixed(4),
-				lng: latLng.lng.toFixed(4),
-			};
-		},
-	},
-	actions: {
-		async fetchPlaces(context) {
-			// If we've already fetched this, don't do that again.
-			if (context.state.places) {
-				return;
-			}
-
-			// TODO: add error handling here for 404 (no data) etc.
-			let queryUrl = process.env.apiUrl + "/places/communities";
-			let places = await this.$http.$get(queryUrl);
-			context.commit("setPlaces", places);
-		},
-	},
+		}
+	}
 };

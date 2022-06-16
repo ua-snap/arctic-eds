@@ -27,37 +27,41 @@
       text-transform: capitalize;
       display: inline-block;
       &::after {
-        content: " / ";
+        content: ' / ';
       }
       &:last-of-type::after {
-        content: "";
+        content: '';
       }
     }
   }
 }
 </style>
 <script>
-import _ from "lodash";
+import _ from 'lodash'
 
 export default {
-  name: "Breadcrumbs",
+  name: 'Breadcrumbs',
   computed: {
-    category: function() {
-      return this.$route.name.split("-")[0];
+    category: function () {
+      return this.$route.path.split('/')[1]
     },
-    plate: function() {
+    plate: function () {
       // Handle custom names independent of route
-      let plate = _.slice(this.$route.path.split("/"), -1)[0];
-      plate = plate.replace(/-/g, " ");
-      switch (plate) {
-        case "physiography":
-          return "Physiographic Provinces";
-        case "beta":
-          return false;
-        default:
-          if (plate) return plate;
+      if (this.$route.path.split('/').length > 2) {
+        let plate = _.slice(this.$route.path.split('/'), 2)[0]
+        plate = plate.replace(/-/g, ' ')
+        switch (plate) {
+          case 'physiography':
+            return 'Physiographic Provinces'
+          case 'beta':
+            return false
+          default:
+            if (plate) return plate
+        }
+      } else {
+        return false
       }
     },
   },
-};
+}
 </script>

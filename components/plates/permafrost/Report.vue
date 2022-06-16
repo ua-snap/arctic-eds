@@ -4,7 +4,7 @@
     <hr />
     <LoadingStatus :state="state" />
 
-    <div v-if="!$fetchState.pending && !$fetchState.error">
+    <div v-if="!$fetchState.pending && !$fetchState.error && Object.keys(results).length > 0">
       <h3 class="title is-3">Permafrost data for {{ results.place }}</h3>
 
       <MiniMap />
@@ -145,21 +145,14 @@ export default {
     LoadingStatus,
     UnitWidget
   },
-  data() {
-    return {
-      radioUnits: 'metric'
-    };
-  },
-
   computed: {
     state: function() {
       return this.$fetchState;
     },
     ...mapGetters({
-      units: "report/units",
 			results: "report/results",
       placeName: "report/placeName",
-      latLng: "map/latLng"
+      latLng: "report/latLng"
     })
   },
   methods: {
@@ -177,51 +170,51 @@ export default {
       this.$fetch();
     }
   },
-
-  fetchOnServer: false,
   async fetch() {
-    if (this.latLng.lat && this.latLng.lng) {
-      let res = await this.$axios.$get(
-        process.env.apiUrl +
-          "/permafrost/point/" +
-          this.latLng.lat +
-          "/" +
-          this.latLng.lng
-      );
+    if (this.latLng != undefined) {
+			if (this.latLng.lat && this.latLng.lng) {
+        let url = process.env.apiUrl +
+            "/permafrost/point/" +
+            this.latLng.lat +
+            "/" +
+            this.latLng.lng;
 
-      let place = this.latLng.lat + ", " + this.latLng.lng;
-      if (this.placeName) {
-        place = this.placeName;
+        await this.$store.dispatch("report/apiFetch", url);
+
+        let place = this.latLng.lat + ", " + this.latLng.lng;
+        if (this.placeName) {
+          place = this.placeName;
+        }
+
+        let plateResults = {
+          place: place,
+          gipl_alt_1995: this.results["gipl"]["1995"]["cruts31"]["historical"]["alt"],
+          gipl_alt_2025: this.results["gipl"]["2025"]["ncarccsm4"]["rcp85"]["alt"],
+          gipl_alt_2050: this.results["gipl"]["2050"]["ncarccsm4"]["rcp85"]["alt"],
+          gipl_alt_2075: this.results["gipl"]["2075"]["ncarccsm4"]["rcp85"]["alt"],
+          gipl_alt_2095: this.results["gipl"]["2095"]["ncarccsm4"]["rcp85"]["alt"],
+          gipl_magt_1995: this.results["gipl"]["1995"]["cruts31"]["historical"]["magt"],
+          gipl_magt_2025: this.results["gipl"]["2025"]["ncarccsm4"]["rcp85"]["magt"],
+          gipl_magt_2050: this.results["gipl"]["2050"]["ncarccsm4"]["rcp85"]["magt"],
+          gipl_magt_2075: this.results["gipl"]["2075"]["ncarccsm4"]["rcp85"]["magt"],
+          gipl_magt_2095: this.results["gipl"]["2095"]["ncarccsm4"]["rcp85"]["magt"]
+        };
+
+        if (this.results["jorg"] != null) {
+          plateResults["giv_2008"] = this.results["jorg"]["ice"];
+          plateResults["pe_2008"] = this.results["jorg"]["pfx"];
+        }
+
+        if (this.results["obu_magt"] != null) {
+          plateResults["magt_2018"] = this.results["obu_magt"]["temp"];
+        }
+
+        if (this.results["obupfx"] != null) {
+          plateResults["pe_2018"] = this.results["obupfx"]["pfx"];
+        }
+
+        this.$store.commit('report/setResults', plateResults);
       }
-
-      let plateResults = {
-        place: place,
-        gipl_alt_1995: res["gipl"]["1995"]["cruts31"]["historical"]["alt"],
-        gipl_alt_2025: res["gipl"]["2025"]["ncarccsm4"]["rcp85"]["alt"],
-        gipl_alt_2050: res["gipl"]["2050"]["ncarccsm4"]["rcp85"]["alt"],
-        gipl_alt_2075: res["gipl"]["2075"]["ncarccsm4"]["rcp85"]["alt"],
-        gipl_alt_2095: res["gipl"]["2095"]["ncarccsm4"]["rcp85"]["alt"],
-        gipl_magt_1995: res["gipl"]["1995"]["cruts31"]["historical"]["magt"],
-        gipl_magt_2025: res["gipl"]["2025"]["ncarccsm4"]["rcp85"]["magt"],
-        gipl_magt_2050: res["gipl"]["2050"]["ncarccsm4"]["rcp85"]["magt"],
-        gipl_magt_2075: res["gipl"]["2075"]["ncarccsm4"]["rcp85"]["magt"],
-        gipl_magt_2095: res["gipl"]["2095"]["ncarccsm4"]["rcp85"]["magt"]
-      };
-
-      if (res["jorg"] != null) {
-        plateResults["giv_2008"] = res["jorg"]["ice"];
-        plateResults["pe_2008"] = res["jorg"]["pfx"];
-      }
-
-      if (res["obu_magt"] != null) {
-        plateResults["magt_2018"] = res["obu_magt"]["temp"];
-      }
-
-      if (res["obupfx"] != null) {
-        plateResults["pe_2018"] = res["obupfx"]["pfx"];
-      }
-
-      this.$store.commit('report/setResults', plateResults);
     }
   }
 };

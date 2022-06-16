@@ -48,5 +48,15 @@ export default {
 	components: {
 		SnowfallController,
 	},
+	// created() {
+	// 	console.log(this.$route.fullPath)
+  //   // Switch back to clean URL after S3 redirect. Adapted from here:
+  //   // https://via.studio/journal/hosting-a-reactjs-app-with-routing-on-aws-s3
+  //   const path = this.$route.fullPath;
+  //   console.log(path);
+	// 	if (path) {
+  //     this.$router.push({ path: path })
+  //   }
+	// }
 };
 </script>

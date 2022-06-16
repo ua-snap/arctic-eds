@@ -104,8 +104,8 @@ export default {
       return this.$fetchState;
     },
     ...mapGetters({
-      placeName: "report/placeName",
-      latLng: "map/latLng"
+			placeName: "report/placeName",
+			latLng: "report/latLng"
     })
   },
 
@@ -114,24 +114,24 @@ export default {
       this.$fetch();
     }
   },
-
-  fetchOnServer: false,
   async fetch() {
-    if (this.latLng.lat && this.latLng.lng) {
-      this.results = await this.$axios.$get(
-        process.env.apiUrl +
-          "/eds/degree_days/thawing_index/" +
-          this.latLng.lat +
-          "/" +
-          this.latLng.lng
-      );
+    if (this.latLng != undefined) {
+			if (this.latLng.lat && this.latLng.lng) {
+        this.results = await this.$axios.$get(
+          process.env.apiUrl +
+            "/eds/degree_days/thawing_index/" +
+            this.latLng.lat +
+            "/" +
+            this.latLng.lng
+        );
 
-      let place = this.latLng.lat + ', ' + this.latLng.lng;
-			if (this.placeName) {
-				place = this.placeName
-			}
+        let place = this.latLng.lat + ', ' + this.latLng.lng;
+        if (this.placeName) {
+          place = this.placeName
+        }
 
-      this.results.place = place;
+        this.results.place = place;
+      }
     }
   }
 };
