@@ -14,7 +14,7 @@ export default [
 	},
 	{
 		id: "iem_gipl_magt_alt_4km_historical",
-		title: "Ground temperature at active layer, 1986-2005, GIPL model",
+		title: "Mean annual ground temperature at active layer, 1986&ndash;2005, GIPL model",
 		source: "rasdaman",
 		wmsLayerName: "iem_gipl_magt_alt_4km",
 		rasdamanConfiguration: {
@@ -22,11 +22,11 @@ export default [
 			dim_scenario: 0,
 			dim_era: 0,
 		},
-		style: "climate_impact_reports",
+		style: "arctic_eds_MAGT",
 	},
 	{
 		id: "iem_gipl_magt_alt_4km_2036_2065",
-		title: "Ground temperature at active layer, 2036-2065 (NCAR-CCSM4, RCP 8.5), GIPL model",
+		title: "Mean annual ground temperature at active layer, 2036&ndash;2065 (NCAR&ndash;CCSM4, RCP 8.5), GIPL model",
 		source: "rasdaman",
 		wmsLayerName: "iem_gipl_magt_alt_4km",
 		rasdamanConfiguration: {
@@ -34,11 +34,11 @@ export default [
 			dim_scenario: 2,
 			dim_era: 2,
 		},
-		style: "climate_impact_reports",
+		style: "arctic_eds_MAGT",
 	},
 	{
 		id: "iem_gipl_ALT_4km_historical",
-		title: "Active layer thickness, 1986-2005, GIPL model",
+		title: "Active layer thickness, 1986&ndash;2005, GIPL model",
 		source: "rasdaman",
 		wmsLayerName: "iem_gipl_magt_alt_4km",
 		rasdamanConfiguration: {
@@ -50,7 +50,7 @@ export default [
 	},
 	{
 		id: "iem_gipl_ALT_4km_2036_2065",
-		title: "Active layer thickness, 2036-2065 (NCAR-CCSM4, RCP 8.5), GIPL model",
+		title: "Active layer thickness, 2036&ndash;2065 (NCAR&ndash;CCSM4, RCP 8.5), GIPL model",
 		source: "rasdaman",
 		wmsLayerName: "iem_gipl_magt_alt_4km",
 		rasdamanConfiguration: {
@@ -63,7 +63,7 @@ export default [
 	{
 		id: "obumagt",
 		title:
-			"Mean annual ground temperature at top of permafrost, 2000-2016 (modeled)",
+			"Mean annual ground temperature at top of permafrost, 2000&ndash;2016 (modeled)",
 		wmsLayerName: "obu_2018_magt"
 	},
 	{
