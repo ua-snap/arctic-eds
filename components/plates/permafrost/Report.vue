@@ -17,7 +17,7 @@
       />
 
       <h4 class="title is-4">
-        GIPL Mean Annual Ground Temperature (<UnitWidget />)
+        GIPL Mean Annual Ground Temperature
       </h4>
 
       <table class="table">
@@ -66,7 +66,7 @@
       </table>
 
       <div v-if="results.gipl_alt_1995">
-        <h4 class="title is-4">GIPL Active Layer Thickness (<UnitWidget unitType="m_in" />)</h4>
+        <h4 class="title is-4">GIPL Active Layer Thickness</h4>
         <table class="table">
           <thead>
             <tr>
@@ -117,7 +117,7 @@
       <div class="content">
         <ul>
           <li v-if="results.magt_2018">
-            Obu et al. (2018) Mean Annual Ground Temperature (deg. C) at Top of
+            Obu et al. (2018) Mean Annual Ground Temperature at Top of
             Permafrost:
             <strong>{{ results.magt_2018 }}<UnitWidget unitType="temp" type="light" /></strong>
           </li>
