@@ -184,5 +184,11 @@
 export default {
   name: 'HomePage',
   layout: 'home',
+  created() {
+    const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
+    if (path) {
+      this.$router.push({ path: path })
+    }
+  },
 }
 </script>
