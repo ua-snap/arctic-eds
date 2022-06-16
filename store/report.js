@@ -48,7 +48,7 @@ export default {
       places: undefined,
       reportIsVisible: false,
       results: {},
-      units: 'metric',
+      units: 'imperial',
     }
   },
   getters: {
