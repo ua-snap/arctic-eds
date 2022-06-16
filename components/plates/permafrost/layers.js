@@ -12,38 +12,58 @@ export default [
 		title: "Permafrost extent (Obu et al., 2018)",
 		wmsLayerName: "permafrost_beta:obu_pf_extent"
 	},
-
 	{
-		id: "3mgipl2010",
-		title: "Ground temperature, 3m depth, 2010 (GIPL model)",
-		wmsLayerName:
-			"permafrost_beta:magt_3m_c_iem_gipl2_ar5_ncar_ccsm4_rcp85_2010_3338"
+		id: "iem_gipl_magt_alt_4km_historical",
+		title: "Mean annual ground temperature at active layer, 1986&ndash;2005, GIPL model",
+		source: "rasdaman",
+		wmsLayerName: "iem_gipl_magt_alt_4km",
+		rasdamanConfiguration: {
+			dim_model: 0,
+			dim_scenario: 0,
+			dim_era: 0,
+		},
+		style: "arctic_eds_MAGT",
 	},
 	{
-		id: "3mgipl2050",
-		title: "Ground temperature, 3m depth, 2050 (GIPL model)",
-		wmsLayerName:
-			"permafrost_beta:magt_3m_c_iem_gipl2_ar5_ncar_ccsm4_rcp85_2050_3338"
+		id: "iem_gipl_magt_alt_4km_2036_2065",
+		title: "Mean annual ground temperature at active layer, 2036&ndash;2065 (NCAR&ndash;CCSM4, RCP 8.5), GIPL model",
+		source: "rasdaman",
+		wmsLayerName: "iem_gipl_magt_alt_4km",
+		rasdamanConfiguration: {
+			dim_model: 5,
+			dim_scenario: 2,
+			dim_era: 2,
+		},
+		style: "arctic_eds_MAGT",
 	},
-
 	{
-		id: "altGIPL2010",
-		title: "Active layer thickness, 2010 (GIPL model)",
-		wmsLayerName:
-			"permafrost_beta:alt_m_iem_gipl2_ar5_ncar_ccsm4_rcp85_2010_3338"
+		id: "iem_gipl_ALT_4km_historical",
+		title: "Active layer thickness, 1986&ndash;2005, GIPL model",
+		source: "rasdaman",
+		wmsLayerName: "iem_gipl_magt_alt_4km",
+		rasdamanConfiguration: {
+			dim_model: 0,
+			dim_scenario: 0,
+			dim_era: 0,
+		},
+		style: "arctic_eds_ALT",
 	},
-
 	{
-		id: "altGIPL2050",
-		title: "Active layer thickness, 2050 (GIPL model)",
-		wmsLayerName:
-			"permafrost_beta:alt_m_iem_gipl2_ar5_ncar_ccsm4_rcp85_2050_3338"
-	},
-
+		id: "iem_gipl_ALT_4km_2036_2065",
+		title: "Active layer thickness, 2036&ndash;2065 (NCAR&ndash;CCSM4, RCP 8.5), GIPL model",
+		source: "rasdaman",
+		wmsLayerName: "iem_gipl_magt_alt_4km",
+		rasdamanConfiguration: {
+			dim_model: 5,
+			dim_scenario: 2,
+			dim_era: 2,
+		},
+		style: "arctic_eds_ALT",
+	},	
 	{
 		id: "obumagt",
 		title:
-			"Mean annual ground temperature at top of permafrost, 2000-2016 (modeled)",
+			"Mean annual ground temperature at top of permafrost, 2000&ndash;2016 (modeled)",
 		wmsLayerName: "obu_2018_magt"
 	},
 	{
