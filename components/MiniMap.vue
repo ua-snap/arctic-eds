@@ -24,6 +24,7 @@ export default {
   computed: {
     ...mapGetters({
       latLng: 'report/latLng',
+      isPlaceDefined: 'report/isPlaceDefined',
     }),
   },
   data() {
@@ -33,7 +34,7 @@ export default {
     }
   },
   mounted() {
-    if (this.latLng.lat && this.latLng.lng) {
+    if (this.isPlaceDefined) {
       this.map = L.map('report--minimmap--map', this.getBaseMapAndLayers())
 
       this.marker = L.marker(this.latLng).addTo(this.map)
