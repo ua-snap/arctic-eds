@@ -46,7 +46,6 @@
 </style>
 <script>
 export default {
-  name: 'Physiography',
-  layout: 'beta',
+  layout: 'content',
 }
 </script>

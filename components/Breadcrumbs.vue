@@ -55,6 +55,8 @@ export default {
             return 'Physiographic Provinces'
           case 'beta':
             return false
+          case 'climate modeling':
+            return false
           default:
             if (plate) return plate
         }
