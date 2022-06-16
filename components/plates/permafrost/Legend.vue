@@ -130,15 +130,27 @@
 					<tbody>
 						<tr>
 							<td>
-								<div class="colorbox tas-10"></div>
+								<div class="colorbox tas-20"></div>
 							</td>
-							<td>&minus;10&deg;C</td>
+							<td>&minus;20&deg;C</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox tas-5"></div>
+								<div class="colorbox tas-6"></div>
 							</td>
-							<td>&minus;5&deg;C</td>
+							<td>&minus;6&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-4"></div>
+							</td>
+							<td>&minus;4&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-2"></div>
+							</td>
+							<td>&minus;2&deg;C</td>
 						</tr>
 						<tr>
 							<td>
@@ -148,21 +160,21 @@
 						</tr>
 						<tr>
 							<td>
+								<div class="colorbox tas0"></div>
+							</td>
+							<td>0&deg;C</td>
+						</tr>
+						<tr>
+							<td>
 								<div class="colorbox tas1"></div>
 							</td>
 							<td>1&deg;C</td>
 						</tr>
-						<tr>
+							<tr>
 							<td>
-								<div class="colorbox tas3"></div>
+								<div class="colorbox tas2"></div>
 							</td>
-							<td>3&deg;C</td>
-						</tr>
-						<tr>
-							<td>
-								<div class="colorbox tas5"></div>
-							</td>
-							<td>5&deg;C</td>
+							<td>2&deg;C</td>
 						</tr>
 					</tbody>
 				</table>
@@ -194,15 +206,27 @@
 					<tbody>
 						<tr>
 							<td>
-								<div class="colorbox tas-10"></div>
+								<div class="colorbox tas-20"></div>
 							</td>
-							<td>&minus;10&deg;C</td>
+							<td>&minus;20&deg;C</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox tas-5"></div>
+								<div class="colorbox tas-6"></div>
 							</td>
-							<td>&minus;5&deg;C</td>
+							<td>&minus;6&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-4"></div>
+							</td>
+							<td>&minus;4&deg;C</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="colorbox tas-2"></div>
+							</td>
+							<td>&minus;2&deg;C</td>
 						</tr>
 						<tr>
 							<td>
@@ -212,21 +236,21 @@
 						</tr>
 						<tr>
 							<td>
+								<div class="colorbox tas0"></div>
+							</td>
+							<td>0&deg;C</td>
+						</tr>
+						<tr>
+							<td>
 								<div class="colorbox tas1"></div>
 							</td>
 							<td>1&deg;C</td>
 						</tr>
-						<tr>
+							<tr>
 							<td>
-								<div class="colorbox tas3"></div>
+								<div class="colorbox tas2"></div>
 							</td>
-							<td>3&deg;C</td>
-						</tr>
-						<tr>
-							<td>
-								<div class="colorbox tas5"></div>
-							</td>
-							<td>5&deg;C</td>
+							<td>2&deg;C</td>
 						</tr>
 					</tbody>
 				</table>
@@ -272,33 +296,33 @@
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d10"></div>
+								<div class="colorbox d05"></div>
 							</td>
-							<td>10m</td>
+							<td>0.5m</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d20"></div>
+								<div class="colorbox d1"></div>
 							</td>
-							<td>20m</td>
+							<td>1m</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d30"></div>
+								<div class="colorbox d15"></div>
 							</td>
-							<td>30m</td>
+							<td>1.5m</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d40"></div>
+								<div class="colorbox d2"></div>
 							</td>
-							<td>40m</td>
+							<td>2m</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d50"></div>
+								<div class="colorbox d25"></div>
 							</td>
-							<td>50m</td>
+							<td>2.5m</td>
 						</tr>
 					</tbody>
 				</table>
@@ -315,7 +339,7 @@
 		</LegendItem>
 		<LegendItem v-show="activeLayerId == 'iem_gipl_ALT_4km_2036_2065'">
 			<template v-slot:title
-				>Active layer thickness, 2050 (GIPL model)</template
+				>Active layer thickness, 2036&ndash;2065 (GIPL model)</template
 			>
 			<template v-slot:introduction
 				><p>
@@ -344,33 +368,33 @@
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d10"></div>
+								<div class="colorbox d05"></div>
 							</td>
-							<td>10m</td>
+							<td>0.5m</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d20"></div>
+								<div class="colorbox d1"></div>
 							</td>
-							<td>20m</td>
+							<td>1m</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d30"></div>
+								<div class="colorbox d15"></div>
 							</td>
-							<td>30m</td>
+							<td>1.5m</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d40"></div>
+								<div class="colorbox d2"></div>
 							</td>
-							<td>40m</td>
+							<td>2m</td>
 						</tr>
 						<tr>
 							<td>
-								<div class="colorbox d50"></div>
+								<div class="colorbox d25"></div>
 							</td>
-							<td>50m</td>
+							<td>2.5m</td>
 						</tr>
 					</tbody>
 				</table>
@@ -396,7 +420,7 @@
 				resolution.</template
 			>
 			<template v-slot:legend>
-				<table class="table temps">
+				<table class="table obutemps">
 					<tbody>
 						<tr>
 							<td>
@@ -528,6 +552,56 @@ table.table td {
 	}
 }
 .temps .colorbox {
+	&.tas-20 {
+		background-color: rgb(33, 102, 172);
+	}
+	&.tas-6 {
+		background-color: rgb(67, 147, 195);
+	}
+	&.tas-4 {
+		background-color: rgb(146, 197, 222);
+	}
+	&.tas-2 {
+		background-color: rgb(209, 229, 240);
+	}
+	&.tas-1 {
+		background-color: rgb(247, 247, 247);
+	}
+	&.tas0 {
+		background-color: rgb(253, 219, 199);
+	}
+	&.tas1 {
+		background-color: rgb(244, 165, 130);
+	}
+	&.tas2 {
+		background-color: rgb(214, 96, 77);
+	}
+}
+
+.thickness .colorbox {
+	&.none {
+		background-color: #aaaaaa;
+	}
+	&.d0 {
+		background-color: #fdfecc;
+	}
+	&.d05 {
+		background-color: #92d8a4;
+	}
+	&.d1 {
+		background-color: #52a9a3;
+	}
+	&.d15 {
+		background-color: #417799;
+	}
+	&.d2 {
+		background-color: #424380;
+	}
+	&.d25 {
+		background-color: #2b1d32;
+	}
+}
+.obutemps .colorbox {
 	&.tas-10 {
 		background-color: #08306b;
 	}
@@ -547,31 +621,6 @@ table.table td {
 		background-color: #67000d;
 	}
 }
-
-.thickness .colorbox {
-	&.none {
-		background-color: #aaaaaa;
-	}
-	&.d0 {
-		background-color: #fdfecc;
-	}
-	&.d10 {
-		background-color: #92d8a4;
-	}
-	&.d20 {
-		background-color: #52a9a3;
-	}
-	&.d30 {
-		background-color: #417799;
-	}
-	&.d40 {
-		background-color: #424380;
-	}
-	&.d50 {
-		background-color: #2b1d32;
-	}
-}
-
 .volume .colorbox {
 	&.unfrozen {
 		background-color: #7fc97f;
