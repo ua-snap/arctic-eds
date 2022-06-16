@@ -22,13 +22,13 @@
 </template>
 <script lang="scss" scoped></script>
 <script>
-import FreezingIndexController from "~/components/plates/freezing_index/Controller";
+import FreezingIndexController from '~/components/plates/freezing_index/Controller'
 
 export default {
-  name: "FreezingIndex",
-  layout: "plate",
+  name: 'FreezingIndex',
+  layout: 'plate',
   components: {
-    FreezingIndexController
-  }
-};
+    FreezingIndexController,
+  },
+}
 </script>

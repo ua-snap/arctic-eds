@@ -3,9 +3,7 @@
     <LegendItem>
       <template v-slot:title>Mean annual snowfall</template>
       <template v-slot:introduction>
-        <p>
-          This layer shows the mean annual snowfall across Alaska.
-        </p>
+        <p>This layer shows the mean annual snowfall across Alaska.</p>
       </template>
       <template v-slot:legend>
         <table class="table snowfall">
@@ -46,15 +44,26 @@
       <template v-slot:explanation>
         <p><i>Placeholder for snowfall legend text</i></p>
       </template>
-			<template v-slot:footer
+      <template v-slot:footer
         ><p>
-          Access detailed information about this dataset, including source data downloads:
-          <ul>
-            <li><a href="http://ckan.snap.uaf.edu/dataset/historical-decadal-averages-of-monthly-snowfall-equivalent-771m-cru-ts3-0-ts3-1">Historical Decadal Averages of Monthly Snowfall Equivalent</a></li>
-            <li><a href="http://ckan.snap.uaf.edu/dataset/projected-decadal-averages-of-monthly-snowfall-equivalent-771m-cmip5-ar5">Projected Decadal Averages of Monthly Snowfall Equivalent</a></li>
-          </ul>
-        </p></template
-      >
+          Access detailed information about this dataset, including source data
+          downloads:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="http://ckan.snap.uaf.edu/dataset/historical-decadal-averages-of-monthly-snowfall-equivalent-771m-cru-ts3-0-ts3-1"
+              >Historical Decadal Averages of Monthly Snowfall Equivalent</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://ckan.snap.uaf.edu/dataset/projected-decadal-averages-of-monthly-snowfall-equivalent-771m-cmip5-ar5"
+              >Projected Decadal Averages of Monthly Snowfall Equivalent</a
+            >
+          </li>
+        </ul>
+      </template>
     </LegendItem>
   </div>
 </template>
@@ -90,11 +99,11 @@ table.table td {
 </style>
 
 <script>
-import { mapGetters } from "vuex";
-import LegendItem from "~/components/LegendItem";
+import { mapGetters } from 'vuex'
+import LegendItem from '~/components/LegendItem'
 
 export default {
-  name: "SnowfallLegend",
+  name: 'SnowfallLegend',
   components: { LegendItem },
   computed: {
     activeLayerId() {
@@ -102,13 +111,13 @@ export default {
       // is set/present in the global state, so we need to
       // guard for that case.
       if (this.activeLayer) {
-        return this.activeLayer.id;
+        return this.activeLayer.id
       }
-      return undefined;
+      return undefined
     },
     ...mapGetters({
-      activeLayer: "map/getActiveLayer"
-    })
-  }
-};
+      activeLayer: 'map/getActiveLayer',
+    }),
+  },
+}
 </script>

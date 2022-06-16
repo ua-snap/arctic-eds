@@ -49,11 +49,11 @@
 }
 </style>
 <script>
-import HeaderBanner from "~/components/HeaderBanner";
-import BetaFeedback from "~/components/BetaFeedback";
-import Footer from "~/components/Footer";
+import HeaderBanner from '~/components/HeaderBanner'
+import BetaFeedback from '~/components/BetaFeedback'
+import Footer from '~/components/Footer'
 
 export default {
-  components: { HeaderBanner, BetaFeedback, Footer }
-};
+  components: { HeaderBanner, BetaFeedback, Footer },
+}
 </script>

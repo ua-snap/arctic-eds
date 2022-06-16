@@ -22,13 +22,13 @@
 </template>
 <script lang="scss" scoped></script>
 <script>
-import DesignThawingIndexController from "~/components/plates/design_thawing_index/Controller";
+import DesignThawingIndexController from '~/components/plates/design_thawing_index/Controller'
 
 export default {
-  name: "DesignThawingIndex",
-  layout: "plate",
+  name: 'DesignThawingIndex',
+  layout: 'plate',
   components: {
-    DesignThawingIndexController
-  }
-};
+    DesignThawingIndexController,
+  },
+}
 </script>

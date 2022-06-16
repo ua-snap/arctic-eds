@@ -1,12 +1,12 @@
 // Here's where we override defaults in Bulma!
 // Note that this is where our font imports come from too.
-@import "bulma-overrides.scss";
+@import 'bulma-overrides.scss';
 
 // Import bulma styles
-@import "~bulma";
+@import '~bulma';
 
 // Import buefy styles
-@import "~buefy/src/scss/buefy";
+@import '~buefy/src/scss/buefy';
 
 // Some additional common styles.
 .content-wrapper {

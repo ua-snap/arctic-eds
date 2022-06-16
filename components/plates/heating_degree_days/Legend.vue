@@ -120,11 +120,11 @@ table.table td {
 </style>
 
 <script>
-import { mapGetters } from "vuex";
-import LegendItem from "~/components/LegendItem";
+import { mapGetters } from 'vuex'
+import LegendItem from '~/components/LegendItem'
 
 export default {
-  name: "HeatingDegreeDaysLegend",
+  name: 'HeatingDegreeDaysLegend',
   components: { LegendItem },
   computed: {
     activeLayerId() {
@@ -132,13 +132,13 @@ export default {
       // is set/present in the global state, so we need to
       // guard for that case.
       if (this.activeLayer) {
-        return this.activeLayer.id;
+        return this.activeLayer.id
       }
-      return undefined;
+      return undefined
     },
     ...mapGetters({
-      activeLayer: "map/getActiveLayer"
-    })
-  }
-};
+      activeLayer: 'map/getActiveLayer',
+    }),
+  },
+}
 </script>

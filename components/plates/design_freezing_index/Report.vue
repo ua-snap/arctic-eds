@@ -7,8 +7,8 @@
     <div
       v-if="
         !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+        !$fetchState.error &&
+        Object.keys(results).length > 0
       "
     >
       <h3 class="title is-3">
@@ -17,9 +17,7 @@
 
       <MiniMap />
 
-      <h4 class="title is-4">
-        Design Freezing Index
-      </h4>
+      <h4 class="title is-4">Design Freezing Index</h4>
 
       <table class="table">
         <thead>
@@ -31,15 +29,15 @@
         <tbody>
           <tr>
             <th scope="row">Historical (1980-2009)</th>
-            <td>{{ results["historical"]["di"] }}</td>
+            <td>{{ results['historical']['di'] }}</td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040-2069)</th>
-            <td>{{ results["2040-2069"]["di"] }}</td>
+            <td>{{ results['2040-2069']['di'] }}</td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070-2099)</th>
-            <td>{{ results["2070-2099"]["di"] }}</td>
+            <td>{{ results['2070-2099']['di'] }}</td>
           </tr>
         </tbody>
       </table>
@@ -66,61 +64,61 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import DownloadCsvButton from "~/components/DownloadCsvButton";
-import MiniMap from "~/components/MiniMap";
-import LoadingStatus from "~/components/LoadingStatus";
+import { mapGetters } from 'vuex'
+import DownloadCsvButton from '~/components/DownloadCsvButton'
+import MiniMap from '~/components/MiniMap'
+import LoadingStatus from '~/components/LoadingStatus'
 
 export default {
-  name: "DesignFreezingIndexReport",
+  name: 'DesignFreezingIndexReport',
   components: {
     DownloadCsvButton,
     MiniMap,
-    LoadingStatus
+    LoadingStatus,
   },
   data() {
     return {
       // Will have the results of the data fetch.
-      results: {}
-    };
+      results: {},
+    }
   },
 
   computed: {
-    state: function() {
-      return this.$fetchState;
+    state: function () {
+      return this.$fetchState
     },
     ...mapGetters({
-      placeName: "report/placeName",
-      latLng: "report/latLng"
-    })
+      placeName: 'report/placeName',
+      latLng: 'report/latLng',
+    }),
   },
 
   watch: {
-    latLng: function() {
-      this.$fetch();
-    }
+    latLng: function () {
+      this.$fetch()
+    },
   },
   async fetch() {
     if (this.latLng != undefined) {
-			if (this.latLng.lat && this.latLng.lng) {
+      if (this.latLng.lat && this.latLng.lng) {
         this.results = await this.$axios.$get(
           process.env.apiUrl +
-            "/design_index/freezing/hp/point/" +
+            '/design_index/freezing/hp/point/' +
             this.latLng.lat +
-            "/" +
+            '/' +
             this.latLng.lng
-        );
+        )
 
-        let place = this.latLng.lat + ', ' + this.latLng.lng;
+        let place = this.latLng.lat + ', ' + this.latLng.lng
         if (this.placeName) {
           place = this.placeName
         }
 
-        this.results.place = place;
+        this.results.place = place
       }
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="scss" scoped></style>

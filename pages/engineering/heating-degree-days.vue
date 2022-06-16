@@ -22,13 +22,13 @@
 </template>
 <script lang="scss" scoped></script>
 <script>
-import HeatingDegreeDaysController from "~/components/plates/heating_degree_days/Controller";
+import HeatingDegreeDaysController from '~/components/plates/heating_degree_days/Controller'
 
 export default {
-  name: "HeatingDegreeDays",
-  layout: "plate",
+  name: 'HeatingDegreeDays',
+  layout: 'plate',
   components: {
-    HeatingDegreeDaysController
-  }
-};
+    HeatingDegreeDaysController,
+  },
+}
 </script>

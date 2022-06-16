@@ -27,33 +27,33 @@
 </style>
 
 <script>
-import Vue from "vue";
+import Vue from 'vue'
 
 export default {
-  name: "MapLayer",
-  props: ["layer"],
+  name: 'MapLayer',
+  props: ['layer'],
   computed: {
     active() {
       // Check if the layer is active in the store
-      let activeLayer = this.$store.getters["map/getActiveLayer"];
+      let activeLayer = this.$store.getters['map/getActiveLayer']
       if (activeLayer) {
-        return activeLayer.id === this.layer.id;
+        return activeLayer.id === this.layer.id
       }
       // Otherwise, make it active if it's defaulted to be active.
-      return this.layer.default;
+      return this.layer.default
     },
   },
   mounted() {
     if (this.layer.default) {
       // We need to wait for Vue to render the full DOM which
       // includes the `#map` element before we can trigger this.
-      Vue.nextTick(this.toggleLayer);
+      Vue.nextTick(this.toggleLayer)
     }
   },
   methods: {
     toggleLayer() {
-      this.$store.commit("map/toggleLayer", this.layer);
+      this.$store.commit('map/toggleLayer', this.layer)
     },
   },
-};
+}
 </script>

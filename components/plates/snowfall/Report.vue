@@ -7,8 +7,8 @@
     <div
       v-if="
         !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+        !$fetchState.error &&
+        Object.keys(results).length > 0
       "
     >
       <h3 class="title is-3">
@@ -17,9 +17,7 @@
 
       <MiniMap />
 
-      <h4 class="title is-4">
-        Annual Snowfall Equivalent Totals
-      </h4>
+      <h4 class="title is-4">Annual Snowfall Equivalent Totals</h4>
 
       <UnitRadio type="mm_in" />
 
@@ -78,69 +76,69 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import DownloadCsvButton from "~/components/DownloadCsvButton";
-import MiniMap from "~/components/MiniMap";
-import LoadingStatus from "~/components/LoadingStatus";
-import UnitWidget from "~/components/UnitWidget";
-import UnitRadio from "~/components/UnitRadio";
+import { mapGetters } from 'vuex'
+import DownloadCsvButton from '~/components/DownloadCsvButton'
+import MiniMap from '~/components/MiniMap'
+import LoadingStatus from '~/components/LoadingStatus'
+import UnitWidget from '~/components/UnitWidget'
+import UnitRadio from '~/components/UnitRadio'
 
 export default {
-  name: "SnowfallReport",
+  name: 'SnowfallReport',
   components: {
     DownloadCsvButton,
     MiniMap,
     LoadingStatus,
     UnitWidget,
-    UnitRadio
+    UnitRadio,
   },
   computed: {
-    state: function() {
-      return this.$fetchState;
+    state: function () {
+      return this.$fetchState
     },
     ...mapGetters({
-      results: "report/results",
-      placeName: "report/placeName",
-      latLng: "report/latLng"
-    })
+      results: 'report/results',
+      placeName: 'report/placeName',
+      latLng: 'report/latLng',
+    }),
   },
 
   watch: {
-    latLng: function() {
-      this.$fetch();
-    }
+    latLng: function () {
+      this.$fetch()
+    },
   },
   async fetch() {
     if (this.latLng != undefined) {
       if (this.latLng.lat && this.latLng.lng) {
         let url =
           process.env.apiUrl +
-          "/mmm/snow/snowfallequivalent/hp/" +
+          '/mmm/snow/snowfallequivalent/hp/' +
           this.latLng.lat +
-          "/" +
-          this.latLng.lng;
+          '/' +
+          this.latLng.lng
 
-        await this.$store.dispatch("report/apiFetch", url);
+        await this.$store.dispatch('report/apiFetch', url)
 
-        let place = this.latLng.lat + ", " + this.latLng.lng;
+        let place = this.latLng.lat + ', ' + this.latLng.lng
         if (this.placeName) {
-          place = this.placeName;
+          place = this.placeName
         }
 
         let plateResults = {
           place: place,
-          sfe_hist_min: this.results["historical"]["sfemin"],
-          sfe_hist_mean: this.results["historical"]["sfemean"],
-          sfe_hist_max: this.results["historical"]["sfemax"],
-          sfe_proj_min: this.results["projected"]["sfemin"],
-          sfe_proj_mean: this.results["projected"]["sfemean"],
-          sfe_proj_max: this.results["projected"]["sfemax"]
-        };
-        this.$store.commit("report/setResults", plateResults);
+          sfe_hist_min: this.results['historical']['sfemin'],
+          sfe_hist_mean: this.results['historical']['sfemean'],
+          sfe_hist_max: this.results['historical']['sfemax'],
+          sfe_proj_min: this.results['projected']['sfemin'],
+          sfe_proj_mean: this.results['projected']['sfemean'],
+          sfe_proj_max: this.results['projected']['sfemax'],
+        }
+        this.$store.commit('report/setResults', plateResults)
       }
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="scss" scoped></style>
