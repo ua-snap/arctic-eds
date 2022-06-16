@@ -50,8 +50,8 @@
 <style lang="scss" scoped></style>
 <script>
 export default {
-  name: "Engineering",
-  layout: "category",
-  created: function() {}
-};
+  name: 'Engineering',
+  layout: 'category',
+  created: function () {},
+}
 </script>

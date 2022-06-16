@@ -66,13 +66,24 @@
       </template>
       <template v-slot:footer
         ><p>
-          Access detailed information about this dataset, including source data downloads:
-          <ul>
-            <li><a href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta">Historical Monthly and Derived Precipitation Products</a></li>
-            <li><a href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5">Projected Monthly and Derived Precipitation Products</a></li>
-          </ul>
-        </p></template
-      >
+          Access detailed information about this dataset, including source data
+          downloads:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta"
+              >Historical Monthly and Derived Precipitation Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5"
+              >Projected Monthly and Derived Precipitation Products</a
+            >
+          </li>
+        </ul>
+      </template>
     </LegendItem>
   </div>
 </template>
@@ -119,11 +130,11 @@ table.table td {
 </style>
 
 <script>
-import { mapGetters } from "vuex";
-import LegendItem from "~/components/LegendItem";
+import { mapGetters } from 'vuex'
+import LegendItem from '~/components/LegendItem'
 
 export default {
-  name: "PrecipitationLegend",
+  name: 'PrecipitationLegend',
   components: { LegendItem },
   computed: {
     activeLayerId() {
@@ -131,13 +142,13 @@ export default {
       // is set/present in the global state, so we need to
       // guard for that case.
       if (this.activeLayer) {
-        return this.activeLayer.id;
+        return this.activeLayer.id
       }
-      return undefined;
+      return undefined
     },
     ...mapGetters({
-      activeLayer: "map/getActiveLayer"
-    })
-  }
-};
+      activeLayer: 'map/getActiveLayer',
+    }),
+  },
+}
 </script>

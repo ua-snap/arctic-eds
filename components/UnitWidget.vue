@@ -45,24 +45,24 @@
 }
 </style>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
-  name: "UnitWidget",
+  name: 'UnitWidget',
   props: {
     unitType: {
       type: String,
-      default: "temp", // or mm_in (millimeters/inches), or m_in (meters/inches)
+      default: 'temp', // or mm_in (millimeters/inches), or m_in (meters/inches)
     },
     // Type can be "light" (no parentheses) or "heavy" (parens).
     type: {
       type: String,
-      default: "light",
+      default: 'light',
     },
   },
   computed: {
     ...mapGetters({
-      units: "report/units",
+      units: 'report/units',
     }),
   },
-};
+}
 </script>

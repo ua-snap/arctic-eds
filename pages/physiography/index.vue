@@ -78,8 +78,8 @@
 <style lang="scss" scoped></style>
 <script>
 export default {
-  name: "Physiography",
-  layout: "category",
-  created: function() {}
-};
+  name: 'Physiography',
+  layout: 'category',
+  created: function () {},
+}
 </script>

@@ -1,44 +1,44 @@
-import _ from "lodash";
+import _ from 'lodash'
 
-function convertUnits(state, type, substring = "") {
+function convertUnits(state, type, substring = '') {
   Object.keys(state.results).forEach(key => {
-    if (key != "place" && key.includes(substring)) {
+    if (key != 'place' && key.includes(substring)) {
       switch (type) {
-        case "temperature":
-          state.results[key] = convertTemperature(state, key);
-          break;
-        case "m_in":
-          state.results[key] = convertMetersInches(state, key);
-          break;
-        case "mm_in":
-          state.results[key] = convertMillimetersInches(state, key);
-          break;
+        case 'temperature':
+          state.results[key] = convertTemperature(state, key)
+          break
+        case 'm_in':
+          state.results[key] = convertMetersInches(state, key)
+          break
+        case 'mm_in':
+          state.results[key] = convertMillimetersInches(state, key)
+          break
       }
     }
-  });
+  })
 }
 
 function convertTemperature(state, key) {
-  if (state.units == "metric") {
-    return ((state.results[key] - 32) * (5 / 9)).toFixed(1);
+  if (state.units == 'metric') {
+    return ((state.results[key] - 32) * (5 / 9)).toFixed(1)
   } else {
-    return (state.results[key] * (9 / 5) + 32).toFixed(1);
+    return (state.results[key] * (9 / 5) + 32).toFixed(1)
   }
 }
 
 function convertMillimetersInches(state, key) {
-  if (state.units == "metric") {
-    return (state.results[key] * 25.4).toFixed(0);
+  if (state.units == 'metric') {
+    return (state.results[key] * 25.4).toFixed(0)
   } else {
-    return (state.results[key] / 25.4).toFixed(1);
+    return (state.results[key] / 25.4).toFixed(1)
   }
 }
 
 function convertMetersInches(state, key) {
-  if (state.units == "metric") {
-    return (state.results[key] * 0.0254).toFixed(2);
+  if (state.units == 'metric') {
+    return (state.results[key] * 0.0254).toFixed(2)
   } else {
-    return (state.results[key] / 0.0254).toFixed(1);
+    return (state.results[key] / 0.0254).toFixed(1)
   }
 }
 
@@ -140,12 +140,12 @@ export default {
       }
     },
     convertResults(state, params) {
-      if (params["patterns"]) {
-        params["patterns"].forEach(pattern => {
-          convertUnits(state, pattern["type"], pattern["substring"]);
-        });
+      if (params['patterns']) {
+        params['patterns'].forEach(pattern => {
+          convertUnits(state, pattern['type'], pattern['substring'])
+        })
       } else {
-        convertUnits(state, params["type"]);
+        convertUnits(state, params['type'])
       }
     },
     setResults(state, results) {

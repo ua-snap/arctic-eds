@@ -20,13 +20,13 @@ ul {
 </style>
 
 <script>
-import MapLayer from "./MapLayer";
+import MapLayer from './MapLayer'
 
 export default {
-  name: "LayerList",
+  name: 'LayerList',
   components: {
-    MapLayer
+    MapLayer,
   },
-  props: ["layers"]
-};
+  props: ['layers'],
+}
 </script>
