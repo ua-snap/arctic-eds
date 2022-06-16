@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>
-      You can display this table in Imperial or Metric units.
+      You can display these results in Imperial or Metric units.
     </p>
     <div>
       <b-field label="Units">
@@ -20,7 +20,7 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "UnitRadio",
-  props: ["type"],
+  props: ["type", "patterns"],
   data() {
     return {
       radioUnits: this.storeRadioUnits,
@@ -39,11 +39,17 @@ export default {
       if (this.radioUnits == "metric") {
         if (this.storeRadioUnits != "metric") {
           this.$store.commit("report/setMetric");
-          this.$store.commit("report/convertUnits", this.type);
+          this.$store.commit("report/convertResults", {
+            type: this.type,
+            patterns: this.patterns
+          });
         }
       } else {
         this.$store.commit("report/setImperial");
-        this.$store.commit("report/convertUnits", this.type);
+        this.$store.commit("report/convertResults", {
+          type: this.type,
+          patterns: this.patterns
+        });
       }
     },
   },

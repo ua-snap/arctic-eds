@@ -15,7 +15,7 @@
 				Annual Precipitation Totals
 			</h4>
 
-			<UnitRadio type="precipitation" />
+			<UnitRadio type="mm_in" />
 
 			<table class="table">
 				<thead>
@@ -31,60 +31,60 @@
 						<th scope="row">Historical (1901-2015)</th>
 						<td>
 							{{ results.pr_hist_min
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 						<td>
 							{{ results.pr_hist_mean
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 						<td>
 							{{ results.pr_hist_max
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">Early Century (2010-2039)</th>
 						<td>
 							{{ results.pr_2040_min
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 						<td>
 							{{ results.pr_2040_mean
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 						<td>
 							{{ results.pr_2040_max
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">Mid Century (2040-2069)</th>
 						<td>
 							{{ results.pr_2070_min
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 						<td>
 							{{ results.pr_2070_mean
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 						<td>
 							{{ results.pr_2070_max
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">Late Century (2070-2099)</th>
 						<td>
 							{{ results.pr_2100_min
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 						<td>
 							{{ results.pr_2100_mean
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 						<td>
 							{{ results.pr_2100_max
-							}}<UnitWidget variable="pr" type="light" />
+							}}<UnitWidget unitType="mm_in" type="light" />
 						</td>
 					</tr>
 				</tbody>
