@@ -139,7 +139,7 @@ export default {
         lng: undefined,
       }
     },
-		convertResults(state, params) {
+    convertResults(state, params) {
       if (params["patterns"]) {
         params["patterns"].forEach(pattern => {
           convertUnits(state, pattern["type"], pattern["substring"]);
