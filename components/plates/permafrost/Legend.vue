@@ -114,14 +114,14 @@
 				</p>
 			</template>
 		</LegendItem>
-		<LegendItem v-show="activeLayerId == '3mgipl2010'">
-			<template v-slot:title>Ground temperature, 3m depth, 2010</template>
+		<LegendItem v-show="activeLayerId == 'iem_gipl_magt_alt_4km_2036_2065'">
+			<template v-slot:title>Ground temperature, 2036&ndash;2065, (GIPL model)</template>
 			<template v-slot:introduction>
 				<p>
 					This layer shows model output from the Geophysical Institute
 					Permafrost Lab model (GIPL), a landscape&ndash;scale
-					permafrost model. This layer shows modeled annual ground
-					temperature for 2010, with the NCAR-CCSM4 climate model and
+					permafrost model. This layer shows modeled mean annual ground
+					temperature for 2036&ndash;2065, with the NCAR&ndash;CCSM4 climate model and
 					RCP 8.5 emissions scenario.
 				</p>
 			</template>
@@ -177,17 +177,16 @@
 				</p>
 			</template>
 		</LegendItem>
-		<LegendItem v-show="activeLayerId == '3mgipl2050'">
+		<LegendItem v-show="activeLayerId == 'iem_gipl_magt_alt_4km_historical'">
 			<template v-slot:title
-				>Ground temperature, 3m depth, 2050 (GIPL model)</template
+				>Ground temperature, 1986&ndash;2005, (GIPL model)</template
 			>
 			<template v-slot:introduction>
 				<p>
 					This layer shows model output from the Geophysical Institute
 					Permafrost Lab model (GIPL), a landscape&ndash;scale
-					permafrost model. This layer shows modeled annual ground
-					temperature for 2050, with the NCAR-CCSM4 climate model and
-					RCP 8.5 emissions scenario.
+					permafrost model. This layer shows modeled mean annual ground
+					temperature for 1986&ndash;2005, with the CRU&ndash;TS historical baseline.
 				</p>
 			</template>
 			<template v-slot:legend>
@@ -242,9 +241,9 @@
 				</p>
 			</template>
 		</LegendItem>
-		<LegendItem v-show="activeLayerId == 'altGIPL2010'">
+		<LegendItem v-show="activeLayerId == 'iem_gipl_ALT_4km_historical'">
 			<template v-slot:title
-				>Active layer thickness, 2010 (GIPL model)</template
+				>Active layer thickness, 1986&ndash;2005 (GIPL model)</template
 			>
 			<template v-slot:introduction
 				><p>
@@ -252,8 +251,8 @@
 					Institute Permafrost Lab model (GIPL), a landscape scale
 					permafrost model. Active layer thickness is defined
 					as the depth of summer seasonal thaw in perennially frozen
-					ground. This layer shows model output for 2010 with the
-					NCAR-CCSM4 climate model and RCP8.5 emissions scenario.
+					ground. This layer shows model output for for 1986&ndash;2005,
+					with the CRU&ndash;TS historical baseline.
 				</p></template
 			>
 			<template v-slot:legend>
@@ -314,7 +313,7 @@
 				</p></template
 			>
 		</LegendItem>
-		<LegendItem v-show="activeLayerId == 'altGIPL2050'">
+		<LegendItem v-show="activeLayerId == 'iem_gipl_ALT_4km_2036_2065'">
 			<template v-slot:title
 				>Active layer thickness, 2050 (GIPL model)</template
 			>
@@ -324,8 +323,8 @@
 					Institute Permafrost Lab model (GIPL), a landscape scale
 					permafrost model. Active layer thickness is defined
 					as the depth of summer seasonal thaw in perennially frozen
-					ground. This layer shows model output for 2010 with the
-					NCAR-CCSM4 climate model and RCP8.5 emissions scenario.
+					ground. This layer shows model output for 2036&ndash;2065,
+					with the NCAR&ndash;CCSM4 climate model and RCP 8.5 emissions scenario.
 				</p></template
 			>
 			<template v-slot:legend
@@ -388,12 +387,12 @@
 		</LegendItem>
 		<LegendItem v-show="activeLayerId == 'obumagt'">
 			<template v-slot:title
-				>Mean annual ground temperature at top of permafrost, 2000-2016
+				>Mean annual ground temperature at top of permafrost, 2000&ndash;2016
 				(modeled)</template
 			>
 			<template v-slot:introduction
 				>This layer provides modeled mean annual ground temperatures
-				(MAGT) at the top of the permafrost, at 1km spatial
+				(MAGT) at the top of the permafrost, at 1 km spatial
 				resolution.</template
 			>
 			<template v-slot:legend>
