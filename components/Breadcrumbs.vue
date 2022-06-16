@@ -43,7 +43,7 @@ export default {
   name: 'Breadcrumbs',
   computed: {
     category: function () {
-      return this.$route.name.split('-')[0]
+      return this.$route.path.split('/')[1]
     },
     plate: function () {
       // Handle custom names independent of route
