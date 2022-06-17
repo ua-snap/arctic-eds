@@ -1,25 +1,17 @@
 export default [
   {
-    id: 'historical_heating_degree_days',
-    title: 'Historical (1979)',
+    id: 'ncarccsm4_heating_degree_days_index_condensed_historical',
+    title: 'Modeled Historical (1980&ndash;2009, ERA Interim)',
     source: 'rasdaman',
     wmsLayerName: 'heating_degree_days',
-    rasdamanConfiguration: {
-      dim_model: 0,
-      time: '1979-01-01T00:00:00.000Z',
-    },
-    style: 'arctic_eds',
+    style: 'arctic_eds_heating_degree_days_historical_condensed',
     default: true,
   },
   {
-    id: 'ncarccsm4_heating_degree_days',
-    title: 'Projected (2100, NCAR CCSM4, RCP 8.5)',
+    id: 'ncarccsm4_heating_degree_days_midcentury',
+    title: 'Projected Mid&ndash;Century (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
     source: 'rasdaman',
     wmsLayerName: 'heating_degree_days',
-    rasdamanConfiguration: {
-      dim_model: 2,
-      time: '2100-01-01T00:00:00.000Z',
-    },
-    style: 'arctic_eds',
+    style: 'arctic_eds_heating_degree_days_future_condensed',
   },
 ]
