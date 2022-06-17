@@ -4,10 +4,12 @@
     <hr />
     <LoadingStatus :state="state" />
 
-    <div v-if="!$fetchState.pending & !$fetchState.error">
-      <h3 class="title is-3">Ecoregion for {{ results.place }}</h3>
-      <h4 class="subtitle is-3">{{ results.name }}</h4>
-      <MiniMap />
+    <div id="report">
+      <div v-if="!$fetchState.pending & !$fetchState.error">
+        <h3 class="title is-3">Ecoregion for {{ results.place }}</h3>
+        <h4 class="subtitle is-3">{{ results.name }}</h4>
+        <MiniMap />
+      </div>
     </div>
   </div>
 </template>

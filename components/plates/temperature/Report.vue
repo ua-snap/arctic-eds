@@ -4,127 +4,129 @@
     <hr />
     <LoadingStatus :state="state" />
 
-    <div
-      v-if="
-        !$fetchState.pending &&
-        !$fetchState.error &&
-        Object.keys(results).length > 0
-      "
-    >
-      <h3 class="title is-3">Temperature data for {{ results.place }}</h3>
+    <div id="report">
+      <div
+        v-if="
+          !$fetchState.pending &&
+          !$fetchState.error &&
+          Object.keys(results).length > 0
+        "
+      >
+        <h3 class="title is-3">Temperature data for {{ results.place }}</h3>
 
-      <MiniMap />
+        <MiniMap />
 
-      <h4 class="title is-4">Temperature</h4>
+        <h4 class="title is-4">Temperature</h4>
 
-      <UnitRadio type="temperature" />
+        <UnitRadio type="temperature" />
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th scope="col" colspan="3">Annual</th>
-            <th scope="col" colspan="3">January</th>
-            <th scope="col" colspan="3">July</th>
-          </tr>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Min</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Max</th>
-            <th scope="col">Min</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Max</th>
-            <th scope="col">Min</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Max</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Historical (1901-2015)</th>
-            <td>{{ results.hist_min }}<UnitWidget /></td>
-            <td>{{ results.hist_mean }}<UnitWidget /></td>
-            <td>{{ results.hist_max }}<UnitWidget /></td>
-            <td>{{ results.jan_hist_min }}<UnitWidget /></td>
-            <td>{{ results.jan_hist_mean }}<UnitWidget /></td>
-            <td>{{ results.jan_hist_max }}<UnitWidget /></td>
-            <td>{{ results.july_hist_min }}<UnitWidget /></td>
-            <td>{{ results.july_hist_mean }}<UnitWidget /></td>
-            <td>{{ results.july_hist_max }}<UnitWidget /></td>
-          </tr>
-          <tr>
-            <th scope="row">Early Century (2010-2039)</th>
-            <td>{{ results.temp_2040_min }}<UnitWidget /></td>
-            <td>{{ results.temp_2040_mean }}<UnitWidget /></td>
-            <td>{{ results.temp_2040_max }}<UnitWidget /></td>
-            <td>{{ results.jan_2040_min }}<UnitWidget /></td>
-            <td>{{ results.jan_2040_mean }}<UnitWidget /></td>
-            <td>{{ results.jan_2040_max }}<UnitWidget /></td>
-            <td>{{ results.july_2040_min }}<UnitWidget /></td>
-            <td>{{ results.july_2040_mean }}<UnitWidget /></td>
-            <td>{{ results.july_2040_max }}<UnitWidget /></td>
-          </tr>
-          <tr>
-            <th scope="row">Mid Century (2040-2069)</th>
-            <td>{{ results.temp_2070_min }}<UnitWidget /></td>
-            <td>{{ results.temp_2070_mean }}<UnitWidget /></td>
-            <td>{{ results.temp_2070_max }}<UnitWidget /></td>
-            <td>{{ results.jan_2070_min }}<UnitWidget /></td>
-            <td>{{ results.jan_2070_mean }}<UnitWidget /></td>
-            <td>{{ results.jan_2070_max }}<UnitWidget /></td>
-            <td>{{ results.july_2070_min }}<UnitWidget /></td>
-            <td>{{ results.july_2070_mean }}<UnitWidget /></td>
-            <td>{{ results.july_2070_max }}<UnitWidget /></td>
-          </tr>
-          <tr>
-            <th scope="row">Late Century (2070-2099)</th>
-            <td>{{ results.temp_2100_min }}<UnitWidget /></td>
-            <td>{{ results.temp_2100_mean }}<UnitWidget /></td>
-            <td>{{ results.temp_2100_max }}<UnitWidget /></td>
-            <td>{{ results.jan_2100_min }}<UnitWidget /></td>
-            <td>{{ results.jan_2100_mean }}<UnitWidget /></td>
-            <td>{{ results.jan_2100_max }}<UnitWidget /></td>
-            <td>{{ results.july_2100_min }}<UnitWidget /></td>
-            <td>{{ results.july_2100_mean }}<UnitWidget /></td>
-            <td>{{ results.july_2100_max }}<UnitWidget /></td>
-          </tr>
-        </tbody>
-      </table>
-      <h4 class="title is-6">Access to Data</h4>
-      <div class="content">
-        <ul>
-          <li>
-            <a
-              href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-temperature-products-downscaled-from-cru-ts-data-via-the-delta-m"
-              target="_blank"
-              >Historical Monthly and Derived Temperature Products</a
-            >
-          </li>
-          <li>
-            <a
-              href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-temperature-products-2km-cmip5-ar5"
-              target="_blank"
-              >Projected Monthly and Derived Temperature Products</a
-            >
-          </li>
-        </ul>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th scope="col" colspan="3">Annual</th>
+              <th scope="col" colspan="3">January</th>
+              <th scope="col" colspan="3">July</th>
+            </tr>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Min</th>
+              <th scope="col">Mean</th>
+              <th scope="col">Max</th>
+              <th scope="col">Min</th>
+              <th scope="col">Mean</th>
+              <th scope="col">Max</th>
+              <th scope="col">Min</th>
+              <th scope="col">Mean</th>
+              <th scope="col">Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Historical (1901-2015)</th>
+              <td>{{ results.hist_min }}<UnitWidget /></td>
+              <td>{{ results.hist_mean }}<UnitWidget /></td>
+              <td>{{ results.hist_max }}<UnitWidget /></td>
+              <td>{{ results.jan_hist_min }}<UnitWidget /></td>
+              <td>{{ results.jan_hist_mean }}<UnitWidget /></td>
+              <td>{{ results.jan_hist_max }}<UnitWidget /></td>
+              <td>{{ results.july_hist_min }}<UnitWidget /></td>
+              <td>{{ results.july_hist_mean }}<UnitWidget /></td>
+              <td>{{ results.july_hist_max }}<UnitWidget /></td>
+            </tr>
+            <tr>
+              <th scope="row">Early Century (2010-2039)</th>
+              <td>{{ results.temp_2040_min }}<UnitWidget /></td>
+              <td>{{ results.temp_2040_mean }}<UnitWidget /></td>
+              <td>{{ results.temp_2040_max }}<UnitWidget /></td>
+              <td>{{ results.jan_2040_min }}<UnitWidget /></td>
+              <td>{{ results.jan_2040_mean }}<UnitWidget /></td>
+              <td>{{ results.jan_2040_max }}<UnitWidget /></td>
+              <td>{{ results.july_2040_min }}<UnitWidget /></td>
+              <td>{{ results.july_2040_mean }}<UnitWidget /></td>
+              <td>{{ results.july_2040_max }}<UnitWidget /></td>
+            </tr>
+            <tr>
+              <th scope="row">Mid Century (2040-2069)</th>
+              <td>{{ results.temp_2070_min }}<UnitWidget /></td>
+              <td>{{ results.temp_2070_mean }}<UnitWidget /></td>
+              <td>{{ results.temp_2070_max }}<UnitWidget /></td>
+              <td>{{ results.jan_2070_min }}<UnitWidget /></td>
+              <td>{{ results.jan_2070_mean }}<UnitWidget /></td>
+              <td>{{ results.jan_2070_max }}<UnitWidget /></td>
+              <td>{{ results.july_2070_min }}<UnitWidget /></td>
+              <td>{{ results.july_2070_mean }}<UnitWidget /></td>
+              <td>{{ results.july_2070_max }}<UnitWidget /></td>
+            </tr>
+            <tr>
+              <th scope="row">Late Century (2070-2099)</th>
+              <td>{{ results.temp_2100_min }}<UnitWidget /></td>
+              <td>{{ results.temp_2100_mean }}<UnitWidget /></td>
+              <td>{{ results.temp_2100_max }}<UnitWidget /></td>
+              <td>{{ results.jan_2100_min }}<UnitWidget /></td>
+              <td>{{ results.jan_2100_mean }}<UnitWidget /></td>
+              <td>{{ results.jan_2100_max }}<UnitWidget /></td>
+              <td>{{ results.july_2100_min }}<UnitWidget /></td>
+              <td>{{ results.july_2100_mean }}<UnitWidget /></td>
+              <td>{{ results.july_2100_max }}<UnitWidget /></td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 class="title is-6">Access to Data</h4>
+        <div class="content">
+          <ul>
+            <li>
+              <a
+                href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-temperature-products-downscaled-from-cru-ts-data-via-the-delta-m"
+                target="_blank"
+                >Historical Monthly and Derived Temperature Products</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-temperature-products-2km-cmip5-ar5"
+                target="_blank"
+                >Projected Monthly and Derived Temperature Products</a
+              >
+            </li>
+          </ul>
+        </div>
+        <DownloadCsvButton
+          text="Download annual temperature mean data as CSV"
+          endpoint="mmm/temperature/all"
+          class="mt-3 mb-5"
+        />
+        <DownloadCsvButton
+          text="Download annual January temperature min-mean-max as CSV"
+          endpoint="mmm/temperature/jan/all"
+          class="mt-3 mb-5"
+        />
+        <DownloadCsvButton
+          text="Download annual July temperature min-mean-max as CSV"
+          endpoint="mmm/temperature/july/all"
+          class="mt-3 mb-5"
+        />
       </div>
-      <DownloadCsvButton
-        text="Download annual temperature mean data as CSV"
-        endpoint="mmm/temperature/all"
-        class="mt-3 mb-5"
-      />
-      <DownloadCsvButton
-        text="Download annual January temperature min-mean-max as CSV"
-        endpoint="mmm/temperature/jan/all"
-        class="mt-3 mb-5"
-      />
-      <DownloadCsvButton
-        text="Download annual July temperature min-mean-max as CSV"
-        endpoint="mmm/temperature/july/all"
-        class="mt-3 mb-5"
-      />
     </div>
   </div>
 </template>

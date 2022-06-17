@@ -129,6 +129,7 @@ export default {
         // Router push to base URL of plate
         this.$router.push({
           path: fullPath.split('/report')[0],
+          hash: 'map-search',
         })
       }
       state.placeName = undefined
