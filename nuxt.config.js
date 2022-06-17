@@ -1,3 +1,12 @@
+// Some properties reused in the OpenGraph tags.
+var metas = {
+  title: 'Arctic Environmental and Engineering Data + Design Support System',
+  description:
+    'Query + view historical, current and projected environmental data for Alaska.',
+  preview: '/preview.jpg',
+  url: 'https://arcticeds.org',
+}
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -13,6 +22,15 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      { itemprop: 'name', content: metas.title },
+      { itemprop: 'description', content: metas.description },
+      { itemprop: 'image', content: metas.preview },
+      { property: 'og:title', content: metas.title },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: metas.url },
+      { property: 'og:image', content: metas.preview },
+      { property: 'og:description', content: metas.description },
+      { property: 'og:site_name', content: metas.title },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
