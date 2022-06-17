@@ -14,49 +14,43 @@
               <td>
                 <div class="colorbox pr0"></div>
               </td>
-              <td>0mm &ndash; 1mm</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox pr1"></div>
-              </td>
-              <td>1mm &ndash; 10mm</td>
+              <td>0in</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox pr10"></div>
               </td>
-              <td>10mm &ndash; 25mm</td>
+              <td>10in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox pr25"></div>
+                <div class="colorbox pr20"></div>
               </td>
-              <td>25mm &ndash; 50mm</td>
+              <td>20in</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox pr50"></div>
               </td>
-              <td>50mm &ndash; 100mm</td>
+              <td>50in</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox pr100"></div>
               </td>
-              <td>100mm &ndash; 200mm</td>
+              <td>100in</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox pr200"></div>
               </td>
-              <td>200mm &ndash; 400mm</td>
+              <td>200in</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox pr400"></div>
               </td>
-              <td>&gt; 400mm</td>
+              <td>&ge; 400in</td>
             </tr>
           </tbody>
         </table>
@@ -98,30 +92,23 @@ table.table td {
 }
 .precipitation .colorbox {
   &.pr0 {
-    /* Color map has half opacity at 0 */
-    background-color: #8c510a80;
-  }
-  &.pr1 {
     background-color: #8c510a;
   }
-  &.pr5 {
+  &.pr10 {
     background-color: #d8b365;
   }
-  &.pr10 {
+  &.pr20 {
     background-color: #f6e8c3;
   }
-  &.pr25 {
+  &.pr50 {
     background-color: #f5f5f5;
     border: 1px solid #ddd;
   }
-  &.pr50 {
+  &.pr100 {
     background-color: #c7eae5;
   }
-  &.pr100 {
-    background-color: #5ab4ac;
-  }
   &.pr200 {
-    background-color: #01665e;
+    background-color: #5ab4ac;
   }
   &.pr400 {
     background-color: #01665e;

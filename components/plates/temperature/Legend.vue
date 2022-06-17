@@ -40,51 +40,45 @@
           <tbody>
             <tr>
               <td>
-                <div class="colorbox tas-30"></div>
+                <div class="colorbox tas-22"></div>
               </td>
-              <td>&lt; &minus;30&deg;C</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox tas-15"></div>
-              </td>
-              <td>&minus;30&deg;C &ndash; &minus;15&deg;C</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox tas-5"></div>
-              </td>
-              <td>&minus;15&deg;C &ndash; &minus;5&deg;C</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox tas0"></div>
-              </td>
-              <td>&minus;5&deg;C &ndash; 0&deg;C</td>
+              <td>&le; &minus;22&deg;F</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox tas5"></div>
               </td>
-              <td>0&deg;C &ndash; 5&deg;C</td>
+              <td>5&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas15"></div>
+                <div class="colorbox tas23"></div>
               </td>
-              <td>5&deg;C &ndash; 15&deg;C</td>
+              <td>23&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas30"></div>
+                <div class="colorbox tas32"></div>
               </td>
-              <td>15&deg;C &ndash; 30&deg;C</td>
+              <td>32&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas30"></div>
+                <div class="colorbox tas41"></div>
               </td>
-              <td>&gt; 30&deg;C</td>
+              <td>41&deg;F</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox tas59"></div>
+              </td>
+              <td>59&deg;F</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox tas86"></div>
+              </td>
+              <td>&ge; 86&deg;F</td>
             </tr>
           </tbody>
         </table>
@@ -125,26 +119,26 @@ table.table td {
   width: 2rem;
 }
 .temperature .colorbox {
-  &.tas-30 {
+  &.tas-22 {
     background-color: #2166ac;
   }
-  &.tas-15 {
+  &.tas5 {
     background-color: #67a9cf;
   }
-  &.tas-5 {
+  &.tas23 {
     background-color: #d1e5f0;
   }
-  &.tas0 {
+  &.tas32 {
     background-color: #f7f7f7;
     border: 1px solid #ddd;
   }
-  &.tas5 {
+  &.tas41 {
     background-color: #fddbc7;
   }
-  &.tas15 {
+  &.tas59 {
     background-color: #ef8a62;
   }
-  &.tas30 {
+  &.tas86 {
     background-color: #b2182b;
   }
 }

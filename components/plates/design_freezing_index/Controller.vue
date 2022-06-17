@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="!reportIsVisible" class="container">
+    <div id="map-search" v-show="!reportIsVisible" class="container">
       <SearchControls />
     </div>
 
