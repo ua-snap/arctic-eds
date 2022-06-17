@@ -4,23 +4,25 @@
     <hr />
     <LoadingStatus :state="state" />
 
-    <div v-if="!$fetchState.pending && !$fetchState.error">
-      <h3 class="title is-3">Geological unit for {{ results.place }}</h3>
+    <div id="report">
+      <div v-if="!$fetchState.pending && !$fetchState.error">
+        <h3 class="title is-3">Geological unit for {{ results.place }}</h3>
 
-      <MiniMap />
+        <MiniMap />
 
-      <table class="table">
-        <tbody>
-          <tr>
-            <th scope="row">Age</th>
-            <td>{{ results.age }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Classification</th>
-            <td>{{ results.name }}</td>
-          </tr>
-        </tbody>
-      </table>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Age</th>
+              <td>{{ results.age }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Classification</th>
+              <td>{{ results.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +50,7 @@ export default {
     },
     ...mapGetters({
       placeName: 'report/placeName',
+      isPlaceDefined: 'report/isPlaceDefined',
       latLng: 'report/latLng',
     }),
   },
@@ -58,23 +61,21 @@ export default {
     },
   },
   async fetch() {
-    if (this.latLng != undefined) {
-      if (this.latLng.lat && this.latLng.lng) {
-        this.results = await this.$axios.$get(
-          process.env.apiUrl +
-            '/geology/point/' +
-            this.latLng.lat +
-            '/' +
-            this.latLng.lng
-        )
+    if (this.isPlaceDefined) {
+      this.results = await this.$axios.$get(
+        process.env.apiUrl +
+          '/geology/point/' +
+          this.latLng.lat +
+          '/' +
+          this.latLng.lng
+      )
 
-        let place = this.latLng.lat + ', ' + this.latLng.lng
-        if (this.placeName) {
-          place = this.placeName
-        }
-
-        this.results.place = place
+      let place = this.latLng.lat + ', ' + this.latLng.lng
+      if (this.placeName) {
+        place = this.placeName
       }
+
+      this.results.place = place
     }
   },
 }

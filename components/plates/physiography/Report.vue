@@ -4,10 +4,12 @@
     <hr />
     <LoadingStatus :state="state" />
 
-    <div v-if="!$fetchState.pending & !$fetchState.error">
-      <h3 class="title is-3">Ecoregion for {{ results.place }}</h3>
-      <h4 class="subtitle is-3">{{ results.name }}</h4>
-      <MiniMap />
+    <div id="report">
+      <div v-if="!$fetchState.pending & !$fetchState.error">
+        <h3 class="title is-3">Ecoregion for {{ results.place }}</h3>
+        <h4 class="subtitle is-3">{{ results.name }}</h4>
+        <MiniMap />
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +38,7 @@ export default {
     },
     ...mapGetters({
       placeName: 'report/placeName',
+      isPlaceDefined: 'report/isPlaceDefined',
       latLng: 'report/latLng',
     }),
   },
@@ -46,23 +49,21 @@ export default {
     },
   },
   async fetch() {
-    if (this.latLng != undefined) {
-      if (this.latLng.lat && this.latLng.lng) {
-        this.results = await this.$axios.$get(
-          process.env.apiUrl +
-            '/physiography/point/' +
-            this.latLng.lat +
-            '/' +
-            this.latLng.lng
-        )
+    if (this.isPlaceDefined) {
+      this.results = await this.$axios.$get(
+        process.env.apiUrl +
+          '/physiography/point/' +
+          this.latLng.lat +
+          '/' +
+          this.latLng.lng
+      )
 
-        let place = this.latLng.lat + ', ' + this.latLng.lng
-        if (this.placeName) {
-          place = this.placeName
-        }
-
-        this.results.place = place
+      let place = this.latLng.lat + ', ' + this.latLng.lng
+      if (this.placeName) {
+        place = this.placeName
       }
+
+      this.results.place = place
     }
   },
 }
