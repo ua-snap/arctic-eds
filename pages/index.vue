@@ -72,18 +72,8 @@
               </NuxtLink>
               <ul>
                 <li>
-                  <NuxtLink to="/engineering/freezing-index"
-                    >Freezing Index</NuxtLink
-                  >
-                </li>
-                <li>
                   <NuxtLink to="/engineering/design-freezing-index"
                     >Design Freezing Index</NuxtLink
-                  >
-                </li>
-                <li>
-                  <NuxtLink to="/engineering/thawing-index"
-                    >Thawing Index</NuxtLink
                   >
                 </li>
                 <li>
@@ -92,8 +82,18 @@
                   >
                 </li>
                 <li>
+                  <NuxtLink to="/engineering/freezing-index"
+                    >Freezing Index</NuxtLink
+                  >
+                </li>
+                <li>
                   <NuxtLink to="/engineering/heating-degree-days"
                     >Heating Degree Days</NuxtLink
+                  >
+                </li>
+                <li>
+                  <NuxtLink to="/engineering/thawing-index"
+                    >Thawing Index</NuxtLink
                   >
                 </li>
               </ul>
