@@ -269,10 +269,7 @@ export default {
 
       await this.$store.dispatch('report/apiFetch', url)
 
-      let place = this.latLng.lat + ', ' + this.latLng.lng
-      if (this.placeName) {
-        place = this.placeName
-      }
+      let place = this.placeName
 
       let plateResults = {
         place: place,

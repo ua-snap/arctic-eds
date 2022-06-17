@@ -79,6 +79,10 @@ export default {
       return getters.latLng || getters.placeId
     },
     placeName(state, getters, rootState) {
+      if (rootState.route.params.lat && rootState.route.params.lng) {
+        return rootState.route.params.lat + ', ' + rootState.route.params.lng
+      }
+
       if (rootState.route.params.communityId) {
         let place = _.find(state.places, {
           id: rootState.route.params.communityId,

@@ -4,7 +4,7 @@
       <!-- Drama dots -->
       <h4 class="title is-5">
         Loading data for
-        {{ placeName ? placeName : latLng.lat + ', ' + latLng.lng }}&hellip;
+        {{ placeName }}&hellip;
       </h4>
       <p>Hang on, this could take up to 30 seconds!</p>
       <b-progress type="is-info"></b-progress>
@@ -35,7 +35,6 @@ export default {
   computed: {
     ...mapGetters({
       placeName: 'report/placeName',
-      latLng: 'report/latLng',
       isPlaceDefined: 'report/isPlaceDefined',
     }),
   },
