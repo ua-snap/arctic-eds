@@ -5,7 +5,7 @@
         <b-navbar-item href="/">
           Home
         </b-navbar-item>
-        <b-navbar-dropdown hoverable label="About">
+        <b-navbar-dropdown label="About">
           <b-navbar-item tag="nuxt-link" to="/about">
             About
           </b-navbar-item>
@@ -13,7 +13,7 @@
             Beta test
           </b-navbar-item>
         </b-navbar-dropdown>
-        <b-navbar-dropdown hoverable label="Data">
+        <b-navbar-dropdown label="Data">
           <b-navbar-item tag="nuxt-link" to="/climate">
             Climate
           </b-navbar-item>
