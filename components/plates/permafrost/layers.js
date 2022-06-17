@@ -67,6 +67,7 @@ export default [
     title:
       'Mean annual ground temperature at top of permafrost, 2000&ndash;2016 (modeled)',
     wmsLayerName: 'obu_2018_magt',
+    style: 'ground_temperature_blue_to_red_arctic_eds',
   },
   {
     id: 'icevol_jorgenson',

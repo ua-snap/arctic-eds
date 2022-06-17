@@ -128,51 +128,51 @@
           <tbody>
             <tr>
               <td>
-                <div class="colorbox tas-20"></div>
-              </td>
-              <td>&minus;20&deg;C</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox tas-6"></div>
-              </td>
-              <td>&minus;6&deg;C</td>
-            </tr>
-            <tr>
-              <td>
                 <div class="colorbox tas-4"></div>
               </td>
-              <td>&minus;4&deg;C</td>
+              <td>&le; &minus;4&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas-2"></div>
+                <div class="colorbox tas20"></div>
               </td>
-              <td>&minus;2&deg;C</td>
+              <td>20&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas-1"></div>
+                <div class="colorbox tas24"></div>
               </td>
-              <td>&minus;1&deg;C</td>
+              <td>24&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas0"></div>
+                <div class="colorbox tas28"></div>
               </td>
-              <td>0&deg;C</td>
+              <td>28&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas1"></div>
+                <div class="colorbox tas30"></div>
               </td>
-              <td>1&deg;C</td>
+              <td>30&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas2"></div>
+                <div class="colorbox tas32"></div>
               </td>
-              <td>2&deg;C</td>
+              <td>32&deg;F</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox tas34"></div>
+              </td>
+              <td>34&deg;F</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox tas36"></div>
+              </td>
+              <td>&ge; 36&deg;F</td>
             </tr>
           </tbody>
         </table>
@@ -204,51 +204,51 @@
           <tbody>
             <tr>
               <td>
-                <div class="colorbox tas-20"></div>
-              </td>
-              <td>&minus;20&deg;C</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox tas-6"></div>
-              </td>
-              <td>&minus;6&deg;C</td>
-            </tr>
-            <tr>
-              <td>
                 <div class="colorbox tas-4"></div>
               </td>
-              <td>&minus;4&deg;C</td>
+              <td>&le; &minus;4&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas-2"></div>
+                <div class="colorbox tas20"></div>
               </td>
-              <td>&minus;2&deg;C</td>
+              <td>20&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas-1"></div>
+                <div class="colorbox tas24"></div>
               </td>
-              <td>&minus;1&deg;C</td>
+              <td>24&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas0"></div>
+                <div class="colorbox tas28"></div>
               </td>
-              <td>0&deg;C</td>
+              <td>28&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas1"></div>
+                <div class="colorbox tas30"></div>
               </td>
-              <td>1&deg;C</td>
+              <td>30&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas2"></div>
+                <div class="colorbox tas32"></div>
               </td>
-              <td>2&deg;C</td>
+              <td>32&deg;F</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox tas34"></div>
+              </td>
+              <td>34&deg;F</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox tas36"></div>
+              </td>
+              <td>&ge; 36&deg;F</td>
             </tr>
           </tbody>
         </table>
@@ -289,37 +289,37 @@
               <td>
                 <div class="colorbox d0"></div>
               </td>
-              <td>0m</td>
+              <td>0in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d05"></div>
+                <div class="colorbox d20"></div>
               </td>
-              <td>0.5m</td>
+              <td>20in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d1"></div>
+                <div class="colorbox d40"></div>
               </td>
-              <td>1m</td>
+              <td>40in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d15"></div>
+                <div class="colorbox d60"></div>
               </td>
-              <td>1.5m</td>
+              <td>60in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d2"></div>
+                <div class="colorbox d80"></div>
               </td>
-              <td>2m</td>
+              <td>80in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d25"></div>
+                <div class="colorbox d100"></div>
               </td>
-              <td>2.5m</td>
+              <td>&ge; 100in</td>
             </tr>
           </tbody>
         </table>
@@ -361,37 +361,37 @@
               <td>
                 <div class="colorbox d0"></div>
               </td>
-              <td>0m</td>
+              <td>0in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d05"></div>
+                <div class="colorbox d20"></div>
               </td>
-              <td>0.5m</td>
+              <td>20in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d1"></div>
+                <div class="colorbox d40"></div>
               </td>
-              <td>1m</td>
+              <td>40in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d15"></div>
+                <div class="colorbox d60"></div>
               </td>
-              <td>1.5m</td>
+              <td>60in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d2"></div>
+                <div class="colorbox d80"></div>
               </td>
-              <td>2m</td>
+              <td>80in</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox d25"></div>
+                <div class="colorbox d100"></div>
               </td>
-              <td>2.5m</td>
+              <td>&ge; 100in</td>
             </tr>
           </tbody>
         </table>
@@ -420,39 +420,39 @@
           <tbody>
             <tr>
               <td>
-                <div class="colorbox tas-10"></div>
+                <div class="colorbox tas14"></div>
               </td>
-              <td>&minus;10&deg;C</td>
+              <td>&le; 14&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas-5"></div>
+                <div class="colorbox tas23"></div>
               </td>
-              <td>&minus;5&deg;C</td>
+              <td>23&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas-1"></div>
+                <div class="colorbox tas30"></div>
               </td>
-              <td>&minus;1&deg;C</td>
+              <td>30&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas1"></div>
+                <div class="colorbox tas34"></div>
               </td>
-              <td>1&deg;C</td>
+              <td>34&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas3"></div>
+                <div class="colorbox tas37"></div>
               </td>
-              <td>3&deg;C</td>
+              <td>37&deg;F</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox tas5"></div>
+                <div class="colorbox tas41"></div>
               </td>
-              <td>5&deg;C</td>
+              <td>&ge; 41&deg;F</td>
             </tr>
           </tbody>
         </table>
@@ -554,28 +554,29 @@ table.table td {
   }
 }
 .temps .colorbox {
-  &.tas-20 {
+  &.tas-4 {
     background-color: rgb(33, 102, 172);
   }
-  &.tas-6 {
+  &.tas20 {
     background-color: rgb(67, 147, 195);
   }
-  &.tas-4 {
+  &.tas24 {
     background-color: rgb(146, 197, 222);
   }
-  &.tas-2 {
+  &.tas28 {
     background-color: rgb(209, 229, 240);
   }
-  &.tas-1 {
+  &.tas30 {
     background-color: rgb(247, 247, 247);
+    border: 1px solid #ddd;
   }
-  &.tas0 {
+  &.tas32 {
     background-color: rgb(253, 219, 199);
   }
-  &.tas1 {
+  &.tas34 {
     background-color: rgb(244, 165, 130);
   }
-  &.tas2 {
+  &.tas36 {
     background-color: rgb(214, 96, 77);
   }
 }
@@ -587,39 +588,39 @@ table.table td {
   &.d0 {
     background-color: #fdfecc;
   }
-  &.d05 {
+  &.d20 {
     background-color: #92d8a4;
   }
-  &.d1 {
+  &.d40 {
     background-color: #52a9a3;
   }
-  &.d15 {
+  &.d60 {
     background-color: #417799;
   }
-  &.d2 {
+  &.d80 {
     background-color: #424380;
   }
-  &.d25 {
+  &.d100 {
     background-color: #2b1d32;
   }
 }
 .obutemps .colorbox {
-  &.tas-10 {
+  &.tas14 {
     background-color: #08306b;
   }
-  &.tas-5 {
+  &.tas23 {
     background-color: #3787c0;
   }
-  &.tas-1 {
+  &.tas30 {
     background-color: #94c4df;
   }
-  &.tas1 {
+  &.tas34 {
     background-color: #f14432;
   }
-  &.tas3 {
+  &.tas37 {
     background-color: #bc141a;
   }
-  &.tas5 {
+  &.tas41 {
     background-color: #67000d;
   }
 }
