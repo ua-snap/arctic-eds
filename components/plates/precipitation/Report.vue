@@ -4,117 +4,119 @@
     <hr />
     <LoadingStatus :state="state" />
 
-    <div
-      v-if="
-        !$fetchState.pending &&
-        !$fetchState.error &&
-        Object.keys(results).length > 0
-      "
-    >
-      <h3 class="title is-3">Precipitation data for {{ results.place }}</h3>
+    <div id="report">
+      <div
+        v-if="
+          !$fetchState.pending &&
+          !$fetchState.error &&
+          Object.keys(results).length > 0
+        "
+      >
+        <h3 class="title is-3">Precipitation data for {{ results.place }}</h3>
 
-      <MiniMap />
+        <MiniMap />
 
-      <h4 class="title is-4">Annual Precipitation Totals</h4>
+        <h4 class="title is-4">Annual Precipitation Totals</h4>
 
-      <UnitRadio type="mm_in" />
+        <UnitRadio type="mm_in" />
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Min</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Max</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Historical (1901-2015)</th>
-            <td>
-              {{ results.pr_hist_min
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-            <td>
-              {{ results.pr_hist_mean
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-            <td>
-              {{ results.pr_hist_max
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Early Century (2010-2039)</th>
-            <td>
-              {{ results.pr_2040_min
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-            <td>
-              {{ results.pr_2040_mean
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-            <td>
-              {{ results.pr_2040_max
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Mid Century (2040-2069)</th>
-            <td>
-              {{ results.pr_2070_min
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-            <td>
-              {{ results.pr_2070_mean
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-            <td>
-              {{ results.pr_2070_max
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Late Century (2070-2099)</th>
-            <td>
-              {{ results.pr_2100_min
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-            <td>
-              {{ results.pr_2100_mean
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-            <td>
-              {{ results.pr_2100_max
-              }}<UnitWidget unitType="mm_in" type="light" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <h4 class="title is-6">Access to Data</h4>
-      <div class="content">
-        <ul>
-          <li>
-            <a
-              href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta"
-              target="_blank"
-              >Historical Monthly and Derived Precipitation Products</a
-            >
-          </li>
-          <li>
-            <a
-              href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5"
-              target="_blank"
-              >Projected Monthly and Derived Precipitation Products</a
-            >
-          </li>
-        </ul>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Min</th>
+              <th scope="col">Mean</th>
+              <th scope="col">Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Historical (1901-2015)</th>
+              <td>
+                {{ results.pr_hist_min
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+              <td>
+                {{ results.pr_hist_mean
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+              <td>
+                {{ results.pr_hist_max
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Early Century (2010-2039)</th>
+              <td>
+                {{ results.pr_2040_min
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+              <td>
+                {{ results.pr_2040_mean
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+              <td>
+                {{ results.pr_2040_max
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Mid Century (2040-2069)</th>
+              <td>
+                {{ results.pr_2070_min
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+              <td>
+                {{ results.pr_2070_mean
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+              <td>
+                {{ results.pr_2070_max
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Late Century (2070-2099)</th>
+              <td>
+                {{ results.pr_2100_min
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+              <td>
+                {{ results.pr_2100_mean
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+              <td>
+                {{ results.pr_2100_max
+                }}<UnitWidget unitType="mm_in" type="light" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 class="title is-6">Access to Data</h4>
+        <div class="content">
+          <ul>
+            <li>
+              <a
+                href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta"
+                target="_blank"
+                >Historical Monthly and Derived Precipitation Products</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5"
+                target="_blank"
+                >Projected Monthly and Derived Precipitation Products</a
+              >
+            </li>
+          </ul>
+        </div>
+        <DownloadCsvButton
+          text="Download precipitation data as CSV"
+          endpoint="mmm/precipitation/all"
+          class="mt-3 mb-5"
+        />
       </div>
-      <DownloadCsvButton
-        text="Download precipitation data as CSV"
-        endpoint="mmm/precipitation/all"
-        class="mt-3 mb-5"
-      />
     </div>
   </div>
 </template>

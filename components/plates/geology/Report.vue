@@ -4,23 +4,25 @@
     <hr />
     <LoadingStatus :state="state" />
 
-    <div v-if="!$fetchState.pending && !$fetchState.error">
-      <h3 class="title is-3">Geological unit for {{ results.place }}</h3>
+    <div id="report">
+      <div v-if="!$fetchState.pending && !$fetchState.error">
+        <h3 class="title is-3">Geological unit for {{ results.place }}</h3>
 
-      <MiniMap />
+        <MiniMap />
 
-      <table class="table">
-        <tbody>
-          <tr>
-            <th scope="row">Age</th>
-            <td>{{ results.age }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Classification</th>
-            <td>{{ results.name }}</td>
-          </tr>
-        </tbody>
-      </table>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Age</th>
+              <td>{{ results.age }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Classification</th>
+              <td>{{ results.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
