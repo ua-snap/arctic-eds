@@ -232,6 +232,7 @@ export default {
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
+      isPlaceDefined: 'report/isPlaceDefined',
       latLng: 'report/latLng',
       units: 'report/units',
     }),
@@ -258,66 +259,64 @@ export default {
     },
   },
   async fetch() {
-    if (this.latLng != undefined) {
-      if (this.latLng.lat && this.latLng.lng) {
-        let url =
-          process.env.apiUrl +
-          '/permafrost/point/' +
-          this.latLng.lat +
-          '/' +
-          this.latLng.lng
+    if (this.isPlaceDefined) {
+      let url =
+        process.env.apiUrl +
+        '/permafrost/point/' +
+        this.latLng.lat +
+        '/' +
+        this.latLng.lng
 
-        await this.$store.dispatch('report/apiFetch', url)
+      await this.$store.dispatch('report/apiFetch', url)
 
-        let place = this.latLng.lat + ', ' + this.latLng.lng
-        if (this.placeName) {
-          place = this.placeName
-        }
-
-        let plateResults = {
-          place: place,
-
-          // "alt_" substrings are converted between meters and inches
-          gipl_alt_1995:
-            this.results['gipl']['1995']['cruts31']['historical']['alt'],
-          gipl_alt_2025:
-            this.results['gipl']['2025']['ncarccsm4']['rcp85']['alt'],
-          gipl_alt_2050:
-            this.results['gipl']['2050']['ncarccsm4']['rcp85']['alt'],
-          gipl_alt_2075:
-            this.results['gipl']['2075']['ncarccsm4']['rcp85']['alt'],
-          gipl_alt_2095:
-            this.results['gipl']['2095']['ncarccsm4']['rcp85']['alt'],
-
-          // "magt_" substrings are converted between °C and °F
-          gipl_magt_1995:
-            this.results['gipl']['1995']['cruts31']['historical']['magt'],
-          gipl_magt_2025:
-            this.results['gipl']['2025']['ncarccsm4']['rcp85']['magt'],
-          gipl_magt_2050:
-            this.results['gipl']['2050']['ncarccsm4']['rcp85']['magt'],
-          gipl_magt_2075:
-            this.results['gipl']['2075']['ncarccsm4']['rcp85']['magt'],
-          gipl_magt_2095:
-            this.results['gipl']['2095']['ncarccsm4']['rcp85']['magt'],
-        }
-
-        if (this.results['jorg'] != null) {
-          plateResults['giv_2008'] = this.results['jorg']['ice']
-          plateResults['pe_2008'] = this.results['jorg']['pfx']
-        }
-
-        if (this.results['obu_magt'] != null) {
-          // "magt_" substrings are converted between °C and °F
-          plateResults['magt_2018'] = this.results['obu_magt']['temp']
-        }
-
-        if (this.results['obupfx'] != null) {
-          plateResults['pe_2018'] = this.results['obupfx']['pfx']
-        }
-
-        this.$store.commit('report/setResults', plateResults)
+      let place = this.latLng.lat + ', ' + this.latLng.lng
+      if (this.placeName) {
+        place = this.placeName
       }
+
+      let plateResults = {
+        place: place,
+
+        // "alt_" substrings are converted between meters and inches
+        gipl_alt_1995:
+          this.results['gipl']['1995']['cruts31']['historical']['alt'],
+        gipl_alt_2025:
+          this.results['gipl']['2025']['ncarccsm4']['rcp85']['alt'],
+        gipl_alt_2050:
+          this.results['gipl']['2050']['ncarccsm4']['rcp85']['alt'],
+        gipl_alt_2075:
+          this.results['gipl']['2075']['ncarccsm4']['rcp85']['alt'],
+        gipl_alt_2095:
+          this.results['gipl']['2095']['ncarccsm4']['rcp85']['alt'],
+
+        // "magt_" substrings are converted between °C and °F
+        gipl_magt_1995:
+          this.results['gipl']['1995']['cruts31']['historical']['magt'],
+        gipl_magt_2025:
+          this.results['gipl']['2025']['ncarccsm4']['rcp85']['magt'],
+        gipl_magt_2050:
+          this.results['gipl']['2050']['ncarccsm4']['rcp85']['magt'],
+        gipl_magt_2075:
+          this.results['gipl']['2075']['ncarccsm4']['rcp85']['magt'],
+        gipl_magt_2095:
+          this.results['gipl']['2095']['ncarccsm4']['rcp85']['magt'],
+      }
+
+      if (this.results['jorg'] != null) {
+        plateResults['giv_2008'] = this.results['jorg']['ice']
+        plateResults['pe_2008'] = this.results['jorg']['pfx']
+      }
+
+      if (this.results['obu_magt'] != null) {
+        // "magt_" substrings are converted between °C and °F
+        plateResults['magt_2018'] = this.results['obu_magt']['temp']
+      }
+
+      if (this.results['obupfx'] != null) {
+        plateResults['pe_2018'] = this.results['obupfx']['pfx']
+      }
+
+      this.$store.commit('report/setResults', plateResults)
     }
   },
 }

@@ -105,6 +105,7 @@ export default {
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
+      isPlaceDefined: 'report/isPlaceDefined',
       latLng: 'report/latLng',
     }),
   },
@@ -115,33 +116,31 @@ export default {
     },
   },
   async fetch() {
-    if (this.latLng != undefined) {
-      if (this.latLng.lat && this.latLng.lng) {
-        let url =
-          process.env.apiUrl +
-          '/mmm/snow/snowfallequivalent/hp/' +
-          this.latLng.lat +
-          '/' +
-          this.latLng.lng
+    if (this.isPlaceDefined) {
+      let url =
+        process.env.apiUrl +
+        '/mmm/snow/snowfallequivalent/hp/' +
+        this.latLng.lat +
+        '/' +
+        this.latLng.lng
 
-        await this.$store.dispatch('report/apiFetch', url)
+      await this.$store.dispatch('report/apiFetch', url)
 
-        let place = this.latLng.lat + ', ' + this.latLng.lng
-        if (this.placeName) {
-          place = this.placeName
-        }
-
-        let plateResults = {
-          place: place,
-          sfe_hist_min: this.results['historical']['sfemin'],
-          sfe_hist_mean: this.results['historical']['sfemean'],
-          sfe_hist_max: this.results['historical']['sfemax'],
-          sfe_proj_min: this.results['projected']['sfemin'],
-          sfe_proj_mean: this.results['projected']['sfemean'],
-          sfe_proj_max: this.results['projected']['sfemax'],
-        }
-        this.$store.commit('report/setResults', plateResults)
+      let place = this.latLng.lat + ', ' + this.latLng.lng
+      if (this.placeName) {
+        place = this.placeName
       }
+
+      let plateResults = {
+        place: place,
+        sfe_hist_min: this.results['historical']['sfemin'],
+        sfe_hist_mean: this.results['historical']['sfemean'],
+        sfe_hist_max: this.results['historical']['sfemax'],
+        sfe_proj_min: this.results['projected']['sfemin'],
+        sfe_proj_mean: this.results['projected']['sfemean'],
+        sfe_proj_max: this.results['projected']['sfemax'],
+      }
+      this.$store.commit('report/setResults', plateResults)
     }
   },
 }
