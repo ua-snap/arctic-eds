@@ -28,15 +28,13 @@
           <a class="navbar-link"> Categories </a>
 
           <div class="navbar-dropdown">
-            <NuxtLink class="navbar-item" to="/physiography"
-              >Physiography</NuxtLink
-            >
-            <NuxtLink class="navbar-item" to="/water">Water</NuxtLink>
-            <NuxtLink class="navbar-item" to="/light">Light</NuxtLink>
             <NuxtLink class="navbar-item" to="/climate">Climate</NuxtLink>
             <NuxtLink class="navbar-item" to="/engineering"
               >Engineering</NuxtLink
             >
+            <NuxtLink class="navbar-item" to="/physiography"
+              >Physiography</NuxtLink
+            ><p></p>
           </div>
         </div>
       </div>

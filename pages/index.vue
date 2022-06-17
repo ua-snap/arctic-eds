@@ -26,27 +26,6 @@
         <div class="columns">
           <div class="column is-one-third">
             <div class="toc--panel">
-              <NuxtLink to="/physiography">
-                <h3>Physiography</h3>
-                <div class="toc--panel--image image--physiography"></div>
-              </NuxtLink>
-              <ul>
-                <li>
-                  <NuxtLink to="/physiography/geology">Geology</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/physiography/physiography"
-                    >Physiographic Provinces</NuxtLink
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="toc--panel">
               <NuxtLink to="/climate">
                 <h3>Climate</h3>
                 <div class="toc--panel--image image--climate"></div>
@@ -94,6 +73,27 @@
                 <li>
                   <NuxtLink to="/engineering/thawing-index"
                     >Thawing Index</NuxtLink
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="toc--panel">
+              <NuxtLink to="/physiography">
+                <h3>Physiography</h3>
+                <div class="toc--panel--image image--physiography"></div>
+              </NuxtLink>
+              <ul>
+                <li>
+                  <NuxtLink to="/physiography/geology">Geology</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/physiography/physiography"
+                    >Physiographic Provinces</NuxtLink
                   >
                 </li>
               </ul>
