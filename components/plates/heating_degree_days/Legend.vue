@@ -16,49 +16,49 @@
               <td>
                 <div class="colorbox dd0"></div>
               </td>
-              <td>0 &ndash; 3000</td>
+              <td>0</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox dd3000"></div>
               </td>
-              <td>3000 &ndash; 6000</td>
+              <td>3000</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox dd6000"></div>
               </td>
-              <td>6000 &ndash; 9000</td>
+              <td>6000</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox dd9000"></div>
               </td>
-              <td>9000 &ndash; 12000</td>
+              <td>9000</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox dd12000"></div>
               </td>
-              <td>12000 &ndash; 15000</td>
+              <td>12000</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox dd15000"></div>
               </td>
-              <td>15000 &ndash; 18000</td>
+              <td>15000</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox dd18000"></div>
               </td>
-              <td>18000 &ndash; 21000</td>
+              <td>18000</td>
             </tr>
             <tr>
               <td>
                 <div class="colorbox dd21000"></div>
               </td>
-              <td>&gt; 21000</td>
+              <td>&ge; 21000</td>
             </tr>
           </tbody>
         </table>
