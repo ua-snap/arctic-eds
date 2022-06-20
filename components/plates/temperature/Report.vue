@@ -16,6 +16,8 @@
 
         <MiniMap />
 
+        <TemperatureExplanation />
+
         <h4 class="title is-4">Temperature</h4>
 
         <UnitRadio type="temperature" />
@@ -138,6 +140,7 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
 import UnitRadio from '~/components/UnitRadio'
+import TemperatureExplanation from '~/components/plates/temperature/Explanation'
 
 export default {
   name: 'TemperatureReport',
@@ -147,6 +150,7 @@ export default {
     LoadingStatus,
     UnitWidget,
     UnitRadio,
+    TemperatureExplanation,
   },
   computed: {
     state: function () {
