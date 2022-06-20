@@ -20,7 +20,7 @@ import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 
 export default {
-  name: 'PhysiographyReport',
+  name: 'EcoregionsReport',
   components: {
     MiniMap,
     LoadingStatus,

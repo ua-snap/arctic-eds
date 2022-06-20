@@ -13,7 +13,7 @@
     <div class="container">
       <section class="section">
         <div v-show="this.reportIsVisible" class="report-wrapper">
-          <PhysiographyReport />
+          <EcoregionsReport />
         </div>
       </section>
     </div>
@@ -22,18 +22,18 @@
 <script lang="scss" scoped></script>
 <script>
 import Plate from '~/components/Plate'
-import PhysiographyReport from '~/components/plates/physiography/Report'
-import PhysiographyLegend from '~/components/plates/physiography/Legend'
+import EcoregionsReport from '~/components/plates/ecoregions/Report'
+import EcoregionsLegend from '~/components/plates/ecoregions/Legend'
 import SearchControls from '~/components/SearchControls'
-import layers from '~/components/plates/physiography/layers'
+import layers from '~/components/plates/ecoregions/layers'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'PhysiographyController',
-  components: { Plate, PhysiographyReport, PhysiographyLegend, SearchControls },
+  name: 'EcoregionsController',
+  components: { Plate, EcoregionsReport, EcoregionsLegend, SearchControls },
   data() {
     return {
-      legend: PhysiographyLegend,
+      legend: EcoregionsLegend,
       layers: layers,
     }
   },

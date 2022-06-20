@@ -14,9 +14,7 @@
                 <NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/physiography/physiography"
-                  >Ecoregions</NuxtLink
-                >
+                <NuxtLink to="/physiography/ecoregions">Ecoregions</NuxtLink>
               </li>
             </ul>
           </div>
