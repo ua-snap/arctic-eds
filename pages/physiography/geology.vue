@@ -8,11 +8,11 @@
             This map shows detailed geological units for the state of Alaska.
           </p>
         </div>
+        <UserPrompt dataLabel="geological unit" />
         <div class="content content-clamp is-size-5">
           <p>
-            Click any point on the map, or enter a lat/lon, to get the
-            geological unit for that point. No legend is shown due to the large
-            quantity of different geological units present on the map.
+            No legend is shown due to the large quantity of different geological
+            units present on the map.
           </p>
         </div>
       </section>

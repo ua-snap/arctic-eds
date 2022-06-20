@@ -35,6 +35,7 @@
             desert environmental characteristics.
           </p>
         </div>
+        <UserPrompt dataLabel="precipitation" />
       </section>
     </div>
     <PrecipitationController />

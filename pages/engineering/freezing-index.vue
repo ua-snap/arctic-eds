@@ -9,12 +9,7 @@
             freezing.
           </p>
         </div>
-        <div class="content content-clamp is-size-5">
-          <p>
-            Click any point on the map, or enter a lat/lon, to get the freezing
-            index for that point.
-          </p>
-        </div>
+        <UserPrompt dataLabel="freezing index" />
       </section>
     </div>
     <FreezingIndexController />
@@ -23,6 +18,7 @@
 <script lang="scss" scoped></script>
 <script>
 import FreezingIndexController from '~/components/plates/freezing_index/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'FreezingIndex',

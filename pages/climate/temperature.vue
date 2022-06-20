@@ -7,6 +7,7 @@
           <p><i>Placeholder for Temperature text</i></p>
         </div>
       </section>
+      <UserPrompt dataLabel="temperature" />
     </div>
     <TemperatureController />
   </div>

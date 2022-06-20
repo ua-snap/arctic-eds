@@ -40,6 +40,7 @@
             winter wind velocities.
           </p>
         </div>
+        <UserPrompt dataLabel="snowfall" />
       </section>
     </div>
     <SnowfallController />

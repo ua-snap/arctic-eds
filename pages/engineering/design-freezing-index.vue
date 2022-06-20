@@ -9,12 +9,7 @@
             freezing degree days for the top three years in the era.
           </p>
         </div>
-        <div class="content content-clamp is-size-5">
-          <p>
-            Click any point on the map, or enter a lat/lon, to get the design
-            freezing index for that point.
-          </p>
-        </div>
+        <UserPrompt dataLabel="design freezing index" />
       </section>
     </div>
     <DesignFreezingIndexController />

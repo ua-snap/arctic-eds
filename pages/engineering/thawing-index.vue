@@ -9,12 +9,7 @@
             thawing.
           </p>
         </div>
-        <div class="content content-clamp is-size-5">
-          <p>
-            Click any point on the map, or enter a lat/lon, to get the thawing
-            index for that point.
-          </p>
-        </div>
+        <UserPrompt dataLabel="thawing index" />
       </section>
     </div>
     <ThawingIndexController />

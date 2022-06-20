@@ -9,12 +9,7 @@
             65&deg;F.
           </p>
         </div>
-        <div class="content content-clamp is-size-5">
-          <p>
-            Click any point on the map, or enter a lat/lon, to get the heating
-            degree days for that point.
-          </p>
-        </div>
+        <UserPrompt dataLabel="heating degree days" />
       </section>
     </div>
     <HeatingDegreeDaysController />
