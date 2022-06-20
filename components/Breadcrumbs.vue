@@ -52,7 +52,7 @@ export default {
         plate = plate.replace(/-/g, ' ')
         switch (plate) {
           case 'physiography':
-            return 'Physiographic Provinces'
+            return 'Ecoregions'
           case 'beta':
             return false
           case 'climate modeling':

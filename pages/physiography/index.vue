@@ -15,7 +15,7 @@
               </li>
               <li>
                 <NuxtLink to="/physiography/physiography"
-                  >Physiographic Provinces</NuxtLink
+                  >Ecoregions</NuxtLink
                 >
               </li>
             </ul>
