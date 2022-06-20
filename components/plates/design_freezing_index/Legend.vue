@@ -3,7 +3,10 @@
     <LegendItem>
       <template v-slot:title>Design freezing index</template>
       <template v-slot:introduction>
-        <p>This layer shows the design freezing index across Alaska.</p>
+        <p>
+          These layers show the historical or projected design freezing index
+          across Alaska.
+        </p>
       </template>
       <template v-slot:legend>
         <div class="has-text-weight-bold mb-2">Degree days below 32&deg;F</div>
@@ -61,15 +64,23 @@
         </table>
       </template>
       <template v-slot:explanation>
-        The design freezing index is the
-        <strong>mean of the three years with the highest freezing index</strong>
-        for each location. The freezing index is the
-        <strong>annual cumulative degree days (&deg;F) below freezing</strong>.
-        These degree days are calculated by taking the number of degrees below
-        32&deg;F for each day of the year and adding them together into a single
-        value. A
-        <strong>higher design freezing index means a colder era</strong> for
-        that location.
+        <p>
+          The design freezing index is the mean of the three years with the
+          highest freezing index for each location. The freezing index is the
+          annual cumulative degree days (&deg;F) below freezing. These degree
+          days are calculated by taking the number of degrees below 32&deg;F for
+          each day of the year and adding them together into a single value.
+          Larger values indicate colder annual temperatures.
+        </p>
+        <p>
+          These are the highest likely values of the freezing index &mdash; a
+          useful measure when design criteria are governed by the deepest likely
+          frozen ground or ice.
+        </p>
+        <p>
+          A decrease in design freezing index over time suggests less extreme
+          cold temperatures with a decrease in necessary insulation and heating.
+        </p>
       </template>
       <template v-slot:footer>
         <p>

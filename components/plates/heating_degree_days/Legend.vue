@@ -4,8 +4,8 @@
       <template v-slot:title>Heating degree days</template>
       <template v-slot:introduction>
         <p>
-          This layer shows the cumulative annual heating degree days across
-          Alaska.
+          These layers show the historical or projected cumulative annual
+          heating degree days across Alaska.
         </p>
       </template>
       <template v-slot:legend>
@@ -64,11 +64,21 @@
         </table>
       </template>
       <template v-slot:explanation>
-        Heating degree days are the
-        <strong>annual cumulative degree days below 65&deg;F</strong>
-        for each location.
-        <strong>A higher heating degree days value means a colder year</strong>
-        for that location.
+        <p>
+          Heating degree days, measured below 65&deg;F, provide information upon
+          which the annual fuel requirement for a heated building can be
+          calculated. For example, assume that house heating begins when the air
+          temperature is near 65&deg;F. If a particular day has a mean
+          temperature of 50&deg;F, the heating load for the day is 15 degree
+          days (65&ndash;50). For the entire year the heating degree days are
+          the sum of the daily degree days. If the mean temperature for a
+          particular day is higher than 65&deg;F, there is assumed to be no
+          heating and thus no heating degree days.
+        </p>
+
+        <p>
+          Higher values for heating degree days suggest colder, longer winters.
+        </p>
       </template>
       <template v-slot:footer>
         <p>

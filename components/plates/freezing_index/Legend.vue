@@ -3,7 +3,10 @@
     <LegendItem>
       <template v-slot:title>Freezing index</template>
       <template v-slot:introduction>
-        <p>This layer shows the freezing index across Alaska.</p>
+        <p>
+          These layers show the historical or projected freezing index across
+          Alaska.
+        </p>
       </template>
       <template v-slot:legend>
         <div class="has-text-weight-bold mb-2">Degree days below 32&deg;F</div>
@@ -61,13 +64,18 @@
         </table>
       </template>
       <template v-slot:explanation>
-        The freezing index is the
-        <strong>annual cumulative degree days (&deg;F) below freezing</strong>
-        for each location. These degree days are calculated by taking the number
-        of degrees below 32&deg;F for each day of the year and adding them
-        together into a single value. A
-        <strong>higher freezing index means a colder year</strong> for that
-        location.
+        <p>
+          The freezing index is the annual cumulative degree days (&deg;F) below
+          freezing for each location. These degree days are calculated by taking
+          the number of degrees below 32&deg;F for each day of the year and
+          adding them together into a single value. A higher freezing index
+          means a colder year for that location.
+        </p>
+        <p>
+          Larger values indicate colder winter temperatures. A decrease in
+          freezing index over time suggests warming conditions and decreased
+          depth and duration of freeze in soils and water bodies.
+        </p>
       </template>
       <template v-slot:footer>
         <p>

@@ -5,8 +5,8 @@
         <h1 class="title is-2">Design Thawing Index</h1>
         <div class="content content-clamp is-size-4">
           <p>
-            The design thawing index is the mean of the cumulative annual above
-            freezing degree days for the top three years in the era.
+            The design thawing index is the average thawing index for the three
+            warmest years of the 30 years in the era (historical or projected).
           </p>
         </div>
         <div class="content content-clamp is-size-5">
