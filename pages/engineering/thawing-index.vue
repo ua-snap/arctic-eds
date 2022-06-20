@@ -5,8 +5,9 @@
         <h1 class="title is-2">Thawing Index</h1>
         <div class="content content-clamp is-size-4">
           <p>
-            The thawing index is the cumulative annual degree days above
-            thawing.
+            The thawing index, or degree days above freezing, is a measure of
+            thawing that occurs during a year. It is also a measure of summer
+            duration and temperatures.
           </p>
         </div>
         <PlateInstructions />

@@ -4,8 +4,8 @@
       <template v-slot:title>Heating degree days</template>
       <template v-slot:introduction>
         <p>
-          This layer shows the cumulative annual heating degree days across
-          Alaska.
+          These layers show the historical or projected cumulative annual
+          heating degree days across Alaska.
         </p>
       </template>
       <template v-slot:legend>
@@ -64,11 +64,7 @@
         </table>
       </template>
       <template v-slot:explanation>
-        Heating degree days are the
-        <strong>annual cumulative degree days below 65&deg;F</strong>
-        for each location.
-        <strong>A higher heating degree days value means a colder year</strong>
-        for that location.
+        <HeatingDegreeDaysExplanation :legend="true" />
       </template>
       <template v-slot:footer>
         <p>
@@ -122,10 +118,11 @@ table.table td {
 <script>
 import { mapGetters } from 'vuex'
 import LegendItem from '~/components/LegendItem'
+import HeatingDegreeDaysExplanation from '~/components/plates/heating_degree_days/Explanation'
 
 export default {
   name: 'HeatingDegreeDaysLegend',
-  components: { LegendItem },
+  components: { LegendItem, HeatingDegreeDaysExplanation },
   computed: {
     activeLayerId() {
       // This component can get mounted before the active layer

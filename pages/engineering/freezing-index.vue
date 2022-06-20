@@ -5,8 +5,10 @@
         <h1 class="title is-2">Freezing Index</h1>
         <div class="content content-clamp is-size-4">
           <p>
-            The freezing index is the cumulative annual degree days below
-            freezing.
+            The freezing index, or degree days below freezing, can be used to
+            estimate the depth of ground freezing during the winter, the depth
+            of ice that will be formed on a lake, or the amount of heat which
+            must be added to an exposed water tank to keep it unfrozen.
           </p>
         </div>
         <PlateInstructions />

@@ -3,7 +3,10 @@
     <LegendItem>
       <template v-slot:title>Freezing index</template>
       <template v-slot:introduction>
-        <p>This layer shows the freezing index across Alaska.</p>
+        <p>
+          These layers show the historical or projected freezing index across
+          Alaska.
+        </p>
       </template>
       <template v-slot:legend>
         <div class="has-text-weight-bold mb-2">Degree days below 32&deg;F</div>
@@ -61,13 +64,7 @@
         </table>
       </template>
       <template v-slot:explanation>
-        The freezing index is the
-        <strong>annual cumulative degree days (&deg;F) below freezing</strong>
-        for each location. These degree days are calculated by taking the number
-        of degrees below 32&deg;F for each day of the year and adding them
-        together into a single value. A
-        <strong>higher freezing index means a colder year</strong> for that
-        location.
+        <FreezingIndexExplanation :legend="true" />
       </template>
       <template v-slot:footer>
         <p>
@@ -121,10 +118,11 @@ table.table td {
 <script>
 import { mapGetters } from 'vuex'
 import LegendItem from '~/components/LegendItem'
+import FreezingIndexExplanation from '~/components/plates/freezing_index/Explanation'
 
 export default {
   name: 'FreezingIndexLegend',
-  components: { LegendItem },
+  components: { LegendItem, FreezingIndexExplanation },
   computed: {
     activeLayerId() {
       // This component can get mounted before the active layer

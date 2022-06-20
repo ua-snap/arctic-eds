@@ -16,6 +16,8 @@
 
         <MiniMap />
 
+        <FreezingIndexExplanation />
+
         <h4 class="title is-4">Freezing Index</h4>
 
         <table class="table">
@@ -82,6 +84,7 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
+import FreezingIndexExplanation from '~/components/plates/freezing_index/Explanation'
 
 export default {
   name: 'FreezingIndexReport',
@@ -89,6 +92,7 @@ export default {
     DownloadCsvButton,
     MiniMap,
     LoadingStatus,
+    FreezingIndexExplanation,
   },
   data() {
     return {
