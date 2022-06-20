@@ -25,6 +25,7 @@ export default {
   layout: 'plate',
   components: {
     FreezingIndexController,
+    UserPrompt,
   },
 }
 </script>

@@ -19,12 +19,14 @@
 <script lang="scss" scoped></script>
 <script>
 import PhysiographyController from '~/components/plates/physiography/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'Physiography',
   layout: 'plate',
   components: {
     PhysiographyController,
+    UserPrompt,
   },
 }
 </script>

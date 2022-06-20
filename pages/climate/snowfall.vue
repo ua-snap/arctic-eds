@@ -49,12 +49,14 @@
 <script lang="scss" scoped></script>
 <script>
 import SnowfallController from '~/components/plates/snowfall/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'Snowfall',
   layout: 'plate',
   components: {
     SnowfallController,
+    UserPrompt,
   },
 }
 </script>

@@ -23,12 +23,13 @@
 <script lang="scss" scoped></script>
 <script>
 import GeologyController from '~/components/plates/geology/Controller'
-
+import UserPrompt from '~/components/UserPrompt'
 export default {
   name: 'Geology',
   layout: 'plate',
   components: {
     GeologyController,
+    UserPrompt,
   },
 }
 </script>

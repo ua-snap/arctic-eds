@@ -18,12 +18,14 @@
 <script lang="scss" scoped></script>
 <script>
 import HeatingDegreeDaysController from '~/components/plates/heating_degree_days/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'HeatingDegreeDays',
   layout: 'plate',
   components: {
     HeatingDegreeDaysController,
+    UserPrompt,
   },
 }
 </script>

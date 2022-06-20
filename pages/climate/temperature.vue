@@ -15,12 +15,14 @@
 <script lang="scss" scoped></script>
 <script>
 import TemperatureController from '~/components/plates/temperature/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'Temperature',
   layout: 'plate',
   components: {
     TemperatureController,
+    UserPrompt,
   },
 }
 </script>

@@ -19,12 +19,14 @@
 <script lang="scss" scoped></script>
 <script>
 import PermafrostController from '~/components/plates/permafrost/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'Permafrost',
   layout: 'plate',
   components: {
     PermafrostController,
+    UserPrompt,
   },
 }
 </script>

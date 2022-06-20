@@ -18,12 +18,14 @@
 <script lang="scss" scoped></script>
 <script>
 import ThawingIndexController from '~/components/plates/thawing_index/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'ThawingIndex',
   layout: 'plate',
   components: {
     ThawingIndexController,
+    UserPrompt,
   },
 }
 </script>

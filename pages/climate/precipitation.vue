@@ -44,12 +44,14 @@
 <script lang="scss" scoped></script>
 <script>
 import PrecipitationController from '~/components/plates/precipitation/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'Precipitation',
   layout: 'plate',
   components: {
     PrecipitationController,
+    UserPrompt,
   },
 }
 </script>
