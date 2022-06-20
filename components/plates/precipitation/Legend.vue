@@ -4,7 +4,9 @@
       <template v-slot:title>Precipitation</template>
       <template v-slot:introduction>
         <p>
-          This layer shows the cumulative annual precipitation across Alaska.
+          These layers show historical or projected cumulative annual
+          precipitation across Alaska. Solid precipitation (ice and snow) are
+          measured as water equivalent here.
         </p>
       </template>
       <template v-slot:legend>
@@ -55,8 +57,8 @@
           </tbody>
         </table>
       </template>
-      <template v-slot:explanation>
-        <p><i>Placeholder for precipitation legend text</i></p>
+      <template v-slot:explanation
+        ><PrecipitationExplanation :legend="true" />
       </template>
       <template v-slot:footer
         ><p>
@@ -119,10 +121,11 @@ table.table td {
 <script>
 import { mapGetters } from 'vuex'
 import LegendItem from '~/components/LegendItem'
+import PrecipitationExplanation from '~/components/plates/precipitation/Explanation'
 
 export default {
   name: 'PrecipitationLegend',
-  components: { LegendItem },
+  components: { LegendItem, PrecipitationExplanation },
   computed: {
     activeLayerId() {
       // This component can get mounted before the active layer

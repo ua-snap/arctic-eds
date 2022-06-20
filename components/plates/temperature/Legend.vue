@@ -84,7 +84,7 @@
         </table>
       </template>
       <template v-slot:explanation>
-        <p><i>Placeholder for temperature legend text</i></p>
+        <TemperatureExplanation :legend="true" />
       </template>
       <template v-slot:footer
         ><p>
@@ -147,10 +147,11 @@ table.table td {
 <script>
 import { mapGetters } from 'vuex'
 import LegendItem from '~/components/LegendItem'
+import TemperatureExplanation from '~/components/plates/temperature/Explanation'
 
 export default {
   name: 'TemperatureLegend',
-  components: { LegendItem },
+  components: { LegendItem, TemperatureExplanation },
   computed: {
     activeLayerId() {
       // This component can get mounted before the active layer
