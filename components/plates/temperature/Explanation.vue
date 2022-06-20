@@ -2,11 +2,11 @@
   <div class="content content-clamp" :class="{ 'is-size-5': !legend }">
     <p>
       Historically, Arctic regions had no months with mean monthly temperatures
-      greater than 50°F and had at least one month with a mean temperature 32°F
-      or colder. Subarctic lands had from one to four months with monthly mean
-      temperatures greater than 50°F and at least one month with a mean
-      temperature 32°F or colder. As climate shifts, these definitions are
-      changing.
+      greater than 50&deg;F and had at least one month with a mean temperature
+      32&deg;F or colder. Subarctic lands had from one to four months with
+      monthly mean temperatures greater than 50&deg;F and at least one month
+      with a mean temperature 32&deg;F or colder. As climate shifts, these
+      definitions are changing.
     </p>
     <p>
       This map shows average annual historical and projected temperatures for
@@ -24,7 +24,7 @@
       Mean annual temperatures for Alaska are seen to decrease from south to
       north in a fairly regular pattern. There have been marked decreases over
       time in the proportion of the state with mean temperature below freezing
-      (32°F), and this trend is projected to continue.
+      (32&deg;F), and this trend is projected to continue.
     </p>
   </div>
 </template>

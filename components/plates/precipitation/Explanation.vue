@@ -16,8 +16,8 @@
       latitudes.
     </p>
     <p>
-      The Interior is generally not a water-limited ecosystem, with large areas
-      of wet muskeg and lakes as well as significant river runoff. In the
+      The Interior is generally not a water&ndash;limited ecosystem, with large
+      areas of wet muskeg and lakes as well as significant river runoff. In the
       Arctic, countless shallow lakes disguise the fact that water supplies are
       limited, though the area never exhibits the standard desert environmental
       characteristics.
