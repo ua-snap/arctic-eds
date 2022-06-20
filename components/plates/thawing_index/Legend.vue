@@ -64,23 +64,7 @@
         </table>
       </template>
       <template v-slot:explanation>
-        <p>
-          The thawing index is the annual cumulative degree days (&deg;F) above
-          freezing for each location. These degree days are calculated by taking
-          the number of degrees above 32&deg;F for each day of the year and
-          adding them together into a single value. A higher thawing index means
-          a warmer year for that location.
-        </p>
-        <p>
-          Areas with thawing indexes much less than their freezing indexes are
-          candidates for at least some permafrost. Areas with small thawing
-          indexes and large freezing indexes tend to have continuous permafrost.
-        </p>
-        <p>
-          Larger values indicate warmer temperatures. Increases in thawing index
-          over time suggest warmer and longer summers, increased active layer
-          depth, and a decrease in ice and snow.
-        </p>
+        <ThawingIndexExplanation :legend="true" />
       </template>
       <template v-slot:footer>
         <p>
@@ -134,10 +118,11 @@ table.table td {
 <script>
 import { mapGetters } from 'vuex'
 import LegendItem from '~/components/LegendItem'
+import ThawingIndexExplanation from '~/components/plates/thawing_index/Explanation'
 
 export default {
   name: 'ThawingIndexLegend',
-  components: { LegendItem },
+  components: { LegendItem, ThawingIndexExplanation },
   computed: {
     activeLayerId() {
       // This component can get mounted before the active layer

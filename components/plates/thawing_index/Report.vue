@@ -16,6 +16,8 @@
 
         <MiniMap />
 
+        <ThawingIndexExplanation :isFooter="false" />
+
         <h4 class="title is-4">Thawing Index</h4>
 
         <table class="table">
@@ -82,6 +84,7 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
+import ThawingIndexExplanation from '~/components/plates/thawing_index/Explanation'
 
 export default {
   name: 'ThawingIndexReport',
@@ -89,6 +92,7 @@ export default {
     DownloadCsvButton,
     MiniMap,
     LoadingStatus,
+    ThawingIndexExplanation,
   },
   data() {
     return {

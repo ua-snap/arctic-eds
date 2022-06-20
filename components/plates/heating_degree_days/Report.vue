@@ -18,6 +18,8 @@
 
         <MiniMap />
 
+        <HeatingDegreeDaysExplanation />
+
         <h4 class="title is-4">Heating Degree Days</h4>
 
         <table class="table">
@@ -84,6 +86,7 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
+import HeatingDegreeDaysExplanation from '~/components/plates/heating_degree_days/Explanation'
 
 export default {
   name: 'HeatingDegreeDaysReport',
@@ -91,6 +94,7 @@ export default {
     DownloadCsvButton,
     MiniMap,
     LoadingStatus,
+    HeatingDegreeDaysExplanation,
   },
   data() {
     return {

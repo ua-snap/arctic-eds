@@ -18,6 +18,8 @@
 
         <MiniMap />
 
+        <DesignFreezingIndexExplanation />
+
         <h4 class="title is-4">Design Freezing Index</h4>
 
         <table class="table">
@@ -70,6 +72,7 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
+import DesignFreezingIndexExplanation from '~/components/plates/design_freezing_index/Explanation'
 
 export default {
   name: 'DesignFreezingIndexReport',
@@ -77,11 +80,11 @@ export default {
     DownloadCsvButton,
     MiniMap,
     LoadingStatus,
+    DesignFreezingIndexExplanation,
   },
   data() {
     return {
-      // Will have the results of the data fetch.
-      results: {},
+      results: {}, // Will have the results of the data fetch.
     }
   },
 
