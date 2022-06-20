@@ -2,20 +2,18 @@
   <div>
     <div class="container">
       <section class="section">
-        <h1 class="title is-2">Physiographic Provinces</h1>
+        <h1 class="title is-2">Ecoregions</h1>
         <div class="content content-clamp is-size-4">
           <p>
-            Ecoregions are essentially equivalent to the more archaic
-            "physiographic provinces." Ecoregions do combine landscape and
+            Ecoregions combine landscape, topographic, and
             vegetation variables, but have less detail about vegetation when
-            compared to "land cover" or "forest type" datasets. Topography plays
-            a prominent role.
+            compared to "land cover" or "forest type" datasets.
           </p>
         </div>
         <div class="content content-clamp is-size-5">
           <p>
             Click any point on the map, or enter a lat/lon, to get the
-            geological unit for that point.
+            ecoregion for that point.
           </p>
         </div>
       </section>
