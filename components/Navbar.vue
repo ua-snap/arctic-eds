@@ -12,6 +12,9 @@
           <b-navbar-item tag="nuxt-link" to="/beta">
             Beta test
           </b-navbar-item>
+          <b-navbar-item tag="nuxt-link" to="/climate-modeling">
+            Climate modeling
+          </b-navbar-item>
         </b-navbar-dropdown>
         <b-navbar-dropdown label="Data">
           <b-navbar-item tag="nuxt-link" to="/climate">
