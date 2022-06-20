@@ -28,7 +28,11 @@
               Global Circulation Models (GCMs) run under different scenarios
               (Representative Concentration Pathways, RCPs)
               <a href="https://uaf-snap.org/methods-overview/downscaling/"
-                >downscaled with gridded PRISM climate data</a
+                >downscaled</a
+              >
+              with gridded PRISM climate data.
+              <NuxtLink to="/climate-modeling"
+                >Read more about GCMs and RCPs</NuxtLink
               >.
             </p>
             <p>
