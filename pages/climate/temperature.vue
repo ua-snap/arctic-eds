@@ -7,6 +7,7 @@
           <p><i>Placeholder for Temperature text</i></p>
         </div>
       </section>
+      <UserPrompt dataLabel="temperature" />
     </div>
     <TemperatureController />
   </div>
@@ -14,12 +15,14 @@
 <script lang="scss" scoped></script>
 <script>
 import TemperatureController from '~/components/plates/temperature/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'Temperature',
   layout: 'plate',
   components: {
     TemperatureController,
+    UserPrompt,
   },
 }
 </script>

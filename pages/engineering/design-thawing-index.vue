@@ -9,12 +9,7 @@
             freezing degree days for the top three years in the era.
           </p>
         </div>
-        <div class="content content-clamp is-size-5">
-          <p>
-            Click any point on the map, or enter a lat/lon, to get the design
-            thawing index for that point.
-          </p>
-        </div>
+        <UserPrompt dataLabel="design thawing index" />
       </section>
     </div>
     <DesignThawingIndexController />
@@ -23,12 +18,14 @@
 <script lang="scss" scoped></script>
 <script>
 import DesignThawingIndexController from '~/components/plates/design_thawing_index/Controller'
+import UserPrompt from '~/components/UserPrompt'
 
 export default {
   name: 'DesignThawingIndex',
   layout: 'plate',
   components: {
     DesignThawingIndexController,
+    UserPrompt,
   },
 }
 </script>
