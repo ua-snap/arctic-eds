@@ -40,7 +40,7 @@
             winter wind velocities.
           </p>
         </div>
-        <UserPrompt dataLabel="snowfall" />
+        <PlateInstructions />
       </section>
     </div>
     <SnowfallController />
@@ -49,14 +49,14 @@
 <script lang="scss" scoped></script>
 <script>
 import SnowfallController from '~/components/plates/snowfall/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'Snowfall',
   layout: 'plate',
   components: {
     SnowfallController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>

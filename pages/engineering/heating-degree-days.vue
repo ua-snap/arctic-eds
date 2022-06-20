@@ -9,7 +9,7 @@
             65&deg;F.
           </p>
         </div>
-        <UserPrompt dataLabel="heating degree days" />
+        <PlateInstructions />
       </section>
     </div>
     <HeatingDegreeDaysController />
@@ -18,14 +18,14 @@
 <script lang="scss" scoped></script>
 <script>
 import HeatingDegreeDaysController from '~/components/plates/heating_degree_days/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'HeatingDegreeDays',
   layout: 'plate',
   components: {
     HeatingDegreeDaysController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>

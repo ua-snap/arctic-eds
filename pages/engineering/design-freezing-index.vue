@@ -9,7 +9,7 @@
             freezing degree days for the top three years in the era.
           </p>
         </div>
-        <UserPrompt dataLabel="design freezing index" />
+        <PlateInstructions />
       </section>
     </div>
     <DesignFreezingIndexController />
@@ -18,14 +18,14 @@
 <script lang="scss" scoped></script>
 <script>
 import DesignFreezingIndexController from '~/components/plates/design_freezing_index/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'DesignFreezingIndex',
   layout: 'plate',
   components: {
     DesignFreezingIndexController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>

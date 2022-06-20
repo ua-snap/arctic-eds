@@ -9,7 +9,7 @@
             freezing.
           </p>
         </div>
-        <UserPrompt dataLabel="freezing index" />
+        <PlateInstructions />
       </section>
     </div>
     <FreezingIndexController />
@@ -18,14 +18,14 @@
 <script lang="scss" scoped></script>
 <script>
 import FreezingIndexController from '~/components/plates/freezing_index/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'FreezingIndex',
   layout: 'plate',
   components: {
     FreezingIndexController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>

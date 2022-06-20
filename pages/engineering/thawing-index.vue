@@ -9,7 +9,7 @@
             thawing.
           </p>
         </div>
-        <UserPrompt dataLabel="thawing index" />
+        <PlateInstructions />
       </section>
     </div>
     <ThawingIndexController />
@@ -18,14 +18,14 @@
 <script lang="scss" scoped></script>
 <script>
 import ThawingIndexController from '~/components/plates/thawing_index/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'ThawingIndex',
   layout: 'plate',
   components: {
     ThawingIndexController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>
