@@ -10,7 +10,7 @@
             projections of changing permafrost conditions throughout the state.
           </p>
         </div>
-        <UserPrompt dataLabel="permafrost conditions" />
+        <PlateInstructions />
       </section>
     </div>
     <PermafrostController />
@@ -19,14 +19,14 @@
 <script lang="scss" scoped></script>
 <script>
 import PermafrostController from '~/components/plates/permafrost/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'Permafrost',
   layout: 'plate',
   components: {
     PermafrostController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>

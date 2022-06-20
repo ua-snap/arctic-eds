@@ -8,13 +8,13 @@
             This map shows detailed geological units for the state of Alaska.
           </p>
         </div>
-        <UserPrompt dataLabel="geological unit" />
         <div class="content content-clamp is-size-5">
           <p>
             No legend is shown due to the large quantity of different geological
             units present on the map.
           </p>
         </div>
+        <PlateInstructions />
       </section>
     </div>
     <GeologyController />
@@ -23,13 +23,14 @@
 <script lang="scss" scoped></script>
 <script>
 import GeologyController from '~/components/plates/geology/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
+
 export default {
   name: 'Geology',
   layout: 'plate',
   components: {
     GeologyController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>

@@ -10,7 +10,7 @@
             or "forest type" datasets.
           </p>
         </div>
-        <UserPrompt dataLabel="ecoregion" />
+        <PlateInstructions />
       </section>
     </div>
     <PhysiographyController />
@@ -19,14 +19,14 @@
 <script lang="scss" scoped></script>
 <script>
 import PhysiographyController from '~/components/plates/physiography/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'Physiography',
   layout: 'plate',
   components: {
     PhysiographyController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>

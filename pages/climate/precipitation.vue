@@ -35,7 +35,7 @@
             desert environmental characteristics.
           </p>
         </div>
-        <UserPrompt dataLabel="precipitation" />
+        <PlateInstructions />
       </section>
     </div>
     <PrecipitationController />
@@ -44,14 +44,14 @@
 <script lang="scss" scoped></script>
 <script>
 import PrecipitationController from '~/components/plates/precipitation/Controller'
-import UserPrompt from '~/components/UserPrompt'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'Precipitation',
   layout: 'plate',
   components: {
     PrecipitationController,
-    UserPrompt,
+    PlateInstructions,
   },
 }
 </script>
