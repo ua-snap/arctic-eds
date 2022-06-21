@@ -51,6 +51,7 @@ export default {
     '~/plugins/plotly.client',
     '~/plugins/leaflet.client.js',
     '~/plugins/vuex-router-sync',
+    '~/plugins/gtag',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
