@@ -5,9 +5,10 @@
         <h1 class="title is-2">Precipitation</h1>
         <div class="content content-clamp is-size-5">
           <p>
-            Mean annual precipitation varies from over 7500 mm (300 in) in parts
-            of southeastern Alaska to 100 mm (4 in) along the Arctic coast.
-            These layers show cumulative annual precipitation across Alaska.
+            Mean annual precipitation (total rainwater equivalent) varies from
+            over 7500 mm (300 in) in parts of southeastern Alaska to 100 mm (4
+            in) along the Arctic coast. These layers show cumulative annual
+            precipitation across Alaska.
           </p>
         </div>
         <PlateInstructions />
