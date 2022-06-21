@@ -18,6 +18,7 @@
         <MiniMap />
 
         <DesignThawingIndexExplanation />
+        <DataExplanation context="wrf" />
 
         <h4 class="title is-4">Design Thawing Index</h4>
 
@@ -72,6 +73,7 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import DesignThawingIndexExplanation from '~/components/plates/design_thawing_index/Explanation'
+import DataExplanation from '~/components/DataExplanation'
 
 export default {
   name: 'DesignThawingIndexReport',
@@ -80,6 +82,7 @@ export default {
     MiniMap,
     LoadingStatus,
     DesignThawingIndexExplanation,
+    DataExplanation,
   },
   data() {
     return {

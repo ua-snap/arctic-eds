@@ -17,6 +17,7 @@
         <MiniMap />
 
         <PrecipitationExplanation />
+        <DataExplanation context="snap" />
 
         <h4 class="title is-4">Annual Precipitation Totals</h4>
 
@@ -131,6 +132,7 @@ import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
 import UnitRadio from '~/components/UnitRadio'
 import PrecipitationExplanation from '~/components/plates/precipitation/Explanation'
+import DataExplanation from '~/components/DataExplanation'
 
 export default {
   name: 'PrecipitationReport',
@@ -141,6 +143,7 @@ export default {
     UnitWidget,
     UnitRadio,
     PrecipitationExplanation,
+    DataExplanation,
   },
   computed: {
     state: function () {

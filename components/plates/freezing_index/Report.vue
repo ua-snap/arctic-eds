@@ -17,6 +17,7 @@
         <MiniMap />
 
         <FreezingIndexExplanation />
+        <DataExplanation context="wrf" />
 
         <h4 class="title is-4">Freezing Index</h4>
 
@@ -85,6 +86,7 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import FreezingIndexExplanation from '~/components/plates/freezing_index/Explanation'
+import DataExplanation from '~/components/DataExplanation'
 
 export default {
   name: 'FreezingIndexReport',
@@ -93,6 +95,7 @@ export default {
     MiniMap,
     LoadingStatus,
     FreezingIndexExplanation,
+    DataExplanation,
   },
   data() {
     return {

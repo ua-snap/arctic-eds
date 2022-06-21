@@ -8,8 +8,8 @@
       <div
         v-if="
           !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+            !$fetchState.error &&
+            Object.keys(results).length > 0
         "
       >
         <h3 class="title is-3">
@@ -19,6 +19,7 @@
         <MiniMap />
 
         <DesignFreezingIndexExplanation />
+        <DataExplanation context="wrf" />
 
         <h4 class="title is-4">Design Freezing Index</h4>
 
@@ -73,6 +74,7 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import DesignFreezingIndexExplanation from '~/components/plates/design_freezing_index/Explanation'
+import DataExplanation from '~/components/DataExplanation'
 
 export default {
   name: 'DesignFreezingIndexReport',
@@ -81,6 +83,7 @@ export default {
     MiniMap,
     LoadingStatus,
     DesignFreezingIndexExplanation,
+    DataExplanation,
   },
   data() {
     return {
@@ -89,7 +92,7 @@ export default {
   },
 
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -100,7 +103,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },
