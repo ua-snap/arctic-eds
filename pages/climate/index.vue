@@ -6,11 +6,9 @@
           <img src="~/assets/images/PHYS_alaska_dem.jpg" />
           <div class="content is-size-5">
             <ul>
-              <li>Climatic Zones</li>
               <li>
                 <NuxtLink to="/climate/precipitation">Precipitation</NuxtLink>
               </li>
-              <li>Wet Days Per Year</li>
               <li>
                 <NuxtLink to="/climate/snowfall">Snowfall</NuxtLink>
               </li>
@@ -52,6 +50,6 @@
 export default {
   name: 'Ecoregions',
   layout: 'category',
-  created: function () {},
+  created: function() {},
 }
 </script>
