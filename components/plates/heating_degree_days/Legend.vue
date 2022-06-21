@@ -89,28 +89,28 @@ table.table td {
 }
 .heating-degree-days .colorbox {
   &.dd21000 {
-    background-color: #034e7b;
+    background-color: #8c2d04;
   }
   &.dd18000 {
-    background-color: #0570b0;
+    background-color: #cc4c02;
   }
   &.dd15000 {
-    background-color: #3690c0;
+    background-color: #ec7014;
   }
   &.dd12000 {
-    background-color: #74a9cf;
+    background-color: #fe9929;
   }
   &.dd9000 {
-    background-color: #a6bddb;
+    background-color: #fec44f;
   }
   &.dd6000 {
-    background-color: #d0d1e6;
+    background-color: #fee391;
   }
   &.dd3000 {
-    background-color: #ece7f2;
+    background-color: #fff7bc;
   }
   &.dd0 {
-    background-color: #fff7fb;
+    background-color: #ffffe5;
   }
 }
 </style>
