@@ -19,20 +19,10 @@
         </p>
       </template>
       <template v-slot:introduction>
-        <p v-show="activeLayerId.includes('_annual_mean_temp')">
-          This layer shows the annual mean temperature across Alaska.
-        </p>
-        <p v-show="activeLayerId.includes('_january_min')">
-          This layer shows the minimum January temperature across Alaska.
-        </p>
-        <p v-show="activeLayerId.includes('_july_min')">
-          This layer shows the minimum July temperature across Alaska.
-        </p>
-        <p v-show="activeLayerId.includes('_january_max')">
-          This layer shows the maximum January temperature across Alaska.
-        </p>
-        <p v-show="activeLayerId.includes('_july_max')">
-          This layer shows the maximum July temperature across Alaska.
+        <p>
+          These layers show mean, minimum, or maximum temperatures for the year
+          or selected month. Historical values are for 1980&ndash;2009 while
+          projected values are for 2040&ndash;2069.
         </p>
       </template>
       <template v-slot:legend>
@@ -84,7 +74,7 @@
         </table>
       </template>
       <template v-slot:explanation>
-        <p><i>Placeholder for temperature legend text</i></p>
+        <TemperatureExplanation :legend="true" />
       </template>
       <template v-slot:footer
         ><p>
@@ -147,10 +137,11 @@ table.table td {
 <script>
 import { mapGetters } from 'vuex'
 import LegendItem from '~/components/LegendItem'
+import TemperatureExplanation from '~/components/plates/temperature/Explanation'
 
 export default {
   name: 'TemperatureLegend',
-  components: { LegendItem },
+  components: { LegendItem, TemperatureExplanation },
   computed: {
     activeLayerId() {
       // This component can get mounted before the active layer
