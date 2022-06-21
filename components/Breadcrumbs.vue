@@ -42,17 +42,15 @@ import _ from 'lodash'
 export default {
   name: 'Breadcrumbs',
   computed: {
-    category: function() {
+    category: function () {
       return this.$route.path.split('/')[1].replace(/-/, ' ')
     },
-    plate: function() {
+    plate: function () {
       // Handle custom names independent of route
       if (this.$route.path.split('/').length > 2) {
         let plate = _.slice(this.$route.path.split('/'), 2)[0]
         plate = plate.replace(/-/g, ' ')
         switch (plate) {
-          case 'physiography':
-            return 'Ecoregions'
           case 'beta':
             return false
           default:

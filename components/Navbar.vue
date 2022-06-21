@@ -2,24 +2,16 @@
   <div class="nav-wrapper">
     <b-navbar>
       <template #start>
-        <b-navbar-item href="/">
-          Home
-        </b-navbar-item>
+        <b-navbar-item href="/"> Home </b-navbar-item>
         <b-navbar-dropdown label="About">
-          <b-navbar-item tag="nuxt-link" to="/about">
-            About
-          </b-navbar-item>
-          <b-navbar-item tag="nuxt-link" to="/beta">
-            Beta test
-          </b-navbar-item>
+          <b-navbar-item tag="nuxt-link" to="/about"> About </b-navbar-item>
+          <b-navbar-item tag="nuxt-link" to="/beta"> Beta test </b-navbar-item>
           <b-navbar-item tag="nuxt-link" to="/climate-modeling">
             Climate modeling
           </b-navbar-item>
         </b-navbar-dropdown>
         <b-navbar-dropdown label="Data">
-          <b-navbar-item tag="nuxt-link" to="/climate">
-            Climate
-          </b-navbar-item>
+          <b-navbar-item tag="nuxt-link" to="/climate"> Climate </b-navbar-item>
           <b-navbar-item tag="nuxt-link" to="/engineering">
             Engineering
           </b-navbar-item>

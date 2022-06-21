@@ -80,7 +80,7 @@ export default {
     extendRoutes(routes, resolve) {
       // Order matters here; lat/lng needs to go last because it's "globby"
       routes.push({
-        path: '/physiography/geology/report/community/:communityId',
+        path: '/ecoregions/geology/report/community/:communityId',
         component: resolve(__dirname, 'pages/physiography/geology'),
       })
       routes.push({
@@ -96,12 +96,12 @@ export default {
         component: resolve(__dirname, 'pages/physiography/permafrost'),
       })
       routes.push({
-        path: '/physiography/physiography/report/community/:communityId',
-        component: resolve(__dirname, 'pages/physiography/physiography'),
+        path: '/physiography/ecoregions/report/community/:communityId',
+        component: resolve(__dirname, 'pages/physiography/ecoregions'),
       })
       routes.push({
-        path: '/physiography/physiography/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/physiography/physiography'),
+        path: '/physiography/ecoregions/report/:lat/:lng',
+        component: resolve(__dirname, 'pages/physiography/ecoregions'),
       })
       routes.push({
         path: '/climate/precipitation/report/community/:communityId',

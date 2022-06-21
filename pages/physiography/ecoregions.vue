@@ -13,19 +13,19 @@
         <PlateInstructions />
       </section>
     </div>
-    <PhysiographyController />
+    <EcoregionsController />
   </div>
 </template>
 <script lang="scss" scoped></script>
 <script>
-import PhysiographyController from '~/components/plates/physiography/Controller'
+import EcoregionsController from '~/components/plates/ecoregions/Controller'
 import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
-  name: 'Physiography',
+  name: 'Ecoregions',
   layout: 'plate',
   components: {
-    PhysiographyController,
+    EcoregionsController,
     PlateInstructions,
   },
 }

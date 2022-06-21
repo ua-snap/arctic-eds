@@ -77,7 +77,7 @@
 <style lang="scss" scoped></style>
 <script>
 export default {
-  name: 'Physiography',
+  name: 'Ecoregions',
   layout: 'category',
   created: function () {},
 }
