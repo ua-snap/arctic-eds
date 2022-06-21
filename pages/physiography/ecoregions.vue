@@ -2,29 +2,30 @@
   <div>
     <div class="container">
       <section class="section">
-        <h1 class="title is-2">Heating Degree Days</h1>
+        <h1 class="title is-2">Ecoregions</h1>
         <div class="content content-clamp is-size-4">
           <p>
-            The heating degree days are the cumulative annual degree days below
-            65&deg;F.
+            Ecoregions combine landscape, topographic, and vegetation variables,
+            but have less detail about vegetation when compared to "land cover"
+            or "forest type" datasets.
           </p>
         </div>
         <PlateInstructions />
       </section>
     </div>
-    <HeatingDegreeDaysController />
+    <EcoregionsController />
   </div>
 </template>
 <script lang="scss" scoped></script>
 <script>
-import HeatingDegreeDaysController from '~/components/plates/heating_degree_days/Controller'
+import EcoregionsController from '~/components/plates/ecoregions/Controller'
 import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
-  name: 'HeatingDegreeDays',
+  name: 'Ecoregions',
   layout: 'plate',
   components: {
-    HeatingDegreeDaysController,
+    EcoregionsController,
     PlateInstructions,
   },
 }

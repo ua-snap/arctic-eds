@@ -10,11 +10,11 @@
         </div>
         <div class="content content-clamp is-size-5">
           <p>
-            Click any point on the map, or enter a lat/lon, to get the
-            geological unit for that point. No legend is shown due to the large
-            quantity of different geological units present on the map.
+            No legend is shown due to the large quantity of different geological
+            units present on the map.
           </p>
         </div>
+        <PlateInstructions />
       </section>
     </div>
     <GeologyController />
@@ -23,12 +23,14 @@
 <script lang="scss" scoped></script>
 <script>
 import GeologyController from '~/components/plates/geology/Controller'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'Geology',
   layout: 'plate',
   components: {
     GeologyController,
+    PlateInstructions,
   },
 }
 </script>

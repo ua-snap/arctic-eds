@@ -3,7 +3,10 @@
     <LegendItem>
       <template v-slot:title>Mean annual snowfall</template>
       <template v-slot:introduction>
-        <p>This layer shows the mean annual snowfall across Alaska.</p>
+        <p>
+          These layers show the historical or projected mean annual snowfall
+          across Alaska.
+        </p>
       </template>
       <template v-slot:legend>
         <table class="table snowfall">
@@ -54,8 +57,8 @@
         </table>
       </template>
       <template v-slot:explanation>
-        <p><i>Placeholder for snowfall legend text</i></p>
-      </template>
+        <SnowfallExplanation :legend="true"
+      /></template>
       <template v-slot:footer
         ><p>
           Access detailed information about this dataset, including source data
@@ -117,10 +120,11 @@ table.table td {
 <script>
 import { mapGetters } from 'vuex'
 import LegendItem from '~/components/LegendItem'
+import SnowfallExplanation from '~/components/plates/snowfall/Explanation'
 
 export default {
   name: 'SnowfallLegend',
-  components: { LegendItem },
+  components: { LegendItem, SnowfallExplanation },
   computed: {
     activeLayerId() {
       // This component can get mounted before the active layer

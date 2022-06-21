@@ -6,17 +6,12 @@
           <img src="~/assets/images/PHYS_alaska_dem.jpg" />
           <div class="content is-size-5">
             <ul>
-              <li>Earthquakes</li>
+              <li>
+                <NuxtLink to="/physiography/ecoregions">Ecoregions</NuxtLink>
+              </li>
               <li><NuxtLink to="/physiography/geology">Geology</NuxtLink></li>
-              <li>Forest Types</li>
-              <li>Glaciation</li>
               <li>
                 <NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/physiography/physiography"
-                  >Physiographic Provinces</NuxtLink
-                >
               </li>
             </ul>
           </div>
@@ -80,6 +75,6 @@
 export default {
   name: 'Physiography',
   layout: 'category',
-  created: function () {},
+  created: function() {},
 }
 </script>

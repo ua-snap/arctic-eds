@@ -43,7 +43,7 @@ export default {
   name: 'Breadcrumbs',
   computed: {
     category: function () {
-      return this.$route.path.split('/')[1]
+      return this.$route.path.split('/')[1].replace(/-/, ' ')
     },
     plate: function () {
       // Handle custom names independent of route
@@ -51,11 +51,7 @@ export default {
         let plate = _.slice(this.$route.path.split('/'), 2)[0]
         plate = plate.replace(/-/g, ' ')
         switch (plate) {
-          case 'physiography':
-            return 'Physiographic Provinces'
           case 'beta':
-            return false
-          case 'climate modeling':
             return false
           default:
             if (plate) return plate

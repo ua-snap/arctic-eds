@@ -7,14 +7,25 @@
       role="alert"
       :closable="false"
       ><p>
-        Thanks for checking out this tool! Right now, this is a public beta,
-        which means that we&rsquo;re still gathering feedback, testing the data
-        outputs and fixing bugs.
-        <strong
-          >Data from this tool should not yet be used for engineering or
-          decision&ndash;making purposes.</strong
+        Thanks for checking out this tool! Until our complete launch in summer
+        2024, this is a public beta, which means that we&rsquo;re still
+        <a
+          href="https://www.google.com/url?q=https://uaf-iarc.typeform.com/to/MLS1dDf9&sa=D&source=docs&ust=1655491731883237&usg=AOvVaw37tuoJ7AkX5O4Yupl5a15T"
+          >gathering feedback</a
+        >, testing data outputs and fixing bugs.
+      </p>
+      <p>
+        Data from this tool should not yet be used for engineering or
+        decision&ndash;making purposes because datasets, while robust, have not
+        yet been fully validated. However, &ldquo;test driving&rdquo; the tool
+        by exploring layers and extracting data can be useful for project
+        overviews and &ldquo;ballpark&rdquo; estimates.
+      </p>
+      <p>
+        <NuxtLink to="/beta"
+          >Learn more about what&rsquo;s in development and how to provide
+          feedback</NuxtLink
         >
-        <NuxtLink to="/beta">Read more</NuxtLink>
       </p>
     </b-notification>
   </div>

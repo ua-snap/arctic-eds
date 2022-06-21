@@ -10,13 +10,7 @@
             projections of changing permafrost conditions throughout the state.
           </p>
         </div>
-        <div class="content content-clamp is-size-5">
-          <p>
-            Click any point on the map, or enter a lat/lon, to get a detailed
-            report on permafrost conditions at that point. A legend for the
-            active map layer is shown below the map.
-          </p>
-        </div>
+        <PlateInstructions />
       </section>
     </div>
     <PermafrostController />
@@ -25,12 +19,14 @@
 <script lang="scss" scoped></script>
 <script>
 import PermafrostController from '~/components/plates/permafrost/Controller'
+import PlateInstructions from '~/components/PlateInstructions'
 
 export default {
   name: 'Permafrost',
   layout: 'plate',
   components: {
     PermafrostController,
+    PlateInstructions,
   },
 }
 </script>

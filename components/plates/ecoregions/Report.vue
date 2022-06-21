@@ -20,7 +20,7 @@ import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 
 export default {
-  name: 'PhysiographyReport',
+  name: 'EcoregionsReport',
   components: {
     MiniMap,
     LoadingStatus,
@@ -58,12 +58,7 @@ export default {
           this.latLng.lng
       )
 
-      let place = this.latLng.lat + ', ' + this.latLng.lng
-      if (this.placeName) {
-        place = this.placeName
-      }
-
-      this.results.place = place
+      this.results.place = this.placeName
     }
   },
 }

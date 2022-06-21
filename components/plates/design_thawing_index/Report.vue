@@ -17,6 +17,8 @@
 
         <MiniMap />
 
+        <DesignThawingIndexExplanation />
+
         <h4 class="title is-4">Design Thawing Index</h4>
 
         <table class="table">
@@ -69,6 +71,7 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
+import DesignThawingIndexExplanation from '~/components/plates/design_thawing_index/Explanation'
 
 export default {
   name: 'DesignThawingIndexReport',
@@ -76,6 +79,7 @@ export default {
     DownloadCsvButton,
     MiniMap,
     LoadingStatus,
+    DesignThawingIndexExplanation,
   },
   data() {
     return {
@@ -110,12 +114,7 @@ export default {
           this.latLng.lng
       )
 
-      let place = this.latLng.lat + ', ' + this.latLng.lng
-      if (this.placeName) {
-        place = this.placeName
-      }
-
-      this.results.place = place
+      this.results.place = this.placeName
     }
   },
 }

@@ -1,27 +1,17 @@
 export default [
   {
-    id: 'historical_mean_annual_precip',
-    title: 'Historical (1901)',
+    id: 'historical_era_precip',
+    title: 'Historical (1980&ndash;2009)',
     source: 'rasdaman',
     wmsLayerName: 'annual_precip_totals_mm',
-    rasdamanConfiguration: {
-      dim_model: 0,
-      dim_scenario: 0,
-      time: '1901-01-01T00:00:00.000Z',
-    },
-    style: 'precip_mm',
+    style: 'precip_mm_historical_era',
     default: true,
   },
   {
-    id: 'future_midcentury_precip',
-    title: 'Projected (2099, MRI CGCM3, RCP 8.5)',
+    id: 'midcentury_era_precip',
+    title: 'Projected Mid&ndash;Century (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
     source: 'rasdaman',
     wmsLayerName: 'annual_precip_totals_mm',
-    rasdamanConfiguration: {
-      dim_model: 5,
-      dim_scenario: 3,
-      time: '2099-01-01T00:00:00.000Z',
-    },
-    style: 'precip_mm',
+    style: 'precip_mm_midcentury_era',
   },
 ]

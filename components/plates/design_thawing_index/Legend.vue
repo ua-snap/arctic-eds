@@ -3,7 +3,10 @@
     <LegendItem>
       <template v-slot:title>Design thawing index</template>
       <template v-slot:introduction>
-        <p>This layer shows the design thawing index across Alaska.</p>
+        <p>
+          These layers show the historical or projected design thawing index
+          across Alaska.
+        </p>
       </template>
       <template v-slot:legend>
         <div class="has-text-weight-bold mb-2">Degree days above 32&deg;F</div>
@@ -61,15 +64,7 @@
         </table>
       </template>
       <template v-slot:explanation>
-        The design thawing index is the
-        <strong>mean of the three years with the highest thawing index</strong>
-        for each location. The thawing index is the
-        <strong>annual cumulative degree days (&deg;F) above freezing</strong>.
-        These degree days are calculated by taking the number of degrees above
-        32&deg;F for each day of the year and adding them together into a single
-        value. A
-        <strong>higher design thawing index means a warmer era</strong> for that
-        location.
+        <DesignThawingIndexExplanation :legend="true" />
       </template>
       <template v-slot:footer>
         <p>
@@ -123,10 +118,11 @@ table.table td {
 <script>
 import { mapGetters } from 'vuex'
 import LegendItem from '~/components/LegendItem'
+import DesignThawingIndexExplanation from '~/components/plates/design_thawing_index/Explanation'
 
 export default {
   name: 'DesignThawingIndexLegend',
-  components: { LegendItem },
+  components: { LegendItem, DesignThawingIndexExplanation },
   computed: {
     activeLayerId() {
       // This component can get mounted before the active layer

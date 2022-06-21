@@ -16,6 +16,8 @@
 
         <MiniMap />
 
+        <PrecipitationExplanation />
+
         <h4 class="title is-4">Annual Precipitation Totals</h4>
 
         <UnitRadio type="mm_in" />
@@ -128,6 +130,7 @@ import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
 import UnitRadio from '~/components/UnitRadio'
+import PrecipitationExplanation from '~/components/plates/precipitation/Explanation'
 
 export default {
   name: 'PrecipitationReport',
@@ -137,6 +140,7 @@ export default {
     LoadingStatus,
     UnitWidget,
     UnitRadio,
+    PrecipitationExplanation,
   },
   computed: {
     state: function () {
@@ -165,10 +169,7 @@ export default {
 
       await this.$store.dispatch('report/apiFetch', url)
 
-      let place = this.latLng.lat + ', ' + this.latLng.lng
-      if (this.placeName) {
-        place = this.placeName
-      }
+      let place = this.placeName
 
       let plateResults = {
         place: place,
