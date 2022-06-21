@@ -15,8 +15,8 @@
           <b-navbar-item tag="nuxt-link" to="/engineering">
             Engineering
           </b-navbar-item>
-          <b-navbar-item tag="nuxt-link" to="/ecoregions">
-            Ecoregions
+          <b-navbar-item tag="nuxt-link" to="/physiography">
+            Physiography
           </b-navbar-item>
         </b-navbar-dropdown>
       </template>
