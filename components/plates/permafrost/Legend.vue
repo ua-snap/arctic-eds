@@ -7,7 +7,7 @@
       <template v-slot:introduction>
         <p>
           This layer shows the extent of permafrost across Alaska, classified
-          into four categories.
+          into seven categories.
         </p>
       </template>
       <template v-slot:legend>
@@ -36,6 +36,24 @@
                 <div class="colorbox sporadic"></div>
               </td>
               <td>Sporadic (&lt; 10%)</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox unfrozen"></div>
+              </td>
+              <td>Unfrozen</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox water"></div>
+              </td>
+              <td>Water</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox glacial"></div>
+              </td>
+              <td>Glacial</td>
             </tr>
           </tbody>
         </table>
@@ -540,18 +558,28 @@ table.table td {
 }
 .pfextent .colorbox {
   &.continuous {
-    background-color: #eafdfd;
+    background-color: #253494;
     border: 1px solid #98a09c;
   }
   &.discontinuous {
-    background-color: #79bed0;
+    background-color: #41b6c4;
   }
   &.sporadic {
-    background-color: #427ab7;
+    background-color: #c7e9b4;
   }
   &.isolated {
-    background-color: #383873;
+    background-color: #7fcdbb;
   }
+  &.unfrozen {
+  background-color: #ffffcc;
+  }
+  &.water {
+  background-color: #a5bfdd;
+  }
+  &.glacial {
+  background-color: #edf8fb;
+  }
+
 }
 .temps .colorbox {
   &.tas-4 {
