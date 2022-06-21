@@ -80,7 +80,7 @@ export default {
     extendRoutes(routes, resolve) {
       // Order matters here; lat/lng needs to go last because it's "globby"
       routes.push({
-        path: '/ecoregions/geology/report/community/:communityId',
+        path: '/physiography/geology/report/community/:communityId',
         component: resolve(__dirname, 'pages/physiography/geology'),
       })
       routes.push({
