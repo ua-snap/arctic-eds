@@ -12,7 +12,7 @@
       This map shows average annual historical and projected temperatures for
       1901 and 2099, as well as the coldest, hottest, and average temperatures
       for those years for the months of January (typically the coldest month)
-      and July(typically the warmest month). It can be seen that the highest
+      and July (typically the warmest month). It can be seen that the highest
       temperatures are in the most continental portions of the state.
     </p>
     <p>
