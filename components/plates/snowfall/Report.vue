@@ -19,6 +19,7 @@
         <MiniMap />
 
         <SnowfallExplanation />
+        <DataExplanation context="snap" />
 
         <h4 class="title is-4">Annual Snowfall Equivalent Totals</h4>
 
@@ -91,6 +92,7 @@ import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
 import UnitRadio from '~/components/UnitRadio'
 import SnowfallExplanation from '~/components/plates/snowfall/Explanation'
+import DataExplanation from '~/components/DataExplanation'
 
 export default {
   name: 'SnowfallReport',
@@ -101,6 +103,7 @@ export default {
     UnitWidget,
     UnitRadio,
     SnowfallExplanation,
+    DataExplanation,
   },
   computed: {
     state: function () {
