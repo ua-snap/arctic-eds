@@ -41,8 +41,7 @@
           if you have a question, encounter a problem, or would like to connect
           with us directly about this tool or the underlying datasets. You can
           also
-          <a
-            href="https://www.google.com/url?q=https://uaf-iarc.typeform.com/to/MLS1dDf9&sa=D&source=docs&ust=1655491731883237&usg=AOvVaw37tuoJ7AkX5O4Yupl5a15T"
+          <a href="https://uaf-iarc.typeform.com/to/MLS1dDf9"
             >fill out our feedback form</a
           >
           to share your thoughts or
