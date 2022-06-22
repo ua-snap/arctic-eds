@@ -38,31 +38,6 @@ export default [
     style: 'arctic_eds_MAGT',
   },
   {
-    id: 'iem_gipl_ALT_4km_historical',
-    title: 'Active layer thickness, 1986&ndash;2005, GIPL model',
-    source: 'rasdaman',
-    wmsLayerName: 'iem_gipl_magt_alt_4km',
-    rasdamanConfiguration: {
-      dim_model: 0,
-      dim_scenario: 0,
-      dim_era: 0,
-    },
-    style: 'arctic_eds_ALT',
-  },
-  {
-    id: 'iem_gipl_ALT_4km_2036_2065',
-    title:
-      'Active layer thickness, 2036&ndash;2065 (NCAR&ndash;CCSM4, RCP 8.5), GIPL model',
-    source: 'rasdaman',
-    wmsLayerName: 'iem_gipl_magt_alt_4km',
-    rasdamanConfiguration: {
-      dim_model: 5,
-      dim_scenario: 2,
-      dim_era: 2,
-    },
-    style: 'arctic_eds_ALT',
-  },
-  {
     id: 'obumagt',
     title:
       'Mean annual ground temperature at top of permafrost, 2000&ndash;2016 (modeled)',

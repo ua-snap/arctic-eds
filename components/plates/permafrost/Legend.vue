@@ -281,149 +281,6 @@
         </p>
       </template>
     </LegendItem>
-    <LegendItem v-show="activeLayerId == 'iem_gipl_ALT_4km_historical'">
-      <template v-slot:title
-        >Active layer thickness, 1986&ndash;2005 (GIPL model)</template
-      >
-      <template v-slot:introduction
-        ><p>
-          This layer shows model outputs from the Geophysical Institute
-          Permafrost Lab model (GIPL), a landscape scale permafrost model.
-          Active layer thickness is defined as the depth of summer seasonal thaw
-          in perennially frozen ground. This layer shows model output for for
-          1986&ndash;2005, with the CRU&ndash;TS historical baseline.
-        </p></template
-      >
-      <template v-slot:legend>
-        <table class="table thickness">
-          <tbody>
-            <tr>
-              <td>
-                <div class="colorbox none"></div>
-              </td>
-              <td>No active layer</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d0"></div>
-              </td>
-              <td>0in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d20"></div>
-              </td>
-              <td>20in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d40"></div>
-              </td>
-              <td>40in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d60"></div>
-              </td>
-              <td>60in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d80"></div>
-              </td>
-              <td>80in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d100"></div>
-              </td>
-              <td>&ge; 100in</td>
-            </tr>
-          </tbody>
-        </table>
-      </template>
-      <template v-slot:explanation> </template>
-      <template v-slot:footer
-        ><p>
-          <a
-            href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
-            >Access detailed information about this dataset</a
-          >, including source data downloads.
-        </p></template
-      >
-    </LegendItem>
-    <LegendItem v-show="activeLayerId == 'iem_gipl_ALT_4km_2036_2065'">
-      <template v-slot:title
-        >Active layer thickness, 2036&ndash;2065 (GIPL model)</template
-      >
-      <template v-slot:introduction
-        ><p>
-          This layer shows model outputs from the Geophysical Institute
-          Permafrost Lab model (GIPL), a landscape scale permafrost model.
-          Active layer thickness is defined as the depth of summer seasonal thaw
-          in perennially frozen ground. This layer shows model output for
-          2036&ndash;2065, with the NCAR&ndash;CCSM4 climate model and RCP 8.5
-          emissions scenario.
-        </p></template
-      >
-      <template v-slot:legend
-        ><table class="table thickness">
-          <tbody>
-            <tr>
-              <td>
-                <div class="colorbox none"></div>
-              </td>
-              <td>No active layer</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d0"></div>
-              </td>
-              <td>0in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d20"></div>
-              </td>
-              <td>20in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d40"></div>
-              </td>
-              <td>40in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d60"></div>
-              </td>
-              <td>60in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d80"></div>
-              </td>
-              <td>80in</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox d100"></div>
-              </td>
-              <td>&ge; 100in</td>
-            </tr>
-          </tbody>
-        </table>
-      </template>
-      <template v-slot:explanation> </template>
-      <template v-slot:footer
-        ><p>
-          <a
-            href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
-            >Access detailed information about this dataset</a
-          >, including source data downloads.
-        </p></template
-      >
-    </LegendItem>
     <LegendItem v-show="activeLayerId == 'obumagt'">
       <template v-slot:title
         >Mean annual ground temperature at top of permafrost, 2000&ndash;2016
@@ -571,15 +428,14 @@ table.table td {
     background-color: #7fcdbb;
   }
   &.unfrozen {
-  background-color: #ffffcc;
+    background-color: #ffffcc;
   }
   &.water {
-  background-color: #a5bfdd;
+    background-color: #a5bfdd;
   }
   &.glacial {
-  background-color: #edf8fb;
+    background-color: #edf8fb;
   }
-
 }
 .temps .colorbox {
   &.tas-4 {

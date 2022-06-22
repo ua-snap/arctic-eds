@@ -18,10 +18,7 @@
 
         <UnitRadio
           class="my-5"
-          :patterns="[
-            { type: 'temperature', substring: 'magt_' },
-            { type: 'm_in', substring: 'alt_' },
-          ]"
+          :patterns="[{ type: 'temperature', substring: 'magt_' }]"
         />
 
         <h4 class="title is-4">GIPL Mean Annual Ground Temperature</h4>
@@ -95,93 +92,6 @@
           </tbody>
         </table>
 
-        <div v-if="results.gipl_alt_1995">
-          <h4 class="title is-4">GIPL Active Layer Thickness</h4>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">ALT</th>
-                <th scope="col">Change from Historical</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Historical (1995)</th>
-                <td>
-                  {{ results.gipl_alt_1995
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row">2011 - 2040</th>
-                <td>
-                  {{ results.gipl_alt_2025
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-                <td>
-                  {{
-                    signedDiff(
-                      results.gipl_alt_1995,
-                      results.gipl_alt_2025,
-                      'alt'
-                    )
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2036 - 2065</th>
-                <td>
-                  {{ results.gipl_alt_2050
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-                <td>
-                  {{
-                    signedDiff(
-                      results.gipl_alt_1995,
-                      results.gipl_alt_2050,
-                      'alt'
-                    )
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2061 – 2090</th>
-                <td>
-                  {{ results.gipl_alt_2075
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-                <td>
-                  {{
-                    signedDiff(
-                      results.gipl_alt_1995,
-                      results.gipl_alt_2075,
-                      'alt'
-                    )
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2086 – 2100</th>
-                <td>
-                  {{ results.gipl_alt_2095
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-                <td>
-                  {{
-                    signedDiff(
-                      results.gipl_alt_1995,
-                      results.gipl_alt_2095,
-                      'alt'
-                    )
-                  }}<UnitWidget unitType="m_in" type="light" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
         <h4 class="title is-6 mt-5">Additional data</h4>
         <div class="content">
           <ul>
@@ -240,9 +150,7 @@ export default {
   methods: {
     signedDiff(historical, projected, variable) {
       let decimals
-      if (variable == 'alt') {
-        decimals = this.units == 'metric' ? 2 : 1
-      } else if (variable == 'magt') {
+      if (variable == 'magt') {
         decimals = this.units == 'metric' ? 1 : 1
       }
       let rawDiff = (projected - historical).toFixed(decimals)
@@ -273,18 +181,6 @@ export default {
 
       let plateResults = {
         place: place,
-
-        // "alt_" substrings are converted between meters and inches
-        gipl_alt_1995:
-          this.results['gipl']['1995']['cruts31']['historical']['alt'],
-        gipl_alt_2025:
-          this.results['gipl']['2025']['ncarccsm4']['rcp85']['alt'],
-        gipl_alt_2050:
-          this.results['gipl']['2050']['ncarccsm4']['rcp85']['alt'],
-        gipl_alt_2075:
-          this.results['gipl']['2075']['ncarccsm4']['rcp85']['alt'],
-        gipl_alt_2095:
-          this.results['gipl']['2095']['ncarccsm4']['rcp85']['alt'],
 
         // "magt_" substrings are converted between °C and °F
         gipl_magt_1995:
