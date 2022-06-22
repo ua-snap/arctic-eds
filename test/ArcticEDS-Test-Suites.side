@@ -1,0 +1,4451 @@
+{
+  "id": "75578e13-e50d-4034-91a5-7c654f938efe",
+  "version": "2.0",
+  "name": "ArcticEDS",
+  "url": "http://dev.arcticeds.org",
+  "tests": [{
+    "id": "7c282ddf-4725-4bcd-9d2b-f91f2fd9a4b1",
+    "name": "Physiography Category",
+    "commands": [{
+      "id": "d8d6a99c-a1d6-40c6-b529-8b73a31e5baa",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "755fe4de-f090-4c71-ae9a-e4e057ee485a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "909838b6-e700-4f35-8213-7a2bc8dc3888",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--physiography",
+      "targets": [
+        ["css=.image--physiography", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71e6dd22-850d-436f-9522-1e51acb0bee2",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.breadcrumbs li:nth-child(2)",
+      "targets": [
+        ["css=.breadcrumbs li:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li[2]", "xpath:idRelative"],
+        ["xpath=//li[2]", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "57434e75-be44-4411-b671-75b6cb604026",
+      "comment": "Check for correct title",
+      "command": "assertText",
+      "target": "css=.title",
+      "targets": [
+        ["css=.title", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div[2]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Physiography')]", "xpath:innerText"]
+      ],
+      "value": "Physiography"
+    }, {
+      "id": "50693c64-da3c-4c9c-9148-5c02e9cf79c4",
+      "comment": "Check for descriptive text",
+      "command": "assertText",
+      "target": "css=.content > p:nth-child(1)",
+      "targets": [
+        ["css=.content > p:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div[2]/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"]
+      ],
+      "value": "Physiography is the large-scale topography or landforms of an area. Alaska is divided into four major divisions from south to north: the Pacific Mountain System, the Intermontane Plateaus, the Rocky Mountain System, and the Interior Plains (Arctic Coastal Plain). All of these divisions are continuations of features of the western United States and Canada which extend into Alaska and bend to the west and even southwest."
+    }, {
+      "id": "c8fd5e15-9f6b-4f29-9ce4-5fcf27492944",
+      "comment": "Ensure Ecoregions anchor link present",
+      "command": "assertElementPresent",
+      "target": "linkText=Ecoregions",
+      "targets": [
+        ["linkText=Ecoregions", "linkText"],
+        ["css=.content li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Ecoregions')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/ecoregions')]", "xpath:href"],
+        ["xpath=//section/div/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Ecoregions')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "29ec4c0c-91b0-44a5-b518-42affb3c2dcf",
+      "comment": "Ensure Geology anchor link present",
+      "command": "assertElementPresent",
+      "target": "linkText=Geology",
+      "targets": [
+        ["linkText=Geology", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Geology')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/geology')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Geology')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c8e86d8-8b04-470e-bb53-0e43e061f646",
+      "comment": "Ensure Permafrost anchor link present",
+      "command": "assertElementPresent",
+      "target": "linkText=Permafrost",
+      "targets": [
+        ["linkText=Permafrost", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Permafrost')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/permafrost')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Permafrost')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "55edb1b2-2a36-4707-b176-d8b6ab25e637",
+      "comment": "Ensure Home anchor link present",
+      "command": "assertElementPresent",
+      "target": "css=.nuxt-link-active:nth-child(1)",
+      "targets": [
+        ["css=.nuxt-link-active:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd221259-a5f0-486a-a52f-ad5899c9cd67",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "8f149c6f-1a21-448b-a159-771f425ce27a",
+    "name": "Physiography Geology Plate",
+    "commands": [{
+      "id": "44385125-1896-47d2-9e58-c26923fc10e0",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "87f18ba8-dad1-4345-9532-72976caec402",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "85a57ac9-a25e-473f-a385-b4e185d4e2c2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--physiography",
+      "targets": [
+        ["css=.image--physiography", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dfb6176b-6c2c-4650-9ceb-04a58b60ae8b",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Geology",
+      "targets": [
+        ["linkText=Geology", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Geology')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/geology')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Geology')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "f322f4c1-42d4-4b70-b11b-8fb155b6269d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Geology",
+      "targets": [
+        ["linkText=Geology", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Geology')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/geology')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Geology')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fa5a7fb-27d8-486c-8ca1-136213c6468e",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "aaacf615-f372-4849-a439-55ee9fa4be2b",
+      "comment": "Click at 65.5831, -150.1279",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "1266095f-3467-4fbf-90a0-34d89059f4f5",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "b5ec2256-a4b8-4860-a4ab-f17a11e9baf6",
+      "comment": "Ensure Age is Quaternary",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td",
+      "targets": [
+        ["css=tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Quaternary')]", "xpath:innerText"]
+      ],
+      "value": "Quaternary"
+    }, {
+      "id": "4d97d69b-5dd6-4e0a-a2be-3c5ac14ba40b",
+      "comment": "Ensure Classification is Unconsolidated surficial deposits, undivided",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td",
+      "targets": [
+        ["css=tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Unconsolidated surficial deposits, undivided')]", "xpath:innerText"]
+      ],
+      "value": "Unconsolidated surficial deposits, undivided"
+    }, {
+      "id": "e82a4485-e2de-44e5-88a3-076ee1d9d58c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b9b3632a-0682-41c1-b0f3-7ef7e9d2ee16",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "a90c3bf9-67bf-477f-945f-be756175eca6",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "48f6aa3e-d570-4516-bc66-8ae6cd8cc45d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Geology",
+      "targets": [
+        ["linkText=Geology", "linkText"],
+        ["css=.column:nth-child(3) li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Geology')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/geology')]", "xpath:href"],
+        ["xpath=//div[3]/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Geology')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d032795-dae4-4c5b-ac75-2b276d7d10fe",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "ceeaab0d-c5cc-4929-88a1-c31ee4c39c4c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-hovered > .search-item",
+      "targets": [
+        ["css=.is-hovered > .search-item", "css:finder"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div[2]/div/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb0f73b2-d464-4c3c-8cf0-4b76112c95b0",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "9e7526b7-3fac-4956-b35c-6439d6cc27a6",
+      "comment": "Ensure title has Fairbanks, Alaska",
+      "command": "assertText",
+      "target": "css=.is-3",
+      "targets": [
+        ["css=.is-3", "css:finder"],
+        ["xpath=//div[@id='report']/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Geological unit for Fairbanks, Alaska')]", "xpath:innerText"]
+      ],
+      "value": "Geological unit for Fairbanks, Alaska"
+    }, {
+      "id": "0a047fcb-0875-48da-a111-9e550e15bb6f",
+      "comment": "Ensure Age is Quaternary",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td",
+      "targets": [
+        ["css=tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Quaternary')]", "xpath:innerText"]
+      ],
+      "value": "Quaternary"
+    }, {
+      "id": "3e689ba7-b4e6-4bd8-b0b8-0b59929a737a",
+      "comment": "Ensure Classification is Unconsolidated surficial deposits, undivided",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td",
+      "targets": [
+        ["css=tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Unconsolidated surficial deposits, undivided')]", "xpath:innerText"]
+      ],
+      "value": "Unconsolidated surficial deposits, undivided"
+    }, {
+      "id": "d0b9b99b-7bb9-42ae-81a1-5d619c8c5ecc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.default > span:nth-child(2)",
+      "targets": [
+        ["css=.default > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f163b195-1753-45d5-a99d-5068502f8c8f",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "e2378e5f-df5a-4556-8135-bbf3a0146977",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "577c4560-9f44-4b60-aa3a-e8c32c275a85",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.27"
+    }, {
+      "id": "3c5f2ab4-2669-4cbb-b783-ef695f90d43b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0597d4e-36c9-46d5-8f39-1223a3d95071",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "4d37260d-3d7c-4c3a-a48b-df740869e3e9",
+      "comment": "Ensure Age is Holocene",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td",
+      "targets": [
+        ["css=tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Holocene')]", "xpath:innerText"]
+      ],
+      "value": "Holocene"
+    }, {
+      "id": "b91d5af8-83bc-462e-914e-713ea9df19c1",
+      "comment": "Ensure Classification is Water",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td",
+      "targets": [
+        ["css=tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Water')]", "xpath:innerText"]
+      ],
+      "value": "Water"
+    }, {
+      "id": "bfe6fcde-2adf-4885-a903-47792b9b5fa2",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "27c3eb21-4e1c-4003-ba6e-8604cc25f383",
+    "name": "Physiography Ecoregions Plate",
+    "commands": [{
+      "id": "a4ccc6ec-3768-4327-b666-14fe72db96ad",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "64eefe3c-feb8-4458-b780-8f1315e993f5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8d9ff5c6-482f-4393-873b-4d20eea5ab24",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--physiography",
+      "targets": [
+        ["css=.image--physiography", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9354d75-a5d1-4aeb-a692-14256de511eb",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Ecoregions",
+      "targets": [
+        ["linkText=Ecoregions", "linkText"],
+        ["css=.content li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Ecoregions')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/ecoregions')]", "xpath:href"],
+        ["xpath=//section/div/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Ecoregions')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "0b821f0b-df48-4310-9e55-dd2491d47678",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Ecoregions",
+      "targets": [
+        ["linkText=Ecoregions", "linkText"],
+        ["css=.content li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Ecoregions')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/ecoregions')]", "xpath:href"],
+        ["xpath=//section/div/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Ecoregions')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b5ea62f-185c-45f5-b3e9-6c1e4b6b1991",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "ff751e93-4b38-4d46-9933-5baadcbc5547",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0c90ed2-487e-41d6-bd9f-92fc2a91445c",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "38494a9a-397b-4deb-91ad-9f73e1ce11ee",
+      "comment": "Ensure subtitle is Interior Bottomlands",
+      "command": "assertText",
+      "target": "css=.subtitle",
+      "targets": [
+        ["css=.subtitle", "css:finder"],
+        ["xpath=//div[@id='report']/div/h4", "xpath:idRelative"],
+        ["xpath=//div[3]/div/h4", "xpath:position"],
+        ["xpath=//h4[contains(.,'Interior Bottomlands')]", "xpath:innerText"]
+      ],
+      "value": "Interior Bottomlands"
+    }, {
+      "id": "8fb19b13-fdda-4cf5-804a-1f2ed329537c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0f5690c-a47e-4dbf-81ee-e07465b8dac9",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "6d02b70f-d43f-455e-a13a-1a288f91525f",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b4d013e-a648-4058-a522-199947b455db",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Ecoregions",
+      "targets": [
+        ["linkText=Ecoregions", "linkText"],
+        ["css=.column:nth-child(3) li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Ecoregions')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/ecoregions')]", "xpath:href"],
+        ["xpath=//div[3]/div/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Ecoregions')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "76cc0f4f-a584-412f-b8df-207a599cc763",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Ecoregions",
+      "targets": [
+        ["linkText=Ecoregions", "linkText"],
+        ["css=.column:nth-child(3) li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Ecoregions')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/ecoregions')]", "xpath:href"],
+        ["xpath=//div[3]/div/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Ecoregions')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ebee70c-5df3-4f79-bd56-ff8a460eca89",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "e56bf0ba-7b78-4186-9a67-222f0c57cbdd",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "3f660755-7a76-4967-9808-b6f96ccc859b",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "5af50213-9dcd-4386-904b-e990e0666be4",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "8935ada5-4f2a-4d23-a5ab-a82773b3bf8c",
+      "comment": "Ensure Title has Fairbanks, Alaska",
+      "command": "assertText",
+      "target": "css=.is-3:nth-child(1)",
+      "targets": [
+        ["css=.is-3:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='report']/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Ecoregion for 64.5831, -150.1279')]", "xpath:innerText"]
+      ],
+      "value": "Ecoregion for Fairbanks, Alaska"
+    }, {
+      "id": "adb19447-fcbe-41a0-bd47-f8625ba82388",
+      "comment": "Ensure subtitle is Interior Bottomlands",
+      "command": "assertText",
+      "target": "css=.subtitle",
+      "targets": [
+        ["css=.subtitle", "css:finder"],
+        ["xpath=//div[@id='report']/div/h4", "xpath:idRelative"],
+        ["xpath=//div[3]/div/h4", "xpath:position"],
+        ["xpath=//h4[contains(.,'Interior Bottomlands')]", "xpath:innerText"]
+      ],
+      "value": "Interior Bottomlands"
+    }, {
+      "id": "02a6439f-74a9-4c7c-8e72-b1422d2484cd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c893b4b5-7dc4-4753-a032-dd72f0fa7e88",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "794b1b72-338c-4c4e-b3a0-3f3122143fd1",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "8e372f9e-5d55-4bd1-a3cf-b42a0381d1a9",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "69307be7-68c0-4dd7-a630-2d8fabcadfd5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "03fb932e-cd49-46d2-9406-0fd8dcd84383",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "bd1e4959-f782-44cb-834c-12fe0e2a80c3",
+      "comment": "Ensure subtitle is Interior Bottomlands",
+      "command": "assertText",
+      "target": "css=.subtitle",
+      "targets": [
+        ["css=.subtitle", "css:finder"],
+        ["xpath=//div[@id='report']/div/h4", "xpath:idRelative"],
+        ["xpath=//div[3]/div/h4", "xpath:position"],
+        ["xpath=//h4[contains(.,'Interior Bottomlands')]", "xpath:innerText"]
+      ],
+      "value": "Interior Bottomlands"
+    }, {
+      "id": "529dc783-7a14-4092-9c48-ae923041fd9b",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "49e429ae-cc3e-405a-9270-e8b3bf65fccc",
+    "name": "Physiography Permafrost Plate",
+    "commands": [{
+      "id": "00f296eb-39f5-40e1-8043-990081980132",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7182625e-7e72-4f48-9a77-a810d94ae733",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "468c50f9-9acc-4d14-bacc-8682a4fee1a9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--physiography",
+      "targets": [
+        ["css=.image--physiography", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80dc64ee-beda-4a62-9c9d-0ab64ff9376b",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Permafrost",
+      "targets": [
+        ["linkText=Permafrost", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Permafrost')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/permafrost')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Permafrost')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "d169cee7-6a2f-40c3-8dfa-c7cd3a391e18",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Permafrost",
+      "targets": [
+        ["linkText=Permafrost", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Permafrost')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/permafrost')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Permafrost')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5eb19b51-e375-493c-9b9b-43cb72b5c3fb",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "ab6e2931-cc68-4302-b49a-f0535a8b0238",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "fb057135-de22-402d-948f-9ff441f8bd27",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'29.3°F')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "e73bbfed-93a1-401f-bd44-466313937329",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "1fcb744f-c859-449e-879e-3b3cf77f7ec3",
+      "comment": "Ensure historical value for Ground Temp is 29.3°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'29.3°F')]", "xpath:innerText"]
+      ],
+      "value": "29.3°F"
+    }, {
+      "id": "af1a2457-5466-4876-bec9-46bedca79357",
+      "comment": "Ensure 2086-2100 value for Ground Temp is 45.9°F45.9°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'45.9°F')]", "xpath:innerText"]
+      ],
+      "value": "45.9°F"
+    }, {
+      "id": "b46ae2e5-c490-4ae0-b438-2951d1f6eda6",
+      "comment": "Ensure 2086-2100 value for Ground Temp Diff is +16.6°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'+16.6°F')]", "xpath:innerText"]
+      ],
+      "value": "+16.6°F"
+    }, {
+      "id": "f6de5757-9be5-4035-8c77-8e0b7fe3897e",
+      "comment": "Ensure historical active layer thickness is 26.4in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'26.4in')]", "xpath:innerText"]
+      ],
+      "value": "26.4in"
+    }, {
+      "id": "2fc4e993-67f4-44dc-8769-a06d83376e9e",
+      "comment": "Ensure 2086-2100 active layer thickness is 16.9in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'16.9in')]", "xpath:innerText"]
+      ],
+      "value": "16.9in"
+    }, {
+      "id": "fe6794fe-d920-4d56-be23-f0b63cf20e5e",
+      "comment": "Ensure 2086-2100 active layer thickness diff is -9.5in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'-9.5in')]", "xpath:innerText"]
+      ],
+      "value": "-9.5in"
+    }, {
+      "id": "2752d21f-559d-41ca-97a5-c3b4d6a71a3c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "35ae5811-e7c8-4a5d-afc1-3e2e0c188c74",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "646927d7-e3ff-4d5c-8846-2fb0b7baaa7c",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0de843d0-a15e-4899-927c-dcb1ea5ba8db",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Permafrost",
+      "targets": [
+        ["linkText=Permafrost", "linkText"],
+        ["css=.column:nth-child(3) li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Permafrost')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/permafrost')]", "xpath:href"],
+        ["xpath=//div[3]/div/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Permafrost')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "1784b31f-b9f0-46ad-99dc-6bbf536abbd3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Permafrost",
+      "targets": [
+        ["linkText=Permafrost", "linkText"],
+        ["css=.column:nth-child(3) li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Permafrost')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[3]/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/physiography/permafrost')]", "xpath:href"],
+        ["xpath=//div[3]/div/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Permafrost')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "94cfe784-5f23-4d0d-a970-15be58aab260",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "81f02be3-d24b-46b3-ad7b-bad62cc1ebc7",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "b5bd97d0-8969-466b-bd4d-dfa075d55461",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "6905e902-a842-447a-a518-338ae0f83c3b",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "2c4cb7b4-e706-414b-b968-dfea5680ead2",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'27.5°F')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "899d1072-4911-4da0-bc74-1aa75017c671",
+      "comment": "Ensure historical Ground Temp is 27.5°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'27.5°F')]", "xpath:innerText"]
+      ],
+      "value": "27.5°F"
+    }, {
+      "id": "f1bef5f7-e369-4c70-96bf-aa68e4693793",
+      "comment": "Ensure 2086-2100 Ground Temp is 42.3°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'42.3°F')]", "xpath:innerText"]
+      ],
+      "value": "42.3°F"
+    }, {
+      "id": "154fe3ee-6848-43cf-87f5-fe882e4df6b9",
+      "comment": "Ensure 2086-2100 Ground Temp Diff is +14.8°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'+14.8°F')]", "xpath:innerText"]
+      ],
+      "value": "+14.8°F"
+    }, {
+      "id": "55606562-8c6b-429b-a168-9717f63a9207",
+      "comment": "Ensure historical active layer thickness is 24.4in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'24.4in')]", "xpath:innerText"]
+      ],
+      "value": "24.4in"
+    }, {
+      "id": "89af203a-2ce3-4996-9d33-cea3a21b1576",
+      "comment": "Ensure 2086-2100 active layer thickness is 27.6in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'27.6in')]", "xpath:innerText"]
+      ],
+      "value": "27.6in"
+    }, {
+      "id": "6e81e3b9-8f98-4108-8071-36dc7b64541f",
+      "comment": "Ensure 2086-2100 active layer thickness diff is +3.2in27.6in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'+3.2in')]", "xpath:innerText"]
+      ],
+      "value": "+3.2in"
+    }, {
+      "id": "19a356a4-ce80-48a7-94d7-5833e9770b0d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "61eab82f-dc2e-4378-a2ee-bcad438babdf",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "98dc2a33-fb28-4582-93b6-37cd5f30157f",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "5e6df842-a9c0-411c-bbe8-95c7455c650a",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "d05f6deb-9b20-42d6-8869-6be5d9a4e104",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c48a165c-a4c9-4036-ba1c-e4289dbf8b6c",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "1b727f9b-8ecf-4ac3-8805-244220a2e7b0",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'27.5°F')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "401c1d90-4467-4a6d-9210-45154dc5bbee",
+      "comment": "Ensure historical Ground Temp is 27.5°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'27.5°F')]", "xpath:innerText"]
+      ],
+      "value": "27.5°F"
+    }, {
+      "id": "c5619e3b-9eea-4da1-a557-2d1a90eb3dec",
+      "comment": "Ensure 2086-2100 Ground Temp is 42.3°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'42.3°F')]", "xpath:innerText"]
+      ],
+      "value": "42.3°F"
+    }, {
+      "id": "b4e260ae-58b0-49dd-b294-f613a33f3095",
+      "comment": "Ensure 2086-2100 Ground Temp Diff is +14.8°F",
+      "command": "assertText",
+      "target": "css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=.table:nth-child(5) tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'+14.8°F')]", "xpath:innerText"]
+      ],
+      "value": "+14.8°F"
+    }, {
+      "id": "abe58570-ace2-4ee2-8431-23b0f3d1344c",
+      "comment": "Ensure historical active layer thickness is 24.4in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'24.4in')]", "xpath:innerText"]
+      ],
+      "value": "24.4in"
+    }, {
+      "id": "66a06b23-f3a9-4fd2-8d08-dc19297d1fc2",
+      "comment": "Ensure 2086-2100 active layer thickness is 27.6in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'27.6in')]", "xpath:innerText"]
+      ],
+      "value": "27.6in"
+    }, {
+      "id": "704f7d4f-598c-4e33-80d6-541fcdec5232",
+      "comment": "Ensure 2086-2100 active layer thickness diff is +3.2in27.6in",
+      "command": "assertText",
+      "target": "css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=.table:nth-child(2) tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='report']/div/div[3]/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'+3.2in')]", "xpath:innerText"]
+      ],
+      "value": "+3.2in"
+    }, {
+      "id": "d6744eaa-d586-4963-a2ad-88248c4ce3f8",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "d8c18972-9316-46a5-862d-479b69ab976e",
+    "name": "Engineering Category",
+    "commands": [{
+      "id": "9d0f318f-1b26-4309-ad8b-489720fe11c2",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "08061682-5b73-402c-9b1f-a817f821099e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fdf46eba-5421-46c0-81eb-d9f2302df9b2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--engineering",
+      "targets": [
+        ["css=.image--engineering", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "765a7008-5fd3-4f6b-99ad-938468b302fa",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.nuxt-link-active:nth-child(1)",
+      "targets": [
+        ["css=.nuxt-link-active:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "3655d388-48b5-4523-901e-0a8f8718177f",
+      "comment": "Ensure Title is Engineering",
+      "command": "assertText",
+      "target": "css=.title",
+      "targets": [
+        ["css=.title", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div[2]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Engineering')]", "xpath:innerText"]
+      ],
+      "value": "Engineering"
+    }, {
+      "id": "8bb9835e-15c1-4871-b82b-3c90b3f18e85",
+      "comment": "Ensure introductory text",
+      "command": "assertText",
+      "target": "css=.content > p:nth-child(1)",
+      "targets": [
+        ["css=.content > p:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div[2]/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"]
+      ],
+      "value": "Knowledge of the temperature pattern of a place makes it possible to estimate various thermal loads. Of particular interest and in standard use are heating, freezing, and thawing loads measured in degree days per year."
+    }, {
+      "id": "dd4ef74e-43fd-4354-9a0a-2827c3dd6375",
+      "comment": "Ensure Design Freezing Index anchor link present",
+      "command": "assertElementPresent",
+      "target": "linkText=Design Freezing Index",
+      "targets": [
+        ["linkText=Design Freezing Index", "linkText"],
+        ["css=.content li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Design Freezing Index')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/design-freezing-index')]", "xpath:href"],
+        ["xpath=//section/div/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Design Freezing Index')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4dfc360c-3049-4200-bf09-34bc3abaea02",
+      "comment": "Ensure Design Thawing Index anchor link present",
+      "command": "assertElementPresent",
+      "target": "linkText=Design Thawing Index",
+      "targets": [
+        ["linkText=Design Thawing Index", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Design Thawing Index')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/design-thawing-index')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Design Thawing Index')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee6cc07a-d36e-4968-b417-d8bf88615a6b",
+      "comment": "Ensure Freezing Index anchor link present",
+      "command": "assertElementPresent",
+      "target": "linkText=Freezing Index",
+      "targets": [
+        ["linkText=Freezing Index", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Freezing Index')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/freezing-index')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1400c9d4-dedc-48bf-a911-c8245f76a782",
+      "comment": "Ensure Heating Degree Days anchor link present",
+      "command": "assertElementPresent",
+      "target": "linkText=Heating Degree Days",
+      "targets": [
+        ["linkText=Heating Degree Days", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Heating Degree Days')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/heating-degree-days')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Heating Degree Days')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d9e7c23-5663-49dc-b2ca-63c703d40d51",
+      "comment": "Ensure Thawing Index anchor link present",
+      "command": "assertElementPresent",
+      "target": "linkText=Thawing Index",
+      "targets": [
+        ["linkText=Thawing Index", "linkText"],
+        ["css=li:nth-child(5) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Thawing Index')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/thawing-index')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ab08c8db-b69f-4eaa-8cde-20c96180749f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "d3894e8b-babf-4364-a289-95e924c2e609",
+    "name": "Engineering Design Freezing Index Plate",
+    "commands": [{
+      "id": "7ff65420-80b7-492d-9a03-2c1fe5c744cc",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fbd513d7-de91-4a4f-9f86-d88120771801",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c75cb591-642f-4300-b5c3-e3775d4744f4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--engineering",
+      "targets": [
+        ["css=.image--engineering", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "66b4726f-d9dd-4749-a038-9c7635b388ec",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Design Freezing Index",
+      "targets": [
+        ["linkText=Design Freezing Index", "linkText"],
+        ["css=.content li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Design Freezing Index')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/design-freezing-index')]", "xpath:href"],
+        ["xpath=//section/div/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Design Freezing Index')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "eca69a24-844c-4280-8d98-a254232964e6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Design Freezing Index",
+      "targets": [
+        ["linkText=Design Freezing Index", "linkText"],
+        ["css=.content li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Design Freezing Index')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/design-freezing-index')]", "xpath:href"],
+        ["xpath=//section/div/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Design Freezing Index')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "19855f0f-f6ff-4b30-a457-3b767529bfa7",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "43d6756b-b3a5-41c4-bb98-a34333840a97",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2abd24c-2b1c-49ed-a037-8c5f519853f9",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "38814cb1-9fe8-419c-8e53-4f24293e4d9b",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(1) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'3888')]", "xpath:innerText"]
+      ],
+      "value": "3888"
+    }, {
+      "id": "4b1466de-9dea-4360-87b0-607337917b06",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(2) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'1461')]", "xpath:innerText"]
+      ],
+      "value": "1461"
+    }, {
+      "id": "cd1ac50e-2fd7-4fa1-95f6-0982f1b5eddb",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(3) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(3) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[3]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'1020')]", "xpath:innerText"]
+      ],
+      "value": "1020"
+    }, {
+      "id": "9cb63fba-4cd2-44c0-9a66-2b852592d397",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "973e2af1-380f-4cff-8cca-85459f3d7093",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "873de70f-0558-43c3-b9f3-ea110fb913c6",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "24d41b50-a1b0-40af-83e3-5e9b278027a3",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Design Freezing Index",
+      "targets": [
+        ["linkText=Design Freezing Index", "linkText"],
+        ["css=.column:nth-child(2) > .toc--panel li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Design Freezing Index')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/design-freezing-index')]", "xpath:href"],
+        ["xpath=//div[2]/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Design Freezing Index')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "56c6e483-e188-446d-b6fc-05bd67901f11",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Design Freezing Index",
+      "targets": [
+        ["linkText=Design Freezing Index", "linkText"],
+        ["css=.column:nth-child(2) > .toc--panel li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Design Freezing Index')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/design-freezing-index')]", "xpath:href"],
+        ["xpath=//div[2]/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Design Freezing Index')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0f5d08b-8c5b-4892-adf0-3be16914250c",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "941842ac-bf2c-4aed-9b60-1b4468bbb835",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "3f1ed2ad-3c03-4837-8db0-e5bd562649d0",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "9fb95577-9951-4dad-a44a-8bb3821442c5",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "710ea3d6-1170-43c7-8791-029fb0dd8ac8",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(1) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'3888')]", "xpath:innerText"]
+      ],
+      "value": "2941"
+    }, {
+      "id": "0fcfd0bf-8c23-42a1-b9a7-5bbbffd125f4",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(2) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'1461')]", "xpath:innerText"]
+      ],
+      "value": "1172"
+    }, {
+      "id": "a198e6c8-502d-4c65-a1d8-6614bfc7be31",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(3) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(3) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[3]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'1020')]", "xpath:innerText"]
+      ],
+      "value": "832"
+    }, {
+      "id": "4f66041d-deac-4abd-bbdf-1af27f5f8c79",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "28c8d3af-bd8b-467e-962d-550210cd4cbf",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "f880a7c3-8ed7-40de-9f88-0b6776d04ddc",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "a7ff4813-ba52-4678-b029-eb944e07f483",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "917fd325-a2e5-4333-9618-8ec80589ed2f",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "eee66e3e-52b8-42bb-9fef-c31622262bc7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(1) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'3888')]", "xpath:innerText"]
+      ],
+      "value": "2941"
+    }, {
+      "id": "3e8677af-748a-4332-ab87-2714fa7d9551",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(2) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'1461')]", "xpath:innerText"]
+      ],
+      "value": "1172"
+    }, {
+      "id": "299a5a44-569d-4a23-9937-0de1d2914b5f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(3) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(3) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[3]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'1020')]", "xpath:innerText"]
+      ],
+      "value": "832"
+    }, {
+      "id": "eda76fae-7915-4f89-96b7-e86527d10632",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0c5886c3-7233-4dfc-b435-707f1373af91",
+    "name": "Engineering Design Thawing Index",
+    "commands": [{
+      "id": "00ef309a-3b50-47fa-870f-b5d39bf74545",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "625713c9-a30d-46d9-b38f-415ddc4009fd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "493d2e78-9181-4b3e-b02a-247179d77398",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--engineering",
+      "targets": [
+        ["css=.image--engineering", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bdc4bec9-aa6c-45ea-9e95-7a3c860f8a3f",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Design Thawing Index",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "a4aa14b9-6d96-4b8e-bba8-fa6e9932b3f0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Design Thawing Index",
+      "targets": [
+        ["linkText=Design Thawing Index", "linkText"],
+        ["css=.column:nth-child(2) > .toc--panel li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Design Thawing Index')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/design-thawing-index')]", "xpath:href"],
+        ["xpath=//div[2]/div/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Design Thawing Index')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d4a3a10-24a5-496a-901a-f767909bd8d5",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "13c5bda1-063b-41c3-abb3-799cc837110c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad406840-f266-4ce1-8cf1-d4a95e8a60c0",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "b751c124-0d84-4584-9af5-8c38c80a4fde",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(1) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'3801')]", "xpath:innerText"]
+      ],
+      "value": "3801"
+    }, {
+      "id": "14f2250c-2581-4614-85c7-5add71fd11de",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(2) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'4373')]", "xpath:innerText"]
+      ],
+      "value": "4373"
+    }, {
+      "id": "f11c4cb7-e5f6-483e-9d6e-bb9739729dc7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(3) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(3) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[3]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'5274')]", "xpath:innerText"]
+      ],
+      "value": "5274"
+    }, {
+      "id": "b6f316b5-244e-4b54-b142-c5fa78ed3647",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0bc90ba-9eb9-421a-993d-37404c1e7e24",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "5a845552-0be0-4e3b-81c9-fa02ba88a884",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f3a8b5f-7222-4cb9-a791-50bb133f641c",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Design Thawing Index",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "f8ea8346-1036-41a5-b838-a539d9fe79b5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Design Thawing Index",
+      "targets": [
+        ["linkText=Design Thawing Index", "linkText"],
+        ["css=.column:nth-child(2) > .toc--panel li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Design Thawing Index')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/design-thawing-index')]", "xpath:href"],
+        ["xpath=//div[2]/div/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Design Thawing Index')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a67a7142-bfdc-41e8-bcf8-d7c95f0b3be5",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "03691508-cc12-4d09-8c2e-eabe80f1ea0f",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "41954633-7121-40bd-baf5-555556ebaf83",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "c774b626-b75e-4e34-95a7-db7c71698ced",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "b39666c0-9711-4c89-9807-176ad33e42ef",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(1) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'3801')]", "xpath:innerText"]
+      ],
+      "value": "4523"
+    }, {
+      "id": "aa56ca13-625c-40a0-aa91-2592cea91ea3",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(2) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'4373')]", "xpath:innerText"]
+      ],
+      "value": "4941"
+    }, {
+      "id": "1ce9da6f-58ee-411e-9408-5f2b7dbaf2c0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(3) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(3) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[3]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'5274')]", "xpath:innerText"]
+      ],
+      "value": "5940"
+    }, {
+      "id": "4366a74e-7f41-4d75-a815-918bda0d1542",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b541935-b822-4005-937e-f8b8f903131c",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "c172cbe4-50cf-463f-8c39-e1acaa02a5ff",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "a4c71e30-6e70-4d6c-ae3c-64aec2cfe39f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "288be850-9a58-4077-a116-daea6b6fcaee",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "fc77da92-ff92-4d46-afc0-a16db637a834",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(1) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'3801')]", "xpath:innerText"]
+      ],
+      "value": "4523"
+    }, {
+      "id": "18be5df3-7e4d-4b3a-b04d-74e7df1ace6d",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(2) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'4373')]", "xpath:innerText"]
+      ],
+      "value": "4941"
+    }, {
+      "id": "520f4284-24c8-43f5-9885-1eb59e097c64",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tbody:nth-child(2) > tr:nth-child(3) > td",
+      "targets": [
+        ["css=tbody:nth-child(2) > tr:nth-child(3) > td", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[3]/td", "xpath:idRelative"],
+        ["xpath=//div[3]/div/table/tbody/tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'5274')]", "xpath:innerText"]
+      ],
+      "value": "5940"
+    }, {
+      "id": "6bbbe41f-39fd-4f19-8c67-c7e0b247a6a5",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "df0c6c78-99be-4f62-88e1-90c08943fdd3",
+    "name": "Engineering Freezing Index",
+    "commands": [{
+      "id": "70b37b5d-36ea-42dd-ae99-901ec6e76393",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4f1bb33d-4a63-447c-924c-ff29c2db328f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "55d2e5b4-f434-42ba-bd35-1af68dbe8cf4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--engineering",
+      "targets": [
+        ["css=.image--engineering", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7f2cba5-343b-4023-ad95-bec79a77865b",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Freezing Index",
+      "targets": [
+        ["linkText=Freezing Index", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Freezing Index')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/freezing-index')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "bbb31bd9-0e45-468f-b990-60058717bbe7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Freezing Index",
+      "targets": [
+        ["linkText=Freezing Index", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Freezing Index')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/freezing-index')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d9cb36b-0286-41c6-879b-bea4f9b09d54",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "d3faae49-bf1a-4ed4-956b-e1e775e7d429",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(15)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(15)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "c65b698a-bd94-44df-9be3-25c908855ed2",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "6fec07f6-bb6e-48b7-9539-7f5293ef8bda",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'6924')]", "xpath:innerText"]
+      ],
+      "value": "6924"
+    }, {
+      "id": "5dc9d635-b76f-4510-83cd-14345f297c28",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5306')]", "xpath:innerText"]
+      ],
+      "value": "5306"
+    }, {
+      "id": "8dd409f1-8915-4c73-a921-f497aa48629a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "505cc0c2-2196-4824-ba40-64667eb296c7",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "2f623d04-6964-4934-83b5-d0bd2b9e8505",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f879e96-5413-4606-a242-792bd58724e9",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Freezing Index",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "7eb947b8-fc3b-4492-af05-ef87751a2289",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Freezing Index",
+      "targets": [
+        ["linkText=Freezing Index", "linkText"],
+        ["css=.column:nth-child(2) > .toc--panel li:nth-child(3) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Freezing Index')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/freezing-index')]", "xpath:href"],
+        ["xpath=//div[2]/div/ul/li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "397208a2-a413-48e7-a604-13df45059309",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "a1106905-79ac-4426-9a9b-6dd47d1f8ffc",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "c3338c02-5b67-4809-b87b-55291e32657e",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "8a3eb70e-ee86-4908-8f64-638b19da17ba",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "ad4796a8-e5f1-402c-bf2e-8c8ebb35fea9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'6924')]", "xpath:innerText"]
+      ],
+      "value": "5263"
+    }, {
+      "id": "fbd7c286-3433-4aa6-ba7d-047978b30c38",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5306')]", "xpath:innerText"]
+      ],
+      "value": "3845"
+    }, {
+      "id": "bd8e39db-e060-4618-86b0-decd6015a92d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e7605787-e436-4aae-be23-aba7d41b0342",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "e30fa930-a677-4b3c-96f1-de27d902ff4f",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "1de1db7f-7d2d-4ec1-9c80-7875c0eeb10c",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "5fe5bd61-219a-4aae-ab24-6e0eaf4642da",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffce26cf-0344-4a0e-8c4f-41b03f4be45f",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "cef5ed0c-2ec0-450a-9f79-2f08a1ddba59",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'6924')]", "xpath:innerText"]
+      ],
+      "value": "5263"
+    }, {
+      "id": "170c9ee9-0f04-4f1e-8b3c-68729fe07f8f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5306')]", "xpath:innerText"]
+      ],
+      "value": "3845"
+    }, {
+      "id": "3e5060a2-af9a-411d-a64a-88bb601b0184",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "c692bb20-038a-447d-8431-5c280bb5d830",
+    "name": "Engineering Thawing Index",
+    "commands": [{
+      "id": "cc56410f-56dd-4ee6-84e9-d95c5fd288f7",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c931d3e1-70db-4f8a-9866-7b21d6811825",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d5dab6dc-bc1e-4a0d-b06b-b50d0260081e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--engineering",
+      "targets": [
+        ["css=.image--engineering", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f6e2ba3-21c1-4763-a095-3e42dfb7b33e",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Thawing Index",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "a50cdcc9-30a2-4fe4-ab9b-cc3f10ae4342",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Thawing Index",
+      "targets": [
+        ["linkText=Thawing Index", "linkText"],
+        ["css=li:nth-child(5) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Thawing Index')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/thawing-index')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f84de545-bf18-46a7-974c-a9341c10b4b0",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "b050be6e-2410-4ec1-8daf-8215b9464cca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "4fee81b1-357a-40a8-8d9e-0dece965a367",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "e8726cfe-2c61-412c-b654-4d7c72fe71bf",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'3829')]", "xpath:innerText"]
+      ],
+      "value": "3829"
+    }, {
+      "id": "e91322f8-459b-4962-8627-8d89506c1f61",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5653')]", "xpath:innerText"]
+      ],
+      "value": "5653"
+    }, {
+      "id": "c886c35d-46a1-44ce-817d-74774168a71c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "001b9fbf-d7fe-454a-ba8a-65f509fe99f0",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "ca14cfb0-1a06-4065-8429-21d6006bf52e",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5fdd5e71-e9e0-44bb-9fda-8285dfc0c727",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Thawing Index",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "5df31a59-49b6-4218-a77b-3a0fe78d2865",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Thawing Index",
+      "targets": [
+        ["linkText=Thawing Index", "linkText"],
+        ["css=li:nth-child(5) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Thawing Index')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/thawing-index')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ccb3e4f2-541e-41f4-8e51-9092d5c7ab3b",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "9923613e-a2dc-450e-ae8a-2f07952ac7f3",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "667e6aee-8777-47a6-822f-37ec87fcd15c",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "4700e947-007e-4c37-b542-f62c4ef21a5c",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "de710262-d293-4015-81af-5601526aa08f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'3829')]", "xpath:innerText"]
+      ],
+      "value": "4581"
+    }, {
+      "id": "30b43576-1dd7-4c6a-8385-3650fff10c22",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5653')]", "xpath:innerText"]
+      ],
+      "value": "6489"
+    }, {
+      "id": "ec09b0f2-0a0d-45a0-a692-35fc47949d89",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "69a52d37-e89b-4db9-8524-1f01c273d6c8",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "cdd2038f-820e-46fc-9b5b-b1cdeb697a91",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "40dd5f49-3227-4b06-a52e-b73811f6ee62",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "10a0e142-c823-44f2-ac67-5772a5a10c8f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "115adb4f-ae4d-4d3e-b04b-145a12728c04",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "06ecfd7e-049c-4fcf-8c9d-46a9e32be50d",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'3829')]", "xpath:innerText"]
+      ],
+      "value": "4581"
+    }, {
+      "id": "1a984078-71c9-469d-85c2-fa1bb84dcae0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5653')]", "xpath:innerText"]
+      ],
+      "value": "6489"
+    }]
+  }, {
+    "id": "594b17cc-9e24-44d6-ab4a-a898e56e2e38",
+    "name": "Engineering Heating Degree Days",
+    "commands": [{
+      "id": "a7eba4c1-47ed-4fec-99d1-c0b8fae9b31b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4c468d98-dc39-4ddf-b0c6-456ecb0f0b0d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d04c1b5-b0c2-4079-b1c0-066a18bdf133",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--engineering",
+      "targets": [
+        ["css=.image--engineering", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b75df9f-6559-4ea4-8321-0b743e7374da",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Heating Degree Days",
+      "targets": [
+        ["linkText=Heating Degree Days", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Heating Degree Days')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/heating-degree-days')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Heating Degree Days')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "53b8d9c6-52d3-4c4f-b833-547a4ddd9acf",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Heating Degree Days",
+      "targets": [
+        ["linkText=Heating Degree Days", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Heating Degree Days')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/heating-degree-days')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Heating Degree Days')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "28f556a6-63d4-4d1f-97d0-8e687c11d2c2",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "9332bf7e-9951-4f2c-a59f-71430f894c45",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "fc84bec6-ecb1-4be9-bc8b-54d831240e68",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "775f2499-f69f-4613-9bd2-7b3fa105fa07",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'15415')]", "xpath:innerText"]
+      ],
+      "value": "15415"
+    }, {
+      "id": "cd2546fa-5cbe-47a1-8382-01aeca2caf2d",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'12422')]", "xpath:innerText"]
+      ],
+      "value": "12422"
+    }, {
+      "id": "fc04ed6b-63cf-45c8-9719-66539dfe6f23",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8fa7fa2e-6701-4121-9ff2-f14fa894ee5c",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "753c2c40-1d83-46d1-933c-f32ed1a2c24c",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bfb8e88f-5071-4d2d-8ebb-48c5d8ca2857",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Heating Degree Days",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "953f21ea-a16e-4b51-ab9e-bc0b890ca152",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Heating Degree Days",
+      "targets": [
+        ["linkText=Heating Degree Days", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Heating Degree Days')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div[2]/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/engineering/heating-degree-days')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Heating Degree Days')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2060708e-8b37-42fd-b370-87cb6fd674e3",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "2bbe038b-072f-4c9b-a5e9-ce42e5b3c4d7",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "0c73d75a-3855-4520-80cd-d72d3b08dc16",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "2445b67c-ec98-45f2-8b73-8af507b518d5",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "ce6a14dc-e3c2-41db-8947-59ee80e5f74c",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'15415')]", "xpath:innerText"]
+      ],
+      "value": "13574"
+    }, {
+      "id": "6c6130b0-742b-4d21-a41d-349fb616d925",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'12422')]", "xpath:innerText"]
+      ],
+      "value": "11709"
+    }, {
+      "id": "0049c85a-67b8-417a-a02e-c699f5218c6d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b9379a84-53e0-4e01-9abf-0198676a1b76",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [
+        ["id=map", "id"],
+        ["css=#map", "css:finder"],
+        ["xpath=//div[@id='map']", "xpath:attributes"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[2]/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "a66c720d-2b76-4f53-9bf3-03bdf5669630",
+      "comment": "",
+      "command": "click",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c6ea87fd-57f5-43f3-a92d-7b1e0373573a",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "85b95699-8653-4d54-85af-dfcde766b34d",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "8b26e3f1-f7c3-4ef7-823a-945beaff8586",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "324fe4e1-4b49-457c-9edb-6ab38c0ef83a",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "7c1214a1-3d9a-48af-a60b-3acbaac2dc13",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'15415')]", "xpath:innerText"]
+      ],
+      "value": "13574"
+    }, {
+      "id": "9e03a809-f475-46ac-a7e5-7736e51f4d4d",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'12422')]", "xpath:innerText"]
+      ],
+      "value": "11709"
+    }, {
+      "id": "ea08071b-3930-42c7-a111-6cba6ce9418a",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0ec33c43-183f-403c-8b08-34924be8819c",
+    "name": "Climate Category",
+    "commands": [{
+      "id": "98d9cfa1-d0b8-41d2-8f8d-71ca7cf92266",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "911f2a8b-2837-4b92-a1fe-52fb65db67fa",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "de5ff72c-2a86-4b2f-9a8c-fd5e77206853",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--climate",
+      "targets": [
+        ["css=.image--climate", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div/div/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "84fa8558-d519-42ae-9eac-c5d0709dfc0e",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=li > .nuxt-link-active",
+      "targets": [
+        ["css=li > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "9288f4fb-6cc4-4a04-a19f-cc47dc3ab336",
+      "comment": "Ensure Title is Climate",
+      "command": "assertText",
+      "target": "css=.title",
+      "targets": [
+        ["css=.title", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div[2]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Engineering')]", "xpath:innerText"]
+      ],
+      "value": "Climate"
+    }, {
+      "id": "980910fe-d5fd-4cbd-9dfd-45894aaf190d",
+      "comment": "Ensure introductory text",
+      "command": "assertText",
+      "target": "css=.content > p:nth-child(1)",
+      "targets": [
+        ["css=.content > p:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div[2]/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"]
+      ],
+      "value": "Climate data are derived from historical and projected data from Global Circulation Models (GCMs) run under different scenarios (Representative Concentration Pathways, RCPs) downscaled with gridded PRISM climate data. Read more about GCMs and RCPs."
+    }, {
+      "id": "79df4200-b5e7-41dd-982a-471fe350ddfd",
+      "comment": "Ensure Precipitation anchor link",
+      "command": "assertElementPresent",
+      "target": "linkText=Precipitation",
+      "targets": [
+        ["linkText=Precipitation", "linkText"],
+        ["css=.content li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Precipitation')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/precipitation')]", "xpath:href"],
+        ["xpath=//section/div/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Precipitation')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb59fafe-47d3-44cb-bd89-cb5f8270254c",
+      "comment": "Ensure Snowfall anchor link",
+      "command": "assertElementPresent",
+      "target": "linkText=Snowfall",
+      "targets": [
+        ["linkText=Snowfall", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Snowfall')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/snowfall')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Snowfall')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4fd3cf99-db0b-40f6-85eb-70d5539f4e7e",
+      "comment": "Ensure Temperature anchor link",
+      "command": "assertElementPresent",
+      "target": "linkText=Temperature",
+      "targets": [
+        ["linkText=Temperature", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Temperature')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/temperature')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Temperature')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e7d3ca1d-62f5-4c2d-b77c-2b229b78d8cb",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0f5acc05-04e6-4d0b-bf24-554ce23d753c",
+    "name": "Climate Precipitation Plate",
+    "commands": [{
+      "id": "b32b2b18-3eaa-44ea-a50d-2166e0a23aff",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0af87a19-fd9f-4569-a562-d3e83917d192",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "978dc23b-73f2-4cc2-9ef5-da25c28ea5a6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--climate",
+      "targets": [
+        ["css=.image--climate", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div/div/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1dffdcda-fb08-463b-a463-a77927f345ed",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Precipitation",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "743a0b64-ca62-432c-9d30-db6839e6b5ff",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Precipitation",
+      "targets": [
+        ["linkText=Precipitation", "linkText"],
+        ["css=.content li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Precipitation')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/precipitation')]", "xpath:href"],
+        ["xpath=//section/div/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Precipitation')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ef493c5-978e-41cf-9b0c-c18f71f3a54e",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "a2daee4d-dadf-41f4-89f4-b065b6a31581",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa0ddf6a-6002-4b6b-a95d-4b4e600162fe",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "5d20289f-874f-418b-9cfe-8445cfa7efc1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'23.1 in')]", "xpath:innerText"]
+      ],
+      "value": "23.1 in"
+    }, {
+      "id": "308a9e87-b47a-41c6-b4a3-772daa3b58f0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'35.9 in')]", "xpath:innerText"]
+      ],
+      "value": "35.9 in"
+    }, {
+      "id": "1323dc87-6a75-4ff8-b665-b9168081f2a6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "44178f9e-d179-4e59-bdd8-0eedd40cdcc5",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "2c089bc3-bc72-46ce-aee5-045cd5d7d273",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "11fdee07-f460-470b-867b-ad1d079925a8",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Precipitation",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "e8064e74-536c-47a8-919a-9ad44bd56fba",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Precipitation",
+      "targets": [
+        ["linkText=Precipitation", "linkText"],
+        ["css=.column:nth-child(1) li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Precipitation')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/precipitation')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Precipitation')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d1f9195-514c-4c9c-9808-1e9aa8ede183",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "a7691a36-227c-489b-aec8-9781460e3b2b",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "9a3999fc-0d38-4c6d-b368-87e23663e0d4",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "7e78b04a-c449-4181-9e87-1ea07471819d",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "773c57e1-7d63-4692-a62c-d432d86096fb",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'23.1 in')]", "xpath:innerText"]
+      ],
+      "value": "17.7 in"
+    }, {
+      "id": "23f72cb2-5039-446f-bc73-139c9c0192e5",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'35.9 in')]", "xpath:innerText"]
+      ],
+      "value": "26.6 in"
+    }, {
+      "id": "a5729f89-f485-4c5a-8f69-e4ae5b3df4b5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c915817d-b6b6-4eb3-b183-7bbf49f2037b",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "b953cca6-91cd-40cb-add0-27c175013879",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "bb6922a0-e663-4a29-9775-f4176917f323",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "a80bd249-a167-495f-a7de-b87ca9a9b09a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success > span",
+      "targets": [
+        ["css=.is-success > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "29ef53c2-7cf0-4eb0-8195-850174268885",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "96e45f00-54df-47df-8964-7a17c70049bd",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'23.1 in')]", "xpath:innerText"]
+      ],
+      "value": "17.8 in"
+    }, {
+      "id": "234a40ab-bfe8-4b39-aadd-a591b88d60d7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'35.9 in')]", "xpath:innerText"]
+      ],
+      "value": "26.7 in"
+    }, {
+      "id": "0ff0987c-ee81-491f-a493-3d4c103bc26a",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "267d500a-2929-4b50-961d-f589da09b121",
+    "name": "Climate Snowfall Plate",
+    "commands": [{
+      "id": "b2426527-b9fc-4fd5-9d73-415b1e58176c",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "55623a87-fe44-4d3a-aab2-c4526fa4fc9b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5aebf81e-58e3-4c3d-b3d7-c2bc8301b42e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--climate",
+      "targets": [
+        ["css=.image--climate", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div/div/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "638b6b48-4751-4bab-939b-f7396db1fb81",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Snowfall",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "a56f0131-212e-4314-811b-9f45f5ddeb30",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Snowfall",
+      "targets": [
+        ["linkText=Snowfall", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Snowfall')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/snowfall')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Snowfall')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f8f6f91-7201-416d-9e31-a1b4d73e2d7e",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "2f2d38d5-45d5-41f1-82af-1c21638f3dfd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "194a3a1b-8ca2-41c2-a9dc-e13e711c31e3",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "76c7d6a6-dcec-462c-b870-dd2a9c760594",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5.5 in')]", "xpath:innerText"]
+      ],
+      "value": "5.5 in"
+    }, {
+      "id": "dc7a180f-ba3b-4c05-8d97-bc5533240977",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'6.5 in')]", "xpath:innerText"]
+      ],
+      "value": "6.5 in"
+    }, {
+      "id": "24bda2ac-514c-472f-80b9-667324c25ed5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ed6a6f6-3b7a-45b4-ac17-86029be84254",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "11f2b9d1-4c39-4bcb-a25e-ae292877ef79",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "112217db-10ae-4d9d-b41f-fd8064b44520",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Snowfall",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "71054c66-ecf6-4a8a-97ce-b7ead59d386b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Snowfall",
+      "targets": [
+        ["linkText=Snowfall", "linkText"],
+        ["css=.column:nth-child(1) li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Snowfall')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/snowfall')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Snowfall')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7b2250f0-798d-4dba-9cf5-297b5663a8cd",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "3354dced-6138-4b5a-8920-a035876f6876",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "7071f2c9-791e-4966-ad14-798bab298934",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "4df0e1bf-261b-4710-924d-744856bafcbd",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "540ed856-13a4-412c-8f5f-f93984206eb1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5.5 in')]", "xpath:innerText"]
+      ],
+      "value": "5.9 in"
+    }, {
+      "id": "d69b1714-5a35-4790-baad-e93f18177c2d",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'6.5 in')]", "xpath:innerText"]
+      ],
+      "value": "5.5 in"
+    }, {
+      "id": "5e5e9b23-b64b-4f55-a965-57187cc153cf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "80bd263b-2456-4bf6-8bcd-de21c0b9ddc3",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "36a1c019-a43f-4ba6-a438-fb205e3e45a3",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "c2053b16-9c35-42d1-923a-ec1a0830a174",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "3d7f7d47-a739-4704-8ade-b5fc468082ba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-success",
+      "targets": [
+        ["css=.is-success", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "21e57e42-6613-4bc4-8c31-b390dfc82fb1",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "94a66c13-e648-4bb5-9688-3b1baa4d8602",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'5.5 in')]", "xpath:innerText"]
+      ],
+      "value": "5.9 in"
+    }, {
+      "id": "c28c1422-6e41-443e-bbd6-4e92e771ecd7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[2]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'6.5 in')]", "xpath:innerText"]
+      ],
+      "value": "5.5 in"
+    }, {
+      "id": "853116b4-ecae-4591-a568-11c8d0cc1e8b",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "fdcc4ba6-886b-4c3f-b77b-f205550dfd31",
+    "name": "Climate Temperature Plate",
+    "commands": [{
+      "id": "1a985aee-42dc-42ff-b912-9778ffe16c17",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5faa3795-9f72-4a0f-a722-9a5b7e969460",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "255817b2-2fcb-4ad9-bbb2-f92cfd3cc3e1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.image--climate",
+      "targets": [
+        ["css=.image--climate", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div/div/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0724a80-5e26-4719-9bc3-63ab12e72348",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Temperature",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "c4a94609-dec8-4d8a-a579-3d4261e0dcac",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Temperature",
+      "targets": [
+        ["linkText=Temperature", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Temperature')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[4]/section/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/temperature')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Temperature')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09b3c6c0-e042-4728-b1af-4b6d21039795",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "d64fba0f-5eff-43c9-8511-12b413300185",
+      "comment": "",
+      "command": "click",
+      "target": "css=.leaflet-interactive:nth-child(131)",
+      "targets": [
+        ["css=.leaflet-interactive:nth-child(131)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d427d3b-dd27-4f19-8ede-4a5a112ae40c",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "50000"
+    }, {
+      "id": "532e3224-b8c4-44ae-a698-56215d82a4aa",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(10)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(10)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[9]", "xpath:idRelative"],
+        ["xpath=//td[9]", "xpath:position"],
+        ["xpath=//td[contains(.,'75.2°F')]", "xpath:innerText"]
+      ],
+      "value": "75.2°F"
+    }, {
+      "id": "651d3e3f-8c1b-4050-9514-39233a18dcfc",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(10)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(10)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[9]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[9]", "xpath:position"]
+      ],
+      "value": "93.2°F"
+    }, {
+      "id": "41285b9b-867a-469c-b61a-ecda9350fe70",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b814dd8f-982e-4a56-b471-adb219d9443e",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "8f069854-dc63-4c70-b280-e2fb625a3fbd",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > .nuxt-link-active",
+      "targets": [
+        ["css=li:nth-child(1) > .nuxt-link-active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Home')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[9]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e6f05aa-d6de-4322-b2f2-a6bf82e52d00",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Temperature",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "746cfd2c-5b1d-4531-976c-1260fd1b7a67",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Temperature",
+      "targets": [
+        ["linkText=Temperature", "linkText"],
+        ["css=.column:nth-child(1) li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Temperature')]", "xpath:link"],
+        ["xpath=//div[@id='__layout']/div/div[3]/div/div[2]/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/climate/temperature')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Temperature')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "14a495cd-f537-449e-b686-2a216b0965c6",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "0569af65-efeb-4d83-a825-0fd11ef7516c",
+      "comment": "",
+      "command": "type",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Fairbanks"
+    }, {
+      "id": "e59ed6a7-172d-4557-9fba-190c3772c1a2",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.is-rounded",
+      "targets": [
+        ["css=.is-rounded", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div/div/div/p[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "468d1b71-0167-428f-b56f-b8e595fda2dc",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "50000"
+    }, {
+      "id": "c30023dc-eacb-4324-ad8f-226877b457c1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(10)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(10)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[9]", "xpath:idRelative"],
+        ["xpath=//td[9]", "xpath:position"],
+        ["xpath=//td[contains(.,'75.2°F')]", "xpath:innerText"]
+      ],
+      "value": "75.2°F"
+    }, {
+      "id": "d3db8406-1767-4298-ac57-d32f2f917fe0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(10)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(10)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[9]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[9]", "xpath:position"]
+      ],
+      "value": "93.2°F"
+    }, {
+      "id": "0c7a03a3-1d8b-4bf5-afb7-1dfc59f32c55",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span:nth-child(2)",
+      "targets": [
+        ["css=.button > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__layout']/div/div[5]/div[2]/div[3]/section/div/div/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Go back, pick another place')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7ed7c9c-f235-40d6-b748-18363f1c5184",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=map",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "215d890b-db11-4806-8d65-e00b7575927d",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(1) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(1) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "64.82"
+    }, {
+      "id": "74896c61-0580-46ad-b2a2-400c441ed03b",
+      "comment": "",
+      "command": "type",
+      "target": "css=.field-wrapper:nth-child(2) .input",
+      "targets": [
+        ["css=.field-wrapper:nth-child(2) .input", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-147.72"
+    }, {
+      "id": "9de2e35c-5cc6-4725-bd2d-065f233a4aef",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button > span",
+      "targets": [
+        ["css=.button > span", "css:finder"],
+        ["xpath=//div[@id='controls']/div[2]/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Get point data')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f4e0ecf-f3d9-41b9-98f5-05e03508e9f5",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=report--minimmap--map",
+      "targets": [
+        ["id=report--minimmap--map", "id"],
+        ["css=#report--minimmap--map", "css:finder"],
+        ["xpath=//div[@id='report--minimmap--map']", "xpath:attributes"],
+        ["xpath=//div[@id='report']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div/div[3]/div/div/div/div", "xpath:position"]
+      ],
+      "value": "50000"
+    }, {
+      "id": "d32d2f0e-aea0-45ce-805a-c813c1a843b8",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(10)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(10)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr/td[9]", "xpath:idRelative"],
+        ["xpath=//td[9]", "xpath:position"],
+        ["xpath=//td[contains(.,'75.2°F')]", "xpath:innerText"]
+      ],
+      "value": "75.2°F"
+    }, {
+      "id": "173d5ab0-ca16-4443-b80f-477d4d33be0a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(10)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(10)", "css:finder"],
+        ["xpath=//div[@id='report']/div/table/tbody/tr[4]/td[9]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[9]", "xpath:position"]
+      ],
+      "value": "93.2°F"
+    }, {
+      "id": "2b2eba50-1287-4918-969b-2f65d50f83ca",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "833c9b2a-772e-4565-a3fb-2c48e4e78ab4",
+    "name": "Physiography",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["7c282ddf-4725-4bcd-9d2b-f91f2fd9a4b1", "8f149c6f-1a21-448b-a159-771f425ce27a", "27c3eb21-4e1c-4003-ba6e-8604cc25f383", "49e429ae-cc3e-405a-9270-e8b3bf65fccc"]
+  }, {
+    "id": "ce2f9ea9-9d4b-43d9-b7b4-4f6b317d98f8",
+    "name": "Engineering",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d8c18972-9316-46a5-862d-479b69ab976e", "d3894e8b-babf-4364-a289-95e924c2e609", "0c5886c3-7233-4dfc-b435-707f1373af91", "df0c6c78-99be-4f62-88e1-90c08943fdd3", "c692bb20-038a-447d-8431-5c280bb5d830", "594b17cc-9e24-44d6-ab4a-a898e56e2e38"]
+  }, {
+    "id": "70cd4002-573e-44ad-bb84-6869b07a3e35",
+    "name": "Climate",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["0ec33c43-183f-403c-8b08-34924be8819c", "0f5acc05-04e6-4d0b-bf24-554ce23d753c", "267d500a-2929-4b50-961d-f589da09b121", "fdcc4ba6-886b-4c3f-b77b-f205550dfd31"]
+  }],
+  "urls": ["http://localhost:3000/", "http://dev.arcticeds.org/"],
+  "plugins": []
+}
