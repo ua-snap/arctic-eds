@@ -8,15 +8,16 @@
       <div
         v-if="
           !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+            !$fetchState.error &&
+            Object.keys(results).length > 0
         "
       >
         <h3 class="title is-3">Temperature data for {{ results.place }}</h3>
 
         <MiniMap />
 
-        <TemperatureExplanation />
+        <TemperatureExplanation context="report" />
+        <DataExplanation context="snap" />
 
         <h4 class="title is-4">Temperature</h4>
 
@@ -141,6 +142,7 @@ import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
 import UnitRadio from '~/components/UnitRadio'
 import TemperatureExplanation from '~/components/plates/temperature/Explanation'
+import DataExplanation from '~/components/DataExplanation'
 
 export default {
   name: 'TemperatureReport',
@@ -151,9 +153,10 @@ export default {
     UnitWidget,
     UnitRadio,
     TemperatureExplanation,
+    DataExplanation,
   },
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -165,7 +168,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },

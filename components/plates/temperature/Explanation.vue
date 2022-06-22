@@ -8,7 +8,7 @@
       with a mean temperature 32&deg;F or colder. As climate shifts, these
       definitions are changing.
     </p>
-    <p>
+    <p v-if="context == 'map'">
       This map shows average annual historical and projected temperatures for
       1980&ndash;2009 and 2040&ndash;2069, as well as the coldest, hottest, and
       average temperatures for those years for the months of January (typically
@@ -36,9 +36,9 @@
 export default {
   name: 'TemperatureExplanation',
   props: {
-    legend: {
-      type: Boolean,
-      default: false,
+    context: {
+      type: String,
+      default: 'map',
     },
   },
 }

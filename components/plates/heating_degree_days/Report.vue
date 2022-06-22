@@ -19,6 +19,7 @@
         <MiniMap />
 
         <HeatingDegreeDaysExplanation />
+        <DataExplanation context="wrf" />
 
         <h4 class="title is-4">Heating Degree Days</h4>
 
@@ -87,6 +88,7 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import HeatingDegreeDaysExplanation from '~/components/plates/heating_degree_days/Explanation'
+import DataExplanation from '~/components/DataExplanation'
 
 export default {
   name: 'HeatingDegreeDaysReport',
@@ -95,6 +97,7 @@ export default {
     MiniMap,
     LoadingStatus,
     HeatingDegreeDaysExplanation,
+    DataExplanation,
   },
   data() {
     return {
