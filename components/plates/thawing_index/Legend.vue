@@ -46,19 +46,7 @@
               <td>
                 <div class="colorbox dd5000"></div>
               </td>
-              <td>5000</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox dd6000"></div>
-              </td>
-              <td>6000</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox dd7000"></div>
-              </td>
-              <td>&ge; 7000</td>
+              <td>&ge; 5000</td>
             </tr>
           </tbody>
         </table>
@@ -88,29 +76,23 @@ table.table td {
   width: 2rem;
 }
 .thawing-index .colorbox {
-  &.dd7000 {
-    background-color: #8c2d04;
-  }
-  &.dd6000 {
-    background-color: #cc4c02;
-  }
-  &.dd5000 {
-    background-color: #ec7014;
-  }
-  &.dd4000 {
-    background-color: #fe9929;
-  }
-  &.dd3000 {
-    background-color: #fec44f;
-  }
-  &.dd2000 {
-    background-color: #fee391;
+  &.dd0 {
+    background-color: #ffffd4;
   }
   &.dd1000 {
-    background-color: #fff7bc;
+    background-color: #fee391;
   }
-  &.dd0 {
-    background-color: #ffffe5;
+  &.dd2000 {
+    background-color: #fec44f;
+  }
+  &.dd3000 {
+    background-color: #fe9929;
+  }
+  &.dd4000 {
+    background-color: #d95f0e;
+  }
+  &.dd5000 {
+    background-color: #993404;
   }
 }
 </style>

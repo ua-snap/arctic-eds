@@ -20,27 +20,33 @@
             </tr>
             <tr>
               <td>
-                <div class="colorbox dd3000"></div>
+                <div class="colorbox dd2500"></div>
               </td>
-              <td>3000</td>
+              <td>2500</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox dd6000"></div>
+                <div class="colorbox dd5000"></div>
               </td>
-              <td>6000</td>
+              <td>5000</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox dd9000"></div>
+                <div class="colorbox dd7500"></div>
               </td>
-              <td>9000</td>
+              <td>7500</td>
             </tr>
             <tr>
               <td>
-                <div class="colorbox dd12000"></div>
+                <div class="colorbox dd10000"></div>
               </td>
-              <td>12000</td>
+              <td>10000</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="colorbox dd12500"></div>
+              </td>
+              <td>12500</td>
             </tr>
             <tr>
               <td>
@@ -50,15 +56,9 @@
             </tr>
             <tr>
               <td>
-                <div class="colorbox dd18000"></div>
+                <div class="colorbox dd17500"></div>
               </td>
-              <td>18000</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="colorbox dd21000"></div>
-              </td>
-              <td>&ge; 21000</td>
+              <td>&ge; 17500</td>
             </tr>
           </tbody>
         </table>
@@ -88,29 +88,29 @@ table.table td {
   width: 2rem;
 }
 .heating-degree-days .colorbox {
-  &.dd21000 {
-    background-color: #034e7b;
-  }
-  &.dd18000 {
-    background-color: #0570b0;
-  }
-  &.dd15000 {
-    background-color: #3690c0;
-  }
-  &.dd12000 {
-    background-color: #74a9cf;
-  }
-  &.dd9000 {
-    background-color: #a6bddb;
-  }
-  &.dd6000 {
-    background-color: #d0d1e6;
-  }
-  &.dd3000 {
-    background-color: #ece7f2;
-  }
   &.dd0 {
     background-color: #fff7fb;
+  }
+  &.dd2500 {
+    background-color: #ece7f2;
+  }
+  &.dd5000 {
+    background-color: #d0d1e6;
+  }
+  &.dd7500 {
+    background-color: #a6bddb;
+  }
+  &.dd10000 {
+    background-color: #74a9cf;
+  }
+  &.dd12500 {
+    background-color: #3690c0;
+  }
+  &.dd15000 {
+    background-color: #0570b0;
+  }
+  &.dd17500 {
+    background-color: #034e7b;
   }
 }
 </style>
