@@ -151,7 +151,7 @@ export default {
     signedDiff(historical, projected, variable) {
       let decimals
       if (variable == 'magt') {
-        decimals = this.units == 'metric' ? 1 : 1
+        decimals = 1
       }
       let rawDiff = (projected - historical).toFixed(decimals)
       if (rawDiff > 0) {
