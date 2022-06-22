@@ -9,8 +9,7 @@
       ><p>
         Thanks for checking out this tool! Until our complete launch in summer
         2024, this is a public beta, which means that we&rsquo;re still
-        <a
-          href="https://www.google.com/url?q=https://uaf-iarc.typeform.com/to/MLS1dDf9&sa=D&source=docs&ust=1655491731883237&usg=AOvVaw37tuoJ7AkX5O4Yupl5a15T"
+        <a href="https://uaf-iarc.typeform.com/to/MLS1dDf9"
           >gathering feedback</a
         >, testing data outputs and fixing bugs.
       </p>
