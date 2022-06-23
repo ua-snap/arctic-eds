@@ -7,9 +7,9 @@
         </h2>
         <p>
           In the late 20th century, the need for accessible environmental information 
-          tailored to engineers and decision-makers, led to the publication of the 
+          tailored to engineers and decision&ndash;makers, led to the publication of the 
           Environmental Atlas of Alaska. The publication compiled maps of the best 
-          data available at the time. The Atlas provided a well-organized overview of 
+          data available at the time. The Atlas provided a well&ndash;organized overview of 
           the physical characteristics of the state alongside its waters, sunlight, and 
           general climate. This was paired with engineering requirements and guidelines, 
           as well as a thorough bibliography. 
@@ -20,8 +20,8 @@
           engineers and planners not working along the state’s road systems or 
           rivers, and presented particular challenges to engineers in the far 
           north and west. Complex topography, particularly in Southeast Alaska, 
-          also made coarse–scale maps frustratingly imprecise. The data also assumed 
-          a steady climatic state while modern data tells a more detailed story—one 
+          also made coarse&ndash;scale maps frustratingly imprecise. The data also assumed 
+          a steady climatic state while modern data tells a more detailed story&mdash;one 
           of significant change.
         </p>
         <h2 class="title is-3">A path forward</h2>
@@ -32,7 +32,7 @@
           to replace the aging Environmental Atlas of Alaska while addressing the 
           old atlas’ shortcomings by providing finer scale data, filling data gaps, 
           and incorporating climate projections. The Arctic EDS provides easily 
-          obtainable, well–vetted, and reliable engineering and environmental data 
+          obtainable, well&ndash;vetted, and reliable engineering and environmental data 
           in a central website designed to meet the needs of engineering professionals.
         </p>
         <p>
