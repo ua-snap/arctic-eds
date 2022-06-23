@@ -2,7 +2,7 @@
   <div>
     <HeaderBanner />
     <div class="brand--wrapper">
-      <div class="brand--logo">
+      <div class="brand--logo is-flex is-flex-direction-row">
         <img src="~/assets/images/logo.svg" />
       </div>
       <div class="brand--titles">
@@ -21,19 +21,29 @@
 </template>
 <style lang="scss" scoped>
 .brand--wrapper {
-  display: flex;
   justify-content: center;
   max-width: 98vw;
   margin: 2.5rem auto;
+  @media (min-width: 769px) {
+    display: flex;
+  }
   .brand--logo {
-    width: 20vw;
-    img {
-      max-width: 20vw;
+    max-width: 300px;
+    @media (min-width: 769px) and (max-width: 950px) {
+      width: 50vw;
+    }
+    @media (max-width: 768px) {
+      margin: 0 auto;
+    }
+    @media (min-width: 769px) {
+      flex: 0 0 15em;
+    }
+    @media (min-width: 769px) and (max-width: 1425px) {
+      margin-left: 2rem;
     }
   }
   .brand--titles {
-    margin-top: 4.5rem;
-    margin-left: 2rem;
+    margin: 2.5rem 2rem 0 2rem;
     color: #000;
     h1 {
       font-size: 2rem;
