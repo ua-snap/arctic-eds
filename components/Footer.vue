@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container">
       <div class="columns">
-        <div class="logo column is-one-fifth">
+        <div class="logo column is-one-fifth has-text-centered">
           <img src="~/assets/images/UAF.svg" alt="UAF Logo" />
         </div>
         <div class="column is-four-fifths">
@@ -95,6 +95,7 @@ export default {
       top: 1.25rem;
       width: 75%;
       max-width: 40vw;
+      margin-bottom: 1.5rem;
     }
   }
 

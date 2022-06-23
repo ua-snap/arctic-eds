@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="toc--wrapper columns mx-5">
-      <div class="blurb column is-one-third mx-3">
+    <div class="toc--wrapper columns is-desktop mx-5">
+      <div class="blurb column is-one-third-desktop mb-3">
         <h2 class="title is-4 mt-3">
           Modern environmental data for science and engineering.
         </h2>
@@ -114,14 +114,19 @@
 .toc--wrapper {
   margin-bottom: 6rem;
 
-  .blurb h2.title {
-    padding-bottom: 0.3rem;
-    border-bottom: 0.3rem solid #4b8cc5;
+  .blurb {
+    @media (min-width: 1024px) {
+      padding-right: 2rem;
+    }
+    h2.title {
+      padding-bottom: 0.3rem;
+      border-bottom: 0.3rem solid #4b8cc5;
+    }
   }
   .toc--panel {
     h3 {
       color: #d43f16;
-      font-size: 1.75rem;
+      font-size: 1.65rem;
       font-weight: 700;
       position: relative;
       top: 0.6rem;
