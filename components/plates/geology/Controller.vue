@@ -4,7 +4,11 @@
       <SearchControls />
     </div>
 
-    <Plate :layers="layers" v-show="!reportIsVisible"></Plate>
+    <Plate :layers="layers" v-show="!reportIsVisible">
+      <template v-slot:legend>
+        <component :is="legend"></component>
+      </template>
+    </Plate>
 
     <div class="container">
       <section class="section">
@@ -18,16 +22,18 @@
 <script lang="scss" scoped></script>
 <script>
 import Plate from '~/components/Plate'
+import GeologyLegend from '~/components/plates/geology/Legend'
 import GeologyReport from '~/components/plates/geology/Report'
-import SearchControls from '~/components/SearchControls.vue'
+import SearchControls from '~/components/SearchControls'
 import layers from '~/components/plates/geology/layers'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'GeologyController',
-  components: { Plate, GeologyReport, SearchControls },
+  components: { Plate, GeologyLegend, GeologyReport, SearchControls },
   data() {
     return {
+      legend: GeologyLegend,
       layers: layers,
     }
   },

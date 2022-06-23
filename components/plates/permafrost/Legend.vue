@@ -68,6 +68,46 @@
       </template>
       <template v-slot:footer>
         <p>
+          The ground at and near the surface that goes through an annual
+          freeze&ndash;thaw cycle is called the &quot;active layer&quot; and is
+          from a few inches to several feet thick. Permafrost lies below the
+          active layer&ndash;depth of summer thaw&ndash;and extends from a few
+          feet thick in the south to over 1,000 feet in the Arctic. Depths of
+          permafrost vary even within short distances in the discontinuous and
+          sporadic permafrost zones and depend upon exposure, ground cover, soil
+          characteristics, and other factors.
+        </p>
+        <h4>Taliks</h4>
+        <p>
+          In some areas, permafrost exists at depth, well below the active
+          layer, with a thawed zone in between known as a talik layer. In areas
+          of continuous permafrost, talik often occurs beneath lakes and rivers.
+          Ongoing climate change is causing a new type of talik not associated
+          with water bodies. This &quot;supra-permafrost talik&quot; occurs
+          because ground that thawed in the summer does not completely refreeze
+          in the winter. Talik can be further categorized as &quot;open&quot;,
+          &quot;closed&quot;, or &quot;through&quot; based on its position
+          relative to areas of permafrost.
+        </p>
+        <p>
+          In areas of shallow permafrost, surface saturation coupled with
+          limited potential rooting depth yields characteristic ecosystem types
+          such as wetlands, tundra, and black spruce forest. As ice&ndash;rich
+          permafrost thaws, thermokarst results. Thermokarst landscapes include
+          numerous hollows, hummocks, and small lakes. In some areas, climate
+          change is accelerating the development of thermokarst.
+        </p>
+        <h4>Permafrost and engineering</h4>
+        <p>
+          Permafrost is a critical consideration in the engineering and design
+          of structures and engineering works such as pipelines, roads, and
+          railroads. Particularly in fine&ndash;grained soils, the frozen ground
+          forms an extremely strong and stable foundation material if it is kept
+          in the frozen state. However, if the permafrost is allowed to thaw,
+          the soil becomes extremely weak and foundation failures are very
+          common.
+        </p>
+        <p>
           <a href="https://catalog.northslopescience.org/dataset/1725"
             >Access detailed information about this dataset</a
           >, including source data downloads.
@@ -121,6 +161,46 @@
         <strong>sporadic</strong> regions are mostly free of permafrost.
       </template>
       <template v-slot:footer>
+        <p>
+          The ground at and near the surface that goes through an annual
+          freeze&ndash;thaw cycle is called the &quot;active layer&quot; and is
+          from a few inches to several feet thick. Permafrost lies below the
+          active layer&ndash;depth of summer thaw&ndash;and extends from a few
+          feet thick in the south to over 1,000 feet in the Arctic. Depths of
+          permafrost vary even within short distances in the discontinuous and
+          sporadic permafrost zones and depend upon exposure, ground cover, soil
+          characteristics, and other factors.
+        </p>
+        <h4>Taliks</h4>
+        <p>
+          In some areas, permafrost exists at depth, well below the active
+          layer, with a thawed zone in between known as a talik layer. In areas
+          of continuous permafrost, talik often occurs beneath lakes and rivers.
+          Ongoing climate change is causing a new type of talik not associated
+          with water bodies. This &quot;supra-permafrost talik&quot; occurs
+          because ground that thawed in the summer does not completely refreeze
+          in the winter. Talik can be further categorized as &quot;open&quot;,
+          &quot;closed&quot;, or &quot;through&quot; based on its position
+          relative to areas of permafrost.
+        </p>
+        <p>
+          In areas of shallow permafrost, surface saturation coupled with
+          limited potential rooting depth yields characteristic ecosystem types
+          such as wetlands, tundra, and black spruce forest. As ice&ndash;rich
+          permafrost thaws, thermokarst results. Thermokarst landscapes include
+          numerous hollows, hummocks, and small lakes. In some areas, climate
+          change is accelerating the development of thermokarst.
+        </p>
+        <h4>Permafrost and engineering</h4>
+        <p>
+          Permafrost is a critical consideration in the engineering and design
+          of structures and engineering works such as pipelines, roads, and
+          railroads. Particularly in fine&ndash;grained soils, the frozen ground
+          forms an extremely strong and stable foundation material if it is kept
+          in the frozen state. However, if the permafrost is allowed to thaw,
+          the soil becomes extremely weak and foundation failures are very
+          common.
+        </p>
         <p>
           <a href="https://doi.org/10.1594/PANGAEA.888600"
             >Access detailed information about this dataset</a
@@ -198,6 +278,46 @@
       <template v-slot:explanation></template>
       <template v-slot:footer>
         <p>
+          The ground at and near the surface that goes through an annual
+          freeze&ndash;thaw cycle is called the &quot;active layer&quot; and is
+          from a few inches to several feet thick. Permafrost lies below the
+          active layer&ndash;depth of summer thaw&ndash;and extends from a few
+          feet thick in the south to over 1,000 feet in the Arctic. Depths of
+          permafrost vary even within short distances in the discontinuous and
+          sporadic permafrost zones and depend upon exposure, ground cover, soil
+          characteristics, and other factors.
+        </p>
+        <h4>Taliks</h4>
+        <p>
+          In some areas, permafrost exists at depth, well below the active
+          layer, with a thawed zone in between known as a talik layer. In areas
+          of continuous permafrost, talik often occurs beneath lakes and rivers.
+          Ongoing climate change is causing a new type of talik not associated
+          with water bodies. This &quot;supra-permafrost talik&quot; occurs
+          because ground that thawed in the summer does not completely refreeze
+          in the winter. Talik can be further categorized as &quot;open&quot;,
+          &quot;closed&quot;, or &quot;through&quot; based on its position
+          relative to areas of permafrost.
+        </p>
+        <p>
+          In areas of shallow permafrost, surface saturation coupled with
+          limited potential rooting depth yields characteristic ecosystem types
+          such as wetlands, tundra, and black spruce forest. As ice&ndash;rich
+          permafrost thaws, thermokarst results. Thermokarst landscapes include
+          numerous hollows, hummocks, and small lakes. In some areas, climate
+          change is accelerating the development of thermokarst.
+        </p>
+        <h4>Permafrost and engineering</h4>
+        <p>
+          Permafrost is a critical consideration in the engineering and design
+          of structures and engineering works such as pipelines, roads, and
+          railroads. Particularly in fine&ndash;grained soils, the frozen ground
+          forms an extremely strong and stable foundation material if it is kept
+          in the frozen state. However, if the permafrost is allowed to thaw,
+          the soil becomes extremely weak and foundation failures are very
+          common.
+        </p>
+        <p>
           <a
             href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
             >Access detailed information about this dataset</a
@@ -273,6 +393,46 @@
       </template>
       <template v-slot:explanation></template>
       <template v-slot:footer>
+        <p>
+          The ground at and near the surface that goes through an annual
+          freeze&ndash;thaw cycle is called the &quot;active layer&quot; and is
+          from a few inches to several feet thick. Permafrost lies below the
+          active layer&ndash;depth of summer thaw&ndash;and extends from a few
+          feet thick in the south to over 1,000 feet in the Arctic. Depths of
+          permafrost vary even within short distances in the discontinuous and
+          sporadic permafrost zones and depend upon exposure, ground cover, soil
+          characteristics, and other factors.
+        </p>
+        <h4>Taliks</h4>
+        <p>
+          In some areas, permafrost exists at depth, well below the active
+          layer, with a thawed zone in between known as a talik layer. In areas
+          of continuous permafrost, talik often occurs beneath lakes and rivers.
+          Ongoing climate change is causing a new type of talik not associated
+          with water bodies. This &quot;supra-permafrost talik&quot; occurs
+          because ground that thawed in the summer does not completely refreeze
+          in the winter. Talik can be further categorized as &quot;open&quot;,
+          &quot;closed&quot;, or &quot;through&quot; based on its position
+          relative to areas of permafrost.
+        </p>
+        <p>
+          In areas of shallow permafrost, surface saturation coupled with
+          limited potential rooting depth yields characteristic ecosystem types
+          such as wetlands, tundra, and black spruce forest. As ice&ndash;rich
+          permafrost thaws, thermokarst results. Thermokarst landscapes include
+          numerous hollows, hummocks, and small lakes. In some areas, climate
+          change is accelerating the development of thermokarst.
+        </p>
+        <h4>Permafrost and engineering</h4>
+        <p>
+          Permafrost is a critical consideration in the engineering and design
+          of structures and engineering works such as pipelines, roads, and
+          railroads. Particularly in fine&ndash;grained soils, the frozen ground
+          forms an extremely strong and stable foundation material if it is kept
+          in the frozen state. However, if the permafrost is allowed to thaw,
+          the soil becomes extremely weak and foundation failures are very
+          common.
+        </p>
         <p>
           <a
             href="http://ckan.snap.uaf.edu/dataset/gipl-model-outputs-linear-coupled-annual"
@@ -394,13 +554,53 @@
         </table></template
       >
       <template v-slot:explanation></template>
-      <template v-slot:footer
-        ><p>
+      <template v-slot:footer>
+        <p>
+          The ground at and near the surface that goes through an annual
+          freeze&ndash;thaw cycle is called the &quot;active layer&quot; and is
+          from a few inches to several feet thick. Permafrost lies below the
+          active layer&ndash;depth of summer thaw&ndash;and extends from a few
+          feet thick in the south to over 1,000 feet in the Arctic. Depths of
+          permafrost vary even within short distances in the discontinuous and
+          sporadic permafrost zones and depend upon exposure, ground cover, soil
+          characteristics, and other factors.
+        </p>
+        <h4>Taliks</h4>
+        <p>
+          In some areas, permafrost exists at depth, well below the active
+          layer, with a thawed zone in between known as a talik layer. In areas
+          of continuous permafrost, talik often occurs beneath lakes and rivers.
+          Ongoing climate change is causing a new type of talik not associated
+          with water bodies. This &quot;supra-permafrost talik&quot; occurs
+          because ground that thawed in the summer does not completely refreeze
+          in the winter. Talik can be further categorized as &quot;open&quot;,
+          &quot;closed&quot;, or &quot;through&quot; based on its position
+          relative to areas of permafrost.
+        </p>
+        <p>
+          In areas of shallow permafrost, surface saturation coupled with
+          limited potential rooting depth yields characteristic ecosystem types
+          such as wetlands, tundra, and black spruce forest. As ice&ndash;rich
+          permafrost thaws, thermokarst results. Thermokarst landscapes include
+          numerous hollows, hummocks, and small lakes. In some areas, climate
+          change is accelerating the development of thermokarst.
+        </p>
+        <h4>Permafrost and engineering</h4>
+        <p>
+          Permafrost is a critical consideration in the engineering and design
+          of structures and engineering works such as pipelines, roads, and
+          railroads. Particularly in fine&ndash;grained soils, the frozen ground
+          forms an extremely strong and stable foundation material if it is kept
+          in the frozen state. However, if the permafrost is allowed to thaw,
+          the soil becomes extremely weak and foundation failures are very
+          common.
+        </p>
+        <p>
           <a href="https://catalog.northslopescience.org/dataset/1725"
             >Access detailed information about this dataset</a
           >, including source data downloads.
-        </p></template
-      >
+        </p>
+      </template>
     </LegendItem>
   </div>
 </template>

@@ -5,9 +5,11 @@
         <h1 class="title is-2">Ecoregions</h1>
         <div class="content content-clamp is-size-4">
           <p>
-            Ecoregions combine landscape, topographic, and vegetation variables,
-            but have less detail about vegetation when compared to "land cover"
-            or "forest type" datasets.
+            Ecoregions are essentially equivalent to the more archaic
+            "physiographic provinces." Ecoregions do combine landscape and
+            vegetation variables, but have less detail about vegetation when
+            compared to "land cover" or "forest type" datasets. Topography plays
+            a prominent role.
           </p>
         </div>
         <PlateInstructions />
