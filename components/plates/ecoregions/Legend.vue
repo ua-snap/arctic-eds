@@ -10,6 +10,29 @@
           environmental data for State, national, and international level
           inventory, monitoring, and research efforts.
         </p>
+        <p>
+          The map and descriptions for 20 ecological regions were derived by
+          synthesizing information on the geographic distribution of
+          environmental factors such as climate, physiography, geology,
+          permafrost, soils, and vegetation. A qualitative assessment was used
+          to interpret the distributional patterns and relative importance of
+          these factors from place to place (Gallant and others, 1995). Numeric
+          identifiers assigned to the ecoregions are coordinated with those used
+          on the map of “Ecoregions of the Conterminous United States” (Omernik
+          1987, U.S. EPA 2010) as a continuation of efforts to map ecoregions
+          for the United States. Additionally, the ecoregions for Alaska and the
+          conterminous United States, along with ecological regions for Canada
+          (Wiken 1986) and Mexico, have been combined for maps at three
+          hierarchical levels for North America (Omernik 1995, Commission for
+          Environmental Cooperation, 1997, 2006). A Roman numeral hierarchical
+          scheme has been adopted for different levels of ecological regions.
+          Level I is the coarsest level, dividing North America into 15
+          ecological regions. Level II divides the continent into 50 regions. At
+          Level III, there are currently 182 ecological regions for North
+          America. Level IV ecoregions have been developed for the conterminous
+          United States, but Level III is the highest level available for
+          Alaska.
+        </p>
       </template>
       <template v-slot:legend>
         <table class="table ecoregions">
