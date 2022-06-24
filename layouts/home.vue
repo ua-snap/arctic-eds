@@ -10,8 +10,7 @@
           Arctic Environmental and Engineering Data + Design Support System
         </h1>
         <h2>
-          Query + view historical, current and projected environmental data for
-          Alaska
+          Historical, current, and projected environmental data for Alaska
         </h2>
       </div>
     </div>
