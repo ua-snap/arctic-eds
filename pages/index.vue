@@ -7,17 +7,16 @@
         </h2>
         <div class="content is-size-5">
           <p>
-            Technical professionals working on projects in Alaska and the Arctic
-            need readily&ndash;available, high&ndash;quality engineering and
-            environmental data.
+            Do you need readily available, high quality engineering and
+            environmental data for projects in Alaska and the Arctic?
           </p>
           <p>
             The Arctic-EDS offers curated, vetted datasets through online maps,
             processing modules and direct data access.
           </p>
           <p>
-            <b-button tag="nuxt-link" to="/about" icon-right="arrow-right">
-              Read more
+            <b-button tag="nuxt-link" to="/about">
+              Learn more about the system
             </b-button>
           </p>
         </div>
@@ -86,13 +85,13 @@
               </NuxtLink>
               <ul>
                 <li>
+                  <NuxtLink to="/physiography/ecoregions">Ecoregions</NuxtLink>
+                </li>
+                <li>
                   <NuxtLink to="/physiography/geology">Geology</NuxtLink>
                 </li>
                 <li>
                   <NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/physiography/ecoregions">Ecoregions</NuxtLink>
                 </li>
               </ul>
             </div>
@@ -106,7 +105,7 @@
 ::v-deep {
   a.button {
     color: white !important;
-    background-color: #4b8cc5;
+    background-color: #d43f16;
     border: none;
     font-weight: 600;
   }
@@ -120,7 +119,6 @@
     }
     h2.title {
       padding-bottom: 0.3rem;
-      border-bottom: 0.3rem solid #4b8cc5;
     }
   }
   .toc--panel {
