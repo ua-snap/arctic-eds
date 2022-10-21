@@ -44,6 +44,15 @@
             </tr>
           </tbody>
         </table>
+        <div class="content content-clamp">
+          For each of these two models (both RCP 8.5), we collected every annual
+          (30) freezing index value for this location in the time era indicated.
+          The three coldest years (greatest freezing index values) were
+          identified. The design freezing index value for each model was
+          computed by finding the mean of those three values. The values you see
+          here are the average of the design freezing index values from each
+          model.
+        </div>
         <h4 class="title is-6">Access to Data</h4>
         <div class="content">
           <p>Thawing index data was calculated from the following:</p>
