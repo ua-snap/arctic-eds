@@ -6,8 +6,8 @@
         <div class="content content-clamp is-size-4">
           <p>
             The design freezing index is the mean of the cumulative annual below
-            freezing degree days (or Freezing Index) for the top three years in
-            the era.
+            freezing degree days (or Freezing Index) for the three coldest years
+            in the era.
           </p>
         </div>
         <PlateInstructions />
