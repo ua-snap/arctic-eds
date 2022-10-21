@@ -19,7 +19,7 @@
         <MiniMap />
 
         <SnowfallExplanation />
-        <DataExplanation context="snap" />
+        <DataExplanation context="snowfall" />
 
         <h4 class="title is-4">Annual Snowfall Equivalent Totals</h4>
 
