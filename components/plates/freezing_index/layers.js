@@ -1,6 +1,6 @@
 export default [
   {
-    id: 'ncarccsm4_freezing_index_condensed_historical',
+    id: 'freezing_index_condensed_historical',
     title: 'Modeled Historical (1980&ndash;2009, ERA Interim)',
     source: 'rasdaman',
     wmsLayerName: 'freezing_index',
