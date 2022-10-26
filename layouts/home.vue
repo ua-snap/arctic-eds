@@ -1,6 +1,7 @@
 <template>
   <div>
     <HeaderBanner />
+    <Navbar />
     <div class="brand--wrapper">
       <div class="brand--logo is-flex is-flex-direction-row">
         <img src="~/assets/images/logo.svg" />
@@ -59,10 +60,11 @@
 </style>
 <script>
 import HeaderBanner from '~/components/HeaderBanner'
+import Navbar from '~/components/Navbar'
 import BetaFeedback from '~/components/BetaFeedback'
 import Footer from '~/components/Footer'
 
 export default {
-  components: { HeaderBanner, BetaFeedback, Footer },
+  components: { HeaderBanner, Navbar, BetaFeedback, Footer },
 }
 </script>
