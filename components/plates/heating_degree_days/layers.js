@@ -1,6 +1,6 @@
 export default [
   {
-    id: 'ncarccsm4_heating_degree_days_index_condensed_historical',
+    id: 'heating_degree_days_index_condensed_historical',
     title: 'Modeled Historical (1980&ndash;2009, ERA Interim)',
     source: 'rasdaman',
     wmsLayerName: 'heating_degree_days',
