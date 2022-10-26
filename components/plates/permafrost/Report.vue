@@ -117,6 +117,11 @@
             </li>
           </ul>
         </div>
+        <DownloadCsvButton
+          text="Download permafrost data as CSV"
+          endpoint="permafrost/point"
+          class="mt-3 mb-5"
+        />
       </div>
     </div>
   </div>
@@ -124,6 +129,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import DownloadCsvButton from '~/components/DownloadCsvButton'
 import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
@@ -131,6 +137,7 @@ import UnitWidget from '~/components/UnitWidget'
 export default {
   name: 'PermafrostReport',
   components: {
+    DownloadCsvButton,
     MiniMap,
     LoadingStatus,
     UnitWidget,
