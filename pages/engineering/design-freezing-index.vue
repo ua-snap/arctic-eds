@@ -16,7 +16,6 @@
     <DesignFreezingIndexController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import DesignFreezingIndexController from '~/components/plates/design_freezing_index/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

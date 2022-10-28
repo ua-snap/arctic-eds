@@ -27,7 +27,6 @@
     <PermafrostController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import PermafrostController from '~/components/plates/permafrost/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

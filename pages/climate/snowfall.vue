@@ -17,7 +17,6 @@
     <SnowfallController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import SnowfallController from '~/components/plates/snowfall/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

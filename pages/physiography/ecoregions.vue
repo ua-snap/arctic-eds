@@ -18,7 +18,6 @@
     <EcoregionsController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import EcoregionsController from '~/components/plates/ecoregions/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

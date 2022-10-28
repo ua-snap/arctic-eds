@@ -20,7 +20,6 @@
     <GeologyController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import GeologyController from '~/components/plates/geology/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

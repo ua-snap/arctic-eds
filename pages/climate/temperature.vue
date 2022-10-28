@@ -18,7 +18,6 @@
     <TemperatureController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import TemperatureController from '~/components/plates/temperature/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

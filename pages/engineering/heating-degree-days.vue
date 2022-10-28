@@ -15,7 +15,6 @@
     <HeatingDegreeDaysController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import HeatingDegreeDaysController from '~/components/plates/heating_degree_days/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

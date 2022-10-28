@@ -17,7 +17,6 @@
     <PrecipitationController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import PrecipitationController from '~/components/plates/precipitation/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

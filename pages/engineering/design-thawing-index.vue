@@ -15,7 +15,6 @@
     <DesignThawingIndexController />
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import DesignThawingIndexController from '~/components/plates/design_thawing_index/Controller'
 import PlateInstructions from '~/components/PlateInstructions'

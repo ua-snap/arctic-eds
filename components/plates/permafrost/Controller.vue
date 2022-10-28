@@ -19,7 +19,6 @@
     </div>
   </div>
 </template>
-<script lang="scss" scoped></script>
 <script>
 import Plate from '~/components/Plate'
 import PermafrostReport from '~/components/plates/permafrost/Report'
