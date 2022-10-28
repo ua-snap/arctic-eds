@@ -26,8 +26,7 @@
             at the
             <a href="https://uaf-iarc.org"
               >International Arctic Research Center</a
-            >
-            .
+            >.
           </p>
 
           <p>
