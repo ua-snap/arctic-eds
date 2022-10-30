@@ -35,27 +35,27 @@
           <tbody>
             <tr>
               <th scope="row">Historical (1979-2015)</th>
-              <td>{{ results['historical']['ddmin'] }}</td>
-              <td>{{ results['historical']['ddmean'] }}</td>
-              <td>{{ results['historical']['ddmax'] }}</td>
+              <td>{{ results['historical']['ddmin'] }}<UnitWidget /></td>
+              <td>{{ results['historical']['ddmean'] }}<UnitWidget /></td>
+              <td>{{ results['historical']['ddmax'] }}<UnitWidget /></td>
             </tr>
             <tr>
               <th scope="row">Early Century (2010-2039)</th>
-              <td>{{ results['2010-2039']['ddmin'] }}</td>
-              <td>{{ results['2010-2039']['ddmean'] }}</td>
-              <td>{{ results['2010-2039']['ddmax'] }}</td>
+              <td>{{ results['2010-2039']['ddmin'] }}<UnitWidget /></td>
+              <td>{{ results['2010-2039']['ddmean'] }}<UnitWidget /></td>
+              <td>{{ results['2010-2039']['ddmax'] }}<UnitWidget /></td>
             </tr>
             <tr>
               <th scope="row">Mid Century (2040-2069)</th>
-              <td>{{ results['2040-2069']['ddmin'] }}</td>
-              <td>{{ results['2040-2069']['ddmean'] }}</td>
-              <td>{{ results['2040-2069']['ddmax'] }}</td>
+              <td>{{ results['2040-2069']['ddmin'] }}<UnitWidget /></td>
+              <td>{{ results['2040-2069']['ddmean'] }}<UnitWidget /></td>
+              <td>{{ results['2040-2069']['ddmax'] }}<UnitWidget /></td>
             </tr>
             <tr>
               <th scope="row">Late Century (2070-2099)</th>
-              <td>{{ results['2070-2099']['ddmin'] }}</td>
-              <td>{{ results['2070-2099']['ddmean'] }}</td>
-              <td>{{ results['2070-2099']['ddmax'] }}</td>
+              <td>{{ results['2070-2099']['ddmin'] }}<UnitWidget /></td>
+              <td>{{ results['2070-2099']['ddmean'] }}<UnitWidget /></td>
+              <td>{{ results['2070-2099']['ddmax'] }}<UnitWidget /></td>
             </tr>
           </tbody>
         </table>
@@ -89,6 +89,7 @@ import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import HeatingDegreeDaysExplanation from '~/components/plates/heating_degree_days/Explanation'
 import DataExplanation from '~/components/DataExplanation'
+import UnitWidget from '~/components/UnitWidget'
 
 export default {
   name: 'HeatingDegreeDaysReport',
@@ -98,6 +99,7 @@ export default {
     LoadingStatus,
     HeatingDegreeDaysExplanation,
     DataExplanation,
+    UnitWidget,
   },
   data() {
     return {
