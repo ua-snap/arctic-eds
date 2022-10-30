@@ -6,7 +6,7 @@
         Loading data for
         {{ placeName }}&hellip;
       </h4>
-      <p>Hang on, this could take up to 30 seconds!</p>
+      <p>Hang on, this could take up to a few minutes!</p>
       <b-progress type="is-info"></b-progress>
     </div>
 
