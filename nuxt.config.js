@@ -48,7 +48,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/plotly.client',
     '~/plugins/leaflet.client.js',
     '~/plugins/vuex-router-sync',
     '~/plugins/gtag',
