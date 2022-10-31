@@ -11,7 +11,7 @@
             must be added to an exposed water tank to keep it unfrozen.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="freezing index data" />
       </section>
     </div>
     <FreezingIndexController />

@@ -9,7 +9,7 @@
             warmest years of the 30 years in the era (historical or projected).
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="design thawing index data" />
       </section>
     </div>
     <DesignThawingIndexController />

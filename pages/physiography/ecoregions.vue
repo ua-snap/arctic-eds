@@ -12,7 +12,7 @@
             a prominent role.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="the ecoregion" />
       </section>
     </div>
     <EcoregionsController />

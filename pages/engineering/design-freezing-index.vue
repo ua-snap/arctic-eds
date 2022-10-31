@@ -10,7 +10,7 @@
             the era.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="design freezing index data" />
       </section>
     </div>
     <DesignFreezingIndexController />

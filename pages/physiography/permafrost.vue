@@ -21,7 +21,7 @@
             by surface drainage.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="permafrost data" />
       </section>
     </div>
     <PermafrostController />

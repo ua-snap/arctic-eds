@@ -10,7 +10,7 @@
             duration and temperatures.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="thawing index data" />
       </section>
     </div>
     <ThawingIndexController />

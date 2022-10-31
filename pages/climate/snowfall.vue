@@ -11,7 +11,7 @@
             snowfall across Alaska.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="snowfall equivalent data" />
       </section>
     </div>
     <SnowfallController />

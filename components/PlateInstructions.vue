@@ -1,8 +1,8 @@
 <template>
   <div class="content is-size-5">
     <p>
-      Choose a location below by community name, coordinates, or by clicking on
-      the map to select a point.
+      Click any point on the map, or enter a lat/lon, to get
+      {{ dataLabel }} for that point.
     </p>
   </div>
 </template>
@@ -12,5 +12,11 @@
 <script>
 export default {
   name: 'PlateInstructions',
+  props: {
+    dataLabel: {
+      type: String,
+      default: '',
+    },
+  },
 }
 </script>

@@ -12,7 +12,7 @@
             warmest month).
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="temperature data" />
       </section>
     </div>
     <TemperatureController />

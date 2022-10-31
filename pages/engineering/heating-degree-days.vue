@@ -9,7 +9,7 @@
             65&deg;F.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="heating degree days data" />
       </section>
     </div>
     <HeatingDegreeDaysController />

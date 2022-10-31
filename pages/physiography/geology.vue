@@ -14,7 +14,7 @@
             units present on the map.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="the geological unit" />
       </section>
     </div>
     <GeologyController />

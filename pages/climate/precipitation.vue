@@ -11,7 +11,7 @@
             precipitation across Alaska.
           </p>
         </div>
-        <PlateInstructions />
+        <PlateInstructions dataLabel="precipitation data" />
       </section>
     </div>
     <PrecipitationController />
