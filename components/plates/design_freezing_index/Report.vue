@@ -8,8 +8,8 @@
       <div
         v-if="
           !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+            !$fetchState.error &&
+            Object.keys(results).length > 0
         "
       >
         <h3 class="title is-3">
@@ -33,15 +33,15 @@
           <tbody>
             <tr>
               <th scope="row">Historical (1980-2009)</th>
-              <td>{{ results['historical']['di'] }}<UnitWidget /></td>
+              <td>{{ results['historical']['di'] }}</td>
             </tr>
             <tr>
               <th scope="row">Mid Century (2040-2069)</th>
-              <td>{{ results['2040-2069']['di'] }}<UnitWidget /></td>
+              <td>{{ results['2040-2069']['di'] }}</td>
             </tr>
             <tr>
               <th scope="row">Late Century (2070-2099)</th>
-              <td>{{ results['2070-2099']['di'] }}<UnitWidget /></td>
+              <td>{{ results['2070-2099']['di'] }}</td>
             </tr>
           </tbody>
         </table>
@@ -75,7 +75,6 @@ import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import DesignFreezingIndexExplanation from '~/components/plates/design_freezing_index/Explanation'
 import DataExplanation from '~/components/DataExplanation'
-import UnitWidget from '~/components/UnitWidget'
 
 export default {
   name: 'DesignFreezingIndexReport',
@@ -85,7 +84,6 @@ export default {
     LoadingStatus,
     DesignFreezingIndexExplanation,
     DataExplanation,
-    UnitWidget,
   },
   data() {
     return {
@@ -94,7 +92,7 @@ export default {
   },
 
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -105,7 +103,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },

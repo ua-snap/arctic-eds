@@ -32,15 +32,15 @@
           <tbody>
             <tr>
               <th scope="row">Historical (1980-2009)</th>
-              <td>{{ results['historical']['di'] }}<UnitWidget /></td>
+              <td>{{ results['historical']['di'] }}</td>
             </tr>
             <tr>
               <th scope="row">Mid Century (2040-2069)</th>
-              <td>{{ results['2040-2069']['di'] }}<UnitWidget /></td>
+              <td>{{ results['2040-2069']['di'] }}</td>
             </tr>
             <tr>
               <th scope="row">Late Century (2070-2099)</th>
-              <td>{{ results['2070-2099']['di'] }}<UnitWidget /></td>
+              <td>{{ results['2070-2099']['di'] }}</td>
             </tr>
           </tbody>
         </table>
@@ -74,7 +74,6 @@ import MiniMap from '~/components/MiniMap'
 import LoadingStatus from '~/components/LoadingStatus'
 import DesignThawingIndexExplanation from '~/components/plates/design_thawing_index/Explanation'
 import DataExplanation from '~/components/DataExplanation'
-import UnitWidget from '~/components/UnitWidget'
 
 export default {
   name: 'DesignThawingIndexReport',
@@ -84,7 +83,6 @@ export default {
     LoadingStatus,
     DesignThawingIndexExplanation,
     DataExplanation,
-    UnitWidget,
   },
   data() {
     return {
