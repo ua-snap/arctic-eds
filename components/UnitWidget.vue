@@ -1,43 +1,9 @@
 <template>
-  <span
-    ><span class="units" v-if="unitType == 'temp'"
-      ><span v-if="units == 'imperial' && type == 'heavy'">(&deg;F)</span
-      ><span
-        v-if="units == 'imperial' && type == 'light'"
-        :class="{ light: type == 'light' }"
-        >&deg;F</span
-      ><span v-if="units == 'metric' && type == 'heavy'">(&deg;C)</span
-      ><span
-        v-if="units == 'metric' && type == 'light'"
-        :class="{ light: type == 'light' }"
-        >&deg;C</span
-      ></span
-    ><span class="units" v-if="unitType == 'mm_in'"
-      >&#8239;<span v-if="units == 'imperial' && type == 'heavy'">(in)</span
-      ><span
-        v-if="units == 'imperial' && type == 'light'"
-        :class="{ light: type == 'light' }"
-        >in</span
-      ><span v-if="units == 'metric' && type == 'heavy'">(&#x339C;)</span
-      ><span
-        v-if="units == 'metric' && type == 'light'"
-        :class="{ light: type == 'light' }"
-        >&#x339C;</span
-      ></span
-    ><span class="units" v-if="unitType == 'm_in'"
-      ><span v-if="units == 'imperial' && type == 'heavy'">(in)</span
-      ><span
-        v-if="units == 'imperial' && type == 'light'"
-        :class="{ light: type == 'light' }"
-        >in</span
-      ><span v-if="units == 'metric' && type == 'heavy'">(m)</span
-      ><span
-        v-if="units == 'metric' && type == 'light'"
-        :class="{ light: type == 'light' }"
-        >m</span
-      ></span
-    ></span
-  >
+  <span class="units">
+    <span v-html="symbol.space"></span
+    ><span v-if="type == 'heavy'" v-html="'(' + symbol.symbol + ')'"></span
+    ><span v-if="type == 'light'" class="light" v-html="symbol.symbol"></span>
+  </span>
 </template>
 <style lang="scss" scoped>
 .light {
@@ -49,9 +15,14 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'UnitWidget',
   props: {
+    // Can be...
+    // temp = ºF / ºC
+    // mm_in (millimeters/inches)
+    // m_in (meters/inches)
+    // dd (degree days, ºF•days / ºC•days)
     unitType: {
       type: String,
-      default: 'temp', // or mm_in (millimeters/inches), or m_in (meters/inches)
+      default: 'temp',
     },
     // Type can be "light" (no parentheses) or "heavy" (parens).
     type: {
@@ -60,6 +31,32 @@ export default {
     },
   },
   computed: {
+    symbol() {
+      let symbol = ''
+      let space = ''
+
+      switch (this.unitType) {
+        case 'temp':
+          symbol = this.units == 'metric' ? '&deg;F' : '&deg;C'
+          break
+        case 'mm_in':
+          symbol = this.units == 'metric' ? '&#x339C;' : 'in'
+          space = '&#8239;'
+          break
+        case 'm_in':
+          symbol = this.units == 'metric' ? 'm' : 'in'
+          space = '&#8239;'
+          break
+        case 'dd':
+          symbol =
+            this.units == 'metric' ? '&deg;F&sdot;days' : '&deg;C&sdot;days'
+          break
+      }
+      return {
+        symbol: symbol,
+        space: space,
+      }
+    },
     ...mapGetters({
       units: 'report/units',
     }),

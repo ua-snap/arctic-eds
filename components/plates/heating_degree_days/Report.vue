@@ -35,27 +35,27 @@
           <tbody>
             <tr>
               <th scope="row">Historical (1979-2015)</th>
-              <td>{{ results['historical']['ddmin'] }}<UnitWidget /></td>
-              <td>{{ results['historical']['ddmean'] }}<UnitWidget /></td>
-              <td>{{ results['historical']['ddmax'] }}<UnitWidget /></td>
+              <td>{{ results['historical']['ddmin'] }}<UnitWidget unitType="dd"/></td>
+              <td>{{ results['historical']['ddmean'] }}<UnitWidget unitType="dd" /></td>
+              <td>{{ results['historical']['ddmax'] }}<UnitWidget unitType="dd" /></td>
             </tr>
             <tr>
               <th scope="row">Early Century (2010-2039)</th>
-              <td>{{ results['2010-2039']['ddmin'] }}<UnitWidget /></td>
-              <td>{{ results['2010-2039']['ddmean'] }}<UnitWidget /></td>
-              <td>{{ results['2010-2039']['ddmax'] }}<UnitWidget /></td>
+              <td>{{ results['2010-2039']['ddmin'] }}<UnitWidget unitType="dd" /></td>
+              <td>{{ results['2010-2039']['ddmean'] }}<UnitWidget unitType="dd" /></td>
+              <td>{{ results['2010-2039']['ddmax'] }}<UnitWidget unitType="dd" /></td>
             </tr>
             <tr>
               <th scope="row">Mid Century (2040-2069)</th>
-              <td>{{ results['2040-2069']['ddmin'] }}<UnitWidget /></td>
-              <td>{{ results['2040-2069']['ddmean'] }}<UnitWidget /></td>
-              <td>{{ results['2040-2069']['ddmax'] }}<UnitWidget /></td>
+              <td>{{ results['2040-2069']['ddmin'] }}<UnitWidget unitType="dd" /></td>
+              <td>{{ results['2040-2069']['ddmean'] }}<UnitWidget unitType="dd" /></td>
+              <td>{{ results['2040-2069']['ddmax'] }}<UnitWidget unitType="dd" /></td>
             </tr>
             <tr>
               <th scope="row">Late Century (2070-2099)</th>
-              <td>{{ results['2070-2099']['ddmin'] }}<UnitWidget /></td>
-              <td>{{ results['2070-2099']['ddmean'] }}<UnitWidget /></td>
-              <td>{{ results['2070-2099']['ddmax'] }}<UnitWidget /></td>
+              <td>{{ results['2070-2099']['ddmin'] }}<UnitWidget unitType="dd" /></td>
+              <td>{{ results['2070-2099']['ddmean'] }}<UnitWidget unitType="dd" /></td>
+              <td>{{ results['2070-2099']['ddmax'] }}<UnitWidget unitType="dd" /></td>
             </tr>
           </tbody>
         </table>
