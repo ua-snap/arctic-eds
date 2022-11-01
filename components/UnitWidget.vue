@@ -37,7 +37,7 @@ export default {
 
       switch (this.unitType) {
         case 'temp':
-          symbol = this.units == 'metric' ? '&deg;F' : '&deg;C'
+          symbol = this.units == 'metric' ? '&deg;C' : '&deg;F'
           break
         case 'mm_in':
           symbol = this.units == 'metric' ? '&#x339C;' : 'in'
