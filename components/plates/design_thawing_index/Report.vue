@@ -32,15 +32,15 @@
           <tbody>
             <tr>
               <th scope="row">Historical (1980-2009)</th>
-              <td>{{ results['historical']['di'] }}<UnitWidget /></td>
+              <td>{{ results['historical']['di'] }}<UnitWidget unitType="dd" /></td>
             </tr>
             <tr>
               <th scope="row">Mid Century (2040-2069)</th>
-              <td>{{ results['2040-2069']['di'] }}<UnitWidget /></td>
+              <td>{{ results['2040-2069']['di'] }}<UnitWidget unitType="dd" /></td>
             </tr>
             <tr>
               <th scope="row">Late Century (2070-2099)</th>
-              <td>{{ results['2070-2099']['di'] }}<UnitWidget /></td>
+              <td>{{ results['2070-2099']['di'] }}<UnitWidget unitType="dd" /></td>
             </tr>
           </tbody>
         </table>
