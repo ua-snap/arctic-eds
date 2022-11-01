@@ -49,7 +49,7 @@ export default {
           break
         case 'dd':
           symbol =
-            this.units == 'metric' ? '&deg;F&sdot;days' : '&deg;C&sdot;days'
+            this.units == 'metric' ? '&deg;C&sdot;days' : '&deg;F&sdot;days'
           break
       }
       return {
