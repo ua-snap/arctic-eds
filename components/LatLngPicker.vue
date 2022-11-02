@@ -61,15 +61,17 @@ export default {
   },
   methods: {
     process() {
-      this.$router.push({
-        path:
-          this.$route.path +
-          '/report/' +
-          this.latLng.lat.toFixed(4) +
-          '/' +
-          this.latLng.lng.toFixed(4),
-        hash: '#report',
-      })
+      if (this.isValid) {
+        this.$router.push({
+          path:
+            this.$route.path +
+            '/report/' +
+            this.latLng.lat.toFixed(4) +
+            '/' +
+            this.latLng.lng.toFixed(4),
+          hash: '#report',
+        })
+      }
     },
     invalidLatLng() {
       this.fieldMessage = "I can't figure out how to make that a point."
