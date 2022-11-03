@@ -2,21 +2,18 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
 
     <div id="report">
       <div
         v-if="
           !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+            !$fetchState.error &&
+            Object.keys(results).length > 0
         "
       >
         <h3 class="title is-3">
           Snowfall Equivalent data for {{ results.place }}
         </h3>
-
-        <MiniMap />
 
         <SnowfallExplanation />
         <DataExplanation context="snap" />
@@ -98,15 +95,13 @@ export default {
   name: 'SnowfallReport',
   components: {
     DownloadCsvButton,
-    MiniMap,
-    LoadingStatus,
     UnitWidget,
     UnitRadio,
     SnowfallExplanation,
     DataExplanation,
   },
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -118,7 +113,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },

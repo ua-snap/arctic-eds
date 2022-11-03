@@ -2,13 +2,10 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
 
     <div id="report">
       <div v-if="!$fetchState.pending && !$fetchState.error">
         <h3 class="title is-3">Geological unit for {{ results.place }}</h3>
-
-        <MiniMap />
 
         <table class="table">
           <tbody>
@@ -29,15 +26,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 
 export default {
   name: 'GeologyReport',
-  components: {
-    MiniMap,
-    LoadingStatus,
-  },
   data() {
     return {
       // Will have the results of the data fetch.
@@ -45,7 +36,7 @@ export default {
     }
   },
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -56,7 +47,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },

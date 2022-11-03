@@ -2,8 +2,7 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
-
+    
     <div id="report">
       <div
         v-if="
@@ -13,8 +12,6 @@
         "
       >
         <h3 class="title is-3">Temperature data for {{ results.place }}</h3>
-
-        <MiniMap />
 
         <TemperatureExplanation context="report" />
         <DataExplanation context="snap" />
@@ -136,9 +133,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import MiniMap from '~/components/MiniMap'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
 import UnitRadio from '~/components/UnitRadio'
 import TemperatureExplanation from '~/components/plates/temperature/Explanation'
@@ -148,8 +143,6 @@ export default {
   name: 'TemperatureReport',
   components: {
     DownloadCsvButton,
-    MiniMap,
-    LoadingStatus,
     UnitWidget,
     UnitRadio,
     TemperatureExplanation,
