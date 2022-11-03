@@ -1,102 +1,79 @@
 <template>
   <div>
-    <div class="toc--wrapper columns is-desktop mx-5">
-      <div class="blurb column is-one-third-desktop mb-3">
-        <h2 class="title is-4 mt-3">
-          Modern environmental data for science and engineering.
-        </h2>
-        <div class="content is-size-5">
-          <p>
-            Do you need readily available, high quality engineering and
-            environmental data for projects in Alaska and the Arctic?
-          </p>
-          <p>
-            The Arctic-EDS offers curated, vetted datasets through online maps,
-            processing modules and direct data access.
-          </p>
-          <p>
-            <b-button tag="nuxt-link" to="/about">
-              Learn more about the system
-            </b-button>
-          </p>
-        </div>
+    <div class="mx-5 mb-5">
+      <h2 class="title is-4 mt-3">
+        Modern environmental data for science and engineering.
+      </h2>
+      <div class="content is-size-5">
+        <p>
+          Do you need readily available, high quality engineering and
+          environmental data for projects in Alaska and the Arctic?
+        </p>
+        <p>
+          The Arctic-EDS offers curated, vetted datasets through online maps,
+          processing modules and direct data access.
+        </p>
+        <p>
+          <b-button tag="nuxt-link" to="/about">
+            Learn more about the system
+          </b-button>
+        </p>
       </div>
-      <div class="column">
-        <div class="columns">
-          <div class="column is-one-third">
-            <div class="toc--panel">
-              <NuxtLink to="/climate">
-                <h3>Climate</h3>
-                <div class="toc--panel--image image--climate"></div>
-              </NuxtLink>
-              <ul>
-                <li>
-                  <NuxtLink to="/climate/precipitation">Precipitation</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/climate/snowfall">Snowfall</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/climate/temperature">Temperature</NuxtLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="toc--panel">
-              <NuxtLink to="/engineering">
-                <h3>Engineering</h3>
-                <div class="toc--panel--image image--engineering"></div>
-              </NuxtLink>
-              <ul>
-                <li>
-                  <NuxtLink to="/engineering/design-freezing-index"
-                    >Design Freezing Index</NuxtLink
-                  >
-                </li>
-                <li>
-                  <NuxtLink to="/engineering/design-thawing-index"
-                    >Design Thawing Index</NuxtLink
-                  >
-                </li>
-                <li>
-                  <NuxtLink to="/engineering/freezing-index"
-                    >Freezing Index</NuxtLink
-                  >
-                </li>
-                <li>
-                  <NuxtLink to="/engineering/heating-degree-days"
-                    >Heating Degree Days</NuxtLink
-                  >
-                </li>
-                <li>
-                  <NuxtLink to="/engineering/thawing-index"
-                    >Thawing Index</NuxtLink
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="toc--panel">
-              <NuxtLink to="/physiography">
-                <h3>Physiography</h3>
-                <div class="toc--panel--image image--physiography"></div>
-              </NuxtLink>
-              <ul>
-                <li>
-                  <NuxtLink to="/physiography/ecoregions">Ecoregions</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/physiography/geology">Geology</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/physiography/permafrost">Permafrost</NuxtLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="columns mx-2 mb-5">
+      <div class="column is-half">
+        <h4 class="is-size-4">Precipitation</h4>
+        <Map mapId="precipitation" />
+      </div>
+      <div class="column is-half">
+        <h4 class="is-size-4">Snowfall</h4>
+        <Map mapId="snowfall" />
+      </div>
+    </div>
+    <div class="columns mx-2 mb-5">
+      <div class="column is-half">
+        <h4 class="is-size-4">Temperature</h4>
+        <Map mapId="temperature" />
+      </div>
+      <div class="column is-half">
+        <h4 class="is-size-4">Design Freezing Index</h4>
+        <Map mapId="design_freezing_index" />
+      </div>
+    </div>
+    <div class="columns mx-2 mb-5">
+      <div class="column is-half">
+        <h4 class="is-size-4">Design Thawing Index</h4>
+        <Map mapId="design_thawing_index" />
+      </div>
+      <div class="column is-half">
+        <h4 class="is-size-4">Freezing Index</h4>
+        <Map mapId="freezing_index" />
+      </div>
+    </div>
+    <div class="columns mx-2 mb-5">
+      <div class="column is-half">
+        <h4 class="is-size-4">Thawing Index</h4>
+        <Map mapId="thawing_index" />
+      </div>
+      <div class="column is-half">
+        <h4 class="is-size-4">Heating Degree Days</h4>
+        <Map mapId="heating_degree_days" />
+      </div>
+    </div>
+    <div class="columns mx-2 mb-5">
+      <div class="column is-half">
+        <h4 class="is-size-4">Ecoregions</h4>
+        <Map mapId="ecoregions" />
+      </div>
+      <div class="column is-half">
+        <h4 class="is-size-4">Geology</h4>
+        <Map mapId="geology" />
+      </div>
+    </div>
+    <div class="columns mx-2 mb-5">
+      <div class="column is-half">
+        <h4 class="is-size-4">Permafrost</h4>
+        <Map mapId="permafrost" />
       </div>
     </div>
   </div>
@@ -110,103 +87,32 @@
     font-weight: 600;
   }
 }
-.toc--wrapper {
-  margin-bottom: 6rem;
-
-  .blurb {
-    @media (min-width: 1024px) {
-      padding-right: 2rem;
-    }
-    h2.title {
-      padding-bottom: 0.3rem;
-    }
-  }
-  .toc--panel {
-    h3 {
-      color: #d43f16;
-      font-size: 1.65rem;
-      font-weight: 700;
-      position: relative;
-      top: 0.6rem;
-      text-transform: uppercase;
-    }
-
-    ul {
-      font-size: 1.2rem;
-      margin-top: 0.2rem;
-      li {
-        margin-bottom: 0.25rem;
-        a {
-          color: #d43f16;
-          font-weight: 600;
-        }
-      }
-    }
-
-    .toc--panel--image {
-      min-height: 12vw;
-      background-size: cover;
-      transition: background-image 0.2s ease-in-out;
-
-      // The color background image is listed twice so it pre-loads
-      // to prevent a flicker when the image is hovered.
-      &.image--physiography {
-        background-image: url('~/assets/images/PHYS_alaska_dem.jpg'),
-          url('~/assets/images/PHYS_alaska_dem_COLOR.jpg');
-
-        &:hover {
-          background-image: url('~/assets/images/PHYS_alaska_dem_COLOR.jpg');
-        }
-      }
-
-      &.image--water {
-        background-image: url('~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash.jpg'),
-          url('~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash_COLOR.jpg');
-
-        &:hover {
-          background-image: url('~/assets/images/WATER_douglas-bagg-4rLs3n7CwFQ-unsplash_COLOR.jpg');
-        }
-      }
-
-      &.image--light {
-        background-image: url('~/assets/images/LIGHT_suns_todd-paris.jpg'),
-          url('~/assets/images/LIGHT_suns_todd-paris_COLOR.jpg');
-
-        &:hover {
-          background-image: url('~/assets/images/LIGHT_suns_todd-paris_COLOR.jpg');
-        }
-      }
-
-      &.image--climate {
-        background-image: url('~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash.jpg'),
-          url('~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash_COLOR.jpg');
-
-        &:hover {
-          background-image: url('~/assets/images/CLIM_simon-schoepf-fyqH3jQxl5Y-unsplash_COLOR.jpg');
-        }
-      }
-
-      &.image--engineering {
-        background-image: url('~/assets/images/ENG_tanana-river-bridge.jpg'),
-          url('~/assets/images/ENG_tanana-river-bridge_COLOR.jpg');
-
-        &:hover {
-          background-image: url('~/assets/images/ENG_tanana-river-bridge_COLOR.jpg');
-        }
-      }
-    }
-  }
-}
 </style>
 <script>
+import Map from '~/components/Map'
+import layers from '~/components/layers'
 export default {
   name: 'HomePage',
   layout: 'home',
+  components: {
+    Map,
+  },
   created() {
     const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
     if (path) {
       this.$router.push({ path: path })
     }
+  },
+  mounted() {
+    Object.keys(layers.variables).forEach(layerVariable => {
+      let defaultLayer = _.filter(layers.variables[layerVariable], layer => {
+        return layer['default']
+      })[0]
+      this.$store.commit('map/toggleLayer', {
+        mapId: layerVariable,
+        layer: defaultLayer,
+      })
+    })
   },
 }
 </script>
