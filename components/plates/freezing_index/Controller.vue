@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div id="map-search" v-show="!reportIsVisible" class="container">
-      <SearchControls />
-    </div>
+    <div id="map-search" v-show="!reportIsVisible" class="container"></div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
       <template v-slot:legend>
@@ -32,7 +30,6 @@ th {
 import Plate from '~/components/Plate'
 import FreezingIndexLegend from '~/components/plates/freezing_index/Legend'
 import FreezingIndexReport from '~/components/plates/freezing_index/Report'
-import SearchControls from '~/components/SearchControls'
 import layers from '~/components/plates/freezing_index/layers'
 import { mapGetters } from 'vuex'
 
@@ -42,7 +39,6 @@ export default {
     Plate,
     FreezingIndexLegend,
     FreezingIndexReport,
-    SearchControls,
   },
   data() {
     return {
@@ -67,7 +63,7 @@ export default {
     }
   },
   methods: {
-    handleMapClick: function (event) {
+    handleMapClick: function(event) {
       this.$router.push({
         path:
           this.$route.path +
@@ -78,7 +74,7 @@ export default {
         hash: '#report',
       })
     },
-    activateReport: function () {
+    activateReport: function() {
       this.$store.commit('report/openReport')
     },
   },

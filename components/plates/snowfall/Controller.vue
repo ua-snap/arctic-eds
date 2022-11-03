@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div id="map-search" v-show="!reportIsVisible" class="container">
-      <SearchControls />
-    </div>
+    <div id="map-search" v-show="!reportIsVisible" class="container"></div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
       <template v-slot:legend>
@@ -33,13 +31,12 @@ th {
 import Plate from '~/components/Plate'
 import SnowfallLegend from '~/components/plates/snowfall/Legend'
 import SnowfallReport from '~/components/plates/snowfall/Report'
-import SearchControls from '~/components/SearchControls'
 import layers from '~/components/plates/snowfall/layers'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'SnowfallController',
-  components: { Plate, SnowfallLegend, SnowfallReport, SearchControls },
+  components: { Plate, SnowfallLegend, SnowfallReport },
   data() {
     return {
       legend: SnowfallLegend,
@@ -63,7 +60,7 @@ export default {
     }
   },
   methods: {
-    handleMapClick: function (event) {
+    handleMapClick: function(event) {
       this.$router.push({
         path:
           this.$route.path +
@@ -74,7 +71,7 @@ export default {
         hash: '#report',
       })
     },
-    activateReport: function () {
+    activateReport: function() {
       this.$store.commit('report/openReport')
     },
   },
