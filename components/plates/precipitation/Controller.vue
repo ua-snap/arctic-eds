@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div id="map-search" v-show="!reportIsVisible" class="container">
-      <SearchControls />
-    </div>
+    <div id="map-search" v-show="!reportIsVisible" class="container"></div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
       <template v-slot:legend>
@@ -33,7 +31,6 @@ import Plate from '~/components/Plate'
 import PrecipitationLegend from '~/components/plates/precipitation/Legend'
 import PrecipitationReport from '~/components/plates/precipitation/Report'
 import layers from '~/components/plates/precipitation/layers'
-import SearchControls from '~/components/SearchControls'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -42,7 +39,6 @@ export default {
     Plate,
     PrecipitationLegend,
     PrecipitationReport,
-    SearchControls,
   },
   data() {
     return {
@@ -67,7 +63,7 @@ export default {
     }
   },
   methods: {
-    handleMapClick: function (event) {
+    handleMapClick: function(event) {
       this.$router.push({
         path:
           this.$route.path +
@@ -78,7 +74,7 @@ export default {
         hash: '#report',
       })
     },
-    activateReport: function () {
+    activateReport: function() {
       this.$store.commit('report/openReport')
     },
   },

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div id="map-search" v-show="!reportIsVisible" class="container">
-      <SearchControls />
-    </div>
+    <div id="map-search" v-show="!reportIsVisible" class="container"></div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
       <template v-slot:legend>
@@ -24,13 +22,12 @@
 import Plate from '~/components/Plate'
 import EcoregionsReport from '~/components/plates/ecoregions/Report'
 import EcoregionsLegend from '~/components/plates/ecoregions/Legend'
-import SearchControls from '~/components/SearchControls'
 import layers from '~/components/plates/ecoregions/layers'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'EcoregionsController',
-  components: { Plate, EcoregionsReport, EcoregionsLegend, SearchControls },
+  components: { Plate, EcoregionsReport, EcoregionsLegend },
   data() {
     return {
       legend: EcoregionsLegend,
@@ -54,7 +51,7 @@ export default {
     }
   },
   methods: {
-    handleMapClick: function (event) {
+    handleMapClick: function(event) {
       this.$router.push({
         path:
           this.$route.path +
@@ -65,7 +62,7 @@ export default {
         hash: '#report',
       })
     },
-    activateReport: function () {
+    activateReport: function() {
       this.$store.commit('report/openReport')
     },
   },

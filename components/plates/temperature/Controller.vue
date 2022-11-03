@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div id="map-search" v-show="!reportIsVisible" class="container">
-      <SearchControls />
-    </div>
+    <div id="map-search" v-show="!reportIsVisible" class="container"></div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
       <template v-slot:layers>
@@ -88,13 +86,12 @@
 import Plate from '~/components/Plate'
 import TemperatureLegend from '~/components/plates/temperature/Legend'
 import TemperatureReport from '~/components/plates/temperature/Report'
-import SearchControls from '~/components/SearchControls.vue'
 import layers from '~/components/plates/temperature/layers'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'TemperatureController',
-  components: { Plate, TemperatureLegend, TemperatureReport, SearchControls },
+  components: { Plate, TemperatureLegend, TemperatureReport },
   data() {
     return {
       legend: TemperatureLegend,
@@ -118,7 +115,7 @@ export default {
     }
   },
   methods: {
-    handleMapClick: function (event) {
+    handleMapClick: function(event) {
       this.$router.push({
         path:
           this.$route.path +
@@ -129,7 +126,7 @@ export default {
         hash: '#report',
       })
     },
-    activateReport: function () {
+    activateReport: function() {
       this.$store.commit('report/openReport')
     },
   },

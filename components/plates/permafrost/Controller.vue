@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div id="map-search" v-show="!reportIsVisible" class="container">
-      <SearchControls />
-    </div>
+    <div id="map-search" v-show="!reportIsVisible" class="container"></div>
 
     <Plate :layers="layers" v-show="!reportIsVisible">
       <template v-slot:legend>
@@ -24,13 +22,12 @@
 import Plate from '~/components/Plate'
 import PermafrostReport from '~/components/plates/permafrost/Report'
 import PermafrostLegend from '~/components/plates/permafrost/Legend'
-import SearchControls from '~/components/SearchControls.vue'
 import layers from '~/components/plates/permafrost/layers'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'PermafrostController',
-  components: { Plate, PermafrostReport, PermafrostLegend, SearchControls },
+  components: { Plate, PermafrostReport, PermafrostLegend },
   data() {
     return {
       legend: PermafrostLegend,
@@ -54,7 +51,7 @@ export default {
     }
   },
   methods: {
-    handleMapClick: function (event) {
+    handleMapClick: function(event) {
       this.$router.push({
         path:
           this.$route.path +
@@ -65,7 +62,7 @@ export default {
         hash: '#report',
       })
     },
-    activateReport: function () {
+    activateReport: function() {
       this.$store.commit('report/openReport')
     },
   },
