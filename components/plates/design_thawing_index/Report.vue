@@ -2,20 +2,17 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
     <div id="report">
       <div
         v-if="
           !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+            !$fetchState.error &&
+            Object.keys(results).length > 0
         "
       >
         <h3 class="title is-3">
           Design thawing index data for {{ results.place }}
         </h3>
-
-        <MiniMap />
 
         <DesignThawingIndexExplanation />
         <DataExplanation context="wrf" />
@@ -32,15 +29,21 @@
           <tbody>
             <tr>
               <th scope="row">Historical (1980-2009)</th>
-              <td>{{ results['historical']['di'] }}<UnitWidget unitType="dd" /></td>
+              <td>
+                {{ results['historical']['di'] }}<UnitWidget unitType="dd" />
+              </td>
             </tr>
             <tr>
               <th scope="row">Mid Century (2040-2069)</th>
-              <td>{{ results['2040-2069']['di'] }}<UnitWidget unitType="dd" /></td>
+              <td>
+                {{ results['2040-2069']['di'] }}<UnitWidget unitType="dd" />
+              </td>
             </tr>
             <tr>
               <th scope="row">Late Century (2070-2099)</th>
-              <td>{{ results['2070-2099']['di'] }}<UnitWidget unitType="dd" /></td>
+              <td>
+                {{ results['2070-2099']['di'] }}<UnitWidget unitType="dd" />
+              </td>
             </tr>
           </tbody>
         </table>
@@ -70,8 +73,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 import DesignThawingIndexExplanation from '~/components/plates/design_thawing_index/Explanation'
 import DataExplanation from '~/components/DataExplanation'
 import UnitWidget from '~/components/UnitWidget'
@@ -80,8 +81,6 @@ export default {
   name: 'DesignThawingIndexReport',
   components: {
     DownloadCsvButton,
-    MiniMap,
-    LoadingStatus,
     DesignThawingIndexExplanation,
     DataExplanation,
     UnitWidget,
@@ -94,7 +93,7 @@ export default {
   },
 
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -105,7 +104,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },

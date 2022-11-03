@@ -2,19 +2,16 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
 
     <div id="report">
       <div
         v-if="
           !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+            !$fetchState.error &&
+            Object.keys(results).length > 0
         "
       >
         <h3 class="title is-3">Thawing index data for {{ results.place }}</h3>
-
-        <MiniMap />
 
         <ThawingIndexExplanation :isFooter="false" />
 
@@ -91,8 +88,6 @@ export default {
   name: 'ThawingIndexReport',
   components: {
     DownloadCsvButton,
-    MiniMap,
-    LoadingStatus,
     ThawingIndexExplanation,
     UnitWidget,
   },
@@ -104,7 +99,7 @@ export default {
   },
 
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -115,7 +110,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },

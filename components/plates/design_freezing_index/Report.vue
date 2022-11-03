@@ -2,7 +2,6 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
 
     <div id="report">
       <div
@@ -15,8 +14,6 @@
         <h3 class="title is-3">
           Design freezing index data for {{ results.place }}
         </h3>
-
-        <MiniMap />
 
         <DesignFreezingIndexExplanation />
         <DataExplanation context="wrf" />
@@ -71,8 +68,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 import DesignFreezingIndexExplanation from '~/components/plates/design_freezing_index/Explanation'
 import DataExplanation from '~/components/DataExplanation'
 import UnitWidget from '~/components/UnitWidget'
@@ -81,8 +76,6 @@ export default {
   name: 'DesignFreezingIndexReport',
   components: {
     DownloadCsvButton,
-    MiniMap,
-    LoadingStatus,
     DesignFreezingIndexExplanation,
     DataExplanation,
     UnitWidget,

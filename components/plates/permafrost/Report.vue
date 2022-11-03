@@ -2,19 +2,16 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
 
     <div id="report">
       <div
         v-if="
           !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+            !$fetchState.error &&
+            Object.keys(results).length > 0
         "
       >
         <h3 class="title is-3">Permafrost data for {{ results.place }}</h3>
-
-        <MiniMap />
 
         <UnitRadio
           class="my-5"
@@ -99,8 +96,7 @@
               Obu et al. (2018) Mean Annual Ground Temperature at Top of
               Permafrost:
               <strong
-                >{{ results.magt_2018
-                }}<UnitWidget unitType="temp" type="light"
+                >{{ results.magt_2018 }}<UnitWidget unitType="temp" type="light"
               /></strong>
             </li>
             <li v-if="results.giv_2008">
@@ -130,20 +126,16 @@
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
 
 export default {
   name: 'PermafrostReport',
   components: {
     DownloadCsvButton,
-    MiniMap,
-    LoadingStatus,
     UnitWidget,
   },
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -169,7 +161,7 @@ export default {
     },
   },
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },
@@ -190,16 +182,21 @@ export default {
         place: place,
 
         // "magt_" substrings are converted between °C and °F
-        gipl_magt_1995:
-          this.results['gipl']['1995']['cruts31']['historical']['magt'],
-        gipl_magt_2025:
-          this.results['gipl']['2025']['ncarccsm4']['rcp85']['magt'],
-        gipl_magt_2050:
-          this.results['gipl']['2050']['ncarccsm4']['rcp85']['magt'],
-        gipl_magt_2075:
-          this.results['gipl']['2075']['ncarccsm4']['rcp85']['magt'],
-        gipl_magt_2095:
-          this.results['gipl']['2095']['ncarccsm4']['rcp85']['magt'],
+        gipl_magt_1995: this.results['gipl']['1995']['cruts31']['historical'][
+          'magt'
+        ],
+        gipl_magt_2025: this.results['gipl']['2025']['ncarccsm4']['rcp85'][
+          'magt'
+        ],
+        gipl_magt_2050: this.results['gipl']['2050']['ncarccsm4']['rcp85'][
+          'magt'
+        ],
+        gipl_magt_2075: this.results['gipl']['2075']['ncarccsm4']['rcp85'][
+          'magt'
+        ],
+        gipl_magt_2095: this.results['gipl']['2095']['ncarccsm4']['rcp85'][
+          'magt'
+        ],
       }
 
       if (this.results['jorg'] != null) {

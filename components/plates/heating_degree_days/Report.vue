@@ -2,21 +2,18 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
 
     <div id="report">
       <div
         v-if="
           !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
+            !$fetchState.error &&
+            Object.keys(results).length > 0
         "
       >
         <h3 class="title is-3">
           Heating degree days data for {{ results.place }}
         </h3>
-
-        <MiniMap />
 
         <HeatingDegreeDaysExplanation />
         <DataExplanation context="wrf" />
@@ -35,27 +32,52 @@
           <tbody>
             <tr>
               <th scope="row">Historical (1979-2015)</th>
-              <td>{{ results['historical']['ddmin'] }}<UnitWidget unitType="dd"/></td>
-              <td>{{ results['historical']['ddmean'] }}<UnitWidget unitType="dd" /></td>
-              <td>{{ results['historical']['ddmax'] }}<UnitWidget unitType="dd" /></td>
+              <td>
+                {{ results['historical']['ddmin'] }}<UnitWidget unitType="dd" />
+              </td>
+              <td>
+                {{ results['historical']['ddmean']
+                }}<UnitWidget unitType="dd" />
+              </td>
+              <td>
+                {{ results['historical']['ddmax'] }}<UnitWidget unitType="dd" />
+              </td>
             </tr>
             <tr>
               <th scope="row">Early Century (2010-2039)</th>
-              <td>{{ results['2010-2039']['ddmin'] }}<UnitWidget unitType="dd" /></td>
-              <td>{{ results['2010-2039']['ddmean'] }}<UnitWidget unitType="dd" /></td>
-              <td>{{ results['2010-2039']['ddmax'] }}<UnitWidget unitType="dd" /></td>
+              <td>
+                {{ results['2010-2039']['ddmin'] }}<UnitWidget unitType="dd" />
+              </td>
+              <td>
+                {{ results['2010-2039']['ddmean'] }}<UnitWidget unitType="dd" />
+              </td>
+              <td>
+                {{ results['2010-2039']['ddmax'] }}<UnitWidget unitType="dd" />
+              </td>
             </tr>
             <tr>
               <th scope="row">Mid Century (2040-2069)</th>
-              <td>{{ results['2040-2069']['ddmin'] }}<UnitWidget unitType="dd" /></td>
-              <td>{{ results['2040-2069']['ddmean'] }}<UnitWidget unitType="dd" /></td>
-              <td>{{ results['2040-2069']['ddmax'] }}<UnitWidget unitType="dd" /></td>
+              <td>
+                {{ results['2040-2069']['ddmin'] }}<UnitWidget unitType="dd" />
+              </td>
+              <td>
+                {{ results['2040-2069']['ddmean'] }}<UnitWidget unitType="dd" />
+              </td>
+              <td>
+                {{ results['2040-2069']['ddmax'] }}<UnitWidget unitType="dd" />
+              </td>
             </tr>
             <tr>
               <th scope="row">Late Century (2070-2099)</th>
-              <td>{{ results['2070-2099']['ddmin'] }}<UnitWidget unitType="dd" /></td>
-              <td>{{ results['2070-2099']['ddmean'] }}<UnitWidget unitType="dd" /></td>
-              <td>{{ results['2070-2099']['ddmax'] }}<UnitWidget unitType="dd" /></td>
+              <td>
+                {{ results['2070-2099']['ddmin'] }}<UnitWidget unitType="dd" />
+              </td>
+              <td>
+                {{ results['2070-2099']['ddmean'] }}<UnitWidget unitType="dd" />
+              </td>
+              <td>
+                {{ results['2070-2099']['ddmax'] }}<UnitWidget unitType="dd" />
+              </td>
             </tr>
           </tbody>
         </table>
@@ -85,8 +107,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 import HeatingDegreeDaysExplanation from '~/components/plates/heating_degree_days/Explanation'
 import DataExplanation from '~/components/DataExplanation'
 import UnitWidget from '~/components/UnitWidget'
@@ -95,8 +115,6 @@ export default {
   name: 'HeatingDegreeDaysReport',
   components: {
     DownloadCsvButton,
-    MiniMap,
-    LoadingStatus,
     HeatingDegreeDaysExplanation,
     DataExplanation,
     UnitWidget,
@@ -109,7 +127,7 @@ export default {
   },
 
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -120,7 +138,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },

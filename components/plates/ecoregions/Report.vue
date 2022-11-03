@@ -2,13 +2,11 @@
   <div>
     <CloseReportButton />
     <hr />
-    <LoadingStatus :state="state" />
 
     <div id="report">
       <div v-if="!$fetchState.pending & !$fetchState.error">
         <h3 class="title is-3">Ecoregion for {{ results.place }}</h3>
         <h4 class="subtitle is-3">{{ results.name }}</h4>
-        <MiniMap />
       </div>
     </div>
   </div>
@@ -16,15 +14,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 
 export default {
   name: 'EcoregionsReport',
-  components: {
-    MiniMap,
-    LoadingStatus,
-  },
   data() {
     return {
       // Will have the results of the data fetch.
@@ -33,7 +25,7 @@ export default {
   },
 
   computed: {
-    state: function () {
+    state: function() {
       return this.$fetchState
     },
     ...mapGetters({
@@ -44,7 +36,7 @@ export default {
   },
 
   watch: {
-    latLng: function () {
+    latLng: function() {
       this.$fetch()
     },
   },
