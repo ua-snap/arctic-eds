@@ -25,10 +25,9 @@
         <div class="columns">
           <div class="column is-one-third">
             <div class="toc--panel">
-              <NuxtLink to="/climate">
-                <h3>Climate</h3>
-                <div class="toc--panel--image image--climate"></div>
-              </NuxtLink>
+              <h3>Climate</h3>
+              <div class="toc--panel--image image--climate"></div>
+
               <ul>
                 <li>
                   <NuxtLink to="/climate/precipitation">Precipitation</NuxtLink>
@@ -44,10 +43,9 @@
           </div>
           <div class="column is-one-third">
             <div class="toc--panel">
-              <NuxtLink to="/engineering">
-                <h3>Engineering</h3>
-                <div class="toc--panel--image image--engineering"></div>
-              </NuxtLink>
+              <h3>Engineering</h3>
+              <div class="toc--panel--image image--engineering"></div>
+
               <ul>
                 <li>
                   <NuxtLink to="/engineering/design-freezing-index"
@@ -79,10 +77,9 @@
           </div>
           <div class="column is-one-third">
             <div class="toc--panel">
-              <NuxtLink to="/physiography">
-                <h3>Physiography</h3>
-                <div class="toc--panel--image image--physiography"></div>
-              </NuxtLink>
+              <h3>Physiography</h3>
+              <div class="toc--panel--image image--physiography"></div>
+
               <ul>
                 <li>
                   <NuxtLink to="/physiography/ecoregions">Ecoregions</NuxtLink>
