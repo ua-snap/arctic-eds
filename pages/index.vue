@@ -20,6 +20,7 @@
         </p>
       </div>
     </div>
+    <SearchControls />
     <div class="columns mx-2 mb-5">
       <div class="column is-half">
         <h4 class="is-size-4">Precipitation</h4>
@@ -91,11 +92,14 @@
 <script>
 import Map from '~/components/Map'
 import layers from '~/components/layers'
+import SearchControls from '~/components/SearchControls'
+
 export default {
   name: 'HomePage',
   layout: 'home',
   components: {
     Map,
+    SearchControls,
   },
   created() {
     const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
