@@ -31,7 +31,7 @@
 import parseDMS from 'parse-dms'
 
 export default {
-  name: 'LatLngPicker',
+  name: 'LatLngSelector',
   data() {
     return {
       type: 'is-light',
