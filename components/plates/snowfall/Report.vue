@@ -84,8 +84,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 import UnitWidget from '~/components/UnitWidget'
 import UnitRadio from '~/components/UnitRadio'
 import SnowfallExplanation from '~/components/plates/snowfall/Explanation'
