@@ -79,8 +79,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 import ThawingIndexExplanation from '~/components/plates/thawing_index/Explanation'
 import UnitWidget from '~/components/UnitWidget'
 
