@@ -7,7 +7,7 @@ const akJson = JSON.parse(ak)
 // throws a "Don't do that" error; plus, having these objects
 // within the scope of the Nuxt/Vue reactivity decoration causes
 // unpredictable buggy behavior ("too much recursion")
-var map
+var maps = {}
 var layerObject
 
 function getBaseMapAndLayers() {
@@ -76,22 +76,24 @@ export default {
   },
 
   mutations: {
-    create() {
-      map = L.map('map', getBaseMapAndLayers())
-      new L.Control.Zoom({ position: 'topright' }).addTo(map)
+    create(state, mapId) {
+      maps[mapId] = L.map(mapId, getBaseMapAndLayers())
+      new L.Control.Zoom({ position: 'topright' }).addTo(maps[mapId])
     },
-    destroy(state) {
-      map.remove()
+    destroy(state, mapId) {
+      maps[mapId].remove()
       state.layer = undefined
     },
-    toggleLayer(state, layer) {
+    toggleLayer(state, payload) {
+      let mapId = payload.mapId
+      let layer = payload.layer
       // Remove existing layer: right now, we only
       // want one layer to be visible on any plate in the Atlas.
       // Need to test explicitly for the existence of the
       // layerObject because this code can get run while
       // the full DOM is hydrating, see MapLayer / mounted().
       if (state.layer && layerObject) {
-        map.removeLayer(layerObject)
+        maps[mapId].removeLayer(layerObject)
       }
 
       // Add to map!
@@ -122,18 +124,7 @@ export default {
 
       layerObject = L.tileLayer.wms(wmsUrl, layerConfiguration)
 
-      map.addLayer(layerObject)
-    },
-    addLayerEventHandler(state, handler) {
-      L.geoJSON(akJson, {
-        onEachFeature: function (feature, layer) {
-          layer.on(handler.event, handler.handler)
-        },
-        style: {
-          opacity: 0.0,
-          fillOpacity: 0.0,
-        },
-      }).addTo(map)
+      maps[mapId].addLayer(layerObject)
     },
   },
 }
