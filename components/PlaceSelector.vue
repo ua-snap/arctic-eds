@@ -33,10 +33,6 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.place-selector--wrapper * {
-  z-index: 10000;
-}
-
 .search-item {
   font-weight: 600;
   white-space: normal;

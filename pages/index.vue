@@ -21,62 +21,130 @@
       </div>
     </div>
     <SearchControls />
-    <div class="columns mx-2 mb-5">
-      <div class="column is-half">
-        <h4 class="is-size-4">Precipitation</h4>
-        <Map mapId="precipitation" />
+
+    <div class="px-5 pb-6">
+      <h3 class="is-size-3">Climate</h3>
+      <hr class="mt-0 mb-4" />
+      <div class="columns is-multiline">
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/precipitation.png"
+            alt="Precipitation map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'precipitation')"
+          /><br />
+          Precipitation
+        </div>
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/snowfall.png"
+            alt="Snowfall map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'snowfall')"
+          /><br />
+          Snowfall
+        </div>
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/temperature.png"
+            alt="Temperature map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'temperature')"
+          /><br />
+          Temperature
+        </div>
       </div>
-      <div class="column is-half">
-        <h4 class="is-size-4">Snowfall</h4>
-        <Map mapId="snowfall" />
+      <h3 class="is-size-3">Engineering</h3>
+      <hr class="mt-0 mb-4" />
+      <div class="columns is-multiline">
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/design_freezing_index.png"
+            alt="Design Freezing Index map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'design_freezing_index')"
+          /><br />
+          Design Freezing Index
+        </div>
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/design_thawing_index.png"
+            alt="Design Thawing Index map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'design_thawing_index')"
+          /><br />
+          Design Thawing Index
+        </div>
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/freezing_index.png"
+            alt="Freezing Index map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'freezing_index')"
+          /><br />
+          Freezing Index
+        </div>
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/thawing_index.png"
+            alt="Thawing Index map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'thawing_index')"
+          /><br />
+          Thawing Index
+        </div>
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/heating_degree_days.png"
+            alt="Heating Degree Days map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'heating_degree_days')"
+          /><br />
+          Heating Degree Days
+        </div>
+      </div>
+      <h3 class="is-size-3">Physiography</h3>
+      <hr class="mt-0 mb-4" />
+      <div class="columns is-multiline">
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/ecoregions.png"
+            alt="Ecoregions map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'ecoregions')"
+          /><br />
+          Ecoregions
+        </div>
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/geology.png"
+            alt="Geology map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'geology')"
+          /><br />
+          Geology
+        </div>
+        <div class="column is-one-third">
+          <img
+            src="~/assets/images/map_thumbnails/permafrost.png"
+            alt="Permafrost map thumbnail"
+            class="map-thumbnail"
+            @click="showMap($event, 'permafrost')"
+          /><br />
+          Permafrost
+        </div>
       </div>
     </div>
-    <div class="columns mx-2 mb-5">
-      <div class="column is-half">
-        <h4 class="is-size-4">Temperature</h4>
-        <Map mapId="temperature" />
+
+    <b-modal v-model="mapOpen" class="map-modal">
+      <div class="map-content">
+        <h4 class="is-size-4 pt-2 pl-3 map-title">
+          {{ mapTitle }}
+          <font-awesome-icon icon="fa-solid fa-circle-info" class="info-icon" />
+        </h4>
+        <Map class="map" v-if="this.selectedMap != undefined" />
       </div>
-      <div class="column is-half">
-        <h4 class="is-size-4">Design Freezing Index</h4>
-        <Map mapId="design_freezing_index" />
-      </div>
-    </div>
-    <div class="columns mx-2 mb-5">
-      <div class="column is-half">
-        <h4 class="is-size-4">Design Thawing Index</h4>
-        <Map mapId="design_thawing_index" />
-      </div>
-      <div class="column is-half">
-        <h4 class="is-size-4">Freezing Index</h4>
-        <Map mapId="freezing_index" />
-      </div>
-    </div>
-    <div class="columns mx-2 mb-5">
-      <div class="column is-half">
-        <h4 class="is-size-4">Thawing Index</h4>
-        <Map mapId="thawing_index" />
-      </div>
-      <div class="column is-half">
-        <h4 class="is-size-4">Heating Degree Days</h4>
-        <Map mapId="heating_degree_days" />
-      </div>
-    </div>
-    <div class="columns mx-2 mb-5">
-      <div class="column is-half">
-        <h4 class="is-size-4">Ecoregions</h4>
-        <Map mapId="ecoregions" />
-      </div>
-      <div class="column is-half">
-        <h4 class="is-size-4">Geology</h4>
-        <Map mapId="geology" />
-      </div>
-    </div>
-    <div class="columns mx-2 mb-5">
-      <div class="column is-half">
-        <h4 class="is-size-4">Permafrost</h4>
-        <Map mapId="permafrost" />
-      </div>
-    </div>
+    </b-modal>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -87,19 +155,91 @@
     border: none;
     font-weight: 600;
   }
+  .modal-content {
+    max-width: 100% !important;
+    max-height: 100%;
+  }
+  .modal-close {
+    top: 24px;
+    right: 27px;
+    background-color: rgba(10, 10, 10, 0.3);
+    &:hover {
+      background-color: rgba(10, 10, 10, 0.6);
+    }
+  }
+  .map-modal {
+    .map-content {
+      background-color: #ffffff;
+      width: calc(100vw - 30px);
+      height: calc(100vh - 30px);
+      margin: 15px;
+      .map-title {
+        height: 50px;
+        padding-top: 9px;
+      }
+      .map {
+        height: calc(100vh - 80px);
+      }
+    }
+  }
+  .info-icon {
+    margin-left: 8px;
+    font-size: 1.2rem;
+    color: rgba(10, 10, 10, 0.3);
+    &:hover {
+      color: rgba(10, 10, 10, 0.6);
+    }
+  }
+  .map-thumbnail {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  .legend {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    .legend-item {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+    .legend-swatch {
+      display: inline-block;
+      border: 1px solid #666;
+      margin: 5px;
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 </style>
 <script>
+import { mapGetters } from 'vuex'
 import Map from '~/components/Map'
-import layers from '~/components/layers'
+import mapContent from '~/components/map_content'
 import SearchControls from '~/components/SearchControls'
 
 export default {
   name: 'HomePage',
   layout: 'home',
+  computed: {
+    ...mapGetters({
+      selectedMap: 'map/selectedMap',
+    }),
+    mapTitle() {
+      return mapContent.titles[this.selectedMap]
+    },
+  },
   components: {
     Map,
     SearchControls,
+  },
+  data() {
+    return {
+      mapOpen: false,
+      temperatureActive: false,
+    }
   },
   created() {
     const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
@@ -107,16 +247,16 @@ export default {
       this.$router.push({ path: path })
     }
   },
-  mounted() {
-    Object.keys(layers.variables).forEach(layerVariable => {
-      let defaultLayer = _.filter(layers.variables[layerVariable], layer => {
-        return layer['default']
-      })[0]
-      this.$store.commit('map/toggleLayer', {
-        mapId: layerVariable,
-        layer: defaultLayer,
+  methods: {
+    showMap(event, mapId) {
+      this.$store.commit('map/selectMap', mapId)
+      setTimeout(() => {
+        this.mapOpen = true
+        setTimeout(() => {
+          this.$store.commit('map/addLayers', mapContent.layers[mapId])
+        })
       })
-    })
+    },
   },
 }
 </script>
