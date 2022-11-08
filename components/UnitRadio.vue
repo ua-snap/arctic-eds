@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="radio-units">
     <p>You can display these results in Imperial or Metric units.</p>
     <div>
       <b-field label="Units">
@@ -46,3 +46,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.radio-units {
+  padding-bottom: 1rem;
+}
+</style>

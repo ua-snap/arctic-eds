@@ -11,7 +11,9 @@
         "
       >
         <h3 class="title is-2">Full Report for {{ placeName }}</h3>
+        <MiniMap />
         <UnitRadio />
+        <CloseReportButton />
         <TemperatureReport />
         <PrecipitationReport />
         <SnowfallReport />
@@ -31,6 +33,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import UnitRadio from '~/components/UnitRadio'
+import MiniMap from '~/components/MiniMap'
 import TemperatureReport from '~/components/plates/temperature/Report'
 import PrecipitationReport from '~/components/plates/precipitation/Report'
 import SnowfallReport from '~/components/plates/snowfall/Report'

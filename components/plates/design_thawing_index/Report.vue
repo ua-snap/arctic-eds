@@ -1,6 +1,5 @@
 <template>
   <div>
-    <CloseReportButton />
     <hr />
     <div id="report">
       <h3 class="title is-3">Design thawing index data for {{ placeName }}</h3>

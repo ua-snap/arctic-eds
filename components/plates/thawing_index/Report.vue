@@ -1,6 +1,5 @@
 <template>
   <div>
-    <CloseReportButton />
     <hr />
 
     <div id="report">
