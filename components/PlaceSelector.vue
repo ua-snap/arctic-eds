@@ -89,7 +89,6 @@ export default {
       if (selected) {
         this.$router.push({
           path: this.$route.path + '/report/community/' + selected.id,
-          hash: '#report',
         })
       }
     },

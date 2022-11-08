@@ -4,121 +4,126 @@
     <hr />
 
     <div id="report">
-      <div
-        v-if="
-          !$fetchState.pending &&
-            !$fetchState.error &&
-            Object.keys(results).length > 0
-        "
-      >
-        <h3 class="title is-3">Permafrost data for {{ results.place }}</h3>
+      <h3 class="title is-3">Permafrost data for {{ plateResults.place }}</h3>
 
-        <UnitRadio
-          class="my-5"
-          :patterns="[{ type: 'temperature', substring: 'magt_' }]"
-        />
+      <UnitRadio
+        class="my-5"
+        :patterns="[
+          { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
+        ]"
+      />
 
-        <h4 class="title is-4">GIPL Mean Annual Ground Temperature</h4>
+      <h4 class="title is-4">GIPL Mean Annual Ground Temperature</h4>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">MAGT</th>
-              <th scope="col">Change from Historical</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Historical (1995)</th>
-              <td>{{ results.gipl_magt_1995 }}<UnitWidget type="light" /></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">2011 - 2040</th>
-              <td>{{ results.gipl_magt_2025 }}<UnitWidget type="light" /></td>
-              <td>
-                {{
-                  signedDiff(
-                    results.gipl_magt_1995,
-                    results.gipl_magt_2025,
-                    'magt'
-                  )
-                }}<UnitWidget type="light" />
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2036 - 2065</th>
-              <td>{{ results.gipl_magt_2050 }}<UnitWidget type="light" /></td>
-              <td>
-                {{
-                  signedDiff(
-                    results.gipl_magt_1995,
-                    results.gipl_magt_2050,
-                    'magt'
-                  )
-                }}<UnitWidget type="light" />
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2061 – 2090</th>
-              <td>{{ results.gipl_magt_2075 }}<UnitWidget type="light" /></td>
-              <td>
-                {{
-                  signedDiff(
-                    results.gipl_magt_1995,
-                    results.gipl_magt_2075,
-                    'magt'
-                  )
-                }}<UnitWidget type="light" />
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2086 – 2100</th>
-              <td>{{ results.gipl_magt_2095 }}<UnitWidget type="light" /></td>
-              <td>
-                {{
-                  signedDiff(
-                    results.gipl_magt_1995,
-                    results.gipl_magt_2095,
-                    'magt'
-                  )
-                }}<UnitWidget type="light" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">MAGT</th>
+            <th scope="col">Change from Historical</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Historical (1995)</th>
+            <td>
+              {{ plateResults.gipl_magt_1995 }}<UnitWidget type="light" />
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">2011 - 2040</th>
+            <td>
+              {{ plateResults.gipl_magt_2025 }}<UnitWidget type="light" />
+            </td>
+            <td>
+              {{
+                signedDiff(
+                  plateResults.gipl_magt_1995,
+                  plateResults.gipl_magt_2025,
+                  'magt'
+                )
+              }}<UnitWidget type="light" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2036 - 2065</th>
+            <td>
+              {{ plateResults.gipl_magt_2050 }}<UnitWidget type="light" />
+            </td>
+            <td>
+              {{
+                signedDiff(
+                  plateResults.gipl_magt_1995,
+                  plateResults.gipl_magt_2050,
+                  'magt'
+                )
+              }}<UnitWidget type="light" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2061 – 2090</th>
+            <td>
+              {{ plateResults.gipl_magt_2075 }}<UnitWidget type="light" />
+            </td>
+            <td>
+              {{
+                signedDiff(
+                  plateResults.gipl_magt_1995,
+                  plateResults.gipl_magt_2075,
+                  'magt'
+                )
+              }}<UnitWidget type="light" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2086 – 2100</th>
+            <td>
+              {{ plateResults.gipl_magt_2095 }}<UnitWidget type="light" />
+            </td>
+            <td>
+              {{
+                signedDiff(
+                  plateResults.gipl_magt_1995,
+                  plateResults.gipl_magt_2095,
+                  'magt'
+                )
+              }}<UnitWidget type="light" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <h4 class="title is-6 mt-5">Additional data</h4>
-        <div class="content">
-          <ul>
-            <li v-if="results.magt_2018">
-              Obu et al. (2018) Mean Annual Ground Temperature at Top of
-              Permafrost:
-              <strong
-                >{{ results.magt_2018 }}<UnitWidget unitType="temp" type="light"
-              /></strong>
-            </li>
-            <li v-if="results.giv_2008">
-              Jorgenson et al. (2008) Ground Ice Volume:
-              <strong>{{ results.giv_2008 }}</strong>
-            </li>
-            <li v-if="results.pe_2008">
-              Jorgenson et al. (2008) Permafrost Extent:
-              <strong>{{ results.pe_2008 }}</strong>
-            </li>
-            <li v-if="results.pe_2018">
-              Obu et al. (2018) Permafrost Extent:
-              <strong>{{ results.pe_2018 }}</strong>
-            </li>
-          </ul>
-        </div>
-        <DownloadCsvButton
-          text="Download permafrost data as CSV"
-          endpoint="permafrost/point"
-          class="mt-3 mb-5"
-        />
+      <h4 class="title is-6 mt-5">Additional data</h4>
+      <div class="content">
+        <ul>
+          <li v-if="plateResults.magt_2018">
+            Obu et al. (2018) Mean Annual Ground Temperature at Top of
+            Permafrost:
+            <strong
+              >{{ plateResults.magt_2018
+              }}<UnitWidget unitType="temp" type="light"
+            /></strong>
+          </li>
+          <li v-if="plateResults.giv_2008">
+            Jorgenson et al. (2008) Ground Ice Volume:
+            <strong>{{ plateResults.giv_2008 }}</strong>
+          </li>
+          <li v-if="plateResults.pe_2008">
+            Jorgenson et al. (2008) Permafrost Extent:
+            <strong>{{ plateResults.pe_2008 }}</strong>
+          </li>
+          <li v-if="plateResults.pe_2018">
+            Obu et al. (2018) Permafrost Extent:
+            <strong>{{ plateResults.pe_2018 }}</strong>
+          </li>
+        </ul>
       </div>
+      <DownloadCsvButton
+        text="Download permafrost data as CSV"
+        endpoint="permafrost/point"
+        class="mt-3 mb-5"
+      />
     </div>
   </div>
 </template>
@@ -135,9 +140,6 @@ export default {
     UnitWidget,
   },
   computed: {
-    state: function() {
-      return this.$fetchState
-    },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
@@ -161,59 +163,61 @@ export default {
     },
   },
   watch: {
-    latLng: function() {
+    latLng: function () {
       this.$fetch()
     },
   },
+  data() {
+    return {
+      plateResults: null,
+    }
+  },
   async fetch() {
     if (this.isPlaceDefined) {
-      let url =
-        process.env.apiUrl +
-        '/permafrost/point/' +
-        this.latLng.lat +
-        '/' +
-        this.latLng.lng
-
-      await this.$store.dispatch('report/apiFetch', url)
-
       let place = this.placeName
 
-      let plateResults = {
+      this.plateResults = {
         place: place,
 
         // "magt_" substrings are converted between °C and °F
-        gipl_magt_1995: this.results['gipl']['1995']['cruts31']['historical'][
-          'magt'
-        ],
-        gipl_magt_2025: this.results['gipl']['2025']['ncarccsm4']['rcp85'][
-          'magt'
-        ],
-        gipl_magt_2050: this.results['gipl']['2050']['ncarccsm4']['rcp85'][
-          'magt'
-        ],
-        gipl_magt_2075: this.results['gipl']['2075']['ncarccsm4']['rcp85'][
-          'magt'
-        ],
-        gipl_magt_2095: this.results['gipl']['2095']['ncarccsm4']['rcp85'][
-          'magt'
-        ],
+        gipl_magt_1995:
+          this.results['permafrost']['gipl']['1995']['cruts31']['historical'][
+            'magt'
+          ],
+        gipl_magt_2025:
+          this.results['permafrost']['gipl']['2025']['ncarccsm4']['rcp85'][
+            'magt'
+          ],
+        gipl_magt_2050:
+          this.results['permafrost']['gipl']['2050']['ncarccsm4']['rcp85'][
+            'magt'
+          ],
+        gipl_magt_2075:
+          this.results['permafrost']['gipl']['2075']['ncarccsm4']['rcp85'][
+            'magt'
+          ],
+        gipl_magt_2095:
+          this.results['permafrost']['gipl']['2095']['ncarccsm4']['rcp85'][
+            'magt'
+          ],
       }
 
-      if (this.results['jorg'] != null) {
-        plateResults['giv_2008'] = this.results['jorg']['ice']
-        plateResults['pe_2008'] = this.results['jorg']['pfx']
+      if (this.results['permafrost']['jorg'] != null) {
+        this.plateResults['giv_2008'] =
+          this.results['permafrost']['jorg']['ice']
+        this.plateResults['pe_2008'] = this.results['permafrost']['jorg']['pfx']
       }
 
-      if (this.results['obu_magt'] != null) {
+      if (this.results['permafrost']['obu_magt'] != null) {
         // "magt_" substrings are converted between °C and °F
-        plateResults['magt_2018'] = this.results['obu_magt']['temp']
+        this.plateResults['magt_2018'] =
+          this.results['permafrost']['obu_magt']['temp']
       }
 
-      if (this.results['obupfx'] != null) {
-        plateResults['pe_2018'] = this.results['obupfx']['pfx']
+      if (this.results['permafrost']['obupfx'] != null) {
+        this.plateResults['pe_2018'] =
+          this.results['permafrost']['obupfx']['pfx']
       }
-
-      this.$store.commit('report/setResults', plateResults)
     }
   },
 }

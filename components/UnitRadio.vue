@@ -18,7 +18,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'UnitRadio',
-  props: ['type', 'patterns'],
+  props: ['type', 'patterns', 'variable'],
   data() {
     return {
       radioUnits: this.storeRadioUnits,
@@ -40,6 +40,7 @@ export default {
           this.$store.commit('report/convertResults', {
             type: this.type,
             patterns: this.patterns,
+            variable: this.variable,
           })
         }
       } else {
@@ -47,6 +48,7 @@ export default {
         this.$store.commit('report/convertResults', {
           type: this.type,
           patterns: this.patterns,
+          variable: this.variable,
         })
       }
     },

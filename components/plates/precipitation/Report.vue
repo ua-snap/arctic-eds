@@ -4,119 +4,113 @@
     <hr />
 
     <div id="report">
-      <div
-        v-if="
-          !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
-        "
-      >
-        <h3 class="title is-3">Precipitation data for {{ results.place }}</h3>
+      <h3 class="title is-3">
+        Precipitation data for {{ plateResults.place }}
+      </h3>
 
-        <PrecipitationExplanation />
-        <DataExplanation context="snap" />
+      <PrecipitationExplanation />
+      <DataExplanation context="snap" />
 
-        <h4 class="title is-4">Annual Precipitation Totals</h4>
+      <h4 class="title is-4">Annual Precipitation Totals</h4>
 
-        <UnitRadio type="mm_in" />
+      <UnitRadio type="mm_in" variable="precipitation" />
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Min</th>
-              <th scope="col">Mean</th>
-              <th scope="col">Max</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Historical (1901-2015)</th>
-              <td>
-                {{ results.pr_hist_min
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-              <td>
-                {{ results.pr_hist_mean
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-              <td>
-                {{ results.pr_hist_max
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Early Century (2010-2039)</th>
-              <td>
-                {{ results.pr_2040_min
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-              <td>
-                {{ results.pr_2040_mean
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-              <td>
-                {{ results.pr_2040_max
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Mid Century (2040-2069)</th>
-              <td>
-                {{ results.pr_2070_min
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-              <td>
-                {{ results.pr_2070_mean
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-              <td>
-                {{ results.pr_2070_max
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Late Century (2070-2099)</th>
-              <td>
-                {{ results.pr_2100_min
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-              <td>
-                {{ results.pr_2100_mean
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-              <td>
-                {{ results.pr_2100_max
-                }}<UnitWidget unitType="mm_in" type="light" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h4 class="title is-6">Access to Data</h4>
-        <div class="content">
-          <ul>
-            <li>
-              <a
-                href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta"
-                target="_blank"
-                >Historical Monthly and Derived Precipitation Products</a
-              >
-            </li>
-            <li>
-              <a
-                href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5"
-                target="_blank"
-                >Projected Monthly and Derived Precipitation Products</a
-              >
-            </li>
-          </ul>
-        </div>
-        <DownloadCsvButton
-          text="Download precipitation data as CSV"
-          endpoint="mmm/precipitation/all"
-          class="mt-3 mb-5"
-        />
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Min</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Historical (1901-2015)</th>
+            <td>
+              {{ plateResults.pr_hist_min
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+            <td>
+              {{ plateResults.pr_hist_mean
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+            <td>
+              {{ plateResults.pr_hist_max
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Early Century (2010-2039)</th>
+            <td>
+              {{ plateResults.pr_2040_min
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+            <td>
+              {{ plateResults.pr_2040_mean
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+            <td>
+              {{ plateResults.pr_2040_max
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mid Century (2040-2069)</th>
+            <td>
+              {{ plateResults.pr_2070_min
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+            <td>
+              {{ plateResults.pr_2070_mean
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+            <td>
+              {{ plateResults.pr_2070_max
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late Century (2070-2099)</th>
+            <td>
+              {{ plateResults.pr_2100_min
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+            <td>
+              {{ plateResults.pr_2100_mean
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+            <td>
+              {{ plateResults.pr_2100_max
+              }}<UnitWidget unitType="mm_in" type="light" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="title is-6">Access to Data</h4>
+      <div class="content">
+        <ul>
+          <li>
+            <a
+              href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta"
+              target="_blank"
+              >Historical Monthly and Derived Precipitation Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5"
+              target="_blank"
+              >Projected Monthly and Derived Precipitation Products</a
+            >
+          </li>
+        </ul>
       </div>
+      <DownloadCsvButton
+        text="Download precipitation data as CSV"
+        endpoint="mmm/precipitation/all"
+        class="mt-3 mb-5"
+      />
     </div>
   </div>
 </template>
@@ -139,15 +133,17 @@ export default {
     DataExplanation,
   },
   computed: {
-    state: function () {
-      return this.$fetchState
-    },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
       latLng: 'report/latLng',
     }),
+  },
+  data() {
+    return {
+      plateResults: null,
+    }
   },
   watch: {
     latLng: function () {
@@ -156,34 +152,21 @@ export default {
   },
   async fetch() {
     if (this.isPlaceDefined) {
-      let url =
-        process.env.apiUrl +
-        '/eds/precipitation/' +
-        this.latLng.lat +
-        '/' +
-        this.latLng.lng
-
-      await this.$store.dispatch('report/apiFetch', url)
-
-      let place = this.placeName
-
-      let plateResults = {
-        place: place,
-        pr_hist_min: this.results['historical']['prmin'],
-        pr_hist_mean: this.results['historical']['prmean'],
-        pr_hist_max: this.results['historical']['prmax'],
-        pr_2040_min: this.results['2010-2039']['prmin'],
-        pr_2040_mean: this.results['2010-2039']['prmean'],
-        pr_2040_max: this.results['2010-2039']['prmax'],
-        pr_2070_min: this.results['2040-2069']['prmin'],
-        pr_2070_mean: this.results['2040-2069']['prmean'],
-        pr_2070_max: this.results['2040-2069']['prmax'],
-        pr_2100_min: this.results['2070-2099']['prmin'],
-        pr_2100_mean: this.results['2070-2099']['prmean'],
-        pr_2100_max: this.results['2070-2099']['prmax'],
+      this.plateResults = {
+        place: this.placeName,
+        pr_hist_min: this.results['precipitation']['historical']['prmin'],
+        pr_hist_mean: this.results['precipitation']['historical']['prmean'],
+        pr_hist_max: this.results['precipitation']['historical']['prmax'],
+        pr_2040_min: this.results['precipitation']['2010-2039']['prmin'],
+        pr_2040_mean: this.results['precipitation']['2010-2039']['prmean'],
+        pr_2040_max: this.results['precipitation']['2010-2039']['prmax'],
+        pr_2070_min: this.results['precipitation']['2040-2069']['prmin'],
+        pr_2070_mean: this.results['precipitation']['2040-2069']['prmean'],
+        pr_2070_max: this.results['precipitation']['2040-2069']['prmax'],
+        pr_2100_min: this.results['precipitation']['2070-2099']['prmin'],
+        pr_2100_mean: this.results['precipitation']['2070-2099']['prmean'],
+        pr_2100_max: this.results['precipitation']['2070-2099']['prmax'],
       }
-
-      this.$store.commit('report/setResults', plateResults)
     }
   },
 }
