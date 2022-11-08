@@ -11,6 +11,7 @@
         "
       >
         <h3 class="title is-2">Full Report for {{ placeName }}</h3>
+        <UnitRadio />
         <TemperatureReport />
         <PrecipitationReport />
         <SnowfallReport />
@@ -29,6 +30,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import UnitRadio from '~/components/UnitRadio'
 import TemperatureReport from '~/components/plates/temperature/Report'
 import PrecipitationReport from '~/components/plates/precipitation/Report'
 import SnowfallReport from '~/components/plates/snowfall/Report'
@@ -43,6 +45,7 @@ import ThawingIndexReport from '~/components/plates/thawing_index/Report'
 export default {
   name: 'FullReport',
   components: {
+    UnitRadio,
     TemperatureReport,
     PrecipitationReport,
     SnowfallReport,

@@ -4,9 +4,7 @@
     <hr />
 
     <div id="report">
-      <h3 class="title is-3">
-        Thawing index data for {{ plateResults.place }}
-      </h3>
+      <h3 class="title is-3">Thawing index data for {{ placeName }}</h3>
 
       <ThawingIndexExplanation :isFooter="false" />
 
@@ -24,27 +22,51 @@
         <tbody>
           <tr>
             <th scope="row">Historical (1979-2015)</th>
-            <td>{{ plateResults['historical']['ddmin'] }}<UnitWidget /></td>
-            <td>{{ plateResults['historical']['ddmean'] }}<UnitWidget /></td>
-            <td>{{ plateResults['historical']['ddmax'] }}<UnitWidget /></td>
+            <td>
+              {{ results.thawing_index['historical']['ddmin'] }}<UnitWidget />
+            </td>
+            <td>
+              {{ results.thawing_index['historical']['ddmean'] }}<UnitWidget />
+            </td>
+            <td>
+              {{ results.thawing_index['historical']['ddmax'] }}<UnitWidget />
+            </td>
           </tr>
           <tr>
             <th scope="row">Early Century (2010-2039)</th>
-            <td>{{ plateResults['2010-2039']['ddmin'] }}<UnitWidget /></td>
-            <td>{{ plateResults['2010-2039']['ddmean'] }}<UnitWidget /></td>
-            <td>{{ plateResults['2010-2039']['ddmax'] }}<UnitWidget /></td>
+            <td>
+              {{ results.thawing_index['2010-2039']['ddmin'] }}<UnitWidget />
+            </td>
+            <td>
+              {{ results.thawing_index['2010-2039']['ddmean'] }}<UnitWidget />
+            </td>
+            <td>
+              {{ results.thawing_index['2010-2039']['ddmax'] }}<UnitWidget />
+            </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040-2069)</th>
-            <td>{{ plateResults['2040-2069']['ddmin'] }}<UnitWidget /></td>
-            <td>{{ plateResults['2040-2069']['ddmean'] }}<UnitWidget /></td>
-            <td>{{ plateResults['2040-2069']['ddmax'] }}<UnitWidget /></td>
+            <td>
+              {{ results.thawing_index['2040-2069']['ddmin'] }}<UnitWidget />
+            </td>
+            <td>
+              {{ results.thawing_index['2040-2069']['ddmean'] }}<UnitWidget />
+            </td>
+            <td>
+              {{ results.thawing_index['2040-2069']['ddmax'] }}<UnitWidget />
+            </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070-2099)</th>
-            <td>{{ plateResults['2070-2099']['ddmin'] }}<UnitWidget /></td>
-            <td>{{ plateResults['2070-2099']['ddmean'] }}<UnitWidget /></td>
-            <td>{{ plateResults['2070-2099']['ddmax'] }}<UnitWidget /></td>
+            <td>
+              {{ results.thawing_index['2070-2099']['ddmin'] }}<UnitWidget />
+            </td>
+            <td>
+              {{ results.thawing_index['2070-2099']['ddmean'] }}<UnitWidget />
+            </td>
+            <td>
+              {{ results.thawing_index['2070-2099']['ddmax'] }}<UnitWidget />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -83,38 +105,12 @@ export default {
     ThawingIndexExplanation,
     UnitWidget,
   },
-  data() {
-    return {
-      // Will have the results of the data fetch.
-      plateResults: null,
-    }
-  },
 
   computed: {
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
-  },
-
-  data() {
-    return {
-      plateResults: null,
-    }
-  },
-  watch: {
-    latLng: function () {
-      this.$fetch()
-    },
-  },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      this.plateResults = this.results['thawing_index']
-
-      this.plateResults.place = this.placeName
-    }
   },
 }
 </script>

@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 function convertUnits(state, type, substring = '', variable) {
   Object.keys(state.results[variable]).forEach(key => {
-    if (key != 'place' && key.includes(substring)) {
+    if (key.includes(substring)) {
       switch (type) {
         case 'temperature':
           state.results[variable][key] = convertTemperature(
@@ -156,19 +156,25 @@ export default {
         lng: undefined,
       }
     },
-    convertResults(state, params) {
-      if (params['patterns']) {
-        params['patterns'].forEach(pattern => {
-          convertUnits(
-            state,
-            pattern['type'],
-            pattern['substring'],
-            pattern['variable']
-          )
-        })
-      } else {
-        convertUnits(state, params['type'], '', params['variable'])
-      }
+    convertResults(state) {
+      // Converts all convertible units at the same time for shared report
+      let conversions = [
+        { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
+        { type: 'temperature', substring: '', variable: 'temperature' },
+        { type: 'mm_in', substring: '', variable: 'precipitation' },
+        { type: 'mm_in', substring: '', variable: 'snowfall' },
+      ]
+      conversions.forEach(conversion => {
+        convertUnits(
+          state,
+          conversion['type'],
+          conversion['substring'],
+          conversion['variable']
+        )
+      })
+    },
+    setPlateResults(state, payload) {
+      state.results[payload.variable] = payload.plateResults
     },
     setResults(state, results) {
       state.results = results

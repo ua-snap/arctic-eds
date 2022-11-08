@@ -4,9 +4,7 @@
     <hr />
 
     <div id="report">
-      <h3 class="title is-3">
-        Design freezing index data for {{ plateResults.place }}
-      </h3>
+      <h3 class="title is-3">Design freezing index data for {{ placeName }}</h3>
 
       <DesignFreezingIndexExplanation />
       <DataExplanation context="wrf" />
@@ -24,19 +22,22 @@
           <tr>
             <th scope="row">Historical (1980-2009)</th>
             <td>
-              {{ plateResults['historical']['di'] }}<UnitWidget unitType="dd" />
+              {{ results.design_freezing['historical']['di']
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040-2069)</th>
             <td>
-              {{ plateResults['2040-2069']['di'] }}<UnitWidget unitType="dd" />
+              {{ results.design_freezing['2040-2069']['di']
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070-2099)</th>
             <td>
-              {{ plateResults['2070-2099']['di'] }}<UnitWidget unitType="dd" />
+              {{ results.design_freezing['2070-2099']['di']
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
         </tbody>
@@ -82,27 +83,7 @@ export default {
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
-  },
-  data() {
-    return {
-      plateResults: null,
-    }
-  },
-
-  watch: {
-    latLng: function () {
-      this.$fetch()
-    },
-  },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      this.plateResults = this.results['design_freezing']
-
-      this.plateResults.place = this.placeName
-    }
   },
 }
 </script>

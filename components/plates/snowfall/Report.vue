@@ -4,23 +4,12 @@
     <hr />
 
     <div id="report">
-      <!-- <div
-        v-if="
-          !$fetchState.pending &&
-            !$fetchState.error &&
-            Object.keys(results).length > 0
-        "
-      > -->
-      <h3 class="title is-3">
-        Snowfall Equivalent data for {{ plateResults.place }}
-      </h3>
+      <h3 class="title is-3">Snowfall Equivalent data for {{ placeName }}</h3>
 
       <SnowfallExplanation />
       <DataExplanation context="snap" />
 
       <h4 class="title is-4">Annual Snowfall Equivalent Totals</h4>
-
-      <UnitRadio type="mm_in" variable="snowfall" />
 
       <table class="table">
         <thead>
@@ -35,29 +24,32 @@
           <tr>
             <th scope="row">Historical (1910-2009)</th>
             <td>
-              {{ plateResults.sfe_hist_min }}<UnitWidget unitType="mm_in" />
+              {{ results.snowfall.sfe_hist_min }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
-              {{ plateResults.sfe_hist_mean }}<UnitWidget unitType="mm_in" />
+              {{ results.snowfall.sfe_hist_mean
+              }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
-              {{ plateResults.sfe_hist_max }}<UnitWidget unitType="mm_in" />
+              {{ results.snowfall.sfe_hist_max }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
           <tr>
             <th scope="row">Future Projections (2010-2099)</th>
             <td>
-              {{ plateResults.sfe_proj_min }}<UnitWidget unitType="mm_in" />
+              {{ results.snowfall.sfe_proj_min }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
-              {{ plateResults.sfe_proj_mean }}<UnitWidget unitType="mm_in" />
+              {{ results.snowfall.sfe_proj_mean
+              }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
-              {{ plateResults.sfe_proj_max }}<UnitWidget unitType="mm_in" />
+              {{ results.snowfall.sfe_proj_max }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
         </tbody>
       </table>
+
       <h4 class="title is-6">Access to Data</h4>
       <div class="content">
         <ul>
@@ -84,7 +76,6 @@
         endpoint="mmm/snow/snowfallequivalent/all"
         class="mt-3 mb-5"
       />
-      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -107,51 +98,31 @@ export default {
     DataExplanation,
   },
   computed: {
-    // state: function() {
-    //   return this.$fetchState
-    // },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
   },
 
   watch: {
-    latLng: function () {
+    isPlaceDefined: function () {
       this.$fetch()
     },
   },
-  data() {
-    return {
-      plateResults: null,
+  fetch() {
+    let plateResults = {
+      sfe_hist_min: this.results['snowfall']['historical']['sfemin'],
+      sfe_hist_mean: this.results['snowfall']['historical']['sfemean'],
+      sfe_hist_max: this.results['snowfall']['historical']['sfemax'],
+      sfe_proj_min: this.results['snowfall']['projected']['sfemin'],
+      sfe_proj_mean: this.results['snowfall']['projected']['sfemean'],
+      sfe_proj_max: this.results['snowfall']['projected']['sfemax'],
     }
-  },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      // let url =
-      //   process.env.apiUrl +
-      //   '/mmm/snow/snowfallequivalent/hp/' +
-      //   this.latLng.lat +
-      //   '/' +
-      //   this.latLng.lng
-
-      // await this.$store.dispatch('report/apiFetch', url)
-
-      let place = this.placeName
-
-      this.plateResults = {
-        place: place,
-        sfe_hist_min: this.results['snowfall']['historical']['sfemin'],
-        sfe_hist_mean: this.results['snowfall']['historical']['sfemean'],
-        sfe_hist_max: this.results['snowfall']['historical']['sfemax'],
-        sfe_proj_min: this.results['snowfall']['projected']['sfemin'],
-        sfe_proj_mean: this.results['snowfall']['projected']['sfemean'],
-        sfe_proj_max: this.results['snowfall']['projected']['sfemax'],
-      }
-      // this.$store.commit('report/setResults', plateResults)
-    }
+    this.$store.commit('report/setPlateResults', {
+      plateResults: plateResults,
+      variable: 'snowfall',
+    })
   },
 }
 </script>

@@ -4,16 +4,7 @@
     <hr />
 
     <div id="report">
-      <!-- <div
-        v-if="
-          !$fetchState.pending &&
-            !$fetchState.error &&
-            Object.keys(results).length > 0
-        "
-      > -->
-      <h3 class="title is-3">
-        Heating degree days data for {{ plateResults.place }}
-      </h3>
+      <h3 class="title is-3">Heating degree days data for {{ placeName }}</h3>
 
       <HeatingDegreeDaysExplanation />
       <DataExplanation context="wrf" />
@@ -33,60 +24,60 @@
           <tr>
             <th scope="row">Historical (1979-2015)</th>
             <td>
-              {{ plateResults['historical']['ddmin']
+              {{ results.heating_degree_days['historical']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['historical']['ddmean']
+              {{ results.heating_degree_days['historical']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['historical']['ddmax']
+              {{ results.heating_degree_days['historical']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Early Century (2010-2039)</th>
             <td>
-              {{ plateResults['2010-2039']['ddmin']
+              {{ results.heating_degree_days['2010-2039']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2010-2039']['ddmean']
+              {{ results.heating_degree_days['2010-2039']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2010-2039']['ddmax']
+              {{ results.heating_degree_days['2010-2039']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040-2069)</th>
             <td>
-              {{ plateResults['2040-2069']['ddmin']
+              {{ results.heating_degree_days['2040-2069']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2040-2069']['ddmean']
+              {{ results.heating_degree_days['2040-2069']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2040-2069']['ddmax']
+              {{ results.heating_degree_days['2040-2069']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070-2099)</th>
             <td>
-              {{ plateResults['2070-2099']['ddmin']
+              {{ results.heating_degree_days['2070-2099']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2070-2099']['ddmean']
+              {{ results.heating_degree_days['2070-2099']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2070-2099']['ddmax']
+              {{ results.heating_degree_days['2070-2099']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
@@ -129,36 +120,12 @@ export default {
     DataExplanation,
     UnitWidget,
   },
-  data() {
-    return {
-      // Will have the results of the data fetch.
-      placeResults: null,
-    }
-  },
 
   computed: {
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
-  },
-  data() {
-    return {
-      plateResults: null,
-    }
-  },
-  watch: {
-    latLng: function () {
-      this.$fetch()
-    },
-  },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      this.plateResults = this.results['heating_degree_days']
-      this.plateResults.place = this.placeName
-    }
   },
 }
 </script>

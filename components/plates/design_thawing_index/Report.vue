@@ -3,9 +3,7 @@
     <CloseReportButton />
     <hr />
     <div id="report">
-      <h3 class="title is-3">
-        Design thawing index data for {{ plateResults.place }}
-      </h3>
+      <h3 class="title is-3">Design thawing index data for {{ placeName }}</h3>
 
       <DesignThawingIndexExplanation />
       <DataExplanation context="wrf" />
@@ -23,19 +21,22 @@
           <tr>
             <th scope="row">Historical (1980-2009)</th>
             <td>
-              {{ plateResults['historical']['di'] }}<UnitWidget unitType="dd" />
+              {{ results.design_thawing['historical']['di']
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040-2069)</th>
             <td>
-              {{ plateResults['2040-2069']['di'] }}<UnitWidget unitType="dd" />
+              {{ results.design_thawing['2040-2069']['di']
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070-2099)</th>
             <td>
-              {{ plateResults['2070-2099']['di'] }}<UnitWidget unitType="dd" />
+              {{ results.design_thawing['2070-2099']['di']
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
         </tbody>
@@ -77,32 +78,12 @@ export default {
     DataExplanation,
     UnitWidget,
   },
-  data() {
-    return {
-      // Will have the results of the data fetch.
-      plateResults: null,
-    }
-  },
 
   computed: {
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
-  },
-
-  watch: {
-    latLng: function () {
-      this.$fetch()
-    },
-  },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      this.plateResults = this.results['design_thawing']
-      this.plateResults.place = this.placeName
-    }
   },
 }
 </script>

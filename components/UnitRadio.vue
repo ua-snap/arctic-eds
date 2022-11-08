@@ -37,20 +37,11 @@ export default {
       if (this.radioUnits == 'metric') {
         if (this.storeRadioUnits != 'metric') {
           this.$store.commit('report/setMetric')
-          this.$store.commit('report/convertResults', {
-            type: this.type,
-            patterns: this.patterns,
-            variable: this.variable,
-          })
         }
       } else {
         this.$store.commit('report/setImperial')
-        this.$store.commit('report/convertResults', {
-          type: this.type,
-          patterns: this.patterns,
-          variable: this.variable,
-        })
       }
+      this.$store.commit('report/convertResults')
     },
   },
 }

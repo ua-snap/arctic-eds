@@ -4,16 +4,12 @@
     <hr />
 
     <div id="report">
-      <h3 class="title is-3">
-        Precipitation data for {{ plateResults.place }}
-      </h3>
+      <h3 class="title is-3">Precipitation data for {{ placeName }}</h3>
 
       <PrecipitationExplanation />
       <DataExplanation context="snap" />
 
       <h4 class="title is-4">Annual Precipitation Totals</h4>
-
-      <UnitRadio type="mm_in" variable="precipitation" />
 
       <table class="table">
         <thead>
@@ -28,60 +24,60 @@
           <tr>
             <th scope="row">Historical (1901-2015)</th>
             <td>
-              {{ plateResults.pr_hist_min
+              {{ results.precipitation.pr_hist_min
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
             <td>
-              {{ plateResults.pr_hist_mean
+              {{ results.precipitation.pr_hist_mean
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
             <td>
-              {{ plateResults.pr_hist_max
+              {{ results.precipitation.pr_hist_max
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
           </tr>
           <tr>
             <th scope="row">Early Century (2010-2039)</th>
             <td>
-              {{ plateResults.pr_2040_min
+              {{ results.precipitation.pr_2040_min
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
             <td>
-              {{ plateResults.pr_2040_mean
+              {{ results.precipitation.pr_2040_mean
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
             <td>
-              {{ plateResults.pr_2040_max
+              {{ results.precipitation.pr_2040_max
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040-2069)</th>
             <td>
-              {{ plateResults.pr_2070_min
+              {{ results.precipitation.pr_2070_min
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
             <td>
-              {{ plateResults.pr_2070_mean
+              {{ results.precipitation.pr_2070_mean
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
             <td>
-              {{ plateResults.pr_2070_max
+              {{ results.precipitation.pr_2070_max
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070-2099)</th>
             <td>
-              {{ plateResults.pr_2100_min
+              {{ results.precipitation.pr_2100_min
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
             <td>
-              {{ plateResults.pr_2100_mean
+              {{ results.precipitation.pr_2100_mean
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
             <td>
-              {{ plateResults.pr_2100_max
+              {{ results.precipitation.pr_2100_max
               }}<UnitWidget unitType="mm_in" type="light" />
             </td>
           </tr>
@@ -137,37 +133,32 @@ export default {
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
   },
-  data() {
-    return {
-      plateResults: null,
-    }
-  },
   watch: {
-    latLng: function () {
+    isPlaceDefined: function () {
       this.$fetch()
     },
   },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      this.plateResults = {
-        place: this.placeName,
-        pr_hist_min: this.results['precipitation']['historical']['prmin'],
-        pr_hist_mean: this.results['precipitation']['historical']['prmean'],
-        pr_hist_max: this.results['precipitation']['historical']['prmax'],
-        pr_2040_min: this.results['precipitation']['2010-2039']['prmin'],
-        pr_2040_mean: this.results['precipitation']['2010-2039']['prmean'],
-        pr_2040_max: this.results['precipitation']['2010-2039']['prmax'],
-        pr_2070_min: this.results['precipitation']['2040-2069']['prmin'],
-        pr_2070_mean: this.results['precipitation']['2040-2069']['prmean'],
-        pr_2070_max: this.results['precipitation']['2040-2069']['prmax'],
-        pr_2100_min: this.results['precipitation']['2070-2099']['prmin'],
-        pr_2100_mean: this.results['precipitation']['2070-2099']['prmean'],
-        pr_2100_max: this.results['precipitation']['2070-2099']['prmax'],
-      }
+  fetch() {
+    let plateResults = {
+      pr_hist_min: this.results['precipitation']['historical']['prmin'],
+      pr_hist_mean: this.results['precipitation']['historical']['prmean'],
+      pr_hist_max: this.results['precipitation']['historical']['prmax'],
+      pr_2040_min: this.results['precipitation']['2010-2039']['prmin'],
+      pr_2040_mean: this.results['precipitation']['2010-2039']['prmean'],
+      pr_2040_max: this.results['precipitation']['2010-2039']['prmax'],
+      pr_2070_min: this.results['precipitation']['2040-2069']['prmin'],
+      pr_2070_mean: this.results['precipitation']['2040-2069']['prmean'],
+      pr_2070_max: this.results['precipitation']['2040-2069']['prmax'],
+      pr_2100_min: this.results['precipitation']['2070-2099']['prmin'],
+      pr_2100_mean: this.results['precipitation']['2070-2099']['prmean'],
+      pr_2100_max: this.results['precipitation']['2070-2099']['prmax'],
     }
+    this.$store.commit('report/setPlateResults', {
+      plateResults: plateResults,
+      variable: 'precipitation',
+    })
   },
 }
 </script>

@@ -4,9 +4,7 @@
     <hr />
 
     <div id="report">
-      <h3 class="title is-3">
-        Freezing index data for {{ plateResults.place }}
-      </h3>
+      <h3 class="title is-3">Freezing index data for {{ placeName }}</h3>
 
       <FreezingIndexExplanation />
       <DataExplanation context="wrf" />
@@ -26,60 +24,60 @@
           <tr>
             <th scope="row">Historical (1979-2015)</th>
             <td>
-              {{ plateResults['historical']['ddmin']
+              {{ results.freezing_index['historical']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['historical']['ddmean']
+              {{ results.freezing_index['historical']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['historical']['ddmax']
+              {{ results.freezing_index['historical']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Early Century (2010-2039)</th>
             <td>
-              {{ plateResults['2010-2039']['ddmin']
+              {{ results.freezing_index['2010-2039']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2010-2039']['ddmean']
+              {{ results.freezing_index['2010-2039']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2010-2039']['ddmax']
+              {{ results.freezing_index['2010-2039']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040-2069)</th>
             <td>
-              {{ plateResults['2040-2069']['ddmin']
+              {{ results.freezing_index['2040-2069']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2040-2069']['ddmean']
+              {{ results.freezing_index['2040-2069']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2040-2069']['ddmax']
+              {{ results.freezing_index['2040-2069']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070-2099)</th>
             <td>
-              {{ plateResults['2070-2099']['ddmin']
+              {{ results.freezing_index['2070-2099']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2070-2099']['ddmean']
+              {{ results.freezing_index['2070-2099']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ plateResults['2070-2099']['ddmax']
+              {{ results.freezing_index['2070-2099']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
@@ -122,33 +120,12 @@ export default {
     DataExplanation,
     UnitWidget,
   },
-  data() {
-    return {
-      // Will have the results of the data fetch.
-      plateResults: null,
-    }
-  },
 
   computed: {
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
-  },
-
-  watch: {
-    latLng: function () {
-      this.$fetch()
-    },
-  },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      this.plateResults = this.results['freezing_index']
-
-      this.plateResults.place = this.placeName
-    }
   },
 }
 </script>
