@@ -116,15 +116,12 @@ export default {
       }
       return undefined
     },
-    reportIsVisible(state) {
-      console.log('Getting here')
-      return false
-      // if (state.isPlaceDefined()) {
-      //   return true
-      // } else {
-      //   return false
-      // }
-      // return state.reportIsVisible
+    reportIsVisible(state, getters) {
+      if (getters.isPlaceDefined) {
+        return true
+      } else {
+        return false
+      }
     },
     results(state) {
       return state.results
@@ -147,12 +144,9 @@ export default {
       // Ensure that report is in URL before attempting
       // to remove it.
       if (fullPath.includes('report')) {
-        let pathArray = fullPath.split('/report')
-
         // Router push to base URL of plate
         this.$router.push({
-          path: fullPath.split('/report')[0],
-          hash: 'map-search',
+          path: '',
         })
       }
       state.placeName = undefined

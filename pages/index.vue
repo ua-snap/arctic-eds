@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!this.reportIsVisible">
+    <div v-show="!reportIsVisible">
       <div class="mx-5 mb-5">
         <h2 class="title is-4 mt-3">
           Modern environmental data for science and engineering.
@@ -79,9 +79,9 @@
         </div>
       </div>
     </div>
-    <!-- <div v-if="reportIsVisible">
+    <div v-if="reportIsVisible">
       <FullReport />
-    </div> -->
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -109,9 +109,11 @@ export default {
     SearchControls,
     FullReport,
   },
-  ...mapGetters({
-    reportIsVisible: 'report/reportIsVisible',
-  }),
+  computed: {
+    ...mapGetters({
+      reportIsVisible: 'report/reportIsVisible',
+    }),
+  },
   created() {
     const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
     if (path) {
