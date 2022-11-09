@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="Object.keys(results.thawing_index).length != 0">
     <hr />
 
     <div id="report">

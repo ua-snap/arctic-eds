@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="Object.keys(results.physiography).length != 0">
     <hr />
 
     <div id="report">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="Object.keys(results.freezing_index).length != 0">
     <hr />
 
     <div id="report">

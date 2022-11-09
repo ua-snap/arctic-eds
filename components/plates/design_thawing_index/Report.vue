@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="Object.keys(results.design_thawing).length != 0">
     <hr />
     <div id="report">
       <h3 class="title is-3">Design thawing index data for {{ placeName }}</h3>

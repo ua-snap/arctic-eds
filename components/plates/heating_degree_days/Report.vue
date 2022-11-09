@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="Object.keys(results.heating_degree_days).length != 0">
     <hr />
 
     <div id="report">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="Object.keys(results.permafrost).length != 0">
     <hr />
 
     <div id="report">
