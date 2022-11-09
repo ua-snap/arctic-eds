@@ -80,11 +80,11 @@ export default {
     extendRoutes(routes, resolve) {
       routes.push({
         path: '/report/community/:communityId',
-        component: resolve(__dirname, 'pages/report'),
+        component: resolve(__dirname, 'pages/index'),
       })
       routes.push({
         path: '/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/report'),
+        component: resolve(__dirname, 'pages/index'),
       })
     },
   },

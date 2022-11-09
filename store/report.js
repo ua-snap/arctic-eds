@@ -117,7 +117,14 @@ export default {
       return undefined
     },
     reportIsVisible(state) {
-      return state.reportIsVisible
+      console.log('Getting here')
+      return false
+      // if (state.isPlaceDefined()) {
+      //   return true
+      // } else {
+      //   return false
+      // }
+      // return state.reportIsVisible
     },
     results(state) {
       return state.results

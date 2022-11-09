@@ -1,7 +1,7 @@
 <template>
   <div>
     <hr />
-
+    <LoadingStatus :state="state" />
     <div id="report">
       <div
         v-if="
@@ -49,6 +49,7 @@ export default {
   name: 'FullReport',
   components: {
     UnitRadio,
+    MiniMap,
     TemperatureReport,
     PrecipitationReport,
     SnowfallReport,

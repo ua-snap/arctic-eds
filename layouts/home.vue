@@ -59,6 +59,7 @@
 }
 </style>
 <script>
+import { mapGetters } from 'vuex'
 import HeaderBanner from '~/components/HeaderBanner'
 import Navbar from '~/components/Navbar'
 import BetaFeedback from '~/components/BetaFeedback'
@@ -66,5 +67,8 @@ import Footer from '~/components/Footer'
 
 export default {
   components: { HeaderBanner, Navbar, BetaFeedback, Footer },
+  ...mapGetters({
+    reportIsVisible: 'report/reportIsVisible',
+  }),
 }
 </script>
