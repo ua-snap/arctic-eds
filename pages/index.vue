@@ -21,7 +21,6 @@
       </div>
     </div>
     <SearchControls />
-
     <div class="px-5 pb-6">
       <h3 class="is-size-3">Climate</h3>
       <hr class="mt-0 mb-4" />
@@ -155,7 +154,7 @@
     border: none;
     font-weight: 600;
   }
-  .modal-content {
+  <<<<<<< HEAD .modal-content {
     max-width: 100% !important;
     max-height: 100%;
   }
@@ -218,11 +217,19 @@
 import { mapGetters } from 'vuex'
 import Map from '~/components/Map'
 import mapContent from '~/components/map_content'
+=======
+}
+</style>
+<script>
+import Map from '~/components/Map'
+import layers from '~/components/layers'
+>>>>>>> q4_revamp
 import SearchControls from '~/components/SearchControls'
 
 export default {
   name: 'HomePage',
   layout: 'home',
+<<<<<<< HEAD
   computed: {
     ...mapGetters({
       selectedMap: 'map/selectedMap',
@@ -231,22 +238,28 @@ export default {
       return mapContent.titles[this.selectedMap]
     },
   },
+=======
+>>>>>>> q4_revamp
   components: {
     Map,
     SearchControls,
   },
+<<<<<<< HEAD
   data() {
     return {
       mapOpen: false,
       temperatureActive: false,
     }
   },
+=======
+>>>>>>> q4_revamp
   created() {
     const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
     if (path) {
       this.$router.push({ path: path })
     }
   },
+<<<<<<< HEAD
   methods: {
     showMap(event, mapId) {
       this.$store.commit('map/selectMap', mapId)
@@ -257,6 +270,18 @@ export default {
         })
       })
     },
+=======
+  mounted() {
+    Object.keys(layers.variables).forEach(layerVariable => {
+      let defaultLayer = _.filter(layers.variables[layerVariable], layer => {
+        return layer['default']
+      })[0]
+      this.$store.commit('map/toggleLayer', {
+        mapId: layerVariable,
+        layer: defaultLayer,
+      })
+    })
+>>>>>>> q4_revamp
   },
 }
 </script>

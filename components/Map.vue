@@ -14,11 +14,11 @@ export default {
     }),
   },
   mounted() {
-    this.$store.commit('map/create')
+    this.$store.commit('map/create', this.mapId)
   },
   destroyed() {
-    this.$store.commit('map/destroy')
-    this.$store.commit('report/destroy')
+    this.$store.commit('map/destroy', this.mapId)
+    this.$store.commit('report/destroy', this.mapId)
   },
 }
 </script>
