@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="section">
     <hr />
     <LoadingStatus :state="state" />
     <div id="report">
@@ -27,7 +27,7 @@
         <ThawingIndexReport />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
