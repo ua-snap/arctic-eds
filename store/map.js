@@ -1,14 +1,15 @@
 import _ from 'lodash'
 import ak from '!raw-loader!../assets/alaska.geojson'
 const akJson = JSON.parse(ak)
+import mapContent from '~/components/map_content'
 
 // This needs to be outside of the Store or there's problems
 // because Leaflet mutates the state of the map, and Vuex
 // throws a "Don't do that" error; plus, having these objects
 // within the scope of the Nuxt/Vue reactivity decoration causes
 // unpredictable buggy behavior ("too much recursion")
-var maps = {}
-var layerObject
+var map
+var legendControl
 
 function getBaseMapAndLayers() {
   var baseLayer = new L.tileLayer.wms(process.env.geoserverUrl, {
@@ -37,7 +38,7 @@ function getBaseMapAndLayers() {
     }
   )
 
-  // // Set maximum bounds of main map
+  // Set maximum bounds of main map
   let southWest = L.latLng('50', '-175')
   let northEast = L.latLng('65', '-98')
   let bounds = L.latLngBounds(southWest, northEast)
@@ -61,70 +62,117 @@ function getBaseMapAndLayers() {
   return config
 }
 
+function buildLayer(layer) {
+  let layerConfiguration = {
+    transparent: true,
+    format: 'image/png',
+    version: '1.3.0',
+    layers: layer.wmsLayerName,
+    id: layer.id,
+  }
+
+  if (layer.style) {
+    layerConfiguration.styles = layer.style
+  }
+
+  if (layer.rasdamanConfiguration) {
+    layerConfiguration = {
+      ...layerConfiguration,
+      ...layer.rasdamanConfiguration,
+    }
+  }
+
+  let wmsUrl =
+    layer.source == 'rasdaman'
+      ? process.env.rasdamanUrl
+      : process.env.geoserverUrl
+
+  return L.tileLayer.wms(wmsUrl, layerConfiguration)
+}
+
 export default {
   state() {
     return {
-      // Layer definition which is active on the map.
-      layer: undefined,
+      selectedMap: undefined,
+      selectedLayer: undefined,
     }
   },
 
   getters: {
-    getActiveLayer(state) {
-      return state.layer
+    selectedMap(state) {
+      return state.selectedMap
+    },
+    selectedLayer(state) {
+      return state.selectedLayer
     },
   },
 
   mutations: {
-    create(state, mapId) {
-      maps[mapId] = L.map(mapId, getBaseMapAndLayers())
-      new L.Control.Zoom({ position: 'topright' }).addTo(maps[mapId])
+    create(state) {
+      map = L.map('map', getBaseMapAndLayers())
+      new L.Control.Zoom().addTo(map)
     },
-    destroy(state, mapId) {
-      maps[mapId].remove()
-      state.layer = undefined
+    destroy(state) {
+      map.remove()
     },
-    toggleLayer(state, payload) {
-      let mapId = payload.mapId
-      let layer = payload.layer
-      // Remove existing layer: right now, we only
-      // want one layer to be visible on any plate in the Atlas.
-      // Need to test explicitly for the existence of the
-      // layerObject because this code can get run while
-      // the full DOM is hydrating, see MapLayer / mounted().
-      if (state.layer && layerObject) {
-        maps[mapId].removeLayer(layerObject)
-      }
+    selectMap(state, selectedMap) {
+      state.selectedMap = selectedMap
+    },
+    selectLayer(state, selectedLayer) {
+      state.selectedLayer = selectedLayer
+    },
+    addLayers(state, layers) {
+      let layerObjs = {}
+      let defaultLayer
 
-      // Add to map!
-      state.layer = layer
-      let layerConfiguration = {
-        transparent: true,
-        format: 'image/png',
-        version: '1.3.0',
-        layers: layer.wmsLayerName,
-        id: layer.id,
-      }
+      layers.forEach(layer => {
+        let layerObj = buildLayer(layer)
 
-      if (layer.style) {
-        layerConfiguration.styles = layer.style
-      }
-
-      if (layer.rasdamanConfiguration) {
-        layerConfiguration = {
-          ...layerConfiguration,
-          ...layer.rasdamanConfiguration,
+        if (layer['default']) {
+          defaultLayer = layerObj
         }
+
+        layerObjs[layer.title] = layerObj
+      })
+
+      map.on('baselayerchange', e => {
+        this.commit('map/selectLayer', e.layer.options.id)
+        this.commit('map/addLegend')
+      })
+
+      let layerControl = L.control.layers(layerObjs).addTo(map)
+      map.addLayer(defaultLayer)
+      this.commit('map/addLegend')
+    },
+    addLegend(state) {
+      if (legendControl) {
+        legendControl.remove()
+      }
+      legendControl = L.control({ position: 'bottomleft' })
+      legendControl.onAdd = map => {
+        var div = L.DomUtil.create('div', 'info legend')
+
+        let legendItems
+        if (_.isArray(mapContent.legends[state.selectedMap])) {
+          legendItems = mapContent.legends[state.selectedMap]
+        } else {
+          legendItems =
+            mapContent.legends[state.selectedMap][state.selectedLayer]
+        }
+
+        div.innerHTML = ''
+        legendItems.forEach(legendItem => {
+          div.innerHTML +=
+            '<div class="legend-item"><div class="legend-swatch" style="background-color: ' +
+            legendItem['color'] +
+            ';"></div> ' +
+            legendItem['label'] +
+            '</div>'
+        })
+        return div
       }
 
-      let wmsUrl =
-        layer.source == 'rasdaman'
-          ? process.env.rasdamanUrl
-          : process.env.geoserverUrl
-
-      layerObject = L.tileLayer.wms(wmsUrl, layerConfiguration)
-
-      maps[mapId].addLayer(layerObject)
+      legendControl.addTo(map)
     },
   },
 }
