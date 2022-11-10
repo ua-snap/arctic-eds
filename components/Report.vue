@@ -73,12 +73,10 @@ export default {
       latLng: 'report/latLng',
     }),
   },
-
-  watch: {
-    latLng: function () {
-      this.$fetch()
-    },
+  mounted() {
+    this.$fetch()
   },
+
   async fetch() {
     await this.$store.dispatch('report/fetchPlaces')
 
@@ -95,5 +93,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped></style>

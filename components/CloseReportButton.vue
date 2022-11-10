@@ -16,7 +16,7 @@ export default {
   name: 'CloseReportButton',
   methods: {
     close() {
-      this.$store.commit('report/closeReport', this.$route.fullPath)
+      this.$store.commit('report/closeReport')
     },
   },
 }
