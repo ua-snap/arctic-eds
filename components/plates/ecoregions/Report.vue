@@ -1,13 +1,10 @@
 <template>
-  <div>
-    <CloseReportButton />
+  <div v-if="Object.keys(results.physiography).length != 0">
     <hr />
 
     <div id="report">
-      <div v-if="!$fetchState.pending & !$fetchState.error">
-        <h3 class="title is-3">Ecoregion for {{ results.place }}</h3>
-        <h4 class="subtitle is-3">{{ results.name }}</h4>
-      </div>
+      <h3 class="title is-3">Ecoregion for {{ placeName }}</h3>
+      <h4 class="subtitle is-3">{{ results.physiography.name }}</h4>
     </div>
   </div>
 </template>
@@ -17,41 +14,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'EcoregionsReport',
-  data() {
-    return {
-      // Will have the results of the data fetch.
-      results: {},
-    }
-  },
 
   computed: {
-    state: function() {
-      return this.$fetchState
-    },
     ...mapGetters({
+      results: 'report/results',
       placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
-  },
-
-  watch: {
-    latLng: function() {
-      this.$fetch()
-    },
-  },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      this.results = await this.$axios.$get(
-        process.env.apiUrl +
-          '/physiography/point/' +
-          this.latLng.lat +
-          '/' +
-          this.latLng.lng
-      )
-
-      this.results.place = this.placeName
-    }
   },
 }
 </script>

@@ -81,6 +81,15 @@ export default {
 
   // Router customizations
   router: {
-    extendRoutes(routes, resolve) {},
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/report/community/:communityId',
+        component: resolve(__dirname, 'pages/index'),
+      })
+      routes.push({
+        path: '/report/:lat/:lng',
+        component: resolve(__dirname, 'pages/index'),
+      })
+    },
   },
 }
