@@ -1,5 +1,5 @@
 <template>
-  <div class="content content-clamp" :class="{ 'is-size-5': !legend }">
+  <div class="content content-clamp is-size-5">
     <p>
       Historically, Arctic regions had no months with mean monthly temperatures
       greater than 50&deg;F and had at least one month with a mean temperature

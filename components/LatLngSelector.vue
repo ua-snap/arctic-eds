@@ -69,7 +69,6 @@ export default {
             this.latLng.lat.toFixed(4) +
             '/' +
             this.latLng.lng.toFixed(4),
-          hash: '#report',
         })
       }
     },
