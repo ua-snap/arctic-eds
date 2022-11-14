@@ -33,10 +33,6 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.place-selector--wrapper * {
-  z-index: 10000;
-}
-
 .search-item {
   font-weight: 600;
   white-space: normal;
@@ -89,7 +85,6 @@ export default {
       if (selected) {
         this.$router.push({
           path: this.$route.path + '/report/community/' + selected.id,
-          hash: '#report',
         })
       }
     },

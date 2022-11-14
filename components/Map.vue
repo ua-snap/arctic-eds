@@ -1,27 +1,24 @@
 <template>
-  <div>
-    <div id="map"></div>
-  </div>
+  <div id="map"></div>
 </template>
-
-<style lang="scss" scoped>
-#map {
-  height: 100vh;
-  width: 100%;
-}
-</style>
 
 <script>
 import _ from 'lodash'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Map',
+  computed: {
+    ...mapGetters({
+      selectedMap: 'map/selectedMap',
+    }),
+  },
   mounted() {
-    this.$store.commit('map/create')
+    this.$store.commit('map/create', this.mapId)
   },
   destroyed() {
-    this.$store.commit('map/destroy')
-    this.$store.commit('report/destroy')
+    this.$store.commit('map/destroy', this.mapId)
+    this.$store.commit('report/destroy', this.mapId)
   },
 }
 </script>
