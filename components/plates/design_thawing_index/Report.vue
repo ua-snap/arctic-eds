@@ -1,80 +1,74 @@
 <template>
-  <div>
-    <CloseReportButton />
+  <div v-if="Object.keys(results.design_thawing).length != 0">
     <hr />
-    <LoadingStatus :state="state" />
     <div id="report">
-      <div
-        v-if="
-          !$fetchState.pending &&
-          !$fetchState.error &&
-          Object.keys(results).length > 0
-        "
-      >
-        <h3 class="title is-3">
-          Design thawing index data for {{ results.place }}
-        </h3>
+      <h3 class="title is-3">Design thawing index data for {{ placeName }}</h3>
 
-        <MiniMap />
+      <DesignThawingIndexExplanation />
+      <DataExplanation context="wrf" />
 
-        <DesignThawingIndexExplanation />
-        <DataExplanation context="wrf" />
+      <h4 class="title is-4">Design Thawing Index</h4>
 
-        <div class="content content-clamp is-size-5">
-          <p>
-            For each of these two models (both RCP 8.5), we collected every
-            annual (30) thawing index value for this location in the time era
-            indicated. The three warmest years (greatest thawing index values)
-            were identified. The design thawing index value for each model was
-            computed by finding the mean of those three values. The values you
-            see here are the average of the design thawing index values from
-            each model.
-          </p>
-        </div>
-
-        <h4 class="title is-4">Design Thawing Index</h4>
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Mean</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Historical (1980-2009)</th>
-              <td>{{ results['historical']['di'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Mid Century (2040-2069)</th>
-              <td>{{ results['2040-2069']['di'] }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Late Century (2070-2099)</th>
-              <td>{{ results['2070-2099']['di'] }}</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4 class="title is-6">Access to Data</h4>
-        <div class="content">
-          <p>Thawing index data was calculated from the following:</p>
-          <ul>
-            <li>
-              <a
-                href="http://ckan.snap.uaf.edu/dataset/historical-and-projected-dynamically-downscaled-climate-data-for-the-state-of-alaska-and-surrou"
-                target="_blank"
-                >Historical and Projected Climate Products</a
-              >
-            </li>
-          </ul>
-        </div>
-        <DownloadCsvButton
-          text="Download design thawing index data as CSV"
-          endpoint="design_index/thawing/all/point"
-          class="mt-3 mb-5"
-        />
+      <div class="content content-clamp is-size-5">
+        <p>
+          For each of these two models (both RCP 8.5), we collected every annual
+          (30) thawing index value for this location in the time era indicated.
+          The three warmest years (greatest thawing index values) were
+          identified. The design thawing index value for each model was computed
+          by finding the mean of those three values. The values you see here are
+          the average of the design thawing index values from each model.
+        </p>
       </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Mean</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Historical (1980-2009)</th>
+            <td>
+              {{ results.design_thawing['historical']['di']
+              }}<UnitWidget unitType="dd" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mid Century (2040-2069)</th>
+            <td>
+              {{ results.design_thawing['2040-2069']['di']
+              }}<UnitWidget unitType="dd" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late Century (2070-2099)</th>
+            <td>
+              {{ results.design_thawing['2070-2099']['di']
+              }}<UnitWidget unitType="dd" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="title is-6">Access to Data</h4>
+      <div class="content">
+        <p>Thawing index data was calculated from the following:</p>
+        <ul>
+          <li>
+            <a
+              href="http://ckan.snap.uaf.edu/dataset/historical-and-projected-dynamically-downscaled-climate-data-for-the-state-of-alaska-and-surrou"
+              target="_blank"
+              >Historical and Projected Climate Products</a
+            >
+          </li>
+        </ul>
+      </div>
+      <DownloadCsvButton
+        text="Download design thawing index data as CSV"
+        endpoint="design_index/thawing/all/point"
+        class="mt-3 mb-5"
+      />
     </div>
   </div>
 </template>
@@ -82,55 +76,24 @@
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import MiniMap from '~/components/MiniMap'
-import LoadingStatus from '~/components/LoadingStatus'
 import DesignThawingIndexExplanation from '~/components/plates/design_thawing_index/Explanation'
 import DataExplanation from '~/components/DataExplanation'
+import UnitWidget from '~/components/UnitWidget'
 
 export default {
   name: 'DesignThawingIndexReport',
   components: {
     DownloadCsvButton,
-    MiniMap,
-    LoadingStatus,
     DesignThawingIndexExplanation,
     DataExplanation,
-  },
-  data() {
-    return {
-      // Will have the results of the data fetch.
-      results: {},
-    }
+    UnitWidget,
   },
 
   computed: {
-    state: function () {
-      return this.$fetchState
-    },
     ...mapGetters({
+      results: 'report/results',
       placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      latLng: 'report/latLng',
     }),
-  },
-
-  watch: {
-    latLng: function () {
-      this.$fetch()
-    },
-  },
-  async fetch() {
-    if (this.isPlaceDefined) {
-      this.results = await this.$axios.$get(
-        process.env.apiUrl +
-          '/design_index/thawing/hp/point/' +
-          this.latLng.lat +
-          '/' +
-          this.latLng.lng
-      )
-
-      this.results.place = this.placeName
-    }
   },
 }
 </script>
