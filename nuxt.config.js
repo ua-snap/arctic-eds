@@ -36,10 +36,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/scss/main.scss',
-    '@fortawesome/fontawesome-svg-core/styles.css',
-  ],
+  css: ['@/assets/scss/main.scss'],
 
   env: {
     geoserverUrl:
@@ -54,7 +51,6 @@ export default {
     '~/plugins/leaflet.client.js',
     '~/plugins/vuex-router-sync',
     '~/plugins/gtag',
-    '~/plugins/fontawesome.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

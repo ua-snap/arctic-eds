@@ -462,4 +462,17 @@ export default {
     geology: 'Geology',
     permafrost: 'Permafrost',
   },
+  blurbs: {
+    precipitation: 'Placeholder blurb for Precipitation map',
+    snowfall: 'Placeholder blurb for Snowfall map',
+    temperature: 'Placeholder blurb for Temperature map',
+    design_freezing_index: 'Placeholder blurb for Design Freezing Index map',
+    design_thawing_index: 'Placeholder blurb for Design Thawing Index map',
+    freezing_index: 'Placeholder blurb for Freezing Index map',
+    thawing_index: 'Placeholder blurb for Thawing Index map',
+    heating_degree_days: 'Placeholder blurb for Heating Degree Days map',
+    ecoregions: 'Placeholder blurb for Ecoregions map',
+    geology: 'Placeholder blurb for Geology map',
+    permafrost: 'Placeholder blurb for Permafrost map',
+  },
 }

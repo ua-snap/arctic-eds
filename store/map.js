@@ -9,6 +9,7 @@ import mapContent from '~/components/map_content'
 // within the scope of the Nuxt/Vue reactivity decoration causes
 // unpredictable buggy behavior ("too much recursion")
 var map
+var layerObject
 var legendControl
 
 function getBaseMapAndLayers() {
@@ -110,7 +111,7 @@ export default {
   mutations: {
     create(state) {
       map = L.map('map', getBaseMapAndLayers())
-      new L.Control.Zoom().addTo(map)
+      new L.Control.Zoom({ position: 'topright' }).addTo(map)
     },
     destroy(state) {
       map.remove()
@@ -135,10 +136,10 @@ export default {
         layerObjs[layer.title] = layerObj
       })
 
-      map.on('baselayerchange', e => {
-        this.commit('map/selectLayer', e.layer.options.id)
-        this.commit('map/addLegend')
-      })
+      // map.on('baselayerchange', e => {
+      //   this.commit('map/selectLayer', e.layer.options.id)
+      //   this.commit('map/addLegend')
+      // })
 
       let layerControl = L.control.layers(layerObjs).addTo(map)
       map.addLayer(defaultLayer)
@@ -157,7 +158,7 @@ export default {
           legendItems = mapContent.legends[state.selectedMap]
         } else {
           legendItems =
-            mapContent.legends[state.selectedMap][state.selectedLayer]
+            mapContent.legends[state.selectedMap][state.selectedLayer.id]
         }
 
         div.innerHTML = ''
@@ -173,6 +174,49 @@ export default {
       }
 
       legendControl.addTo(map)
+    },
+    toggleLayer(state, layer) {
+      // Remove existing layer: right now, we only
+      // want one layer to be visible on any plate in the Atlas.
+      // Need to test explicitly for the existence of the
+      // layerObject because this code can get run while
+      // the full DOM is hydrating, see MapLayer / mounted().
+      if (state.selectedLayer && layerObject) {
+        map.removeLayer(layerObject)
+      }
+
+      // Add to map!
+      state.layer = layer
+      let layerConfiguration = {
+        transparent: true,
+        format: 'image/png',
+        version: '1.3.0',
+        layers: layer.wmsLayerName,
+        id: layer.id,
+      }
+
+      if (layer.style) {
+        layerConfiguration.styles = layer.style
+      }
+
+      if (layer.rasdamanConfiguration) {
+        layerConfiguration = {
+          ...layerConfiguration,
+          ...layer.rasdamanConfiguration,
+        }
+      }
+
+      let wmsUrl =
+        layer.source == 'rasdaman'
+          ? process.env.rasdamanUrl
+          : process.env.geoserverUrl
+
+      layerObject = L.tileLayer.wms(wmsUrl, layerConfiguration)
+
+      map.addLayer(layerObject)
+
+      this.commit('map/selectLayer', layer)
+      this.commit('map/addLegend')
     },
   },
 }

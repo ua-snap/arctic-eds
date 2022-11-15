@@ -2,6 +2,27 @@
   <div id="map"></div>
 </template>
 
+<style lang="scss" scoped>
+::v-deep {
+  .legend {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    .legend-item {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+    .legend-swatch {
+      display: inline-block;
+      border: 1px solid #666;
+      margin: 5px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+</style>
+
 <script>
 import _ from 'lodash'
 import { mapGetters } from 'vuex'
@@ -14,11 +35,11 @@ export default {
     }),
   },
   mounted() {
-    this.$store.commit('map/create', this.mapId)
+    this.$store.commit('map/create')
   },
   destroyed() {
-    this.$store.commit('map/destroy', this.mapId)
-    this.$store.commit('report/destroy', this.mapId)
+    this.$store.commit('map/destroy')
+    this.$store.commit('report/destroy')
   },
 }
 </script>

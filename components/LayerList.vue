@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layer-list-wrapper">
     <ul>
       <li v-for="layer in layers">
         <MapLayer v-bind:key="layer.id" v-bind:layer="layer" />
@@ -9,6 +9,18 @@
 </template>
 
 <style lang="scss" scoped>
+.layer-list-wrapper {
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  overflow-y: auto;
+
+  // Offset height by:
+  // 42px for the map title
+  // 32px for the map blurb
+  // 30px for the top (15px) + bottom (15px) margin around modal
+  height: calc(100vh - 42px - 32px - 30px);
+}
+
 ul {
   margin: 0 1rem 1rem;
 
