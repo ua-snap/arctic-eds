@@ -136,11 +136,6 @@ export default {
         layerObjs[layer.title] = layerObj
       })
 
-      // map.on('baselayerchange', e => {
-      //   this.commit('map/selectLayer', e.layer.options.id)
-      //   this.commit('map/addLegend')
-      // })
-
       let layerControl = L.control.layers(layerObjs).addTo(map)
       map.addLayer(defaultLayer)
       this.commit('map/addLegend')
