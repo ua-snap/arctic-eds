@@ -6,7 +6,7 @@
       <h3 class="title is-3">Snowfall Equivalent data for {{ placeName }}</h3>
 
       <SnowfallExplanation />
-      <DataExplanation context="snap" />
+      <DataExplanation context="snowfall" />
 
       <h4 class="title is-4">Annual Snowfall Equivalent Totals</h4>
 
