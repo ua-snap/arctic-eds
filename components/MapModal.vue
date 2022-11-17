@@ -50,6 +50,11 @@
   .layers {
     width: 300px;
   }
+  @media (min-width: 1408px) {
+    .layers {
+      width: 33%;
+    }
+  }
 }
 </style>
 
