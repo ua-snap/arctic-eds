@@ -58,7 +58,6 @@ export default {
   state() {
     return {
       places: undefined,
-      reportIsVisible: false,
       results: {},
       units: 'imperial',
     }
@@ -134,28 +133,18 @@ export default {
   mutations: {
     destroy(state) {
       state.placeName = undefined
-      state.reportIsVisible = false
       state.results = {}
     },
-    openReport(state) {
-      state.reportIsVisible = true
-    },
-    closeReport(state, fullPath) {
+    closeReport(state) {
       // Ensure that report is in URL before attempting
       // to remove it.
-      if (fullPath.includes('report')) {
-        // Router push to base URL of plate
-        this.$router.push({
-          path: '',
-        })
-      }
+
+      this.$router.push({
+        path: '/',
+      })
+
       state.placeName = undefined
-      state.reportIsVisible = false
       state.results = {}
-      state.latLng = {
-        lat: undefined,
-        lng: undefined,
-      }
     },
     convertResults(state) {
       // Converts all convertible units at the same time for shared report

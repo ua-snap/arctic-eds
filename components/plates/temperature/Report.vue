@@ -116,7 +116,6 @@
         endpoint="mmm/temperature/july/all"
         class="mt-3 mb-5"
       />
-      <!-- </div> -->
     </div>
   </div>
 </template>

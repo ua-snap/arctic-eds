@@ -65,7 +65,7 @@ export default {
         this.$router.push({
           path:
             this.$route.path +
-            '/report/' +
+            'report/' +
             this.latLng.lat.toFixed(4) +
             '/' +
             this.latLng.lng.toFixed(4),
