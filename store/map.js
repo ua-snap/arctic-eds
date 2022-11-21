@@ -40,14 +40,14 @@ function getBaseMapAndLayers() {
   )
 
   // Set maximum bounds of main map
-  let southWest = L.latLng('50', '-175')
-  let northEast = L.latLng('65', '-98')
+  let southWest = L.latLng('51.2', '155')
+  let northEast = L.latLng('63.5', '-132.4')
   let bounds = L.latLngBounds(southWest, northEast)
 
   // Map base configuration
   var config = {
     zoom: 1,
-    minZoom: 0,
+    minZoom: 1,
     maxZoom: 6,
     center: [64.7, -155],
     scrollWheelZoom: false,
@@ -110,7 +110,11 @@ export default {
 
   mutations: {
     create(state) {
-      map = L.map('map', getBaseMapAndLayers())
+      let mapConfig = getBaseMapAndLayers()
+      map = L.map('map', getBaseMapAndLayers(mapConfig))
+      map.on('drag', function () {
+        map.panInsideBounds(mapConfig.maxBounds, { animate: false })
+      })
       new L.Control.Zoom({ position: 'topright' }).addTo(map)
     },
     destroy(state) {
