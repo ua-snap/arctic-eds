@@ -35,7 +35,7 @@ export default {
   computed: {
     active() {
       // Check if the layer is active in the store
-      let activeLayer = this.$store.getters['map/getActiveLayer']
+      let activeLayer = this.$store.getters['map/selectedLayer']
       if (activeLayer) {
         return activeLayer.id === this.layer.id
       }

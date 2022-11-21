@@ -137,19 +137,7 @@
             </div>
           </div>
         </div>
-
-        <b-modal v-model="mapOpen" class="map-modal">
-          <div class="map-content">
-            <h4 class="is-size-4 pt-2 pl-3 map-title">
-              {{ mapTitle }}
-              <font-awesome-icon
-                icon="fa-solid fa-circle-info"
-                class="info-icon"
-              />
-            </h4>
-            <Map class="map" v-if="this.selectedMap != undefined" />
-          </div>
-        </b-modal>
+        <MapModal />
       </div>
       <div v-if="reportIsVisible">
         <FullReport />
@@ -165,69 +153,17 @@
     border: none;
     font-weight: 600;
   }
-  .modal-content {
-    max-width: 100% !important;
-    max-height: 100%;
-  }
-  .modal-close {
-    top: 24px;
-    right: 27px;
-    background-color: rgba(10, 10, 10, 0.3);
-    &:hover {
-      background-color: rgba(10, 10, 10, 0.6);
-    }
-  }
-  .map-modal {
-    .map-content {
-      background-color: #ffffff;
-      width: calc(100vw - 30px);
-      height: calc(100vh - 30px);
-      margin: 15px;
-      .map-title {
-        height: 50px;
-        padding-top: 9px;
-      }
-      .map {
-        height: calc(100vh - 80px);
-      }
-    }
-  }
-  .info-icon {
-    margin-left: 8px;
-    font-size: 1.2rem;
-    color: rgba(10, 10, 10, 0.3);
-    &:hover {
-      color: rgba(10, 10, 10, 0.6);
-    }
-  }
   .map-thumbnail {
     cursor: pointer;
     &:hover {
       opacity: 0.8;
     }
   }
-  .legend {
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    .legend-item {
-      display: flex;
-      align-items: center;
-      font-size: 1.1rem;
-    }
-    .legend-swatch {
-      display: inline-block;
-      border: 1px solid #666;
-      margin: 5px;
-      width: 20px;
-      height: 20px;
-    }
-  }
 }
 </style>
 <script>
 import { mapGetters } from 'vuex'
-import Map from '~/components/Map'
-import mapContent from '~/components/map_content'
+import MapModal from '~/components/MapModal'
 import SearchControls from '~/components/SearchControls'
 import FullReport from '~/components/Report'
 
@@ -235,7 +171,7 @@ export default {
   name: 'HomePage',
   layout: 'home',
   components: {
-    Map,
+    MapModal,
     SearchControls,
     FullReport,
   },
@@ -244,15 +180,6 @@ export default {
       selectedMap: 'map/selectedMap',
       reportIsVisible: 'report/reportIsVisible',
     }),
-    mapTitle() {
-      return mapContent.titles[this.selectedMap]
-    },
-  },
-
-  data() {
-    return {
-      mapOpen: false,
-    }
   },
   created() {
     const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
@@ -263,12 +190,6 @@ export default {
   methods: {
     showMap(event, mapId) {
       this.$store.commit('map/selectMap', mapId)
-      setTimeout(() => {
-        this.mapOpen = true
-        setTimeout(() => {
-          this.$store.commit('map/addLayers', mapContent.layers[mapId])
-        })
-      })
     },
   },
 }
