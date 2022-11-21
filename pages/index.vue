@@ -138,9 +138,9 @@
           </div>
         </div>
         <MapModal />
-        <div v-if="reportIsVisible">
-          <FullReport />
-        </div>
+      </div>
+      <div v-if="reportIsVisible">
+        <FullReport />
       </div>
     </client-only>
   </div>
