@@ -151,9 +151,8 @@ export default {
       legendControl = L.control({ position: 'bottomleft' })
       legendControl.onAdd = map => {
         var div = L.DomUtil.create('div', 'info legend')
-        console.log(mapContent.layers[state.selectedMap])
         let mapLayers = mapContent.layers[state.selectedMap]
-        let currentLayer = _.find(mapLayers, { id: state.selectedLayer })
+        let currentLayer = _.find(mapLayers, { id: state.selectedLayer.id })
         let legend = currentLayer.legend
         let legendItems = mapContent.legends[legend]
 
