@@ -25,115 +25,54 @@
 
         <SearchControls />
         <div class="px-5 pb-6">
-          <h3 class="is-size-3">Climate</h3>
-          <hr class="mt-0 mb-4" />
           <div class="columns is-multiline">
-            <div class="column is-one-third">
+            <div class="column is-half">
+              <h3 class="is-size-4">Precipitation</h3>
+              <p class="category-subtitle mb-1">
+                Mean annual precipitation and snowfall
+              </p>
               <img
                 src="~/assets/images/map_thumbnails/precipitation.png"
                 alt="Precipitation map thumbnail"
                 class="map-thumbnail"
                 @click="showMap($event, 'precipitation')"
-              /><br />
-              Precipitation
+              />
             </div>
-            <div class="column is-one-third">
-              <img
-                src="~/assets/images/map_thumbnails/snowfall.png"
-                alt="Snowfall map thumbnail"
-                class="map-thumbnail"
-                @click="showMap($event, 'snowfall')"
-              /><br />
-              Snowfall
-            </div>
-            <div class="column is-one-third">
+            <div class="column is-half">
+              <h3 class="is-size-4">Temperature</h3>
+              <p class="category-subtitle mb-1">
+                Average, minimum, and maximum temperatures
+              </p>
               <img
                 src="~/assets/images/map_thumbnails/temperature.png"
                 alt="Temperature map thumbnail"
                 class="map-thumbnail"
                 @click="showMap($event, 'temperature')"
-              /><br />
-              Temperature
+              />
             </div>
-          </div>
-          <h3 class="is-size-3">Engineering</h3>
-          <hr class="mt-0 mb-4" />
-          <div class="columns is-multiline">
-            <div class="column is-one-third">
+            <div class="column is-half">
+              <h3 class="is-size-4">Temperature Indices</h3>
+              <p class="category-subtitle mb-1">
+                Heating degree days, freezing/thawing degree days, and more
+              </p>
               <img
-                src="~/assets/images/map_thumbnails/design_freezing_index.png"
+                src="~/assets/images/map_thumbnails/temperature_indices.png"
                 alt="Design Freezing Index map thumbnail"
                 class="map-thumbnail"
-                @click="showMap($event, 'design_freezing_index')"
-              /><br />
-              Design Freezing Index
+                @click="showMap($event, 'temperature_indices')"
+              />
             </div>
-            <div class="column is-one-third">
-              <img
-                src="~/assets/images/map_thumbnails/design_thawing_index.png"
-                alt="Design Thawing Index map thumbnail"
-                class="map-thumbnail"
-                @click="showMap($event, 'design_thawing_index')"
-              /><br />
-              Design Thawing Index
-            </div>
-            <div class="column is-one-third">
-              <img
-                src="~/assets/images/map_thumbnails/freezing_index.png"
-                alt="Freezing Index map thumbnail"
-                class="map-thumbnail"
-                @click="showMap($event, 'freezing_index')"
-              /><br />
-              Freezing Index
-            </div>
-            <div class="column is-one-third">
-              <img
-                src="~/assets/images/map_thumbnails/thawing_index.png"
-                alt="Thawing Index map thumbnail"
-                class="map-thumbnail"
-                @click="showMap($event, 'thawing_index')"
-              /><br />
-              Thawing Index
-            </div>
-            <div class="column is-one-third">
-              <img
-                src="~/assets/images/map_thumbnails/heating_degree_days.png"
-                alt="Heating Degree Days map thumbnail"
-                class="map-thumbnail"
-                @click="showMap($event, 'heating_degree_days')"
-              /><br />
-              Heating Degree Days
-            </div>
-          </div>
-          <h3 class="is-size-3">Physiography</h3>
-          <hr class="mt-0 mb-4" />
-          <div class="columns is-multiline">
-            <div class="column is-one-third">
-              <img
-                src="~/assets/images/map_thumbnails/ecoregions.png"
-                alt="Ecoregions map thumbnail"
-                class="map-thumbnail"
-                @click="showMap($event, 'ecoregions')"
-              /><br />
-              Ecoregions
-            </div>
-            <div class="column is-one-third">
-              <img
-                src="~/assets/images/map_thumbnails/geology.png"
-                alt="Geology map thumbnail"
-                class="map-thumbnail"
-                @click="showMap($event, 'geology')"
-              /><br />
-              Geology
-            </div>
-            <div class="column is-one-third">
+            <div class="column is-half">
+              <h3 class="is-size-4">Permafrost</h3>
+              <p class="category-subtitle mb-1">
+                Permafrost extent, mean annual ground temperature, and more
+              </p>
               <img
                 src="~/assets/images/map_thumbnails/permafrost.png"
                 alt="Permafrost map thumbnail"
                 class="map-thumbnail"
                 @click="showMap($event, 'permafrost')"
-              /><br />
-              Permafrost
+              />
             </div>
           </div>
         </div>
