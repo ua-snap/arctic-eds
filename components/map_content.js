@@ -256,6 +256,7 @@ export default {
         id: 'pfextent_obu',
         title: 'Permafrost extent (Obu et al., 2018)',
         wmsLayerName: 'permafrost_beta:obu_pf_extent',
+        legend: 'pfextent_obu',
       },
       {
         id: 'iem_gipl_magt_alt_4km_historical',
