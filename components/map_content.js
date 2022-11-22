@@ -3,25 +3,25 @@ export default {
     precipitation: [
       {
         id: 'historical_era_precip',
-        title: 'Historical (1980&ndash;2009)',
+        title: 'Historical Annual Precipitation (1980&ndash;2009)',
         source: 'rasdaman',
         wmsLayerName: 'annual_precip_totals_mm',
         style: 'precip_mm_historical_era',
+        legend: 'precipitation',
         default: true,
       },
       {
         id: 'midcentury_era_precip',
         title:
-          'Projected Mid&ndash;Century (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+          'Projected Mid&ndash;Century Annual Precipitation (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'annual_precip_totals_mm',
         style: 'precip_mm_midcentury_era',
+        legend: 'precipitation',
       },
-    ],
-    snowfall: [
       {
         id: 'historical_mean_annual_snowfall',
-        title: 'Historical (1910-1919)',
+        title: 'Historical Annual Snowfall (1910-1919)',
         source: 'rasdaman',
         wmsLayerName: 'mean_annual_snowfall_mm',
         rasdamanConfiguration: {
@@ -30,11 +30,11 @@ export default {
           dim_decade: 0,
         },
         style: 'snowfall_mm',
-        default: true,
+        legend: 'snowfall',
       },
       {
         id: 'future_mean_annual_snowfall',
-        title: 'Projected (2090-2099, MRI CGCM3, RCP 8.5)',
+        title: 'Projected Annual Snowfall (2090-2099, MRI CGCM3, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'mean_annual_snowfall_mm',
         rasdamanConfiguration: {
@@ -43,6 +43,7 @@ export default {
           dim_decade: 18,
         },
         style: 'snowfall_mm',
+        legend: 'snowfall',
       },
     ],
     temperature: [
@@ -52,6 +53,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'annual_mean_temp',
         style: 'temp_historical_era',
+        legend: 'temperature',
         default: true,
       },
       {
@@ -60,6 +62,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'annual_mean_temp',
         style: 'temp_midcentury_era',
+        legend: 'temperature',
       },
 
       {
@@ -68,6 +71,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'jan_min_max_mean_temp',
         style: 'temp_historical_january_min',
+        legend: 'temperature',
       },
       {
         id: 'midcentury_era_january_min',
@@ -75,6 +79,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'jan_min_max_mean_temp',
         style: 'temp_midcentury_january_min',
+        legend: 'temperature',
       },
       {
         id: 'historical_era_january_max',
@@ -82,6 +87,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'jan_min_max_mean_temp',
         style: 'temp_historical_january_max',
+        legend: 'temperature',
       },
       {
         id: 'midcentury_era_january_max',
@@ -89,6 +95,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'jan_min_max_mean_temp',
         style: 'temp_midcentury_january_max',
+        legend: 'temperature',
       },
 
       {
@@ -97,6 +104,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'july_min_max_mean_temp',
         style: 'temp_historical_july_min',
+        legend: 'temperature',
       },
       {
         id: 'midcentury_era_july_min',
@@ -104,6 +112,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'july_min_max_mean_temp',
         style: 'temp_midcentury_july_min',
+        legend: 'temperature',
       },
       {
         id: 'historical_era_july_max',
@@ -111,6 +120,7 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'july_min_max_mean_temp',
         style: 'temp_historical_july_max',
+        legend: 'temperature',
       },
       {
         id: 'midcentury_era_july_max',
@@ -118,12 +128,13 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'july_min_max_mean_temp',
         style: 'temp_midcentury_july_max',
+        legend: 'temperature',
       },
     ],
-    design_freezing_index: [
+    temperature_indices: [
       {
         id: 'historical_design_freezing_index',
-        title: 'Historical (1980-2009)',
+        title: 'Historical Design Freezing Index (1980-2009)',
         source: 'rasdaman',
         wmsLayerName: 'design_freezing_index',
         rasdamanConfiguration: {
@@ -131,11 +142,13 @@ export default {
           dim_era: 0,
         },
         style: 'arctic_eds',
+        legend: 'design_freezing_index',
         default: true,
       },
       {
         id: 'ncarccsm4_design_freezing_index',
-        title: 'Projected (2070-2099, NCAR CCSM4, RCP 8.5)',
+        title:
+          'Projected Design Freezing Index (2070-2099, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'design_freezing_index',
         rasdamanConfiguration: {
@@ -143,12 +156,11 @@ export default {
           dim_era: 2,
         },
         style: 'arctic_eds',
+        legend: 'design_freezing_index',
       },
-    ],
-    design_thawing_index: [
       {
         id: 'historical_design_thawing_index',
-        title: 'Historical (1980-2009)',
+        title: 'Historical Design Thawing Index (1980-2009)',
         source: 'rasdaman',
         wmsLayerName: 'design_thawing_index',
         rasdamanConfiguration: {
@@ -156,11 +168,13 @@ export default {
           dim_era: 0,
         },
         style: 'arctic_eds',
+        legend: 'design_thawing_index',
         default: true,
       },
       {
         id: 'ncarccsm4_design_thawing_index',
-        title: 'Projected (2070-2099, NCAR CCSM4, RCP 8.5)',
+        title:
+          'Projected Design Thawing Index (2070-2099, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'design_thawing_index',
         rasdamanConfiguration: {
@@ -168,76 +182,64 @@ export default {
           dim_era: 2,
         },
         style: 'arctic_eds',
+        legend: 'design_thawing_index',
       },
-    ],
-    freezing_index: [
       {
         id: 'freezing_index_condensed_historical',
-        title: 'Modeled Historical (1980&ndash;2009, ERA Interim)',
+        title:
+          'Modeled Historical Freezing Index (1980&ndash;2009, ERA Interim)',
         source: 'rasdaman',
         wmsLayerName: 'freezing_index',
         style: 'arctic_eds_freezing_index_historical_condensed',
+        legend: 'freezing_index',
         default: true,
       },
       {
         id: 'ncarccsm4_freezing_index_midcentury',
         title:
-          'Projected Mid&ndash;Century (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+          'Projected Mid&ndash;Century Freezing Index (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'freezing_index',
         style: 'arctic_eds_freezing_index_future_condensed',
+        legend: 'freezing_index',
       },
-    ],
-    thawing_index: [
       {
         id: 'thawing_index_condensed_historical',
-        title: 'Modeled Historical (1980&ndash;2009, ERA Interim)',
+        title:
+          'Modeled Historical Thawing Index (1980&ndash;2009, ERA Interim)',
         source: 'rasdaman',
         wmsLayerName: 'thawing_index',
         style: 'arctic_eds_thawing_index_historical_condensed_compressed',
+        legend: 'thawing_index',
         default: true,
       },
       {
         id: 'ncarccsm4_thawing_index_midcentury',
         title:
-          'Projected Mid&ndash;Century (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+          'Projected Mid&ndash;Century Thawing Index (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'thawing_index',
         style: 'arctic_eds_thawing_index_future_condensed_compressed',
+        legend: 'thawing_index',
       },
-    ],
-    heating_degree_days: [
       {
         id: 'heating_degree_days_index_condensed_historical',
-        title: 'Modeled Historical (1980&ndash;2009, ERA Interim)',
+        title:
+          'Modeled Historical Heating Degree Days (1980&ndash;2009, ERA Interim)',
         source: 'rasdaman',
         wmsLayerName: 'heating_degree_days',
         style: 'arctic_eds_heating_degree_days_historical_condensed_compressed',
+        legend: 'heating_degree_days',
         default: true,
       },
       {
         id: 'ncarccsm4_heating_degree_days_midcentury',
         title:
-          'Projected Mid&ndash;Century (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+          'Projected Mid&ndash;Century Heating Degree Days (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'heating_degree_days',
         style: 'arctic_eds_heating_degree_days_future_condensed_compressed',
-      },
-    ],
-    ecoregions: [
-      {
-        id: 'ak_level3_ecoregions',
-        title: 'Alaska Level 3 Ecoregions',
-        wmsLayerName: 'physiography:ak_level3_ecoregions',
-        default: true,
-      },
-    ],
-    geology: [
-      {
-        id: 'geological_units',
-        title: 'Detailed Geological Units',
-        wmsLayerName: 'geology:detailed_geologic_units',
-        default: true,
+        legend: 'heating_degree_days',
       },
     ],
     permafrost: [
@@ -246,6 +248,7 @@ export default {
         title: 'Permafrost extent (Jorgenson et al., 2008)',
         wmsLayerName:
           'permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume',
+        legend: 'pfextent_jorgenson',
         default: true,
       },
 
@@ -253,6 +256,7 @@ export default {
         id: 'pfextent_obu',
         title: 'Permafrost extent (Obu et al., 2018)',
         wmsLayerName: 'permafrost_beta:obu_pf_extent',
+        legend: 'pfextent_obu',
       },
       {
         id: 'iem_gipl_magt_alt_4km_historical',
@@ -266,6 +270,7 @@ export default {
           dim_era: 0,
         },
         style: 'arctic_eds_MAGT',
+        legend: 'magt',
       },
       {
         id: 'iem_gipl_magt_alt_4km_2036_2065',
@@ -279,6 +284,7 @@ export default {
           dim_era: 2,
         },
         style: 'arctic_eds_MAGT',
+        legend: 'magt',
       },
       {
         id: 'obumagt',
@@ -286,6 +292,7 @@ export default {
           'Mean annual ground temperature at top of permafrost, 2000&ndash;2016 (modeled)',
         wmsLayerName: 'obu_2018_magt',
         style: 'ground_temperature_blue_to_red_arctic_eds',
+        legend: 'obumagt',
       },
       {
         id: 'icevol_jorgenson',
@@ -293,6 +300,7 @@ export default {
         wmsLayerName:
           'permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume',
         style: 'permafrost_beta:ground_ice_volume',
+        legend: 'icevol_jorgenson',
       },
     ],
   },
@@ -372,94 +380,52 @@ export default {
       { color: '#0570b0', label: '15000&deg;F&sdot;days' },
       { color: '#034e7b', label: '&ge; 17500&deg;F&sdot;days' },
     ],
-    ecoregions: [
-      { color: '#b9981e', label: 'Arctic Coastal Plain' },
-      { color: '#a555e6', label: 'Arctic Foothills' },
-      { color: '#44261c', label: 'Seward Peninsula' },
-      { color: '#1df0de', label: 'Aleutian Islands' },
-      { color: '#7ae6ec', label: 'Brooks Range' },
-      { color: '#5ed7cb', label: 'Interior Forested Lowlands and Uplands' },
-      { color: '#4c64eb', label: 'Interior Bottomlands' },
-      { color: '#05cb09', label: 'Yukon Flats' },
-      { color: '#0e80f8', label: 'Ogilvie Mountains' },
-      { color: '#8c6c7d', label: 'Alaska Range' },
-      { color: '#acfd16', label: 'Copper Plateau' },
-      { color: '#83b3cb', label: 'Wrangell Mountains' },
-      { color: '#09f9ae', label: 'Ahklun and Kilbuck Mountains' },
-      { color: '#83b3ef', label: 'Alaska Peninsula Mountains' },
-      { color: '#37ea3f', label: 'Cook Inlet' },
-      { color: '#cee34b', label: 'Pacific Coastal Mountains' },
-      {
-        color: '#4830d1',
-        label: 'Coastal Western Hemlock-Sitka Spruce Forests',
-      },
+    pfextent_jorgenson: [
+      { color: '#253494', label: 'Continuous (&gt; 90%)' },
+      { color: '#41b6c4', label: 'Discontinuous (50 &ndash; 90%)' },
+      { color: '#7fcdbb', label: 'Isolated (10 &ndash; 50%)' },
+      { color: '#c7e9b4', label: 'Sporadic (&lt; 10%)' },
+      { color: '#ffffcc', label: 'Unfrozen' },
+      { color: '#a5bfdd', label: 'Water' },
+      { color: '#edf8fb', label: 'Glacial' },
     ],
-    geology: [],
-    permafrost: {
-      pfextent_jorgenson: [
-        { color: '#253494', label: 'Continuous (&gt; 90%)' },
-        { color: '#41b6c4', label: 'Discontinuous (50 &ndash; 90%)' },
-        { color: '#7fcdbb', label: 'Isolated (10 &ndash; 50%)' },
-        { color: '#c7e9b4', label: 'Sporadic (&lt; 10%)' },
-        { color: '#ffffcc', label: 'Unfrozen' },
-        { color: '#a5bfdd', label: 'Water' },
-        { color: '#edf8fb', label: 'Glacial' },
-      ],
-      pfextent_obu: [
-        { color: '#253494', label: 'Continuous (&gt; 90%)' },
-        { color: '#41b6c4', label: 'Discontinuous (50 &ndash; 90%)' },
-        { color: '#7fcdbb', label: 'Isolated (10 &ndash; 50%)' },
-        { color: '#c7e9b4', label: 'Sporadic (&lt; 10%)' },
-      ],
-      iem_gipl_magt_alt_4km_2036_2065: [
-        { color: '#2166ac', label: '&le; &minus;4&deg;F' },
-        { color: '#4393c3', label: '20&deg;F' },
-        { color: '#92c5de', label: '24&deg;F' },
-        { color: '#d1e5f0', label: '28&deg;F' },
-        { color: '#f7f7f7', label: '30&deg;F' },
-        { color: '#fddbc7', label: '32&deg;F' },
-        { color: '#f4a582', label: '34&deg;F' },
-        { color: '#d6604d', label: '&ge; 36&deg;F' },
-      ],
-      iem_gipl_magt_alt_4km_historical: [
-        { color: '#2166ac', label: '&le; &minus;4&deg;F' },
-        { color: '#4393c3', label: '20&deg;F' },
-        { color: '#92c5de', label: '24&deg;F' },
-        { color: '#d1e5f0', label: '28&deg;F' },
-        { color: '#f7f7f7', label: '30&deg;F' },
-        { color: '#fddbc7', label: '32&deg;F' },
-        { color: '#f4a582', label: '34&deg;F' },
-        { color: '#d6604d', label: '&ge; 36&deg;F' },
-      ],
-      obumagt: [
-        { color: '#08306b', label: '&le; 14&deg;F' },
-        { color: '#3787c0', label: '23&deg;F' },
-        { color: '#94c4df', label: '30&deg;F' },
-        { color: '#f14432', label: '34&deg;F' },
-        { color: '#bc141a', label: '37&deg;F' },
-        { color: '#67000d', label: '&ge; 41&deg;F' },
-      ],
-      icevol_jorgenson: [
-        { color: '#7fc97f', label: 'Unfrozen' },
-        { color: '#2171b5', label: 'Low' },
-        { color: '#6baed6', label: 'Moderate' },
-        { color: '#bdd7e7', label: 'High' },
-        { color: '#ffffff', label: 'Glacier' },
-        { color: '#beaed4', label: 'Variable' },
-      ],
-    },
+    pfextent_obu: [
+      { color: '#253494', label: 'Continuous (&gt; 90%)' },
+      { color: '#41b6c4', label: 'Discontinuous (50 &ndash; 90%)' },
+      { color: '#7fcdbb', label: 'Isolated (10 &ndash; 50%)' },
+      { color: '#c7e9b4', label: 'Sporadic (&lt; 10%)' },
+    ],
+    magt: [
+      { color: '#2166ac', label: '&le; &minus;4&deg;F' },
+      { color: '#4393c3', label: '20&deg;F' },
+      { color: '#92c5de', label: '24&deg;F' },
+      { color: '#d1e5f0', label: '28&deg;F' },
+      { color: '#f7f7f7', label: '30&deg;F' },
+      { color: '#fddbc7', label: '32&deg;F' },
+      { color: '#f4a582', label: '34&deg;F' },
+      { color: '#d6604d', label: '&ge; 36&deg;F' },
+    ],
+    obumagt: [
+      { color: '#08306b', label: '&le; 14&deg;F' },
+      { color: '#3787c0', label: '23&deg;F' },
+      { color: '#94c4df', label: '30&deg;F' },
+      { color: '#f14432', label: '34&deg;F' },
+      { color: '#bc141a', label: '37&deg;F' },
+      { color: '#67000d', label: '&ge; 41&deg;F' },
+    ],
+    icevol_jorgenson: [
+      { color: '#7fc97f', label: 'Unfrozen' },
+      { color: '#2171b5', label: 'Low' },
+      { color: '#6baed6', label: 'Moderate' },
+      { color: '#bdd7e7', label: 'High' },
+      { color: '#ffffff', label: 'Glacier' },
+      { color: '#beaed4', label: 'Variable' },
+    ],
   },
   titles: {
     precipitation: 'Precipitation',
-    snowfall: 'Snowfall',
     temperature: 'Temperature',
-    design_freezing_index: 'Design Freezing Index',
-    design_thawing_index: 'Design Thawing Index',
-    freezing_index: 'Freezing Index',
-    thawing_index: 'Thawing Index',
-    heating_degree_days: 'Heating Degree Days',
-    ecoregions: 'Ecoregions',
-    geology: 'Geology',
+    temperature_indices: 'Temperature Indices',
     permafrost: 'Permafrost',
   },
   blurbs: {
