@@ -40,8 +40,8 @@ function getBaseMapAndLayers() {
   )
 
   // Set maximum bounds of main map
-  let southWest = L.latLng('51.2', '155')
-  let northEast = L.latLng('63.5', '-132.4')
+  let southWest = L.latLng('50.5', '155')
+  let northEast = L.latLng('64', '-131')
   let bounds = L.latLngBounds(southWest, northEast)
 
   // Map base configuration
