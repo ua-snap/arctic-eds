@@ -11,7 +11,7 @@
 .map--layer {
   display: inline-block;
   line-height: 1;
-  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+  padding: 0.5rem;
   cursor: pointer;
   border-radius: 0.25rem;
 

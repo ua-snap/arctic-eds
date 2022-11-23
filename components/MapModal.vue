@@ -6,7 +6,11 @@
       </h4>
       <p class="pl-4 map-blurb">{{ mapBlurb }}</p>
       <div class="is-flex">
-        <LayerList class="layers" :layers="this.layers()" />
+        <slot name="layers" :layers="layers">
+          <div class="layer-list-wrapper">
+            <LayerList class="layers mx-3" :layers="layers" />
+          </div>
+        </slot>
         <Map class="map" />
       </div>
     </div>
@@ -23,8 +27,22 @@
     height: calc(100vh - 30px);
     margin: 15px;
   }
+  .layer-list-wrapper {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    overflow-wrap: normal;
+    overflow-y: auto;
+
+    width: 25%;
+
+    // Offset height by:
+    // 42px for the map title
+    // 32px for the map blurb
+    // 30px for the top (15px) + bottom (15px) margin around modal
+    height: calc(100vh - 42px - 32px - 30px);
+  }
   .map {
-    width: 100%;
+    width: 75%;
 
     // Offset height by:
     // 42px for the map title
@@ -48,7 +66,20 @@
     height: 32px;
   }
   .layers {
-    width: 300px;
+    h6 {
+      margin-bottom: 0;
+      color: #666;
+      font-size: 110%;
+      margin-top: 0;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      li {
+        margin: 0.1rem 0;
+        padding: 0.1rem;
+      }
+    }
   }
   @media (min-width: 1408px) {
     .layers {
@@ -89,6 +120,9 @@ export default {
         this.$store.commit('map/selectMap', undefined)
       },
     },
+    layers() {
+      return mapContent.layers[this.selectedMap]
+    },
   },
   methods: {
     selectDefaultLayer() {
@@ -99,9 +133,6 @@ export default {
         }
       )[0]
       this.$store.commit('map/selectLayer', defaultLayer)
-    },
-    layers(mapId) {
-      return mapContent.layers[this.selectedMap]
     },
   },
 }
