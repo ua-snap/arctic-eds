@@ -1,5 +1,5 @@
 <template>
-  <div class="layer-list-wrapper">
+  <div>
     <ul>
       <li v-for="layer in layers">
         <MapLayer v-bind:key="layer.id" v-bind:layer="layer" />
@@ -19,15 +19,6 @@
   // 32px for the map blurb
   // 30px for the top (15px) + bottom (15px) margin around modal
   height: calc(100vh - 42px - 32px - 30px);
-}
-
-ul {
-  margin: 0 1rem 1rem;
-
-  li {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
 }
 </style>
 

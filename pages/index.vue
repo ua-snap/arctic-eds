@@ -76,7 +76,17 @@
             </div>
           </div>
         </div>
-        <MapModal />
+        <TemperatureMap v-if="this.selectedMap == 'temperature'" />
+        <TemperatureIndicesMap
+          v-if="this.selectedMap == 'temperature_indices'"
+        />
+        <MapModal
+          v-if="
+            this.selectedMap != undefined &&
+            this.selectedMap != 'temperature' &&
+            this.selectedMap != 'temperature_indices'
+          "
+        />
       </div>
       <div v-if="reportIsVisible">
         <FullReport />
@@ -103,6 +113,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import MapModal from '~/components/MapModal'
+import TemperatureMap from '~/components/TemperatureMap'
+import TemperatureIndicesMap from '~/components/TemperatureIndicesMap'
 import SearchControls from '~/components/SearchControls'
 import FullReport from '~/components/Report'
 
@@ -111,8 +123,15 @@ export default {
   layout: 'home',
   components: {
     MapModal,
+    TemperatureMap,
+    TemperatureIndicesMap,
     SearchControls,
     FullReport,
+  },
+  computed: {
+    ...mapGetters({
+      selectedMap: 'map/selectedMap',
+    }),
   },
   computed: {
     ...mapGetters({

@@ -49,7 +49,7 @@ export default {
     temperature: [
       {
         id: 'historical_era_annual_mean_temp',
-        title: 'Historical Annual Mean (1980–2009)',
+        title: 'Historical',
         source: 'rasdaman',
         wmsLayerName: 'annual_mean_temp',
         style: 'temp_historical_era',
@@ -58,7 +58,7 @@ export default {
       },
       {
         id: 'midcentury_era_annual_mean_temp',
-        title: 'Projected Annual Mean (2040–2069)',
+        title: 'Projected',
         source: 'rasdaman',
         wmsLayerName: 'annual_mean_temp',
         style: 'temp_midcentury_era',
@@ -67,7 +67,7 @@ export default {
 
       {
         id: 'historical_era_january_min',
-        title: 'Historical January Minimum (1980–2009)',
+        title: 'Historical',
         source: 'rasdaman',
         wmsLayerName: 'jan_min_max_mean_temp',
         style: 'temp_historical_january_min',
@@ -75,7 +75,7 @@ export default {
       },
       {
         id: 'midcentury_era_january_min',
-        title: 'Projected January Minumum (2040–2069)',
+        title: 'Projected',
         source: 'rasdaman',
         wmsLayerName: 'jan_min_max_mean_temp',
         style: 'temp_midcentury_january_min',
@@ -83,7 +83,7 @@ export default {
       },
       {
         id: 'historical_era_january_max',
-        title: 'Historical January Maximum (1980–2009)',
+        title: 'Historical',
         source: 'rasdaman',
         wmsLayerName: 'jan_min_max_mean_temp',
         style: 'temp_historical_january_max',
@@ -91,7 +91,7 @@ export default {
       },
       {
         id: 'midcentury_era_january_max',
-        title: 'Projected January Maximum (2040–2069)',
+        title: 'Projected',
         source: 'rasdaman',
         wmsLayerName: 'jan_min_max_mean_temp',
         style: 'temp_midcentury_january_max',
@@ -100,7 +100,7 @@ export default {
 
       {
         id: 'historical_era_july_min',
-        title: 'Historical July Minimum (1980–2009)',
+        title: 'Historical',
         source: 'rasdaman',
         wmsLayerName: 'july_min_max_mean_temp',
         style: 'temp_historical_july_min',
@@ -108,7 +108,7 @@ export default {
       },
       {
         id: 'midcentury_era_july_min',
-        title: 'Projected July Minumum (2040–2069)',
+        title: 'Projected',
         source: 'rasdaman',
         wmsLayerName: 'july_min_max_mean_temp',
         style: 'temp_midcentury_july_min',
@@ -116,7 +116,7 @@ export default {
       },
       {
         id: 'historical_era_july_max',
-        title: 'Historical July Maximum (1980–2009)',
+        title: 'Historical',
         source: 'rasdaman',
         wmsLayerName: 'july_min_max_mean_temp',
         style: 'temp_historical_july_max',
@@ -124,7 +124,7 @@ export default {
       },
       {
         id: 'midcentury_era_july_max',
-        title: 'Projected July Maximum (2040–2069)',
+        title: 'Projected',
         source: 'rasdaman',
         wmsLayerName: 'july_min_max_mean_temp',
         style: 'temp_midcentury_july_max',
@@ -133,8 +133,57 @@ export default {
     ],
     temperature_indices: [
       {
+        id: 'heating_degree_days_index_condensed_historical',
+        title: 'Historical',
+        source: 'rasdaman',
+        wmsLayerName: 'heating_degree_days',
+        style: 'arctic_eds_heating_degree_days_historical_condensed_compressed',
+        legend: 'heating_degree_days',
+        default: true,
+      },
+      {
+        id: 'ncarccsm4_heating_degree_days_midcentury',
+        title: 'Projected',
+        source: 'rasdaman',
+        wmsLayerName: 'heating_degree_days',
+        style: 'arctic_eds_heating_degree_days_future_condensed_compressed',
+        legend: 'heating_degree_days',
+      },
+      {
+        id: 'freezing_index_condensed_historical',
+        title: 'Historical',
+        source: 'rasdaman',
+        wmsLayerName: 'freezing_index',
+        style: 'arctic_eds_freezing_index_historical_condensed',
+        legend: 'freezing_index',
+      },
+      {
+        id: 'ncarccsm4_freezing_index_midcentury',
+        title: 'Projected',
+        source: 'rasdaman',
+        wmsLayerName: 'freezing_index',
+        style: 'arctic_eds_freezing_index_future_condensed',
+        legend: 'freezing_index',
+      },
+      {
+        id: 'thawing_index_condensed_historical',
+        title: 'Historical',
+        source: 'rasdaman',
+        wmsLayerName: 'thawing_index',
+        style: 'arctic_eds_thawing_index_historical_condensed_compressed',
+        legend: 'thawing_index',
+      },
+      {
+        id: 'ncarccsm4_thawing_index_midcentury',
+        title: 'Projected',
+        source: 'rasdaman',
+        wmsLayerName: 'thawing_index',
+        style: 'arctic_eds_thawing_index_future_condensed_compressed',
+        legend: 'thawing_index',
+      },
+      {
         id: 'historical_design_freezing_index',
-        title: 'Historical Design Freezing Index (1980-2009)',
+        title: 'Historical',
         source: 'rasdaman',
         wmsLayerName: 'design_freezing_index',
         rasdamanConfiguration: {
@@ -143,12 +192,10 @@ export default {
         },
         style: 'arctic_eds',
         legend: 'design_freezing_index',
-        default: true,
       },
       {
         id: 'ncarccsm4_design_freezing_index',
-        title:
-          'Projected Design Freezing Index (2070-2099, NCAR CCSM4, RCP 8.5)',
+        title: 'Projected',
         source: 'rasdaman',
         wmsLayerName: 'design_freezing_index',
         rasdamanConfiguration: {
@@ -160,7 +207,7 @@ export default {
       },
       {
         id: 'historical_design_thawing_index',
-        title: 'Historical Design Thawing Index (1980-2009)',
+        title: 'Historical',
         source: 'rasdaman',
         wmsLayerName: 'design_thawing_index',
         rasdamanConfiguration: {
@@ -169,12 +216,10 @@ export default {
         },
         style: 'arctic_eds',
         legend: 'design_thawing_index',
-        default: true,
       },
       {
         id: 'ncarccsm4_design_thawing_index',
-        title:
-          'Projected Design Thawing Index (2070-2099, NCAR CCSM4, RCP 8.5)',
+        title: 'Projected',
         source: 'rasdaman',
         wmsLayerName: 'design_thawing_index',
         rasdamanConfiguration: {
@@ -183,63 +228,6 @@ export default {
         },
         style: 'arctic_eds',
         legend: 'design_thawing_index',
-      },
-      {
-        id: 'freezing_index_condensed_historical',
-        title:
-          'Modeled Historical Freezing Index (1980&ndash;2009, ERA Interim)',
-        source: 'rasdaman',
-        wmsLayerName: 'freezing_index',
-        style: 'arctic_eds_freezing_index_historical_condensed',
-        legend: 'freezing_index',
-        default: true,
-      },
-      {
-        id: 'ncarccsm4_freezing_index_midcentury',
-        title:
-          'Projected Mid&ndash;Century Freezing Index (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
-        source: 'rasdaman',
-        wmsLayerName: 'freezing_index',
-        style: 'arctic_eds_freezing_index_future_condensed',
-        legend: 'freezing_index',
-      },
-      {
-        id: 'thawing_index_condensed_historical',
-        title:
-          'Modeled Historical Thawing Index (1980&ndash;2009, ERA Interim)',
-        source: 'rasdaman',
-        wmsLayerName: 'thawing_index',
-        style: 'arctic_eds_thawing_index_historical_condensed_compressed',
-        legend: 'thawing_index',
-        default: true,
-      },
-      {
-        id: 'ncarccsm4_thawing_index_midcentury',
-        title:
-          'Projected Mid&ndash;Century Thawing Index (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
-        source: 'rasdaman',
-        wmsLayerName: 'thawing_index',
-        style: 'arctic_eds_thawing_index_future_condensed_compressed',
-        legend: 'thawing_index',
-      },
-      {
-        id: 'heating_degree_days_index_condensed_historical',
-        title:
-          'Modeled Historical Heating Degree Days (1980&ndash;2009, ERA Interim)',
-        source: 'rasdaman',
-        wmsLayerName: 'heating_degree_days',
-        style: 'arctic_eds_heating_degree_days_historical_condensed_compressed',
-        legend: 'heating_degree_days',
-        default: true,
-      },
-      {
-        id: 'ncarccsm4_heating_degree_days_midcentury',
-        title:
-          'Projected Mid&ndash;Century Heating Degree Days (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
-        source: 'rasdaman',
-        wmsLayerName: 'heating_degree_days',
-        style: 'arctic_eds_heating_degree_days_future_condensed_compressed',
-        legend: 'heating_degree_days',
       },
     ],
     permafrost: [
@@ -432,13 +420,7 @@ export default {
     precipitation: 'Placeholder blurb for Precipitation map',
     snowfall: 'Placeholder blurb for Snowfall map',
     temperature: 'Placeholder blurb for Temperature map',
-    design_freezing_index: 'Placeholder blurb for Design Freezing Index map',
-    design_thawing_index: 'Placeholder blurb for Design Thawing Index map',
-    freezing_index: 'Placeholder blurb for Freezing Index map',
-    thawing_index: 'Placeholder blurb for Thawing Index map',
-    heating_degree_days: 'Placeholder blurb for Heating Degree Days map',
-    ecoregions: 'Placeholder blurb for Ecoregions map',
-    geology: 'Placeholder blurb for Geology map',
+    temperature_indices: 'Placeholder blurb for Temperature Indices map',
     permafrost: 'Placeholder blurb for Permafrost map',
   },
 }
