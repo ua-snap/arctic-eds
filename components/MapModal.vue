@@ -6,7 +6,7 @@
       </h4>
       <p class="pl-4 map-blurb">{{ mapBlurb }}</p>
       <div class="is-flex">
-        <slot name="layers" :layers="layers">
+        <slot name="layers">
           <div class="layer-list-wrapper">
             <LayerList class="layers mx-3" :layers="layers" />
           </div>

@@ -1,6 +1,6 @@
 <template>
   <MapModal>
-    <template v-slot:layers :layers="layers">
+    <template v-slot:layers>
       <div class="layer-list-wrapper">
         <div class="layers content mx-5">
           <p>
