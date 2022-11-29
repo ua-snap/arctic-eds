@@ -418,7 +418,6 @@ export default {
   },
   blurbs: {
     precipitation: 'Placeholder blurb for Precipitation map',
-    snowfall: 'Placeholder blurb for Snowfall map',
     temperature: 'Placeholder blurb for Temperature map',
     temperature_indices: 'Placeholder blurb for Temperature Indices map',
     permafrost: 'Placeholder blurb for Permafrost map',
