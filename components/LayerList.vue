@@ -9,13 +9,16 @@
 </template>
 
 <style lang="scss" scoped>
-ul {
-  margin: 0 1rem 1rem;
+.layer-list-wrapper {
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  overflow-y: auto;
 
-  li {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
+  // Offset height by:
+  // 42px for the map title
+  // 32px for the map blurb
+  // 30px for the top (15px) + bottom (15px) margin around modal
+  height: calc(100vh - 42px - 32px - 30px);
 }
 </style>
 

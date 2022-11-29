@@ -11,7 +11,7 @@
 .map--layer {
   display: inline-block;
   line-height: 1;
-  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+  padding: 0.5rem;
   cursor: pointer;
   border-radius: 0.25rem;
 
@@ -35,7 +35,7 @@ export default {
   computed: {
     active() {
       // Check if the layer is active in the store
-      let activeLayer = this.$store.getters['map/getActiveLayer']
+      let activeLayer = this.$store.getters['map/selectedLayer']
       if (activeLayer) {
         return activeLayer.id === this.layer.id
       }

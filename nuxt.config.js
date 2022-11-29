@@ -78,100 +78,13 @@ export default {
   // Router customizations
   router: {
     extendRoutes(routes, resolve) {
-      // Order matters here; lat/lng needs to go last because it's "globby"
       routes.push({
-        path: '/physiography/geology/report/community/:communityId',
-        component: resolve(__dirname, 'pages/physiography/geology'),
+        path: '/report/community/:communityId',
+        component: resolve(__dirname, 'pages/index'),
       })
       routes.push({
-        path: '/physiography/geology/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/physiography/geology'),
-      })
-      routes.push({
-        path: '/physiography/permafrost/report/community/:communityId',
-        component: resolve(__dirname, 'pages/physiography/permafrost'),
-      })
-      routes.push({
-        path: '/physiography/permafrost/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/physiography/permafrost'),
-      })
-      routes.push({
-        path: '/physiography/ecoregions/report/community/:communityId',
-        component: resolve(__dirname, 'pages/physiography/ecoregions'),
-      })
-      routes.push({
-        path: '/physiography/ecoregions/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/physiography/ecoregions'),
-      })
-      routes.push({
-        path: '/climate/precipitation/report/community/:communityId',
-        component: resolve(__dirname, 'pages/climate/precipitation'),
-      })
-      routes.push({
-        path: '/climate/precipitation/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/climate/precipitation'),
-      })
-      routes.push({
-        path: '/climate/snowfall/report/community/:communityId',
-        component: resolve(__dirname, 'pages/climate/snowfall'),
-      })
-      routes.push({
-        path: '/climate/snowfall/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/climate/snowfall'),
-      })
-      routes.push({
-        path: '/climate/temperature/report/community/:communityId',
-        component: resolve(__dirname, 'pages/climate/temperature'),
-      })
-      routes.push({
-        path: '/climate/temperature/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/climate/temperature'),
-      })
-      routes.push({
-        path: '/engineering/freezing-index/report/community/:communityId',
-        component: resolve(__dirname, 'pages/engineering/freezing-index'),
-      })
-      routes.push({
-        path: '/engineering/freezing-index/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/engineering/freezing-index'),
-      })
-      routes.push({
-        path: '/engineering/design-freezing-index/report/community/:communityId',
-        component: resolve(
-          __dirname,
-          'pages/engineering/design-freezing-index'
-        ),
-      })
-      routes.push({
-        path: '/engineering/design-freezing-index/report/:lat/:lng',
-        component: resolve(
-          __dirname,
-          'pages/engineering/design-freezing-index'
-        ),
-      })
-      routes.push({
-        path: '/engineering/thawing-index/report/community/:communityId',
-        component: resolve(__dirname, 'pages/engineering/thawing-index'),
-      })
-      routes.push({
-        path: '/engineering/thawing-index/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/engineering/thawing-index'),
-      })
-      routes.push({
-        path: '/engineering/design-thawing-index/report/community/:communityId',
-        component: resolve(__dirname, 'pages/engineering/design-thawing-index'),
-      })
-      routes.push({
-        path: '/engineering/design-thawing-index/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/engineering/design-thawing-index'),
-      })
-      routes.push({
-        path: '/engineering/heating-degree-days/report/community/:communityId',
-        component: resolve(__dirname, 'pages/engineering/heating-degree-days'),
-      })
-      routes.push({
-        path: '/engineering/heating-degree-days/report/:lat/:lng',
-        component: resolve(__dirname, 'pages/engineering/heating-degree-days'),
+        path: '/report/:lat/:lng',
+        component: resolve(__dirname, 'pages/index'),
       })
     },
   },

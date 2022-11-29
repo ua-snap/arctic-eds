@@ -1,44 +1,56 @@
 import _ from 'lodash'
 
-function convertUnits(state, type, substring = '') {
-  Object.keys(state.results).forEach(key => {
-    if (key != 'place' && key.includes(substring)) {
+function convertUnits(state, type, substring = '', variable) {
+  Object.keys(state.results[variable]).forEach(key => {
+    if (key.includes(substring)) {
       switch (type) {
         case 'temperature':
-          state.results[key] = convertTemperature(state, key)
+          state.results[variable][key] = convertTemperature(
+            state,
+            variable,
+            key
+          )
           break
         case 'm_in':
-          state.results[key] = convertMetersInches(state, key)
+          state.results[variable][key] = convertMetersInches(
+            state,
+            variable,
+            key
+          )
           break
         case 'mm_in':
-          state.results[key] = convertMillimetersInches(state, key)
+          state.results[variable][key] = convertMillimetersInches(
+            state,
+            variable,
+            key
+          )
           break
       }
     }
   })
 }
 
-function convertTemperature(state, key) {
+function convertTemperature(state, variable, key) {
   if (state.units == 'metric') {
-    return ((state.results[key] - 32) * (5 / 9)).toFixed(1)
+    return ((state.results[variable][key] - 32) * (5 / 9)).toFixed(1)
   } else {
-    return (state.results[key] * (9 / 5) + 32).toFixed(1)
+    return (state.results[variable][key] * (9 / 5) + 32).toFixed(1)
   }
 }
 
-function convertMillimetersInches(state, key) {
+function convertMillimetersInches(state, variable, key) {
   if (state.units == 'metric') {
-    return (state.results[key] * 25.4).toFixed(0)
+    return (state.results[variable][key] * 25.4).toFixed(0)
   } else {
-    return (state.results[key] / 25.4).toFixed(1)
+    return (state.results[variable][key] / 25.4).toFixed(1)
   }
 }
 
-function convertMetersInches(state, key) {
+function convertMetersInches(state, variable, key) {
   if (state.units == 'metric') {
-    return (state.results[key] * 0.0254).toFixed(2)
+    return (state.results[variable][key] * 0.0254).toFixed(2)
   } else {
-    return (state.results[key] / 0.0254).toFixed(1)
+    return (state.results[variable][key] / 0.0254).toFixed(1)
   }
 }
 
@@ -46,7 +58,6 @@ export default {
   state() {
     return {
       places: undefined,
-      reportIsVisible: false,
       results: {},
       units: 'imperial',
     }
@@ -104,8 +115,12 @@ export default {
       }
       return undefined
     },
-    reportIsVisible(state) {
-      return state.reportIsVisible
+    reportIsVisible(state, getters) {
+      if (getters.isPlaceDefined) {
+        return true
+      } else {
+        return false
+      }
     },
     results(state) {
       return state.results
@@ -118,40 +133,38 @@ export default {
   mutations: {
     destroy(state) {
       state.placeName = undefined
-      state.reportIsVisible = false
       state.results = {}
     },
-    openReport(state) {
-      state.reportIsVisible = true
-    },
-    closeReport(state, fullPath) {
+    closeReport(state) {
       // Ensure that report is in URL before attempting
       // to remove it.
-      if (fullPath.includes('report')) {
-        let pathArray = fullPath.split('/report')
 
-        // Router push to base URL of plate
-        this.$router.push({
-          path: fullPath.split('/report')[0],
-          hash: 'map-search',
-        })
-      }
+      this.$router.push({
+        path: '/',
+      })
+
       state.placeName = undefined
-      state.reportIsVisible = false
       state.results = {}
-      state.latLng = {
-        lat: undefined,
-        lng: undefined,
-      }
     },
-    convertResults(state, params) {
-      if (params['patterns']) {
-        params['patterns'].forEach(pattern => {
-          convertUnits(state, pattern['type'], pattern['substring'])
-        })
-      } else {
-        convertUnits(state, params['type'])
-      }
+    convertResults(state) {
+      // Converts all convertible units at the same time for shared report
+      let conversions = [
+        { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
+        { type: 'temperature', substring: '', variable: 'temperature' },
+        { type: 'mm_in', substring: '', variable: 'precipitation' },
+        { type: 'mm_in', substring: '', variable: 'snowfall' },
+      ]
+      conversions.forEach(conversion => {
+        convertUnits(
+          state,
+          conversion['type'],
+          conversion['substring'],
+          conversion['variable']
+        )
+      })
+    },
+    setPlateResults(state, payload) {
+      state.results[payload.variable] = payload.plateResults
     },
     setResults(state, results) {
       state.results = results
