@@ -8,6 +8,9 @@
 <style lang="scss" scoped>
 .light {
   color: #888;
+  @media print {
+    color: #666;
+  }
 }
 </style>
 <script>
