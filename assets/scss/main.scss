@@ -17,3 +17,9 @@
 .content-clamp {
   max-width: 50rem;
 }
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
