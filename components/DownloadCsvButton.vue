@@ -5,6 +5,9 @@
 .single {
   display: block;
   max-width: 30em;
+  @media print {
+    display: none;
+  }
 }
 </style>
 <script>
