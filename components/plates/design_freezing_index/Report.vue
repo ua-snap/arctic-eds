@@ -53,8 +53,8 @@
           </tr>
         </tbody>
       </table>
-      <h4 class="title is-6">Access to Data</h4>
-      <div class="content">
+      <h4 class="title is-6 no-print">Access to Data</h4>
+      <div class="content no-print">
         <p>Freezing index data was calculated from the following:</p>
         <ul>
           <li>
