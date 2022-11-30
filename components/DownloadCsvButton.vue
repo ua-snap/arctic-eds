@@ -1,13 +1,12 @@
 <template>
-  <a :href="downloadTarget" class="button is-info single">{{ text }}</a>
+  <a :href="downloadTarget" class="button is-info single no-print">{{
+    text
+  }}</a>
 </template>
 <style lang="scss" scoped>
 .single {
   display: block;
   max-width: 30em;
-  @media print {
-    display: none;
-  }
 }
 </style>
 <script>
