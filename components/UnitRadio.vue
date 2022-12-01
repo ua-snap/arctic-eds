@@ -1,5 +1,5 @@
 <template>
-  <div class="radio-units">
+  <div class="radio-units no-print">
     <p>You can display these results in Imperial or Metric units.</p>
     <div>
       <b-field label="Units">

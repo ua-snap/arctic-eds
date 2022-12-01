@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-wrapper">
+  <div class="nav-wrapper no-print">
     <b-navbar>
       <template #start>
         <b-navbar-item href="/"> Home </b-navbar-item>
