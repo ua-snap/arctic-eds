@@ -11,8 +11,8 @@
   margin: 2rem 0 3rem;
 }
 #report--minimmap--map {
-  height: 20vw;
-  width: 20vw;
+  height: 300px;
+  width: 300px;
 }
 </style>
 
