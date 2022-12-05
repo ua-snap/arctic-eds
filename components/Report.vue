@@ -21,9 +21,7 @@
         <HeatingDegreeDaysReport />
         <DesignFreezingIndexReport />
         <DesignThawingIndexReport />
-        <EcoregionsReport />
         <FreezingIndexReport />
-        <GeologyReport />
         <ThawingIndexReport />
       </div>
     </div>
@@ -41,9 +39,7 @@ import PermafrostReport from '~/components/plates/permafrost/Report'
 import HeatingDegreeDaysReport from '~/components/plates/heating_degree_days/Report'
 import DesignFreezingIndexReport from '~/components/plates/design_freezing_index/Report'
 import DesignThawingIndexReport from '~/components/plates/design_thawing_index/Report'
-import EcoregionsReport from '~/components/plates/ecoregions/Report'
 import FreezingIndexReport from '~/components/plates/freezing_index/Report'
-import GeologyReport from '~/components/plates/geology/Report'
 import ThawingIndexReport from '~/components/plates/thawing_index/Report'
 export default {
   name: 'FullReport',
@@ -57,9 +53,7 @@ export default {
     HeatingDegreeDaysReport,
     DesignFreezingIndexReport,
     DesignThawingIndexReport,
-    EcoregionsReport,
     FreezingIndexReport,
-    GeologyReport,
     ThawingIndexReport,
   },
   computed: {
