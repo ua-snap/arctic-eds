@@ -14,20 +14,32 @@
         <MiniMap />
         <UnitRadio />
         <CloseReportButton />
-        <TemperatureReport />
+        <hr class="section-header" />
+        <h3 class="title is-2">Precipitation Products</h3>
         <PrecipitationReport />
         <SnowfallReport />
-        <PermafrostReport />
+        <hr class="section-header" />
+        <h3 class="title is-2">Temperature Products</h3>
+        <TemperatureReport />
+        <hr class="section-header" />
+        <h3 class="title is-2">Temperature Indices</h3>
         <HeatingDegreeDaysReport />
-        <DesignFreezingIndexReport />
-        <DesignThawingIndexReport />
         <FreezingIndexReport />
         <ThawingIndexReport />
+        <DesignFreezingIndexReport />
+        <DesignThawingIndexReport />
+        <hr class="section-header" />
+        <h3 class="title is-2">Permafrost Products</h3>
+        <PermafrostReport />
       </div>
     </div>
   </section>
 </template>
-
+<style lang="scss" scoped>
+.section-header {
+  background-color: #999;
+}
+</style>
 <script>
 import { mapGetters } from 'vuex'
 import UnitRadio from '~/components/UnitRadio'
