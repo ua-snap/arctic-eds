@@ -112,7 +112,9 @@ export default {
         return this.selectedMap != undefined
       },
       set() {
-        this.$store.commit('map/selectMap', undefined)
+        this.$router.push({
+          path: '/',
+        })
       },
     },
     layers() {
