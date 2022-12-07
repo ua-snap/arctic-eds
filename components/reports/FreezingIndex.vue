@@ -1,15 +1,6 @@
 <template>
-  <div v-if="Object.keys(results.heating_degree_days).length != 0">
-    <hr />
-
-    <div id="report">
-      <h3 class="title is-3">Heating degree days data for {{ placeName }}</h3>
-
-      <HeatingDegreeDaysExplanation />
-      <DataExplanation context="wrf" />
-
-      <h4 class="title is-4">Heating Degree Days</h4>
-
+  <div v-if="Object.keys(results.freezing_index).length != 0">
+    
       <table class="table">
         <thead>
           <tr>
@@ -23,60 +14,60 @@
           <tr>
             <th scope="row">Historical (1979-2015)</th>
             <td>
-              {{ results.heating_degree_days['historical']['ddmin']
+              {{ results.freezing_index['historical']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ results.heating_degree_days['historical']['ddmean']
+              {{ results.freezing_index['historical']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ results.heating_degree_days['historical']['ddmax']
+              {{ results.freezing_index['historical']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Early Century (2010-2039)</th>
             <td>
-              {{ results.heating_degree_days['2010-2039']['ddmin']
+              {{ results.freezing_index['2010-2039']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ results.heating_degree_days['2010-2039']['ddmean']
+              {{ results.freezing_index['2010-2039']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ results.heating_degree_days['2010-2039']['ddmax']
+              {{ results.freezing_index['2010-2039']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040-2069)</th>
             <td>
-              {{ results.heating_degree_days['2040-2069']['ddmin']
+              {{ results.freezing_index['2040-2069']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ results.heating_degree_days['2040-2069']['ddmean']
+              {{ results.freezing_index['2040-2069']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ results.heating_degree_days['2040-2069']['ddmax']
+              {{ results.freezing_index['2040-2069']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070-2099)</th>
             <td>
-              {{ results.heating_degree_days['2070-2099']['ddmin']
+              {{ results.freezing_index['2070-2099']['ddmin']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ results.heating_degree_days['2070-2099']['ddmean']
+              {{ results.freezing_index['2070-2099']['ddmean']
               }}<UnitWidget unitType="dd" />
             </td>
             <td>
-              {{ results.heating_degree_days['2070-2099']['ddmax']
+              {{ results.freezing_index['2070-2099']['ddmax']
               }}<UnitWidget unitType="dd" />
             </td>
           </tr>
@@ -84,7 +75,7 @@
       </table>
       <h4 class="title is-6 no-print">Access to Data</h4>
       <div class="content no-print">
-        <p>Heating degrees days data was calculated from the following:</p>
+        <p>Freezing index data was calculated from the following:</p>
         <ul>
           <li>
             <a
@@ -96,27 +87,23 @@
         </ul>
       </div>
       <DownloadCsvButton
-        text="Download heating degree days data as CSV"
-        endpoint="mmm/degree_days/heating/all"
+        text="Download freezing index data as CSV"
+        endpoint="mmm/degree_days/freezing_index/all"
         class="mt-3 mb-5"
       />
     </div>
-  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import HeatingDegreeDaysExplanation from '~/components/plates/heating_degree_days/Explanation'
-import DataExplanation from '~/components/DataExplanation'
 import UnitWidget from '~/components/UnitWidget'
 
 export default {
-  name: 'HeatingDegreeDaysReport',
+  name: 'FreezingIndexReport',
   components: {
     DownloadCsvButton,
-    HeatingDegreeDaysExplanation,
-    DataExplanation,
+
     UnitWidget,
   },
 
