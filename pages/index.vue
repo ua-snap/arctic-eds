@@ -131,11 +131,6 @@ export default {
   computed: {
     ...mapGetters({
       selectedMap: 'map/selectedMap',
-    }),
-  },
-  computed: {
-    ...mapGetters({
-      selectedMap: 'map/selectedMap',
       reportIsVisible: 'report/reportIsVisible',
     }),
   },
@@ -147,7 +142,9 @@ export default {
   },
   methods: {
     showMap(event, mapId) {
-      this.$store.commit('map/selectMap', mapId)
+      this.$router.push({
+        hash: mapId,
+      })
     },
   },
 }
