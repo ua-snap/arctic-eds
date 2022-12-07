@@ -24,8 +24,11 @@
   justify-content: center;
   max-width: 98vw;
   margin: 2.5rem auto;
-  @media (min-width: 769px) {
+  @media (min-width: 769px), print {
     display: flex;
+  }
+  @media print {
+    margin-bottom: 0;
   }
   .brand--logo {
     max-width: 300px;
@@ -35,8 +38,11 @@
     @media (max-width: 768px) {
       margin: 0 auto;
     }
-    @media (min-width: 769px) {
+    @media (min-width: 769px), print {
       flex: 0 0 15em;
+    }
+    @media print {
+      max-width: 25%;
     }
     @media (min-width: 769px) and (max-width: 1425px) {
       margin-left: 2rem;
