@@ -24,7 +24,7 @@
         </div>
 
         <SearchControls />
-        <div class="px-5 pb-6 large-screen">
+        <div class="px-5 pb-6 is-hidden-mobile">
           <div class="columns is-multiline">
             <div class="column is-half">
               <h3 class="is-size-4">Precipitation</h3>
