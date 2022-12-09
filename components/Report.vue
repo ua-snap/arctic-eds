@@ -37,11 +37,12 @@
           <MiniMap />
           <UnitRadio />
           <CloseReportButton />
+          <TableOfContents />
         </div>
       </section>
       <section class="section precipitation">
         <div class="container">
-          <h2 class="title is-2">Precipitation</h2>
+          <h2 id="precipitation" class="title is-2">Precipitation</h2>
           <div class="content is-size-5">
             <p>
               These data come from two types of data sources: historical modeled
@@ -57,7 +58,9 @@
             </p>
           </div>
 
-          <h3 class="title is-3 mt-6">Total annual precipitation</h3>
+          <h3 id="annual-precipitation" class="title is-3 mt-6">
+            Total annual precipitation
+          </h3>
           <div class="content is-size-5">
             <p>
               Both historical and projected data for total precipitation are at
@@ -66,7 +69,7 @@
           </div>
           <PrecipitationReport />
 
-          <h3 class="title is-3 mt-6">Snowfall</h3>
+          <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>
           <div class="content is-size-5">
             <p>Snowfall equivalent totals includes both rain and snow.</p>
             <p>
@@ -80,7 +83,7 @@
       </section>
       <section class="section temperature">
         <div class="container">
-          <h2 class="title is-2">Temperature</h2>
+          <h2 id="temperature" class="title is-2">Temperature</h2>
           <div class="content is-size-5">
             <p>
               These data come from two types of data sources: historical modeled
@@ -102,7 +105,9 @@
       </section>
       <section class="section temperature-index">
         <div class="container">
-          <h2 class="title is-2">Temperature Indices</h2>
+          <h2 id="temperature-indices" class="title is-2">
+            Temperature Indices
+          </h2>
           <div class="content is-size-5">
             <p>
               The results in the sections below come from two types of data
@@ -117,31 +122,51 @@
             </p>
           </div>
 
-          <h3 class="title is-3 mt-6">Heating Degree Days</h3>
+          <h3 id="heating-degree-days" class="title is-3 mt-6">
+            Heating Degree Days
+          </h3>
           <HeatingDegreeDaysReport />
 
-          <h3 class="title is-3 mt-6">Freezing Index</h3>
+          <h3 id="freezing-index" class="title is-3 mt-6">Freezing Index</h3>
           <FreezingIndexReport />
 
-          <h3 class="title is-3 mt-6">Design Freezing Index</h3>
+          <h3 id="design-freezing-index" class="title is-3 mt-6">
+            Design Freezing Index
+          </h3>
           <div class="content is-size-5">
-            <p>For both models, every annual freezing index value for this location in the 30&ndash;year time era indicated was calculated and the three coldest years (greatest freezing index values) were identified. The design freezing index value for each model was computed by finding the mean of those three values, then taking the average across both models.</p>
+            <p>
+              For both models, every annual freezing index value for this
+              location in the 30&ndash;year time era indicated was calculated
+              and the three coldest years (greatest freezing index values) were
+              identified. The design freezing index value for each model was
+              computed by finding the mean of those three values, then taking
+              the average across both models.
+            </p>
           </div>
           <DesignFreezingIndexReport />
 
-          <h3 class="title is-3 mt-6">Thawing Index</h3>
+          <h3 id="thawing-index" class="title is-3 mt-6">Thawing Index</h3>
           <ThawingIndexReport />
 
-          <h3 class="title is-3 mt-6">Design Thawing Index</h3>
+          <h3 id="design-thawing-index" class="title is-3 mt-6">
+            Design Thawing Index
+          </h3>
           <div class="content is-size-5">
-            <p>For both models, every annual thawing index value for this location in the 30&ndash;year time era indicated was calculated and the three warmest years (greatest thawing index values) were identified. The design thawing index value for each model was computed by finding the mean of those three values, then taking the average across both models.</p>
+            <p>
+              For both models, every annual thawing index value for this
+              location in the 30&ndash;year time era indicated was calculated
+              and the three warmest years (greatest thawing index values) were
+              identified. The design thawing index value for each model was
+              computed by finding the mean of those three values, then taking
+              the average across both models.
+            </p>
           </div>
           <DesignThawingIndexReport />
         </div>
       </section>
       <section class="section permafrost">
         <div class="container">
-          <h2 class="title is-2">Permafrost</h2>
+          <h2 id="permafrost" class="title is-2">Permafrost</h2>
           <PermafrostReport />
         </div>
       </section>
@@ -173,6 +198,7 @@ import DesignFreezingIndexReport from '~/components/reports/DesignFreezingIndex'
 import DesignThawingIndexReport from '~/components/reports/DesignThawingIndex'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
+import TableOfContents from '~/components/TableOfContents'
 export default {
   name: 'FullReport',
   components: {
@@ -187,6 +213,7 @@ export default {
     DesignThawingIndexReport,
     FreezingIndexReport,
     ThawingIndexReport,
+    TableOfContents,
   },
   computed: {
     state: function () {
@@ -204,7 +231,7 @@ export default {
   },
 
   async fetch() {
-    // await this.$store.dispatch('report/fetchPlaces')
+    await this.$store.dispatch('report/fetchPlaces')
 
     if (this.isPlaceDefined) {
       let url =

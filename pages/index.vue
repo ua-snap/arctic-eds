@@ -1,7 +1,7 @@
 <template>
   <div>
     <client-only>
-      <div v-show="!reportIsVisible">
+      <div v-if="!reportIsVisible">
         <div class="mx-5 mb-5">
           <h2 class="title is-4 mt-3">
             Modern environmental data for science and engineering.
