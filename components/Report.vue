@@ -37,13 +37,55 @@
           <MiniMap />
           <UnitRadio />
           <CloseReportButton />
-          <TableOfContents />
+        </div>
+      </section>
+      <section class="section">
+        <div class="container toc">
+          <h2 class="title is-3">Table of Contents</h2>
+          <div class="content is-medium">
+            <ul>
+              <li>
+                <a href="#precipitation">Precipitation</a>
+                <ul>
+                  <li>
+                    <a href="#annual-precipitation"
+                      >Annual Total Precipitation</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#snowfall">Snowfall</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li><a href="#temperature">Temperature</a></li>
+
+              <li>
+                <a href="#temperature-indices">Temperature Indices</a>
+                <ul>
+                  <li>
+                    <a href="#heating-degree-days">Heating Degree Days</a>
+                  </li>
+                  <li><a href="#freezing-index">Freezing Index</a></li>
+                  <li>
+                    <a href="#design-freezing-index">Design Freezing Index</a>
+                  </li>
+                  <li><a href="#thawing-index">Thawing Index</a></li>
+                  <li>
+                    <a href="#design-thawing-index">Design Thawing Index</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li><a href="#permafrost">Permafrost</a></li>
+            </ul>
+          </div>
         </div>
       </section>
       <section class="section precipitation">
         <div class="container">
           <h2 id="precipitation" class="title is-2">Precipitation</h2>
-          <div class="content is-size-5">
+          <div class="content">
             <p>
               These data come from two types of data sources: historical modeled
               data (CRU TS), and projected downscaled GCM data from across five
@@ -61,7 +103,7 @@
           <h3 id="annual-precipitation" class="title is-3 mt-6">
             Total annual precipitation
           </h3>
-          <div class="content is-size-5">
+          <div class="content">
             <p>
               Both historical and projected data for total precipitation are at
               a 2&#x202F;km spatial resolution.
@@ -70,7 +112,7 @@
           <PrecipitationReport />
 
           <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>
-          <div class="content is-size-5">
+          <div class="content">
             <p>Snowfall equivalent totals includes both rain and snow.</p>
             <p>
               Both historical and projected data for snowfall equivalent are at
@@ -198,7 +240,7 @@ import DesignFreezingIndexReport from '~/components/reports/DesignFreezingIndex'
 import DesignThawingIndexReport from '~/components/reports/DesignThawingIndex'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
-import TableOfContents from '~/components/TableOfContents'
+
 export default {
   name: 'FullReport',
   components: {
@@ -213,7 +255,6 @@ export default {
     DesignThawingIndexReport,
     FreezingIndexReport,
     ThawingIndexReport,
-    TableOfContents,
   },
   computed: {
     state: function () {
