@@ -136,9 +136,6 @@ export default {
       state.results = {}
     },
     closeReport(state) {
-      // Ensure that report is in URL before attempting
-      // to remove it.
-
       this.$router.push({
         path: '/',
       })
