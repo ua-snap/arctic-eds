@@ -32,6 +32,9 @@
               mean and maximum values for different time periods; use the mean
               column to assess general trends over time.
             </p>
+            <p>
+              Link to this report: <a :href="currentURL">{{ currentURL }}</a>
+            </p>
           </div>
 
           <MiniMap />
@@ -125,7 +128,14 @@
 
           <h3 class="title is-3 mt-6">Design Freezing Index</h3>
           <div class="content is-size-5">
-            <p>For both models, every annual freezing index value for this location in the 30&ndash;year time era indicated was calculated and the three coldest years (greatest freezing index values) were identified. The design freezing index value for each model was computed by finding the mean of those three values, then taking the average across both models.</p>
+            <p>
+              For both models, every annual freezing index value for this
+              location in the 30&ndash;year time era indicated was calculated
+              and the three coldest years (greatest freezing index values) were
+              identified. The design freezing index value for each model was
+              computed by finding the mean of those three values, then taking
+              the average across both models.
+            </p>
           </div>
           <DesignFreezingIndexReport />
 
@@ -134,7 +144,14 @@
 
           <h3 class="title is-3 mt-6">Design Thawing Index</h3>
           <div class="content is-size-5">
-            <p>For both models, every annual thawing index value for this location in the 30&ndash;year time era indicated was calculated and the three warmest years (greatest thawing index values) were identified. The design thawing index value for each model was computed by finding the mean of those three values, then taking the average across both models.</p>
+            <p>
+              For both models, every annual thawing index value for this
+              location in the 30&ndash;year time era indicated was calculated
+              and the three warmest years (greatest thawing index values) were
+              identified. The design thawing index value for each model was
+              computed by finding the mean of those three values, then taking
+              the average across both models.
+            </p>
           </div>
           <DesignThawingIndexReport />
         </div>
@@ -199,12 +216,20 @@ export default {
       latLng: 'report/latLng',
     }),
   },
+  data: function () {
+    return {
+      currentURL: '',
+    }
+  },
+  created() {
+    this.currentURL = window.location.href
+  },
   mounted() {
     this.$fetch()
   },
 
   async fetch() {
-    // await this.$store.dispatch('report/fetchPlaces')
+    await this.$store.dispatch('report/fetchPlaces')
 
     if (this.isPlaceDefined) {
       let url =
