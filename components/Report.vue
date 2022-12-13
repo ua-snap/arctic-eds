@@ -33,12 +33,38 @@
               column to assess general trends over time.
             </p>
             <p>
-              <strong>Elevation:</strong> {{ results.elevation.mean }}
+              <strong>Elevation:</strong>
+            </p>
+            <p>
+              The minimum elevation is {{ results.elevation.min }}
+              {{ results.elevation.units }}<br />
+              The average elevation is {{ results.elevation.mean }}
+              {{ results.elevation.units }}<br />
+              The maximum elevation is {{ results.elevation.max }}
               {{ results.elevation.units }}
             </p>
-            <p><strong>Geology:</strong> {{ results.geology.name }}</p>
             <p>
-              <strong>Physiography:</strong> {{ results.physiography.name }}
+              <strong>Geology:</strong>
+            </p>
+            <p>
+              {{ results.geology.name }}<br />To explore this and other
+              geological areas of Alaska, visit
+              <a
+                href="https://alaska.usgs.gov/science/geology/state_map/interactive_map/AKgeologic_map.html"
+                >here</a
+              >
+            </p>
+            <p></p>
+            <p>
+              <strong>Physiography:</strong>
+            </p>
+            <p>
+              {{ results.physiography.name }}<br />To explore this and other
+              ecological regions of Alaska, visit
+              <a
+                href="https://www.epa.gov/eco-research/ecoregion-download-files-state-region-10#pane-01"
+                >here</a
+              >
             </p>
           </div>
 
@@ -181,6 +207,9 @@
 .content {
   max-width: 50rem;
 }
+.together {
+  display: inline-flex;
+}
 </style>
 <script>
 import { mapGetters } from 'vuex'
@@ -226,7 +255,7 @@ export default {
   },
 
   async fetch() {
-    // await this.$store.dispatch('report/fetchPlaces')
+    await this.$store.dispatch('report/fetchPlaces')
 
     if (this.isPlaceDefined) {
       let url =
