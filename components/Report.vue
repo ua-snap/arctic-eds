@@ -32,6 +32,9 @@
               mean and maximum values for different time periods; use the mean
               column to assess general trends over time.
             </p>
+            <p>
+              Link to this report: <a :href="currentURL">{{ currentURL }}</a>
+            </p>
           </div>
 
           <MiniMap />
@@ -266,6 +269,14 @@ export default {
       isPlaceDefined: 'report/isPlaceDefined',
       latLng: 'report/latLng',
     }),
+  },
+  data: function () {
+    return {
+      currentURL: '',
+    }
+  },
+  created() {
+    this.currentURL = window.location.href
   },
   mounted() {
     this.$fetch()
