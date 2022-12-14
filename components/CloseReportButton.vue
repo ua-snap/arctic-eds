@@ -1,5 +1,5 @@
 <template>
-  <div class="back">
+  <div class="back no-print">
     <b-button
       v-on:click="close"
       class="default"

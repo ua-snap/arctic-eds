@@ -1,14 +1,5 @@
 <template>
   <div v-if="Object.keys(results.snowfall).length != 0">
-    <hr />
-
-    <div id="report">
-      <h3 class="title is-3">Snowfall Equivalent data for {{ placeName }}</h3>
-
-      <SnowfallExplanation />
-      <DataExplanation context="snowfall" />
-
-      <h4 class="title is-4">Annual Snowfall Equivalent Totals</h4>
 
       <table class="table">
         <thead>
@@ -49,8 +40,8 @@
         </tbody>
       </table>
 
-      <h4 class="title is-6">Access to Data</h4>
-      <div class="content">
+      <h4 class="title is-6 no-print">Access to Data</h4>
+      <div class="content no-print">
         <ul>
           <li>
             <a
@@ -83,18 +74,12 @@
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
-import UnitRadio from '~/components/UnitRadio'
-import SnowfallExplanation from '~/components/plates/snowfall/Explanation'
-import DataExplanation from '~/components/DataExplanation'
 
 export default {
   name: 'SnowfallReport',
   components: {
     DownloadCsvButton,
     UnitWidget,
-    UnitRadio,
-    SnowfallExplanation,
-    DataExplanation,
   },
   computed: {
     ...mapGetters({

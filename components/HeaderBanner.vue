@@ -1,5 +1,5 @@
 <template>
-  <div class="headerbanner">
+  <div class="headerbanner no-print">
     University of Alaska
     Fairbanks&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Scenarios Network
     for Alaska + Arctic Planning

@@ -1,7 +1,7 @@
 <template>
   <div>
     <client-only>
-      <div v-show="!reportIsVisible">
+      <div v-if="!reportIsVisible">
         <div class="mx-5 mb-5">
           <h2 class="title is-4 mt-3">
             Modern environmental data for science and engineering.
@@ -24,7 +24,7 @@
         </div>
 
         <SearchControls />
-        <div class="px-5 pb-6">
+        <div class="px-5 pb-6 is-hidden-mobile">
           <div class="columns is-multiline">
             <div class="column is-half">
               <h3 class="is-size-4">Precipitation</h3>
@@ -131,11 +131,6 @@ export default {
   computed: {
     ...mapGetters({
       selectedMap: 'map/selectedMap',
-    }),
-  },
-  computed: {
-    ...mapGetters({
-      selectedMap: 'map/selectedMap',
       reportIsVisible: 'report/reportIsVisible',
     }),
   },
@@ -147,7 +142,9 @@ export default {
   },
   methods: {
     showMap(event, mapId) {
-      this.$store.commit('map/selectMap', mapId)
+      this.$router.push({
+        hash: mapId,
+      })
     },
   },
 }

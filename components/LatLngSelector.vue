@@ -68,7 +68,8 @@ export default {
             'report/' +
             this.latLng.lat.toFixed(4) +
             '/' +
-            this.latLng.lng.toFixed(4),
+            this.latLng.lng.toFixed(4) +
+            '#results',
         })
       }
     },

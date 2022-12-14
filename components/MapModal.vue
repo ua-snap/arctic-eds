@@ -4,7 +4,6 @@
       <h4 class="is-size-4 pt-2 pl-4 map-title">
         {{ mapTitle }}
       </h4>
-      <p class="pl-4 map-blurb">{{ mapBlurb }}</p>
       <div class="is-flex">
         <slot name="layers">
           <div class="layer-list-wrapper">
@@ -37,22 +36,19 @@
 
     // Offset height by:
     // 42px for the map title
-    // 32px for the map blurb
     // 30px for the top (15px) + bottom (15px) margin around modal
-    height: calc(100vh - 42px - 32px - 30px);
+    height: calc(100vh - 42px - 30px);
   }
   .map {
     width: 75%;
 
     // Offset height by:
     // 42px for the map title
-    // 32px for the map blurb
     // 30px for the top (15px) + bottom (15px) margin around modal
-    height: calc(100vh - 42px - 32px - 30px);
+    height: calc(100vh - 42px - 30px);
   }
   .modal-close {
-    top: 34px;
-    right: 38px;
+    right: 25px;
     background-color: rgba(10, 10, 10, 0.3);
     &:hover {
       background-color: rgba(10, 10, 10, 0.6);
@@ -61,9 +57,6 @@
   .map-title {
     height: 42px;
     padding-top: 9px;
-  }
-  .map-blurb {
-    height: 32px;
   }
   .layers {
     h6 {
@@ -104,15 +97,14 @@ export default {
     mapTitle() {
       return mapContent.titles[this.selectedMap]
     },
-    mapBlurb() {
-      return mapContent.blurbs[this.selectedMap]
-    },
     open: {
       get() {
         return this.selectedMap != undefined
       },
       set() {
-        this.$store.commit('map/selectMap', undefined)
+        this.$router.push({
+          path: '/',
+        })
       },
     },
     layers() {

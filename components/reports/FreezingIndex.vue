@@ -1,15 +1,6 @@
 <template>
   <div v-if="Object.keys(results.freezing_index).length != 0">
-    <hr />
-
-    <div id="report">
-      <h3 class="title is-3">Freezing index data for {{ placeName }}</h3>
-
-      <FreezingIndexExplanation />
-      <DataExplanation context="wrf" />
-
-      <h4 class="title is-4">Freezing Index</h4>
-
+    
       <table class="table">
         <thead>
           <tr>
@@ -82,8 +73,8 @@
           </tr>
         </tbody>
       </table>
-      <h4 class="title is-6">Access to Data</h4>
-      <div class="content">
+      <h4 class="title is-6 no-print">Access to Data</h4>
+      <div class="content no-print">
         <p>Freezing index data was calculated from the following:</p>
         <ul>
           <li>
@@ -101,22 +92,18 @@
         class="mt-3 mb-5"
       />
     </div>
-  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
-import FreezingIndexExplanation from '~/components/plates/freezing_index/Explanation'
-import DataExplanation from '~/components/DataExplanation'
 import UnitWidget from '~/components/UnitWidget'
 
 export default {
   name: 'FreezingIndexReport',
   components: {
     DownloadCsvButton,
-    FreezingIndexExplanation,
-    DataExplanation,
+
     UnitWidget,
   },
 

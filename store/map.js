@@ -94,14 +94,17 @@ function buildLayer(layer) {
 export default {
   state() {
     return {
-      selectedMap: undefined,
       selectedLayer: undefined,
     }
   },
 
   getters: {
-    selectedMap(state) {
-      return state.selectedMap
+    selectedMap(state, getters, rootState) {
+      if (rootState.route.hash) {
+        return rootState.route.hash.replace('#', '')
+      } else {
+        return undefined
+      }
     },
     selectedLayer(state) {
       return state.selectedLayer
@@ -119,9 +122,6 @@ export default {
     },
     destroy(state) {
       map.remove()
-    },
-    selectMap(state, selectedMap) {
-      state.selectedMap = selectedMap
     },
     selectLayer(state, selectedLayer) {
       state.selectedLayer = selectedLayer
@@ -144,14 +144,14 @@ export default {
       map.addLayer(defaultLayer)
       this.commit('map/addLegend')
     },
-    addLegend(state) {
+    addLegend(state, mapId) {
       if (legendControl) {
         legendControl.remove()
       }
       legendControl = L.control({ position: 'bottomleft' })
       legendControl.onAdd = map => {
         var div = L.DomUtil.create('div', 'info legend')
-        let mapLayers = mapContent.layers[state.selectedMap]
+        let mapLayers = mapContent.layers[mapId]
         let currentLayer = _.find(mapLayers, { id: state.selectedLayer.id })
         let legend = currentLayer.legend
         let legendItems = mapContent.legends[legend]
@@ -170,7 +170,7 @@ export default {
 
       legendControl.addTo(map)
     },
-    toggleLayer(state, layer) {
+    toggleLayer(state, layerObj) {
       // Remove existing layer: right now, we only
       // want one layer to be visible on any plate in the Atlas.
       // Need to test explicitly for the existence of the
@@ -181,28 +181,28 @@ export default {
       }
 
       // Add to map!
-      state.layer = layer
+      state.layer = layerObj.layer
       let layerConfiguration = {
         transparent: true,
         format: 'image/png',
         version: '1.3.0',
-        layers: layer.wmsLayerName,
-        id: layer.id,
+        layers: state.layer.wmsLayerName,
+        id: state.layer.id,
       }
 
-      if (layer.style) {
-        layerConfiguration.styles = layer.style
+      if (state.layer.style) {
+        layerConfiguration.styles = state.layer.style
       }
 
-      if (layer.rasdamanConfiguration) {
+      if (state.layer.rasdamanConfiguration) {
         layerConfiguration = {
           ...layerConfiguration,
-          ...layer.rasdamanConfiguration,
+          ...state.layer.rasdamanConfiguration,
         }
       }
 
       let wmsUrl =
-        layer.source == 'rasdaman'
+        state.layer.source == 'rasdaman'
           ? process.env.rasdamanUrl
           : process.env.geoserverUrl
 
@@ -210,8 +210,8 @@ export default {
 
       map.addLayer(layerObject)
 
-      this.commit('map/selectLayer', layer)
-      this.commit('map/addLegend')
+      this.commit('map/selectLayer', state.layer)
+      this.commit('map/addLegend', layerObj.mapId)
     },
   },
 }
