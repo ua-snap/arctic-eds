@@ -416,10 +416,4 @@ export default {
     temperature_indices: 'Temperature Indices',
     permafrost: 'Permafrost',
   },
-  blurbs: {
-    precipitation: 'Placeholder blurb for Precipitation map',
-    temperature: 'Placeholder blurb for Temperature map',
-    temperature_indices: 'Placeholder blurb for Temperature Indices map',
-    permafrost: 'Placeholder blurb for Permafrost map',
-  },
 }
