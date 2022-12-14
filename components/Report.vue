@@ -33,38 +33,28 @@
               column to assess general trends over time.
             </p>
             <p>
-              <strong>Elevation:</strong>
+              The elevation within 1&#8239;km of this point ranges between
+              {{ results.elevation.min }}&ndash;{{
+                results.elevation.max
+              }}
+              meters, with an average elevation of
+              {{ results.elevation.mean }} meters. This variation should be kept
+              in mind when interpreting the variables below.
             </p>
             <p>
-              The minimum elevation is {{ results.elevation.min }}
-              {{ results.elevation.units }}<br />
-              The average elevation is {{ results.elevation.mean }}
-              {{ results.elevation.units }}<br />
-              The maximum elevation is {{ results.elevation.max }}
-              {{ results.elevation.units }}
-            </p>
-            <p>
-              <strong>Geology:</strong>
-            </p>
-            <p>
-              {{ results.geology.name }}<br />To explore this and other
-              geological areas of Alaska, visit
+              The geology type of this point is <em>{{ results.geology.name }}</em>, and
+              this place lies within the
+              {{ results.physiography.name }} ecological unit within Alaska.
+              Read more about
               <a
                 href="https://alaska.usgs.gov/science/geology/state_map/interactive_map/AKgeologic_map.html"
-                >here</a
+                >Alaska geology</a
               >
-            </p>
-            <p></p>
-            <p>
-              <strong>Physiography:</strong>
-            </p>
-            <p>
-              {{ results.physiography.name }}<br />To explore this and other
-              ecological regions of Alaska, visit
+              and
               <a
                 href="https://www.epa.gov/eco-research/ecoregion-download-files-state-region-10#pane-01"
-                >here</a
-              >
+                >ecological units</a
+              >.
             </p>
           </div>
 
