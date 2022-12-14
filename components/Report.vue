@@ -33,6 +33,30 @@
               column to assess general trends over time.
             </p>
             <p>
+              The elevation within 1&#8239;km of this point ranges between
+              {{ results.elevation.min }}&ndash;{{
+                results.elevation.max
+              }}
+              meters, with an average elevation of
+              {{ results.elevation.mean }} meters. This variation should be kept
+              in mind when interpreting the variables below.
+            </p>
+            <p>
+              The geology type of this point is <em>{{ results.geology.name }}</em>, and
+              this place lies within the
+              {{ results.physiography.name }} ecological unit within Alaska.
+              Read more about
+              <a
+                href="https://alaska.usgs.gov/science/geology/state_map/interactive_map/AKgeologic_map.html"
+                >Alaska geology</a
+              >
+              and
+              <a
+                href="https://www.epa.gov/eco-research/ecoregion-download-files-state-region-10#pane-01"
+                >ecological units</a
+              >.
+            </p>
+            <p>
               Link to this report: <a :href="currentURL">{{ currentURL }}</a>
             </p>
           </div>
@@ -228,6 +252,9 @@
 <style lang="scss" scoped>
 .content {
   max-width: 50rem;
+}
+.together {
+  display: inline-flex;
 }
 </style>
 <script>
