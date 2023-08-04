@@ -1,8 +1,26 @@
 <template>
   <div v-if="Object.keys(results.dot_precip).length != 0">
+    <div class="radio-units no-print">
+      <p>You can choose the era to show in the tables below.</p>
+      <div>
+        <b-field label="Era">
+          <b-radio v-model="radioEra" name="radioEra" native-value="2020-2049">
+            2020-2049
+          </b-radio>
+          <b-radio v-model="radioEra" name="radioEra" native-value="2050-2079">
+            2050-2079
+          </b-radio>
+          <b-radio v-model="radioEra" name="radioEra" native-value="2080-2099">
+            2080-2099
+          </b-radio>
+        </b-field>
+      </div>
+    </div>
     <div v-for="model in ['GFDL-CM3', 'NCAR-CCSM4']" class="pb-5">
-      <h3 class="title is-5 has-text-centered">
-        Modeled cumulative rainfall, {{ model }}, 2020-2049 ({{ getUnits }})
+      <h3 class="title is-5 pt-5">
+        Modeled cumulative rainfall, {{ model }}, {{ radioEra }} ({{
+          getUnits
+        }})
       </h3>
       <table class="table">
         <thead>
@@ -43,19 +61,19 @@
             <td v-for="interval in [2, 5, 10, 25, 50, 100, 200, 500, 1000]">
               {{
                 results.dot_precip[
-                  `pr_${interval}_${duration}_GFDL-CM3_2020-2049_mean`
+                  `pr_${interval}_${duration}_${model}_${radioEra}_mean`
                 ]
               }}<UnitWidget unitType="mm_in" /><br />
               <span class="small-text">
                 ({{
                   results.dot_precip[
-                    `pr_${interval}_${duration}_GFDL-CM3_2020-2049_min`
+                    `pr_${interval}_${duration}_${model}_${radioEra}_min`
                   ]
                 }}
                 &ndash;
                 {{
                   results.dot_precip[
-                    `pr_${interval}_${duration}_GFDL-CM3_2020-2049_max`
+                    `pr_${interval}_${duration}_${model}_${radioEra}_max`
                   ]
                 }})
               </span>
@@ -82,6 +100,11 @@ export default {
   components: {
     DownloadCsvButton,
     UnitWidget,
+  },
+  data() {
+    return {
+      radioEra: '2020-2049',
+    }
   },
   computed: {
     ...mapGetters({
