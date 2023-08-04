@@ -150,6 +150,7 @@ export default {
         { type: 'temperature', substring: '', variable: 'temperature' },
         { type: 'mm_in', substring: '', variable: 'precipitation' },
         { type: 'mm_in', substring: '', variable: 'snowfall' },
+        { type: 'mm_in', substring: '', variable: 'dot_precip' },
       ]
       conversions.forEach(conversion => {
         convertUnits(

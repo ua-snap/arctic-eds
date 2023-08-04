@@ -45,7 +45,7 @@
                 results.dot_precip[
                   `pr_${interval}_${duration}_GFDL-CM3_2020-2049_mean`
                 ]
-              }}<br />
+              }}<UnitWidget unitType="mm_in" /><br />
               <span class="small-text">
                 ({{
                   results.dot_precip[
@@ -109,16 +109,19 @@ export default {
           const data3 = data2[key3]
           for (const key4 in data3) {
             const data4 = data3[key4]
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_min`] =
-              data4.pf_lower
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_mean`] = data4.pf
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_max`] =
-              data4.pf_upper
+            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_min`] = (
+              data4.pf_lower * 25.4
+            ).toFixed(0)
+            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_mean`] = (
+              data4.pf * 25.4
+            ).toFixed(0)
+            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_max`] = (
+              data4.pf_upper * 25.4
+            ).toFixed(0)
           }
         }
       }
     }
-    console.log(plateResults)
 
     this.$store.commit('report/setPlateResults', {
       plateResults: plateResults,
