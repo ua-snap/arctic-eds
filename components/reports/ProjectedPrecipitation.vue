@@ -2,7 +2,7 @@
   <div v-if="Object.keys(results.dot_precip).length != 0">
     <div v-for="model in ['GFDL-CM3', 'NCAR-CCSM4']" class="pb-5">
       <h3 class="title is-5 has-text-centered">
-        Modeled cumulative rainfall, {{ model }}, 2020-2049 (inches)
+        Modeled cumulative rainfall, {{ model }}, 2020-2049 ({{ getUnits }})
       </h3>
       <table class="table">
         <thead>
@@ -88,7 +88,11 @@ export default {
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
+      units: 'report/units',
     }),
+    getUnits() {
+      return this.units === 'imperial' ? 'inches' : 'mm'
+    },
   },
   watch: {
     isPlaceDefined: function () {
