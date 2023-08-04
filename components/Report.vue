@@ -34,16 +34,15 @@
             </p>
             <p>
               The elevation within 1&#8239;km of this point ranges between
-              {{ results.elevation.min }}&ndash;{{
-                results.elevation.max
-              }}
+              {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
               meters, with an average elevation of
               {{ results.elevation.mean }} meters. This variation should be kept
               in mind when interpreting the variables below.
             </p>
             <p>
-              The geology type of this point is <em>{{ results.geology.name }}</em>, and
-              this place lies within the
+              The geology type of this point is
+              <em>{{ results.geology.name }}</em
+              >, and this place lies within the
               {{ results.physiography.name }} ecological unit within Alaska.
               Read more about
               <a
@@ -137,6 +136,11 @@
             </p>
           </div>
           <PrecipitationReport />
+
+          <h3 id="projected-precipitation" class="title is-3 mt-6">
+            Projected Precipitation
+          </h3>
+          <ProjectedPrecipitation />
 
           <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>
           <div class="content">
@@ -270,6 +274,7 @@ import DesignFreezingIndexReport from '~/components/reports/DesignFreezingIndex'
 import DesignThawingIndexReport from '~/components/reports/DesignThawingIndex'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
+import ProjectedPrecipitation from '~/components/reports/ProjectedPrecipitation'
 
 export default {
   name: 'FullReport',
@@ -285,6 +290,7 @@ export default {
     DesignThawingIndexReport,
     FreezingIndexReport,
     ThawingIndexReport,
+    ProjectedPrecipitation,
   },
   computed: {
     state: function () {
