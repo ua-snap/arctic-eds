@@ -29,10 +29,21 @@ function convertTemperature(state, variable, key) {
 }
 
 function convertMillimetersInches(state, variable, key) {
+  // If the variable is proj_precip, we want the metric and
+  // imperial units to be set to 2 decimal places to match
+  // the DOT Projected Precipitation application.
   if (state.units == 'metric') {
-    return (state.results[variable][key] * 25.4).toFixed(0)
+    if (variable == 'proj_precip') {
+      return (state.results[variable][key] * 25.4).toFixed(2)
+    } else {
+      return (state.results[variable][key] * 25.4).toFixed(0)
+    }
   } else {
-    return (state.results[variable][key] / 25.4).toFixed(1)
+    if (variable == 'proj_precip') {
+      return (state.results[variable][key] / 25.4).toFixed(2)
+    } else {
+      return (state.results[variable][key] / 25.4).toFixed(1)
+    }
   }
 }
 
