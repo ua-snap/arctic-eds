@@ -1,33 +1,23 @@
 import _ from 'lodash'
 
 function convertUnits(state, type, substring = '', variable) {
+  let variable_results = {}
   Object.keys(state.results[variable]).forEach(key => {
     if (key.includes(substring)) {
       switch (type) {
         case 'temperature':
-          state.results[variable][key] = convertTemperature(
-            state,
-            variable,
-            key
-          )
+          variable_results[key] = convertTemperature(state, variable, key)
           break
         case 'm_in':
-          state.results[variable][key] = convertMetersInches(
-            state,
-            variable,
-            key
-          )
+          variable_results[key] = convertMetersInches(state, variable, key)
           break
         case 'mm_in':
-          state.results[variable][key] = convertMillimetersInches(
-            state,
-            variable,
-            key
-          )
+          variable_results[key] = convertMillimetersInches(state, variable, key)
           break
       }
     }
   })
+  state.results[variable] = variable_results
 }
 
 function convertTemperature(state, variable, key) {
