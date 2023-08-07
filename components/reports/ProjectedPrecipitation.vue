@@ -1,5 +1,5 @@
 <template>
-  <div v-if="Object.keys(results.dot_precip).length != 0">
+  <div v-if="Object.keys(results.proj_precip).length != 0">
     <div class="radio-units no-print">
       <p>You can choose the era to show in the tables below.</p>
       <div>
@@ -60,19 +60,19 @@
             <td>{{ duration }}</td>
             <td v-for="interval in [2, 5, 10, 25, 50, 100, 200, 500, 1000]">
               {{
-                results.dot_precip[
+                results.proj_precip[
                   `pr_${interval}_${duration}_${model}_${radioEra}_mean`
                 ]
               }}<UnitWidget unitType="mm_in" /><br />
               <span class="small-text">
                 ({{
-                  results.dot_precip[
+                  results.proj_precip[
                     `pr_${interval}_${duration}_${model}_${radioEra}_min`
                   ]
                 }}
                 &ndash;
                 {{
-                  results.dot_precip[
+                  results.proj_precip[
                     `pr_${interval}_${duration}_${model}_${radioEra}_max`
                   ]
                 }})
@@ -84,7 +84,7 @@
     </div>
     <DownloadCsvButton
       text="Download projected precipitation data as CSV"
-      endpoint="dot_precip/point"
+      endpoint="proj_precip/point"
       class="mt-3 mb-5"
     />
   </div>
@@ -124,23 +124,21 @@ export default {
   },
   fetch() {
     const plateResults = {}
-    for (const key1 in this.results.dot_precip) {
-      const data1 = this.results.dot_precip[key1]
+    for (const key1 in this.results.proj_precip) {
+      const data1 = this.results.proj_precip[key1]
       for (const key2 in data1) {
         const data2 = data1[key2]
         for (const key3 in data2) {
           const data3 = data2[key3]
           for (const key4 in data3) {
             const data4 = data3[key4]
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_min`] = (
-              data4.pf_lower * 25.4
-            ).toFixed(0)
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_mean`] = (
-              data4.pf * 25.4
-            ).toFixed(0)
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_max`] = (
-              data4.pf_upper * 25.4
-            ).toFixed(0)
+            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_min`] =
+              data4.pf_lower
+
+            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_mean`] = data4.pf
+
+            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_max`] =
+              data4.pf_upper
           }
         }
       }
@@ -148,7 +146,7 @@ export default {
 
     this.$store.commit('report/setPlateResults', {
       plateResults: plateResults,
-      variable: 'dot_precip',
+      variable: 'proj_precip',
     })
   },
 }
