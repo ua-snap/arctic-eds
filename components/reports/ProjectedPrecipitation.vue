@@ -82,6 +82,18 @@
         </tbody>
       </table>
     </div>
+    <h4 class="title is-6 no-print">Access to Data</h4>
+    <div class="content no-print">
+      <ul>
+        <li>
+          <a
+            href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
+            target="_blank"
+            >Annual maximum precipitation projections for Alaska</a
+          >
+        </li>
+      </ul>
+    </div>
     <DownloadCsvButton
       text="Download projected precipitation data as CSV"
       endpoint="proj_precip/point"
@@ -124,21 +136,25 @@ export default {
   },
   fetch() {
     const plateResults = {}
-    for (const key1 in this.results.proj_precip) {
-      const data1 = this.results.proj_precip[key1]
-      for (const key2 in data1) {
-        const data2 = data1[key2]
-        for (const key3 in data2) {
-          const data3 = data2[key3]
-          for (const key4 in data3) {
-            const data4 = data3[key4]
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_min`] =
-              data4.pf_lower
+    for (const return_interval in this.results.proj_precip) {
+      const durations = this.results.proj_precip[return_interval]
+      for (const duration in durations) {
+        const models = durations[duration]
+        for (const model in models) {
+          const eras = models[model]
+          for (const era in eras) {
+            const precips = eras[era]
+            plateResults[
+              `pr_${return_interval}_${duration}_${model}_${era}_min`
+            ] = precips.pf_lower
 
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_mean`] = data4.pf
+            plateResults[
+              `pr_${return_interval}_${duration}_${model}_${era}_mean`
+            ] = precips.pf
 
-            plateResults[`pr_${key1}_${key2}_${key3}_${key4}_max`] =
-              data4.pf_upper
+            plateResults[
+              `pr_${return_interval}_${duration}_${model}_${era}_max`
+            ] = precips.pf_upper
           }
         }
       }
