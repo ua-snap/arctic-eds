@@ -132,11 +132,19 @@ export default {
   watch: {
     isPlaceDefined: function () {
       this.$fetch()
+      console.log('Fetching...')
     },
   },
   fetch() {
     const plateResults = {}
     for (const return_interval in this.results.proj_precip) {
+      // If the results have already been converted, such as when
+      // clicking on an anchor link in the TOC, do not try to convert
+      // the results again.
+      if (return_interval.includes('pr')) {
+        plateResults = this.results.proj_precip
+        break
+      }
       const durations = this.results.proj_precip[return_interval]
       for (const duration in durations) {
         const models = durations[duration]
