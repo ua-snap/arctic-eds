@@ -79,6 +79,11 @@
                     >
                   </li>
                   <li>
+                    <a href="#projected-precipitation"
+                      >Projected Precipitation</a
+                    >
+                  </li>
+                  <li>
                     <a href="#snowfall">Snowfall</a>
                   </li>
                 </ul>
