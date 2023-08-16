@@ -132,7 +132,6 @@ export default {
   watch: {
     isPlaceDefined: function () {
       this.$fetch()
-      console.log('Fetching...')
     },
   },
   fetch() {
