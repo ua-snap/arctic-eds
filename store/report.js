@@ -1,33 +1,23 @@
 import _ from 'lodash'
 
 function convertUnits(state, type, substring = '', variable) {
+  let variable_results = {}
   Object.keys(state.results[variable]).forEach(key => {
     if (key.includes(substring)) {
       switch (type) {
         case 'temperature':
-          state.results[variable][key] = convertTemperature(
-            state,
-            variable,
-            key
-          )
+          variable_results[key] = convertTemperature(state, variable, key)
           break
         case 'm_in':
-          state.results[variable][key] = convertMetersInches(
-            state,
-            variable,
-            key
-          )
+          variable_results[key] = convertMetersInches(state, variable, key)
           break
         case 'mm_in':
-          state.results[variable][key] = convertMillimetersInches(
-            state,
-            variable,
-            key
-          )
+          variable_results[key] = convertMillimetersInches(state, variable, key)
           break
       }
     }
   })
+  state.results[variable] = variable_results
 }
 
 function convertTemperature(state, variable, key) {
@@ -39,10 +29,21 @@ function convertTemperature(state, variable, key) {
 }
 
 function convertMillimetersInches(state, variable, key) {
+  // If the variable is proj_precip, we want the metric and
+  // imperial units to be set to 2 decimal places to match
+  // the DOT Projected Precipitation application.
   if (state.units == 'metric') {
-    return (state.results[variable][key] * 25.4).toFixed(0)
+    if (variable == 'proj_precip') {
+      return (state.results[variable][key] * 25.4).toFixed(2)
+    } else {
+      return (state.results[variable][key] * 25.4).toFixed(0)
+    }
   } else {
-    return (state.results[variable][key] / 25.4).toFixed(1)
+    if (variable == 'proj_precip') {
+      return (state.results[variable][key] / 25.4).toFixed(2)
+    } else {
+      return (state.results[variable][key] / 25.4).toFixed(1)
+    }
   }
 }
 
@@ -150,6 +151,7 @@ export default {
         { type: 'temperature', substring: '', variable: 'temperature' },
         { type: 'mm_in', substring: '', variable: 'precipitation' },
         { type: 'mm_in', substring: '', variable: 'snowfall' },
+        { type: 'mm_in', substring: '', variable: 'proj_precip' },
       ]
       conversions.forEach(conversion => {
         convertUnits(
