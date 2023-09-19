@@ -98,13 +98,6 @@
                     <a href="#heating-degree-days">Heating Degree Days</a>
                   </li>
                   <li><a href="#freezing-index">Freezing Index</a></li>
-                  <li>
-                    <a href="#design-freezing-index">Design Freezing Index</a>
-                  </li>
-                  <li><a href="#thawing-index">Thawing Index</a></li>
-                  <li>
-                    <a href="#design-thawing-index">Design Thawing Index</a>
-                  </li>
                 </ul>
               </li>
 
@@ -208,38 +201,9 @@
           <h3 id="freezing-index" class="title is-3 mt-6">Freezing Index</h3>
           <FreezingIndexReport />
 
-          <h3 id="design-freezing-index" class="title is-3 mt-6">
-            Design Freezing Index
-          </h3>
-          <div class="content is-size-5">
-            <p>
-              For both models, every annual freezing index value for this
-              location in the 30&ndash;year time era indicated was calculated
-              and the three coldest years (greatest freezing index values) were
-              identified. The design freezing index value for each model was
-              computed by finding the mean of those three values, then taking
-              the average across both models.
-            </p>
-          </div>
-          <DesignFreezingIndexReport />
-
           <h3 id="thawing-index" class="title is-3 mt-6">Thawing Index</h3>
           <ThawingIndexReport />
 
-          <h3 id="design-thawing-index" class="title is-3 mt-6">
-            Design Thawing Index
-          </h3>
-          <div class="content is-size-5">
-            <p>
-              For both models, every annual thawing index value for this
-              location in the 30&ndash;year time era indicated was calculated
-              and the three warmest years (greatest thawing index values) were
-              identified. The design thawing index value for each model was
-              computed by finding the mean of those three values, then taking
-              the average across both models.
-            </p>
-          </div>
-          <DesignThawingIndexReport />
         </div>
       </section>
       <section class="section permafrost">
@@ -275,8 +239,6 @@ import PrecipitationReport from '~/components/reports/Precipitation'
 import SnowfallReport from '~/components/reports/Snowfall'
 import PermafrostReport from '~/components/reports/Permafrost'
 import HeatingDegreeDaysReport from '~/components/reports/HeatingDegreeDays'
-import DesignFreezingIndexReport from '~/components/reports/DesignFreezingIndex'
-import DesignThawingIndexReport from '~/components/reports/DesignThawingIndex'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
 import ProjectedPrecipitation from '~/components/reports/ProjectedPrecipitation'
@@ -291,8 +253,6 @@ export default {
     SnowfallReport,
     PermafrostReport,
     HeatingDegreeDaysReport,
-    DesignFreezingIndexReport,
-    DesignThawingIndexReport,
     FreezingIndexReport,
     ThawingIndexReport,
     ProjectedPrecipitation,
