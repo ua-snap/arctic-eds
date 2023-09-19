@@ -39,24 +39,6 @@
               <MapLayer v-bind:key="layers[5].id" v-bind:layer="layers[5]" />
             </li>
           </ul>
-          <h5 class="mb-2">Design Freezing Index</h5>
-          <ul>
-            <li>
-              <MapLayer v-bind:key="layers[6].id" v-bind:layer="layers[6]" />
-            </li>
-            <li class="mb-3">
-              <MapLayer v-bind:key="layers[7].id" v-bind:layer="layers[7]" />
-            </li>
-          </ul>
-          <h5 class="mb-2">Design Thawing Index</h5>
-          <ul>
-            <li>
-              <MapLayer v-bind:key="layers[8].id" v-bind:layer="layers[8]" />
-            </li>
-            <li class="mb-3">
-              <MapLayer v-bind:key="layers[9].id" v-bind:layer="layers[9]" />
-            </li>
-          </ul>
         </div>
       </div>
     </template>
