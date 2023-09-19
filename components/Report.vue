@@ -98,6 +98,7 @@
                     <a href="#heating-degree-days">Heating Degree Days</a>
                   </li>
                   <li><a href="#freezing-index">Freezing Index</a></li>
+                  <li><a href="#thawing-index">Thawing Index</a></li>
                 </ul>
               </li>
 
