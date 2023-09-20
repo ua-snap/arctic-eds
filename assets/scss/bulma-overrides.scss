@@ -10,3 +10,16 @@ a:hover,
 a:focus {
   text-decoration: underline;
 }
+
+// Fix spacing on radio buttons / fields (beufy)
+label.b-radio.radio span.control-label {
+  margin-right: 1.5rem;
+  padding-left: 0.4rem !important;
+  position: relative;
+  top: 0.115rem;
+}
+
+div.field label.label {
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
