@@ -1,7 +1,13 @@
 <template>
-  <div v-if="Object.keys(results.proj_precip).length != 0">
+  <div class="pf" v-if="Object.keys(results.proj_precip).length != 0">
+    <p class="content is-size-5">
+      This section provides access to projected precipitation frequencies by
+      duration and return interval. Projections were derived from GFDL-CM3 and
+      NCAR-CCSM4 model outputs under the CMIP5 RCP 8.5 emissions scenario,
+      summarized by three future eras. These data are at a 20km spatial
+      resolution.
+    </p>
     <div class="radio-units no-print">
-      <p>You can choose the era to show in the tables below.</p>
       <div>
         <b-field label="Era">
           <b-radio v-model="radioEra" name="radioEra" native-value="2020-2049">
@@ -16,72 +22,85 @@
         </b-field>
       </div>
     </div>
-    <div v-for="model in ['GFDL-CM3', 'NCAR-CCSM4']" class="pb-5">
-      <h3 class="title is-5 pt-5">
-        Modeled cumulative rainfall, {{ model }}, {{ radioEra }} ({{
-          getUnits
-        }})
-      </h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="no-border">Duration</th>
-            <th class="no-border" colspan="9">
-              Annual exceedance probability (1/years)
-            </th>
-          </tr>
-          <tr>
-            <th></th>
-            <th v-for="interval in [2, 5, 10, 25, 50, 100, 200, 500, 1000]">
-              1 / {{ interval }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="duration in [
-              '60m',
-              '2h',
-              '3h',
-              '6h',
-              '12h',
-              '24h',
-              '2d',
-              '3d',
-              '4d',
-              '7d',
-              '10d',
-              '20d',
-              '30d',
-              '45d',
-              '60d',
-            ]"
+    <div class="radio-units no-print">
+      <div>
+        <b-field label="Model">
+          <b-radio
+            v-model="radioModel"
+            name="radioModel"
+            native-value="NCAR-CCSM4"
           >
-            <td>{{ duration }}</td>
-            <td v-for="interval in [2, 5, 10, 25, 50, 100, 200, 500, 1000]">
+            NCAR-CCSM4
+          </b-radio>
+          <b-radio
+            v-model="radioModel"
+            name="radioModel"
+            native-value="GFDL-CM3"
+          >
+            GFDL-CM3
+          </b-radio>
+        </b-field>
+      </div>
+    </div>
+    <h4 class="title is-4 mt-6">Projected precipitation, {{ radioModel }}</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="no-border">Duration</th>
+          <th class="no-border" colspan="9">
+            Annual exceedance probability (1/years)
+          </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th v-for="interval in [2, 5, 10, 25, 50, 100, 200, 500, 1000]">
+            1 / {{ interval }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="duration in [
+            '60m',
+            '2h',
+            '3h',
+            '6h',
+            '12h',
+            '24h',
+            '2d',
+            '3d',
+            '4d',
+            '7d',
+            '10d',
+            '20d',
+            '30d',
+            '45d',
+            '60d',
+          ]"
+        >
+          <td>{{ duration }}</td>
+          <td v-for="interval in [2, 5, 10, 25, 50, 100, 200, 500, 1000]">
+            {{
+              results.proj_precip[
+                `pr_${interval}_${duration}_${radioModel}_${radioEra}_mean`
+              ]
+            }}<UnitWidget unitType="mm_in" /><br />
+            <span class="small-text">
               {{
                 results.proj_precip[
-                  `pr_${interval}_${duration}_${model}_${radioEra}_mean`
+                  `pr_${interval}_${duration}_${radioModel}_${radioEra}_min`
                 ]
-              }}<UnitWidget unitType="mm_in" /><br />
-              <span class="small-text">
-                ({{
-                  results.proj_precip[
-                    `pr_${interval}_${duration}_${model}_${radioEra}_min`
-                  ]
-                }}
-                &ndash;
-                {{
-                  results.proj_precip[
-                    `pr_${interval}_${duration}_${model}_${radioEra}_max`
-                  ]
-                }})
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+              }}&mdash;{{
+                results.proj_precip[
+                  `pr_${interval}_${duration}_${radioModel}_${radioEra}_max`
+                ]
+              }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     <h4 class="title is-6 no-print">Access to Data</h4>
     <div class="content no-print">
       <ul>
@@ -116,6 +135,7 @@ export default {
   data() {
     return {
       radioEra: '2020-2049',
+      radioModel: 'NCAR-CCSM4',
     }
   },
   computed: {
@@ -176,9 +196,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.pf table {
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1;
+}
+
 .small-text {
-  font-size: 10px;
-  font-style: italic;
+  font-size: 80%;
 }
 .no-border {
   border: none;
