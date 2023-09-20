@@ -108,7 +108,7 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 
 export default {
-  name: 'ProjectedPrecipitationReport',
+  name: 'PrecipitationFrequencyReport',
   components: {
     DownloadCsvButton,
     UnitWidget,
