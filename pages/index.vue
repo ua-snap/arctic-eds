@@ -147,5 +147,11 @@ export default {
       })
     },
   },
+  meta: {
+    scrollPos: {
+      x: 0,
+      y: 0,
+    },
+  },
 }
 </script>

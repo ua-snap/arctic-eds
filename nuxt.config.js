@@ -87,5 +87,6 @@ export default {
         component: resolve(__dirname, 'pages/index'),
       })
     },
+    middleware: ['adjustScroll'],
   },
 }
