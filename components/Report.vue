@@ -204,7 +204,6 @@
 
           <h3 id="thawing-index" class="title is-3 mt-6">Thawing Index</h3>
           <ThawingIndexReport />
-
         </div>
       </section>
       <section class="section permafrost">
@@ -256,7 +255,7 @@ export default {
     HeatingDegreeDaysReport,
     FreezingIndexReport,
     ThawingIndexReport,
-    ProjectedPrecipitation,
+    PrecipitationFrequency,
   },
   computed: {
     state: function () {
