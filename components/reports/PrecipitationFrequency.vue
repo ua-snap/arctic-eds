@@ -144,7 +144,6 @@
           Source dataset and metadata:
           <a
             href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
-            target="_blank"
             >Annual maximum precipitation projections for Alaska</a
           >
         </li>
