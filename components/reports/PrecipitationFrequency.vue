@@ -2,16 +2,17 @@
   <div class="pf" v-if="Object.keys(results.proj_precip).length != 0">
     <div class="data-intro content is-size-5">
       <p>
-        This section provides access to projected precipitation frequencies by
-        duration and return interval. Projections were derived from GFDL-CM3 and
-        NCAR-CCSM4 model outputs under the CMIP5 RCP 8.5 emissions scenario,
-        summarized by three future eras. These data are at a 20km spatial
-        resolution.
+        Below are projected precipitation frequencies by duration and return
+        interval. Projections were derived from GFDL-CM3 and NCAR-CCSM4 model
+        outputs under the CMIP5 RCP 8.5 emissions scenario, summarized by three
+        future eras. Spatial resolution: 20km.
       </p>
       <p>
-        The primary number shown is the mean across all data for the selected
-        era. The subscripts show the minimum and maximum values for the selected
-        era.
+        Each table entry below shows the maximum expected precipitation at your
+        chosen location over the duration specified for that row (60 minutes to
+        60 days), at a frequency specified for that column (per 2 year to per
+        1,000 years). A 95% confidence interval appears below this value. See
+        the report and academic paper, linked below, for more information.
       </p>
     </div>
     <div class="radio-units no-print">
@@ -122,8 +123,25 @@
             endpoint="proj_precip/point"
           />
         </li>
-        <li>Read a <a href="https://uaf-snap.org/wp-content/uploads/2021/05/dot-precip_FINAL-REPORT_20210526.pdf">detailed report and overview of the data preparation and research methodology</a> used to prepare this dataset</li>
-        <li>Source dataset and metadata: 
+        <li>
+          Read a
+          <a
+            href="https://uaf-snap.org/wp-content/uploads/2021/05/dot-precip_FINAL-REPORT_20210526.pdf"
+            >detailed report and overview of the data preparation and research
+            methodology</a
+          >
+          used to prepare this dataset
+        </li>
+        <li>
+          Academic reference: Bieniek P, Walsh J, Fresco N, Tauxe C, Redilla K.
+          Anticipated changes in Alaska extreme precipitation. Journal of
+          Applied Meteorology and Climatology. 2022; 61(2):97-108.
+          <a href="https://doi.org/10.1175/JAMC-D-21-0106.1"
+            >https://doi.org/10.1175/JAMC-D-21-0106.1</a
+          >
+        </li>
+        <li>
+          Source dataset and metadata:
           <a
             href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
             target="_blank"
