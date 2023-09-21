@@ -79,8 +79,8 @@
                     >
                   </li>
                   <li>
-                    <a href="#projected-precipitation"
-                      >Projected Precipitation</a
+                    <a href="#precipitation-frequency"
+                      >Precipitation Frequency</a
                     >
                   </li>
                   <li>
@@ -136,10 +136,11 @@
           </div>
           <PrecipitationReport />
 
-          <h3 id="projected-precipitation" class="title is-3 mt-6">
-            Projected Precipitation
+          <h3 id="precipitation-frequency" class="title is-3 mt-6">
+            Precipitation Frequency
           </h3>
-          <ProjectedPrecipitation />
+          
+          <PrecipitationFrequency />
 
           <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>
           <div class="content">
@@ -204,7 +205,6 @@
 
           <h3 id="thawing-index" class="title is-3 mt-6">Thawing Index</h3>
           <ThawingIndexReport />
-
         </div>
       </section>
       <section class="section permafrost">
@@ -242,7 +242,7 @@ import PermafrostReport from '~/components/reports/Permafrost'
 import HeatingDegreeDaysReport from '~/components/reports/HeatingDegreeDays'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
-import ProjectedPrecipitation from '~/components/reports/ProjectedPrecipitation'
+import PrecipitationFrequency from '~/components/reports/PrecipitationFrequency'
 
 export default {
   name: 'FullReport',
@@ -256,7 +256,7 @@ export default {
     HeatingDegreeDaysReport,
     FreezingIndexReport,
     ThawingIndexReport,
-    ProjectedPrecipitation,
+    PrecipitationFrequency,
   },
   computed: {
     state: function () {
