@@ -13,16 +13,12 @@
       <tbody>
         <tr>
           <th scope="row">Historical (1995)</th>
-          <td>
-            {{ results.permafrost.gipl_magt_1995 }}<UnitWidget type="light" />
-          </td>
+          <td>{{ results.permafrost.gipl_magt_1995 }}<UnitWidget /></td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">2011 - 2040</th>
-          <td>
-            {{ results.permafrost.gipl_magt_2025 }}<UnitWidget type="light" />
-          </td>
+          <td>{{ results.permafrost.gipl_magt_2025 }}<UnitWidget /></td>
           <td>
             {{
               signedDiff(
@@ -30,14 +26,12 @@
                 results.permafrost.gipl_magt_2025,
                 'magt'
               )
-            }}<UnitWidget type="light" />
+            }}<UnitWidget />
           </td>
         </tr>
         <tr>
           <th scope="row">2036 - 2065</th>
-          <td>
-            {{ results.permafrost.gipl_magt_2050 }}<UnitWidget type="light" />
-          </td>
+          <td>{{ results.permafrost.gipl_magt_2050 }}<UnitWidget /></td>
           <td>
             {{
               signedDiff(
@@ -45,14 +39,12 @@
                 results.permafrost.gipl_magt_2050,
                 'magt'
               )
-            }}<UnitWidget type="light" />
+            }}<UnitWidget />
           </td>
         </tr>
         <tr>
           <th scope="row">2061 – 2090</th>
-          <td>
-            {{ results.permafrost.gipl_magt_2075 }}<UnitWidget type="light" />
-          </td>
+          <td>{{ results.permafrost.gipl_magt_2075 }}<UnitWidget /></td>
           <td>
             {{
               signedDiff(
@@ -60,14 +52,12 @@
                 results.permafrost.gipl_magt_2075,
                 'magt'
               )
-            }}<UnitWidget type="light" />
+            }}<UnitWidget />
           </td>
         </tr>
         <tr>
           <th scope="row">2086 – 2100</th>
-          <td>
-            {{ results.permafrost.gipl_magt_2095 }}<UnitWidget type="light" />
-          </td>
+          <td>{{ results.permafrost.gipl_magt_2095 }}<UnitWidget /></td>
           <td>
             {{
               signedDiff(
@@ -75,7 +65,7 @@
                 results.permafrost.gipl_magt_2095,
                 'magt'
               )
-            }}<UnitWidget type="light" />
+            }}<UnitWidget />
           </td>
         </tr>
       </tbody>
@@ -87,8 +77,7 @@
         <li v-if="results.permafrost.magt_2018">
           Obu et al. (2018) Mean Annual Ground Temperature at Top of Permafrost:
           <strong
-            >{{ results.permafrost.magt_2018
-            }}<UnitWidget unitType="temp" type="light"
+            >{{ results.permafrost.magt_2018 }}<UnitWidget unitType="temp"
           /></strong>
         </li>
         <li v-if="results.permafrost.giv_2008">
