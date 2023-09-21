@@ -1,5 +1,5 @@
 <template>
-  <a :href="downloadTarget" class="button is-info single no-print">{{
+  <a :href="downloadTarget" class="no-print">{{
     text
   }}</a>
 </template>

@@ -139,6 +139,7 @@
           <h3 id="precipitation-frequency" class="title is-3 mt-6">
             Precipitation Frequency
           </h3>
+          
           <PrecipitationFrequency />
 
           <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>

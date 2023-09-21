@@ -1,12 +1,19 @@
 <template>
   <div class="pf" v-if="Object.keys(results.proj_precip).length != 0">
-    <p class="content is-size-5">
-      This section provides access to projected precipitation frequencies by
-      duration and return interval. Projections were derived from GFDL-CM3 and
-      NCAR-CCSM4 model outputs under the CMIP5 RCP 8.5 emissions scenario,
-      summarized by three future eras. These data are at a 20km spatial
-      resolution.
-    </p>
+    <div class="data-intro content is-size-5">
+      <p>
+        This section provides access to projected precipitation frequencies by
+        duration and return interval. Projections were derived from GFDL-CM3 and
+        NCAR-CCSM4 model outputs under the CMIP5 RCP 8.5 emissions scenario,
+        summarized by three future eras. These data are at a 20km spatial
+        resolution.
+      </p>
+      <p>
+        The primary number shown is the mean across all data for the selected
+        era. The subscripts show the minimum and maximum values for the selected
+        era.
+      </p>
+    </div>
     <div class="radio-units no-print">
       <div>
         <b-field label="Era">
@@ -42,7 +49,9 @@
         </b-field>
       </div>
     </div>
-    <h4 class="title is-4 mt-6">Projected precipitation, {{ radioModel }}</h4>
+    <h4 class="title is-4 mt-6">
+      Projected precipitation frequency, {{ radioModel }}, {{ radioEra }}
+    </h4>
     <table class="table">
       <thead>
         <tr>
@@ -101,10 +110,20 @@
       </tbody>
     </table>
 
-    <h4 class="title is-6 no-print">Access to Data</h4>
-    <div class="content no-print">
+    <div class="block data-outro content is-size-5 no-print">
+      <h4 class="title is-5 no-print">
+        Data access &amp; additional information
+      </h4>
+
       <ul>
         <li>
+          <DownloadCsvButton
+            text="Download this data as CSV"
+            endpoint="proj_precip/point"
+          />
+        </li>
+        <li>Read a <a href="https://uaf-snap.org/wp-content/uploads/2021/05/dot-precip_FINAL-REPORT_20210526.pdf">detailed report and overview of the data preparation and research methodology</a> used to prepare this dataset</li>
+        <li>Source dataset and metadata: 
           <a
             href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
             target="_blank"
@@ -113,11 +132,6 @@
         </li>
       </ul>
     </div>
-    <DownloadCsvButton
-      text="Download projected precipitation data as CSV"
-      endpoint="proj_precip/point"
-      class="mt-3 mb-5"
-    />
   </div>
 </template>
 
