@@ -139,7 +139,7 @@
           <h3 id="precipitation-frequency" class="title is-3 mt-6">
             Precipitation Frequency
           </h3>
-          
+
           <PrecipitationFrequency />
 
           <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>
@@ -181,10 +181,10 @@
           <h2 id="temperature-indices" class="title is-2">
             Temperature Indices
           </h2>
-          <div class="content is-size-5">
+          <div class="block content is-size-5">
             <p>
               The results in the sections below come from two types of data
-              sources: historical modeled data (ERA Interim) and projected
+              sources: historical modeled data (ERA-Interim) and projected
               climate conditions using two climate models (NCAR CCSM4 and GFDL
               CM3) and one emissions scenario (RCP 8.5).
             </p>
@@ -194,17 +194,30 @@
               resolution.
             </p>
           </div>
-
-          <h3 id="heating-degree-days" class="title is-3 mt-6">
-            Heating Degree Days
-          </h3>
-          <HeatingDegreeDaysReport />
-
-          <h3 id="freezing-index" class="title is-3 mt-6">Freezing Index</h3>
-          <FreezingIndexReport />
-
-          <h3 id="thawing-index" class="title is-3 mt-6">Thawing Index</h3>
-          <ThawingIndexReport />
+          <div class="block">
+            <h3 id="heating-degree-days" class="title is-4 mb-3">
+              Heating Degree Days
+            </h3>
+            <HeatingDegreeDaysReport />
+          </div>
+          <div class="block">
+            <h3 id="freezing-index" class="title is-4">Freezing Index</h3>
+            <FreezingIndexReport />
+          </div>
+          <div class="block">
+            <h3 id="thawing-index" class="title is-4">Thawing Index</h3>
+            <ThawingIndexReport />
+          </div>
+          <div class="block">
+            <div class="content is-size-5">
+              <h4 class="title is-5 no-print">
+                Data access &amp; additional information
+              </h4>
+              <ul>
+                <li></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
       <section class="section permafrost">
@@ -223,14 +236,7 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-.content {
-  max-width: 50rem;
-}
-.together {
-  display: inline-flex;
-}
-</style>
+<style lang="scss" scoped></style>
 <script>
 import { mapGetters } from 'vuex'
 import UnitRadio from '~/components/UnitRadio'

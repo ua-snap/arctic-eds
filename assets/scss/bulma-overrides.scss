@@ -12,6 +12,32 @@ a:focus {
   text-decoration: underline;
 }
 
+// General stuff for data summary/preview tables
+table {
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1;
+}
+
+table.preview {
+  td, th {
+    padding: 0.5rem;
+    border: 1px solid #888;
+  }
+  th {
+    font-weight: bold;
+  }
+  tfoot td {
+    border: none;
+  }
+}
+
+// vertical ellipsis
+.vellip {
+  font-size: 120%;
+  font-weight: bold;
+  text-align: center;
+}
+
 // Fix spacing on radio buttons / fields (beufy)
 label.b-radio.radio span.control-label {
   margin-right: 1.5rem;

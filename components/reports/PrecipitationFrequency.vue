@@ -227,11 +227,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pf table {
-  font-family: 'IBM Plex Mono', monospace;
-  line-height: 1;
-}
-
 .small-text {
   font-size: 80%;
 }
