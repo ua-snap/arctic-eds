@@ -82,7 +82,7 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
-        Downloaded data includes annual values for both historical ERA-Interim
+        CSV download includes annual values for both historical ERA-Interim
         (1980&ndash;2009) and modeled projected (2006&ndash;2100) datasets.
       </p>
       <table class="preview">
@@ -156,7 +156,7 @@
     </div>
     <div class="content is-size-5 no-print">
       <DownloadCsvButton
-        text="Download heating degree days data as CSV"
+        :text="downloadCsvText"
         endpoint="mmm/degree_days/heating/all"
         class="mt-3 mb-5"
       />
@@ -173,11 +173,13 @@ export default {
   name: 'HeatingDegreeDaysReport',
   components: {
     DownloadCsvButton,
-
     UnitWidget,
   },
 
   computed: {
+    downloadCsvText() {
+      return "Download CSV of heading degree days for " + this.placeName
+    },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',

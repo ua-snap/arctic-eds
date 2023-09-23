@@ -288,8 +288,6 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('report/fetchPlaces')
-
     if (this.isPlaceDefined) {
       let url =
         process.env.apiUrl +

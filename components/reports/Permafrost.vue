@@ -1,110 +1,24 @@
 <template>
   <div v-if="Object.keys(results.permafrost).length != 0">
-    <h4 class="title is-4">GIPL Mean Annual Ground Temperature</h4>
-
-    <table class="table">
+    <table class="preview">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">MAGT</th>
-          <th scope="col">Change from Historical</th>
+          <th scope="col" v-for="column in csvHeader">{{ column }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">Historical (1995)</th>
-          <td>
-            {{ results.permafrost.gipl_magt_1995 }}<UnitWidget type="light" />
-          </td>
-          <td></td>
+        <tr v-for="row in csvHead">
+          <td v-for="value in row">{{ value }}</td>
         </tr>
         <tr>
-          <th scope="row">2011 - 2040</th>
-          <td>
-            {{ results.permafrost.gipl_magt_2025 }}<UnitWidget type="light" />
-          </td>
-          <td>
-            {{
-              signedDiff(
-                results.permafrost.gipl_magt_1995,
-                results.permafrost.gipl_magt_2025,
-                'magt'
-              )
-            }}<UnitWidget type="light" />
-          </td>
+          <td :colspan="csvHeader.length" class="vellip">&#8942;</td>
         </tr>
-        <tr>
-          <th scope="row">2036 - 2065</th>
-          <td>
-            {{ results.permafrost.gipl_magt_2050 }}<UnitWidget type="light" />
-          </td>
-          <td>
-            {{
-              signedDiff(
-                results.permafrost.gipl_magt_1995,
-                results.permafrost.gipl_magt_2050,
-                'magt'
-              )
-            }}<UnitWidget type="light" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2061 – 2090</th>
-          <td>
-            {{ results.permafrost.gipl_magt_2075 }}<UnitWidget type="light" />
-          </td>
-          <td>
-            {{
-              signedDiff(
-                results.permafrost.gipl_magt_1995,
-                results.permafrost.gipl_magt_2075,
-                'magt'
-              )
-            }}<UnitWidget type="light" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2086 – 2100</th>
-          <td>
-            {{ results.permafrost.gipl_magt_2095 }}<UnitWidget type="light" />
-          </td>
-          <td>
-            {{
-              signedDiff(
-                results.permafrost.gipl_magt_1995,
-                results.permafrost.gipl_magt_2095,
-                'magt'
-              )
-            }}<UnitWidget type="light" />
-          </td>
+        <tr v-for="row in csvTail">
+          <td v-for="value in row">{{ value }}</td>
         </tr>
       </tbody>
     </table>
 
-    <h4 class="title is-5">Additional data</h4>
-    <div class="content">
-      <ul>
-        <li v-if="results.permafrost.magt_2018">
-          Obu et al. (2018) Mean Annual Ground Temperature at Top of Permafrost:
-          <strong
-            >{{ results.permafrost.magt_2018
-            }}<UnitWidget unitType="temp" type="light"
-          /></strong>
-        </li>
-        <li v-if="results.permafrost.giv_2008">
-          Jorgenson et al. (2008) Ground Ice Volume:
-          <strong>{{ results.permafrost.giv_2008 }}</strong>
-        </li>
-        <li v-if="results.permafrost.pe_2008">
-          Jorgenson et al. (2008) Permafrost Extent:
-          <strong>{{ results.permafrost.pe_2008 }}</strong>
-        </li>
-        <li v-if="results.permafrost.pe_2018">
-          Obu et al. (2018) Permafrost Extent:
-          <strong>{{ results.permafrost.pe_2018 }}</strong>
-        </li>
-      </ul>
-    </div>
     <DownloadCsvButton
       text="Download permafrost data as CSV"
       endpoint="permafrost/point"
@@ -124,76 +38,80 @@ export default {
     DownloadCsvButton,
     UnitWidget,
   },
+  data() {
+    return {
+      csvHeader: [
+        'year',
+        'model',
+        'scenario',
+        'magt0.5m',
+        'magt1m',
+        'magt2m',
+        'magt3m',
+        'magt4m',
+        'magt5m',
+        'magtsurface',
+        'permafrostbase',
+        'permafrosttop',
+        'talikthickness',
+      ],
+    }
+  },
   computed: {
+    csvHead() {
+      let csvPreview = []
+      let csvSubset = this.results.permafrost['GFDL-CM3']
+      for (const key in csvSubset) {
+        csvPreview.push([
+          key,
+          'GFDL-CM3',
+          'RCP 4.5',
+          csvSubset[key]['RCP 4.5']['magt0.5m'],
+          csvSubset[key]['RCP 4.5']['magt1m'],
+          csvSubset[key]['RCP 4.5']['magt2m'],
+          csvSubset[key]['RCP 4.5']['magt3m'],
+          csvSubset[key]['RCP 4.5']['magt4m'],
+          csvSubset[key]['RCP 4.5']['magt5m'],
+          csvSubset[key]['RCP 4.5']['magtsurface'],
+          csvSubset[key]['RCP 4.5']['permafrostbase'],
+          csvSubset[key]['RCP 4.5']['permafrosttop'],
+          csvSubset[key]['RCP 4.5']['talikthickness'],
+        ])
+      }
+      let cvh = csvPreview.slice(0, 4)
+      console.log(cvh)
+      return cvh
+    },
+    csvTail() {
+      let csvPreview = []
+      let csvSubset = this.results.permafrost['NCAR-CCSM4']
+      for (const key in csvSubset) {
+        csvPreview.push([
+          key,
+          'NCAR-CCSM4',
+          'RCP 8.5',
+          csvSubset[key]['RCP 8.5']['magt0.5m'],
+          csvSubset[key]['RCP 8.5']['magt1m'],
+          csvSubset[key]['RCP 8.5']['magt2m'],
+          csvSubset[key]['RCP 8.5']['magt3m'],
+          csvSubset[key]['RCP 8.5']['magt4m'],
+          csvSubset[key]['RCP 8.5']['magt5m'],
+          csvSubset[key]['RCP 8.5']['magtsurface'],
+          csvSubset[key]['RCP 8.5']['permafrostbase'],
+          csvSubset[key]['RCP 8.5']['permafrosttop'],
+          csvSubset[key]['RCP 8.5']['talikthickness'],
+        ])
+      }
+      let cvh = csvPreview.slice(5, 9)
+      console.log(cvh)
+      return cvh
+    },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
     }),
-  },
-  methods: {
-    signedDiff(historical, projected, variable) {
-      let decimals
-      if (variable == 'magt') {
-        decimals = 1
-      }
-      let rawDiff = (projected - historical).toFixed(decimals)
-      if (rawDiff > 0) {
-        return '+' + rawDiff
-      } else {
-        return rawDiff
-      }
-    },
-  },
-  watch: {
-    isPlaceDefined: function () {
-      this.$fetch()
-    },
-  },
-  fetch() {
-    let plateResults = {
-      // "magt_" substrings are converted between °C and °F
-      gipl_magt_1995:
-        this.results['permafrost']['gipl']['1995']['cruts31']['historical'][
-          'magt'
-        ],
-      gipl_magt_2025:
-        this.results['permafrost']['gipl']['2025']['ncarccsm4']['rcp85'][
-          'magt'
-        ],
-      gipl_magt_2050:
-        this.results['permafrost']['gipl']['2050']['ncarccsm4']['rcp85'][
-          'magt'
-        ],
-      gipl_magt_2075:
-        this.results['permafrost']['gipl']['2075']['ncarccsm4']['rcp85'][
-          'magt'
-        ],
-      gipl_magt_2095:
-        this.results['permafrost']['gipl']['2095']['ncarccsm4']['rcp85'][
-          'magt'
-        ],
-    }
-
-    if (this.results['permafrost']['jorg'] != null) {
-      plateResults['giv_2008'] = this.results['permafrost']['jorg']['ice']
-      plateResults['pe_2008'] = this.results['permafrost']['jorg']['pfx']
-    }
-
-    if (this.results['permafrost']['obu_magt'] != null) {
-      // "magt_" substrings are converted between °C and °F
-      plateResults['magt_2018'] = this.results['permafrost']['obu_magt']['temp']
-    }
-
-    if (this.results['permafrost']['obupfx'] != null) {
-      plateResults['pe_2018'] = this.results['permafrost']['obupfx']['pfx']
-    }
-
-    this.$store.commit('report/setPlateResults', {
-      plateResults: plateResults,
-      variable: 'permafrost',
-    })
-  },
+  }
 }
 </script>
 
