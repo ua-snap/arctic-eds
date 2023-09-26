@@ -78,7 +78,7 @@ export default {
           csvSubset[key]['RCP 4.5']['talikthickness'],
         ])
       }
-      let cvh = csvPreview.slice(0, 4)
+      let cvh = csvPreview.slice(0, 5)
       console.log(cvh)
       return cvh
     },
@@ -102,7 +102,7 @@ export default {
           csvSubset[key]['RCP 8.5']['talikthickness'],
         ])
       }
-      let cvh = csvPreview.slice(5, 9)
+      let cvh = csvPreview.slice(5, 10)
       console.log(cvh)
       return cvh
     },

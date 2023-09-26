@@ -288,6 +288,11 @@ export default {
   },
 
   async fetch() {
+    // Needed here to ensure hydration works properly for
+    // direct links to specific places (mapping place names
+    // to lat/lngs).
+    await this.$store.dispatch('report/fetchPlaces')
+
     if (this.isPlaceDefined) {
       let url =
         process.env.apiUrl +
