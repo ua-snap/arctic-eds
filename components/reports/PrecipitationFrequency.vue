@@ -133,19 +133,22 @@
           used to prepare this dataset
         </li>
         <li>
-          Academic reference: Bieniek P, Walsh J, Fresco N, Tauxe C, Redilla K.
-          Anticipated changes in Alaska extreme precipitation. Journal of
-          Applied Meteorology and Climatology. 2022; 61(2):97-108.
-          <a href="https://doi.org/10.1175/JAMC-D-21-0106.1"
-            >https://doi.org/10.1175/JAMC-D-21-0106.1</a
-          >
-        </li>
-        <li>
           Source dataset and metadata:
           <a
             href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
             >Annual maximum precipitation projections for Alaska</a
           >
+        </li>
+        <li>
+          Academic reference:
+          <blockquote>
+            Bieniek P, Walsh J, Fresco N, Tauxe C, Redilla K. Anticipated
+            changes in Alaska extreme precipitation. Journal of Applied
+            Meteorology and Climatology. 2022; 61(2):97-108.
+            <a href="https://doi.org/10.1175/JAMC-D-21-0106.1"
+              >https://doi.org/10.1175/JAMC-D-21-0106.1</a
+            >
+          </blockquote>
         </li>
       </ul>
     </div>
@@ -227,11 +230,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pf table {
-  font-family: 'IBM Plex Mono', monospace;
-  line-height: 1;
-}
-
 .small-text {
   font-size: 80%;
 }

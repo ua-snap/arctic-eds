@@ -147,7 +147,8 @@ export default {
     convertResults(state) {
       // Converts all convertible units at the same time for shared report
       let conversions = [
-        { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
+        // This needs to be adapted after the summarized data are restored.
+        // { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
         { type: 'temperature', substring: '', variable: 'temperature' },
         { type: 'mm_in', substring: '', variable: 'precipitation' },
         { type: 'mm_in', substring: '', variable: 'snowfall' },
