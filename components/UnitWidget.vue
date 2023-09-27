@@ -1,8 +1,7 @@
 <template>
   <span class="units">
-    <span v-html="symbol.space"></span
-    ><span v-if="type == 'heavy'" v-html="'(' + symbol.symbol + ')'"></span
-    ><span v-if="type == 'light'" class="light" v-html="symbol.symbol"></span>
+    <span v-html="symbol.space"></span>
+    <span class="light" v-html="symbol.symbol"></span>
   </span>
 </template>
 <style lang="scss" scoped>
@@ -26,11 +25,6 @@ export default {
     unitType: {
       type: String,
       default: 'temp',
-    },
-    // Type can be "light" (no parentheses) or "heavy" (parens).
-    type: {
-      type: String,
-      default: 'light',
     },
   },
   computed: {

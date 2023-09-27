@@ -14,60 +14,60 @@
           <th scope="row">Historical (1901-2015)</th>
           <td>
             {{ results.precipitation.pr_hist_min
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
           <td>
             {{ results.precipitation.pr_hist_mean
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
           <td>
             {{ results.precipitation.pr_hist_max
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
         </tr>
         <tr>
           <th scope="row">Early Century (2010-2039)</th>
           <td>
             {{ results.precipitation.pr_2040_min
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
           <td>
             {{ results.precipitation.pr_2040_mean
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
           <td>
             {{ results.precipitation.pr_2040_max
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
         </tr>
         <tr>
           <th scope="row">Mid Century (2040-2069)</th>
           <td>
             {{ results.precipitation.pr_2070_min
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
           <td>
             {{ results.precipitation.pr_2070_mean
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
           <td>
             {{ results.precipitation.pr_2070_max
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
         </tr>
         <tr>
           <th scope="row">Late Century (2070-2099)</th>
           <td>
             {{ results.precipitation.pr_2100_min
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
           <td>
             {{ results.precipitation.pr_2100_mean
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
           <td>
             {{ results.precipitation.pr_2100_max
-            }}<UnitWidget unitType="mm_in" type="light" />
+            }}<UnitWidget unitType="mm_in" />
           </td>
         </tr>
       </tbody>
