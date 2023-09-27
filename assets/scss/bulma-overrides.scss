@@ -12,14 +12,25 @@ a:focus {
   text-decoration: underline;
 }
 
-// General stuff for data summary/preview tables
+// General stuff for data summary/preview tables + report sections
+blockquote {
+  font-size: 1.15rem;
+}
+
 table {
   font-family: 'IBM Plex Mono', monospace;
   line-height: 1;
+
+  caption {
+    font-family: 'Overpass', sans-serif !important;
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
 }
 
 table.preview {
-  td, th {
+  td,
+  th {
     padding: 0.5rem;
     border: 1px solid #888;
   }

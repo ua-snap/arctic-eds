@@ -1,45 +1,342 @@
 <template>
   <div v-if="isDataLoaded">
-    <h2 id="permafrost" class="title is-2">Permafrost</h2>
-    <div class="content is-size-5">
-      <p>
-        Annual projections of permafrost top and base depths, talik thickness,
-        and mean annual ground temperature at seven different depths are
-        provided by the GIPL 2.0 model at a resolution of 1km for years
-        2021&ndash;2120. These projections are provided for GFDL CM3 and NCAR
-        CCSM4 model outputs, as well as a 5-model average, under the RCP 4.5 and
-        RCP 8.5 emissions scenarios.
-      </p>
+    <div class="block">
+      <h2 id="permafrost" class="title is-2">Permafrost</h2>
+      <div class="content is-size-5">
+        <p>
+          Annual projections of permafrost top and base depths, talik thickness,
+          and mean annual ground temperature at seven different depths are
+          provided by the GIPL 2.0 model at a resolution of 1km for years
+          2021&ndash;2120. These projections are provided for GFDL CM3 and NCAR
+          CCSM4 model outputs, as well as a 5-model average (GFDL CM3, NCAR
+          CCSM4, GISS E2-R, IPSL CM5A-LR, MRI CGCM3), under the RCP 4.5 and RCP
+          8.5 emissions scenarios.
+        </p>
+      </div>
     </div>
-    <h4 class="title is-5 mb-1">Data preview</h4>
-    <p class="content is-size-5 mb-1">
-      CSV download includes annual values for the modeled projected
-      (2021&ndash;2100) dataset.
-    </p>
-    <table class="preview">
-      <thead>
-        <tr>
-          <th scope="col" v-for="col in csvHeader">{{ col }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="row in csvHead">
-          <td v-for="value in row">{{ value }}</td>
-        </tr>
-        <tr>
-          <td :colspan="csvHeader.length" class="vellip">&#8942;</td>
-        </tr>
-        <tr v-for="row in csvTail">
-          <td v-for="value in row">{{ value }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="block">
+      <h4 class="title is-5 mb-1">Data summary</h4>
+      <p class="content is-size-5">
+        The summary tables below shows the minimum, mean and maximum values
+        across two scenarios (RCP 4.5 and RCP 8.5) and three models (NCAR CCSM4,
+        GFDL CM3, and a 5-model average: GFDL-CM3, NCAR-CCSM4, GISS-E2-R,
+        IPSL-CM5A-LR, MRI-CGCM3) for the specified era, which can be helpful to
+        assess broad trends and variation. Summaries for three variables are
+        shown: mean annual ground temperature at 1m depth, mean annual ground
+        temperature at 3m depth, and permafrost top.
+      </p>
+      <table class="table">
+        <caption>
+          Mean annual ground temperature, 1m depth
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Min</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmin'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmean'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmax'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mid Century (2040&ndash;2069)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmin'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmean'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmax'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmin'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmean'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmax'][
+                  'magt1m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <DownloadCsvButton
-      text="Download permafrost data as CSV"
-      endpoint="permafrost/point"
-      class="mt-3 mb-5"
-    />
+      <table class="table">
+        <caption>
+          Mean annual ground temperature, 5m depth
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Min</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmin'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmean'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmax'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mid Century (2040&ndash;2069)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmin'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmean'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmax'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmin'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmean'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmax'][
+                  'magt5m'
+                ]
+              }}<UnitWidget unitType="temp" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <caption>
+          Permafrost top
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Min</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmin'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmean'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2021-2039']['gipl1kmmax'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mid Century (2040&ndash;2069)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmin'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmean'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2040-2069']['gipl1kmmax'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmin'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmean'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+            <td>
+              {{
+                results.permafrost['summary']['2070-2099']['gipl1kmmax'][
+                  'permafrosttop'
+                ]
+              }}<UnitWidget unitType="m_in" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <h4 class="title is-5 mb-1">Data preview</h4>
+      <p class="content is-size-5 mb-1">
+        CSV download includes annual values for the modeled projected
+        (2021&ndash;2100) dataset.
+      </p>
+      <PreviewTable
+        :csvString="results.permafrost.preview"
+        sizeBlurb="~601 rows, 13 columns, ~42kb"
+      />
+    </div>
+
+    <div class="block data-outro content is-size-5 no-print">
+      <h4 class="title is-5 no-print">
+        Data access &amp; additional information
+      </h4>
+
+      <ul>
+        <li>
+          <DownloadCsvButton
+            text="Download this data as CSV"
+            endpoint="permafrost/point"
+          />
+        </li>
+        <li>
+          Source dataset and metadata:
+          <a
+            href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/c24a957b-8a56-40bf-bc09-43a567182d36"
+            >GIPL Permafrost Model Output</a
+          >
+        </li>
+        <li>
+          Academic reference:
+          <blockquote>
+            Marchenko, S., Romanovsky, V., &amp; Tipenko, G. (2008). Numerical
+            modeling of spatial permafrost dynamics in Alaska.
+            <i
+              >Ninth International Conference on Permafrost, Online Proceedings,
+              Volume 2</i
+            >, 1125–1130. Accessed 2023-09-08 from
+            <a href="https://www.permafrost.org/event/icop9/"
+              >https://www.permafrost.org/event/icop9/</a
+            >
+          </blockquote>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -47,47 +344,18 @@
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
+import PreviewTable from '~/components/PreviewTable'
 
 export default {
   name: 'PermafrostReport',
   components: {
     DownloadCsvButton,
     UnitWidget,
+    PreviewTable,
   },
   computed: {
     isDataLoaded() {
-      console.log(this.results.permafrost)
       return this.results.permafrost != undefined
-    },
-    csvParsed() {
-      if (this.isDataLoaded) {
-        let csvString = this.results.permafrost.preview
-        if (csvString) {
-          let csvSplit = csvString.split('\r\n')
-          csvSplit = csvSplit.map(row => {
-            return row.split(',')
-          })
-          console.log(csvSplit)
-          return csvSplit
-        }
-      } else {
-        return []
-      }
-    },
-    csvHeader() {
-      if (this.csvParsed) {
-        return this.csvParsed[0]
-      }
-    },
-    csvHead() {
-      if (this.csvParsed) {
-        return this.csvParsed.slice(1, 6)
-      }
-    },
-    csvTail() {
-      if (this.csvParsed) {
-        return this.csvParsed.slice(6)
-      }
     },
     ...mapGetters({
       results: 'report/results',

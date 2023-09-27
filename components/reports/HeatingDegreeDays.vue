@@ -85,81 +85,21 @@
         CSV download includes annual values for both historical ERA-Interim
         (1980&ndash;2009) and modeled projected (2006&ndash;2100) datasets.
       </p>
-      <table class="preview">
-        <tbody>
-          <tr>
-            <th scope="col">model</th>
-            <th scope="col">year</th>
-            <th scope="col">dd</th>
-          </tr>
-
-          <tr>
-            <td>ERA-Interim</td>
-            <td>1980</td>
-            <td>13933</td>
-          </tr>
-          <tr>
-            <td>ERA-Interim</td>
-            <td>1981</td>
-            <td>12841</td>
-          </tr>
-          <tr>
-            <td>ERA-Interim</td>
-            <td>1982</td>
-            <td>14840</td>
-          </tr>
-          <tr>
-            <td>ERA-Interim</td>
-            <td>1983</td>
-            <td>14235</td>
-          </tr>
-          <tr>
-            <td>ERA-Interim</td>
-            <td>1984</td>
-            <td>14389</td>
-          </tr>
-          <tr>
-            <td colspan="3" class="vellip">&#8942;</td>
-          </tr>
-          <tr>
-            <td>NCAR-CCSM4</td>
-            <td>2096</td>
-            <td>11481</td>
-          </tr>
-          <tr>
-            <td>NCAR-CCSM4</td>
-            <td>2097</td>
-            <td>10526</td>
-          </tr>
-          <tr>
-            <td>NCAR-CCSM4</td>
-            <td>2098</td>
-            <td>11773</td>
-          </tr>
-          <tr>
-            <td>NCAR-CCSM4</td>
-            <td>2099</td>
-            <td>10609</td>
-          </tr>
-          <tr>
-            <td>NCAR-CCSM4</td>
-            <td>2100</td>
-            <td>10472</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3">~219 rows, 3 columns, ~5kb</td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <div class="content is-size-5 no-print">
-      <DownloadCsvButton
-        :text="downloadCsvText"
-        endpoint="mmm/degree_days/heating/all"
-        class="mt-3 mb-5"
+      <PreviewTable
+        :csvString="results.heating_degree_days.preview"
+        sizeBlurb="~219 rows, 3 columns, ~5kb"
       />
+    </div>
+    <div class="block content is-size-5 no-print">
+      <h4 class="title is-5 mb-1">Data download</h4>
+      <ul>
+        <li>
+          <DownloadCsvButton
+            :text="downloadCsvText"
+            endpoint="mmm/degree_days/heating/all"
+          />
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -168,17 +108,18 @@
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
+import PreviewTable from '~/components/PreviewTable'
 
 export default {
   name: 'HeatingDegreeDaysReport',
   components: {
     DownloadCsvButton,
     UnitWidget,
+    PreviewTable,
   },
-
   computed: {
     downloadCsvText() {
-      return "Download CSV of heading degree days for " + this.placeName
+      return 'Download CSV of heating degree days for ' + this.placeName
     },
     ...mapGetters({
       results: 'report/results',
