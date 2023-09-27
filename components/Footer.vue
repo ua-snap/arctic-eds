@@ -3,7 +3,15 @@
     <div class="container">
       <div class="columns">
         <div class="logo column is-one-fifth has-text-centered">
-          <img src="~/assets/images/UAF.svg" alt="UAF Logo" />
+          <img src="~/assets/images/UAF.svg" alt="UAF Logo" /><br />
+          <b-button
+            tag="a"
+            type="is-link"
+            href="https://uaf.us10.list-manage.com/subscribe?u=e42f589030a3adcaddd9b3304&id=a7b255fdd5"
+            class="mt-5"
+          >
+            Keep me updated
+          </b-button>
         </div>
         <div class="column is-four-fifths">
           <p class="lead">
