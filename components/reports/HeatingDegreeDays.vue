@@ -1,83 +1,87 @@
 <template>
   <div v-if="Object.keys(results.heating_degree_days).length != 0">
-    <h4 class="title is-5 mb-1">Summary</h4>
-    <div class="content is-size-5">
-      The summary table below shows the minimum, mean and maximum values across
-      one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3) for the
-      specified era, which can be helpful to assess broad trends and variation.
+    <div class="block">
+      <h4 class="title is-5 mb-1">Summary</h4>
+      <div class="content is-size-5">
+        The summary table below shows the minimum, mean and maximum values across
+        one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3) for the
+        specified era, which can be helpful to assess broad trends and variation.
+      </div>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Min</th>
-          <th scope="col">Mean</th>
-          <th scope="col">Max</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Historical (1979&ndash;2015)</th>
-          <td>
-            {{ results.heating_degree_days['summary']['historical']['ddmin']
-            }}<UnitWidget unitType="dd" />
-          </td>
-          <td>
-            {{ results.heating_degree_days['summary']['historical']['ddmean']
-            }}<UnitWidget unitType="dd" />
-          </td>
-          <td>
-            {{ results.heating_degree_days['summary']['historical']['ddmax']
-            }}<UnitWidget unitType="dd" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Early Century (2010&ndash;2039)</th>
-          <td>
-            {{ results.heating_degree_days['summary']['2010-2039']['ddmin']
-            }}<UnitWidget unitType="dd" />
-          </td>
-          <td>
-            {{ results.heating_degree_days['summary']['2010-2039']['ddmean']
-            }}<UnitWidget unitType="dd" />
-          </td>
-          <td>
-            {{ results.heating_degree_days['summary']['2010-2039']['ddmax']
-            }}<UnitWidget unitType="dd" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Mid Century (2040&ndash;2069)</th>
-          <td>
-            {{ results.heating_degree_days['summary']['2040-2069']['ddmin']
-            }}<UnitWidget unitType="dd" />
-          </td>
-          <td>
-            {{ results.heating_degree_days['summary']['2040-2069']['ddmean']
-            }}<UnitWidget unitType="dd" />
-          </td>
-          <td>
-            {{ results.heating_degree_days['summary']['2040-2069']['ddmax']
-            }}<UnitWidget unitType="dd" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Late Century (2070&ndash;2099)</th>
-          <td>
-            {{ results.heating_degree_days['summary']['2070-2099']['ddmin']
-            }}<UnitWidget unitType="dd" />
-          </td>
-          <td>
-            {{ results.heating_degree_days['summary']['2070-2099']['ddmean']
-            }}<UnitWidget unitType="dd" />
-          </td>
-          <td>
-            {{ results.heating_degree_days['summary']['2070-2099']['ddmax']
-            }}<UnitWidget unitType="dd" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="block">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Min</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Historical (1979&ndash;2015)</th>
+            <td>
+              {{ results.heating_degree_days['summary']['historical']['ddmin']
+              }}<UnitWidget unitType="dd" />
+            </td>
+            <td>
+              {{ results.heating_degree_days['summary']['historical']['ddmean']
+              }}<UnitWidget unitType="dd" />
+            </td>
+            <td>
+              {{ results.heating_degree_days['summary']['historical']['ddmax']
+              }}<UnitWidget unitType="dd" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <td>
+              {{ results.heating_degree_days['summary']['2010-2039']['ddmin']
+              }}<UnitWidget unitType="dd" />
+            </td>
+            <td>
+              {{ results.heating_degree_days['summary']['2010-2039']['ddmean']
+              }}<UnitWidget unitType="dd" />
+            </td>
+            <td>
+              {{ results.heating_degree_days['summary']['2010-2039']['ddmax']
+              }}<UnitWidget unitType="dd" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mid Century (2040&ndash;2069)</th>
+            <td>
+              {{ results.heating_degree_days['summary']['2040-2069']['ddmin']
+              }}<UnitWidget unitType="dd" />
+            </td>
+            <td>
+              {{ results.heating_degree_days['summary']['2040-2069']['ddmean']
+              }}<UnitWidget unitType="dd" />
+            </td>
+            <td>
+              {{ results.heating_degree_days['summary']['2040-2069']['ddmax']
+              }}<UnitWidget unitType="dd" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <td>
+              {{ results.heating_degree_days['summary']['2070-2099']['ddmin']
+              }}<UnitWidget unitType="dd" />
+            </td>
+            <td>
+              {{ results.heating_degree_days['summary']['2070-2099']['ddmean']
+              }}<UnitWidget unitType="dd" />
+            </td>
+            <td>
+              {{ results.heating_degree_days['summary']['2070-2099']['ddmax']
+              }}<UnitWidget unitType="dd" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="block">
       <h4 class="title is-5 mb-1">Data preview</h4>
 
@@ -96,7 +100,7 @@
         <li>
           <DownloadCsvButton
             :text="downloadCsvText"
-            endpoint="mmm/degree_days/heating/all"
+            endpoint="degree_days/heating"
           />
         </li>
       </ul>

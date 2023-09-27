@@ -200,20 +200,23 @@
             </h3>
             <HeatingDegreeDaysReport />
           </div>
-          <div class="block">
+          <div class="block mt-6">
             <h3 id="freezing-index" class="title is-4">Freezing Index</h3>
             <FreezingIndexReport />
           </div>
-          <div class="block">
+          <div class="block mt-6">
             <h3 id="thawing-index" class="title is-4">Thawing Index</h3>
             <ThawingIndexReport />
           </div>
           <div class="block">
             <div class="content is-size-5 data-outro content no-print">
-              <h4 class="title is-5 no-print">
+              <h4 class="title is-4 no-print">
                 Data access &amp; additional information
               </h4>
-
+              <p>
+                The below dataset and academic reference apply to heating degree
+                days, freezing index and thawing index.
+              </p>
               <ul>
                 <li>
                   Source dataset and metadata:
