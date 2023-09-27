@@ -1,9 +1,25 @@
 <template>
-  <div v-if="Object.keys(results.permafrost).length != 0">
+  <div v-if="isDataLoaded">
+    <h2 id="permafrost" class="title is-2">Permafrost</h2>
+    <div class="content is-size-5">
+      <p>
+        Annual projections of permafrost top and base depths, talik thickness,
+        and mean annual ground temperature at seven different depths are
+        provided by the GIPL 2.0 model at a resolution of 1km for years
+        2021&ndash;2120. These projections are provided for GFDL CM3 and NCAR
+        CCSM4 model outputs, as well as a 5-model average, under the RCP 4.5 and
+        RCP 8.5 emissions scenarios.
+      </p>
+    </div>
+    <h4 class="title is-5 mb-1">Data preview</h4>
+    <p class="content is-size-5 mb-1">
+      CSV download includes annual values for the modeled projected
+      (2021&ndash;2100) dataset.
+    </p>
     <table class="preview">
       <thead>
         <tr>
-          <th scope="col" v-for="column in csvHeader">{{ column }}</th>
+          <th scope="col" v-for="col in csvHeader">{{ col }}</th>
         </tr>
       </thead>
       <tbody>
@@ -38,80 +54,47 @@ export default {
     DownloadCsvButton,
     UnitWidget,
   },
-  data() {
-    return {
-      csvHeader: [
-        'year',
-        'model',
-        'scenario',
-        'magt0.5m',
-        'magt1m',
-        'magt2m',
-        'magt3m',
-        'magt4m',
-        'magt5m',
-        'magtsurface',
-        'permafrostbase',
-        'permafrosttop',
-        'talikthickness',
-      ],
-    }
-  },
   computed: {
-    csvHead() {
-      let csvPreview = []
-      let csvSubset = this.results.permafrost['GFDL-CM3']
-      for (const key in csvSubset) {
-        csvPreview.push([
-          key,
-          'GFDL-CM3',
-          'RCP 4.5',
-          csvSubset[key]['RCP 4.5']['magt0.5m'],
-          csvSubset[key]['RCP 4.5']['magt1m'],
-          csvSubset[key]['RCP 4.5']['magt2m'],
-          csvSubset[key]['RCP 4.5']['magt3m'],
-          csvSubset[key]['RCP 4.5']['magt4m'],
-          csvSubset[key]['RCP 4.5']['magt5m'],
-          csvSubset[key]['RCP 4.5']['magtsurface'],
-          csvSubset[key]['RCP 4.5']['permafrostbase'],
-          csvSubset[key]['RCP 4.5']['permafrosttop'],
-          csvSubset[key]['RCP 4.5']['talikthickness'],
-        ])
+    isDataLoaded() {
+      console.log(this.results.permafrost)
+      return this.results.permafrost != undefined
+    },
+    csvParsed() {
+      if (this.isDataLoaded) {
+        let csvString = this.results.permafrost.preview
+        if (csvString) {
+          let csvSplit = csvString.split('\r\n')
+          csvSplit = csvSplit.map(row => {
+            return row.split(',')
+          })
+          console.log(csvSplit)
+          return csvSplit
+        }
+      } else {
+        return []
       }
-      let cvh = csvPreview.slice(0, 5)
-      console.log(cvh)
-      return cvh
+    },
+    csvHeader() {
+      if (this.csvParsed) {
+        return this.csvParsed[0]
+      }
+    },
+    csvHead() {
+      if (this.csvParsed) {
+        return this.csvParsed.slice(1, 6)
+      }
     },
     csvTail() {
-      let csvPreview = []
-      let csvSubset = this.results.permafrost['NCAR-CCSM4']
-      for (const key in csvSubset) {
-        csvPreview.push([
-          key,
-          'NCAR-CCSM4',
-          'RCP 8.5',
-          csvSubset[key]['RCP 8.5']['magt0.5m'],
-          csvSubset[key]['RCP 8.5']['magt1m'],
-          csvSubset[key]['RCP 8.5']['magt2m'],
-          csvSubset[key]['RCP 8.5']['magt3m'],
-          csvSubset[key]['RCP 8.5']['magt4m'],
-          csvSubset[key]['RCP 8.5']['magt5m'],
-          csvSubset[key]['RCP 8.5']['magtsurface'],
-          csvSubset[key]['RCP 8.5']['permafrostbase'],
-          csvSubset[key]['RCP 8.5']['permafrosttop'],
-          csvSubset[key]['RCP 8.5']['talikthickness'],
-        ])
+      if (this.csvParsed) {
+        return this.csvParsed.slice(6)
       }
-      let cvh = csvPreview.slice(5, 10)
-      console.log(cvh)
-      return cvh
     },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
     }),
-  }
+  },
 }
 </script>
 

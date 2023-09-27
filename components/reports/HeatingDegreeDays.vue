@@ -19,60 +19,60 @@
         <tr>
           <th scope="row">Historical (1979&ndash;2015)</th>
           <td>
-            {{ results.heating_degree_days['historical']['ddmin']
+            {{ results.heating_degree_days['summary']['historical']['ddmin']
             }}<UnitWidget unitType="dd" />
           </td>
           <td>
-            {{ results.heating_degree_days['historical']['ddmean']
+            {{ results.heating_degree_days['summary']['historical']['ddmean']
             }}<UnitWidget unitType="dd" />
           </td>
           <td>
-            {{ results.heating_degree_days['historical']['ddmax']
+            {{ results.heating_degree_days['summary']['historical']['ddmax']
             }}<UnitWidget unitType="dd" />
           </td>
         </tr>
         <tr>
           <th scope="row">Early Century (2010&ndash;2039)</th>
           <td>
-            {{ results.heating_degree_days['2010-2039']['ddmin']
+            {{ results.heating_degree_days['summary']['2010-2039']['ddmin']
             }}<UnitWidget unitType="dd" />
           </td>
           <td>
-            {{ results.heating_degree_days['2010-2039']['ddmean']
+            {{ results.heating_degree_days['summary']['2010-2039']['ddmean']
             }}<UnitWidget unitType="dd" />
           </td>
           <td>
-            {{ results.heating_degree_days['2010-2039']['ddmax']
+            {{ results.heating_degree_days['summary']['2010-2039']['ddmax']
             }}<UnitWidget unitType="dd" />
           </td>
         </tr>
         <tr>
           <th scope="row">Mid Century (2040&ndash;2069)</th>
           <td>
-            {{ results.heating_degree_days['2040-2069']['ddmin']
+            {{ results.heating_degree_days['summary']['2040-2069']['ddmin']
             }}<UnitWidget unitType="dd" />
           </td>
           <td>
-            {{ results.heating_degree_days['2040-2069']['ddmean']
+            {{ results.heating_degree_days['summary']['2040-2069']['ddmean']
             }}<UnitWidget unitType="dd" />
           </td>
           <td>
-            {{ results.heating_degree_days['2040-2069']['ddmax']
+            {{ results.heating_degree_days['summary']['2040-2069']['ddmax']
             }}<UnitWidget unitType="dd" />
           </td>
         </tr>
         <tr>
           <th scope="row">Late Century (2070&ndash;2099)</th>
           <td>
-            {{ results.heating_degree_days['2070-2099']['ddmin']
+            {{ results.heating_degree_days['summary']['2070-2099']['ddmin']
             }}<UnitWidget unitType="dd" />
           </td>
           <td>
-            {{ results.heating_degree_days['2070-2099']['ddmean']
+            {{ results.heating_degree_days['summary']['2070-2099']['ddmean']
             }}<UnitWidget unitType="dd" />
           </td>
           <td>
-            {{ results.heating_degree_days['2070-2099']['ddmax']
+            {{ results.heating_degree_days['summary']['2070-2099']['ddmax']
             }}<UnitWidget unitType="dd" />
           </td>
         </tr>

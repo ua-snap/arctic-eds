@@ -222,7 +222,6 @@
       </section>
       <section class="section permafrost">
         <div class="container">
-          <h2 id="permafrost" class="title is-2">Permafrost</h2>
           <PermafrostReport />
         </div>
       </section>
