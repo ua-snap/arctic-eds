@@ -1,101 +1,166 @@
 <template>
-  <div v-if="Object.keys(results.precipitation).length != 0">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Min</th>
-          <th scope="col">Mean</th>
-          <th scope="col">Max</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Historical (1901-2015)</th>
-          <td>
-            {{ results.precipitation.pr_hist_min
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-          <td>
-            {{ results.precipitation.pr_hist_mean
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-          <td>
-            {{ results.precipitation.pr_hist_max
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Early Century (2010-2039)</th>
-          <td>
-            {{ results.precipitation.pr_2040_min
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-          <td>
-            {{ results.precipitation.pr_2040_mean
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-          <td>
-            {{ results.precipitation.pr_2040_max
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Mid Century (2040-2069)</th>
-          <td>
-            {{ results.precipitation.pr_2070_min
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-          <td>
-            {{ results.precipitation.pr_2070_mean
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-          <td>
-            {{ results.precipitation.pr_2070_max
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Late Century (2070-2099)</th>
-          <td>
-            {{ results.precipitation.pr_2100_min
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-          <td>
-            {{ results.precipitation.pr_2100_mean
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-          <td>
-            {{ results.precipitation.pr_2100_max
-            }}<UnitWidget unitType="mm_in" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 class="title is-6 no-print">Access to Data</h4>
-    <div class="content no-print">
+  <div v-if="Object.keys(results.precipitation.summary).length != 0">
+    <div class="block content is-size-5">
+      <p>
+        These data come from two types of data sources: historical modeled data
+        (CRU TS), and projected downscaled GCM data from across five different
+        climate models (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL
+        CM5A-LR) and three climate scenarios (RCP 4.5, 6.0 and 8.5).
+      </p>
+      <p>
+        Projected data can show more variability than the historical data in the
+        tables below because it is showing the extreme values across all models
+        and scenarios.
+      </p>
+      <p>
+        Both historical and projected data for total precipitation are at a
+        2&#x202F;km spatial resolution. Data have been summarized to annual
+        totals, from monthly temporal resolution.
+      </p>
+    </div>
+
+    <div class="block">
+      <h4 class="title is-5 mb-1">Data Summary</h4>
+      <div class="content is-size-5">
+        The summary table below shows the minimum, mean and maximum values
+        across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
+        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) for the
+        specified era, which can be helpful to assess broad trends and
+        variation.
+      </div>
+    </div>
+
+    <div class="block">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Min</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Historical (1901-2015)</th>
+            <td>
+              {{ results.precipitation['summary']['historical']['prmin']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.precipitation['summary']['historical']['prmean']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.precipitation['summary']['historical']['prmax']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Early Century (2010-2039)</th>
+            <td>
+              {{ results.precipitation['summary']['2010-2039']['prmin']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.precipitation['summary']['2010-2039']['prmean']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.precipitation['summary']['2010-2039']['prmax']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mid Century (2040-2069)</th>
+            <td>
+              {{ results.precipitation['summary']['2040-2069']['prmin']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.precipitation['summary']['2040-2069']['prmean']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.precipitation['summary']['2040-2069']['prmax']
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late Century (2070-2099)</th>
+            <td>
+              {{ results.precipitation.summary['2070-2099'].prmin
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.precipitation.summary['2070-2099'].prmean
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.precipitation.summary['2070-2099'].prmax
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <h4 class="title is-5 mb-1">Data preview</h4>
+
+      <p class="content is-size-5 mb-1">
+        CSV download includes annual values for both historical CRU TS
+        (1901&ndash;2015) and modeled projected (2010&ndash;2099) datasets.
+      </p>
+      <PreviewTable
+        :csvString="results.precipitation.preview"
+        sizeBlurb="~1525 rows, 4 columns, ~42kb"
+      />
+    </div>
+
+    <div class="block data-outro content is-size-5 no-print">
+      <h4 class="title is-5 no-print">
+        Data access &amp; additional information
+      </h4>
+
       <ul>
         <li>
-          <a
-            href="http://ckan.snap.uaf.edu/dataset/historical-monthly-and-derived-precipitation-products-downscaled-from-cru-ts-data-via-the-delta"
-            target="_blank"
-            >Historical Monthly and Derived Precipitation Products</a
-          >
+          <DownloadCsvButton
+            text="Download this data as CSV"
+            endpoint="precipitation"
+          />
         </li>
         <li>
-          <a
-            href="http://ckan.snap.uaf.edu/dataset/projected-monthly-and-derived-precipitation-products-2km-cmip5-ar5"
-            target="_blank"
-            >Projected Monthly and Derived Precipitation Products</a
-          >
+          Source datasets and metadata:
+          <ul>
+            <li>
+              <a
+                href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/9eeef879-42ee-4bbe-a54e-435716ad0c90"
+                >Historical Monthly and Derived Precipitation Products</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/f44595c8-5384-4c02-9ab4-f7a9c43e92eb"
+                >Projected Monthly and Derived Precipitation Products</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          Academic reference:
+          <blockquote>
+            Walsh J.E., Bhatt U.S., Littell J. S., Leonawicz M., Lindgren M.,
+            Kurkowski T. A., Bieniek P. A., Gray S., &amp; Rupp T. S. (2018).
+            Downscaling of climate model output for Alaskan stakeholders,
+            <i>Environmental Modelling &amp; Software, 110</i>, 38–51. DOI
+            <a href="https://doi.org/10.1016/j.envsoft.2018.03.021"
+              >10.1016/j.envsoft.2018.03.021</a
+            >
+          </blockquote>
         </li>
       </ul>
     </div>
-    <DownloadCsvButton
-      text="Download precipitation data as CSV"
-      endpoint="mmm/precipitation/all"
-      class="mt-3 mb-5"
-    />
   </div>
 </template>
 
@@ -116,31 +181,6 @@ export default {
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
     }),
-  },
-  watch: {
-    isPlaceDefined: function () {
-      this.$fetch()
-    },
-  },
-  fetch() {
-    let plateResults = {
-      pr_hist_min: this.results['precipitation']['historical']['prmin'],
-      pr_hist_mean: this.results['precipitation']['historical']['prmean'],
-      pr_hist_max: this.results['precipitation']['historical']['prmax'],
-      pr_2040_min: this.results['precipitation']['2010-2039']['prmin'],
-      pr_2040_mean: this.results['precipitation']['2010-2039']['prmean'],
-      pr_2040_max: this.results['precipitation']['2010-2039']['prmax'],
-      pr_2070_min: this.results['precipitation']['2040-2069']['prmin'],
-      pr_2070_mean: this.results['precipitation']['2040-2069']['prmean'],
-      pr_2070_max: this.results['precipitation']['2040-2069']['prmax'],
-      pr_2100_min: this.results['precipitation']['2070-2099']['prmin'],
-      pr_2100_mean: this.results['precipitation']['2070-2099']['prmean'],
-      pr_2100_max: this.results['precipitation']['2070-2099']['prmax'],
-    }
-    this.$store.commit('report/setPlateResults', {
-      plateResults: plateResults,
-      variable: 'precipitation',
-    })
   },
 }
 </script>

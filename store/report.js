@@ -149,9 +149,9 @@ export default {
       let conversions = [
         // This needs to be adapted after the summarized data are restored.
         // { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
-        { type: 'temperature', substring: '', variable: 'temperature' },
-        { type: 'mm_in', substring: '', variable: 'precipitation' },
-        { type: 'mm_in', substring: '', variable: 'snowfall' },
+        // { type: 'temperature', substring: '', variable: 'temperature' },
+        // { type: 'mm_in', substring: '', variable: 'precipitation' },
+        // { type: 'mm_in', substring: '', variable: 'snowfall' },
         { type: 'mm_in', substring: '', variable: 'proj_precip' },
       ]
       conversions.forEach(conversion => {

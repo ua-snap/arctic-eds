@@ -110,30 +110,12 @@
       <section class="section precipitation">
         <div class="container">
           <h2 id="precipitation" class="title is-2">Precipitation</h2>
-          <div class="content">
-            <p>
-              These data come from two types of data sources: historical modeled
-              data (CRU TS), and projected downscaled GCM data from across five
-              different climate models (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI
-              CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5, 6.0
-              and 8.5).
-            </p>
-            <p>
-              Projected data can show more variability than the historical data
-              in the tables below because it is showing the extreme values
-              across all models and scenarios.
-            </p>
-          </div>
+          
 
           <h3 id="annual-precipitation" class="title is-3 mt-6">
             Total annual precipitation
           </h3>
-          <div class="content">
-            <p>
-              Both historical and projected data for total precipitation are at
-              a 2&#x202F;km spatial resolution.
-            </p>
-          </div>
+         
           <PrecipitationReport />
 
           <h3 id="precipitation-frequency" class="title is-3 mt-6">
