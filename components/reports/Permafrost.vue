@@ -356,7 +356,7 @@ export default {
   },
   computed: {
     isDataLoaded() {
-      return this.results.permafrost != undefined
+      return this.results.permafrost.summary != undefined
     },
     ...mapGetters({
       results: 'report/results',
