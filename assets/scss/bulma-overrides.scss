@@ -14,7 +14,7 @@ a:focus {
 
 // Clamp width to improve scanning readability.
 .content {
-  max-width: 50rem;
+  max-width: 50em;
 }
 
 // General stuff for data summary/preview tables + report sections
@@ -34,7 +34,6 @@ table {
 }
 
 table.preview {
-
   td,
   th {
     font-size: 0.85rem;
