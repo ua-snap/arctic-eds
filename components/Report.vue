@@ -109,40 +109,32 @@
       <section class="section precipitation">
         <div class="container">
           <h2 id="precipitation" class="title is-2">Precipitation</h2>
-          
 
           <h3 id="annual-precipitation" class="title is-3 mt-6">
             Total annual precipitation
           </h3>
-         
+
           <PrecipitationReport />
 
           <h3 id="precipitation-frequency" class="title is-3 mt-6">
             Precipitation Frequency
           </h3>
-
           <PrecipitationFrequency />
 
-          <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>
-          <div class="content">
-            <p>Snowfall equivalent totals includes both rain and snow.</p>
-            <p>
-              Both historical and projected data for snowfall equivalent are at
-              a 771&#x202f;m spatial resolution.
-            </p>
-          </div>
-
+          <h3 id="snowfall" class="title is-3 mt-6">
+            Snowfall (Water) Equivalent
+          </h3>
           <SnowfallReport />
         </div>
       </section>
-      
+
       <section class="section temperature">
         <div class="container">
-          <h2 id="temperature" class="title is-2">Temperature</h2>            
+          <h2 id="temperature" class="title is-2">Temperature</h2>
           <TemperatureReport />
         </div>
       </section>
-      
+
       <section class="section temperature-index">
         <div class="container">
           <h2 id="temperature-indices" class="title is-2">
