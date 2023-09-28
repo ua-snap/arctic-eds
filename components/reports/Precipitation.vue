@@ -8,9 +8,9 @@
         CM5A-LR) and three climate scenarios (RCP 4.5, 6.0 and 8.5).
       </p>
       <p>
-        Projected data can show more variability than the historical data in the
-        tables below because it is showing the extreme values across all models
-        and scenarios.
+        Projected data (2010&ndash;2039) can show more variability than the
+        historical data in the tables below because it is showing the extreme
+        values across all models and scenarios.
       </p>
       <p>
         Both historical and projected data for total precipitation are at a
@@ -110,7 +110,8 @@
 
       <p class="content is-size-5 mb-1">
         CSV download includes annual values for both historical CRU TS
-        (1901&ndash;2015) and modeled projected (2010&ndash;2099) datasets.
+        (1901&ndash;2015) and modeled projected (2010&ndash;2099) datasets. Data
+        are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.precipitation.preview"
@@ -168,12 +169,14 @@
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
+import PreviewTable from '~/components/PreviewTable'
 
 export default {
   name: 'PrecipitationReport',
   components: {
     DownloadCsvButton,
     UnitWidget,
+    PreviewTable,
   },
   computed: {
     ...mapGetters({

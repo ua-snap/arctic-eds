@@ -3,9 +3,10 @@
     <div class="block">
       <h4 class="title is-5 mb-1">Summary</h4>
       <div class="content is-size-5">
-        The summary table below shows the minimum, mean and maximum values across
-        one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3) for the
-        specified era, which can be helpful to assess broad trends and variation.
+        The summary table below shows the minimum, mean and maximum values
+        across one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3)
+        for the specified era, which can be helpful to assess broad trends and
+        variation.
       </div>
     </div>
     <div class="block">
@@ -87,7 +88,8 @@
 
       <p class="content is-size-5 mb-1">
         CSV download includes annual values for both historical ERA-Interim
-        (1980&ndash;2009) and modeled projected (2006&ndash;2100) datasets.
+        (1980&ndash;2009) and modeled projected (2006&ndash;2100) datasets. Data
+        are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.heating_degree_days.preview"

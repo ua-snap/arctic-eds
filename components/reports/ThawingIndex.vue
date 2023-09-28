@@ -89,7 +89,8 @@
 
       <p class="content is-size-5 mb-1">
         CSV download includes annual values for both historical ERA-Interim
-        (1980&ndash;2009) and modeled projected (2006&ndash;2100) datasets.
+        (1980&ndash;2009) and modeled projected (2006&ndash;2100) datasets. Data
+        are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.thawing_index.preview"

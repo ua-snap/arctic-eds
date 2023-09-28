@@ -90,7 +90,6 @@
               </li>
 
               <li><a href="#temperature">Temperature</a></li>
-
               <li>
                 <a href="#temperature-indices">Temperature Indices</a>
                 <ul>
@@ -136,95 +135,20 @@
           <SnowfallReport />
         </div>
       </section>
+      
       <section class="section temperature">
         <div class="container">
-          <h2 id="temperature" class="title is-2">Temperature</h2>
-          <div class="content is-size-5">
-            <p>
-              These data come from two types of data sources: historical modeled
-              data (CRU TS), and projected downscaled GCM data from across five
-              different climate models (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI
-              CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5, 6.0
-              and 8.5). Projected data can show more variability than the
-              historical data in the table below because it is showing the
-              extreme values across all models and scenarios.
-            </p>
-            <p>
-              Use the mean column to assess general trends over time. Both
-              historical and projected data are at a 2&#x202f;km spatial
-              resolution.
-            </p>
-          </div>
+          <h2 id="temperature" class="title is-2">Temperature</h2>            
           <TemperatureReport />
         </div>
       </section>
+      
       <section class="section temperature-index">
         <div class="container">
           <h2 id="temperature-indices" class="title is-2">
             Temperature Indices
           </h2>
-          <div class="block content is-size-5">
-            <p>
-              The results in the sections below come from two types of data
-              sources: historical modeled data (ERA-Interim) and projected
-              climate conditions using two climate models (NCAR CCSM4 and GFDL
-              CM3) and one emissions scenario (RCP 8.5).
-            </p>
-            <p>
-              Both historical and projected data are downscaled from their
-              native resolutions using the WRF model. Data are at 20&#x202f;km
-              resolution.
-            </p>
-          </div>
-          <div class="block">
-            <h3 id="heating-degree-days" class="title is-4 mb-3">
-              Heating Degree Days
-            </h3>
-            <HeatingDegreeDaysReport />
-          </div>
-          <div class="block mt-6">
-            <h3 id="freezing-index" class="title is-4">Freezing Index</h3>
-            <FreezingIndexReport />
-          </div>
-          <div class="block mt-6">
-            <h3 id="thawing-index" class="title is-4">Thawing Index</h3>
-            <ThawingIndexReport />
-          </div>
-          <div class="block">
-            <div class="content is-size-5 data-outro content no-print">
-              <h4 class="title is-4 no-print">
-                Data access &amp; additional information
-              </h4>
-              <p>
-                The below dataset and academic reference apply to heating degree
-                days, freezing index and thawing index.
-              </p>
-              <ul>
-                <li>
-                  Source dataset and metadata:
-                  <a
-                    href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/3d4cc2e2-5cfb-4fed-b397-06854edb747f"
-                    >20km annual degree day totals at multiple thresholds for
-                    Alaska, 1980&ndash;2100</a
-                  >
-                </li>
-                <li>
-                  Academic reference:
-                  <blockquote>
-                    Bieniek, P. A., Bhatt, U. S., Walsh, J. E., Rupp, T. S.,
-                    Zhang, J., Krieger, J. R. &amp; Lader, R. (2016). Dynamical
-                    Downscaling of ERA-Interim Temperature and Precipitation for
-                    Alaska.
-                    <i>Journal of Applied Meteorology and Climatology, 55</i
-                    >(03), 635–654.
-                    <a href="https://doi.org/10.1175/JAMC-D-15-0153.1"
-                      >https://doi.org/10.1175/JAMC-D-15-0153.1</a
-                    >
-                  </blockquote>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <TemperatureIndices />
         </div>
       </section>
       <section class="section permafrost">
@@ -251,10 +175,8 @@ import TemperatureReport from '~/components/reports/Temperature'
 import PrecipitationReport from '~/components/reports/Precipitation'
 import SnowfallReport from '~/components/reports/Snowfall'
 import PermafrostReport from '~/components/reports/Permafrost'
-import HeatingDegreeDaysReport from '~/components/reports/HeatingDegreeDays'
-import FreezingIndexReport from '~/components/reports/FreezingIndex'
-import ThawingIndexReport from '~/components/reports/ThawingIndex'
 import PrecipitationFrequency from '~/components/reports/PrecipitationFrequency'
+import TemperatureIndices from '~/components/reports/TemperatureIndices'
 
 export default {
   name: 'FullReport',
@@ -262,12 +184,10 @@ export default {
     UnitRadio,
     MiniMap,
     TemperatureReport,
+    TemperatureIndices,
     PrecipitationReport,
     SnowfallReport,
     PermafrostReport,
-    HeatingDegreeDaysReport,
-    FreezingIndexReport,
-    ThawingIndexReport,
     PrecipitationFrequency,
   },
   computed: {
