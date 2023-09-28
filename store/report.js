@@ -181,7 +181,13 @@ export default {
   },
   actions: {
     async apiFetch(context, url) {
-      let results = await this.$axios.$get(url)
+      let results
+      if (process.env.mockApi) {
+        const mock = require('~/assets/mock.json')
+        results = mock
+      } else {
+        results = await this.$axios.$get(url)
+      }
       context.commit('setResults', results)
     },
     async fetchPlaces(context) {
