@@ -14,12 +14,13 @@ export default {
 
 <style lang="scss" scoped>
 .headerbanner {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   text-align: center;
   letter-spacing: 0.35ex;
   text-transform: uppercase;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0rem;
+  margin-bottom: 1rem;
   color: white;
-  background-color: #4b8cc5;
+  background-color: #312e30;
 }
 </style>

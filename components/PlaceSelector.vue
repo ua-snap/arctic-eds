@@ -1,38 +1,36 @@
 <template>
-  <div class="place-selector--wrapper">
-    <div class="content">
-      <h4 class="title is-5">Find a place by name</h4>
-      <p>Search below by <strong>community name</strong>:</p>
-      <p>
-        <b-field>
-          <b-autocomplete
-            rounded
-            v-model="selectedPlace"
-            :data="filteredDataObj"
-            keep-first
-            field="name"
-            placeholder="e.g. Fairbanks"
-            icon="magnify"
-            clearable
-            clear-on-select
-            @select="option => (selected = option)"
-          >
-            <template #empty>No results found</template>
-            <template slot-scope="props">
-              <div class="search-item">
-                {{ props.option.name }}
-                <span class="alt-name" v-if="props.option.alt_name"
-                  >({{ props.option.alt_name }})</span
-                >
-              </div>
-            </template>
-          </b-autocomplete>
-        </b-field>
-      </p>
-    </div>
+  <div class="content is-size-5 wrapper">
+    <b>Alaska community name</b>
+    <b-field>
+      <b-autocomplete
+        v-model="selectedPlace"
+        :data="filteredDataObj"
+        keep-first
+        field="name"
+        placeholder="e.g. Fairbanks"
+        icon="magnify"
+        clearable
+        clear-on-select
+        @select="option => (selected = option)"
+      >
+        <template #empty>No results found!</template>
+        <template slot-scope="props">
+          <div class="search-item">
+            {{ props.option.name }}
+            <span class="alt-name" v-if="props.option.alt_name"
+              >({{ props.option.alt_name }})</span
+            >
+          </div>
+        </template>
+      </b-autocomplete>
+    </b-field>
   </div>
 </template>
 <style lang="scss" scoped>
+.wrapper {
+  text-align: left;
+  width: 30rem;
+}
 .search-item {
   font-weight: 600;
   white-space: normal;
@@ -44,6 +42,12 @@
     font-size: 90%;
   }
 }
+::v-deep input.input {  
+  box-shadow: none;
+  border: 2px solid #f2c716;
+  border-radius: 0;
+}
+
 </style>
 <script>
 import _ from 'lodash'

@@ -1,76 +1,59 @@
 <template>
   <div>
     <HeaderBanner />
-    <Navbar />
-    <div class="brand--wrapper">
-      <div class="brand--logo is-flex is-flex-direction-row">
-        <img src="~/assets/images/logo.svg" />
+    <div class="brand columns">
+      <div class="column is-one-third left">
+        Arctic<br />engineering<br />data support.
       </div>
-      <div class="brand--titles">
-        <h1>
-          Arctic Environmental and Engineering Data + Design Support System
-        </h1>
-        <h2>
-          Historical, current, and projected environmental data for Alaska
-        </h2>
+      <div class="column is-one-third logo">
+        <img src="~/assets/images/arctic-eds-logo.svg" alt="Arctic EDS" />
+      </div>
+      <div class="column is-one-third right">
+        Environmental<br />information<br />you can trust.
       </div>
     </div>
+    <Navbar />
     <nuxt />
     <Footer />
   </div>
 </template>
 <style lang="scss" scoped>
-.brand--wrapper {
-  justify-content: center;
-  max-width: 98vw;
-  margin: 2.5rem auto;
-  @media (min-width: 769px), print {
-    display: flex;
+.brand {
+  text-align: center;
+  background-color: #f2c716;
+  height: 25.5vh;
+  border-bottom: 0.5rem solid #312e30;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px #312e30;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  font-family: 'Barlow', sans-serif;
+  .logo img {
+    height: 26vh;
+    margin-top: -2vh;
+    padding: 0;
   }
-  @media print {
-    margin-bottom: 0;
+  .left {
+    text-align: right;
+    padding-right: 2rem;
+    padding-top: 1.8rem;
   }
-  .brand--logo {
-    max-width: 300px;
-    @media (min-width: 769px) and (max-width: 950px) {
-      width: 50vw;
-    }
-    @media (max-width: 768px) {
-      margin: 0 auto;
-    }
-    @media (min-width: 769px), print {
-      flex: 0 0 15em;
-    }
-    @media print {
-      max-width: 25%;
-    }
-    @media (min-width: 769px) and (max-width: 1425px) {
-      margin-left: 2rem;
-    }
-  }
-  .brand--titles {
-    margin: 2.5rem 2rem 0 2rem;
-    color: #000;
-    h1 {
-      font-size: 2rem;
-      font-weight: 900;
-      border-bottom: 0.3rem solid #4b8cc5;
-    }
-    h2 {
-      margin-top: 0.2rem;
-      font-size: 1.55rem;
-      font-weight: 400;
-    }
+  .right {
+    text-align: left;
+    padding-left: 2rem;
+    padding-top: 1.8rem;
   }
 }
 </style>
 <script>
 import HeaderBanner from '~/components/HeaderBanner'
 import Navbar from '~/components/Navbar'
-import BetaFeedback from '~/components/BetaFeedback'
 import Footer from '~/components/Footer'
 
 export default {
-  components: { HeaderBanner, Navbar, BetaFeedback, Footer },
+  components: { HeaderBanner, Navbar, Footer },
 }
 </script>

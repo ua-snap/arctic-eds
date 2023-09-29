@@ -1,32 +1,31 @@
 <template>
-  <div>
-    <div class="content">
-      <h4 class="title is-5">Find a place by latitude &amp; longitude</h4>
-      <p>
-        Enter a specific lat/lon combo below. Decimal degrees or DMS formats are
-        accepted, i.e. <code>65.24, -142.22</code> or
-        <code>58&deg; 18' 0" N, 134&deg; 24' 57.6" W</code>.
-      </p>
-
-      <div class="columns">
-        <div class="column is-two-thirds">
-          <b-field :type="getFieldStatus" :message="getFieldMessage">
-            <b-input
-              v-model="latlngInput"
-              placeholder="64.8436, -147.7230"
-              @keydown.native.enter="process"
-            ></b-input>
-          </b-field>
-        </div>
-        <div class="column">
-          <b-button :type="type" :disabled="!isValid" @click="process"
-            >Get point data</b-button
-          >
-        </div>
+  <div class="content is-size-5">
+    <b>OR Latitude/longitude point</b>
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <b-field :type="getFieldStatus" :message="getFieldMessage">
+          <b-input
+            v-model="latlngInput"
+            placeholder="64.8436, -147.7230"
+            @keydown.native.enter="process"
+          ></b-input>
+        </b-field>
+      </div>
+      <div v-if="isValid" class="column">
+        <b-button :type="type" :disabled="!isValid" @click="process"
+          >Get point data</b-button
+        >
       </div>
     </div>
   </div>
 </template>
+<style lang="scss" scoped>
+::v-deep input.input {
+  box-shadow: none;
+  border: 2px solid #f2c716;
+  border-radius: 0;
+}
+</style>
 <script>
 import parseDMS from 'parse-dms'
 
