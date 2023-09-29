@@ -44,7 +44,7 @@
 }
 ::v-deep input.input {  
   box-shadow: none;
-  border: 2px solid #f2c716;
+  border: 3px solid #f2c716;
   border-radius: 0;
 }
 

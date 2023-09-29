@@ -18,6 +18,16 @@
 .right {
   padding-left: 2rem;
 }
+@media (max-width: 1075px) {
+  .left {
+    display: block;
+    text-align: left;
+    padding: 0 1rem;
+  }
+  .right {
+    padding: 0 1rem;
+  }
+}
 </style>
 <script>
 import LatLngSelector from '~/components/LatLngSelector'

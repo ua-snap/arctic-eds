@@ -15,7 +15,7 @@
         </div>
         <div class="column is-four-fifths">
           <p class="lead">
-            Arctic Environmental and Engineering Data + Design Support System
+            Arctic Engineering Design Support System
           </p>
 
           <p>

@@ -19,6 +19,7 @@
 
 <style lang="scss" scoped>
 nav {
+  font-family: "Barlow", sans-serif;
   font-weight: 900;
   font-size: 1.35rem;
   text-align: center;

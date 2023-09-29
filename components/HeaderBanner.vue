@@ -18,8 +18,8 @@ export default {
   text-align: center;
   letter-spacing: 0.35ex;
   text-transform: uppercase;
-  padding: 0.5rem 0rem;
-  margin-bottom: 1rem;
+  padding: 10px 0;
+  margin-bottom: 5px;
   color: white;
   background-color: #312e30;
 }

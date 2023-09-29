@@ -13,9 +13,9 @@
         <FullReport />
       </div>
     </div>
-    <div class="taglines columns">
-      <div class="column left">Plan better.</div>
-      <div class="column right">Design harder.</div>
+    <div class="taglines">
+      <div class="left">Plan better.</div>
+      <div class="right">🥦 Design harder.</div>
     </div>
   </div>
 </template>
@@ -24,25 +24,34 @@
   text-align: center;
 }
 .main {
-  min-height: 35rem;
-  padding-bottom: 0;
-  margin-bottom: 0;
+  min-height: 450px;
   background: url('~/assets/images/cityscape.svg');
   background-repeat: repeat-x;
-  background-size: auto 19rem;
+  background-size: auto 172px;
   background-position-y: bottom 0px;
   background-origin: border-box;
+    @media (max-width: 1075px) {
+      & {
+        background: none;
+      }
+    }
 }
 .taglines {
-  position: relative;
-  top: -1rem;
+  display: flex;
+  flex-flow: row;
+  margin-top: 4px;
   text-align: center;
   letter-spacing: 1px;
-  font-size: 2.5rem;
+  font-size: 32px;
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1;
   font-family: 'Barlow', sans-serif;
+  .left,
+  .right {
+    padding: 15px;
+    width: 50%;
+  }
   .left {
     background-color: #f2c716;
     color: #312e30;
@@ -50,6 +59,11 @@
   .right {
     background-color: #312e30;
     color: #f2c716;
+  }
+  @media (max-width: 1075px) {
+    & {
+      display: none;
+    }
   }
 }
 </style>

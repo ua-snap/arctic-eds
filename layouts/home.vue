@@ -1,15 +1,19 @@
 <template>
   <div>
     <HeaderBanner />
-    <div class="brand columns">
-      <div class="column is-one-third left">
-        Arctic<br />engineering<br />data support.
-      </div>
-      <div class="column is-one-third logo">
-        <img src="~/assets/images/arctic-eds-logo.svg" alt="Arctic EDS" />
-      </div>
-      <div class="column is-one-third right">
-        Environmental<br />information<br />you can trust.
+    <div class="outer">
+      <div class="brand">
+        <div class="left">
+          <span>Arctic<br />engineering<br />data&nbsp;support.</span>
+        </div>
+        <div class="logo">
+          <img src="~/assets/images/arctic-eds-logo.svg" alt="Arctic EDS" />
+        </div>
+        <div class="right">
+          <span
+            >Environmental<br />information<br />you&nbsp;can&nbsp;trust.</span
+          >
+        </div>
       </div>
     </div>
     <Navbar />
@@ -18,33 +22,71 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.brand {
-  text-align: center;
+.outer {
   background-color: #f2c716;
-  height: 25.5vh;
   border-bottom: 0.5rem solid #312e30;
+}
+.brand {
+  display: flex;
+  flex-flow: row;
+
+  width: 1000px;
+  margin: 0 auto;
+
+  height: 180px;
+
   color: #fff;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 4px #312e30;
-  font-size: 2.5rem;
+  font-family: 'Barlow', sans-serif;
+  font-size: 34px;
   font-weight: 900;
   text-transform: uppercase;
+  text-shadow: 2px 2px 4px #312e30;
   line-height: 1;
-  font-family: 'Barlow', sans-serif;
-  .logo img {
-    height: 26vh;
-    margin-top: -2vh;
-    padding: 0;
+  letter-spacing: 1px;
+
+  .column {
+    border: 3px dashed blue;
   }
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+    width: 220px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    width: 540px;
+    img {
+      position: relative;
+      top: 5px;
+    }
+  }
+
   .left {
+    justify-content: right;
     text-align: right;
-    padding-right: 2rem;
-    padding-top: 1.8rem;
   }
   .right {
     text-align: left;
-    padding-left: 2rem;
-    padding-top: 1.8rem;
+  }
+
+  @media (max-width: 1075px) {
+
+    .left,
+    .right {
+      display: none;
+    }
+    .logo {
+      margin: 0 auto;
+      padding: 0 10px;
+      width: 100%;
+    }
+    & {
+      width: 100%;
+    }
   }
 }
 </style>
