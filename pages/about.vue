@@ -11,31 +11,39 @@
       engineering requirements and guidelines, as well as a thorough
       bibliography.
     </p>
-    <img
-      src="~/assets/images/heating_degree_days.png"
-      alt="Image from the Environmental Atlas of Alaska, April 1978"
-    />
+    <div class="level">
+      <img
+        class="level-item"
+        src="~/assets/images/atlas-cover.jpg"
+        alt="Cover of the Environmental Atlas of Alaska, April 1978"
+      />
+      <img
+        class="level-item"
+        src="~/assets/images/heating_degree_days.png"
+        alt="Image from the Environmental Atlas of Alaska, April 1978"
+      />
+    </div>
     <h2 class="title is-3">The Atlas ages</h2>
     <p>
       Over time the Atlas&rsquo; shortcomings became clear. Data gaps frustrated
       engineers and planners not working along the state&rsquo;s road systems or
       rivers, and presented particular challenges to engineers in the far north
       and west. Complex topography, particularly in Southeast Alaska, also made
-      coarse&ndash;scale maps frustratingly imprecise. The data also assumed a
-      steady climatic state while modern data tells a more detailed
-      story&mdash;one of significant change.
+      coarse&ndash;scale maps imprecise. The data also assumed a steady climatic
+      state while modern data tells a more detailed story&mdash;one of
+      significant change.
     </p>
     <h2 class="title is-3">A path forward</h2>
     <p>
       Alaska&rsquo;s infrastructure must be robust to support the economic,
       defense, and social needs of a state experiencing a changing climate. The
-      Arctic Environmental and Engineering Data &amp; Design Support System
-      (Arctic EDS) was created to replace the aging Environmental Atlas of
-      Alaska while addressing the old atlas&rsquo; shortcomings by providing
-      finer scale data, filling data gaps, and incorporating climate
-      projections. The Arctic EDS provides easily obtainable, well&ndash;vetted,
-      and reliable engineering and environmental data in a central website
-      designed to meet the needs of engineering professionals.
+      Arctic Engineering Design Support System (Arctic EDS) was created to
+      replace the aging Environmental Atlas of Alaska while addressing the old
+      atlas&rsquo; shortcomings by providing finer scale data, filling data
+      gaps, and incorporating climate projections. The Arctic EDS provides
+      easily obtainable, well&ndash;vetted, and reliable engineering and
+      environmental data in a central website designed to meet the needs of
+      engineering professionals.
     </p>
     <p>
       Improved historical data allows this site to provide a more detailed
@@ -73,8 +81,11 @@ p:last-of-type {
 }
 img {
   display: block;
-  margin: 1rem auto;
-  width: 30rem;
+  @media (min-width: 1023px) {
+    & {
+      max-width: 50%;
+    }
+  }
 }
 </style>
 

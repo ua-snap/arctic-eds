@@ -1,29 +1,21 @@
 <template>
   <footer class="footer">
-    <div class="container">
+    <div class="container content is-size-5">
       <div class="columns">
         <div class="logo column is-one-fifth has-text-centered">
           <img src="~/assets/images/UAF.svg" alt="UAF Logo" /><br />
-          <b-button
-            tag="a"
-            type="is-link"
-            href="https://uaf.us10.list-manage.com/subscribe?u=e42f589030a3adcaddd9b3304&id=a7b255fdd5"
-            class="mt-5"
-          >
-            Keep me updated
-          </b-button>
+          
         </div>
         <div class="column is-four-fifths">
-          <p class="lead">
-            Arctic Engineering Design Support System
-          </p>
+          <p class="lead">Arctic Engineering Design Support System</p>
 
           <p>
-            Engineers and scientists working in the Arctic need easily
-            obtainable engineering and environmental data. The Arctic-EDS is a
-            system of online technologies that curate and dynamically update
-            relevant Arctic environmental data in a central repository for use
-            in web-based maps, modules, and notebooks.
+            Technical professionals working in the North need up-to-date
+            engineering and environmental data that&rsquo;s relevant,
+            trustworthy and easy to obtain. Arctic-EDS is a system of online
+            technologies that curate and dynamically update relevant Arctic
+            environmental data in a central repository for use in web-based
+            maps, processing modules, and notebooks.
           </p>
 
           <p>
@@ -31,18 +23,13 @@
             <a href="https://www.snap.uaf.edu/" title="👍"
               >Scenarios Network for Alaska and Arctic Planning</a
             >
-            at the
+            located at the
             <a href="https://uaf-iarc.org"
               >International Arctic Research Center</a
+            >. Funding provided by the U.S. Department of Defense
+            <a href="https://serdp-estcp.org"
+              >Environmental Security Technology Certification Program</a
             >.
-          </p>
-
-          <p>
-            Funding provided by the U.S. Department of Defense Environmental
-            Security Technology Certification Program (<a
-              href="https://serdp-estcp.org"
-              >ESTCP</a
-            >).
           </p>
 
           <p>
@@ -50,17 +37,22 @@
             <a href="mailto:uaf-snap-data-tools@alaska.edu"
               >uaf-snap-data-tools@alaska.edu</a
             >
-            if you have questions or would like to provide feedback for this
-            tool.
+            with questions or comments.<br>
+            <b-button
+            tag="a"
+            type="is-primary"
+            href="https://uaf.us10.list-manage.com/subscribe?u=e42f589030a3adcaddd9b3304&id=a7b255fdd5"
+            class="mt-5"
+          >
+            Keep me updated on Arctic-EDS developments
+          </b-button>
           </p>
 
           <p>
             Copyright &copy; {{ year }} University of Alaska Fairbanks. All
-            rights reserved.
-          </p>
-
-          <p>
-            UA is an AA/EO employer and educational institution and prohibits
+            rights reserved. Copyright © 2023 University of Alaska Fairbanks.
+            All rights reserved. UA is an affirmative action / equal opportunity
+            employer, educational institution and provider, and prohibits
             illegal discrimination against any individual.
             <a href="https://www.alaska.edu/nondiscrimination/"
               >Statement of Nondiscrimination</a
@@ -114,5 +106,13 @@ export default {
     font-size: 1.5rem;
     font-weight: 700;
   }
+
+  ::v-deep .button {
+    font-weight: bold;
+    &:hover {
+    background-color: #312e30;
+    color: white;
+    font-weight: bold;
+  }}
 }
 </style>
