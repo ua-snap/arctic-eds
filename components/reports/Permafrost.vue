@@ -23,7 +23,8 @@
         IPSL-CM5A-LR, MRI-CGCM3) for the specified era, which can be helpful to
         assess broad trends and variation. Summaries for three variables are
         shown: mean annual ground temperature at 1m depth, mean annual ground
-        temperature at 3m depth, and permafrost top.
+        temperature at 3m depth, and permafrost top. Data are provided in metric
+        units.
       </p>
       <table class="table">
         <caption>
@@ -308,7 +309,6 @@
       </h4>
 
       <ul>
-
         <li>
           <DownloadCsvButton
             text="Download this data as CSV"
@@ -356,7 +356,7 @@ export default {
   },
   computed: {
     isDataLoaded() {
-      return this.results.permafrost != undefined
+      return this.results.permafrost.summary != undefined
     },
     ...mapGetters({
       results: 'report/results',
