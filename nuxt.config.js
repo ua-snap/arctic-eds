@@ -44,6 +44,7 @@ export default {
     apiUrl: process.env.SNAP_API_URL || 'https://earthmaps.io',
     rasdamanUrl:
       process.env.RASDAMAN_URL || 'https://zeus.snap.uaf.edu/rasdaman/ows',
+    mockApi: process.env.MOCK_API || false,
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

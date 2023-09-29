@@ -149,9 +149,9 @@ export default {
       let conversions = [
         // This needs to be adapted after the summarized data are restored.
         // { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
-        { type: 'temperature', substring: '', variable: 'temperature' },
-        { type: 'mm_in', substring: '', variable: 'precipitation' },
-        { type: 'mm_in', substring: '', variable: 'snowfall' },
+        // { type: 'temperature', substring: '', variable: 'temperature' },
+        // { type: 'mm_in', substring: '', variable: 'precipitation' },
+        // { type: 'mm_in', substring: '', variable: 'snowfall' },
         { type: 'mm_in', substring: '', variable: 'proj_precip' },
       ]
       conversions.forEach(conversion => {
@@ -181,7 +181,13 @@ export default {
   },
   actions: {
     async apiFetch(context, url) {
-      let results = await this.$axios.$get(url)
+      let results
+      if (process.env.mockApi) {
+        const mock = require('~/assets/mock.json')
+        results = mock
+      } else {
+        results = await this.$axios.$get(url)
+      }
       context.commit('setResults', results)
     },
     async fetchPlaces(context) {

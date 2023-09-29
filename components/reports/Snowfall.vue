@@ -1,6 +1,30 @@
 <template>
-  <div v-if="Object.keys(results.snowfall).length != 0">
+  <div v-if="Object.keys(results.snowfall.summary).length != 0">
+    <div class="block content is-size-5">
+      <p>
+        These data show downscaled projections of decadal average monthly
+        snowfall (water) equivalent (SWE) for each month of the decades from
+        2010&ndash;2019 to 2090&ndash;2099 at 771&times;771 m spatial
+        resolution. Snowfall equivalent totals includes both rain and snow.
+        Output is available for the NCAR CCSM4, GFDL CM3, GISS E2-R, IPSL
+        CM5A-LR, and MRI CGCM3 models and three emissions scenarios (RCP 4.5,
+        RCP 6.0 and RCP 8.5).
+      </p>
+      <p>Historical data uses CRU TS 3.1.</p>
+    </div>
 
+    <div class="block">
+      <h4 class="title is-5 mb-1">Data Summary</h4>
+      <div class="content is-size-5">
+        The summary table below shows the minimum, mean and maximum values
+        across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
+        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) for the
+        specified era, which can be helpful to assess broad trends and
+        variation.
+      </div>
+    </div>
+
+    <div class="block">
       <table class="table">
         <thead>
           <tr>
@@ -12,60 +36,104 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Historical (1910-2009)</th>
+            <th scope="row">Historical (1910&ndash;2009)</th>
             <td>
-              {{ results.snowfall.sfe_hist_min }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.sfe_hist_mean
+              {{ results.snowfall.summary.historical.sfemin
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
-              {{ results.snowfall.sfe_hist_max }}<UnitWidget unitType="mm_in" />
+              {{ results.snowfall.summary.historical.sfemean
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.snowfall.summary.historical.sfemax
+              }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
           <tr>
-            <th scope="row">Future Projections (2010-2099)</th>
+            <th scope="row">Future Projections (2010&ndash;2099)</th>
             <td>
-              {{ results.snowfall.sfe_proj_min }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.sfe_proj_mean
+              {{ results.snowfall.summary.projected.sfemin
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
-              {{ results.snowfall.sfe_proj_max }}<UnitWidget unitType="mm_in" />
+              {{ results.snowfall.summary.projected.sfemean
+              }}<UnitWidget unitType="mm_in" />
+            </td>
+            <td>
+              {{ results.snowfall.summary.projected.sfemax
+              }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
         </tbody>
       </table>
+    </div>
 
-      <h4 class="title is-6 no-print">Access to Data</h4>
-      <div class="content no-print">
-        <ul>
-          <li>
-            <a
-              href="http://ckan.snap.uaf.edu/dataset/historical-decadal-averages-of-monthly-snowfall-equivalent-771m-cru-ts3-0-ts3-1"
-              target="_blank"
-              >Historical Decadal Averages of Monthly Snowfall Equivalent 771m
-              CRU TS3.0/TS3.1</a
-            >
-          </li>
-          <li>
-            <a
-              href="http://ckan.snap.uaf.edu/dataset/projected-decadal-averages-of-monthly-snowfall-equivalent-771m-cmip5-ar5"
-              target="_blank"
-              >Projected Decadal Averages of Monthly Snowfall Equivalent 771m
-              CMIP5/AR5</a
-            >
-          </li>
-        </ul>
-      </div>
-      <DownloadCsvButton
-        text="Download snowfall equivalent data as CSV"
-        endpoint="mmm/snow/snowfallequivalent/all"
-        class="mt-3 mb-5"
+    <div class="block">
+      <h4 class="title is-5 mb-1">Data preview</h4>
+
+      <p class="content is-size-5 mb-1">
+        CSV download includes decadal values for both historical CRU TS 3.1
+        (1910&ndash;2009) and modeled projected (2010&ndash;2099) datasets. Data
+        are provided in metric units.
+      </p>
+      <PreviewTable
+        :csvString="results.snowfall.preview"
+        sizeBlurb="~145 rows, 4 columns, ~5kb"
       />
+    </div>
+
+    <div class="block data-outro content is-size-5 no-print">
+      <h4 class="title is-5 no-print">
+        Data access &amp; additional information
+      </h4>
+
+      <ul>
+        <li>
+          <DownloadCsvButton
+            text="Download snowfall water equivalent data as CSV"
+            endpoint="snow/snowfallequivalent"
+          />
+        </li>
+        <li>
+          Source datasets and metadata:
+          <ul>
+            <li>
+              <a
+                href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/557db5d5-dbeb-470a-a9c4-b80d78aa8668"
+                >Historical Decadal Averages of Monthly Snowfall Equivalent 771m
+                CRU TS3.0/TS3.1</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/7c0c1a65-794e-4770-aa72-4628d357808e"
+                >Projected Decadal Averages of Monthly Snowfall Equivalent 771m
+                CMIP5/AR5</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          Academic references:
+          <blockquote>
+            McAfee, S. A., Walsh, J. E., &amp; Rupp, T. S. (2013). Statistically
+            downscaled projections of snow/rain partitioning for Alaska.
+            <i>Hydrological Processes, 28</i>(12), 3930&ndash;3946.
+            <a href="https://doi.org/10.1002/hyp.9934"
+              >https://doi.org/10.1002/hyp.9934</a
+            >
+          </blockquote>
+          <blockquote>
+            Littell J. S., McAfee S. A., &amp; Hayward G. D. (2018). Alaska
+            Snowpack Response to Climate Change: Statewide Snowfall Equivalent
+            and Snowpack Water Scenarios, <i>Water 10</i>(5) 668;
+            <a href="https://doi.org/10.3390/w10050668"
+              >https://doi.org/10.3390/w10050668</a
+            >
+          </blockquote>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -74,39 +142,19 @@
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
+import PreviewTable from '~/components/PreviewTable'
 
 export default {
   name: 'SnowfallReport',
   components: {
     DownloadCsvButton,
     UnitWidget,
+    PreviewTable,
   },
   computed: {
     ...mapGetters({
       results: 'report/results',
-      placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
     }),
-  },
-
-  watch: {
-    isPlaceDefined: function () {
-      this.$fetch()
-    },
-  },
-  fetch() {
-    let plateResults = {
-      sfe_hist_min: this.results['snowfall']['historical']['sfemin'],
-      sfe_hist_mean: this.results['snowfall']['historical']['sfemean'],
-      sfe_hist_max: this.results['snowfall']['historical']['sfemax'],
-      sfe_proj_min: this.results['snowfall']['projected']['sfemin'],
-      sfe_proj_mean: this.results['snowfall']['projected']['sfemean'],
-      sfe_proj_max: this.results['snowfall']['projected']['sfemax'],
-    }
-    this.$store.commit('report/setPlateResults', {
-      plateResults: plateResults,
-      variable: 'snowfall',
-    })
   },
 }
 </script>

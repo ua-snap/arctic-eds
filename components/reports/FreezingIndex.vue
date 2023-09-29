@@ -1,6 +1,15 @@
 <template>
   <div v-if="Object.keys(results.freezing_index).length != 0">
-    
+    <div class="block">
+      <h4 class="title is-5 mb-1">Summary</h4>
+      <div class="content is-size-5">
+        The summary table below shows the minimum, mean and maximum values
+        across one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3)
+        for the specified era, which can be helpful to assess broad trends and
+        variation.
+      </div>
+    </div>
+    <div class="block">
       <table class="table">
         <thead>
           <tr>
@@ -73,25 +82,34 @@
           </tr>
         </tbody>
       </table>
-      <h4 class="title is-6 no-print">Access to Data</h4>
-      <div class="content no-print">
-        <p>Freezing index data was calculated from the following:</p>
-        <ul>
-          <li>
-            <a
-              href="http://ckan.snap.uaf.edu/dataset/historical-and-projected-dynamically-downscaled-climate-data-for-the-state-of-alaska-and-surrou"
-              target="_blank"
-              >Historical and Projected Climate Products</a
-            >
-          </li>
-        </ul>
-      </div>
-      <DownloadCsvButton
-        text="Download freezing index data as CSV"
-        endpoint="mmm/degree_days/freezing_index/all"
-        class="mt-3 mb-5"
+    </div>
+
+    <div class="block">
+      <h4 class="title is-5 mb-1">Data preview</h4>
+
+      <p class="content is-size-5 mb-1">
+        CSV download includes annual values for both historical ERA-Interim
+        (1980&ndash;2009) and modeled projected (2006&ndash;2100) datasets. Data
+        are provided in metric units.
+      </p>
+      <PreviewTable
+        :csvString="results.freezing_index.preview"
+        sizeBlurb="~219 rows, 3 columns, ~5kb"
       />
     </div>
+
+    <div class="block content is-size-5 no-print">
+      <h4 class="title is-5 mb-1">Data download</h4>
+      <ul>
+        <li>
+          <DownloadCsvButton
+            :text="downloadCsvText"
+            endpoint="degree_days/freezing_index"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -108,6 +126,9 @@ export default {
   },
 
   computed: {
+    downloadCsvText() {
+      return 'Download CSV of freezing index for ' + this.placeName
+    },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
