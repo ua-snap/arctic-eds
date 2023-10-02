@@ -3,7 +3,7 @@
     <HeaderBanner />
     <div class="lead">
       <span class="logo">Arctic-EDS</span>
-      <span class="name">Arctic Engineering Design Support System</span>
+      <span class="name">Arctic Engineering Data Support System</span>
     </div>
     <Navbar />
     <section class="section">

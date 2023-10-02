@@ -11,18 +11,28 @@
       engineering requirements and guidelines, as well as a thorough
       bibliography.
     </p>
-    <div class="level">
-      <img
-        class="level-item"
-        src="~/assets/images/atlas-cover.jpg"
-        alt="Cover of the Environmental Atlas of Alaska, April 1978"
-      />
-      <img
-        class="level-item"
-        src="~/assets/images/heating_degree_days.png"
-        alt="Image from the Environmental Atlas of Alaska, April 1978"
-      />
+    <!-- <div class="level"> -->
+    <div class="tile is-ancestor">
+      <div class="tile is-child">
+       
+          <img
+            src="~/assets/images/atlas-cover.jpg"
+            alt="Cover of the Environmental Atlas of Alaska, April 1978"
+          />
+    
+      </div>
+
+      <div class="tile is-child">
+       
+          <img
+          
+            src="~/assets/images/heating_degree_days.png"
+            alt="Image from the Environmental Atlas of Alaska, April 1978"
+          />
+      
+      </div>
     </div>
+    <!-- </div> -->
     <h2 class="title is-3">The Atlas ages</h2>
     <p>
       Over time the Atlas&rsquo; shortcomings became clear. Data gaps frustrated
@@ -80,12 +90,7 @@ p:last-of-type {
   margin-bottom: 2.5rem;
 }
 img {
-  display: block;
-  @media (min-width: 1023px) {
-    & {
-      max-width: 50%;
-    }
-  }
+  padding: 1rem;
 }
 </style>
 

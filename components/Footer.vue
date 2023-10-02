@@ -7,7 +7,7 @@
           
         </div>
         <div class="column is-four-fifths">
-          <p class="lead">Arctic Engineering Design Support System  (Arctic-EDS)</p>
+          <p class="lead">Arctic Engineering Data Support System (Arctic-EDS)</p>
 
           <p>
             Technical professionals working in the North need up-to-date
