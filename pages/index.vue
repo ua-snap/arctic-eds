@@ -28,8 +28,8 @@
   background: url('~/assets/images/cityscape.svg');
   background-repeat: repeat-x;
   background-size: auto 172px;
-  background-position-y: bottom 0px;
-  background-origin: border-box;
+  background-position-y: bottom;
+  
     @media (max-width: 1075px) {
       & {
         background: none;
