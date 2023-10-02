@@ -1,7 +1,7 @@
 <template>
   <span class="units">
-    <span v-html="symbol.space"></span>
-    <span class="light" v-html="symbol.symbol"></span>
+    <span v-html="symbol.space"></span
+    ><span class="light" v-html="symbol.symbol"></span>
   </span>
 </template>
 <style lang="scss" scoped>
@@ -30,7 +30,7 @@ export default {
   computed: {
     symbol() {
       let symbol = ''
-      let space = ''
+      let space = '' // for units that start with a symbol (º), no space
 
       switch (this.unitType) {
         case 'temp':
