@@ -29,12 +29,12 @@
   background-repeat: repeat-x;
   background-size: auto 172px;
   background-position-y: bottom;
-  
-    @media (max-width: 1075px) {
-      & {
-        background: none;
-      }
+
+  @media (max-width: 1075px) {
+    & {
+      background: none;
     }
+  }
 }
 .taglines {
   display: flex;
@@ -87,22 +87,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      selectedMap: 'map/selectedMap',
       reportIsVisible: 'report/reportIsVisible',
     }),
-  },
-  created() {
-    const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
-    if (path) {
-      this.$router.push({ path: path })
-    }
-  },
-  methods: {
-    showMap(event, mapId) {
-      this.$router.push({
-        hash: mapId,
-      })
-    },
-  },
+  }
 }
 </script>

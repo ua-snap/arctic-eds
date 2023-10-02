@@ -103,7 +103,7 @@ export default {
       },
       set() {
         this.$router.push({
-          path: '/',
+          path: '/maps',
         })
       },
     },

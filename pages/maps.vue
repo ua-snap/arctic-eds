@@ -76,7 +76,27 @@ img {
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   layout: 'content',
+  computed: {
+    ...mapGetters({
+      selectedMap: 'map/selectedMap',
+    }),
+  },
+  methods: {
+    showMap(event, mapId) {
+      this.$router.push({
+        hash: mapId,
+      })
+    },
+  },
+  created() {
+    const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
+    if (path) {
+      this.$router.push({ path: path })
+    }
+  },
 }
 </script>
