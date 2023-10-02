@@ -10,7 +10,6 @@
           <p>
             Projected layers show data from the NCAR CCSM4 model under the RCP
             8.5 scenario, averaged over 2040&ndash;2069.
-            <NuxtLink to="/climate-modeling">Read more</NuxtLink>
           </p>
           <h5 class="mb-2">Heating Degree Days</h5>
           <ul>

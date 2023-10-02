@@ -8,16 +8,6 @@
 // Import buefy styles
 @import '~buefy/src/scss/buefy';
 
-// Some additional common styles.
-.content-wrapper {
-  max-width: 50rem;
-  margin: 0 auto;
-}
-
-.content-clamp {
-  max-width: 50rem;
-}
-
 @media print {
   .no-print {
     display: none !important;
