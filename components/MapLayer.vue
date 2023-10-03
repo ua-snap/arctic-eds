@@ -37,7 +37,6 @@ export default {
     active() {
       // Get all layers + then the active layer for this map.
       // Need to get all layers so that reactivity works.
-
       if (this.activeLayers) {
         return this.activeLayers[this.mapName] === this.layer.id
       }
