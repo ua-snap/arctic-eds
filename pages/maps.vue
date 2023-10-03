@@ -105,10 +105,68 @@
       </MapBlock>
     </div>
 
-    <!--     <div class="block">
+    <div class="block">
       <h3 class="is-size-4">Temperature Indices</h3>
-      <MapBlock mapName="temperature_indices" />
-    </div> -->
+      <MapBlock mapName="temperature_indices">
+        <template v-slot:layers>
+          <div class="content mx-5">
+            <p>
+              Historical layers show <strong>modeled</strong> data from the ERA
+              Interim model, averaged over 1980&ndash;2009.
+            </p>
+            <p>
+              Projected layers show data from the NCAR CCSM4 model under the RCP
+              8.5 scenario, averaged over 2040&ndash;2069.
+            </p>
+            <h5 class="mb-2">Heating Degree Days</h5>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[0]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[1]"
+                />
+              </li>
+            </ul>
+            <h5 class="mb-2">Freezing Index</h5>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[2]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[3]"
+                />
+              </li>
+            </ul>
+            <h5 class="mb-2">Thawing Index</h5>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[4]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[5]"
+                />
+              </li>
+            </ul>
+          </div>
+        </template>
+      </MapBlock>
+    </div>
   </section>
 </template>
 
@@ -124,6 +182,6 @@ export default {
     layers: function () {
       return mapLayers.layers
     },
-  }
+  },
 }
 </script>
