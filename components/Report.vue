@@ -32,14 +32,19 @@
               mean and maximum values for different time periods; use the mean
               column to assess general trends over time.
             </p>
-            <p>
+            <p v-if="Object.keys(results.elevation).length != 0">
               The elevation within 1&#8239;km of this point ranges between
               {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
               meters, with an average elevation of
               {{ results.elevation.mean }} meters. This variation should be kept
               in mind when interpreting the variables below.
             </p>
-            <p>
+            <p
+              v-if="
+                Object.keys(results.geology).length != 0 &&
+                Object.keys(results.physiography).length != 0
+              "
+            >
               The geology type of this point is
               <em>{{ results.geology.name }}</em
               >, and this place lies within the
