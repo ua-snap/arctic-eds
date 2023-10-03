@@ -141,6 +141,53 @@
     </div>
 
     <h4 class="title is-5 mb-1">Mean Monthly Temperatures</h4>
+    <div class="radio-units no-print">
+      <div>
+        <b-field label="Model">
+          <b-radio
+            v-model="radioModel"
+            name="radioModel"
+            native-value="5ModelAvg"
+          >
+            5 Model Average
+          </b-radio>
+          <b-radio
+            v-model="radioModel"
+            name="radioModel"
+            native-value="GFDL-CM3"
+          >
+            GFDL-CM3
+          </b-radio>
+          <b-radio
+            v-model="radioModel"
+            name="radioModel"
+            native-value="NCAR-CCSM4"
+          >
+            NCAR-CCSM4
+          </b-radio>
+        </b-field>
+      </div>
+    </div>
+    <div class="radio-units no-print">
+      <div>
+        <b-field label="Scenario">
+          <b-radio
+            v-model="radioScenario"
+            name="radioScenario"
+            native-value="rcp45"
+          >
+            RCP 4.5
+          </b-radio>
+          <b-radio
+            v-model="radioScenario"
+            name="radioScenario"
+            native-value="rcp85"
+          >
+            RCP 8.5
+          </b-radio>
+        </b-field>
+      </div>
+    </div>
     <div class="block">
       <table class="table">
         <thead>
@@ -218,21 +265,21 @@
               ]"
             >
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85[
-                  `${month}`
-                ]['2010-2039'].tasmean
+                results.temperature.summary.projected[`${radioModel}`][
+                  `${radioScenario}`
+                ][`${month}`]['2010-2039'].tasmean
               }}<UnitWidget /><br />
               <span class="small-text">
                 ({{
-                  results.temperature.summary.projected['5ModelAvg'].rcp85[
-                    `${month}`
-                  ]['2010-2039'].tasmin
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
+                  ][`${month}`]['2010-2039'].tasmin
                 }}
                 &mdash;
                 {{
-                  results.temperature.summary.projected['5ModelAvg'].rcp85[
-                    `${month}`
-                  ]['2010-2039'].tasmax
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
+                  ][`${month}`]['2010-2039'].tasmax
                 }})
               </span>
             </td>
@@ -256,21 +303,21 @@
               ]"
             >
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85[
-                  `${month}`
-                ]['2040-2069'].tasmean
+                results.temperature.summary.projected[`${radioModel}`][
+                  `${radioScenario}`
+                ][`${month}`]['2040-2069'].tasmean
               }}<UnitWidget /><br />
               <span class="small-text">
                 ({{
-                  results.temperature.summary.projected['5ModelAvg'].rcp85[
-                    `${month}`
-                  ]['2040-2069'].tasmin
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
+                  ][`${month}`]['2040-2069'].tasmin
                 }}
                 &mdash;
                 {{
-                  results.temperature.summary.projected['5ModelAvg'].rcp85[
-                    `${month}`
-                  ]['2040-2069'].tasmax
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
+                  ][`${month}`]['2040-2069'].tasmax
                 }})
               </span>
             </td>
@@ -294,21 +341,21 @@
               ]"
             >
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85[
-                  `${month}`
-                ]['2070-2099'].tasmean
+                results.temperature.summary.projected[`${radioModel}`][
+                  `${radioScenario}`
+                ][`${month}`]['2070-2099'].tasmean
               }}<UnitWidget /><br />
               <span class="small-text">
                 ({{
-                  results.temperature.summary.projected['5ModelAvg'].rcp85[
-                    `${month}`
-                  ]['2070-2099'].tasmin
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
+                  ][`${month}`]['2070-2099'].tasmin
                 }}
                 &mdash;
                 {{
-                  results.temperature.summary.projected['5ModelAvg'].rcp85[
-                    `${month}`
-                  ]['2070-2099'].tasmax
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
+                  ][`${month}`]['2070-2099'].tasmax
                 }})
               </span>
             </td>
@@ -393,6 +440,12 @@ export default {
     DownloadCsvButton,
     UnitWidget,
     PreviewTable,
+  },
+  data() {
+    return {
+      radioModel: '5ModelAvg',
+      radioScenario: 'rcp45',
+    }
   },
   computed: {
     ...mapGetters({
