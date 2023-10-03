@@ -122,7 +122,7 @@ export default {
         return this.validLatLng(lat, lon)
       } else {
         return this.invalidLatLng(
-          'This point is outside the bounding box of data: latitude between 51.229-71.3526, longitude between -179.1506-129.9795'
+          'This point is outside the bounding box of data: latitude between 51.229–71.3526, longitude between -179.1506–129.9795'
         )
       }
     },
