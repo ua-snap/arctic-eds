@@ -233,17 +233,15 @@
                 ].tasmean
               }}<UnitWidget /><br />
               <span class="small-text">
-                ({{
-                  results.temperature.summary.historical['CRU-TS'].historical[
-                    `${month}`
-                  ].tasmin
-                }}
-                &ndash;
                 {{
                   results.temperature.summary.historical['CRU-TS'].historical[
                     `${month}`
+                  ].tasmin
+                }}&ndash;{{
+                  results.temperature.summary.historical['CRU-TS'].historical[
+                    `${month}`
                   ].tasmax
-                }})
+                }}
               </span>
             </td>
           </tr>
@@ -272,17 +270,15 @@
                 ][`${month}`]['2010-2039'].tasmean
               }}<UnitWidget /><br />
               <span class="small-text">
-                ({{
-                  results.temperature.summary.projected[`${radioModel}`][
-                    `${radioScenario}`
-                  ][`${month}`]['2010-2039'].tasmin
-                }}
-                &ndash;
                 {{
                   results.temperature.summary.projected[`${radioModel}`][
                     `${radioScenario}`
+                  ][`${month}`]['2010-2039'].tasmin
+                }}&ndash;{{
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
                   ][`${month}`]['2010-2039'].tasmax
-                }})
+                }}
               </span>
             </td>
           </tr>
@@ -311,17 +307,15 @@
                 ][`${month}`]['2040-2069'].tasmean
               }}<UnitWidget /><br />
               <span class="small-text">
-                ({{
-                  results.temperature.summary.projected[`${radioModel}`][
-                    `${radioScenario}`
-                  ][`${month}`]['2040-2069'].tasmin
-                }}
-                &ndash;
                 {{
                   results.temperature.summary.projected[`${radioModel}`][
                     `${radioScenario}`
+                  ][`${month}`]['2040-2069'].tasmin
+                }}&ndash;{{
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
                   ][`${month}`]['2040-2069'].tasmax
-                }})
+                }}
               </span>
             </td>
           </tr>
@@ -350,17 +344,15 @@
                 ][`${month}`]['2070-2099'].tasmean
               }}<UnitWidget /><br />
               <span class="small-text">
-                ({{
-                  results.temperature.summary.projected[`${radioModel}`][
-                    `${radioScenario}`
-                  ][`${month}`]['2070-2099'].tasmin
-                }}
-                &ndash;
                 {{
                   results.temperature.summary.projected[`${radioModel}`][
                     `${radioScenario}`
+                  ][`${month}`]['2070-2099'].tasmin
+                }}&ndash;{{
+                  results.temperature.summary.projected[`${radioModel}`][
+                    `${radioScenario}`
                   ][`${month}`]['2070-2099'].tasmax
-                }})
+                }}
               </span>
             </td>
           </tr>
@@ -463,6 +455,6 @@ export default {
 
 <style lang="scss" scoped>
 .small-text {
-  font-size: 55%;
+  font-size: 80%;
 }
 </style>
