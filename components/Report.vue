@@ -158,7 +158,11 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.permafrost {
+  padding-bottom: 11rem;
+}
+</style>
 <script>
 import { mapGetters } from 'vuex'
 import UnitRadio from '~/components/UnitRadio'
