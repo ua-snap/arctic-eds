@@ -2,7 +2,7 @@
   <div>
     <div class="main">
       <div v-if="!reportIsVisible">
-        <p class="content mt-6 mb-6 is-size-4 blurb">
+        <p class="mt-6 mb-6 is-size-4 blurb">
           Use Arctic-EDS to query historical, current and projected
           environmental data for engineering applications.<br />Download data or
           use our computational notebooks for analysis.
@@ -89,6 +89,6 @@ export default {
     ...mapGetters({
       reportIsVisible: 'report/reportIsVisible',
     }),
-  }
+  },
 }
 </script>
