@@ -1,12 +1,12 @@
 <template>
   <div class="columns">
     <div class="column is-two-thirds">
-      <Map class="map" />
+      <Map :mapName="mapName" />
     </div>
     <div class="column">
       <slot name="layers">
         <div class="layer-list-wrapper">
-          <LayerList class="layers" :layers="layers" />
+          <LayerList class="layers" :layers="layers" :mapName="mapName" />
         </div>
       </slot>
     </div>
@@ -14,12 +14,6 @@
 </template>
 
 <style lang="scss" scoped>
-::v-deep {
-  .map {
-    aspect-ratio: 1/1;
-    height: 100%;
-  }
-}
 </style>
 
 <script>
@@ -35,13 +29,13 @@ export default {
     Map,
     LayerList,
   },
-  props: ['map'],
+  props: ['mapName'],
   computed: {
     mapTitle() {
-      return mapContent.titles[this.map]
+      return mapContent.titles[this.mapName]
     },
     layers() {
-      return mapContent.layers[this.map]
+      return mapContent.layers[this.mapName]
     },
   },
   methods: {

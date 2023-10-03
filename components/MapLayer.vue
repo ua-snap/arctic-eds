@@ -32,11 +32,8 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'MapLayer',
-  props: ['layer'],
+  props: ['layer', 'mapName'],
   computed: {
-    ...mapGetters({
-      selectedMap: 'map/selectedMap',
-    }),
     active() {
       // Check if the layer is active in the store
       let activeLayer = this.$store.getters['map/selectedLayer']
@@ -58,7 +55,7 @@ export default {
     toggleLayer() {
       this.$store.commit('map/toggleLayer', {
         layer: this.layer,
-        mapId: this.selectedMap,
+        mapId: this.mapName,
       })
     },
   },

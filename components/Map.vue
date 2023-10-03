@@ -1,8 +1,12 @@
 <template>
-  <div id="map"></div>
+  <div :id="mapName" class="map"></div>
 </template>
 
 <style lang="scss" scoped>
+.map {
+  aspect-ratio: 1/1;
+  height: 100%;
+}
 ::v-deep {
   .legend {
     padding: 10px;
@@ -29,14 +33,9 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Map',
-  props: ['id'],
-  computed: {
-    ...mapGetters({
-      selectedMap: 'map/selectedMap',
-    }),
-  },
+  props: ['mapName'],
   mounted() {
-    this.$store.commit('map/create')
+    this.$store.commit('map/create', this.mapName)
   },
   destroyed() {
     this.$store.commit('map/destroy')

@@ -8,7 +8,7 @@ import mapContent from '~/components/map_content'
 // throws a "Don't do that" error; plus, having these objects
 // within the scope of the Nuxt/Vue reactivity decoration causes
 // unpredictable buggy behavior ("too much recursion")
-var map
+var map = {}
 var layerObject
 var legendControl
 
@@ -99,50 +99,24 @@ export default {
   },
 
   getters: {
-    selectedMap(state, getters, rootState) {
-      if (rootState.route.hash) {
-        return rootState.route.hash.replace('#', '')
-      } else {
-        return undefined
-      }
-    },
     selectedLayer(state) {
       return state.selectedLayer
     },
   },
 
   mutations: {
-    create(state) {
-      let mapConfig = getBaseMapAndLayers()
-      map = L.map('map', getBaseMapAndLayers(mapConfig))
-      map.on('drag', function () {
-        map.panInsideBounds(mapConfig.maxBounds, { animate: false })
+    create(state, mapName) {
+      map.mapName = L.map(mapName, getBaseMapAndLayers())
+      map.mapName.on('drag', function () {
+        map.mapName.panInsideBounds(mapConfig.maxBounds, { animate: false })
       })
-      new L.Control.Zoom({ position: 'topright' }).addTo(map)
+      new L.Control.Zoom({ position: 'topright' }).addTo(map.mapName)
     },
     destroy(state) {
-      map.remove()
+      map.mapName.remove()
     },
     selectLayer(state, selectedLayer) {
       state.selectedLayer = selectedLayer
-    },
-    addLayers(state, layers) {
-      let layerObjs = {}
-      let defaultLayer
-
-      layers.forEach(layer => {
-        let layerObj = buildLayer(layer)
-
-        if (layer['default']) {
-          defaultLayer = layerObj
-        }
-
-        layerObjs[layer.title] = layerObj
-      })
-
-      let layerControl = L.control.layers(layerObjs).addTo(map)
-      map.addLayer(defaultLayer)
-      this.commit('map/addLegend')
     },
     addLegend(state, mapId) {
       if (legendControl) {
@@ -168,7 +142,7 @@ export default {
         return div
       }
 
-      legendControl.addTo(map)
+      legendControl.addTo(map.mapName)
     },
     toggleLayer(state, layerObj) {
       // Remove existing layer: right now, we only
@@ -177,7 +151,7 @@ export default {
       // layerObject because this code can get run while
       // the full DOM is hydrating, see MapLayer / mounted().
       if (state.selectedLayer && layerObject) {
-        map.removeLayer(layerObject)
+        map.mapName.removeLayer(layerObject)
       }
 
       // Add to map!
@@ -208,8 +182,7 @@ export default {
 
       layerObject = L.tileLayer.wms(wmsUrl, layerConfiguration)
 
-      map.addLayer(layerObject)
-
+      map.mapName.addLayer(layerObject)
       this.commit('map/selectLayer', state.layer)
       this.commit('map/addLegend', layerObj.mapId)
     },

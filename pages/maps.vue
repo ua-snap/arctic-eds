@@ -6,7 +6,7 @@
           <p class="category-subtitle mb-1">
             Mean annual precipitation and snowfall
           </p>
-          <MapBlock map="precipitation" />
+          <MapBlock mapName="precipitation" />
         </div>
 
         <!-- <div class="column is-half">
@@ -46,7 +46,7 @@
           />
         </div>
       -->
-      
+
     <!-- <TemperatureMap v-if="this.selectedMap == 'temperature'" />
     <TemperatureIndicesMap v-if="this.selectedMap == 'temperature_indices'" />
     <MapModal

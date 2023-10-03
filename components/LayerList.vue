@@ -2,23 +2,13 @@
   <div>
     <ul>
       <li v-for="layer in layers">
-        <MapLayer v-bind:key="layer.id" v-bind:layer="layer" />
+        <MapLayer v-bind:key="layer.id" v-bind:layer="layer" :mapName="mapName" />
       </li>
     </ul>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.layer-list-wrapper {
-  border-top: 1px solid #ddd;
-  padding-top: 15px;
-  overflow-y: auto;
-
-  // Offset height by:
-  // 42px for the map title
-  // 30px for the top (15px) + bottom (15px) margin around modal
-  height: calc(100vh - 42px - 30px);
-}
 </style>
 
 <script>
@@ -29,6 +19,6 @@ export default {
   components: {
     MapLayer,
   },
-  props: ['layers'],
+  props: ['layers', 'mapName'],
 }
 </script>
