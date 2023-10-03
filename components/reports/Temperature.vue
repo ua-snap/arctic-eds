@@ -31,6 +31,7 @@
       </div>
     </div>
 
+    <h4 class="title is-5 mb-1">Mean Annual Temperature, 5 Model Average</h4>
     <div class="block">
       <table class="table">
         <thead>
@@ -139,14 +140,189 @@
       </table>
     </div>
 
+    <h4 class="title is-5 mb-1">Mean Monthly Temperatures</h4>
+    <div class="block">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">January</th>
+            <th scope="col">February</th>
+            <th scope="col">March</th>
+            <th scope="col">April</th>
+            <th scope="col">May</th>
+            <th scope="col">June</th>
+            <th scope="col">July</th>
+            <th scope="col">August</th>
+            <th scope="col">September</th>
+            <th scope="col">October</th>
+            <th scope="col">November</th>
+            <th scope="col">December</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Historical (1901&ndash;2015)</th>
+            <td
+              v-for="month in [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+              ]"
+            >
+              {{
+                results.temperature.summary.historical['CRU-TS'].historical[
+                  `${month}`
+                ].tasmean
+              }}<UnitWidget /><br />
+              <span class="small-text">
+                ({{
+                  results.temperature.summary.historical['CRU-TS'].historical[
+                    `${month}`
+                  ].tasmin
+                }}
+                &mdash;
+                {{
+                  results.temperature.summary.historical['CRU-TS'].historical[
+                    `${month}`
+                  ].tasmax
+                }})
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <td
+              v-for="month in [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+              ]"
+            >
+              {{
+                results.temperature.summary.projected['5ModelAvg'].rcp85[
+                  `${month}`
+                ]['2010-2039'].tasmean
+              }}<UnitWidget /><br />
+              <span class="small-text">
+                ({{
+                  results.temperature.summary.projected['5ModelAvg'].rcp85[
+                    `${month}`
+                  ]['2010-2039'].tasmin
+                }}
+                &mdash;
+                {{
+                  results.temperature.summary.projected['5ModelAvg'].rcp85[
+                    `${month}`
+                  ]['2010-2039'].tasmax
+                }})
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mid Century (2040&ndash;2069)</th>
+            <td
+              v-for="month in [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+              ]"
+            >
+              {{
+                results.temperature.summary.projected['5ModelAvg'].rcp85[
+                  `${month}`
+                ]['2040-2069'].tasmean
+              }}<UnitWidget /><br />
+              <span class="small-text">
+                ({{
+                  results.temperature.summary.projected['5ModelAvg'].rcp85[
+                    `${month}`
+                  ]['2040-2069'].tasmin
+                }}
+                &mdash;
+                {{
+                  results.temperature.summary.projected['5ModelAvg'].rcp85[
+                    `${month}`
+                  ]['2040-2069'].tasmax
+                }})
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <td
+              v-for="month in [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+              ]"
+            >
+              {{
+                results.temperature.summary.projected['5ModelAvg'].rcp85[
+                  `${month}`
+                ]['2070-2099'].tasmean
+              }}<UnitWidget /><br />
+              <span class="small-text">
+                ({{
+                  results.temperature.summary.projected['5ModelAvg'].rcp85[
+                    `${month}`
+                  ]['2070-2099'].tasmin
+                }}
+                &mdash;
+                {{
+                  results.temperature.summary.projected['5ModelAvg'].rcp85[
+                    `${month}`
+                  ]['2070-2099'].tasmax
+                }})
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="block">
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
         CSV download includes annual values for both historical CRU TS
-        (1901&ndash;2015) and modeled projected (2006&ndash;2099) datasets.
-        January and July data also include minimums and maximums for each year.
-        Data are provided in metric units.
+        (1901&ndash;2015) and modeled projected (2006&ndash;2100) datasets.
       </p>
       <PreviewTable
         :csvString="results.temperature.preview"
@@ -228,4 +404,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.small-text {
+  font-size: 60%;
+}
+</style>
