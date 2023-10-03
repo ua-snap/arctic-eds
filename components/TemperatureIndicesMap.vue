@@ -1,5 +1,5 @@
 <template>
-  <MapModal>
+  <MapBlock>
     <template v-slot:layers>
       <div class="layer-list-wrapper">
         <div class="layers content mx-5">
@@ -41,17 +41,17 @@
         </div>
       </div>
     </template>
-  </MapModal>
+  </MapBlock>
 </template>
 
 <script>
-import MapModal from '~/components/MapModal'
+import MapBlock from '~/components/MapBlock'
 import mapContent from '~/components/map_content'
 
 export default {
   name: 'TemperatureIndicesMap',
   components: {
-    MapModal,
+    MapBlock,
   },
   computed: {
     layers() {

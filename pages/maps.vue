@@ -1,20 +1,15 @@
 <template>
   <section class="section">
-    <div class="px-5 pb-6 is-hidden-mobile">
-      <div class="columns is-multiline">
-        <div class="column is-half">
+
+        <div class="block">
           <h3 class="is-size-4">Precipitation</h3>
           <p class="category-subtitle mb-1">
             Mean annual precipitation and snowfall
           </p>
-          <img
-            src="~/assets/images/map_thumbnails/precipitation.png"
-            alt="Precipitation map thumbnail"
-            class="map-thumbnail"
-            @click="showMap($event, 'precipitation')"
-          />
+          <MapBlock map="precipitation" />
         </div>
-        <div class="column is-half">
+
+        <!-- <div class="column is-half">
           <h3 class="is-size-4">Temperature</h3>
           <p class="category-subtitle mb-1">
             Average, minimum, and maximum temperatures
@@ -50,9 +45,9 @@
             @click="showMap($event, 'permafrost')"
           />
         </div>
-      </div>
-    </div>
-    <TemperatureMap v-if="this.selectedMap == 'temperature'" />
+      -->
+      
+    <!-- <TemperatureMap v-if="this.selectedMap == 'temperature'" />
     <TemperatureIndicesMap v-if="this.selectedMap == 'temperature_indices'" />
     <MapModal
       v-if="
@@ -60,7 +55,7 @@
         this.selectedMap != 'temperature' &&
         this.selectedMap != 'temperature_indices'
       "
-    />
+    /> -->
   </section>
 </template>
 
@@ -76,6 +71,7 @@ img {
 </style>
 
 <script>
+import MapBlock from '~/components/MapBlock'
 import { mapGetters } from 'vuex'
 
 export default {

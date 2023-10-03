@@ -29,6 +29,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Map',
+  props: ['id'],
   computed: {
     ...mapGetters({
       selectedMap: 'map/selectedMap',

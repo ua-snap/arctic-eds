@@ -69,9 +69,6 @@
 </style>
 <script>
 import { mapGetters } from 'vuex'
-import MapModal from '~/components/MapModal'
-import TemperatureMap from '~/components/TemperatureMap'
-import TemperatureIndicesMap from '~/components/TemperatureIndicesMap'
 import SearchControls from '~/components/SearchControls'
 import FullReport from '~/components/Report'
 
@@ -79,9 +76,6 @@ export default {
   name: 'HomePage',
   layout: 'home',
   components: {
-    MapModal,
-    TemperatureMap,
-    TemperatureIndicesMap,
     SearchControls,
     FullReport,
   },
@@ -89,6 +83,6 @@ export default {
     ...mapGetters({
       reportIsVisible: 'report/reportIsVisible',
     }),
-  }
+  },
 }
 </script>
