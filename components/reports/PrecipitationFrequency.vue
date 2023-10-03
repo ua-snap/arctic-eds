@@ -63,14 +63,19 @@
         </tr>
         <tr>
           <th></th>
-          <th v-for="interval in [2, 5, 10, 25, 50, 100, 200, 500, 1000]">
+          <th
+            v-for="(interval, intIndex) in [
+              2, 5, 10, 25, 50, 100, 200, 500, 1000,
+            ]"
+            :key="intIndex"
+          >
             1 / {{ interval }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="duration in [
+          v-for="(duration, durIndex) in [
             '60m',
             '2h',
             '3h',
@@ -87,9 +92,15 @@
             '45d',
             '60d',
           ]"
+          :key="durIndex"
         >
           <td>{{ duration }}</td>
-          <td v-for="interval in [2, 5, 10, 25, 50, 100, 200, 500, 1000]">
+          <td
+            v-for="(interval, intIndex) in [
+              2, 5, 10, 25, 50, 100, 200, 500, 1000,
+            ]"
+            :key="intIndex"
+          >
             {{
               results.proj_precip[
                 `pr_${interval}_${duration}_${radioModel}_${radioEra}_mean`
