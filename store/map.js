@@ -2,15 +2,22 @@ import _ from 'lodash'
 import ak from '!raw-loader!../assets/alaska.geojson'
 const akJson = JSON.parse(ak)
 import mapContent from '~/components/map_content'
+import Vue from 'vue'
 
-// This needs to be outside of the Store or there's problems
+// These three variables needs to be outside of the Store or there's problems
 // because Leaflet mutates the state of the map, and Vuex
 // throws a "Don't do that" error; plus, having these objects
 // within the scope of the Nuxt/Vue reactivity decoration causes
 // unpredictable buggy behavior ("too much recursion")
-var map = {}
-var layerObject
-var legendControl
+
+// collection of Leaflet map objects, keys mapping to map_content.js
+var maps = {}
+
+// collection of active layer Leaflet objects, keyed like `maps` var above
+var layerObjects = {}
+
+// Collection of legend objects, keyed like `maps` var above
+var legendControls = {}
 
 function getBaseMapAndLayers() {
   var baseLayer = new L.tileLayer.wms(process.env.geoserverUrl, {
@@ -94,39 +101,45 @@ function buildLayer(layer) {
 export default {
   state() {
     return {
-      selectedLayer: undefined,
+      selectedLayers: {},
     }
   },
 
   getters: {
-    selectedLayer(state) {
-      return state.selectedLayer
+    getSelectedLayers(state) {
+      return state.selectedLayers
     },
   },
 
   mutations: {
     create(state, mapName) {
-      map.mapName = L.map(mapName, getBaseMapAndLayers())
-      map.mapName.on('drag', function () {
+      maps[mapName] = L.map(mapName, getBaseMapAndLayers())
+      maps[mapName].on('drag', function () {
         map.mapName.panInsideBounds(mapConfig.maxBounds, { animate: false })
       })
-      new L.Control.Zoom({ position: 'topright' }).addTo(map.mapName)
+      new L.Control.Zoom({ position: 'topright' }).addTo(maps[mapName])
     },
-    destroy(state) {
-      map.mapName.remove()
+    destroy(state, mapName) {
+      if (maps[mapName]) {
+        maps[mapName].remove()
+      }
     },
-    selectLayer(state, selectedLayer) {
-      state.selectedLayer = selectedLayer
+    setSelectedLayer(state, layerInfo) {
+      // Because it's an object, need to use Vue.set to get
+      // proper reactivity
+      Vue.set(state.selectedLayers, layerInfo.mapName, layerInfo.layer.id)
     },
     addLegend(state, mapId) {
-      if (legendControl) {
-        legendControl.remove()
+      if (legendControls[mapId]) {
+        legendControls[mapId].remove()
       }
-      legendControl = L.control({ position: 'bottomleft' })
-      legendControl.onAdd = map => {
+      legendControls[mapId] = L.control({ position: 'bottomleft' })
+      legendControls[mapId].onAdd = map => {
         var div = L.DomUtil.create('div', 'info legend')
         let mapLayers = mapContent.layers[mapId]
-        let currentLayer = _.find(mapLayers, { id: state.selectedLayer.id })
+        let currentLayer = _.find(mapLayers, {
+          id: state.selectedLayers[mapId],
+        })
         let legend = currentLayer.legend
         let legendItems = mapContent.legends[legend]
 
@@ -142,7 +155,7 @@ export default {
         return div
       }
 
-      legendControl.addTo(map.mapName)
+      legendControls[mapId].addTo(maps[mapId])
     },
     toggleLayer(state, layerObj) {
       // Remove existing layer: right now, we only
@@ -150,40 +163,47 @@ export default {
       // Need to test explicitly for the existence of the
       // layerObject because this code can get run while
       // the full DOM is hydrating, see MapLayer / mounted().
-      if (state.selectedLayer && layerObject) {
-        map.mapName.removeLayer(layerObject)
+
+      if (
+        state.selectedLayers[layerObj.mapId] &&
+        layerObjects[layerObj.mapId]
+      ) {
+        maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
       }
 
-      // Add to map!
-      state.layer = layerObj.layer
+      // Build configuration merging some basics with
+      // layer-specific configuration in map_content.js
+      let layer = layerObj.layer
       let layerConfiguration = {
         transparent: true,
         format: 'image/png',
         version: '1.3.0',
-        layers: state.layer.wmsLayerName,
-        id: state.layer.id,
+        layers: layer.wmsLayerName,
+        id: layer.id,
       }
 
-      if (state.layer.style) {
-        layerConfiguration.styles = state.layer.style
+      if (layer.style) {
+        layerConfiguration.styles = layer.style
       }
 
-      if (state.layer.rasdamanConfiguration) {
+      if (layer.rasdamanConfiguration) {
         layerConfiguration = {
           ...layerConfiguration,
-          ...state.layer.rasdamanConfiguration,
+          ...layer.rasdamanConfiguration,
         }
       }
 
       let wmsUrl =
-        state.layer.source == 'rasdaman'
+        layer.source == 'rasdaman'
           ? process.env.rasdamanUrl
           : process.env.geoserverUrl
 
-      layerObject = L.tileLayer.wms(wmsUrl, layerConfiguration)
-
-      map.mapName.addLayer(layerObject)
-      this.commit('map/selectLayer', state.layer)
+      layerObjects[layerObj.mapId] = L.tileLayer.wms(wmsUrl, layerConfiguration)
+      maps[layerObj.mapId].addLayer(layerObjects[layerObj.mapId])
+      this.commit('map/setSelectedLayer', {
+        mapName: layerObj.mapId,
+        layer: layer,
+      })
       this.commit('map/addLegend', layerObj.mapId)
     },
   },

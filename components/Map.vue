@@ -38,8 +38,7 @@ export default {
     this.$store.commit('map/create', this.mapName)
   },
   destroyed() {
-    this.$store.commit('map/destroy')
-    this.$store.commit('report/destroy')
+    this.$store.commit('map/destroy', this.mapName)
   },
 }
 </script>

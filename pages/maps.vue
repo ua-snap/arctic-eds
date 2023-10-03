@@ -3,59 +3,24 @@
 
         <div class="block">
           <h3 class="is-size-4">Precipitation</h3>
-          <p class="category-subtitle mb-1">
-            Mean annual precipitation and snowfall
-          </p>
           <MapBlock mapName="precipitation" />
         </div>
 
-        <!-- <div class="column is-half">
-          <h3 class="is-size-4">Temperature</h3>
-          <p class="category-subtitle mb-1">
-            Average, minimum, and maximum temperatures
-          </p>
-          <img
-            src="~/assets/images/map_thumbnails/temperature.png"
-            alt="Temperature map thumbnail"
-            class="map-thumbnail"
-            @click="showMap($event, 'temperature')"
-          />
-        </div>
-        <div class="column is-half">
-          <h3 class="is-size-4">Temperature Indices</h3>
-          <p class="category-subtitle mb-1">
-            Heating degree days, freezing/thawing degree days, and more
-          </p>
-          <img
-            src="~/assets/images/map_thumbnails/temperature_indices.png"
-            alt="Design Freezing Index map thumbnail"
-            class="map-thumbnail"
-            @click="showMap($event, 'temperature_indices')"
-          />
-        </div>
-        <div class="column is-half">
+        <div class="block">
           <h3 class="is-size-4">Permafrost</h3>
-          <p class="category-subtitle mb-1">
-            Permafrost extent, mean annual ground temperature, and more
-          </p>
-          <img
-            src="~/assets/images/map_thumbnails/permafrost.png"
-            alt="Permafrost map thumbnail"
-            class="map-thumbnail"
-            @click="showMap($event, 'permafrost')"
-          />
+          <MapBlock mapName="permafrost" />
         </div>
-      -->
 
-    <!-- <TemperatureMap v-if="this.selectedMap == 'temperature'" />
-    <TemperatureIndicesMap v-if="this.selectedMap == 'temperature_indices'" />
-    <MapModal
-      v-if="
-        this.selectedMap != undefined &&
-        this.selectedMap != 'temperature' &&
-        this.selectedMap != 'temperature_indices'
-      "
-    /> -->
+        <div class="block">
+          <h3 class="is-size-4">Temperature</h3>
+          <MapBlock mapName="temperature" />
+        </div>
+
+        <div class="block">
+          <h3 class="is-size-4">Temperature Indices</h3>
+          <MapBlock mapName="temperature_indices" />
+        </div>
+        
   </section>
 </template>
 
