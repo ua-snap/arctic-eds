@@ -238,7 +238,7 @@
                     `${month}`
                   ].tasmin
                 }}
-                &mdash;
+                &ndash;
                 {{
                   results.temperature.summary.historical['CRU-TS'].historical[
                     `${month}`
@@ -277,7 +277,7 @@
                     `${radioScenario}`
                   ][`${month}`]['2010-2039'].tasmin
                 }}
-                &mdash;
+                &ndash;
                 {{
                   results.temperature.summary.projected[`${radioModel}`][
                     `${radioScenario}`
@@ -316,7 +316,7 @@
                     `${radioScenario}`
                   ][`${month}`]['2040-2069'].tasmin
                 }}
-                &mdash;
+                &ndash;
                 {{
                   results.temperature.summary.projected[`${radioModel}`][
                     `${radioScenario}`
@@ -355,7 +355,7 @@
                     `${radioScenario}`
                   ][`${month}`]['2070-2099'].tasmin
                 }}
-                &mdash;
+                &ndash;
                 {{
                   results.temperature.summary.projected[`${radioModel}`][
                     `${radioScenario}`
