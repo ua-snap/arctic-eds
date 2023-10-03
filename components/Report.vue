@@ -198,10 +198,8 @@ export default {
       currentURL: '',
     }
   },
-  created() {
-    this.currentURL = window.location.href
-  },
   mounted() {
+    this.currentURL = window.location.href
     this.$fetch()
   },
 
