@@ -20,38 +20,65 @@ function convertUnits(state, type, substring = '', variable) {
   state.results[variable] = variable_results
 }
 
-function convertTemperature(state, variable, key) {
+function convertLeaves(state, obj, substring, variable, type) {
+  for (const key in obj) {
+    if (typeof obj[key] === 'number') {
+      if (key.includes(substring)) {
+        switch (type) {
+          case 'temperature':
+            obj[key] = parseFloat(convertTemperature(state, obj[key]))
+            break
+          case 'm_in':
+            obj[key] = parseFloat(convertMetersInches(state, obj[key]))
+            break
+          case 'mm_in':
+            obj[key] = parseFloat(
+              convertMillimetersInches(state, variable, obj[key])
+            )
+            break
+        }
+      } else {
+        obj[key] = parseFloat(obj[key])
+      }
+    } else if (typeof obj[key] === 'object') {
+      obj[key] = convertLeaves(state, obj[key], substring, variable, type)
+    }
+  }
+  return obj
+}
+
+function convertTemperature(state, value) {
   if (state.units == 'metric') {
-    return ((state.results[variable][key] - 32) * (5 / 9)).toFixed(1)
+    return ((value - 32) * (5 / 9)).toFixed(1)
   } else {
-    return (state.results[variable][key] * (9 / 5) + 32).toFixed(1)
+    return (value * (9 / 5) + 32).toFixed(1)
   }
 }
 
-function convertMillimetersInches(state, variable, key) {
+function convertMillimetersInches(state, variable, value) {
   // If the variable is proj_precip, we want the metric and
   // imperial units to be set to 2 decimal places to match
   // the DOT Projected Precipitation application.
   if (state.units == 'metric') {
     if (variable == 'proj_precip') {
-      return (state.results[variable][key] * 25.4).toFixed(2)
+      return (value * 25.4).toFixed(2)
     } else {
-      return (state.results[variable][key] * 25.4).toFixed(0)
+      return (value * 25.4).toFixed(0)
     }
   } else {
     if (variable == 'proj_precip') {
-      return (state.results[variable][key] / 25.4).toFixed(2)
+      return (value / 25.4).toFixed(2)
     } else {
-      return (state.results[variable][key] / 25.4).toFixed(1)
+      return (value / 25.4).toFixed(1)
     }
   }
 }
 
-function convertMetersInches(state, variable, key) {
+function convertMetersInches(state, value) {
   if (state.units == 'metric') {
-    return (state.results[variable][key] * 0.0254).toFixed(2)
+    return (value * 0.0254).toFixed(2)
   } else {
-    return (state.results[variable][key] / 0.0254).toFixed(1)
+    return (value / 0.0254).toFixed(1)
   }
 }
 
@@ -148,18 +175,20 @@ export default {
       // Converts all convertible units at the same time for shared report
       let conversions = [
         // This needs to be adapted after the summarized data are restored.
-        // { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
-        // { type: 'temperature', substring: '', variable: 'temperature' },
-        // { type: 'mm_in', substring: '', variable: 'precipitation' },
-        // { type: 'mm_in', substring: '', variable: 'snowfall' },
+        { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
+        { type: 'm_in', substring: 'permafrosttop', variable: 'permafrost' },
+        { type: 'mm_in', substring: '', variable: 'precipitation' },
+        { type: 'mm_in', substring: '', variable: 'snowfall' },
+        { type: 'temperature', substring: '', variable: 'temperature' },
         { type: 'mm_in', substring: '', variable: 'proj_precip' },
       ]
       conversions.forEach(conversion => {
-        convertUnits(
+        state.results[conversion['variable']] = convertLeaves(
           state,
-          conversion['type'],
+          _.cloneDeep(state.results[conversion['variable']]),
           conversion['substring'],
-          conversion['variable']
+          conversion['variable'],
+          conversion['type']
         )
       })
     },
