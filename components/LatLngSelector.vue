@@ -12,7 +12,7 @@
         </b-field>
       </div>
       <div v-if="isValid" class="column">
-        <b-button :type="type" :disabled="!isValid" @click="process"
+        <b-button type="is-primary" :disabled="!isValid" @click="process"
           >Get point data</b-button
         >
       </div>
@@ -26,6 +26,14 @@
   border-radius: 0;
   max-width: 30rem;
 }
+::v-deep button.button {
+  font-weight: bold;
+  &:hover {
+    background-color: #312e30;
+    color: white;
+    font-weight: bold;
+  }
+}
 </style>
 <script>
 import parseDMS from 'parse-dms'
@@ -34,10 +42,11 @@ export default {
   name: 'LatLngSelector',
   data() {
     return {
-      type: 'is-light',
       latLng: undefined,
       latlngInput: '',
       fieldMessage: '',
+      unparseableMessage:
+        "Input can't be turned into lat/lng.  Accepted formats are decimal degrees and DMS, i.e. 65.24, -142.22 or 58º 18' 0'' N, 134º 24' 57.6'' W",
     }
   },
   computed: {
@@ -45,14 +54,14 @@ export default {
       return this.validate()
     },
     getFieldStatus() {
-      if (this.latlngInput.length < 8 || this.isValid) {
+      if (this.latlngInput.length < 6 || this.isValid) {
         return '' // OK
       } else {
         return 'is-danger' // not OK
       }
     },
     getFieldMessage() {
-      if (this.latlngInput.length < 8 || this.isValid) {
+      if (this.latlngInput.length < 6 || this.isValid) {
         return ''
       } else {
         return this.fieldMessage
@@ -73,15 +82,13 @@ export default {
         })
       }
     },
-    invalidLatLng() {
-      this.fieldMessage = "I can't figure out how to make that a point."
-      this.type = 'is-light'
+    invalidLatLng(message) {
+      this.fieldMessage = message
       this.latLng = {}
       return false
     },
     validLatLng(lat, lng) {
       this.fieldMessage = ''
-      this.type = 'is-success'
       this.latLng = { lat: lat, lng: lng }
       return true
     },
@@ -90,24 +97,34 @@ export default {
         return false // do nothing if it's empty
       }
 
+      let lat, lon
+
       try {
         let parsedDms = parseDMS(this.latlngInput)
         if (parsedDms && parsedDms.lat && parsedDms.lon) {
-          let lat = parsedDms.lat
-          let lon = parsedDms.lon
-          if (
-            lat >= 51.229 &&
-            lat <= 71.3526 &&
-            lon >= -179.1506 &&
-            lon <= -129.9795
-          ) {
-            return this.validLatLng(lat, lon)
-          }
+          lat = parsedDms.lat
+          lon = parsedDms.lon
+        } else {
+          this.fieldMessage = ''
+          return this.invalidLatLng(this.unparseableMessage)
         }
       } catch (e) {
-        return this.invalidLatLng()
+        return this.invalidLatLng(this.unparseableMessage)
       }
-      return this.invalidLatLng()
+
+      // test BBOX
+      if (
+        lat >= 51.229 &&
+        lat <= 71.3526 &&
+        lon >= -179.1506 &&
+        lon <= -129.9795
+      ) {
+        return this.validLatLng(lat, lon)
+      } else {
+        return this.invalidLatLng(
+          'This point is outside the bounding box of data: latitude between 51.229-71.3526, longitude between -179.1506-129.9795'
+        )
+      }
     },
   },
 }
