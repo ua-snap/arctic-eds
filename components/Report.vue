@@ -30,7 +30,7 @@
               location.
             </p>
           </div>
-          <h3 class="subtitle is-3">Report contents</h3>
+          <h3 class="subtitle is-3 pt-4">Report contents</h3>
           <div class="content is-size-4">
             <ul>
               <li>Summaries and subsets of full data sources</li>
@@ -42,8 +42,7 @@
               </li>
             </ul>
           </div>
-          <h3 class="subtitle is-3">Point-specific notes</h3>
-
+          <h3 class="subtitle is-3 pt-4">Point-specific notes</h3>
           <div class="content is-size-4">
             <p v-if="Object.keys(results.elevation).length != 0">
               <strong>Elevation -</strong> The elevation within 1&#8239;km of
