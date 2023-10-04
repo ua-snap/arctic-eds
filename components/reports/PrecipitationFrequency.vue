@@ -1,5 +1,5 @@
 <template>
-  <div class="pf" v-if="Object.keys(results.proj_precip).length != 0">
+  <div class="pf" v-if="Object.keys(results.precip_frequency).length != 0">
     <div class="data-intro content is-size-5">
       <p>
         Below are projected precipitation frequencies by duration and return
@@ -102,17 +102,17 @@
             :key="intIndex"
           >
             {{
-              results.proj_precip[
+              results.precip_frequency[
                 `pr_${interval}_${duration}_${radioModel}_${radioEra}_mean`
               ]
             }}<UnitWidget unitType="mm_in" /><br />
             <span class="small-text">
               {{
-                results.proj_precip[
+                results.precip_frequency[
                   `pr_${interval}_${duration}_${radioModel}_${radioEra}_min`
                 ]
               }}&mdash;{{
-                results.proj_precip[
+                results.precip_frequency[
                   `pr_${interval}_${duration}_${radioModel}_${radioEra}_max`
                 ]
               }}
@@ -131,7 +131,7 @@
         <li>
           <DownloadCsvButton
             text="Download this data as CSV"
-            endpoint="proj_precip/point"
+            endpoint="precipitation/frequency/point"
           />
         </li>
         <li>
@@ -201,15 +201,15 @@ export default {
   },
   fetch() {
     let plateResults = {}
-    for (const return_interval in this.results.proj_precip) {
+    for (const return_interval in this.results.precip_frequency) {
       // If the results have already been converted, such as when
       // clicking on an anchor link in the TOC, do not try to convert
       // the results again.
       if (return_interval.includes('pr')) {
-        plateResults = this.results.proj_precip
+        plateResults = this.results.precip_frequency
         break
       }
-      const durations = this.results.proj_precip[return_interval]
+      const durations = this.results.precip_frequency[return_interval]
       for (const duration in durations) {
         const models = durations[duration]
         for (const model in models) {
@@ -234,7 +234,7 @@ export default {
 
     this.$store.commit('report/setPlateResults', {
       plateResults: plateResults,
-      variable: 'proj_precip',
+      variable: 'precip_frequency',
     })
   },
 }
