@@ -10,11 +10,11 @@
 ::v-deep {
   .legend {
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
     .legend-item {
       display: flex;
       align-items: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     .legend-swatch {
       display: inline-block;
