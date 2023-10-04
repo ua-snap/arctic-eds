@@ -1,25 +1,5 @@
 import _ from 'lodash'
 
-function convertUnits(state, type, substring = '', variable) {
-  let variable_results = {}
-  Object.keys(state.results[variable]).forEach(key => {
-    if (key.includes(substring)) {
-      switch (type) {
-        case 'temperature':
-          variable_results[key] = convertTemperature(state, variable, key)
-          break
-        case 'm_in':
-          variable_results[key] = convertMetersInches(state, variable, key)
-          break
-        case 'mm_in':
-          variable_results[key] = convertMillimetersInches(state, variable, key)
-          break
-      }
-    }
-  })
-  state.results[variable] = variable_results
-}
-
 function convertLeaves(state, obj, substring, variable, type) {
   for (const key in obj) {
     if (typeof obj[key] === 'number') {
@@ -180,7 +160,7 @@ export default {
         { type: 'mm_in', substring: '', variable: 'precipitation' },
         { type: 'mm_in', substring: '', variable: 'snowfall' },
         { type: 'temperature', substring: '', variable: 'temperature' },
-        { type: 'mm_in', substring: '', variable: 'proj_precip' },
+        { type: 'mm_in', substring: '', variable: 'precip_frequency' },
       ]
       conversions.forEach(conversion => {
         state.results[conversion['variable']] = convertLeaves(
