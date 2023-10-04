@@ -40,13 +40,13 @@ function convertMillimetersInches(state, variable, value) {
   // imperial units to be set to 2 decimal places to match
   // the DOT Projected Precipitation application.
   if (state.units == 'metric') {
-    if (variable == 'proj_precip') {
+    if (variable == 'precip_frequency') {
       return (value * 25.4).toFixed(2)
     } else {
       return (value * 25.4).toFixed(0)
     }
   } else {
-    if (variable == 'proj_precip') {
+    if (variable == 'precip_frequency') {
       return (value / 25.4).toFixed(2)
     } else {
       return (value / 25.4).toFixed(1)
