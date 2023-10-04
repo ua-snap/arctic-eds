@@ -47,7 +47,7 @@ export default {
 }
 </script>
 <style scoped>
-.radio-units {
-  padding-bottom: 1rem;
+::v-deep label {
+  display: none;
 }
 </style>
