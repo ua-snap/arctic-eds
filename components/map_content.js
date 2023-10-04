@@ -45,6 +45,23 @@ export default {
         style: 'snowfall_mm',
         legend: 'snowfall',
       },
+      {
+        id: 'historical_wet_days_per_year',
+        title: 'Historical Wet Days Per Year (1980&ndash;2009)',
+        source: 'rasdaman',
+        wmsLayerName: 'wet_days_per_year',
+        style: 'arctic_eds_historical_wet_days_per_year',
+        legend: 'wet_days_per_year',
+      },
+      {
+        id: 'projected_wet_days_per_year',
+        title:
+          'Projected Wet Days Per Year (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+        source: 'rasdaman',
+        wmsLayerName: 'wet_days_per_year',
+        style: 'arctic_eds_projected_wet_days_per_year',
+        legend: 'wet_days_per_year',
+      },
     ],
     temperature: [
       {
@@ -258,6 +275,12 @@ export default {
       { color: '#8c96c6', label: '&ge;10in, &lt;20in' },
       { color: '#8856a7', label: '&ge;20in, &lt;50in' },
       { color: '#810f7c', label: '&ge;50in' },
+    ],
+    wet_days_per_year: [
+      { color: '#edf8fb', label: '&ge;0 days, &lt;60 days' },
+      { color: '#ccece6', label: '&ge;60 days, &lt;120 days' },
+      { color: '#99d8c9', label: '&ge;120 days, &lt;180 days' },
+      { color: '#66c2a4', label: '&ge;180 days' },
     ],
     temperature: [
       { color: '#542788', label: '&lt;&minus;10&deg;F' },
