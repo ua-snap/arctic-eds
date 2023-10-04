@@ -410,10 +410,4 @@ export default {
       { color: '#beaed4', label: 'Variable' },
     ],
   },
-  titles: {
-    precipitation: 'Precipitation',
-    temperature: 'Temperature',
-    temperature_indices: 'Temperature Indices',
-    permafrost: 'Permafrost',
-  },
 }

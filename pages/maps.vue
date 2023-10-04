@@ -1,102 +1,187 @@
 <template>
   <section class="section">
-    <div class="px-5 pb-6 is-hidden-mobile">
-      <div class="columns is-multiline">
-        <div class="column is-half">
-          <h3 class="is-size-4">Precipitation</h3>
-          <p class="category-subtitle mb-1">
-            Mean annual precipitation and snowfall
-          </p>
-          <img
-            src="~/assets/images/map_thumbnails/precipitation.png"
-            alt="Precipitation map thumbnail"
-            class="map-thumbnail"
-            @click="showMap($event, 'precipitation')"
-          />
-        </div>
-        <div class="column is-half">
-          <h3 class="is-size-4">Temperature</h3>
-          <p class="category-subtitle mb-1">
-            Average, minimum, and maximum temperatures
-          </p>
-          <img
-            src="~/assets/images/map_thumbnails/temperature.png"
-            alt="Temperature map thumbnail"
-            class="map-thumbnail"
-            @click="showMap($event, 'temperature')"
-          />
-        </div>
-        <div class="column is-half">
-          <h3 class="is-size-4">Temperature Indices</h3>
-          <p class="category-subtitle mb-1">
-            Heating degree days, freezing/thawing degree days, and more
-          </p>
-          <img
-            src="~/assets/images/map_thumbnails/temperature_indices.png"
-            alt="Design Freezing Index map thumbnail"
-            class="map-thumbnail"
-            @click="showMap($event, 'temperature_indices')"
-          />
-        </div>
-        <div class="column is-half">
-          <h3 class="is-size-4">Permafrost</h3>
-          <p class="category-subtitle mb-1">
-            Permafrost extent, mean annual ground temperature, and more
-          </p>
-          <img
-            src="~/assets/images/map_thumbnails/permafrost.png"
-            alt="Permafrost map thumbnail"
-            class="map-thumbnail"
-            @click="showMap($event, 'permafrost')"
-          />
-        </div>
-      </div>
+    <div class="block">
+      <h3 class="is-size-4">Precipitation</h3>
+      <MapBlock mapName="precipitation" />
     </div>
-    <TemperatureMap v-if="this.selectedMap == 'temperature'" />
-    <TemperatureIndicesMap v-if="this.selectedMap == 'temperature_indices'" />
-    <MapModal
-      v-if="
-        this.selectedMap != undefined &&
-        this.selectedMap != 'temperature' &&
-        this.selectedMap != 'temperature_indices'
-      "
-    />
+
+    <div class="block">
+      <h3 class="is-size-4">Permafrost</h3>
+      <MapBlock mapName="permafrost" />
+    </div>
+
+    <div class="block">
+      <h3 class="is-size-4">Temperature</h3>
+      <MapBlock mapName="temperature">
+        <template v-slot:layers>
+          <div class="content mx-5">
+            <p>
+              Historical layers show <strong>modeled</strong> data from the CRU
+              TS model, averaged over 1980&ndash;2009.
+            </p>
+            <p>
+              Projected layers show data from the NCAR CCSM4 model under the RCP
+              8.5 scenario, averaged over 2040&ndash;2069.
+            </p>
+            <h5 class="mb-2">Annual Mean Temperature</h5>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[0]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[1]"
+                />
+              </li>
+            </ul>
+            <h5 class="layer-section">January Temperatures</h5>
+            <h6>Minimum</h6>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[2]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[3]"
+                />
+              </li>
+            </ul>
+            <h6>Maximum</h6>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[4]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[5]"
+                />
+              </li>
+            </ul>
+            <h5 class="layer-section">July Temperatures</h5>
+            <h6>Minimum</h6>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[6]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[7]"
+                />
+              </li>
+            </ul>
+            <h6>Maximum</h6>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[8]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature"
+                  :layer="layers.temperature[9]"
+                />
+              </li>
+            </ul>
+          </div>
+        </template>
+      </MapBlock>
+    </div>
+
+    <div class="block">
+      <h3 class="is-size-4">Temperature Indices</h3>
+      <MapBlock mapName="temperature_indices">
+        <template v-slot:layers>
+          <div class="content mx-5">
+            <p>
+              Historical layers show <strong>modeled</strong> data from the ERA
+              Interim model, averaged over 1980&ndash;2009.
+            </p>
+            <p>
+              Projected layers show data from the NCAR CCSM4 model under the RCP
+              8.5 scenario, averaged over 2040&ndash;2069.
+            </p>
+            <h5 class="mb-2">Heating Degree Days</h5>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[0]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[1]"
+                />
+              </li>
+            </ul>
+            <h5 class="mb-2">Freezing Index</h5>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[2]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[3]"
+                />
+              </li>
+            </ul>
+            <h5 class="mb-2">Thawing Index</h5>
+            <ul>
+              <li>
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[4]"
+                />
+              </li>
+              <li class="mb-3">
+                <MapLayer
+                  mapName="temperature_indices"
+                  v-bind:layer="layers.temperature_indices[5]"
+                />
+              </li>
+            </ul>
+          </div>
+        </template>
+      </MapBlock>
+    </div>
   </section>
 </template>
 
-<style lang="scss" scoped>
-p:last-of-type {
-  margin-bottom: 2.5rem;
-}
-img {
-  display: block;
-  margin: 1rem auto;
-  width: 30rem;
-}
-</style>
+<style lang="scss" scoped></style>
 
 <script>
-import { mapGetters } from 'vuex'
+import MapBlock from '~/components/MapBlock'
+import mapLayers from '~/components/map_content'
 
 export default {
   layout: 'content',
   computed: {
-    ...mapGetters({
-      selectedMap: 'map/selectedMap',
-    }),
-  },
-  methods: {
-    showMap(event, mapId) {
-      this.$router.push({
-        hash: mapId,
-      })
+    layers: function () {
+      return mapLayers.layers
     },
-  },
-  created() {
-    const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
-    if (path) {
-      this.$router.push({ path: path })
-    }
   },
 }
 </script>
