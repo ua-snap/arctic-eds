@@ -91,7 +91,7 @@
       <section class="section">
         <div class="container toc">
           <h2 class="title is-3">Table of Contents</h2>
-          <div class="content is-medium">
+          <div class="content is-size-4">
             <ul>
               <li>
                 <a href="#precipitation">Precipitation</a>
