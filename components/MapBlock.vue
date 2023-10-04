@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column is-two-thirds">
-      <Map :mapName="mapName" />
+      <Map :mapName="mapName" class="map" />
     </div>
     <div class="column">
       <slot name="layers">
