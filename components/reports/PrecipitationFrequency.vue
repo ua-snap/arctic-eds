@@ -200,7 +200,7 @@ export default {
     },
   },
   fetch() {
-    const plateResults = {}
+    let plateResults = {}
     for (const return_interval in this.results.proj_precip) {
       // If the results have already been converted, such as when
       // clicking on an anchor link in the TOC, do not try to convert
