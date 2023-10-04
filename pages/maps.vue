@@ -11,7 +11,7 @@
     </div>
 
     <div class="block">
-      <h3 class="is-size-4">Temperazzture</h3>
+      <h3 class="is-size-4">Temperature</h3>
       <MapBlock mapName="temperature">
         <template v-slot:layers>
           <div class="content mx-5">
