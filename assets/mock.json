@@ -210,7 +210,7 @@
       }
     }
   },
-  "proj_precip": {
+  "precip_frequency": {
     "2": {
       "10d": {
         "GFDL-CM3": {
