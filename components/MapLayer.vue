@@ -1,27 +1,45 @@
 <template>
-  <div>
-    <span class="map--layer" :class="{ active: active }">
-      <span v-if="active">&#10003;&nbsp;</span>
-      <span @click="toggleLayer" v-html="layer.title"> </span>
+  <div
+    @click="toggleLayer"
+    class="layer tile is-ancestor is-parent"
+    :class="{ active: active }"
+  >
+    <span class="tile is-child description">
+      <div class="layer-title">
+        <slot name="title">{{ layer.title }}</slot>
+      </div>
+      <div class="subtext"><slot name="subtext"></slot></div>
+    </span>
+    <span class="tile is-child is-1 if-active">
+      <div v-if="active">&#x25b6;</div>
     </span>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.map--layer {
-  display: inline-block;
-  line-height: 1;
-  padding: 0.5rem;
+.layer {
+  line-height: 1.2;
+  font-size: 1.25rem;
   cursor: pointer;
-  border-radius: 0.25rem;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  padding-right: 0;
 
   &.active {
-    font-weight: 900;
-    background-color: #fcfa88;
+    font-weight: 600;
+    background-color: #f2c716;
+  }
+
+  .if-active {
+    display: flex;
+    align-items: center;
+    font-size: 150%;
+  }
+
+  .subtext {
+    display: block;
+    margin-top: 0;
+    padding-top: 0;
+
+    font-weight: 300;
   }
 }
 </style>

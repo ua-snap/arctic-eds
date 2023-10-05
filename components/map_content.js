@@ -3,7 +3,7 @@ export default {
     precipitation: [
       {
         id: 'historical_era_precip',
-        title: 'Historical Annual Precipitation (1980&ndash;2009)',
+        title: 'Historical Annual Precipitation (1980-2009)',
         source: 'rasdaman',
         wmsLayerName: 'annual_precip_totals_mm',
         style: 'precip_mm_historical_era',
@@ -13,7 +13,7 @@ export default {
       {
         id: 'midcentury_era_precip',
         title:
-          'Projected Mid&ndash;Century Annual Precipitation (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+          'Projected Mid-Century Annual Precipitation (2040-2069, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'annual_precip_totals_mm',
         style: 'precip_mm_midcentury_era',
@@ -34,11 +34,11 @@ export default {
       },
       {
         id: 'future_mean_annual_snowfall',
-        title: 'Projected Annual Snowfall (2090-2099, MRI CGCM3, RCP 8.5)',
+        title: 'Projected Annual Snowfall (2090-2099, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'mean_annual_snowfall_mm',
         rasdamanConfiguration: {
-          dim_model: 4,
+          dim_model: 5,
           dim_scenario: 3,
           dim_decade: 18,
         },
@@ -47,7 +47,7 @@ export default {
       },
       {
         id: 'historical_wet_days_per_year',
-        title: 'Historical Wet Days Per Year (1980&ndash;2009)',
+        title: 'Historical Wet Days Per Year (1980-2009)',
         source: 'rasdaman',
         wmsLayerName: 'wet_days_per_year',
         style: 'arctic_eds_historical_wet_days_per_year',
@@ -55,8 +55,7 @@ export default {
       },
       {
         id: 'projected_wet_days_per_year',
-        title:
-          'Projected Wet Days Per Year (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+        title: 'Projected Wet Days Per Year (2040-2069, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'wet_days_per_year',
         style: 'arctic_eds_projected_wet_days_per_year',
@@ -206,6 +205,14 @@ export default {
         legend: 'pfextent_jorgenson',
         default: true,
       },
+      {
+        id: 'icevol_jorgenson',
+        title: 'Ground ice volume (Jorgenson et al., 2008)',
+        wmsLayerName:
+          'permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume',
+        style: 'permafrost_beta:ground_ice_volume',
+        legend: 'icevol_jorgenson',
+      },
 
       {
         id: 'pfextent_obu',
@@ -214,48 +221,30 @@ export default {
         legend: 'pfextent_obu',
       },
       {
-        id: 'iem_gipl_magt_alt_4km_historical',
-        title:
-          'Mean annual ground temperature at active layer, 1986&ndash;2005, GIPL model',
-        source: 'rasdaman',
-        wmsLayerName: 'iem_gipl_magt_alt_4km',
-        rasdamanConfiguration: {
-          dim_model: 0,
-          dim_scenario: 0,
-          dim_era: 0,
-        },
-        style: 'arctic_eds_MAGT',
-        legend: 'magt',
-      },
-      {
-        id: 'iem_gipl_magt_alt_4km_2036_2065',
-        title:
-          'Mean annual ground temperature at active layer, 2036&ndash;2065 (NCAR&ndash;CCSM4, RCP 8.5), GIPL model',
-        source: 'rasdaman',
-        wmsLayerName: 'iem_gipl_magt_alt_4km',
-        rasdamanConfiguration: {
-          dim_model: 5,
-          dim_scenario: 2,
-          dim_era: 2,
-        },
-        style: 'arctic_eds_MAGT',
-        legend: 'magt',
-      },
-      {
         id: 'obumagt',
         title:
-          'Mean annual ground temperature at top of permafrost, 2000&ndash;2016 (modeled)',
+          'Mean annual ground temperature at top of permafrost, 2000-2016 (modeled), Obu 2018',
         wmsLayerName: 'obu_2018_magt',
         style: 'ground_temperature_arctic_eds',
         legend: 'magt',
       },
       {
-        id: 'icevol_jorgenson',
-        title: 'Ground ice volume (Jorgenson et al., 2008)',
-        wmsLayerName:
-          'permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume',
-        style: 'permafrost_beta:ground_ice_volume',
-        legend: 'icevol_jorgenson',
+        id: 'gipl_magt_1m_2021_2050',
+        title:
+          'Mean annual ground temperature at 1 m depth, 2021-2050 (5-Model Average, RCP 8.5), GIPL model',
+        source: 'rasdaman',
+        wmsLayerName: 'crrel_gipl_outputs',
+        style: 'arctic_eds_gipl_magt1m_nearcentury',
+        legend: 'magt',
+      },
+      {
+        id: 'gipl_magt_1m_2071_2100',
+        title:
+          'Mean annual ground temperature at 1 m depth, 2071&ndash;2100 (5&ndash;Model Average, RCP 8.5), GIPL model',
+        source: 'rasdaman',
+        wmsLayerName: 'crrel_gipl_outputs',
+        style: 'arctic_eds_gipl_magt1m_latecentury',
+        legend: 'magt',
       },
     ],
   },
@@ -374,8 +363,8 @@ export default {
     ],
     pfextent_jorgenson: [
       { color: '#253494', label: 'Continuous (&gt; 90%)' },
-      { color: '#41b6c4', label: 'Discontinuous (50 &ndash; 90%)' },
-      { color: '#7fcdbb', label: 'Isolated (10 &ndash; 50%)' },
+      { color: '#41b6c4', label: 'Discontinuous (50 - 90%)' },
+      { color: '#7fcdbb', label: 'Isolated (10 - 50%)' },
       { color: '#c7e9b4', label: 'Sporadic (&lt; 10%)' },
       { color: '#ffffcc', label: 'Unfrozen' },
       { color: '#a5bfdd', label: 'Water' },
@@ -383,8 +372,8 @@ export default {
     ],
     pfextent_obu: [
       { color: '#253494', label: 'Continuous (&gt; 90%)' },
-      { color: '#41b6c4', label: 'Discontinuous (50 &ndash; 90%)' },
-      { color: '#7fcdbb', label: 'Isolated (10 &ndash; 50%)' },
+      { color: '#41b6c4', label: 'Discontinuous (50 - 90%)' },
+      { color: '#7fcdbb', label: 'Isolated (10 - 50%)' },
       { color: '#c7e9b4', label: 'Sporadic (&lt; 10%)' },
     ],
     magt: [
