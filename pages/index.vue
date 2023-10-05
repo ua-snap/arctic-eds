@@ -15,7 +15,7 @@
     </div>
     <div class="taglines">
       <div class="left">Plan better.</div>
-      <div class="right">🥦 Design harder.</div>
+      <div class="right">Design smarter.</div>
     </div>
   </div>
 </template>
