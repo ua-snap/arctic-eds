@@ -1,5 +1,5 @@
 <template>
-  <div class="pf" v-if="Object.keys(results.precip_frequency).length != 0">
+  <div class="pf" v-if="isPrecipitationFrequencyPresent">
     <div class="data-intro content is-size-5">
       <p>
         Below are projected precipitation frequencies by duration and return
@@ -189,6 +189,7 @@ export default {
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
       units: 'report/units',
+      isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',
     }),
     getUnits() {
       return this.units === 'imperial' ? 'inches' : 'mm'

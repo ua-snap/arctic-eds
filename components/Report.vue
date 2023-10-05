@@ -44,7 +44,7 @@
           </div>
           <h3 class="subtitle is-3 pt-4">Point-specific notes</h3>
           <div class="content is-size-4">
-            <p v-if="Object.keys(results.elevation).length != 0">
+            <p v-if="isElevationPresent">
               <strong>Elevation -</strong> The elevation within 1&#8239;km of
               this point ranges between
               <strong>
@@ -55,12 +55,8 @@
               variation should be kept in mind when interpreting the variables
               below.
             </p>
-            <p
-              v-if="
-                Object.keys(results.geology).length != 0 &&
-                Object.keys(results.physiography).length != 0
-              "
-            >
+
+            <p v-if="isGeologyPresent && isPhysiographyPresent">
               <strong>Geology &amp; ecology -</strong> The geology type of this
               point is <em>{{ results.geology.name }}</em
               >, and this place lies within the
@@ -92,72 +88,111 @@
           <h2 class="title is-3">Table of Contents</h2>
           <div class="content is-size-4">
             <ul>
-              <li>
+              <li
+                v-if="
+                  isPrecipitationPresent ||
+                  isPrecipitationFrequencyPresent ||
+                  isSnowfallPresent
+                "
+              >
                 <a href="#precipitation">Precipitation</a>
                 <ul>
-                  <li>
+                  <li v-if="isPrecipitationPresent">
                     <a href="#annual-precipitation"
                       >Annual Total Precipitation</a
                     >
                   </li>
-                  <li>
+                  <li v-if="isPrecipitationFrequencyPresent">
                     <a href="#precipitation-frequency"
                       >Precipitation Frequency</a
                     >
                   </li>
-                  <li>
+                  <li v-if="isSnowfallPresent">
                     <a href="#snowfall">Snowfall</a>
                   </li>
                 </ul>
               </li>
 
-              <li><a href="#temperature">Temperature</a></li>
-              <li>
+              <li v-if="isTemperaturePresent">
+                <a href="#temperature">Temperature</a>
+              </li>
+              <li
+                v-if="
+                  isHeatingDegreeDaysPresent ||
+                  isFreezingIndexPresent ||
+                  isThawingIndexPresent
+                "
+              >
                 <a href="#temperature-indices">Temperature Indices</a>
                 <ul>
-                  <li>
+                  <li v-if="isHeatingDegreeDaysPresent">
                     <a href="#heating-degree-days">Heating Degree Days</a>
                   </li>
-                  <li><a href="#freezing-index">Freezing Index</a></li>
-                  <li><a href="#thawing-index">Thawing Index</a></li>
+                  <li v-if="isFreezingIndexPresent">
+                    <a href="#freezing-index">Freezing Index</a>
+                  </li>
+                  <li v-if="isThawingIndexPresent">
+                    <a href="#thawing-index">Thawing Index</a>
+                  </li>
                 </ul>
               </li>
 
-              <li><a href="#permafrost">Permafrost</a></li>
+              <li v-if="isPermafrostPresent">
+                <a href="#permafrost">Permafrost</a>
+              </li>
             </ul>
           </div>
         </div>
       </section>
-      <section class="section precipitation">
+      <section
+        class="section precipitation"
+        v-if="
+          isPrecipitationPresent ||
+          isPrecipitationFrequencyPresent ||
+          isSnowfallPresent
+        "
+      >
         <div class="container">
           <h2 id="precipitation" class="title is-2">Precipitation</h2>
 
-          <h3 id="annual-precipitation" class="title is-3 mt-6">
-            Total annual precipitation
-          </h3>
+          <div v-if="isPrecipitationPresent">
+            <h3 id="annual-precipitation" class="title is-3 mt-6">
+              Total annual precipitation
+            </h3>
+            <PrecipitationReport />
+          </div>
 
-          <PrecipitationReport />
+          <div v-if="isPrecipitationFrequencyPresent">
+            <h3 id="precipitation-frequency" class="title is-3 mt-6">
+              Precipitation Frequency
+            </h3>
+            <PrecipitationFrequency />
+          </div>
 
-          <h3 id="precipitation-frequency" class="title is-3 mt-6">
-            Precipitation Frequency
-          </h3>
-          <PrecipitationFrequency />
-
-          <h3 id="snowfall" class="title is-3 mt-6">
-            Snowfall (Water) Equivalent
-          </h3>
-          <SnowfallReport />
+          <div v-if="isSnowfallPresent">
+            <h3 id="snowfall" class="title is-3 mt-6">
+              Snowfall (Water) Equivalent
+            </h3>
+            <SnowfallReport />
+          </div>
         </div>
       </section>
 
-      <section class="section temperature">
+      <section class="section temperature" v-if="isTemperaturePresent">
         <div class="container">
           <h2 id="temperature" class="title is-2">Temperature</h2>
           <TemperatureReport />
         </div>
       </section>
 
-      <section class="section temperature-index">
+      <section
+        class="section temperature-index"
+        v-if="
+          isHeatingDegreeDaysPresent ||
+          isFreezingIndexPresent ||
+          isThawingIndexPresent
+        "
+      >
         <div class="container">
           <h2 id="temperature-indices" class="title is-2">
             Temperature Indices
@@ -165,7 +200,7 @@
           <TemperatureIndices />
         </div>
       </section>
-      <section class="section permafrost">
+      <section class="section permafrost" v-if="isPermafrostPresent">
         <div class="container">
           <PermafrostReport />
         </div>
@@ -213,6 +248,18 @@ export default {
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
       latLng: 'report/latLng',
+      isElevationPresent: 'report/isElevationPresent',
+      isGeologyPresent: 'report/isGeologyPresent',
+      isPhysiographyPresent: 'report/isPhysiographyPresent',
+      isPrecipitationPresent: 'report/isPrecipitationPresent',
+      isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',
+      isSnowfallPresent: 'report/isSnowfallPresent',
+      isTemperaturePresent: 'report/isTemperaturePresent',
+      isHeatingDegreeDaysPresent: 'report/isHeatingDegreeDaysPresent',
+      isFreezingIndexPresent: 'report/isFreezingIndexPresent',
+      isThawingIndexPresent: 'report/isThawingIndexPresent',
+      isPermafrostPresent: 'report/isPermafrostPresent',
+      isWetDaysPerYearPresent: 'report/isWetDaysPerYearPresent',
     }),
   },
   data: function () {
