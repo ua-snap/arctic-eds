@@ -12,32 +12,48 @@
           <h2 class="title is-2">
             Environmental &amp; engineering data for {{ placeName }}
           </h2>
-          <h3 class="title is-3">Introduction</h3>
-          <div class="content is-size-5">
+
+          <h3 class="subtitle is-3 pt-4">
+            This report contains information from a wide variety of data.
+          </h3>
+          <div class="content is-size-4">
             <p>
-              This report contains information from many different datasets and
-              types of data. References to data sources and academic papers are
-              included and should be consulted to interpret the purpose and
-              applicability of specific data in an engineering context.
+              <strong>References to data sources and academic papers</strong>
+              should be consulted to interpret the purpose and applicability of
+              specific data in an engineering context.
             </p>
             <p>
-              Data presented here are at various spatial resolutions, which
-              should be considered in the context of interpreting the variable
-              for a given location.
+              <strong
+                >Data are presented at various spatial resolutions.</strong
+              >
+              Please keep this in mind when interpreting a variable for a given
+              location.
             </p>
-            <p>
-              Sections below show summaries and subsets of full data sources to
-              allow for streamlined access to general trends. Complete data can
-              be downloaded within each section. Some sections show minimum,
-              mean and maximum values for different time periods; use the mean
-              column to assess general trends over time.
-            </p>
+          </div>
+          <h3 class="subtitle is-3 pt-4">Report contents</h3>
+          <div class="content is-size-4">
+            <ul>
+              <li>Summaries and subsets of full data sources</li>
+              <li>Data download links</li>
+              <li>
+                Minimum, mean, and maximum values for different time periods.
+                Use the &ldquo;mean&rdquo; column to assess general trends over
+                time.
+              </li>
+            </ul>
+          </div>
+          <h3 class="subtitle is-3 pt-4">Point-specific notes</h3>
+          <div class="content is-size-4">
             <p v-if="Object.keys(results.elevation).length != 0">
-              The elevation within 1&#8239;km of this point ranges between
-              {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
+              <strong>Elevation -</strong> The elevation within 1&#8239;km of
+              this point ranges between
+              <strong>
+                {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
+              </strong>
               meters, with an average elevation of
-              {{ results.elevation.mean }} meters. This variation should be kept
-              in mind when interpreting the variables below.
+              <strong>{{ results.elevation.mean }}</strong> meters. This
+              variation should be kept in mind when interpreting the variables
+              below.
             </p>
             <p
               v-if="
@@ -45,8 +61,8 @@
                 Object.keys(results.physiography).length != 0
               "
             >
-              The geology type of this point is
-              <em>{{ results.geology.name }}</em
+              <strong>Geology &amp; ecology -</strong> The geology type of this
+              point is <em>{{ results.geology.name }}</em
               >, and this place lies within the
               {{ results.physiography.name }} ecological unit within Alaska.
               Read more about
@@ -60,20 +76,21 @@
                 >ecological units</a
               >.
             </p>
-            <p>
-              Link to this report: <a :href="currentURL">{{ currentURL }}</a>
-            </p>
-          </div>
 
-          <MiniMap />
-          <UnitRadio />
-          <CloseReportButton />
+            <p>
+              <strong>Link to this report:</strong>
+              <a :href="currentURL">{{ currentURL }}</a>
+            </p>
+
+            <MiniMap />
+            <UnitRadio />
+          </div>
         </div>
       </section>
       <section class="section">
         <div class="container toc">
           <h2 class="title is-3">Table of Contents</h2>
-          <div class="content is-medium">
+          <div class="content is-size-4">
             <ul>
               <li>
                 <a href="#precipitation">Precipitation</a>

@@ -1,6 +1,6 @@
 // Some properties reused in the OpenGraph tags.
 var metas = {
-  title: 'Arctic Environmental and Engineering Data + Design Support System',
+  title: 'Arctic Engineering Data Support System (Arctic-EDS)',
   description:
     'Query + view historical, current and projected environmental data for Alaska.',
   preview: '/preview.jpg',

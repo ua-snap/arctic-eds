@@ -49,9 +49,8 @@
           </p>
 
           <p>
-            Copyright &copy; {{ year }} University of Alaska Fairbanks. All
-            rights reserved. Copyright © 2023 University of Alaska Fairbanks.
-            All rights reserved. UA is an affirmative action / equal opportunity
+            Copyright &copy; {{ year }} University of Alaska Fairbanks.  All
+            rights reserved.  UA is an affirmative action / equal opportunity
             employer, educational institution and provider, and prohibits
             illegal discrimination against any individual.
             <a href="https://www.alaska.edu/nondiscrimination/"

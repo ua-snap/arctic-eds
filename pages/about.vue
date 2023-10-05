@@ -40,10 +40,10 @@
     <p>
       Alaska&rsquo;s infrastructure must be robust to support the economic,
       defense, and social needs of a state experiencing a changing climate. The
-      Arctic Engineering Design Support System (Arctic EDS) was created to
+      Arctic Engineering Design Support System (Arctic-EDS) was created to
       replace the aging Environmental Atlas of Alaska while addressing the old
       atlas&rsquo; shortcomings by providing finer scale data, filling data
-      gaps, and incorporating climate projections. The Arctic EDS provides
+      gaps, and incorporating climate projections. The Arctic-EDS provides
       easily obtainable, well&ndash;vetted, and reliable engineering and
       environmental data in a central website designed to meet the needs of
       engineering professionals.
@@ -51,16 +51,16 @@
     <p>
       Improved historical data allows this site to provide a more detailed
       picture of Alaska&rsquo;s climate history. Modern climate science also
-      allows the Arctic EDS to make informed projections about the future of the
+      allows the Arctic-EDS to make informed projections about the future of the
       state&rsquo;s climate over the lifespan of Alaska&rsquo;s infrastructure.
       Finally, the integration of functional modules, a data API, and Python
-      notebooks allow for easy integration of Arctic EDS data into modern
+      notebooks allow for easy integration of Arctic-EDS data into modern
       engineering workflows relying on computer programs.
     </p>
     <p>
       The tool, built by the team at the University of Alaska Fairbanks
       Scenarios Network for Alaska + Arctic Planning, is under active
-      development. The Arctic EDS team comprises experts from the University of
+      development. The Arctic-EDS team comprises experts from the University of
       Alaska Fairbanks&rsquo; International Arctic Research Center and
       Department of Civil, Geological, and Environmental Engineering; alongside
       experts from the University of Alaska Anchorage; the Cold Regions Research

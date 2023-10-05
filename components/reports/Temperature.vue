@@ -156,14 +156,14 @@
             name="radioModel"
             native-value="GFDL-CM3"
           >
-            GFDL-CM3
+            GFDL CM3
           </b-radio>
           <b-radio
             v-model="radioModel"
             name="radioModel"
             native-value="NCAR-CCSM4"
           >
-            NCAR-CCSM4
+            NCAR CCSM4
           </b-radio>
         </b-field>
       </div>
@@ -189,10 +189,10 @@
       </div>
     </div>
     <div class="block">
-      <table class="table">
+      <table class="table months mt-3">
         <thead>
           <tr>
-            <th scope="col"></th>
+            <th scope="col" class="eraCol"></th>
             <th scope="col">January</th>
             <th scope="col">February</th>
             <th scope="col">March</th>
@@ -456,5 +456,16 @@ export default {
 <style lang="scss" scoped>
 .small-text {
   font-size: 80%;
+}
+table.months {
+  width: 100%;
+  table-layout: fixed;
+  td, th {
+    padding: 0.5em 0.4em;
+
+    &.eraCol {
+      width: 10%;
+    }
+  }
 }
 </style>

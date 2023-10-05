@@ -30,7 +30,8 @@
     font-weight: 900;
     font-size: 28px;
     display: inline-block;
-    padding-left: 1rem;
+    padding-left: 2rem;
+    letter-spacing: 0.02em;
   }
 }
 </style>

@@ -47,7 +47,7 @@
             >
           </li>
           <li>
-            Academic reference:
+            Academic references:
             <blockquote>
               Bieniek, P. A., Bhatt, U. S., Walsh, J. E., Rupp, T. S., Zhang,
               J., Krieger, J. R. &amp; Lader, R. (2016). Dynamical Downscaling
@@ -57,6 +57,13 @@
               <a href="https://doi.org/10.1175/JAMC-D-15-0153.1"
                 >https://doi.org/10.1175/JAMC-D-15-0153.1</a
               >
+            </blockquote>
+            <blockquote>
+              Lader, R., Walsh, J. E., Bhatt, U. S., & Bieniek, P. A. (2017).
+              Projections of twenty-first-century climate extremes for Alaska
+              via dynamical downscaling and quantile mapping.
+              <i>Journal of Applied Meteorology and Climatology, 56</i>(9),
+              2393&ndash;2409. <a href="https://doi.org/10.1175/JAMC-D-16-0415.1">https://doi.org/10.1175/JAMC-D-16-0415.1</a>
             </blockquote>
           </li>
         </ul>
