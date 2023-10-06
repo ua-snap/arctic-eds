@@ -47,8 +47,11 @@
             <p v-if="isElevationPresent">
               <strong>Elevation -</strong> The elevation within 1&#8239;km of
               <span v-if="placeIsLatLng">this point</span>
-              <span v-else>{{ placeName }}, centered at {{ latLng.lat }}, {{ latLng.lng }}</span>
-               ranges between
+              <span v-else
+                >{{ placeName }}, centered at {{ latLng.lat }},
+                {{ latLng.lng }}</span
+              >
+              ranges between
               <strong>
                 {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
               </strong>
@@ -112,6 +115,9 @@
                   <li v-if="isSnowfallPresent">
                     <a href="#snowfall">Snowfall</a>
                   </li>
+                  <li>
+                    <a href="#hydrology">Hydrology</a>
+                  </li>
                 </ul>
               </li>
 
@@ -171,12 +177,18 @@
             <PrecipitationFrequency />
           </div>
 
-          <div v-if="isSnowfallPresent">
-            <h3 id="snowfall" class="title is-3 mt-6">
-              Snowfall (Water) Equivalent
-            </h3>
-            <SnowfallReport />
-          </div>
+          <h3 id="precipitation-frequency" class="title is-3 mt-6">
+            Precipitation Frequency
+          </h3>
+          <PrecipitationFrequency />
+
+          <h3 id="snowfall" class="title is-3 mt-6">
+            Snowfall (Water) Equivalent
+          </h3>
+          <SnowfallReport />
+
+          <h3 id="hydrology" class="title is-3 mt-6">Hydrology</h3>
+          <HydrologyReport />
         </div>
       </section>
 
@@ -228,6 +240,7 @@ import SnowfallReport from '~/components/reports/Snowfall'
 import PermafrostReport from '~/components/reports/Permafrost'
 import PrecipitationFrequency from '~/components/reports/PrecipitationFrequency'
 import TemperatureIndices from '~/components/reports/TemperatureIndices'
+import HydrologyReport from '~/components/reports/Hydrology'
 
 export default {
   name: 'FullReport',
@@ -240,6 +253,7 @@ export default {
     SnowfallReport,
     PermafrostReport,
     PrecipitationFrequency,
+    HydrologyReport,
   },
   computed: {
     state: function () {

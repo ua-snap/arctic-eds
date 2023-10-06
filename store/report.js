@@ -36,7 +36,7 @@ function convertTemperature(state, value) {
 }
 
 function convertMillimetersInches(state, variable, value) {
-  // If the variable is proj_precip, we want the metric and
+  // If the variable is precip_frequency, we want the metric and
   // imperial units to be set to 2 decimal places to match
   // the DOT Projected Precipitation application.
   if (state.units == 'metric') {
