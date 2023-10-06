@@ -140,7 +140,12 @@
       </table>
     </div>
 
-    <h4 class="title is-5 mb-1">Mean Monthly Temperatures</h4>
+    <h4 class="title is-5 mb-1">Monthly Temperatures</h4>
+    <div class="content is-size-5">
+      The table below shows the mean monthly temperature, as well as the
+      minimum/maximum monthly temperatures, for the specified era and selected
+      model/scenario.
+    </div>
     <div class="radio-units no-print">
       <div>
         <b-field label="Model">
@@ -461,7 +466,8 @@ export default {
 table.months {
   width: 100%;
   table-layout: fixed;
-  td, th {
+  td,
+  th {
     padding: 0.5em 0.4em;
 
     &.eraCol {
