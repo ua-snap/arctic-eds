@@ -30,11 +30,7 @@ export default {
     }),
   },
   mounted() {
-    if (this.storeRadioUnits == undefined) {
-      this.radioUnits = 'imperial'
-    } else {
-      this.radioUnits = this.storeRadioUnits
-    }
+    this.radioUnits = this.storeRadioUnits
   },
   watch: {
     radioUnits: function () {

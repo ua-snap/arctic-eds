@@ -67,7 +67,7 @@ export default {
     return {
       places: undefined,
       results: {},
-      units: undefined,
+      units: 'imperial',
     }
   },
   getters: {
@@ -234,6 +234,9 @@ export default {
         results = await this.$axios.$get(url)
       }
       context.commit('setResults', results)
+      if (context.state.units == 'imperial') {
+        context.commit('convertResults')
+      }
     },
     async fetchPlaces(context) {
       // If we've already fetched this, don't do that again.
