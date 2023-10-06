@@ -41,7 +41,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1901-2015)</th>
             <td>
               {{ results.precipitation['summary']['historical']['prmin']

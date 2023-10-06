@@ -41,6 +41,15 @@ table {
     font-weight: 500;
     font-family: 'IBM Plex Sans', sans-serif;
   }
+
+  tr.historical {
+    & td,
+    & th {
+      border-width: 0 0 2px;
+      padding-top: 0.75em !important;
+      padding-bottom: 0.75em !important;
+    }
+  }
 }
 
 table.preview {

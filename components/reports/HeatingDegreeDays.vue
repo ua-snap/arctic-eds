@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1979&ndash;2015)</th>
             <td>
               {{ results.heating_degree_days['summary']['historical']['ddmin']

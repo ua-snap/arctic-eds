@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1979-2015)</th>
             <td>
               {{ results.thawing_index['summary']['historical']['ddmin']

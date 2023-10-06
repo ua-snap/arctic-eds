@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1901&ndash;2015)</th>
             <td>
               {{
@@ -208,7 +208,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical <br />(1901&ndash;2015)</th>
             <td
               v-for="(month, index) in [
@@ -461,7 +461,8 @@ export default {
 table.months {
   width: 100%;
   table-layout: fixed;
-  td, th {
+  td,
+  th {
     padding: 0.5em 0.4em;
 
     &.eraCol {
