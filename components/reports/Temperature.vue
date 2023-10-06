@@ -1,5 +1,5 @@
 <template>
-  <div v-if="Object.keys(results.temperature).length != 0">
+  <div v-if="isTemperaturePresent">
     <div class="block content is-size-5">
       <p>
         These data come from two types of data sources: historical modeled data
@@ -448,6 +448,7 @@ export default {
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
+      isTemperaturePresent: 'report/isTemperaturePresent',
     }),
   },
 }

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="Object.keys(results.thawing_index).length != 0">
+  <div>
     <div class="block">
       <h4 class="title is-5 mb-1">Summary</h4>
       <div class="content is-size-5">

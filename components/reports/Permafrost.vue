@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isDataLoaded">
+  <div v-if="isPermafrostPresent">
     <div class="block">
       <h2 id="permafrost" class="title is-2">Permafrost</h2>
       <div class="content is-size-5">
@@ -355,13 +355,11 @@ export default {
     PreviewTable,
   },
   computed: {
-    isDataLoaded() {
-      return this.results.permafrost.summary != undefined
-    },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
+      isPermafrostPresent: 'report/isPermafrostPresent',
     }),
   },
 }

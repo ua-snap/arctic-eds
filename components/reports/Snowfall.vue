@@ -1,5 +1,5 @@
 <template>
-  <div v-if="Object.keys(results.snowfall.summary).length != 0">
+  <div v-if="isSnowfallPresent">
     <div class="block content is-size-5">
       <p>
         These data show downscaled projections of decadal average monthly
@@ -154,6 +154,7 @@ export default {
   computed: {
     ...mapGetters({
       results: 'report/results',
+      isSnowfallPresent: 'report/isSnowfallPresent',
     }),
   },
 }

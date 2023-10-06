@@ -136,6 +136,42 @@ export default {
     units(state) {
       return state.units
     },
+    isElevationPresent(state) {
+      return Object.keys(state.results.elevation).length != 0
+    },
+    isGeologyPresent(state) {
+      return Object.keys(state.results.geology).length != 0
+    },
+    isPhysiographyPresent(state) {
+      return Object.keys(state.results.physiography).length != 0
+    },
+    isPrecipitationPresent(state) {
+      return Object.keys(state.results.precipitation).length != 0
+    },
+    isPrecipitationFrequencyPresent(state) {
+      return Object.keys(state.results.precip_frequency).length != 0
+    },
+    isSnowfallPresent(state) {
+      return Object.keys(state.results.snowfall).length != 0
+    },
+    isTemperaturePresent(state) {
+      return Object.keys(state.results.temperature).length != 0
+    },
+    isHeatingDegreeDaysPresent(state) {
+      return Object.keys(state.results.heating_degree_days).length != 0
+    },
+    isFreezingIndexPresent(state) {
+      return Object.keys(state.results.freezing_index).length != 0
+    },
+    isThawingIndexPresent(state) {
+      return Object.keys(state.results.thawing_index).length != 0
+    },
+    isPermafrostPresent(state) {
+      return Object.keys(state.results.permafrost).length != 0
+    },
+    isWetDaysPerYearPresent(state) {
+      return Object.keys(state.results.wet_days_per_year).length != 0
+    },
   },
 
   mutations: {

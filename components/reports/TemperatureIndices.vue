@@ -13,17 +13,17 @@
       </p>
     </div>
     <div class="ml-5 mb-5">
-      <div class="block">
+      <div class="block" v-if="isHeatingDegreeDaysPresent">
         <h3 id="heating-degree-days" class="title is-4 mb-3">
           Heating Degree Days
         </h3>
         <HeatingDegreeDaysReport />
       </div>
-      <div class="block mt-6">
+      <div class="block mt-6" v-if="isFreezingIndexPresent">
         <h3 id="freezing-index" class="title is-4">Freezing Index</h3>
         <FreezingIndexReport />
       </div>
-      <div class="block mt-6">
+      <div class="block mt-6" v-if="isThawingIndexPresent">
         <h3 id="thawing-index" class="title is-4">Thawing Index</h3>
         <ThawingIndexReport />
       </div>
@@ -73,6 +73,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import HeatingDegreeDaysReport from '~/components/reports/HeatingDegreeDays'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
@@ -83,6 +84,13 @@ export default {
     HeatingDegreeDaysReport,
     FreezingIndexReport,
     ThawingIndexReport,
+  },
+  computed: {
+    ...mapGetters({
+      isHeatingDegreeDaysPresent: 'report/isHeatingDegreeDaysPresent',
+      isFreezingIndexPresent: 'report/isFreezingIndexPresent',
+      isThawingIndexPresent: 'report/isThawingIndexPresent',
+    }),
   },
 }
 </script>
