@@ -208,12 +208,14 @@ export default {
       { color: '#66c2a4', label: '&ge;180 days' },
     ],
     temperature: [
-      { color: '#542788', label: '&lt;&minus;10&deg;F' },
-      { color: '#76507C', label: '&ge;&minus;10&deg;F, &lt;10&deg;F' },
-      { color: '#987870', label: '&ge;10&deg;F, &lt;30&deg;F' },
-      { color: '#BAA164', label: '&ge;30&deg;F, &lt;50&deg;F' },
-      { color: '#DCC958', label: '&ge;50&deg;F, &lt;70&deg;F' },
-      { color: '#FEF24C', label: '&ge;70&deg;F' },
+      { color: '#2166ac', label: '&lt;10&deg;F' },
+      { color: '#4393c3', label: '&ge;10&deg;F, &lt;15&deg;F' },
+      { color: '#92c5de', label: '&ge;15&deg;F, &lt;20&deg;F' },
+      { color: '#d1e5f0', label: '&ge;20&deg;F, &lt;25&deg;F' },
+      { color: '#fddbc7', label: '&ge;25&deg;F, &lt;30&deg;F' },
+      { color: '#f4a582', label: '&ge;30&deg;F, &lt;35&deg;F' },
+      { color: '#d6604d', label: '&ge;35&deg;F, &lt;40&deg;F' },
+      { color: '#b2182b', label: '&ge;40&deg;F' },
     ],
     freezing_index: [
       {
