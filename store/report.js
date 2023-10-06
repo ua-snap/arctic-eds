@@ -67,7 +67,7 @@ export default {
     return {
       places: undefined,
       results: {},
-      units: 'imperial',
+      units: undefined,
     }
   },
   getters: {
