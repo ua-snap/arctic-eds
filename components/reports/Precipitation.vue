@@ -42,7 +42,7 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Historical (1901-2015)</th>
+            <th scope="row">Historical (1901&ndash;2015)</th>
             <td>
               {{ results.precipitation['summary']['historical']['prmin']
               }}<UnitWidget unitType="mm_in" />
@@ -57,7 +57,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Early Century (2010-2039)</th>
+            <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
               {{ results.precipitation['summary']['2010-2039']['prmin']
               }}<UnitWidget unitType="mm_in" />
@@ -72,7 +72,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Mid Century (2040-2069)</th>
+            <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
               {{ results.precipitation['summary']['2040-2069']['prmin']
               }}<UnitWidget unitType="mm_in" />
@@ -87,7 +87,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Late Century (2070-2099)</th>
+            <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
               {{ results.precipitation.summary['2070-2099'].prmin
               }}<UnitWidget unitType="mm_in" />
