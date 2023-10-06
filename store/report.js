@@ -244,7 +244,8 @@ export default {
       // TODO: add error handling here for 404 (no data) etc.
       let queryUrl = process.env.apiUrl + '/places/communities'
       let places = await this.$http.$get(queryUrl)
-      context.commit('setPlaces', places)
+      let filteredPlaces = _.filter(places, p => { return p.region == 'Alaska' })
+      context.commit('setPlaces', filteredPlaces)
     },
   },
 }
