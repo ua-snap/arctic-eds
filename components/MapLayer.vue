@@ -31,7 +31,7 @@
   .if-active {
     display: flex;
     align-items: center;
-    font-size: 150%;
+    font-size: 125%;
   }
 
   .subtext {

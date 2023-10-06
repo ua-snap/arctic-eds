@@ -102,16 +102,18 @@
       <MapBlock mapName="temperature">
         <template v-slot:layers>
           <h3 class="title is-3">Temperature</h3>
-          <MapLayer mapName="temperature" :layer="layers.temperature[0]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[1]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[2]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[3]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[4]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[5]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[6]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[7]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[8]" />
-          <MapLayer mapName="temperature" :layer="layers.temperature[9]" />
+          <MapLayer mapName="temperature" :layer="layers.temperature[0]">
+            <template v-slot:title
+              >Mean annual temperature, historical</template
+            >
+            <template v-slot:subtext>1980&ndash;2009, CRU TS</template>
+          </MapLayer>
+          <MapLayer mapName="temperature" :layer="layers.temperature[1]">
+            <template v-slot:title>Mean annual temperature, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            >
+          </MapLayer>
         </template>
       </MapBlock>
     </div>
@@ -123,27 +125,51 @@
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[0]"
-          />
+            ><template v-slot:title>Heating degree days, historical</template>
+            <template v-slot:subtext
+              >1980&ndash;2009, ERA-Interim</template
+            ></MapLayer
+          >
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[1]"
-          />
+            ><template v-slot:title>Heating degree days, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            ></MapLayer
+          >
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[2]"
-          />
+            ><template v-slot:title>Freezing index, historical</template>
+            <template v-slot:subtext
+              >1980&ndash;2009, ERA-Interim</template
+            ></MapLayer
+          >
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[3]"
-          />
+            ><template v-slot:title>Freezing index, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            ></MapLayer
+          >
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[4]"
-          />
+            ><template v-slot:title>Thawing index, historical</template>
+            <template v-slot:subtext
+              >1980&ndash;2009, ERA-Interim</template
+            ></MapLayer
+          >
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[5]"
-          />
+            ><template v-slot:title>Thawing index, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            ></MapLayer
+          >
         </template>
       </MapBlock>
     </div>
