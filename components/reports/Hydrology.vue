@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <h4 class="title is-5 mb-1">Runoff</h4>
+    <h4 class="title is-4 mt-6">Runoff</h4>
     <div class="block">
       <table class="table">
         <thead>
@@ -183,7 +183,7 @@
       </table>
     </div>
 
-    <h4 class="title is-5 mb-1">Evapotranspiration</h4>
+    <h4 class="title is-4 mt-6">Evapotranspiration</h4>
     <div class="block">
       <table class="table">
         <thead>
@@ -295,7 +295,7 @@
       </table>
     </div>
 
-    <h4 class="title is-5 mb-1">Soil Moisture</h4>
+    <h4 class="title is-4 mt-6">Soil Moisture</h4>
     <div class="block">
       <table class="table">
         <thead>
