@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1901&ndash;2015)</th>
             <td>
               {{
@@ -213,7 +213,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical <br />(1901&ndash;2015)</th>
             <td
               v-for="(month, index) in [

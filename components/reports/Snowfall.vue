@@ -35,7 +35,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1910&ndash;2009)</th>
             <td>
               {{ results.snowfall.summary.historical.sfemin
