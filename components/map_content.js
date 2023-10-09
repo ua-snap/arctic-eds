@@ -3,7 +3,7 @@ export default {
     precipitation: [
       {
         id: 'historical_era_precip',
-        title: 'Historical Annual Precipitation (1980&ndash;2009)',
+        title: 'Historical Annual Precipitation (1980-2009)',
         source: 'rasdaman',
         wmsLayerName: 'annual_precip_totals_mm',
         style: 'precip_mm_historical_era',
@@ -13,7 +13,7 @@ export default {
       {
         id: 'midcentury_era_precip',
         title:
-          'Projected Mid&ndash;Century Annual Precipitation (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+          'Projected Mid-Century Annual Precipitation (2040-2069, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'annual_precip_totals_mm',
         style: 'precip_mm_midcentury_era',
@@ -34,11 +34,11 @@ export default {
       },
       {
         id: 'future_mean_annual_snowfall',
-        title: 'Projected Annual Snowfall (2090-2099, MRI CGCM3, RCP 8.5)',
+        title: 'Projected Annual Snowfall (2090-2099, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'mean_annual_snowfall_mm',
         rasdamanConfiguration: {
-          dim_model: 4,
+          dim_model: 5,
           dim_scenario: 3,
           dim_decade: 18,
         },
@@ -47,7 +47,7 @@ export default {
       },
       {
         id: 'historical_wet_days_per_year',
-        title: 'Historical Wet Days Per Year (1980&ndash;2009)',
+        title: 'Historical Wet Days Per Year (1980-2009)',
         source: 'rasdaman',
         wmsLayerName: 'wet_days_per_year',
         style: 'arctic_eds_historical_wet_days_per_year',
@@ -55,8 +55,7 @@ export default {
       },
       {
         id: 'projected_wet_days_per_year',
-        title:
-          'Projected Wet Days Per Year (2040&ndash;2069, NCAR CCSM4, RCP 8.5)',
+        title: 'Projected Wet Days Per Year (2040-2069, NCAR CCSM4, RCP 8.5)',
         source: 'rasdaman',
         wmsLayerName: 'wet_days_per_year',
         style: 'arctic_eds_projected_wet_days_per_year',
@@ -79,70 +78,6 @@ export default {
         source: 'rasdaman',
         wmsLayerName: 'annual_mean_temp',
         style: 'temp_midcentury_era',
-        legend: 'temperature',
-      },
-      {
-        id: 'historical_era_january_min',
-        title: 'Historical',
-        source: 'rasdaman',
-        wmsLayerName: 'jan_min_max_mean_temp',
-        style: 'temp_historical_january_min',
-        legend: 'temperature',
-      },
-      {
-        id: 'midcentury_era_january_min',
-        title: 'Projected',
-        source: 'rasdaman',
-        wmsLayerName: 'jan_min_max_mean_temp',
-        style: 'temp_midcentury_january_min',
-        legend: 'temperature',
-      },
-      {
-        id: 'historical_era_january_max',
-        title: 'Historical',
-        source: 'rasdaman',
-        wmsLayerName: 'jan_min_max_mean_temp',
-        style: 'temp_historical_january_max',
-        legend: 'temperature',
-      },
-      {
-        id: 'midcentury_era_january_max',
-        title: 'Projected',
-        source: 'rasdaman',
-        wmsLayerName: 'jan_min_max_mean_temp',
-        style: 'temp_midcentury_january_max',
-        legend: 'temperature',
-      },
-      {
-        id: 'historical_era_july_min',
-        title: 'Historical',
-        source: 'rasdaman',
-        wmsLayerName: 'july_min_max_mean_temp',
-        style: 'temp_historical_july_min',
-        legend: 'temperature',
-      },
-      {
-        id: 'midcentury_era_july_min',
-        title: 'Projected',
-        source: 'rasdaman',
-        wmsLayerName: 'july_min_max_mean_temp',
-        style: 'temp_midcentury_july_min',
-        legend: 'temperature',
-      },
-      {
-        id: 'historical_era_july_max',
-        title: 'Historical',
-        source: 'rasdaman',
-        wmsLayerName: 'july_min_max_mean_temp',
-        style: 'temp_historical_july_max',
-        legend: 'temperature',
-      },
-      {
-        id: 'midcentury_era_july_max',
-        title: 'Projected',
-        source: 'rasdaman',
-        wmsLayerName: 'july_min_max_mean_temp',
-        style: 'temp_midcentury_july_max',
         legend: 'temperature',
       },
     ],
@@ -206,6 +141,14 @@ export default {
         legend: 'pfextent_jorgenson',
         default: true,
       },
+      {
+        id: 'icevol_jorgenson',
+        title: 'Ground ice volume (Jorgenson et al., 2008)',
+        wmsLayerName:
+          'permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume',
+        style: 'permafrost_beta:ground_ice_volume',
+        legend: 'icevol_jorgenson',
+      },
 
       {
         id: 'pfextent_obu',
@@ -214,48 +157,30 @@ export default {
         legend: 'pfextent_obu',
       },
       {
-        id: 'iem_gipl_magt_alt_4km_historical',
-        title:
-          'Mean annual ground temperature at active layer, 1986&ndash;2005, GIPL model',
-        source: 'rasdaman',
-        wmsLayerName: 'iem_gipl_magt_alt_4km',
-        rasdamanConfiguration: {
-          dim_model: 0,
-          dim_scenario: 0,
-          dim_era: 0,
-        },
-        style: 'arctic_eds_MAGT',
-        legend: 'magt',
-      },
-      {
-        id: 'iem_gipl_magt_alt_4km_2036_2065',
-        title:
-          'Mean annual ground temperature at active layer, 2036&ndash;2065 (NCAR&ndash;CCSM4, RCP 8.5), GIPL model',
-        source: 'rasdaman',
-        wmsLayerName: 'iem_gipl_magt_alt_4km',
-        rasdamanConfiguration: {
-          dim_model: 5,
-          dim_scenario: 2,
-          dim_era: 2,
-        },
-        style: 'arctic_eds_MAGT',
-        legend: 'magt',
-      },
-      {
         id: 'obumagt',
         title:
-          'Mean annual ground temperature at top of permafrost, 2000&ndash;2016 (modeled)',
+          'Mean annual ground temperature at top of permafrost, 2000-2016 (modeled), Obu 2018',
         wmsLayerName: 'obu_2018_magt',
         style: 'ground_temperature_arctic_eds',
         legend: 'magt',
       },
       {
-        id: 'icevol_jorgenson',
-        title: 'Ground ice volume (Jorgenson et al., 2008)',
-        wmsLayerName:
-          'permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume',
-        style: 'permafrost_beta:ground_ice_volume',
-        legend: 'icevol_jorgenson',
+        id: 'gipl_magt_1m_2021_2050',
+        title:
+          'Mean annual ground temperature at 1 m depth, 2021-2050 (5-Model Average, RCP 8.5), GIPL model',
+        source: 'rasdaman',
+        wmsLayerName: 'crrel_gipl_outputs',
+        style: 'arctic_eds_gipl_magt1m_nearcentury',
+        legend: 'magt',
+      },
+      {
+        id: 'gipl_magt_1m_2071_2100',
+        title:
+          'Mean annual ground temperature at 1 m depth, 2071&ndash;2100 (5&ndash;Model Average, RCP 8.5), GIPL model',
+        source: 'rasdaman',
+        wmsLayerName: 'crrel_gipl_outputs',
+        style: 'arctic_eds_gipl_magt1m_latecentury',
+        legend: 'magt',
       },
     ],
   },
@@ -283,12 +208,14 @@ export default {
       { color: '#66c2a4', label: '&ge;180 days' },
     ],
     temperature: [
-      { color: '#542788', label: '&lt;&minus;10&deg;F' },
-      { color: '#76507C', label: '&ge;&minus;10&deg;F, &lt;10&deg;F' },
-      { color: '#987870', label: '&ge;10&deg;F, &lt;30&deg;F' },
-      { color: '#BAA164', label: '&ge;30&deg;F, &lt;50&deg;F' },
-      { color: '#DCC958', label: '&ge;50&deg;F, &lt;70&deg;F' },
-      { color: '#FEF24C', label: '&ge;70&deg;F' },
+      { color: '#2166ac', label: '&lt;10&deg;F' },
+      { color: '#4393c3', label: '&ge;10&deg;F, &lt;15&deg;F' },
+      { color: '#92c5de', label: '&ge;15&deg;F, &lt;20&deg;F' },
+      { color: '#d1e5f0', label: '&ge;20&deg;F, &lt;25&deg;F' },
+      { color: '#fddbc7', label: '&ge;25&deg;F, &lt;30&deg;F' },
+      { color: '#f4a582', label: '&ge;30&deg;F, &lt;35&deg;F' },
+      { color: '#d6604d', label: '&ge;35&deg;F, &lt;40&deg;F' },
+      { color: '#b2182b', label: '&ge;40&deg;F' },
     ],
     freezing_index: [
       {
@@ -374,8 +301,8 @@ export default {
     ],
     pfextent_jorgenson: [
       { color: '#253494', label: 'Continuous (&gt; 90%)' },
-      { color: '#41b6c4', label: 'Discontinuous (50 &ndash; 90%)' },
-      { color: '#7fcdbb', label: 'Isolated (10 &ndash; 50%)' },
+      { color: '#41b6c4', label: 'Discontinuous (50 - 90%)' },
+      { color: '#7fcdbb', label: 'Isolated (10 - 50%)' },
       { color: '#c7e9b4', label: 'Sporadic (&lt; 10%)' },
       { color: '#ffffcc', label: 'Unfrozen' },
       { color: '#a5bfdd', label: 'Water' },
@@ -383,8 +310,8 @@ export default {
     ],
     pfextent_obu: [
       { color: '#253494', label: 'Continuous (&gt; 90%)' },
-      { color: '#41b6c4', label: 'Discontinuous (50 &ndash; 90%)' },
-      { color: '#7fcdbb', label: 'Isolated (10 &ndash; 50%)' },
+      { color: '#41b6c4', label: 'Discontinuous (50 - 90%)' },
+      { color: '#7fcdbb', label: 'Isolated (10 - 50%)' },
       { color: '#c7e9b4', label: 'Sporadic (&lt; 10%)' },
     ],
     magt: [
