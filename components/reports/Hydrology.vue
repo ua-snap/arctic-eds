@@ -1,25 +1,21 @@
 <template>
-  <div v-if="Object.keys(results.hydrology.summary).length != 0">
+  <div v-if="isHydrologyPresent">
     <div class="block content is-size-5">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Eleifend mi in nulla
-        posuere sollicitudin aliquam ultrices sagittis orci. Venenatis lectus
-        magna fringilla urna porttitor rhoncus dolor purus non. Nisl condimentum
-        id venenatis a condimentum vitae sapien. Ullamcorper morbi tincidunt
-        ornare massa. Vitae ultricies leo integer malesuada nunc vel risus. Orci
-        dapibus ultrices in iaculis nunc.
+        This section provides access to historical and projected modeled decadal
+        summaries of hydrologic data for Alaska at a resolution of 12km. These
+        data were derived by applying the Variable Infiltration Capacity (VIC)
+        model to downscaled CMIP5 historical and projected climate data, using
+        RCP 4.5 and RCP 8.5 emissions scenarios.
       </p>
     </div>
 
     <div class="block">
       <h4 class="title is-5 mb-1">Data Summary</h4>
       <div class="content is-size-5">
-        Nascetur ridiculus mus mauris vitae ultricies leo integer malesuada.
-        Nisl vel pretium lectus quam. Urna duis convallis convallis tellus id.
-        Lacinia at quis risus sed. Proin nibh nisl condimentum id venenatis.
-        Nunc sed blandit libero volutpat sed cras ornare arcu dui. Arcu cursus
-        euismod quis viverra nibh cras pulvinar mattis.
+        The blocks below show the minimum, mean and maximum values for the
+        annual means across 3 models: CanESM2, GFDL-ESM2M, and NCAR-CCSM4 and 2
+        scenarios: RCP 4.5 and RCP 8.5 for each of the given eras.
       </div>
     </div>
 
@@ -83,7 +79,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1950&ndash;2009)</th>
             <td>
               {{
@@ -195,7 +191,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1950&ndash;2009)</th>
             <td>
               {{
@@ -307,7 +303,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="historical">
             <th scope="row">Historical (1950&ndash;2009)</th>
             <td>
               {{
@@ -489,6 +485,7 @@ export default {
   computed: {
     ...mapGetters({
       results: 'report/results',
+      isHydrologyPresent: 'report/isHydrologyPresent',
     }),
   },
 }

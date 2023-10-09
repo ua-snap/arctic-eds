@@ -148,6 +148,9 @@ export default {
     isGeologyPresent(state) {
       return Object.keys(state.results.geology).length != 0
     },
+    isHydrologyPresent(state) {
+      return Object.keys(state.results.hydrology).length != 0
+    },
     isPhysiographyPresent(state) {
       return Object.keys(state.results.physiography).length != 0
     },
@@ -251,7 +254,9 @@ export default {
       // TODO: add error handling here for 404 (no data) etc.
       let queryUrl = process.env.apiUrl + '/places/communities'
       let places = await this.$http.$get(queryUrl)
-      let filteredPlaces = _.filter(places, p => { return p.region == 'Alaska' })
+      let filteredPlaces = _.filter(places, p => {
+        return p.region == 'Alaska'
+      })
       context.commit('setPlaces', filteredPlaces)
     },
   },

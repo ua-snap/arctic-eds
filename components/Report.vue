@@ -115,7 +115,7 @@
                   <li v-if="isSnowfallPresent">
                     <a href="#snowfall">Snowfall</a>
                   </li>
-                  <li>
+                  <li v-if="isHydrologyPresent">
                     <a href="#hydrology">Hydrology</a>
                   </li>
                 </ul>
@@ -177,18 +177,17 @@
             <PrecipitationFrequency />
           </div>
 
-          <h3 id="precipitation-frequency" class="title is-3 mt-6">
-            Precipitation Frequency
-          </h3>
-          <PrecipitationFrequency />
+          <div v-if="isSnowfallPresent">
+            <h3 id="snowfall" class="title is-3 mt-6">
+              Snowfall (Water) Equivalent
+            </h3>
+            <SnowfallReport />
+          </div>
 
-          <h3 id="snowfall" class="title is-3 mt-6">
-            Snowfall (Water) Equivalent
-          </h3>
-          <SnowfallReport />
-
-          <h3 id="hydrology" class="title is-3 mt-6">Hydrology</h3>
-          <HydrologyReport />
+          <div v-if="isHydrologyPresent">
+            <h3 id="hydrology" class="title is-3 mt-6">Hydrology</h3>
+            <HydrologyReport />
+          </div>
         </div>
       </section>
 
@@ -267,6 +266,7 @@ export default {
       latLng: 'report/latLng',
       isElevationPresent: 'report/isElevationPresent',
       isGeologyPresent: 'report/isGeologyPresent',
+      isHydrologyPresent: 'report/isHydrologyPresent',
       isPhysiographyPresent: 'report/isPhysiographyPresent',
       isPrecipitationPresent: 'report/isPrecipitationPresent',
       isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',
