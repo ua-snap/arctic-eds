@@ -24,6 +24,54 @@
       </div>
     </div>
 
+    <div class="radio-units no-print">
+      <div>
+        <b-field label="Model">
+          <b-radio
+            v-model="radioHydroModel"
+            name="radioHydroModel"
+            native-value="CanESM2"
+          >
+            CanESM2
+          </b-radio>
+          <b-radio
+            v-model="radioHydroModel"
+            name="radioHydroModel"
+            native-value="GFDL-ESM2M"
+          >
+            GFDL-ESM2M
+          </b-radio>
+          <b-radio
+            v-model="radioHydroModel"
+            name="radioHydroModel"
+            native-value="CCSM4"
+          >
+            NCAR-CCSM4
+          </b-radio>
+        </b-field>
+      </div>
+    </div>
+    <div class="radio-units no-print">
+      <div>
+        <b-field label="Scenario">
+          <b-radio
+            v-model="radioHydroScenario"
+            name="radioHydroScenario"
+            native-value="rcp45"
+          >
+            RCP 4.5
+          </b-radio>
+          <b-radio
+            v-model="radioHydroScenario"
+            name="radioHydroScenario"
+            native-value="rcp85"
+          >
+            RCP 8.5
+          </b-radio>
+        </b-field>
+      </div>
+    </div>
+
     <h4 class="title is-5 mb-1">Runoff</h4>
     <div class="block">
       <table class="table">
@@ -40,20 +88,23 @@
             <th scope="row">Historical (1950&ndash;2009)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .historical.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.historical.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .historical.mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.historical.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .historical.max
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.historical.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -61,20 +112,23 @@
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .early_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.early_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .early_century.mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.early_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .early_century.max
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.early_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -82,20 +136,23 @@
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .mid_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.mid_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .mid_century.mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.mid_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .mid_century.max
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.mid_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -103,20 +160,23 @@
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .late_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.late_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .late_century.mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.late_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.runoff
-                  .late_century.max
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.runoff.late_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -140,20 +200,23 @@
             <th scope="row">Historical (1950&ndash;2009)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap.historical
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.historical.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap.historical
-                  .mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.historical.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap.historical
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.historical.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -161,20 +224,23 @@
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap
-                  .early_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.early_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap
-                  .early_century.mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.early_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap
-                  .early_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.early_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -182,20 +248,23 @@
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap.mid_century
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.mid_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap.mid_century
-                  .mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.mid_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap.mid_century
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.mid_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -203,20 +272,23 @@
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap
-                  .late_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.late_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap
-                  .late_century.mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.late_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.evap
-                  .late_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.evap.late_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -240,20 +312,23 @@
             <th scope="row">Historical (1950&ndash;2009)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.historical
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.historical.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.historical
-                  .mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.historical.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.historical
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.historical.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -261,20 +336,23 @@
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1
-                  .early_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.early_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1
-                  .early_century.mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.early_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1
-                  .early_century.min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.early_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -282,20 +360,23 @@
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.mid_century
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.mid_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.mid_century
-                  .mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.mid_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.mid_century
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.mid_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -303,20 +384,23 @@
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.late_century
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.late_century.min
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.late_century
-                  .mean
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.late_century.mean
               }}<UnitWidget unitType="mm_in" />
             </td>
             <td>
               {{
-                results.hydrology.summary['CCSM4'].rcp85.Annual.sm1.late_century
-                  .min
+                results.hydrology.summary[`${radioHydroModel}`][
+                  `${radioHydroScenario}`
+                ].Annual.sm1.late_century.max
               }}<UnitWidget unitType="mm_in" />
             </td>
           </tr>
@@ -405,6 +489,12 @@ export default {
     DownloadCsvButton,
     UnitWidget,
     PreviewTable,
+  },
+  data() {
+    return {
+      radioHydroModel: 'CanESM2',
+      radioHydroScenario: 'rcp45',
+    }
   },
   computed: {
     ...mapGetters({
