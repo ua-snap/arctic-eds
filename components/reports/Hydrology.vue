@@ -2,25 +2,24 @@
   <div v-if="Object.keys(results.hydrology.summary).length != 0">
     <div class="block content is-size-5">
       <p>
-        These data show downscaled projections of decadal average monthly
-        snowfall (water) equivalent (SWE) for each month of the decades from
-        2010&ndash;2019 to 2090&ndash;2099 at 771&times;771 m spatial
-        resolution. Snowfall equivalent totals includes both rain and snow.
-        Output is available for the NCAR CCSM4, GFDL CM3, GISS E2-R, IPSL
-        CM5A-LR, and MRI CGCM3 models and three emissions scenarios (RCP 4.5,
-        RCP 6.0 and RCP 8.5).
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Eleifend mi in nulla
+        posuere sollicitudin aliquam ultrices sagittis orci. Venenatis lectus
+        magna fringilla urna porttitor rhoncus dolor purus non. Nisl condimentum
+        id venenatis a condimentum vitae sapien. Ullamcorper morbi tincidunt
+        ornare massa. Vitae ultricies leo integer malesuada nunc vel risus. Orci
+        dapibus ultrices in iaculis nunc.
       </p>
-      <p>Historical data uses CRU TS 3.1.</p>
     </div>
 
     <div class="block">
       <h4 class="title is-5 mb-1">Data Summary</h4>
       <div class="content is-size-5">
-        The summary table below shows the minimum, mean and maximum values
-        across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
-        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) for the
-        specified era, which can be helpful to assess broad trends and
-        variation.
+        Nascetur ridiculus mus mauris vitae ultricies leo integer malesuada.
+        Nisl vel pretium lectus quam. Urna duis convallis convallis tellus id.
+        Lacinia at quis risus sed. Proin nibh nisl condimentum id venenatis.
+        Nunc sed blandit libero volutpat sed cras ornare arcu dui. Arcu cursus
+        euismod quis viverra nibh cras pulvinar mattis.
       </div>
     </div>
 
@@ -440,15 +439,7 @@
             <li>
               <a
                 href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/557db5d5-dbeb-470a-a9c4-b80d78aa8668"
-                >Historical Decadal Averages of Monthly Snowfall Equivalent 771m
-                CRU TS3.0/TS3.1</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/7c0c1a65-794e-4770-aa72-4628d357808e"
-                >Projected Decadal Averages of Monthly Snowfall Equivalent 771m
-                CMIP5/AR5</a
+                >Historical & Projected Data for Hydrology</a
               >
             </li>
           </ul>
@@ -456,19 +447,18 @@
         <li>
           Academic references:
           <blockquote>
-            McAfee, S. A., Walsh, J. E., &amp; Rupp, T. S. (2013). Statistically
-            downscaled projections of snow/rain partitioning for Alaska.
-            <i>Hydrological Processes, 28</i>(12), 3930&ndash;3946.
-            <a href="https://doi.org/10.1002/hyp.9934"
-              >https://doi.org/10.1002/hyp.9934</a
+            Near-Surface Met + VIC Hydrologic Model Outputs: NCAR 12 km Edition
+            <a
+              href="https://github.com/ua-snap/ardac-curation/tree/ncar12km_decadal_summaries/ncar12km_decadal_summaries"
+              >GitHub Repository</a
             >
           </blockquote>
           <blockquote>
-            Littell J. S., McAfee S. A., &amp; Hayward G. D. (2018). Alaska
-            Snowpack Response to Climate Change: Statewide Snowfall Equivalent
-            and Snowpack Water Scenarios, <i>Water 10</i>(5) 668;
-            <a href="https://doi.org/10.3390/w10050668"
-              >https://doi.org/10.3390/w10050668</a
+            Mizukami, N., Newman, A. J., Wood, A. W., Gutmann, E. D., and
+            Hamman, J. J. (2022). Boulder, CO: UCAR/NCAR/RAL. 21st Century
+            Hydrologic Projections for Alaska and Hawaii;
+            <a href="https://doi.org/10.5065/c3kn-2y77"
+              >https://doi.org/10.5065/c3kn-2y77</a
             >
           </blockquote>
         </li>
