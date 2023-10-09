@@ -203,6 +203,7 @@ export default {
         { type: 'mm_in', substring: '', variable: 'snowfall' },
         { type: 'temperature', substring: '', variable: 'temperature' },
         { type: 'mm_in', substring: '', variable: 'precip_frequency' },
+        { type: 'mm_in', substring: '', variable: 'hydrology' },
       ]
       conversions.forEach(conversion => {
         state.results[conversion['variable']] = convertLeaves(
