@@ -411,8 +411,8 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
-        CSV download includes decadal values for both historical CRU TS 3.1
-        (1910&ndash;2009) and modeled projected (2010&ndash;2099) datasets. Data
+        CSV download includes era-separted monthly values for both historical
+        (1950&ndash;2009) and modeled projected (2010&ndash;2100) datasets. Data
         are provided in metric units.
       </p>
       <PreviewTable
