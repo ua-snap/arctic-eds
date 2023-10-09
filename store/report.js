@@ -229,7 +229,9 @@ export default {
       let results
       if (process.env.mockApi) {
         const mock = require('~/assets/mock.json')
-        results = mock
+
+        // Copy mock to results so we don't modify mock directly.
+        results = { ...mock }
       } else {
         results = await this.$axios.$get(url)
       }
