@@ -97,15 +97,21 @@ export default {
     isPlaceDefined(state, getters) {
       return getters.latLng || getters.placeId
     },
+    getPlaceById(state, getters, rootState) {
+      return _.find(state.places, {
+        id: rootState.route.params.communityId,
+      })
+    },
+    placeIsLatLng(state, getters, rootState) {
+      return rootState.route.params.lat && rootState.route.params.lng
+    },
     placeName(state, getters, rootState) {
-      if (rootState.route.params.lat && rootState.route.params.lng) {
+      if (getters.placeIsLatLng) {
         return rootState.route.params.lat + ', ' + rootState.route.params.lng
       }
 
       if (rootState.route.params.communityId) {
-        let place = _.find(state.places, {
-          id: rootState.route.params.communityId,
-        })
+        let place = getters.getPlaceById
         if (place) {
           let placeName = place.name + ', ' + place.region
           if (place.alt_name) {
