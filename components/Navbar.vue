@@ -29,7 +29,7 @@ nav {
 
     a {
       color: #312e30 !important;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
       &:hover {
         border-bottom: 4px solid #312e30;
       }

@@ -1,169 +1,175 @@
 <template>
   <section class="section">
     <div class="block">
-      <h3 class="is-size-4">Precipitation</h3>
-      <MapBlock mapName="precipitation" />
-    </div>
-
-    <div class="block">
-      <h3 class="is-size-4">Permafrost</h3>
-      <MapBlock mapName="permafrost" />
-    </div>
-
-    <div class="block">
-      <h3 class="is-size-4">Temperature</h3>
-      <MapBlock mapName="temperature">
+      <MapBlock mapName="precipitation">
         <template v-slot:layers>
-          <div class="content mx-5">
-            <p>
-              Historical layers show <strong>modeled</strong> data from the CRU
-              TS model, averaged over 1980&ndash;2009.
-            </p>
-            <p>
-              Projected layers show data from the NCAR CCSM4 model under the RCP
-              8.5 scenario, averaged over 2040&ndash;2069.
-            </p>
-            <h5 class="mb-2">Annual Mean Temperature</h5>
-            <ul>
-              <li>
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[0]"
-                />
-              </li>
-              <li class="mb-3">
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[1]"
-                />
-              </li>
-            </ul>
-            <h5 class="layer-section">January Temperatures</h5>
-            <h6>Minimum</h6>
-            <ul>
-              <li>
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[2]"
-                />
-              </li>
-              <li class="mb-3">
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[3]"
-                />
-              </li>
-            </ul>
-            <h6>Maximum</h6>
-            <ul>
-              <li>
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[4]"
-                />
-              </li>
-              <li class="mb-3">
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[5]"
-                />
-              </li>
-            </ul>
-            <h5 class="layer-section">July Temperatures</h5>
-            <h6>Minimum</h6>
-            <ul>
-              <li>
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[6]"
-                />
-              </li>
-              <li class="mb-3">
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[7]"
-                />
-              </li>
-            </ul>
-            <h6>Maximum</h6>
-            <ul>
-              <li>
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[8]"
-                />
-              </li>
-              <li class="mb-3">
-                <MapLayer
-                  mapName="temperature"
-                  :layer="layers.temperature[9]"
-                />
-              </li>
-            </ul>
-          </div>
+          <h3 class="title is-">Precipitation</h3>
+
+          <MapLayer mapName="precipitation" :layer="layers.precipitation[0]">
+            <template v-slot:title
+              >Total annual precipitation, historical</template
+            >
+            <template v-slot:subtext>1980&ndash;2009, CRU TS 4.0</template>
+          </MapLayer>
+
+          <MapLayer mapName="precipitation" :layer="layers.precipitation[1]">
+            <template v-slot:title
+              >Total annual precipitation, projected</template
+            >
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            >
+          </MapLayer>
+
+          <MapLayer mapName="precipitation" :layer="layers.precipitation[2]">
+            <template v-slot:title>Total annual snowfall, historical</template>
+            <template v-slot:subtext>1910&ndash;1919, CRU TS 3.1</template>
+          </MapLayer>
+
+          <MapLayer mapName="precipitation" :layer="layers.precipitation[3]">
+            <template v-slot:title>Total annual snowfall, projected</template>
+            <template v-slot:subtext
+              >2090&ndash;2099, NCAR CCSM4, RCP 8.5</template
+            >
+          </MapLayer>
+
+          <MapLayer mapName="precipitation" :layer="layers.precipitation[4]">
+            <template v-slot:title>Wet days per year, historical</template>
+            <template v-slot:subtext>1980&ndash;2009, ERA-Interim</template>
+          </MapLayer>
+
+          <MapLayer mapName="precipitation" :layer="layers.precipitation[5]">
+            <template v-slot:title>Wet days per year, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            >
+          </MapLayer>
         </template>
       </MapBlock>
     </div>
 
     <div class="block">
-      <h3 class="is-size-4">Temperature Indices</h3>
+      <MapBlock mapName="permafrost">
+        <template v-slot:layers>
+          <h3 class="title is-3">Permafrost</h3>
+
+          <MapLayer mapName="permafrost" :layer="layers.permafrost[0]">
+            <template v-slot:title>Permafrost extent</template>
+            <template v-slot:subtext>Jorgenson et al., 2008</template>
+          </MapLayer>
+
+          <MapLayer mapName="permafrost" :layer="layers.permafrost[1]">
+            <template v-slot:title>Ground ice volume</template>
+            <template v-slot:subtext>Jorgenson et al., 2008</template>
+          </MapLayer>
+
+          <MapLayer mapName="permafrost" :layer="layers.permafrost[2]">
+            <template v-slot:title>Permafrost extent</template>
+            <template v-slot:subtext>Obu et al., 2018</template>
+          </MapLayer>
+
+          <MapLayer mapName="permafrost" :layer="layers.permafrost[3]">
+            <template v-slot:title
+              >Mean annual ground temperature at top of permafrost</template
+            >
+            <template v-slot:subtext
+              >2000&ndash;2016, Obu et al., 2018</template
+            >
+          </MapLayer>
+
+          <MapLayer mapName="permafrost" :layer="layers.permafrost[4]">
+            <template v-slot:title
+              >Mean annual ground temperature at 1m</template
+            >
+            <template v-slot:subtext
+              >2021&ndash;2050, 5-Model Average, RCP 8.5, GIPL model</template
+            >
+          </MapLayer>
+
+          <MapLayer mapName="permafrost" :layer="layers.permafrost[5]">
+            <template v-slot:title
+              >Mean annual ground temperature at 1m</template
+            >
+            <template v-slot:subtext
+              >2071&ndash;2100, 5-Model Average, RCP 8.5, GIPL model</template
+            >
+          </MapLayer>
+        </template>
+      </MapBlock>
+    </div>
+
+    <div class="block">
+      <MapBlock mapName="temperature">
+        <template v-slot:layers>
+          <h3 class="title is-3">Temperature</h3>
+          <MapLayer mapName="temperature" :layer="layers.temperature[0]">
+            <template v-slot:title
+              >Mean annual temperature, historical</template
+            >
+            <template v-slot:subtext>1980&ndash;2009, CRU TS</template>
+          </MapLayer>
+          <MapLayer mapName="temperature" :layer="layers.temperature[1]">
+            <template v-slot:title>Mean annual temperature, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            >
+          </MapLayer>
+        </template>
+      </MapBlock>
+    </div>
+
+    <div class="block">
       <MapBlock mapName="temperature_indices">
         <template v-slot:layers>
-          <div class="content mx-5">
-            <p>
-              Historical layers show <strong>modeled</strong> data from the ERA
-              Interim model, averaged over 1980&ndash;2009.
-            </p>
-            <p>
-              Projected layers show data from the NCAR CCSM4 model under the RCP
-              8.5 scenario, averaged over 2040&ndash;2069.
-            </p>
-            <h5 class="mb-2">Heating Degree Days</h5>
-            <ul>
-              <li>
-                <MapLayer
-                  mapName="temperature_indices"
-                  v-bind:layer="layers.temperature_indices[0]"
-                />
-              </li>
-              <li class="mb-3">
-                <MapLayer
-                  mapName="temperature_indices"
-                  v-bind:layer="layers.temperature_indices[1]"
-                />
-              </li>
-            </ul>
-            <h5 class="mb-2">Freezing Index</h5>
-            <ul>
-              <li>
-                <MapLayer
-                  mapName="temperature_indices"
-                  v-bind:layer="layers.temperature_indices[2]"
-                />
-              </li>
-              <li class="mb-3">
-                <MapLayer
-                  mapName="temperature_indices"
-                  v-bind:layer="layers.temperature_indices[3]"
-                />
-              </li>
-            </ul>
-            <h5 class="mb-2">Thawing Index</h5>
-            <ul>
-              <li>
-                <MapLayer
-                  mapName="temperature_indices"
-                  v-bind:layer="layers.temperature_indices[4]"
-                />
-              </li>
-              <li class="mb-3">
-                <MapLayer
-                  mapName="temperature_indices"
-                  v-bind:layer="layers.temperature_indices[5]"
-                />
-              </li>
-            </ul>
-          </div>
+          <h3 class="title is-3">Temperature Indices</h3>
+          <MapLayer
+            mapName="temperature_indices"
+            v-bind:layer="layers.temperature_indices[0]"
+            ><template v-slot:title>Heating degree days, historical</template>
+            <template v-slot:subtext
+              >1980&ndash;2009, ERA-Interim</template
+            ></MapLayer
+          >
+          <MapLayer
+            mapName="temperature_indices"
+            v-bind:layer="layers.temperature_indices[1]"
+            ><template v-slot:title>Heating degree days, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            ></MapLayer
+          >
+          <MapLayer
+            mapName="temperature_indices"
+            v-bind:layer="layers.temperature_indices[2]"
+            ><template v-slot:title>Freezing index, historical</template>
+            <template v-slot:subtext
+              >1980&ndash;2009, ERA-Interim</template
+            ></MapLayer
+          >
+          <MapLayer
+            mapName="temperature_indices"
+            v-bind:layer="layers.temperature_indices[3]"
+            ><template v-slot:title>Freezing index, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            ></MapLayer
+          >
+          <MapLayer
+            mapName="temperature_indices"
+            v-bind:layer="layers.temperature_indices[4]"
+            ><template v-slot:title>Thawing index, historical</template>
+            <template v-slot:subtext
+              >1980&ndash;2009, ERA-Interim</template
+            ></MapLayer
+          >
+          <MapLayer
+            mapName="temperature_indices"
+            v-bind:layer="layers.temperature_indices[5]"
+            ><template v-slot:title>Thawing index, projected</template>
+            <template v-slot:subtext
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            ></MapLayer
+          >
         </template>
       </MapBlock>
     </div>

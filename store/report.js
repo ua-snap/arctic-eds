@@ -97,15 +97,21 @@ export default {
     isPlaceDefined(state, getters) {
       return getters.latLng || getters.placeId
     },
+    getPlaceById(state, getters, rootState) {
+      return _.find(state.places, {
+        id: rootState.route.params.communityId,
+      })
+    },
+    placeIsLatLng(state, getters, rootState) {
+      return rootState.route.params.lat && rootState.route.params.lng
+    },
     placeName(state, getters, rootState) {
-      if (rootState.route.params.lat && rootState.route.params.lng) {
+      if (getters.placeIsLatLng) {
         return rootState.route.params.lat + ', ' + rootState.route.params.lng
       }
 
       if (rootState.route.params.communityId) {
-        let place = _.find(state.places, {
-          id: rootState.route.params.communityId,
-        })
+        let place = getters.getPlaceById
         if (place) {
           let placeName = place.name + ', ' + place.region
           if (place.alt_name) {
@@ -244,7 +250,8 @@ export default {
       // TODO: add error handling here for 404 (no data) etc.
       let queryUrl = process.env.apiUrl + '/places/communities'
       let places = await this.$http.$get(queryUrl)
-      context.commit('setPlaces', places)
+      let filteredPlaces = _.filter(places, p => { return p.region == 'Alaska' })
+      context.commit('setPlaces', filteredPlaces)
     },
   },
 }

@@ -46,7 +46,9 @@
           <div class="content is-size-4">
             <p v-if="isElevationPresent">
               <strong>Elevation -</strong> The elevation within 1&#8239;km of
-              this point ranges between
+              <span v-if="placeIsLatLng">this point</span>
+              <span v-else>{{ placeName }}, centered at {{ latLng.lat }}, {{ latLng.lng }}</span>
+               ranges between
               <strong>
                 {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
               </strong>
@@ -247,6 +249,7 @@ export default {
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
+      placeIsLatLng: 'report/placeIsLatLng',
       latLng: 'report/latLng',
       isElevationPresent: 'report/isElevationPresent',
       isGeologyPresent: 'report/isGeologyPresent',
