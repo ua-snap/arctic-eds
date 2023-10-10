@@ -34,14 +34,14 @@ export default {
   },
   watch: {
     radioUnits: function () {
-      if (this.radioUnits == 'metric') {
-        if (this.storeRadioUnits != 'metric') {
+      if (this.radioUnits != this.storeRadioUnits) {
+        if (this.radioUnits == 'metric') {
           this.$store.commit('report/setMetric')
+        } else {
+          this.$store.commit('report/setImperial')
         }
-      } else {
-        this.$store.commit('report/setImperial')
+        this.$store.commit('report/convertResults')
       }
-      this.$store.commit('report/convertResults')
     },
   },
 }

@@ -235,11 +235,16 @@ export default {
       let results
       if (process.env.mockApi) {
         const mock = require('~/assets/mock.json')
-        results = mock
+
+        // Copy mock to results so we don't modify mock directly.
+        results = { ...mock }
       } else {
         results = await this.$axios.$get(url)
       }
       context.commit('setResults', results)
+      if (context.state.units == 'imperial') {
+        context.commit('convertResults')
+      }
     },
     async fetchPlaces(context) {
       // If we've already fetched this, don't do that again.
