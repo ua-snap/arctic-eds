@@ -33,6 +33,16 @@ export default {
       { property: 'og:site_name', content: metas.title },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        async: true,
+        defer: true,
+        'data-website-id': '1f4a98e7-d5cb-4295-82fc-5a4d41328038',
+        src: 'https://umami.snap.uaf.edu/umami.js',
+        'data-domains': 'arcticeds.org',
+        'data-do-not-track': true,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -48,11 +58,7 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/leaflet.client.js',
-    '~/plugins/vuex-router-sync',
-    '~/plugins/gtag',
-  ],
+  plugins: ['~/plugins/leaflet.client.js', '~/plugins/vuex-router-sync'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
