@@ -413,7 +413,7 @@
       </p>
       <PreviewTable
         :csvString="results.hydrology.preview"
-        sizeBlurb="~145 rows, 4 columns, ~5kb"
+        sizeBlurb="~3621 rows, 16 columns, ~235kb"
       />
     </div>
 
