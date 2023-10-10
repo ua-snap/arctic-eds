@@ -1,17 +1,12 @@
 <template>
   <div>
     <div class="main">
-      <div v-if="!reportIsVisible">
-        <p class="mt-6 mb-6 is-size-4 blurb">
-          Use Arctic-EDS to query historical, current and projected
-          environmental data for engineering applications.<br />Download data or
-          use our computational notebooks for analysis.
-        </p>
-        <SearchControls />
-      </div>
-      <div v-if="reportIsVisible">
-        <FullReport />
-      </div>
+      <p class="mt-6 mb-6 is-size-4 blurb">
+        Use Arctic-EDS to query historical, current and projected environmental
+        data for engineering applications.<br />Download data or use our
+        computational notebooks for analysis.
+      </p>
+      <SearchControls />
     </div>
     <div class="taglines">
       <div class="left">Plan better.</div>
@@ -68,21 +63,13 @@
 }
 </style>
 <script>
-import { mapGetters } from 'vuex'
 import SearchControls from '~/components/SearchControls'
-import FullReport from '~/components/Report'
 
 export default {
   name: 'HomePage',
   layout: 'home',
   components: {
     SearchControls,
-    FullReport,
-  },
-  computed: {
-    ...mapGetters({
-      reportIsVisible: 'report/reportIsVisible',
-    }),
   },
 }
 </script>
