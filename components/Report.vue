@@ -47,8 +47,11 @@
             <p v-if="isElevationPresent">
               <strong>Elevation -</strong> The elevation within 1&#8239;km of
               <span v-if="placeIsLatLng">this point</span>
-              <span v-else>{{ placeName }}, centered at {{ latLng.lat }}, {{ latLng.lng }}</span>
-               ranges between
+              <span v-else
+                >{{ placeName }}, centered at {{ latLng.lat }},
+                {{ latLng.lng }}</span
+              >
+              ranges between
               <strong>
                 {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
               </strong>
@@ -111,6 +114,9 @@
                   </li>
                   <li v-if="isSnowfallPresent">
                     <a href="#snowfall">Snowfall</a>
+                  </li>
+                  <li v-if="isHydrologyPresent">
+                    <a href="#hydrology">Hydrology</a>
                   </li>
                 </ul>
               </li>
@@ -177,6 +183,11 @@
             </h3>
             <SnowfallReport />
           </div>
+
+          <div v-if="isHydrologyPresent">
+            <h3 id="hydrology" class="title is-3 mt-6">Hydrology</h3>
+            <HydrologyReport />
+          </div>
         </div>
       </section>
 
@@ -228,6 +239,7 @@ import SnowfallReport from '~/components/reports/Snowfall'
 import PermafrostReport from '~/components/reports/Permafrost'
 import PrecipitationFrequency from '~/components/reports/PrecipitationFrequency'
 import TemperatureIndices from '~/components/reports/TemperatureIndices'
+import HydrologyReport from '~/components/reports/Hydrology'
 
 export default {
   name: 'FullReport',
@@ -240,6 +252,7 @@ export default {
     SnowfallReport,
     PermafrostReport,
     PrecipitationFrequency,
+    HydrologyReport,
   },
   computed: {
     state: function () {
@@ -253,6 +266,7 @@ export default {
       latLng: 'report/latLng',
       isElevationPresent: 'report/isElevationPresent',
       isGeologyPresent: 'report/isGeologyPresent',
+      isHydrologyPresent: 'report/isHydrologyPresent',
       isPhysiographyPresent: 'report/isPhysiographyPresent',
       isPrecipitationPresent: 'report/isPrecipitationPresent',
       isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',

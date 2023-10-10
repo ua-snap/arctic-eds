@@ -34,15 +34,15 @@
       <div>
         <b-field label="Model">
           <b-radio
-            v-model="radioModel"
-            name="radioModel"
+            v-model="radioPrecipFreqModel"
+            name="radioPrecipFreqModel"
             native-value="NCAR-CCSM4"
           >
             NCAR-CCSM4
           </b-radio>
           <b-radio
-            v-model="radioModel"
-            name="radioModel"
+            v-model="radioPrecipFreqModel"
+            name="radioPrecipFreqModel"
             native-value="GFDL-CM3"
           >
             GFDL-CM3
@@ -51,7 +51,8 @@
       </div>
     </div>
     <h4 class="title is-4 mt-6">
-      Projected precipitation frequency, {{ radioModel }}, {{ radioEra }}
+      Projected precipitation frequency, {{ radioPrecipFreqModel }},
+      {{ radioEra }}
     </h4>
     <table class="table">
       <thead>
@@ -103,17 +104,17 @@
           >
             {{
               results.precip_frequency[
-                `pr_${interval}_${duration}_${radioModel}_${radioEra}_mean`
+                `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_mean`
               ]
             }}<UnitWidget unitType="mm_in" /><br />
             <span class="small-text">
               {{
                 results.precip_frequency[
-                  `pr_${interval}_${duration}_${radioModel}_${radioEra}_min`
+                  `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_min`
                 ]
               }}&mdash;{{
                 results.precip_frequency[
-                  `pr_${interval}_${duration}_${radioModel}_${radioEra}_max`
+                  `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_max`
                 ]
               }}
             </span>
@@ -180,7 +181,7 @@ export default {
   data() {
     return {
       radioEra: '2020-2049',
-      radioModel: 'NCAR-CCSM4',
+      radioPrecipFreqModel: 'NCAR-CCSM4',
     }
   },
   computed: {
