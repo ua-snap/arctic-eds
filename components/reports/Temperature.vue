@@ -18,13 +18,13 @@
       </p>
       <ul class="module-link">
         <li>
-          Use this dataset in an
+          Use this dataset in a
           <a
-              href="https://ua-snap.github.io/ardac-notebooks/lab?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
-              target="_blank"
-              >
-              <strong>Modified Berggren frost depth</strong> calculator.</a
-            >
+            href="https://ua-snap.github.io/ardac-notebooks/lab?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
+            target="_blank"
+          >
+            <strong>Modified Berggren frost depth</strong> calculator.</a
+          >
         </li>
       </ul>
     </div>

@@ -2,21 +2,23 @@
   <div>
     <div class="block">
       <div class="content is-size-5">
-        <p>Use this data set in interactive computational modules:</p>
+        <p>Use this dataset in interactive computational modules:</p>
         <ul class="module-link">
-          <li>&nbsp;
+          <li>
+            &nbsp;
             <a
               href="https://ua-snap.github.io/ardac-notebooks/lab?path=design_thawing_index%2Fdesign_thawing_index_module.ipynb"
               target="_blank"
-              >
+            >
               <strong>design thawing index</strong></a
             >
           </li>
-          <li>&nbsp;
+          <li>
+            &nbsp;
             <a
               href="https://ua-snap.github.io/ardac-notebooks/lab?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
               target="_blank"
-              >
+            >
               <strong>Modified Berggren frost depth</strong> calculator</a
             >
           </li>
