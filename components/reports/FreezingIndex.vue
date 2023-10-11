@@ -1,6 +1,27 @@
 <template>
   <div>
     <div class="block">
+      <div class="content is-size-5">
+        <p>Use this data set in interactive computational modules:</p>
+        <ul class="module-link">
+          <li>&nbsp;
+            <a
+              href="https://ua-snap.github.io/ardac-notebooks/lab?path=design_thawing_index%2Fdesign_thawing_index_module.ipynb"
+              target="_blank"
+              >
+              <strong>design thawing index</strong></a
+            >
+          </li>
+          <li>&nbsp;
+            <a
+              href="https://ua-snap.github.io/ardac-notebooks/lab?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
+              target="_blank"
+              >
+              <strong>Modified Berggren frost depth</strong> calculator</a
+            >
+          </li>
+        </ul>
+      </div>
       <h4 class="title is-5 mb-1">Summary</h4>
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values

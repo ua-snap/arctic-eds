@@ -87,3 +87,8 @@ div.field label.label {
   margin-top: 1rem;
   margin-bottom: 0.25rem;
 }
+
+// snuggle nested ul's inside li's
+li ul {
+  margin-top: 0 !important;
+}

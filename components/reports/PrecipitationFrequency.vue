@@ -7,6 +7,17 @@
         outputs under the CMIP5 RCP 8.5 emissions scenario, summarized by three
         future eras. Spatial resolution: 20km.
       </p>
+      <ul class="module-link">
+        <li>
+          Use this dataset in an
+          <a
+            href="https://ua-snap.github.io/ardac-notebooks/lab?path=design_discharge%2Fdesign_discharge.ipynb"
+            target="_blank"
+            >interactive computational module for
+            <strong>design discharge</strong>.</a
+          >
+        </li>
+      </ul>
       <p>
         Each table entry below shows the maximum expected precipitation at your
         chosen location over the duration specified for that row (60 minutes to

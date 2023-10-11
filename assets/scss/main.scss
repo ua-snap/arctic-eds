@@ -13,3 +13,11 @@
     display: none !important;
   }
 }
+
+ul.module-link {
+  list-style: none;
+  li::before {
+    font-weight: 600;
+    content: '\21AA';
+  }
+}

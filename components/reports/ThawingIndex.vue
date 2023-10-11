@@ -1,6 +1,19 @@
 <template>
   <div>
     <div class="block">
+      <div class="content is-size-5">
+        <ul class="module-link">
+          <li>
+            Use this dataset in an
+            <a
+              href="https://ua-snap.github.io/ardac-notebooks/lab?path=design_thawing_index%2Fdesign_thawing_index_module.ipynb"
+              target="_blank"
+              >interactive computational module for
+              <strong>design thawing index</strong>.</a
+            >
+          </li>
+        </ul>
+      </div>
       <h4 class="title is-5 mb-1">Summary</h4>
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values
