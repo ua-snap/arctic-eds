@@ -322,8 +322,9 @@
           <ul>
             <li>
               <a
-                href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/557db5d5-dbeb-470a-a9c4-b80d78aa8668"
-                >Historical & Projected Data for Hydrology</a
+                href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/2610188c-aa38-4f47-8987-b36ec72cdd0d"
+                >Alaska VIC Hydrologic Model Output (1950-2099): Decadal
+                Averages of Monthly Summaries</a
               >
             </li>
           </ul>
