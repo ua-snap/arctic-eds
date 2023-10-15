@@ -19,8 +19,9 @@
           <div class="content is-size-4">
             <p>
               <strong>References to data sources and academic papers</strong>
-              should be consulted to interpret the purpose and applicability of
-              specific data in an engineering context.
+              are found adjacent to the data and should be consulted to
+              interpret the purpose and applicability of specific data in an
+              engineering context.
             </p>
             <p>
               <strong
@@ -40,6 +41,7 @@
                 Use the &ldquo;mean&rdquo; column to assess general trends over
                 time.
               </li>
+              <li>Data sources, references &amp; academic citations</li>
             </ul>
           </div>
           <h3 class="subtitle is-3 pt-4">Point-specific notes</h3>
