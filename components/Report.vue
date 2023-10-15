@@ -181,7 +181,7 @@
 
           <div v-if="isSnowfallPresent">
             <h3 id="snowfall" class="title is-3 mt-6">
-              Snowfall (Water) Equivalent
+              Snowfall
             </h3>
             <SnowfallReport />
           </div>
