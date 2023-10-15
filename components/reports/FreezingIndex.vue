@@ -111,9 +111,7 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
-        CSV download includes annual values for both historical ERA-Interim
-        (1980&ndash;2009) and modeled projected (2006&ndash;2100) datasets. Data
-        are provided in metric units.
+        CSV download includes annual values for the entire time series.
       </p>
       <PreviewTable
         :csvString="results.freezing_index.preview"
