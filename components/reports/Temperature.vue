@@ -3,19 +3,14 @@
     <div class="block content is-size-5">
       <p>
         These data come from two types of data sources: interpolated historical
-        observations (CRU TS), and projected downscaled climate model data from across
-        five different climate models averaged together (NCAR CCSM4, GFDL CM3,
-        GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) and two climate scenarios (RCP
-        4.5 and 8.5).
-      </p>
-      <p>
-        Projected data (2010&ndash;2099) can show more variability than the
-        historical data in the tables below because it is showing the extreme
-        values across all models and scenarios.
-      </p>
-      <p>
-        Both historical and projected data for temperature are at a 2&#x202F;km
-        spatial resolution. Data are available as monthly min-mean-max values.
+        observations (CRU TS), and projected downscaled climate model data from
+        across five different climate models averaged together (NCAR CCSM4, GFDL
+        CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) and two climate scenarios
+        (RCP 4.5 and 8.5). Projected data (2010&ndash;2099) can show more
+        variability than the historical data in the tables below because it is
+        showing the extreme values across all models and scenarios. Data are
+        available as monthly min-mean-max values. Spatial resolution:
+        2&#8239;km.
       </p>
       <ul class="module-link">
         <li>

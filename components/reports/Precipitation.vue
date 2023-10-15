@@ -3,20 +3,14 @@
     <div class="block content is-size-5">
       <p>
         These data come from two types of data sources: interpolated historical
-        observations (CRU TS), and projected downscaled climate model data from across
-        five different climate models (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI
-        CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5, 6.0 and
-        8.5).
-      </p>
-      <p>
-        Projected data (2010&ndash;2099) can show more variability than the
-        historical data in the tables below because it is showing the extreme
-        values across all models and scenarios.
-      </p>
-      <p>
-        Both historical and projected data for total precipitation are at a
-        2&#x202F;km spatial resolution. Data have been summarized to annual
-        totals, from monthly temporal resolution.
+        observations (CRU TS), and projected downscaled climate model data from
+        across five different climate models (NCAR CCSM4, GFDL CM3, GISS E2-R,
+        MRI CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5, 6.0
+        and 8.5). Projected data (2010&ndash;2099) can show more variability
+        than the historical data in the tables below because it is showing the
+        extreme values across all models and scenarios. Data have been
+        summarized to annual totals, from monthly temporal resolution. Spatial
+        resolution: 2&#8239;km.
       </p>
     </div>
 
