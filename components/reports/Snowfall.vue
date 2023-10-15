@@ -4,7 +4,7 @@
       <p>
         These data show downscaled projections of decadal average monthly
         snowfall equivalent for each month of the decades from 2010&ndash;2019
-        to 2090&ndash;2099. Snowfall equivalent totals includes both rain and
+        to 2090&ndash;2099. Snowfall equivalent (SFE) totals includes both rain and
         snow. Output is available for the NCAR CCSM4, GFDL CM3, GISS E2-R, IPSL
         CM5A-LR, and MRI CGCM3 models and three emissions scenarios (RCP 4.5,
         RCP 6.0 and RCP 8.5). Spatial resolution: 771&#8239;m.
