@@ -2,13 +2,14 @@
   <div v-if="Object.keys(results.precipitation.summary).length != 0">
     <div class="block content is-size-5">
       <p>
-        These data come from two types of data sources: historical modeled data
-        (CRU TS), and projected downscaled GCM data from across five different
-        climate models (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL
-        CM5A-LR) and three climate scenarios (RCP 4.5, 6.0 and 8.5).
+        These data come from two types of data sources: interpolated historical
+        observations (CRU TS), and projected downscaled climate model data from across
+        five different climate models (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI
+        CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5, 6.0 and
+        8.5).
       </p>
       <p>
-        Projected data (2010&ndash;2039) can show more variability than the
+        Projected data (2010&ndash;2099) can show more variability than the
         historical data in the tables below because it is showing the extreme
         values across all models and scenarios.
       </p>
