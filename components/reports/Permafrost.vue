@@ -6,11 +6,11 @@
         <p>
           Annual projections of permafrost top and base depths, talik thickness,
           and mean annual ground temperature at seven different depths are
-          provided by the GIPL 2.0 model at a resolution of 1km for years
-          2021&ndash;2120. These projections are provided for GFDL CM3 and NCAR
-          CCSM4 model outputs, as well as a 5-model average (GFDL CM3, NCAR
-          CCSM4, GISS E2-R, IPSL CM5A-LR, MRI CGCM3), under the RCP 4.5 and RCP
-          8.5 emissions scenarios.
+          provided by the GIPL 2.0 model for years 2021&ndash;2120. These
+          projections are provided for GFDL CM3 and NCAR CCSM4 model outputs, as
+          well as a 5-model average (GFDL CM3, NCAR CCSM4, GISS E2-R, IPSL
+          CM5A-LR, MRI CGCM3), under the RCP 4.5 and RCP 8.5 emissions
+          scenarios. Spatial resolution: 1&#8239;km.
         </p>
       </div>
     </div>
@@ -20,15 +20,11 @@
         The summary tables below shows the minimum, mean and maximum values
         across two scenarios (RCP 4.5 and RCP 8.5) and three models (NCAR CCSM4,
         GFDL CM3, and a 5-model average: GFDL-CM3, NCAR-CCSM4, GISS-E2-R,
-        IPSL-CM5A-LR, MRI-CGCM3) for the specified era, which can be helpful to
-        assess broad trends and variation. Summaries for three variables are
-        shown: mean annual ground temperature at 1m depth, mean annual ground
-        temperature at 3m depth, and permafrost top. Data are provided in metric
-        units.
+        IPSL-CM5A-LR, MRI-CGCM3).
       </p>
       <table class="table">
         <caption>
-          Mean annual ground temperature, 1m depth
+          Mean annual ground temperature, 1&#8239;m depth
         </caption>
         <thead>
           <tr>
@@ -116,7 +112,7 @@
 
       <table class="table">
         <caption>
-          Mean annual ground temperature, 5m depth
+          Mean annual ground temperature, 5&#8239;m depth
         </caption>
         <thead>
           <tr>
@@ -204,7 +200,7 @@
 
       <table class="table">
         <caption>
-          Permafrost top
+          Depth to top of permafrost
         </caption>
         <thead>
           <tr>
@@ -295,7 +291,7 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
       <p class="content is-size-5 mb-1">
         CSV download includes annual values for the modeled projected
-        (2021&ndash;2100) dataset.
+        (2021&ndash;2100) dataset. Data are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.permafrost.preview"

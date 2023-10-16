@@ -2,19 +2,15 @@
   <div v-if="isTemperaturePresent">
     <div class="block content is-size-5">
       <p>
-        These data come from two types of data sources: historical modeled data
-        (CRU TS), and projected downscaled GCM data from across five different
-        climate models averaged together (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI
-        CGCM3, and IPSL CM5A-LR) and two climate scenarios (RCP 4.5 and 8.5).
-      </p>
-      <p>
-        Projected data (2010&ndash;2039) can show more variability than the
-        historical data in the tables below because it is showing the extreme
-        values across all models and scenarios.
-      </p>
-      <p>
-        Both historical and projected data for temperature are at a 2&#x202F;km
-        spatial resolution. Data are available as monthly min-mean-max values.
+        These data come from two types of data sources: interpolated historical
+        observations (CRU TS), and projected downscaled climate model data from
+        across five different climate models averaged together (NCAR CCSM4, GFDL
+        CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) and two climate scenarios
+        (RCP 4.5 and 8.5). Projected data (2010&ndash;2099) can show more
+        variability than the historical data in the tables below because it is
+        showing the extreme values across all models and scenarios. Data are
+        available as monthly min-mean-max values. Spatial resolution:
+        2&#8239;km.
       </p>
       <ul class="module-link">
         <li>
@@ -33,16 +29,15 @@
       <h4 class="title is-5 mb-1">Data Summary</h4>
       <div class="content is-size-5">
         The summary table below presents the minimum, mean, and maximum values
-        for two scenarios (RCP 4.5 and RCP 8.5), utilizing three distinct
-        models: the 5-model average (an average derived from the NCAR CCSM4,
-        GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR models), the NCAR CCSM4
-        model, and the GFDL CM3 model. This information is provided for the
-        specified era and can be valuable for evaluating overall trends and
-        variability.
+        for the RCP 8.5 scenario and a 5-model average (an average derived from
+        the NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR
+        models).
       </div>
     </div>
 
-    <h4 class="title is-5 mb-1">Mean Annual Temperature, 5 Model Average</h4>
+    <h4 class="title is-5 mb-1">
+      Mean Annual Temperature, 5 Model Average, RCP 8.5
+    </h4>
     <div class="block">
       <table class="table">
         <thead>
@@ -380,8 +375,9 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
-        CSV download includes annual values for both historical CRU TS
-        (1901&ndash;2015) and modeled projected (2006&ndash;2100) datasets.
+        CSV download includes monthly values for both historical CRU TS
+        (1901&ndash;2015) and modeled projected (2006&ndash;2100) datasets. Data
+        are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.temperature.preview"

@@ -2,80 +2,21 @@
   <div v-if="isSnowfallPresent">
     <div class="block content is-size-5">
       <p>
-        These data show downscaled projections of decadal average monthly
-        snowfall (water) equivalent (SWE) for each month of the decades from
-        2010&ndash;2019 to 2090&ndash;2099 at 771&times;771 m spatial
-        resolution. Snowfall equivalent totals includes both rain and snow.
-        Output is available for the NCAR CCSM4, GFDL CM3, GISS E2-R, IPSL
-        CM5A-LR, and MRI CGCM3 models and three emissions scenarios (RCP 4.5,
-        RCP 6.0 and RCP 8.5).
+        These data show downscaled projections of decadal mean of total annual
+        snowfall equivalent. Output is available for the NCAR CCSM4, GFDL CM3,
+        GISS E2-R, IPSL CM5A-LR, and MRI CGCM3 models and three emissions
+        scenarios (RCP 4.5, RCP 6.0 and RCP 8.5). Spatial resolution:
+        771&#8239;m.
       </p>
-      <p>Historical data uses CRU TS 3.1.</p>
-    </div>
-
-    <div class="block">
-      <h4 class="title is-5 mb-1">Data Summary</h4>
-      <div class="content is-size-5">
-        The summary table below shows the minimum, mean and maximum values
-        across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
-        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) for the
-        specified era, which can be helpful to assess broad trends and
-        variation.
-      </div>
-    </div>
-
-    <div class="block">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Min</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Max</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="historical">
-            <th scope="row">Historical (1910&ndash;2009)</th>
-            <td>
-              {{ results.snowfall.summary.historical.sfemin
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.summary.historical.sfemean
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.summary.historical.sfemax
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Future Projections (2010&ndash;2099)</th>
-            <td>
-              {{ results.snowfall.summary.projected.sfemin
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.summary.projected.sfemean
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.summary.projected.sfemax
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
 
     <div class="block">
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
-        CSV download includes decadal values for both historical CRU TS 3.1
-        (1910&ndash;2009) and modeled projected (2010&ndash;2099) datasets. Data
-        are provided in metric units.
+        CSV download includes decadal mean of total annual snowfall equivalent
+        for both historical CRU TS 3.1 (1910&ndash;2009) and modeled projected
+        (2010&ndash;2099) datasets. Data are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.snowfall.preview"
