@@ -9,7 +9,6 @@
         CM5A-LR, and MRI CGCM3 models and three emissions scenarios (RCP 4.5,
         RCP 6.0 and RCP 8.5). Spatial resolution: 771&#8239;m.
       </p>
-      <p>Historical data uses CRU TS 3.1.</p>
     </div>
 
     <div class="block">
