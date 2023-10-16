@@ -2,8 +2,8 @@
   <div>
     <HeaderBanner />
     <div class="lead">
-      <span class="logo">Arctic-EDS</span>
-      <span class="name">Arctic Engineering Data Support System</span>
+      <span class="logo">Arctic-EDS</span><br>
+      <span class="name">Arctic Environmental and Engineering Data and Design Support System</span>
     </div>
     <Navbar />
     <section class="section">
@@ -26,12 +26,13 @@
     font-size: 32px;
   }
   .name {
+    display: block;
     font-family: 'Barlow', sans-serif;
     font-weight: 900;
     font-size: 28px;
     display: inline-block;
-    padding-left: 2rem;
     letter-spacing: 0.02em;
+    padding-bottom: 0.75rem;
   }
 }
 </style>

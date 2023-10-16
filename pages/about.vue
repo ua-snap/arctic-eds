@@ -39,14 +39,14 @@
     <h2 class="title is-3">A path forward</h2>
     <p>
       Alaska&rsquo;s infrastructure must be robust to support the economic,
-      defense, and social needs of a state experiencing a changing climate. The
-      Arctic Engineering Design Support System (Arctic-EDS) was created to
-      replace the aging Environmental Atlas of Alaska while addressing the old
-      atlas&rsquo; shortcomings by providing finer scale data, filling data
-      gaps, and incorporating climate projections. The Arctic-EDS provides
-      easily obtainable, well&ndash;vetted, and reliable engineering and
-      environmental data in a central website designed to meet the needs of
-      engineering professionals.
+      defense, and social needs of a state experiencing a changing climate.
+      Arctic Environmental and Engineering Data and Design Support System
+      (Arctic-EDS) was created to replace the aging Environmental Atlas of
+      Alaska while addressing the old atlas&rsquo; shortcomings by providing
+      finer scale data, filling data gaps, and incorporating climate
+      projections. The Arctic-EDS provides easily obtainable, well&ndash;vetted,
+      and reliable engineering and environmental data in a central website
+      designed to meet the needs of engineering professionals.
     </p>
     <p>
       Improved historical data allows this site to provide a more detailed
