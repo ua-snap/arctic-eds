@@ -37,7 +37,9 @@
       </div>
     </div>
 
-    <h4 class="title is-5 mb-1">Mean Annual Temperature, 5 Model Average, RCP 8.5</h4>
+    <h4 class="title is-5 mb-1">
+      Mean Annual Temperature, 5 Model Average, RCP 8.5
+    </h4>
     <div class="block">
       <table class="table">
         <thead>
@@ -376,7 +378,8 @@
 
       <p class="content is-size-5 mb-1">
         CSV download includes monthly values for both historical CRU TS
-        (1901&ndash;2015) and modeled projected (2006&ndash;2100) datasets.
+        (1901&ndash;2015) and modeled projected (2006&ndash;2100) datasets. Data
+        are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.temperature.preview"
