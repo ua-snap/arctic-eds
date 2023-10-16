@@ -13,62 +13,6 @@
     </div>
 
     <div class="block">
-      <h4 class="title is-5 mb-1">Data Summary</h4>
-      <div class="content is-size-5">
-        The summary table below shows the minimum, mean and maximum values
-        across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
-        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) for the
-        specified era, which can be helpful to assess broad trends and
-        variation.
-      </div>
-    </div>
-
-    <div class="block">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Min</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Max</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="historical">
-            <th scope="row">Historical (1910&ndash;2009)</th>
-            <td>
-              {{ results.snowfall.summary.historical.sfemin
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.summary.historical.sfemean
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.summary.historical.sfemax
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Future Projections (2010&ndash;2099)</th>
-            <td>
-              {{ results.snowfall.summary.projected.sfemin
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.summary.projected.sfemean
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.snowfall.summary.projected.sfemax
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="block">
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
