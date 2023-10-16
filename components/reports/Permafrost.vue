@@ -22,9 +22,8 @@
         GFDL CM3, and a 5-model average: GFDL-CM3, NCAR-CCSM4, GISS-E2-R,
         IPSL-CM5A-LR, MRI-CGCM3) for the specified era, which can be helpful to
         assess broad trends and variation. Summaries for three variables are
-        shown: mean annual ground temperature at 1&#8239;m depth, mean annual ground
-        temperature at 5&#8239;m depth, and permafrost top. Data are provided in metric
-        units.
+        shown: mean annual ground temperature at 1&#8239;m depth, mean annual
+        ground temperature at 5&#8239;m depth, and permafrost top.
       </p>
       <table class="table">
         <caption>
@@ -204,7 +203,7 @@
 
       <table class="table">
         <caption>
-          Permafrost top
+          Depth to top of permafrost
         </caption>
         <thead>
           <tr>
@@ -295,7 +294,7 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
       <p class="content is-size-5 mb-1">
         CSV download includes annual values for the modeled projected
-        (2021&ndash;2100) dataset.
+        (2021&ndash;2100) dataset. Data are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.permafrost.preview"
