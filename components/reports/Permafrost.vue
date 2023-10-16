@@ -20,10 +20,7 @@
         The summary tables below shows the minimum, mean and maximum values
         across two scenarios (RCP 4.5 and RCP 8.5) and three models (NCAR CCSM4,
         GFDL CM3, and a 5-model average: GFDL-CM3, NCAR-CCSM4, GISS-E2-R,
-        IPSL-CM5A-LR, MRI-CGCM3) for the specified era, which can be helpful to
-        assess broad trends and variation. Summaries for three variables are
-        shown: mean annual ground temperature at 1&#8239;m depth, mean annual
-        ground temperature at 5&#8239;m depth, and permafrost top.
+        IPSL-CM5A-LR, MRI-CGCM3).
       </p>
       <table class="table">
         <caption>

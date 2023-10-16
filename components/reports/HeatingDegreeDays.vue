@@ -4,9 +4,7 @@
       <h4 class="title is-5 mb-1">Summary</h4>
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values
-        across one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3)
-        for the specified era, which can be helpful to assess broad trends and
-        variation.
+        across one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3).
       </div>
     </div>
     <div class="block">

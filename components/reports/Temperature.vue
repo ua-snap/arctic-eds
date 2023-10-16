@@ -31,9 +31,7 @@
         The summary table below presents the minimum, mean, and maximum values
         for the RCP 8.5 scenario and a 5-model average (an average derived from
         the NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR
-        models), the NCAR CCSM4 model, and the GFDL CM3 model. This information
-        is provided for the specified era and can be valuable for evaluating
-        overall trends and variability.
+        models).
       </div>
     </div>
 

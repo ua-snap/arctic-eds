@@ -19,9 +19,7 @@
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values
         across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
-        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR) for the
-        specified era, which can be helpful to assess broad trends and
-        variation.
+        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR).
       </div>
     </div>
 
