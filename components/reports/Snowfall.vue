@@ -2,12 +2,11 @@
   <div v-if="isSnowfallPresent">
     <div class="block content is-size-5">
       <p>
-        These data show downscaled projections of decadal average monthly
-        snowfall equivalent for each month of the decades from 2010&ndash;2019
-        to 2090&ndash;2099. Snowfall equivalent (SFE) totals includes both rain and
-        snow. Output is available for the NCAR CCSM4, GFDL CM3, GISS E2-R, IPSL
-        CM5A-LR, and MRI CGCM3 models and three emissions scenarios (RCP 4.5,
-        RCP 6.0 and RCP 8.5). Spatial resolution: 771&#8239;m.
+        These data show downscaled projections of decadal mean of total annual
+        snowfall equivalent. Output is available for the NCAR CCSM4, GFDL CM3,
+        GISS E2-R, IPSL CM5A-LR, and MRI CGCM3 models and three emissions
+        scenarios (RCP 4.5, RCP 6.0 and RCP 8.5). Spatial resolution:
+        771&#8239;m.
       </p>
     </div>
 
@@ -15,9 +14,9 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
-        CSV download includes decadal values for both historical CRU TS 3.1
-        (1910&ndash;2009) and modeled projected (2010&ndash;2099) datasets. Data
-        are provided in metric units.
+        CSV download includes decadal mean of total annual snowfall equivalent
+        for both historical CRU TS 3.1 (1910&ndash;2009) and modeled projected
+        (2010&ndash;2099) datasets. Data are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.snowfall.preview"
