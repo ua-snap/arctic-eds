@@ -200,7 +200,7 @@ export default {
       // Converts all convertible units at the same time for shared report
       let conversions = [
         // This needs to be adapted after the summarized data are restored.
-        { type: 'temperature', substring: 'magt_', variable: 'permafrost' },
+        { type: 'temperature', substring: 'magt', variable: 'permafrost' },
         { type: 'm_in', substring: 'permafrosttop', variable: 'permafrost' },
         { type: 'mm_in', substring: '', variable: 'precipitation' },
         { type: 'mm_in', substring: '', variable: 'snowfall' },
