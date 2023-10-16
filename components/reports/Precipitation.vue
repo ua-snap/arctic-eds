@@ -3,7 +3,7 @@
     <div class="block content is-size-5">
       <p>
         These data come from two types of data sources: interpolated historical
-        observations (CRU TS), and projected downscaled climate model data from
+        observations (CRU TS 4.0), and projected downscaled climate model data from
         across five different climate models (NCAR CCSM4, GFDL CM3, GISS E2-R,
         MRI CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5, 6.0
         and 8.5). Projected data (2010&ndash;2099) can show more variability
