@@ -29,16 +29,15 @@
       <h4 class="title is-5 mb-1">Data Summary</h4>
       <div class="content is-size-5">
         The summary table below presents the minimum, mean, and maximum values
-        for two scenarios (RCP 4.5 and RCP 8.5), utilizing three distinct
-        models: the 5-model average (an average derived from the NCAR CCSM4,
-        GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR models), the NCAR CCSM4
-        model, and the GFDL CM3 model. This information is provided for the
-        specified era and can be valuable for evaluating overall trends and
-        variability.
+        for the RCP 8.5 scenario and a 5-model average (an average derived from
+        the NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR
+        models), the NCAR CCSM4 model, and the GFDL CM3 model. This information
+        is provided for the specified era and can be valuable for evaluating
+        overall trends and variability.
       </div>
     </div>
 
-    <h4 class="title is-5 mb-1">Mean Annual Temperature, 5 Model Average</h4>
+    <h4 class="title is-5 mb-1">Mean Annual Temperature, 5 Model Average, RCP 8.5</h4>
     <div class="block">
       <table class="table">
         <thead>
