@@ -35,60 +35,60 @@
             <th scope="row">Historical (1980&ndash;2009)</th>
             <td>
               {{ results.thawing_index['summary']['historical']['ddmin']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
             <td>
               {{ results.thawing_index['summary']['historical']['ddmean']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
             <td>
               {{ results.thawing_index['summary']['historical']['ddmax']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
               {{ results.thawing_index['summary']['2010-2039']['ddmin']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
             <td>
               {{ results.thawing_index['summary']['2010-2039']['ddmean']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
             <td>
               {{ results.thawing_index['summary']['2010-2039']['ddmax']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
               {{ results.thawing_index['summary']['2040-2069']['ddmin']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
             <td>
               {{ results.thawing_index['summary']['2040-2069']['ddmean']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
             <td>
               {{ results.thawing_index['summary']['2040-2069']['ddmax']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
               {{ results.thawing_index['summary']['2070-2099']['ddmin']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
             <td>
               {{ results.thawing_index['summary']['2070-2099']['ddmean']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
             <td>
               {{ results.thawing_index['summary']['2070-2099']['ddmax']
-              }}<UnitWidget />
+              }}<UnitWidget unitType="dd" />
             </td>
           </tr>
         </tbody>
