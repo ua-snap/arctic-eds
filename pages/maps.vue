@@ -1,9 +1,16 @@
 <template>
-  <section class="section">
+  <div>
+    <div class="block">
+      <h3 class="title is-3">Statewide Climate Overview Maps</h3>
+      <div class="content is-size-4">
+        <p>See an Alaska-wide view of historical and projected climate-related environmental variables.  To see all available data for a point, go to the home page and choose a community or latitude/longitude.
+        </p>
+      </div>
+    </div>
     <div class="block">
       <MapBlock mapName="precipitation">
         <template v-slot:layers>
-          <h3 class="title is-">Precipitation</h3>
+          <h3 class="title is-4">Precipitation</h3>
 
           <MapLayer mapName="precipitation" :layer="layers.precipitation[0]">
             <template v-slot:title
@@ -51,7 +58,7 @@
     <div class="block">
       <MapBlock mapName="permafrost">
         <template v-slot:layers>
-          <h3 class="title is-3">Permafrost</h3>
+          <h3 class="title is-4">Permafrost</h3>
 
           <MapLayer mapName="permafrost" :layer="layers.permafrost[0]">
             <template v-slot:title>Permafrost extent</template>
@@ -101,7 +108,7 @@
     <div class="block">
       <MapBlock mapName="temperature">
         <template v-slot:layers>
-          <h3 class="title is-3">Temperature</h3>
+          <h3 class="title is-4">Temperature</h3>
           <MapLayer mapName="temperature" :layer="layers.temperature[0]">
             <template v-slot:title
               >Mean annual temperature, historical</template
@@ -121,7 +128,7 @@
     <div class="block">
       <MapBlock mapName="temperature_indices">
         <template v-slot:layers>
-          <h3 class="title is-3">Temperature Indices</h3>
+          <h3 class="title is-4">Temperature Indices</h3>
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[0]"
@@ -173,7 +180,7 @@
         </template>
       </MapBlock>
     </div>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

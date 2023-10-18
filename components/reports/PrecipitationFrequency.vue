@@ -2,10 +2,10 @@
   <div class="pf" v-if="isPrecipitationFrequencyPresent">
     <div class="data-intro content is-size-5">
       <p>
-        Below are projected precipitation frequencies by duration and return
-        interval. Projections were derived from GFDL-CM3 and NCAR-CCSM4 model
+        Below are projected precipitation frequencies by duration and exceedence
+        probability. Projections were derived from GFDL-CM3 and NCAR-CCSM4 model
         outputs under the CMIP5 RCP 8.5 emissions scenario, summarized by three
-        future eras. Spatial resolution: 20km.
+        future eras. Spatial resolution: 20&#8239;km.
       </p>
       <ul class="module-link">
         <li>
@@ -21,9 +21,9 @@
       <p>
         Each table entry below shows the maximum expected precipitation at your
         chosen location over the duration specified for that row (60 minutes to
-        60 days), at a frequency specified for that column (per 2 year to per
-        1,000 years). A 95% confidence interval appears below this value. See
-        the report and academic paper, linked below, for more information.
+        60 days), at an exceedence probability specified for that column. A 95%
+        confidence interval appears below this value. See the report and
+        academic paper, linked below, for more information.
       </p>
     </div>
     <div class="radio-units no-print">
@@ -70,7 +70,7 @@
         <tr>
           <th class="no-border">Duration</th>
           <th class="no-border" colspan="9">
-            Annual exceedance probability (1/years)
+            Annual exceedance probability
           </th>
         </tr>
         <tr>
@@ -81,7 +81,7 @@
             ]"
             :key="intIndex"
           >
-            1 / {{ interval }}
+            {{ (1 / interval) * 100 }}%
           </th>
         </tr>
       </thead>

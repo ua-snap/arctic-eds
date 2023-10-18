@@ -22,8 +22,10 @@ body {
 }
 
 // General stuff for data summary/preview tables + report sections
-blockquote {
+.content blockquote {
   font-size: 1.15rem;
+  padding: 0.75rem 1rem !important;
+  margin: 0.5rem 0rem;
 }
 
 table {

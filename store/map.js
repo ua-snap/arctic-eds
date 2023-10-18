@@ -133,7 +133,7 @@ export default {
       if (legendControls[mapId]) {
         legendControls[mapId].remove()
       }
-      legendControls[mapId] = L.control({ position: 'bottomleft' })
+      legendControls[mapId] = L.control({ position: 'topleft' })
       legendControls[mapId].onAdd = map => {
         var div = L.DomUtil.create('div', 'info legend')
         let mapLayers = mapContent.layers[mapId]

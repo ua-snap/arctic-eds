@@ -4,18 +4,19 @@
       <div class="columns">
         <div class="logo column is-one-fifth has-text-centered">
           <img src="~/assets/images/UAF.svg" alt="UAF Logo" /><br />
-          
         </div>
         <div class="column is-four-fifths">
-          <p class="lead">Arctic Engineering Data Support System (Arctic-EDS)</p>
+          <p class="lead">
+            Arctic Environmental and Engineering Data and Design Support System (Arctic-EDS)
+          </p>
 
           <p>
             Technical professionals working in the North need up-to-date
             engineering and environmental data that&rsquo;s relevant,
             trustworthy and easy to obtain. Arctic-EDS is a system of online
-            technologies that curate and dynamically update relevant Arctic
-            environmental data in a central repository for use in web-based
-            maps, processing modules, and notebooks.
+            technologies that curates relevant Arctic environmental data in a
+            central repository for use in engineering applications and
+            computational notebooks.
           </p>
 
           <p>
@@ -37,20 +38,20 @@
             <a href="mailto:uaf-snap-data-tools@alaska.edu"
               >uaf-snap-data-tools@alaska.edu</a
             >
-            with questions or comments.<br>
+            with questions or comments.<br />
             <b-button
-            tag="a"
-            type="is-primary"
-            href="https://uaf.us10.list-manage.com/subscribe?u=e42f589030a3adcaddd9b3304&id=a7b255fdd5"
-            class="mt-5"
-          >
-            Keep me updated on Arctic-EDS developments
-          </b-button>
+              tag="a"
+              type="is-primary"
+              href="https://uaf.us10.list-manage.com/subscribe?u=e42f589030a3adcaddd9b3304&id=a7b255fdd5"
+              class="mt-5"
+            >
+              Keep me updated on Arctic-EDS developments
+            </b-button>
           </p>
 
           <p>
-            Copyright &copy; {{ year }} University of Alaska Fairbanks.  All
-            rights reserved.  UA is an affirmative action / equal opportunity
+            Copyright &copy; {{ year }} University of Alaska Fairbanks. All
+            rights reserved. UA is an affirmative action / equal opportunity
             employer, educational institution and provider, and prohibits
             illegal discrimination against any individual.
             <a href="https://www.alaska.edu/nondiscrimination/"
@@ -109,9 +110,10 @@ export default {
   ::v-deep .button {
     font-weight: bold;
     &:hover {
-    background-color: #312e30;
-    color: white;
-    font-weight: bold;
-  }}
+      background-color: #312e30;
+      color: white;
+      font-weight: bold;
+    }
+  }
 }
 </style>

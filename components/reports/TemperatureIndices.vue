@@ -3,13 +3,11 @@
     <div class="block content is-size-5">
       <p>
         The results in the sections below come from two types of data sources:
-        historical modeled data (ERA-Interim) and projected climate conditions
+        historical reanalysis (ERA-Interim) and projected climate conditions
         using two climate models (NCAR CCSM4 and GFDL CM3) and one emissions
-        scenario (RCP 8.5).
-      </p>
-      <p>
-        Both historical and projected data are downscaled from their native
-        resolutions using the WRF model. Data are at 20&#x202f;km resolution.
+        scenario (RCP 8.5). Both historical and projected data are downscaled
+        from their native resolutions using the WRF model. Spatial resolution:
+        20&#8239;km.
       </p>
     </div>
     <div class="ml-5 mb-5">
@@ -63,7 +61,10 @@
               Projections of twenty-first-century climate extremes for Alaska
               via dynamical downscaling and quantile mapping.
               <i>Journal of Applied Meteorology and Climatology, 56</i>(9),
-              2393&ndash;2409. <a href="https://doi.org/10.1175/JAMC-D-16-0415.1">https://doi.org/10.1175/JAMC-D-16-0415.1</a>
+              2393&ndash;2409.
+              <a href="https://doi.org/10.1175/JAMC-D-16-0415.1"
+                >https://doi.org/10.1175/JAMC-D-16-0415.1</a
+              >
             </blockquote>
           </li>
         </ul>
