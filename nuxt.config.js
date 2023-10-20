@@ -53,7 +53,7 @@ export default {
       process.env.GEOSERVER_URL || 'https://gs.mapventure.org/geoserver/wms',
     apiUrl: process.env.SNAP_API_URL || 'https://earthmaps.io',
     rasdamanUrl:
-      process.env.RASDAMAN_URL || 'https://zeus.snap.uaf.edu/rasdaman/ows',
+      process.env.RASDAMAN_URL || 'https://maps.earthmaps.io/rasdaman/ows',
     mockApi: process.env.MOCK_API || false,
   },
 
