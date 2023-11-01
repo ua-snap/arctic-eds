@@ -93,6 +93,11 @@ export default {
         path: '/report/:lat/:lng',
         component: resolve(__dirname, 'pages/report'),
       })
+      routes.push({
+        name: 'default',
+        path: '*',
+        redirect: '/',
+      })
     },
   },
 }
