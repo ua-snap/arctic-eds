@@ -5,7 +5,7 @@
         Below are projected precipitation frequencies by duration and exceedence
         probability. Projections were derived from GFDL-CM3 and NCAR-CCSM4 model
         outputs under the CMIP5 RCP 8.5 emissions scenario, summarized by three
-        future eras. Spatial resolution: 20&#8239;km.
+        future eras. Spatial resolution: 481&#8239;m.
       </p>
       <ul class="module-link">
         <li>
