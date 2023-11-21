@@ -69,9 +69,7 @@
       <thead>
         <tr>
           <th class="no-border">Duration</th>
-          <th class="no-border" colspan="9">
-            Annual exceedance probability
-          </th>
+          <th class="no-border" colspan="9">Annual exceedance probability</th>
         </tr>
         <tr>
           <th></th>
@@ -80,6 +78,7 @@
               2, 5, 10, 25, 50, 100, 200, 500, 1000,
             ]"
             :key="intIndex"
+            width="10%"
           >
             {{ (1 / interval) * 100 }}%
           </th>
@@ -254,10 +253,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.small-text {
-  font-size: 80%;
-}
-.no-border {
-  border: none;
+table.table {
+  table-layout: fixed;
+  .small-text {
+    font-size: 85%;
+  }
+  .no-border {
+    border: none;
+  }
 }
 </style>
