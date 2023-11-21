@@ -69,9 +69,7 @@
       <thead>
         <tr>
           <th class="no-border">Duration</th>
-          <th class="no-border" colspan="9">
-            Annual exceedance probability
-          </th>
+          <th class="no-border" colspan="9">Annual exceedance probability</th>
         </tr>
         <tr>
           <th></th>
@@ -114,17 +112,17 @@
             :key="intIndex"
           >
             {{
-              results.precip_frequency[
+              pf[
                 `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_mean`
               ]
             }}<UnitWidget unitType="mm_in" /><br />
             <span class="small-text">
               {{
-                results.precip_frequency[
+                pf[
                   `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_min`
                 ]
               }}&mdash;{{
-                results.precip_frequency[
+                pf[
                   `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_max`
                 ]
               }}
@@ -196,6 +194,30 @@ export default {
     }
   },
   computed: {
+    pf: function () {
+      let res = {}
+      for (const return_interval in this.results.precip_frequency) {
+        const durations = this.results.precip_frequency[return_interval]
+        for (const duration in durations) {
+          const models = durations[duration]
+          for (const model in models) {
+            const eras = models[model]
+            for (const era in eras) {
+              const precips = eras[era]
+              res[`pr_${return_interval}_${duration}_${model}_${era}_min`] =
+                precips.pf_lower
+
+              res[`pr_${return_interval}_${duration}_${model}_${era}_mean`] =
+                precips.pf
+
+              res[`pr_${return_interval}_${duration}_${model}_${era}_max`] =
+                precips.pf_upper
+            }
+          }
+        }
+      }
+      return res
+    },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
@@ -203,52 +225,6 @@ export default {
       units: 'report/units',
       isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',
     }),
-    getUnits() {
-      return this.units === 'imperial' ? 'inches' : 'mm'
-    },
-  },
-  watch: {
-    isPlaceDefined: function () {
-      this.$fetch()
-    },
-  },
-  fetch() {
-    let plateResults = {}
-    for (const return_interval in this.results.precip_frequency) {
-      // If the results have already been converted, such as when
-      // clicking on an anchor link in the TOC, do not try to convert
-      // the results again.
-      if (return_interval.includes('pr')) {
-        plateResults = this.results.precip_frequency
-        break
-      }
-      const durations = this.results.precip_frequency[return_interval]
-      for (const duration in durations) {
-        const models = durations[duration]
-        for (const model in models) {
-          const eras = models[model]
-          for (const era in eras) {
-            const precips = eras[era]
-            plateResults[
-              `pr_${return_interval}_${duration}_${model}_${era}_min`
-            ] = precips.pf_lower
-
-            plateResults[
-              `pr_${return_interval}_${duration}_${model}_${era}_mean`
-            ] = precips.pf
-
-            plateResults[
-              `pr_${return_interval}_${duration}_${model}_${era}_max`
-            ] = precips.pf_upper
-          }
-        }
-      }
-    }
-
-    this.$store.commit('report/setPlateResults', {
-      plateResults: plateResults,
-      variable: 'precip_frequency',
-    })
   },
 }
 </script>

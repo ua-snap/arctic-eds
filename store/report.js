@@ -218,9 +218,6 @@ export default {
         )
       })
     },
-    setPlateResults(state, payload) {
-      state.results[payload.variable] = payload.plateResults
-    },
     setResults(state, results) {
       state.results = results
     },
