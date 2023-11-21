@@ -30,13 +30,13 @@
       <div>
         <b-field label="Era">
           <b-radio v-model="radioEra" name="radioEra" native-value="2020-2049">
-            2020-2049
+            2020&ndash;2049
           </b-radio>
           <b-radio v-model="radioEra" name="radioEra" native-value="2050-2079">
-            2050-2079
+            2050&ndash;2079
           </b-radio>
           <b-radio v-model="radioEra" name="radioEra" native-value="2080-2099">
-            2080-2099
+            2080&ndash;2099
           </b-radio>
         </b-field>
       </div>
@@ -49,14 +49,14 @@
             name="radioPrecipFreqModel"
             native-value="NCAR-CCSM4"
           >
-            NCAR-CCSM4
+            NCAR CCSM4
           </b-radio>
           <b-radio
             v-model="radioPrecipFreqModel"
             name="radioPrecipFreqModel"
             native-value="GFDL-CM3"
           >
-            GFDL-CM3
+            GFDL CM3
           </b-radio>
         </b-field>
       </div>
