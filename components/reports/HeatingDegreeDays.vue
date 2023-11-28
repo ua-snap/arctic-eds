@@ -19,7 +19,7 @@
         </thead>
         <tbody>
           <tr class="historical">
-            <th scope="row">Historical (1980&ndash;2009)</th>
+            <th scope="row">Historical Modeled (1980&ndash;2009)</th>
             <td>
               {{ results.heating_degree_days['summary']['historical']['ddmin']
               }}<UnitWidget unitType="dd" />

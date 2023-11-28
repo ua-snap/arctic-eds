@@ -24,11 +24,25 @@
               engineering context.
             </p>
             <p>
+              <strong>Data have various spatial resolutions.</strong> Grid cell
+              size may vary by a factor of up to 400x. Please keep this in mind
+              when interpreting a variable for a given location.
+            </p>
+            <p>
               <strong
-                >Data are presented at various spatial resolutions.</strong
+                >Both historical and future data presented here are gridded
+                modeled data.</strong
               >
-              Please keep this in mind when interpreting a variable for a given
-              location.
+              Model pixels average data over large grid squares that may include
+              significant variability in elevation, slope, aspect, and proximity
+              to shorelines. In a few locations, data anomalies may also be
+              caused by glaciers and other landscape features. As a result,
+              historical modeled data may not align precisely with weather
+              station data, and projections may inherit this misalignment or
+              &ldquo;bias.&rdquo; Statistical processes for aligning modeled and
+              observed data can be used to &ldquo;bias correct&rdquo; in
+              situations where an alignment between these two different types of
+              data is desired.
             </p>
           </div>
           <h3 class="subtitle is-3 pt-4">Report contents</h3>
@@ -180,9 +194,7 @@
           </div>
 
           <div v-if="isSnowfallPresent">
-            <h3 id="snowfall" class="title is-3 mt-6">
-              Snowfall
-            </h3>
+            <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>
             <SnowfallReport />
           </div>
 

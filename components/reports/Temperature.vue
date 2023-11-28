@@ -50,7 +50,7 @@
         </thead>
         <tbody>
           <tr class="historical">
-            <th scope="row">Historical (1901&ndash;2015)</th>
+            <th scope="row">Historical Modeled (1901&ndash;2015)</th>
             <td>
               {{
                 results.temperature.summary.historical['CRU-TS'].historical
@@ -220,7 +220,7 @@
         </thead>
         <tbody>
           <tr class="historical">
-            <th scope="row">Historical <br />(1901&ndash;2015)</th>
+            <th scope="row">Historical Modeled<br />(1901&ndash;2015)</th>
             <td
               v-for="(month, index) in [
                 'January',
@@ -480,6 +480,10 @@ table.months {
     &.eraCol {
       width: 10%;
     }
+  }
+  th[scope="row"] {
+    line-height: 1.2;
+    font-size: 1em;
   }
 }
 </style>
