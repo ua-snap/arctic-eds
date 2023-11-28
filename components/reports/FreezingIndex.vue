@@ -7,10 +7,10 @@
           <li>
             &nbsp;
             <a
-              href="https://ua-snap.github.io/ardac-notebooks/lab?path=design_thawing_index%2Fdesign_thawing_index_module.ipynb"
+              href="https://ua-snap.github.io/ardac-notebooks/lab/?path=design_freezing_index%2Fdesign_freezing_index_module.ipynb"
               target="_blank"
             >
-              <strong>design thawing index</strong></a
+              <strong>design freezing index</strong></a
             >
           </li>
           <li>
