@@ -254,6 +254,7 @@ export default {
 
 <style lang="scss" scoped>
 table.table {
+  width: 100%;
   table-layout: fixed;
   .small-text {
     font-size: 85%;
