@@ -159,7 +159,7 @@ export default {
     },
     toggleLayer(state, layerObj) {
       // Remove existing layer: right now, we only
-      // want one layer to be visible on any plate in the Atlas.
+      // want one layer to be visible on any map in the Atlas.
       // Need to test explicitly for the existence of the
       // layerObject because this code can get run while
       // the full DOM is hydrating, see MapLayer / mounted().

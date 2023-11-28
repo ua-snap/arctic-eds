@@ -30,13 +30,13 @@
       <div>
         <b-field label="Era">
           <b-radio v-model="radioEra" name="radioEra" native-value="2020-2049">
-            2020-2049
+            2020&ndash;2049
           </b-radio>
           <b-radio v-model="radioEra" name="radioEra" native-value="2050-2079">
-            2050-2079
+            2050&ndash;2079
           </b-radio>
           <b-radio v-model="radioEra" name="radioEra" native-value="2080-2099">
-            2080-2099
+            2080&ndash;2099
           </b-radio>
         </b-field>
       </div>
@@ -49,14 +49,14 @@
             name="radioPrecipFreqModel"
             native-value="NCAR-CCSM4"
           >
-            NCAR-CCSM4
+            NCAR CCSM4
           </b-radio>
           <b-radio
             v-model="radioPrecipFreqModel"
             name="radioPrecipFreqModel"
             native-value="GFDL-CM3"
           >
-            GFDL-CM3
+            GFDL CM3
           </b-radio>
         </b-field>
       </div>
@@ -113,17 +113,17 @@
             :key="intIndex"
           >
             {{
-              results.precip_frequency[
+              pf[
                 `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_mean`
               ]
             }}<UnitWidget unitType="mm_in" /><br />
             <span class="small-text">
               {{
-                results.precip_frequency[
+                pf[
                   `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_min`
                 ]
               }}&mdash;{{
-                results.precip_frequency[
+                pf[
                   `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_max`
                 ]
               }}
@@ -195,6 +195,30 @@ export default {
     }
   },
   computed: {
+    pf: function () {
+      let res = {}
+      for (const return_interval in this.results.precip_frequency) {
+        const durations = this.results.precip_frequency[return_interval]
+        for (const duration in durations) {
+          const models = durations[duration]
+          for (const model in models) {
+            const eras = models[model]
+            for (const era in eras) {
+              const precips = eras[era]
+              res[`pr_${return_interval}_${duration}_${model}_${era}_min`] =
+                precips.pf_lower
+
+              res[`pr_${return_interval}_${duration}_${model}_${era}_mean`] =
+                precips.pf
+
+              res[`pr_${return_interval}_${duration}_${model}_${era}_max`] =
+                precips.pf_upper
+            }
+          }
+        }
+      }
+      return res
+    },
     ...mapGetters({
       results: 'report/results',
       placeName: 'report/placeName',
@@ -202,52 +226,6 @@ export default {
       units: 'report/units',
       isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',
     }),
-    getUnits() {
-      return this.units === 'imperial' ? 'inches' : 'mm'
-    },
-  },
-  watch: {
-    isPlaceDefined: function () {
-      this.$fetch()
-    },
-  },
-  fetch() {
-    let plateResults = {}
-    for (const return_interval in this.results.precip_frequency) {
-      // If the results have already been converted, such as when
-      // clicking on an anchor link in the TOC, do not try to convert
-      // the results again.
-      if (return_interval.includes('pr')) {
-        plateResults = this.results.precip_frequency
-        break
-      }
-      const durations = this.results.precip_frequency[return_interval]
-      for (const duration in durations) {
-        const models = durations[duration]
-        for (const model in models) {
-          const eras = models[model]
-          for (const era in eras) {
-            const precips = eras[era]
-            plateResults[
-              `pr_${return_interval}_${duration}_${model}_${era}_min`
-            ] = precips.pf_lower
-
-            plateResults[
-              `pr_${return_interval}_${duration}_${model}_${era}_mean`
-            ] = precips.pf
-
-            plateResults[
-              `pr_${return_interval}_${duration}_${model}_${era}_max`
-            ] = precips.pf_upper
-          }
-        }
-      }
-    }
-
-    this.$store.commit('report/setPlateResults', {
-      plateResults: plateResults,
-      variable: 'precip_frequency',
-    })
   },
 }
 </script>
