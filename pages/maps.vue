@@ -3,7 +3,15 @@
     <div class="block">
       <h3 class="title is-3">Statewide Climate Overview Maps</h3>
       <div class="content is-size-4">
-        <p>See an Alaska-wide view of historical and projected climate-related environmental variables.  To see all available data for a point, go to the home page and choose a community or latitude/longitude.
+        <p>
+          See an Alaska-wide view of historical and projected climate-related
+          environmental variables. To see all available data for a point, go to
+          the home page and choose a community or latitude/longitude.
+        </p>
+        <p>
+          <span class="down">⇩</span> <strong>Scroll down</strong> to see maps
+          of precipitation, permafrost, temperature, and temperature indices
+          such as freezing degree days.
         </p>
       </div>
     </div>
