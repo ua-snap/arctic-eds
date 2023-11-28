@@ -35,7 +35,7 @@
         </thead>
         <tbody>
           <tr class="historical">
-            <th scope="row">Historical (1901&ndash;2015)</th>
+            <th scope="row">Historical Modeled (1901&ndash;2015)</th>
             <td>
               {{ results.precipitation['summary']['historical']['prmin']
               }}<UnitWidget unitType="mm_in" />
