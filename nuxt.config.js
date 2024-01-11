@@ -38,7 +38,7 @@ export default {
         async: true,
         defer: true,
         'data-website-id': '1f4a98e7-d5cb-4295-82fc-5a4d41328038',
-        src: process.env.UMAMI_URL || 'https://umami.snap.uaf.edu/script.js',
+        src: 'https://umami.snap.uaf.edu/script.js',
         'data-domains': 'arcticeds.org',
         'data-do-not-track': true,
       },
