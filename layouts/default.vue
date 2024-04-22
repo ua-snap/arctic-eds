@@ -16,14 +16,14 @@
 .lead {
   text-transform: uppercase;
   text-align: center;
-  border-bottom: 12px solid #f2c716;
-  padding-top: 6px;
-  padding-bottom: 0;
+  border-bottom: 12px solid #8ba09a;
+  padding-top: 12px;
+  padding-bottom: 6px;
   margin-bottom: 0;
   line-height: 1;
   .logo {
     font-family: 'Acknowledgement', sans-serif;
-    font-size: 32px;
+    font-size: 38px;
   }
   .name {
     display: block;

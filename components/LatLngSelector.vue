@@ -22,7 +22,7 @@
 <style lang="scss" scoped>
 ::v-deep input.input {
   box-shadow: none;
-  border: 3px solid #f2c716;
+  border: 3px solid #8ba09a;
   border-radius: 0;
   max-width: 30rem;
 }

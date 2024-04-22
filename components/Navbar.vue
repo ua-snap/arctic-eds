@@ -7,6 +7,9 @@
       <li>
         <NuxtLink to="/about"> About </NuxtLink>
       </li>
+       <li>
+        <NuxtLink to="/guidance"> Guidance </NuxtLink>
+      </li>
       <li>
         <NuxtLink to="/maps"> Climate Maps </NuxtLink>
       </li>
@@ -19,6 +22,7 @@
 
 <style lang="scss" scoped>
 nav {
+  margin-top: 4px;
   font-family: "Barlow", sans-serif;
   font-weight: 900;
   font-size: 1.35rem;

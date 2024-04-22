@@ -25,7 +25,7 @@
 
   &.active {
     font-weight: 600;
-    background-color: #f2c716;
+    background-color: #8ba09a;
   }
 
   .if-active {

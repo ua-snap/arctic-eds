@@ -7,16 +7,14 @@
         </div>
         <div class="column is-four-fifths">
           <p class="lead">
-            Arctic Environmental and Engineering Data and Design Support System (Arctic-EDS)
+            Arctic Environmental and Engineering Data and Design Support System
+            (Arctic-EDS)
           </p>
 
           <p>
-            Technical professionals working in the North need up-to-date
-            engineering and environmental data that&rsquo;s relevant,
-            trustworthy and easy to obtain. Arctic-EDS is a system of online
-            technologies that curates relevant Arctic environmental data in a
-            central repository for use in engineering applications and
-            computational notebooks.
+            Arctic-EDS is a system of online technologies that curates relevant
+            Arctic climate and environmental data in a central repository for
+            use in engineering applications and computational notebooks.
           </p>
 
           <p>
