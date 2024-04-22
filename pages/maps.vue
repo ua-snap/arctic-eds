@@ -3,16 +3,12 @@
     <div class="block">
       <h3 class="title is-3">Statewide Climate Overview Maps</h3>
       <div class="content is-size-4">
-        <p>
-          See an Alaska-wide view of historical and projected climate-related
-          environmental variables. To see all available data for a point, go to
-          the home page and choose a community or latitude/longitude.
-        </p>
-        <p>
-          <span class="down">⇩</span> <strong>Scroll down</strong> to see maps
-          of precipitation, permafrost, temperature, and temperature indices
-          such as freezing degree days.
-        </p>
+       
+          <ul>
+            <li>Use these maps to see Alaska-wide <strong>overview</strong> of some climate-related environmental variables.  These maps aren&rsquo;t interactive.</li>
+            <li>To see all available data for a point, <strong>select a community or point at the bottom of the page</strong>.</li>
+            <li><span class="down">⇩</span> <strong>Scroll down</strong> to see maps of precipitation, permafrost, temperature, and temperature indices such as freezing degree days.</li>
+          </ul>
       </div>
     </div>
     <div class="block">
@@ -22,7 +18,7 @@
 
           <MapLayer mapName="precipitation" :layer="layers.precipitation[0]">
             <template v-slot:title
-              >Total annual precipitation, historical</template
+              >Total annual precipitation, modeled baseline</template
             >
             <template v-slot:subtext>1980&ndash;2009, CRU TS 4.0</template>
           </MapLayer>
@@ -37,7 +33,9 @@
           </MapLayer>
 
           <MapLayer mapName="precipitation" :layer="layers.precipitation[2]">
-            <template v-slot:title>Total annual snowfall, historical</template>
+            <template v-slot:title
+              >Total annual snowfall, modeled baseline</template
+            >
             <template v-slot:subtext>1910&ndash;1919, CRU TS 3.1</template>
           </MapLayer>
 
@@ -49,7 +47,9 @@
           </MapLayer>
 
           <MapLayer mapName="precipitation" :layer="layers.precipitation[4]">
-            <template v-slot:title>Wet days per year, historical</template>
+            <template v-slot:title
+              >Wet days per year, modeled baseline</template
+            >
             <template v-slot:subtext>1980&ndash;2009, ERA-Interim</template>
           </MapLayer>
 
@@ -119,7 +119,7 @@
           <h3 class="title is-4">Temperature</h3>
           <MapLayer mapName="temperature" :layer="layers.temperature[0]">
             <template v-slot:title
-              >Mean annual temperature, historical</template
+              >Mean annual temperature, modeled baseline</template
             >
             <template v-slot:subtext>1980&ndash;2009, CRU TS</template>
           </MapLayer>
@@ -140,7 +140,9 @@
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[0]"
-            ><template v-slot:title>Heating degree days, historical</template>
+            ><template v-slot:title
+              >Heating degree days, modeled baseline</template
+            >
             <template v-slot:subtext
               >1980&ndash;2009, ERA-Interim</template
             ></MapLayer
@@ -156,7 +158,7 @@
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[2]"
-            ><template v-slot:title>Freezing index, historical</template>
+            ><template v-slot:title>Freezing index, modeled baseline</template>
             <template v-slot:subtext
               >1980&ndash;2009, ERA-Interim</template
             ></MapLayer
@@ -172,7 +174,7 @@
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[4]"
-            ><template v-slot:title>Thawing index, historical</template>
+            ><template v-slot:title>Thawing index, modeled baseline</template>
             <template v-slot:subtext
               >1980&ndash;2009, ERA-Interim</template
             ></MapLayer
@@ -188,6 +190,14 @@
         </template>
       </MapBlock>
     </div>
+    <section class="section">
+    <div class="container">
+      <div class="content is-size-4">
+        <p>Pick a place to see all data for that point.</p>
+        <SearchControls />
+      </div>
+    </div>
+  </section>
   </div>
 </template>
 

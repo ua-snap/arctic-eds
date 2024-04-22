@@ -53,15 +53,18 @@ function getBaseMapAndLayers() {
 
   // Map base configuration
   var config = {
-    zoom: 1,
-    minZoom: 1,
-    maxZoom: 6,
-    center: [64.7, -155],
+    dragging: false, // static
+    boxZoom: false,
     scrollWheelZoom: false,
-    crs: proj,
-    continuousWorld: true,
     zoomControl: false,
     doubleClickZoom: false,
+    keyboard: false,
+    touchZoom: false,
+
+    center: [64.7, -155],
+    zoom: 1,
+    crs: proj,
+    continuousWorld: true,
     attributionControl: false,
     layers: [baseLayer],
     maxBounds: bounds,
@@ -89,7 +92,6 @@ export default {
       maps[mapName].on('drag', function () {
         map.mapName.panInsideBounds(mapConfig.maxBounds, { animate: false })
       })
-      new L.Control.Zoom({ position: 'topright' }).addTo(maps[mapName])
     },
     destroy(state, mapName) {
       if (maps[mapName]) {
