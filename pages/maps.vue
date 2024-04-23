@@ -3,12 +3,24 @@
     <div class="block">
       <h3 class="title is-3">Statewide Climate Overview Maps</h3>
       <div class="content is-size-4">
-       
-          <ul>
-            <li>Use these maps to see Alaska-wide <strong>overview</strong> of some climate-related environmental variables.  These maps aren&rsquo;t interactive.</li>
-            <li>To see all available data for a point, <strong>select a community or point at the bottom of the page</strong>.</li>
-            <li><span class="down">⇩</span> <strong>Scroll down</strong> to see maps of precipitation, permafrost, temperature, and temperature indices such as freezing degree days.</li>
-          </ul>
+        <ul>
+          <li>
+            Use these maps to see Alaska-wide <strong>overview</strong> of some
+            climate-related environmental variables. These maps aren&rsquo;t
+            interactive.
+          </li>
+          <li>
+            To see all available data for a point,
+            <strong
+              >select a community or point at the bottom of the page</strong
+            >.
+          </li>
+          <li>
+            <span class="down">⇩</span> <strong>Scroll down</strong> to see maps
+            of precipitation, permafrost, temperature, and temperature indices
+            such as freezing degree days.
+          </li>
+        </ul>
       </div>
     </div>
     <div class="block">
@@ -190,14 +202,6 @@
         </template>
       </MapBlock>
     </div>
-    <section class="section">
-    <div class="container">
-      <div class="content is-size-4">
-        <p>Pick a place to see all data for that point.</p>
-        <SearchControls />
-      </div>
-    </div>
-  </section>
   </div>
 </template>
 
