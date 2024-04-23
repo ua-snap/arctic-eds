@@ -50,7 +50,7 @@
             <template v-slot:title
               >Wet days per year, modeled baseline</template
             >
-            <template v-slot:subtext>1980&ndash;2009, ERA-Interim</template>
+            <template v-slot:subtext>1980&ndash;2017, Daymet</template>
           </MapLayer>
 
           <MapLayer mapName="precipitation" :layer="layers.precipitation[5]">
@@ -144,7 +144,7 @@
               >Heating degree days, modeled baseline</template
             >
             <template v-slot:subtext
-              >1980&ndash;2009, ERA-Interim</template
+              >1980&ndash;2017, Daymet</template
             ></MapLayer
           >
           <MapLayer
@@ -160,7 +160,7 @@
             v-bind:layer="layers.temperature_indices[2]"
             ><template v-slot:title>Freezing index, modeled baseline</template>
             <template v-slot:subtext
-              >1980&ndash;2009, ERA-Interim</template
+              >1980&ndash;2017, Daymet</template
             ></MapLayer
           >
           <MapLayer
@@ -176,7 +176,7 @@
             v-bind:layer="layers.temperature_indices[4]"
             ><template v-slot:title>Thawing index, modeled baseline</template>
             <template v-slot:subtext
-              >1980&ndash;2009, ERA-Interim</template
+              >1980&ndash;2017, Daymet</template
             ></MapLayer
           >
           <MapLayer
