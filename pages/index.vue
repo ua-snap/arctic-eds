@@ -3,7 +3,7 @@
     <div class="main">
       <div class="container">
         <div class="content is-size-4">
-          <p>
+          <p class="intro">
             Improving infrastructure resilience requires considering future
             climate conditions that may differ from the past. Historical
             observations are insufficient&mdash;the Arctic is warming four times
@@ -21,9 +21,11 @@
             uncertainties, and addressing variable spatial and temporal scales.
           </p>
           <p>
-            The Arctic Environmental and Engineering Data and Design Support
-            System (Arctic-EDS) streamlines the process of using downscaled
-            climate models for engineering. The Arctic-EDS simplifies and
+            <strong>
+               The Arctic Environmental and Engineering Data and Design Support
+               System (Arctic-EDS) streamlines the process of using downscaled
+               climate models for engineering.
+             </strong> The Arctic-EDS simplifies and
             centralizes the process of finding, selecting, extracting, and
             formatting downscaled climate model output: it pre-selects relevant
             models, simplifies data extraction, and provides reports with future
@@ -38,6 +40,7 @@
           </p>
           <ul>
             <li>Natural climate variability</li>
+            <li>Limited historical climate station data from which to interpolate gridded baseline datasets and validate modeled gridded data</li>
             <li>Model assumptions and parameterizations</li>
             <li>
               Uncertainty regarding future societal and economic behaviors
@@ -64,18 +67,25 @@
             <strong><NuxtLink to="/guidance">Guidance</NuxtLink></strong> page
             for more information.
           </p>
+        </div><div class="content is-size-4">
           <p>
             To get started, enter your Alaska community or location of interest
             in the search boxes below.
           </p>
         </div>
+        </div>
 
-        <SearchControls />
+        <div class="controls pt-5 pb-6">
+          <SearchControls />
+        </div>
       </div>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
+.intro {
+  font-weight: 500;
+}
 .main {
   padding-bottom: 6rem;
 }
@@ -83,7 +93,15 @@
   max-width: 50rem;
   margin: 3rem auto;
   font-weight: 400;
-};
+}
+.controls {
+  border-top: 0.5px solid darken(#FAF9F7, 50%);
+  background-color: #FAF9F7;
+  z-index: 100;
+  position: sticky;
+  bottom: 0;
+}
+
 </style>
 <script>
 import SearchControls from '~/components/SearchControls'
