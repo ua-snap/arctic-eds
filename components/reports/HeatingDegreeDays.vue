@@ -182,9 +182,11 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
+import { numeric } from '~/mixins/numeric.js'
 
 export default {
   name: 'HeatingDegreeDaysReport',
+  mixins: [numeric],
   components: {
     DownloadCsvButton,
     UnitWidget,
@@ -198,13 +200,7 @@ export default {
       results: 'report/results',
       placeName: 'report/placeName',
     }),
-  },
-  methods: {
-    // Rounds to 2 significant digits
-    round: function (value) {
-      return Number(value.toPrecision(3))
-    },
-  },
+  }
 }
 </script>
 

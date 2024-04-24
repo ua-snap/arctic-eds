@@ -27,7 +27,7 @@
       <h4 class="title is-5 mb-1">Summary</h4>
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values
-        across one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3).
+        across one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3).  FIX FIX FIX
       </div>
     </div>
     <div class="block">
@@ -41,64 +41,121 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="historical">
-            <th scope="row">Historical Modeled (1980&ndash;2009)</th>
-            <td>
-              {{ results.freezing_index['summary']['historical']['ddmin']
-              }}<UnitWidget unitType="dd" />
-            </td>
-            <td>
-              {{ results.freezing_index['summary']['historical']['ddmean']
-              }}<UnitWidget unitType="dd" />
-            </td>
-            <td>
-              {{ results.freezing_index['summary']['historical']['ddmax']
-              }}<UnitWidget unitType="dd" />
-            </td>
-          </tr>
           <tr>
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
-              {{ results.freezing_index['summary']['2010-2039']['ddmin']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2010-2039']['ddmin'])
+              }}<UnitWidget unitType="dd" /><br><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmin']
+                "
+                :future="
+                  results.freezing_index['summary']['2010-2039']['ddmin']
+                "
+              />
             </td>
             <td>
-              {{ results.freezing_index['summary']['2010-2039']['ddmean']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2010-2039']['ddmean'])
+              }}<UnitWidget unitType="dd" /><br><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmean']
+                "
+                :future="
+                  results.freezing_index['summary']['2010-2039']['ddmean']
+                "
+              />
             </td>
             <td>
-              {{ results.freezing_index['summary']['2010-2039']['ddmax']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2010-2039']['ddmax'])
+              }}<UnitWidget unitType="dd" /><br><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmax']
+                "
+                :future="
+                  results.freezing_index['summary']['2010-2039']['ddmax']
+                "
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
-              {{ results.freezing_index['summary']['2040-2069']['ddmin']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2040-2069']['ddmin'])
+              }}<UnitWidget unitType="dd" /><br><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmin']
+                "
+                :future="
+                  results.freezing_index['summary']['2040-2069']['ddmin']
+                "
+              />
             </td>
             <td>
-              {{ results.freezing_index['summary']['2040-2069']['ddmean']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2040-2069']['ddmean'])
+              }}<UnitWidget unitType="dd" /><br><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmean']
+                "
+                :future="
+                  results.freezing_index['summary']['2040-2069']['ddmean']
+                "
+              />
             </td>
             <td>
-              {{ results.freezing_index['summary']['2040-2069']['ddmax']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2040-2069']['ddmax'])
+              }}<UnitWidget unitType="dd" /><br><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmax']
+                "
+                :future="
+                  results.freezing_index['summary']['2040-2069']['ddmax']
+                "
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
-              {{ results.freezing_index['summary']['2070-2099']['ddmin']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2070-2099']['ddmin'])
+              }}<UnitWidget unitType="dd" /><br><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmin']
+                "
+                :future="
+                  results.freezing_index['summary']['2070-2099']['ddmin']
+                "
+              />
             </td>
             <td>
-              {{ results.freezing_index['summary']['2070-2099']['ddmean']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2070-2099']['ddmean'])
+              }}<UnitWidget unitType="dd" /><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmean']
+                "
+                :future="
+                  results.freezing_index['summary']['2070-2099']['ddmean']
+                "
+              />
             </td>
             <td>
-              {{ results.freezing_index['summary']['2070-2099']['ddmax']
-              }}<UnitWidget unitType="dd" />
+              {{ round(results.freezing_index['summary']['2070-2099']['ddmax'])
+              }}<UnitWidget unitType="dd" /><Diff
+                kind="pct"
+                :past="
+                  results.freezing_index['summary']['historical']['ddmax']
+                "
+                :future="
+                  results.freezing_index['summary']['2070-2099']['ddmax']
+                "
+              />
             </td>
           </tr>
         </tbody>
@@ -135,9 +192,11 @@
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
+import { numeric } from '~/mixins/numeric.js'
 
 export default {
   name: 'FreezingIndexReport',
+  mixins: [numeric],
   components: {
     DownloadCsvButton,
 
