@@ -23,6 +23,10 @@ export default {
       type: String,
       required: true,
     },
+    precision: {
+      type: Number,
+      required: false,
+    },
   },
   computed: {
     rawDiff() {
@@ -31,11 +35,21 @@ export default {
     diff() {
       let diff
       if (this.kind == 'abs') {
-        diff = this.future - this.past
-        if(diff > 0) {
+        let precision
+        if (typeof this.precision === undefined) {
+          precision = 2
+        } else {
+          precision = this.precision
+        }
+        // Special case where we override precision = 1
+        // because the delta is for mm/precip > 100
+        if (this.future - this.past > 100 && precision == 1) {
+          precision = 2
+        }
+        diff = Number(Number(this.future - this.past).toPrecision(precision))
+        if (diff > 0) {
           diff = '&plus;' + diff
         }
-        console.log(diff)
       } else {
         diff = (((this.future - this.past) / this.past) * 100).toFixed(0)
         if (diff > 0) {

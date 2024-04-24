@@ -3,10 +3,10 @@
     <div class="block content is-size-5">
       <p>
         These data come from two types of data sources: interpolated historical
-        observations (CRU TS 4.0), and projected downscaled climate model data from
-        across five different climate models (NCAR CCSM4, GFDL CM3, GISS E2-R,
-        MRI CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5, 6.0
-        and 8.5). Projected data (2010&ndash;2099) can show more variability
+        observations (CRU TS 4.0), and projected downscaled climate model data
+        from across five different climate models (NCAR CCSM4, GFDL CM3, GISS
+        E2-R, MRI CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5,
+        6.0 and 8.5). Projected data (2010&ndash;2099) can show more variability
         than the historical data in the tables below because it is showing the
         extreme values across all models and scenarios. Data have been
         summarized to annual totals, from monthly temporal resolution. Spatial
@@ -19,7 +19,9 @@
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values
         across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
-        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR), rounded to two significant digits.  The difference compared to the modeled baseline (1901-2015) is shown below.
+        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR), rounded
+        to two significant digits. The difference compared to the modeled
+        baseline (1901-2015) is shown below.
       </div>
     </div>
 
@@ -37,54 +39,105 @@
           <tr>
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
-              {{ results.precipitation['summary']['2010-2039']['prmin']
-              }}<UnitWidget unitType="mm_in" /><br><Diff
+              {{
+                round(
+                  results.precipitation['summary']['2010-2039']['prmin'],
+                  precision
+                )
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
                 kind="abs"
-                :past="
-                  results.precipitation['summary']['historical']['prmin']
-                "
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmin']"
+                :future="results.precipitation['summary']['2010-2039']['prmin']"
+              />
+            </td>
+            <td>
+              {{
+                round(
+                  results.precipitation['summary']['2010-2039']['prmean'],
+                  precision
+                )
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmean']"
                 :future="
-                  results.precipitation['summary']['2010-2039']['prmin']
+                  results.precipitation['summary']['2010-2039']['prmean']
                 "
               />
             </td>
             <td>
-              {{ results.precipitation['summary']['2010-2039']['prmean']
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.precipitation['summary']['2010-2039']['prmax']
-              }}<UnitWidget unitType="mm_in" />
+              {{
+                round(
+                  results.precipitation['summary']['2010-2039']['prmax'],
+                  precision
+                )
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmax']"
+                :future="results.precipitation['summary']['2010-2039']['prmax']"
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
-              {{ results.precipitation['summary']['2040-2069']['prmin']
-              }}<UnitWidget unitType="mm_in" />
+              {{ round(results.precipitation['summary']['2040-2069']['prmin'], precision)
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmin']"
+                :future="results.precipitation['summary']['2040-2069']['prmin']"
+              />
             </td>
             <td>
-              {{ results.precipitation['summary']['2040-2069']['prmean']
-              }}<UnitWidget unitType="mm_in" />
+              {{ round(results.precipitation['summary']['2040-2069']['prmean'], precision)
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmean']"
+                :future="results.precipitation['summary']['2040-2069']['prmean']"
+              />
             </td>
             <td>
-              {{ results.precipitation['summary']['2040-2069']['prmax']
-              }}<UnitWidget unitType="mm_in" />
+              {{ round(results.precipitation['summary']['2040-2069']['prmax'], precision)
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmax']"
+                :future="results.precipitation['summary']['2040-2069']['prmax']"
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
-              {{ results.precipitation.summary['2070-2099'].prmin
-              }}<UnitWidget unitType="mm_in" />
+              {{ round(results.precipitation.summary['2070-2099'].prmin, precision)
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmin']"
+                :future="results.precipitation['summary']['2070-2099']['prmin']"
+              />
             </td>
             <td>
-              {{ results.precipitation.summary['2070-2099'].prmean
-              }}<UnitWidget unitType="mm_in" />
+              {{ round(results.precipitation.summary['2070-2099'].prmean, precision)
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmean']"
+                :future="results.precipitation['summary']['2070-2099']['prmean']"
+              />
             </td>
             <td>
-              {{ results.precipitation.summary['2070-2099'].prmax
-              }}<UnitWidget unitType="mm_in" />
+              {{ round(results.precipitation.summary['2070-2099'].prmax, precision)
+              }}<UnitWidget unitType="mm_in" /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.precipitation['summary']['historical']['prmax']"
+                :future="results.precipitation['summary']['2070-2099']['prmax']"
+              />
             </td>
           </tr>
         </tbody>
@@ -156,16 +209,31 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
+import { numeric } from '~/mixins/numeric.js'
 
 export default {
   name: 'PrecipitationReport',
+  mixins: [numeric],
   components: {
     DownloadCsvButton,
     UnitWidget,
     PreviewTable,
   },
   computed: {
+    precision() {
+      if (this.units == 'metric') {
+        return 2
+      }
+      return 3
+    },
+    deltaPrecision() {
+      if (this.units == 'metric') {
+        return 1
+      }
+      return 2
+    },
     ...mapGetters({
+      units: 'report/units',
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
