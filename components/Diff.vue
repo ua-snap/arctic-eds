@@ -1,20 +1,10 @@
 <template>
-  <span
-    class="diff"
-    :class="{ warmer: rawDiff > 0, zero: rawDiff == 0, cooler: rawDiff < 0 }"
-    v-html="diff"
-  ></span>
+  <span class="diff" v-html="diff"></span>
 </template>
 <style lang="scss" scoped>
 .diff {
   display: block;
-
-  &.warmer {
-    color: #ad1f00;
-  }
-  &.cooler {
-    color: blue;
-  }
+  font-weight: 500;
 }
 </style>
 <script>
@@ -28,25 +18,32 @@ export default {
     past: {
       type: Number,
       required: true,
-    }
+    },
+    kind: {
+      type: String,
+      required: true,
+    },
   },
   computed: {
     rawDiff() {
       return this.future - this.past
     },
     diff() {
-      // let diff
-      
-
-        let diff = (((this.future - this.past) / this.past) * 100).toFixed(0) 
-      
-      // } else if (this.type === 'temp') {
-      //   let diff = (this.future - this.past).toFixed(1) // for trailing 0's + consistency
+      let diff
+      if (this.kind == 'abs') {
+        diff = this.future - this.past
+        if(diff > 0) {
+          diff = '&plus;' + diff
+        }
+        console.log(diff)
+      } else {
+        diff = (((this.future - this.past) / this.past) * 100).toFixed(0)
         if (diff > 0) {
           diff = '&plus;' + diff
         }
         diff += '%'
-      // }
+      }
+
       return diff
     },
   },

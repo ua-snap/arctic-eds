@@ -19,7 +19,7 @@
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values
         across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
-        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR).
+        (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR), rounded to two significant digits.  The difference compared to the modeled baseline (1901-2015) is shown below.
       </div>
     </div>
 
@@ -34,26 +34,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="historical">
-            <th scope="row">Historical Modeled (1901&ndash;2015)</th>
-            <td>
-              {{ results.precipitation['summary']['historical']['prmin']
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.precipitation['summary']['historical']['prmean']
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-            <td>
-              {{ results.precipitation['summary']['historical']['prmax']
-              }}<UnitWidget unitType="mm_in" />
-            </td>
-          </tr>
           <tr>
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
               {{ results.precipitation['summary']['2010-2039']['prmin']
-              }}<UnitWidget unitType="mm_in" />
+              }}<UnitWidget unitType="mm_in" /><br><Diff
+                kind="abs"
+                :past="
+                  results.precipitation['summary']['historical']['prmin']
+                "
+                :future="
+                  results.precipitation['summary']['2010-2039']['prmin']
+                "
+              />
             </td>
             <td>
               {{ results.precipitation['summary']['2010-2039']['prmean']
