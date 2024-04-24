@@ -34,7 +34,7 @@
           <tr>
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
-              {{ round(results.thawing_index['summary']['2010-2039']['ddmin'])
+              {{ round(results.thawing_index['summary']['2010-2039']['ddmin'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
@@ -46,7 +46,7 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2010-2039']['ddmean'])
+              {{ round(results.thawing_index['summary']['2010-2039']['ddmean'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
@@ -58,7 +58,7 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2010-2039']['ddmax'])
+              {{ round(results.thawing_index['summary']['2010-2039']['ddmax'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
@@ -73,7 +73,7 @@
           <tr>
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
-              {{ round(results.thawing_index['summary']['2040-2069']['ddmin'])
+              {{ round(results.thawing_index['summary']['2040-2069']['ddmin'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
@@ -85,7 +85,7 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2040-2069']['ddmean'])
+              {{ round(results.thawing_index['summary']['2040-2069']['ddmean'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
@@ -97,7 +97,7 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2040-2069']['ddmax'])
+              {{ round(results.thawing_index['summary']['2040-2069']['ddmax'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
@@ -112,7 +112,7 @@
           <tr>
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
-              {{ round(results.thawing_index['summary']['2070-2099']['ddmin'])
+              {{ round(results.thawing_index['summary']['2070-2099']['ddmin'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
@@ -124,7 +124,7 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2070-2099']['ddmean'])
+              {{ round(results.thawing_index['summary']['2070-2099']['ddmean'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
@@ -136,7 +136,7 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2070-2099']['ddmax'])
+              {{ round(results.thawing_index['summary']['2070-2099']['ddmax'],2)
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="

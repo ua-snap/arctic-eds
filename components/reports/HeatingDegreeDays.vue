@@ -25,9 +25,10 @@
             <td>
               {{
                 round(
-                  results.heating_degree_days['summary']['2010-2039']['ddmin']
+                  results.heating_degree_days['summary']['2010-2039']['ddmin'],
+                  2
                 )
-              }}<UnitWidget unitType="dd" /><br><Diff
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmin']
@@ -40,9 +41,10 @@
             <td>
               {{
                 round(
-                  results.heating_degree_days['summary']['2010-2039']['ddmean']
+                  results.heating_degree_days['summary']['2010-2039']['ddmean'],
+                  2
                 )
-              }}<UnitWidget unitType="dd" /><br><Diff
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmean']
@@ -55,9 +57,10 @@
             <td>
               {{
                 round(
-                  results.heating_degree_days['summary']['2010-2039']['ddmax']
+                  results.heating_degree_days['summary']['2010-2039']['ddmax'],
+                  2
                 )
-              }}<UnitWidget unitType="dd" /><br><Diff
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmax']
@@ -73,9 +76,10 @@
             <td>
               {{
                 round(
-                  results.heating_degree_days['summary']['2040-2069']['ddmin']
+                  results.heating_degree_days['summary']['2040-2069']['ddmin'],
+                  2
                 )
-              }}<UnitWidget unitType="dd" /><br><Diff
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmin']
@@ -86,8 +90,12 @@
               />
             </td>
             <td>
-              {{ round(results.heating_degree_days['summary']['2040-2069']['ddmean'])
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.heating_degree_days['summary']['2040-2069']['ddmean'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmean']
@@ -98,8 +106,12 @@
               />
             </td>
             <td>
-              {{ round(results.heating_degree_days['summary']['2040-2069']['ddmax'])
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.heating_degree_days['summary']['2040-2069']['ddmax'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmax']
@@ -113,8 +125,12 @@
           <tr>
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
-              {{ round(results.heating_degree_days['summary']['2070-2099']['ddmin'])
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.heating_degree_days['summary']['2070-2099']['ddmin'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmin']
@@ -125,8 +141,12 @@
               />
             </td>
             <td>
-              {{ round(results.heating_degree_days['summary']['2070-2099']['ddmean'])
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.heating_degree_days['summary']['2070-2099']['ddmean'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmean']
@@ -137,8 +157,12 @@
               />
             </td>
             <td>
-              {{ round(results.heating_degree_days['summary']['2070-2099']['ddmax'])
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.heating_degree_days['summary']['2070-2099']['ddmax'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.heating_degree_days['summary']['historical']['ddmax']
@@ -200,7 +224,7 @@ export default {
       results: 'report/results',
       placeName: 'report/placeName',
     }),
-  }
+  },
 }
 </script>
 

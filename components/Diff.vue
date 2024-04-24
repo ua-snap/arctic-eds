@@ -41,12 +41,15 @@ export default {
         } else {
           precision = this.precision
         }
+
         // Special case where we override precision = 1
         // because the delta is for mm/precip > 100
         if (this.future - this.past > 100 && precision == 1) {
           precision = 2
         }
+        
         diff = Number(Number(this.future - this.past).toPrecision(precision))
+        
         if (diff > 0) {
           diff = '&plus;' + diff
         }

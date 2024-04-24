@@ -49,97 +49,161 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="historical">
-            <th scope="row">Historical Modeled (1901&ndash;2015)</th>
-            <td>
-              {{
-                results.temperature.summary.historical['CRU-TS'].historical
-                  .Annual.tasmin
-              }}<UnitWidget />
-            </td>
-            <td>
-              {{
-                results.temperature.summary.historical['CRU-TS'].historical
-                  .Annual.tasmean
-              }}<UnitWidget />
-            </td>
-            <td>
-              {{
-                results.temperature.summary.historical['CRU-TS'].historical
-                  .Annual.tasmax
-              }}<UnitWidget />
-            </td>
-          </tr>
           <tr>
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
-                  '2010-2039'
-                ].tasmin
-              }}<UnitWidget />
+                round(
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2010-2039'].tasmin,
+                  precision
+                )
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmin"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2010-2039'].tasmin
+                "
+              />
             </td>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
-                  '2010-2039'
-                ].tasmean
-              }}<UnitWidget />
+                round(
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2010-2039'].tasmean,
+                  precision
+                )
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmean"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2010-2039'].tasmean
+                "
+              />
             </td>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
+                round(results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
                   '2010-2039'
-                ].tasmax
-              }}<UnitWidget />
+                ].tasmax, precision)
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmax"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2010-2039'].tasmax
+                "
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
+                round(results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
                   '2040-2069'
-                ].tasmin
-              }}<UnitWidget />
+                ].tasmin, precision)
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmin"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2040-2069'].tasmin
+                "
+              />
             </td>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
+                round(results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
                   '2040-2069'
-                ].tasmean
-              }}<UnitWidget />
+                ].tasmean, precision)
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmean"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2040-2069'].tasmean
+                "
+              />
             </td>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
+                round(results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
                   '2040-2069'
-                ].tasmax
-              }}<UnitWidget />
+                ].tasmax, precision)
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmax"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2040-2069'].tasmax
+                "
+              />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
+                round(results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
                   '2070-2099'
-                ].tasmin
-              }}<UnitWidget />
+                ].tasmin, precision)
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmin"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2070-2099'].tasmin
+                "
+              />
             </td>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
+                round(results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
                   '2070-2099'
-                ].tasmean
-              }}<UnitWidget />
+                ].tasmean, precision)
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmean"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2070-2099'].tasmean
+                "
+              />
             </td>
             <td>
               {{
-                results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
+                round(results.temperature.summary.projected['5ModelAvg'].rcp85.Annual[
                   '2070-2099'
-                ].tasmax
-              }}<UnitWidget />
+                ].tasmax, precision)
+              }}<UnitWidget /><br /><Diff
+                kind="abs"
+                :precision="deltaPrecision"
+                :past="results.temperature.summary.historical['CRU-TS'].historical
+                  .Annual.tasmax"
+                :future="
+                  results.temperature.summary.projected['5ModelAvg'].rcp85
+                    .Annual['2070-2099'].tasmax
+                "
+              />
             </td>
           </tr>
         </tbody>
@@ -220,7 +284,7 @@
         </thead>
         <tbody>
           <tr class="historical">
-            <th scope="row">Historical Modeled<br />(1901&ndash;2015)</th>
+            <th scope="row">Modeled Baseline<br />(1901&ndash;2015)</th>
             <td
               v-for="(month, index) in [
                 'January',
@@ -441,9 +505,10 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
-
+import { numeric } from '~/mixins/numeric.js'
 export default {
   name: 'TemperatureReport',
+  mixins: [numeric],
   components: {
     DownloadCsvButton,
     UnitWidget,
@@ -456,7 +521,20 @@ export default {
     }
   },
   computed: {
+    precision() {
+      if (this.units == 'metric') {
+        return 3
+      }
+      return 2
+    },
+    deltaPrecision() {
+      if (this.units == 'metric') {
+        return 2
+      }
+      return 1
+    },
     ...mapGetters({
+      units: 'report/units',
       results: 'report/results',
       placeName: 'report/placeName',
       isPlaceDefined: 'report/isPlaceDefined',
@@ -481,7 +559,7 @@ table.months {
       width: 10%;
     }
   }
-  th[scope="row"] {
+  th[scope='row'] {
     line-height: 1.2;
     font-size: 1em;
   }
