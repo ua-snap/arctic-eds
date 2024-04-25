@@ -2,15 +2,38 @@
   <div v-if="Object.keys(results.precipitation.summary).length != 0">
     <div class="block content is-size-5">
       <p>
-        These data come from two types of data sources: interpolated historical
-        observations (CRU TS 4.0), and projected downscaled climate model data
-        from across five different climate models (NCAR CCSM4, GFDL CM3, GISS
-        E2-R, MRI CGCM3, and IPSL CM5A-LR) and three climate scenarios (RCP 4.5,
-        6.0 and 8.5). Projected data (2010&ndash;2099) can show more variability
-        than the historical data in the tables below because it is showing the
-        extreme values across all models and scenarios. Data have been
-        summarized to annual totals, from monthly temporal resolution. Spatial
-        resolution: 2&#8239;km.
+        The following results are total annual precipitation values computed by
+        summing monthly values from downscaled climate simulations representing
+        five different models (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and
+        IPSL CM5A-LR) and three emissions scenarios (RCP 4.5, 6.0 and 8.5).
+        Model selection was based on the models&rsquo; superior historical
+        performance for the Alaska region for three variables: surface air
+        temperature, precipitation, and sea level pressure.
+      </p>
+
+      <p>
+        These data are statistically downscaled and bias corrected via the delta
+        method in which a model&rsquo;s future change at a particular location and
+        time is added to the respective baseline mean value. This delta value is
+        then added to a higher-resolution observationally-based climatology.
+      </p>
+
+      <p>
+        The modeled baseline for these data is the 1901–2015 Climatic Research
+        Unit Time Series (CRU TS) dataset (version 4.0). CRU TS is a continuous,
+        gridded dataset created through interpolation of point measurements
+        based on assumptions about the spatial correlation of climate variables.
+        CRU TS is a widely used climate dataset and product of the Climate
+        Research Unit at the University of East Anglia. CRU-TS data were
+        downscaled to a 1961-1990 climatology produced by the PRISM
+        (Parameter-elevation Regressions on Independent Slopes Model) Climate
+        Group with the Northwest Alliance for Computational Science &
+        Engineering at Oregon State University.
+      </p>
+
+      <p>
+        The available data extent is the terrestrial area of Alaska. The spatial
+        resolution (grid cell size) of all data is 2 by 2 km.
       </p>
     </div>
 
@@ -20,8 +43,8 @@
         The summary table below shows the minimum, mean and maximum values
         across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
         (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR), rounded
-        to two significant digits. The difference compared to the modeled
-        baseline (1901-2015) is shown below.
+        to two (Imperial units) or three (metric) significant digits. The
+        difference compared to the modeled baseline (1901-2015) is shown below.
       </div>
     </div>
 
@@ -83,7 +106,11 @@
           <tr>
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
-              {{ round(results.precipitation['summary']['2040-2069']['prmin'], precision)
+              {{
+                round(
+                  results.precipitation['summary']['2040-2069']['prmin'],
+                  precision
+                )
               }}<UnitWidget unitType="mm_in" /><br /><Diff
                 kind="abs"
                 :precision="deltaPrecision"
@@ -92,16 +119,26 @@
               />
             </td>
             <td>
-              {{ round(results.precipitation['summary']['2040-2069']['prmean'], precision)
+              {{
+                round(
+                  results.precipitation['summary']['2040-2069']['prmean'],
+                  precision
+                )
               }}<UnitWidget unitType="mm_in" /><br /><Diff
                 kind="abs"
                 :precision="deltaPrecision"
                 :past="results.precipitation['summary']['historical']['prmean']"
-                :future="results.precipitation['summary']['2040-2069']['prmean']"
+                :future="
+                  results.precipitation['summary']['2040-2069']['prmean']
+                "
               />
             </td>
             <td>
-              {{ round(results.precipitation['summary']['2040-2069']['prmax'], precision)
+              {{
+                round(
+                  results.precipitation['summary']['2040-2069']['prmax'],
+                  precision
+                )
               }}<UnitWidget unitType="mm_in" /><br /><Diff
                 kind="abs"
                 :precision="deltaPrecision"
@@ -113,7 +150,11 @@
           <tr>
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
-              {{ round(results.precipitation.summary['2070-2099'].prmin, precision)
+              {{
+                round(
+                  results.precipitation.summary['2070-2099'].prmin,
+                  precision
+                )
               }}<UnitWidget unitType="mm_in" /><br /><Diff
                 kind="abs"
                 :precision="deltaPrecision"
@@ -122,16 +163,26 @@
               />
             </td>
             <td>
-              {{ round(results.precipitation.summary['2070-2099'].prmean, precision)
+              {{
+                round(
+                  results.precipitation.summary['2070-2099'].prmean,
+                  precision
+                )
               }}<UnitWidget unitType="mm_in" /><br /><Diff
                 kind="abs"
                 :precision="deltaPrecision"
                 :past="results.precipitation['summary']['historical']['prmean']"
-                :future="results.precipitation['summary']['2070-2099']['prmean']"
+                :future="
+                  results.precipitation['summary']['2070-2099']['prmean']
+                "
               />
             </td>
             <td>
-              {{ round(results.precipitation.summary['2070-2099'].prmax, precision)
+              {{
+                round(
+                  results.precipitation.summary['2070-2099'].prmax,
+                  precision
+                )
               }}<UnitWidget unitType="mm_in" /><br /><Diff
                 kind="abs"
                 :precision="deltaPrecision"

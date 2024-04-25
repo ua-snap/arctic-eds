@@ -11,9 +11,8 @@
           </li>
           <li>
             To see all available data for a point,
-            <strong
-              >select a community or point at the bottom of the page</strong
-            >.
+            <NuxtLink to="/">return to the home page</NuxtLink> and select a
+            community or point at the bottom of the page.
           </li>
           <li>
             <span class="down">⇩</span> <strong>Scroll down</strong> to see maps
