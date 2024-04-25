@@ -2,10 +2,28 @@
   <div class="pf" v-if="isPrecipitationFrequencyPresent">
     <div class="data-intro content is-size-5">
       <p>
-        Below are projected precipitation frequencies by duration and exceedence
-        probability. Projections were derived from GFDL-CM3 and NCAR-CCSM4 model
-        outputs under the CMIP5 RCP 8.5 emissions scenario, summarized by three
-        future eras. Spatial resolution: 481&#8239;m.
+        The following results are precipitation frequencies by duration and
+        exceedance probability derived from two CMIP5 climate simulations
+        (GFDL-CM3 and NCAR-CCSM4) and one emissions scenario (RCP 8.5). Model
+        selection was based on the models' superior historical performance for
+        the Alaska region for three variables: surface air temperature,
+        precipitation, and sea level pressure. Data are summarized by three
+        future eras. The available data extent is the terrestrial area of
+        Alaska.
+      </p>
+
+      <p>
+        These data were dynamically downscaled using the Advanced Research
+        version of the Weather Research and Forecasting (WRF) Model configured
+        with specific physical parameterizations for Alaska. The WRF Model is a
+        mesoscale numerical weather prediction system designed for both
+        atmospheric research and operational forecasting applications and is
+        supported by the National Center for Atmospheric Research. Data were
+        then further statistically downscaled and bias corrected via the delta
+        method using the NOAA Atlas 14 (Volume 7, Version 2.0: Alaska) dataset
+        which provides precipitation frequency estimates for Alaska for 5-minute
+        through 60-day durations at 1-year through 1,000-year average recurrence
+        intervals.
       </p>
       <ul class="module-link">
         <li>
@@ -19,11 +37,7 @@
         </li>
       </ul>
       <p>
-        Each table entry below shows the maximum expected precipitation at your
-        chosen location over the duration specified for that row (60 minutes to
-        60 days), at an exceedence probability specified for that column. A 95%
-        confidence interval appears below this value. See the report and
-        academic paper, linked below, for more information.
+        Each table entry below shows the maximum expected precipitation at your chosen location over the duration specified for that row (60 minutes to 60 days), at an exceedance probability specified for that column. A 95% confidence interval appears below this value. See the report and academic paper, linked below, for more information. The spatial resolution (grid cell size) of all data is 481 m by 481 m.
       </p>
     </div>
     <div class="radio-units no-print">

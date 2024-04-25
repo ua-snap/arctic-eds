@@ -2,11 +2,41 @@
   <div v-if="isSnowfallPresent">
     <div class="block content is-size-5">
       <p>
-        These data show downscaled projections of decadal mean of total annual
-        snowfall equivalent. Output is available for the NCAR CCSM4, GFDL CM3,
-        GISS E2-R, IPSL CM5A-LR, and MRI CGCM3 models and three emissions
-        scenarios (RCP 4.5, RCP 6.0 and RCP 8.5). Spatial resolution:
-        771&#8239;m.
+        The following results are decadal means of total annual snowfall water
+        equivalent (SFE) values derived from the product of snow-day fraction
+        (the fraction of precipitation days in which precipitation falls as
+        snow) and precipitation values from downscaled climate simulations
+        representing five different models (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI
+        CGCM3, and IPSL CM5A-LR) and three emissions scenarios (RCP 4.5, 6.0 and
+        8.5). Model selection was based on the models&rsquo; superior historical
+        performance for the Alaska region for three variables: surface air
+        temperature, precipitation, and sea level pressure.
+      </p>
+
+      <p>
+        Climate simulations were statistically downscaled and bias corrected via
+        the delta method in which a model&rsquo;s future change at a particular
+        location and time is added to the respective baseline mean value. This
+        delta value is then added to a higher-resolution observationally-based
+        climatology.
+      </p>
+
+      <p>
+        The modeled baseline for these data is the 1910–2009 Climatic Research
+        Unit Time Series (CRU TS) dataset (version 3.1). CRU TS is a continuous,
+        gridded dataset created through interpolation of point measurements
+        based on assumptions about the spatial correlation of climate variables.
+        CRU TS is a widely used climate dataset and product of the Climate
+        Research Unit at the University of East Anglia. CRU-TS data were
+        downscaled to a 1971–2000 climatology produced by the PRISM
+        (Parameter-elevation Regressions on Independent Slopes Model) Climate
+        Group with the Northwest Alliance for Computational Science &
+        Engineering at Oregon State University.
+      </p>
+
+      <p>
+        The available data extent is the terrestrial area of Alaska. The spatial
+        resolution (grid cell size) of all data is 771 m by 771 m.
       </p>
     </div>
 
