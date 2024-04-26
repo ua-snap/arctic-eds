@@ -124,8 +124,4 @@ h3 {
 }
 </style>
 
-<script>
-export default {
-  layout: 'content',
-}
-</script>
+<script></script>

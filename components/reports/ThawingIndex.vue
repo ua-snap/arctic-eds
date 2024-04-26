@@ -17,7 +17,9 @@
       <h4 class="title is-5 mb-1">Summary</h4>
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values
-        across one scenario (RCP 8.5) and both models (NCAR CCSM4 and GFDL CM3).
+        across two scenarios (RCP 4.5, RCP 8.5) and all nine models listed in
+        the introduction to this section, rounded to three significant digits.
+        The percent change from the modeled baseline (1980-2009) is shown below.
       </div>
     </div>
     <div class="block">
@@ -38,7 +40,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmin']
+                  results.thawing_index['summary']['modeled_baseline']['ddmin']
                 "
                 :future="
                   results.thawing_index['summary']['2010-2039']['ddmin']
@@ -50,7 +52,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmean']
+                  results.thawing_index['summary']['modeled_baseline']['ddmean']
                 "
                 :future="
                   results.thawing_index['summary']['2010-2039']['ddmean']
@@ -62,7 +64,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmax']
+                  results.thawing_index['summary']['modeled_baseline']['ddmax']
                 "
                 :future="
                   results.thawing_index['summary']['2010-2039']['ddmax']
@@ -77,7 +79,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmin']
+                  results.thawing_index['summary']['modeled_baseline']['ddmin']
                 "
                 :future="
                   results.thawing_index['summary']['2040-2069']['ddmin']
@@ -89,7 +91,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmean']
+                  results.thawing_index['summary']['modeled_baseline']['ddmean']
                 "
                 :future="
                   results.thawing_index['summary']['2040-2069']['ddmean']
@@ -101,7 +103,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmax']
+                  results.thawing_index['summary']['modeled_baseline']['ddmax']
                 "
                 :future="
                   results.thawing_index['summary']['2040-2069']['ddmax']
@@ -116,7 +118,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmin']
+                  results.thawing_index['summary']['modeled_baseline']['ddmin']
                 "
                 :future="
                   results.thawing_index['summary']['2070-2099']['ddmin']
@@ -128,7 +130,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmean']
+                  results.thawing_index['summary']['modeled_baseline']['ddmean']
                 "
                 :future="
                   results.thawing_index['summary']['2070-2099']['ddmean']
@@ -140,7 +142,7 @@
               }}<UnitWidget unitType="dd" /><br><Diff
                 kind="pct"
                 :past="
-                  results.thawing_index['summary']['historical']['ddmax']
+                  results.thawing_index['summary']['modeled_baseline']['ddmax']
                 "
                 :future="
                   results.thawing_index['summary']['2070-2099']['ddmax']

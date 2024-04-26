@@ -4,7 +4,17 @@
       <h2>Glossary of terms</h2>
       <dl>
         <dt><a id="bias_correction">Bias correction</a></dt>
-        <dd>Bias-correction is the process of mathematically scaling climate model outputs to account for their systematic errors, in order to improve their fitting to observations. Bias correction methods can be mathematically simple, e.g. subtraction, or more complex, e.g. fitting statistical curves.  No climate model or data processing technique can entirely eliminate uncertainty, but bias-correction can help reduce mismatches between modeled gridded data and measured historical data for point locations.  Bias correction is applied to most modeled climate data.</dd>
+        <dd>
+          Bias-correction is the process of mathematically scaling climate model
+          outputs to account for their systematic errors, in order to improve
+          their fitting to observations. Bias correction methods can be
+          mathematically simple, e.g. subtraction, or more complex, e.g. fitting
+          statistical curves. No climate model or data processing technique can
+          entirely eliminate uncertainty, but bias-correction can help reduce
+          mismatches between modeled gridded data and measured historical data
+          for point locations. Bias correction is applied to most modeled
+          climate data.
+        </dd>
         <dt><a id="downscaling">Downscaling</a></dt>
         <dd>
           Downscaling is a collection of methods which can transform
@@ -99,8 +109,4 @@ dt {
 }
 </style>
 
-<script>
-export default {
-  layout: 'content',
-}
-</script>
+<script></script>

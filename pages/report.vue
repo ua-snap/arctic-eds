@@ -12,7 +12,6 @@ import FullReport from '~/components/Report'
 
 export default {
   name: 'ReportPage',
-  layout: 'content',
   components: {
     FullReport,
   },

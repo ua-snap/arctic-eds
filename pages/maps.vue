@@ -211,7 +211,6 @@ import MapBlock from '~/components/MapBlock'
 import mapLayers from '~/components/map_content'
 
 export default {
-  layout: 'content',
   computed: {
     layers: function () {
       return mapLayers.layers
