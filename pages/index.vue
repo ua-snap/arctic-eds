@@ -12,7 +12,7 @@
         </div>
         <div class="content is-size-5">
           <p>
-            High-resolution downscaled climate models provide valuable insights
+            High-resolution <Term target="downscaling">downscaled</Term> climate models provide valuable insights
             into localized climate futures of temperature, precipitation, and
             other environmental conditions such as permafrost, but their output
             introduces uncertainties to engineering applications. A systematic
@@ -24,7 +24,7 @@
             <strong>
                The Arctic Environmental and Engineering Data and Design Support
                System (Arctic-EDS) streamlines the process of using downscaled
-               climate models for engineering.
+               <Term target="gcm">climate models</Term> for engineering.
              </strong> The Arctic-EDS simplifies and
             centralizes the process of finding, selecting, extracting, and
             formatting downscaled climate model output: it pre-selects relevant
@@ -50,7 +50,7 @@
           <p>The Arctic-EDS regulates these uncertainties by:</p>
           <ul>
             <li>
-              Presenting data from multiple climate models and emissions
+              Presenting <Term target="gridded_dataset">gridded</Term> data from multiple climate models and emissions
               scenarios
             </li>
             <li>Stating spatial and temporal scales of each dataset</li>
