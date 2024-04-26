@@ -54,7 +54,7 @@
               scenarios
             </li>
             <li>Stating spatial and temporal scales of each dataset</li>
-            <li>Presenting bias-corrected data</li>
+            <li>Presenting <Term target="bias_correction">bias-corrected</Term> data</li>
           </ul>
           <p>
             No climate model or data processing technique can entirely eliminate
