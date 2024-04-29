@@ -19,7 +19,7 @@
 
           <p>
             This tool was developed by the
-            <a href="https://www.snap.uaf.edu/" title="👍"
+            <a href="https://www.snap.uaf.edu/" title="🐨🐨🐨"
               >Scenarios Network for Alaska and Arctic Planning</a
             >
             located at the
