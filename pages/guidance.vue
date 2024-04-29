@@ -91,7 +91,7 @@
             >Data are not available at extremely fine spatial scales</strong
           >. For example, modeled baseline data may represent a 12 km x 12 km
           grid cell, not a single point. Variations in elevation and other
-          geographic factors within the entire 144 km2 area of the grid cell
+          geographic factors within the entire 144 km<sup>2</sup> area of the grid cell
           influence the value of that cell. Even with the best downscaling
           methods, climate models cannot capture all microclimate variability.
           For example, a small pond or hillock within a grid cell might
