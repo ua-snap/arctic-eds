@@ -215,7 +215,7 @@
       <p>
         The Arctic-EDS can enhance and perhaps even fulfill steps within this
         framework via pre-selection of models and scenarios, bias correction,
-        and uncertainty regulation - but it is not a turnkey solution. Each
+        and uncertainty regulation&mdash;but it is not a turnkey solution. Each
         engineering application may require additional steps (additional bias
         correction or spatial/temporal downscaling) to appropriately interpret
         downscaled climate model outputs and apply them to a specific
