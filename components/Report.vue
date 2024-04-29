@@ -9,96 +9,80 @@
     >
       <section class="section intro">
         <div id="results" class="container">
-          <h2 class="title is-2">
-            Environmental &amp; engineering data for {{ placeName }}
+          <h2 class="title is-2">Downscaled Climate Model Output</h2>
+          <h2 class="subtitle is-2">
+            {{ placeName }}
           </h2>
 
           <h3 class="subtitle is-3 pt-4">
-            This report contains information from a wide variety of data.
+            This report contains data from different downscaled climate models
+            and geophysical models driven with downscaled climate model output.
           </h3>
           <div class="content is-size-4">
             <p>
-              <strong>References to data sources and academic papers</strong>
-              are found adjacent to the data and should be consulted to
-              interpret the purpose and applicability of specific data in an
-              engineering context.
+              <strong>Consult the references</strong> to the data sources and
+              academic papers found adjacent to the data when considering the
+              applicability of specific data to an engineering context.
             </p>
             <p>
-              <strong>Data have various spatial resolutions.</strong> Grid cell
-              size may vary by a factor of up to 400x. Please keep this in mind
-              when interpreting a variable for a given location.
-            </p>
-            <p>
+              This report presents
               <strong
-                >Both historical and future data presented here are gridded
-                modeled data.</strong
-              >
-              Model pixels average data over large grid squares that may include
-              significant variability in elevation, slope, aspect, and proximity
-              to shorelines. In a few locations, data anomalies may also be
-              caused by glaciers and other landscape features. As a result,
-              historical modeled data may not align precisely with weather
-              station data, and projections may inherit this misalignment or
-              &ldquo;bias.&rdquo; Statistical processes for aligning modeled and
-              observed data can be used to &ldquo;bias correct&rdquo; in
-              situations where an alignment between these two different types of
-              data is desired.
+                ><Term target="gridded_dataset">gridded</Term> data from both
+                downscaled climate model futures and modeled baselines</strong
+              >. Grid cells represent climate processes summarized over a large
+              area which may have significant variability in elevation, slope,
+              aspect, and proximity to bodies of water. Modeled baseline data is
+              unlikely to precisely align with seemingly colocated and
+              concurrent historical weather station data because of such
+              intra-grid cell variability. All downscaled climate model output
+              used in this report is
+              <Term target="bias_correction">bias corrected</Term>&mdash;see
+              academic papers for details on methodology for each dataset.
+              Historical observed data can be used to further bias correct
+              downscaled climate model output when more precise alignment
+              between these two different types of data is required.
             </p>
+            <p>
+              We present baseline modeled data to indicate trends over time and
+              to compute deltas/changes from the modeled baseline where
+              appropriate. Minimum and maximum value summaries of multiple
+              climate futures establish outliers and a range of uncertainty for
+              various plausible futures. Mean value summaries of multiple
+              futures are useful signals of variable trends over time.
+            </p>
+            <p>
+              <strong>Data have various spatial resolutions</strong>. Grid cell
+              size may vary by a factor of up to 250x. Please keep this in mind
+              when interpreting a variable for a given location.
+              <span v-if="isElevationPresent"
+                >For example, the elevation within 1&#8239;km of
+                {{ placeName }}, centered at {{ latLng.lat }}, {{ latLng.lng }},
+                ranges between
+                <strong>
+                  {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
+                </strong>
+                meters, with an average elevation of
+                <strong>{{ results.elevation.mean }}</strong> meters. This
+                variation should be kept in mind when interpreting the variables
+                below.
+              </span>
+            </p>
+            <p>Read more about how to interpret and use this data on our <NuxtLink to="/guidance">guidance page</NuxtLink>.</p>
           </div>
-          <h3 class="subtitle is-3 pt-4">Report contents</h3>
+          <h3 class="title is-3 pt-4">Report contents</h3>
           <div class="content is-size-4">
             <ul>
-              <li>Summaries and subsets of full data sources</li>
-              <li>Data download links</li>
-              <li>
-                Minimum, mean, and maximum values for different time periods.
-                Use the &ldquo;mean&rdquo; column to assess general trends over
-                time.
-              </li>
-              <li>Data sources, references &amp; academic citations</li>
+             <li>Summarized minimum, mean, and maximum values for different time periods</li>
+             <li>Preview of data in tabular (CSV/spreadsheet) format</li>
+             <li>Data download links</li>
+             <li>Data sources, references & academic citations</li>
             </ul>
           </div>
-          <h3 class="subtitle is-3 pt-4">Point-specific notes</h3>
           <div class="content is-size-4">
-            <p v-if="isElevationPresent">
-              <strong>Elevation -</strong> The elevation within 1&#8239;km of
-              <span v-if="placeIsLatLng">this point</span>
-              <span v-else
-                >{{ placeName }}, centered at {{ latLng.lat }},
-                {{ latLng.lng }}</span
-              >
-              ranges between
-              <strong>
-                {{ results.elevation.min }}&ndash;{{ results.elevation.max }}
-              </strong>
-              meters, with an average elevation of
-              <strong>{{ results.elevation.mean }}</strong> meters. This
-              variation should be kept in mind when interpreting the variables
-              below.
-            </p>
-
-            <p v-if="isGeologyPresent && isPhysiographyPresent">
-              <strong>Geology &amp; ecology -</strong> The geology type of this
-              point is <em>{{ results.geology.name }}</em
-              >, and this place lies within the
-              {{ results.physiography.name }} ecological unit within Alaska.
-              Read more about
-              <a
-                href="https://alaska.usgs.gov/science/geology/state_map/interactive_map/AKgeologic_map.html"
-                >Alaska geology</a
-              >
-              and
-              <a
-                href="https://www.epa.gov/eco-research/ecoregion-download-files-state-region-10#pane-01"
-                >ecological units</a
-              >.
-            </p>
-
             <p>
               <strong>Link to this report:</strong>
               <a :href="currentURL">{{ currentURL }}</a>
             </p>
-
             <MiniMap />
             <UnitRadio />
           </div>
@@ -279,7 +263,6 @@ export default {
       placeIsLatLng: 'report/placeIsLatLng',
       latLng: 'report/latLng',
       isElevationPresent: 'report/isElevationPresent',
-      isGeologyPresent: 'report/isGeologyPresent',
       isHydrologyPresent: 'report/isHydrologyPresent',
       isPhysiographyPresent: 'report/isPhysiographyPresent',
       isPrecipitationPresent: 'report/isPrecipitationPresent',
