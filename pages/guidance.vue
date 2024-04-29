@@ -203,7 +203,7 @@
           appropriate climate model output based on requirements for the
           existing application
         </li>
-        <li>Account for climate model uncertainty and reliability</li>
+        <li>account for climate model uncertainty and reliability</li>
         <li>
           incorporate climate model output into the required engineering format
         </li>
