@@ -69,9 +69,8 @@
           <li>
             Source dataset and metadata:
             <a
-              href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/3d4cc2e2-5cfb-4fed-b397-06854edb747f"
-              >20km annual degree day totals at multiple thresholds for Alaska,
-              1980&ndash;2100</a
+              href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/f9831074-cd3f-4c06-8601-687bd2911b7e"
+              >Degree Days: Freezing Index, Thawing Index, Heating Degree Days, and Degree Days Below 0&deg;F</a
             >
           </li>
           <li>
