@@ -162,7 +162,7 @@
       </p>
       <PreviewTable
         :csvString="results.thawing_index.preview"
-        sizeBlurb="~219 rows, 3 columns, ~5kb"
+        sizeBlurb="~2742 rows, 4 columns, ~73.4kb"
       />
     </div>
 

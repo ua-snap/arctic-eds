@@ -493,7 +493,7 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
-        CSV download includes monthly values for both historical CRU TS
+        CSV download includes monthly values for both modeled baseline CRU TS 4.0
         (1901&ndash;2015) and modeled projected (2006&ndash;2100) datasets. Data
         are provided in metric units.
       </p>

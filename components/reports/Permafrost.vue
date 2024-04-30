@@ -309,7 +309,7 @@
       </p>
       <PreviewTable
         :csvString="results.permafrost.preview"
-        sizeBlurb="~601 rows, 13 columns, ~42kb"
+        sizeBlurb="~615 rows, 14 columns, ~48.3kb"
       />
     </div>
 

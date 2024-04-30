@@ -202,7 +202,7 @@
       </p>
       <PreviewTable
         :csvString="results.heating_degree_days.preview"
-        sizeBlurb="~219 rows, 3 columns, ~5kb"
+        sizeBlurb="~2742 rows, 4 columns, ~73.4kb"
       />
     </div>
     <div class="block content is-size-5 no-print">
