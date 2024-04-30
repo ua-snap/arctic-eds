@@ -29,7 +29,7 @@
         <li>
           Use data summaries to look for trends and change compared to model
           baselines. Minimum and maximum values show extremes&mdash;use these to
-          establish the outliers. Use the means to look for changes in general
+          establish the outliers. Use mean values to look for changes in general
           trends.
         </li>
         <li>Summarize data over 30-year eras, or decadally.</li>
@@ -38,9 +38,9 @@
           possible futures.
         </li>
         <li>
-          Read the referenced academic papers to gain an understanding of how
-          the data are generated, how they can be applied and limitations or
-          considerations when using them.
+          Read the referenced academic papers to better understand how the data
+          are generated, how they can be applied, and limitations or
+          considerations to their use.
         </li>
         <li>
           Take further steps with the data: perform additional downscaling or
@@ -62,17 +62,17 @@
         </li>
         <li>
           <strong>Human behavior is unpredictable</strong>. Emissions scenarios
-          called “representative concentration pathways (RCPs) or “shared
-          socioeconomic pathways” (SSPs) represent various social and economic
-          futures and are used to force climate simulations.
+          called <i>representative concentration pathways</i> (RCPs) or
+          <i> shared socioeconomic pathways </i> (SSPs) represent various social
+          and economic futures and are used to parameterize climate simulations.
         </li>
         <li>
           <strong
             >Creating seamless gridded baseline datasets requires filling
             gaps</strong
           >. Interpolation and extrapolation based on the best available data
-          and statistical algorithms are used to create climate “maps without
-          gaps” - but this process is imperfect. Modeled baseline data are
+          and statistical algorithms are used to create climate &ldquo;maps without
+          gaps&rdquo;&mdash;but this process is imperfect. Modeled baseline data are
           outputs from a statistical model, not local observational
           measurements.
         </li>
@@ -91,12 +91,12 @@
             >Data are not available at extremely fine spatial scales</strong
           >. For example, modeled baseline data may represent a 12 km x 12 km
           grid cell, not a single point. Variations in elevation and other
-          geographic factors within the entire 144 km<sup>2</sup> area of the grid cell
-          influence the value of that cell. Even with the best downscaling
-          methods, climate models cannot capture all microclimate variability.
-          For example, a small pond or hillock within a grid cell might
-          experience permafrost conditions and dynamics not modeled represented
-          by the grid cell itself.
+          geographic factors within the entire 144 km<sup>2</sup> area of the
+          grid cell influence the value of that cell. Even with the best
+          downscaling methods, climate models cannot capture all microclimate
+          variability. For example, a small pond or hillock within a grid cell
+          might experience permafrost conditions and dynamics not modeled
+          represented by the grid cell itself.
         </li>
         <li>
           <strong
@@ -177,15 +177,15 @@
         temperature was 25°C each day of the year, but the modeled baseline
         temperature was 26°C each day of the year, the annual cumulative sum of
         the former would yield a value of 0 degree days while the latter would
-        yield a value of 365 degree days&mdash;an infinitely large discrepancy, if
-        erroneously analyzed by computing a percent difference between the two
-        values.
+        yield a value of 365 degree days&mdash;showing how the interaction of
+        thresholds can impact calculation and interpretation of climate model
+        output.
       </p>
       <h2>What techniques can aid in using the Arctic-EDS?</h2>
       <p>
         <strong>
-          Peer reviewed frameworks for applying downscaled climate model output to
-          engineering applications exist.
+          Peer reviewed frameworks for applying downscaled climate model output
+          to engineering applications exist.
         </strong>
       </p>
 
@@ -224,8 +224,8 @@
 
       <p>
         Further tool updates will continue to refine and assist with techniques
-        and guidance for data use. They further suggest using multiple models,
-        being transparent about assumptions, and assessing tradeoffs in risk,
+        and guidance for data use. We suggest using multiple models, being
+        transparent about assumptions, and assessing tradeoffs in risk,
         resiliency, performance, and costs while designing for low-regret,
         adaptability, and robustness.
       </p>

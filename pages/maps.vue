@@ -144,7 +144,8 @@
       </MapBlock>
     </div>
 
-    <div class="block">
+    <!-- suspend this block until WMS repair on apollo is confirmed -->
+    <div class="block" v-if="false">
       <MapBlock mapName="temperature_indices">
         <template v-slot:layers>
           <h3 class="title is-4">Temperature Indices</h3>
