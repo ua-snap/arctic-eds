@@ -2,7 +2,7 @@
 var metas = {
   title: 'Arctic Engineering Data Support System (Arctic-EDS)',
   description:
-    'Query + view historical, current and projected environmental data for Alaska.',
+    'Access projected climate model and environmental data for Alaska.',
   preview: '/preview.jpg',
   url: 'https://arcticeds.org',
 }

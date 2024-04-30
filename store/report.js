@@ -145,9 +145,6 @@ export default {
     isElevationPresent(state) {
       return Object.keys(state.results.elevation).length != 0
     },
-    isGeologyPresent(state) {
-      return Object.keys(state.results.geology).length != 0
-    },
     isHydrologyPresent(state) {
       return Object.keys(state.results.hydrology).length != 0
     },
