@@ -95,7 +95,7 @@
           grid cell influence the value of that cell. Even with the best
           downscaling methods, climate models cannot capture all microclimate
           variability. For example, a small pond or hillock within a grid cell
-          might experience permafrost conditions and dynamics not modeled
+          might experience permafrost conditions and dynamics not 
           represented by the grid cell itself.
         </li>
         <li>
