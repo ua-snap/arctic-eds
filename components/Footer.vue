@@ -12,12 +12,6 @@
           </p>
 
           <p>
-            Arctic-EDS is a system of online technologies that curates relevant
-            Arctic climate and environmental data in a central repository for
-            use in engineering applications and computational notebooks.
-          </p>
-
-          <p>
             This tool was developed by the
             <a href="https://www.snap.uaf.edu/" title="🐨🐨🐨"
               >Scenarios Network for Alaska and Arctic Planning</a

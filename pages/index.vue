@@ -57,11 +57,7 @@
             <li>Presenting <Term target="bias_correction">bias-corrected</Term> data</li>
           </ul>
           <p>
-            No climate model or data processing technique can entirely eliminate
-            uncertainty, but the Arctic-EDS exposes how and why downscaled
-            climate model output departs from historical data, and what the
-            ramifications of that departure are for infrastructure climate
-            resiliency. Each engineering application may require additional
+            No climate model or data processing technique can entirely eliminate uncertainty, but the Arctic-EDS unlocks data that shows how future climate conditions might differ from the past. Each engineering application may require additional
             steps to interpret results and apply them to a specific
             design&mdash;see the
             <strong><NuxtLink to="/guidance">Guidance</NuxtLink></strong> page
