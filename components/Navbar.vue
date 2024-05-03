@@ -13,7 +13,7 @@
       <li>
         <NuxtLink to="/guidance"> Guidance </NuxtLink>
       </li>
-      <li>
+      <li v-if="!safeMode">
         <NuxtLink to="/maps"> Maps </NuxtLink>
       </li>
       <li>
@@ -46,7 +46,10 @@ nav {
 </style>
 
 <script>
+import { safe } from '~/mixins/safe.js'
+
 export default {
   name: 'Navbar',
+  mixins: [safe],
 }
 </script>
