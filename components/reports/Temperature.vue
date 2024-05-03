@@ -53,7 +53,7 @@
         The summary table below presents the minimum, mean, and maximum values
         for a single scenario (RCP 8.5) and a 5-model average (an average derived from
         the NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR
-        models).  Data are rounded to two (Imperial units) or three (metric) significant digits, and the relative change compared to the modeled baseline (1901-2015) is shown below the value.
+        models).  Data are rounded to two (imperial units) or three (metric) significant digits, and the relative change compared to the modeled baseline (1901-2015) is shown below the value.
       </div>
     </div>
 

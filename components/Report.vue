@@ -253,9 +253,11 @@ import PermafrostReport from '~/components/reports/Permafrost'
 import PrecipitationFrequency from '~/components/reports/PrecipitationFrequency'
 import TemperatureIndices from '~/components/reports/TemperatureIndices'
 import HydrologyReport from '~/components/reports/Hydrology'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'FullReport',
+  mixins: [safe],
   components: {
     UnitRadio,
     MiniMap,
@@ -270,9 +272,6 @@ export default {
   computed: {
     state: function () {
       return this.$fetchState
-    },
-    safeMode() {
-      return process.env.safeMode
     },
     ...mapGetters({
       results: 'report/results',
@@ -310,7 +309,7 @@ export default {
     // to lat/lngs).
     await this.$store.dispatch('report/fetchPlaces')
 
-    if (process.env.safeMode) {
+    if (process.env.safeMode && this.isPlaceDefined) {
       let key = this.latLng.lat + '+' + this.latLng.lng
       await this.$store.dispatch('report/safeModeFetch', key)
     } else {

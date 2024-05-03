@@ -31,7 +31,7 @@
         The summary tables below shows the minimum, mean and maximum values
         across two scenarios (RCP 4.5 and RCP 8.5) and three models (NCAR CCSM4,
         GFDL CM3, and a 5-model average: GFDL-CM3, NCAR-CCSM4, GISS-E2-R,
-        IPSL-CM5A-LR, MRI-CGCM3).  Temperatures are rounded to two (Imperial units) or three (metric) significant digits.
+        IPSL-CM5A-LR, MRI-CGCM3).  Temperatures are rounded to two (imperial units) or three (metric) significant digits.
       </p>
       <table class="table">
         <caption>

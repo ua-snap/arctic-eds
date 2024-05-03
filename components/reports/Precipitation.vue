@@ -13,9 +13,10 @@
 
       <p>
         These data are statistically downscaled and bias corrected via the delta
-        method in which a model&rsquo;s future change at a particular location and
-        time is added to the respective baseline mean value. This delta value is
-        then added to a higher-resolution observationally-based climatology.
+        method in which a model&rsquo;s future change at a particular location
+        and time is added to the respective baseline mean value. This delta
+        value is then added to a higher-resolution observationally-based
+        climatology.
       </p>
 
       <p>
@@ -43,8 +44,8 @@
         The summary table below shows the minimum, mean and maximum values
         across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
         (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR), rounded
-        to two (Imperial units) or three (metric) significant digits. The
-        difference compared to the modeled baseline (1901-2015) is shown below.
+        to three (imperial) or two (metric) significant digits. The difference
+        compared to the modeled baseline (1901-2015) is shown below.
       </div>
     </div>
 
