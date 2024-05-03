@@ -244,7 +244,20 @@ export default {
         context.commit('convertResults')
       }
     },
+    async safeModeFetch(context, key) {
+      const results = require('~/assets/safe.json')
+      // Need to have a deep clone to prevent re-conversion
+      context.commit('setResults', _.cloneDeep(results[key]))
+      if (context.state.units == 'imperial') {
+        context.commit('convertResults')
+      }
+    },
     async fetchPlaces(context) {
+      if(process.env.safeMode) {
+        const places = require('~/assets/safePlaces.json')
+        context.commit('setPlaces', places)
+      }
+
       // If we've already fetched this, don't do that again.
       if (context.state.places) {
         return
