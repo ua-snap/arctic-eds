@@ -60,13 +60,13 @@
       </h4>
 
       <ul>
-        <li>
+        <li v-if="!safeMode">
           <DownloadCsvButton
             text="Download snowfall water equivalent data as CSV"
             endpoint="snow/snowfallequivalent"
           />
         </li>
-        <li>
+        <li v-if="!safeMode">
           Source datasets and metadata:
           <ul>
             <li>
@@ -114,9 +114,11 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'SnowfallReport',
+  mixins: [safe],
   components: {
     DownloadCsvButton,
     UnitWidget,

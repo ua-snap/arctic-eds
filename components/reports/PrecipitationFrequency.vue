@@ -25,7 +25,7 @@
         through 60-day durations at 1-year through 1,000-year average recurrence
         intervals.
       </p>
-      <ul class="module-link">
+      <ul v-if="!safeMode" class="module-link">
         <li>
           Use this dataset in an
           <a
@@ -37,7 +37,12 @@
         </li>
       </ul>
       <p>
-        Each table entry below shows the maximum expected precipitation at your chosen location over the duration specified for that row (60 minutes to 60 days), at an exceedance probability specified for that column. A 95% confidence interval appears below this value. See the report and academic paper, linked below, for more information. The spatial resolution (grid cell size) of all data is 481 m by 481 m.
+        Each table entry below shows the maximum expected precipitation at your
+        chosen location over the duration specified for that row (60 minutes to
+        60 days), at an exceedance probability specified for that column. A 95%
+        confidence interval appears below this value. See the report and
+        academic paper, linked below, for more information. The spatial
+        resolution (grid cell size) of all data is 481 m by 481 m.
       </p>
     </div>
     <div class="radio-units no-print">
@@ -153,7 +158,7 @@
       </h4>
 
       <ul>
-        <li>
+        <li v-if="!safeMode">
           <DownloadCsvButton
             text="Download this data as CSV"
             endpoint="precipitation/frequency/point"
@@ -168,7 +173,7 @@
           >
           used to prepare this dataset
         </li>
-        <li>
+        <li v-if="!safeMode">
           Source dataset and metadata:
           <a
             href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
@@ -195,9 +200,11 @@
 import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'PrecipitationFrequencyReport',
+  mixins: [safe],
   components: {
     DownloadCsvButton,
     UnitWidget,

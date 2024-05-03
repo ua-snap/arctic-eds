@@ -205,7 +205,7 @@
         sizeBlurb="~2742 rows, 4 columns, ~73.4kb"
       />
     </div>
-    <div class="block content is-size-5 no-print">
+    <div v-if="!safeMode" class="block content is-size-5 no-print">
       <h4 class="title is-5 mb-1">Data download</h4>
       <ul>
         <li>
@@ -225,10 +225,11 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 import { numeric } from '~/mixins/numeric.js'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'HeatingDegreeDaysReport',
-  mixins: [numeric],
+  mixins: [numeric, safe],
   components: {
     DownloadCsvButton,
     UnitWidget,

@@ -319,13 +319,13 @@
       </h4>
 
       <ul>
-        <li>
+        <li v-if="!safeMode">
           <DownloadCsvButton
             text="Download this data as CSV"
             endpoint="permafrost/point"
           />
         </li>
-        <li>
+        <li v-if="!safeMode">
           Source dataset and metadata:
           <a
             href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/c24a957b-8a56-40bf-bc09-43a567182d36"
@@ -357,10 +357,11 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 import { numeric } from '~/mixins/numeric.js'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'PermafrostReport',
-  mixins: [numeric],
+  mixins: [numeric, safe],
   components: {
     DownloadCsvButton,
     UnitWidget,
