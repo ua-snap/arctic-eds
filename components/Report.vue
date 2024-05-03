@@ -10,9 +10,7 @@
       <section class="section intro">
         <div id="results" class="container">
           <h2 class="title is-2">Downscaled Climate Model Output</h2>
-          <h2 class="subtitle is-2">
-            {{ placeName }}
-          </h2>
+          <h2 class="subtitle is-2" v-html="placeName"></h2>
 
           <h3 class="subtitle is-3 pt-4">
             This report contains data from different downscaled climate models
@@ -67,15 +65,21 @@
                 below.
               </span>
             </p>
-            <p>Read more about how to interpret and use this data on our <NuxtLink to="/guidance">guidance page</NuxtLink>.</p>
+            <p>
+              Read more about how to interpret and use this data on our
+              <NuxtLink to="/guidance">guidance page</NuxtLink>.
+            </p>
           </div>
           <h3 class="title is-3 pt-4">Report contents</h3>
           <div class="content is-size-4">
             <ul>
-             <li>Summarized minimum, mean, and maximum values for different time periods</li>
-             <li>Preview of data in tabular (CSV/spreadsheet) format</li>
-             <li>Data download links</li>
-             <li>Data sources, references & academic citations</li>
+              <li>
+                Summarized minimum, mean, and maximum values for different time
+                periods
+              </li>
+              <li>Preview of data in tabular (CSV/spreadsheet) format</li>
+              <li>Data download links</li>
+              <li>Data sources, references & academic citations</li>
             </ul>
           </div>
           <div class="content is-size-4">
@@ -292,15 +296,20 @@ export default {
     // to lat/lngs).
     await this.$store.dispatch('report/fetchPlaces')
 
-    if (this.isPlaceDefined) {
-      let url =
-        process.env.apiUrl +
-        '/eds/all/' +
-        this.latLng.lat +
-        '/' +
-        this.latLng.lng
+    if (process.env.safeMode) {
+      let key = this.latLng.lat + '+' + this.latLng.lng
+      await this.$store.dispatch('report/safeModeFetch', key)
+    } else {
+      if (this.isPlaceDefined) {
+        let url =
+          process.env.apiUrl +
+          '/eds/all/' +
+          this.latLng.lat +
+          '/' +
+          this.latLng.lng
 
-      await this.$store.dispatch('report/apiFetch', url)
+        await this.$store.dispatch('report/apiFetch', url)
+      }
     }
   },
 }

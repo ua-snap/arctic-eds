@@ -1,0 +1,52 @@
+[
+  {
+    "id": "AK15",
+    "name": "Anchorage",
+    "alt_name": "Dgheyaytnu",
+    "region": "Alaska",
+    "country": "US",
+    "latitude": 61.1817,
+    "longitude": -149.993,
+    "type": "community"
+  },
+  {
+    "id": "AK36",
+    "name": "Bethel",
+    "alt_name": "Mamterilleq",
+    "region": "Alaska",
+    "country": "US",
+    "latitude": 60.7922,
+    "longitude": -161.756,
+    "type": "community"
+  },
+  {
+    "id": "AK124",
+    "name": "Fairbanks",
+    "alt_name": "",
+    "region": "Alaska",
+    "country": "US",
+    "latitude": 64.8378,
+    "longitude": -147.716,
+    "type": "community"
+  },
+  {
+    "id": "AK211",
+    "name": "Kotzebue",
+    "alt_name": "Qikiqta\u0121ruk",
+    "region": "Alaska",
+    "country": "US",
+    "latitude": 66.8983,
+    "longitude": -162.597,
+    "type": "community"
+  },
+  {
+    "id": "AK418",
+    "name": "Utqia\u0121vik",
+    "alt_name": "Barrow",
+    "region": "Alaska",
+    "country": "US",
+    "latitude": 71.2905,
+    "longitude": -156.789,
+    "type": "community"
+  }
+]

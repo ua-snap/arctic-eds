@@ -55,6 +55,7 @@ export default {
     rasdamanUrl:
       process.env.RASDAMAN_URL || 'https://maps.earthmaps.io/rasdaman/ows',
     mockApi: process.env.MOCK_API || false,
+    safeMode: process.env.EDS_SAFE_MODE || false,
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
