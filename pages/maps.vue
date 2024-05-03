@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!safeMode">
     <div class="block">
       <h3 class="title is-3">Statewide Climate Overview Maps</h3>
       <div class="content is-size-4">
@@ -210,8 +210,10 @@
 <script>
 import MapBlock from '~/components/MapBlock'
 import mapLayers from '~/components/map_content'
+import { safe } from '~/mixins/safe.js'
 
 export default {
+  mixins: [safe],
   computed: {
     layers: function () {
       return mapLayers.layers
