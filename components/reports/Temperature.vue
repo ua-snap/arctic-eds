@@ -34,7 +34,7 @@
         The available data extent is the terrestrial area of Alaska. The spatial
         resolution (grid cell size) of all data is 2 by 2 km.
       </p>
-      <ul class="module-link">
+      <ul v-if="!safeMode" class="module-link">
         <li>
           Use this dataset in a
           <a
@@ -509,7 +509,7 @@
       </h4>
 
       <ul>
-        <li>
+        <li v-if="!safeMode">
           CSV downloads for {{ placeName }}:
           <ul>
             <li>
@@ -520,7 +520,7 @@
             </li>
           </ul>
         </li>
-        <li>
+        <li v-if="!safeMode">
           Source datasets and metadata:
           <ul>
             <li>
@@ -560,9 +560,11 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 import { numeric } from '~/mixins/numeric.js'
+import { safe } from '~/mixins/safe.js'
+
 export default {
   name: 'TemperatureReport',
-  mixins: [numeric],
+  mixins: [numeric, safe],
   components: {
     DownloadCsvButton,
     UnitWidget,

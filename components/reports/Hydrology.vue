@@ -65,13 +65,13 @@
       </h4>
 
       <ul>
-        <li>
+        <li v-if="!safeMode">
           <DownloadCsvButton
             text="Download hydrology data as CSV"
             endpoint="hydrology/point"
           />
         </li>
-        <li>
+        <li v-if="!safeMode">
           Source datasets and metadata:
           <ul>
             <li>
@@ -104,9 +104,11 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'HydrologyReport',
+  mixins: [safe],
   components: {
     DownloadCsvButton,
     UnitWidget,

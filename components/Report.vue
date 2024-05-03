@@ -92,6 +92,17 @@
           </div>
         </div>
       </section>
+      <section v-if="safeMode" class="section">
+        <div class="container">
+          <div class="content is-size-4 px-5 py-5 safe-mode">
+            <p>
+              ⚠️ There&rsquo;s ongoing system maintenance at the University of
+              Alaska datacenter. <strong>CSV downloads and links to source data files
+              are not currently available</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
       <section class="section">
         <div class="container toc">
           <h2 class="title is-3">Table of Contents</h2>
@@ -259,6 +270,9 @@ export default {
   computed: {
     state: function () {
       return this.$fetchState
+    },
+    safeMode() {
+      return process.env.safeMode
     },
     ...mapGetters({
       results: 'report/results',

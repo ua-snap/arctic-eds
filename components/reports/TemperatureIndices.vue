@@ -66,7 +66,7 @@
           freezing index and thawing index.
         </p>
         <ul>
-          <li>
+          <li v-if="!safeMode">
             Source dataset and metadata:
             <a
               href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/f9831074-cd3f-4c06-8601-687bd2911b7e"
@@ -107,9 +107,11 @@ import { mapGetters } from 'vuex'
 import HeatingDegreeDaysReport from '~/components/reports/HeatingDegreeDays'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'TemperatureIndices',
+  mixins: [safe],
   components: {
     HeatingDegreeDaysReport,
     FreezingIndexReport,

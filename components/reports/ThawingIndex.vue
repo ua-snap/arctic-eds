@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block">
-      <div class="content is-size-5">
+      <div v-if="!safeMode" class="content is-size-5">
         <ul class="module-link">
           <li>
             Use this dataset in an
@@ -166,7 +166,7 @@
       />
     </div>
 
-    <div class="block content is-size-5 no-print">
+    <div v-if="!safeMode" class="block content is-size-5 no-print">
       <h4 class="title is-5 mb-1">Data download</h4>
       <ul>
         <li>
@@ -185,10 +185,11 @@ import { mapGetters } from 'vuex'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import { numeric } from '~/mixins/numeric.js'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'ThawingIndexReport',
-  mixins: [numeric],
+  mixins: [numeric, safe],
   components: {
     DownloadCsvButton,
     UnitWidget,

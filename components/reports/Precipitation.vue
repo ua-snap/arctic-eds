@@ -215,13 +215,13 @@
       </h4>
 
       <ul>
-        <li>
+        <li v-if="!safeMode">
           <DownloadCsvButton
             text="Download this data as CSV"
             endpoint="precipitation"
           />
         </li>
-        <li>
+        <li v-if="!safeMode">
           Source datasets and metadata:
           <ul>
             <li>
@@ -261,10 +261,11 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 import { numeric } from '~/mixins/numeric.js'
+import { safe } from '~/mixins/safe.js'
 
 export default {
   name: 'PrecipitationReport',
-  mixins: [numeric],
+  mixins: [numeric, safe],
   components: {
     DownloadCsvButton,
     UnitWidget,

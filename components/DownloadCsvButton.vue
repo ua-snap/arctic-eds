@@ -16,6 +16,9 @@ export default {
   name: 'DownloadCsvButton',
   props: ['text', 'endpoint'],
   computed: {
+    safeMode() {
+      return process.env.safeMode
+    },
     ...mapGetters({
       placeId: 'report/placeId',
       latLng: 'report/latLng',
