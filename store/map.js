@@ -1,6 +1,4 @@
 import _ from 'lodash'
-import ak from '!raw-loader!../assets/alaska.geojson'
-const akJson = JSON.parse(ak)
 import mapContent from '~/components/map_content'
 import Vue from 'vue'
 
