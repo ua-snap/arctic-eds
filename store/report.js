@@ -16,6 +16,9 @@ function convertLeaves(state, obj, substring, variable, type) {
               convertMillimetersInches(state, variable, obj[key])
             )
             break
+          case 'fdd_cdd':
+            obj[key] = parseFloat(convertFddCdd(state, obj[key]))
+            break
         }
       } else {
         obj[key] = parseFloat(obj[key])
@@ -59,6 +62,16 @@ function convertMetersInches(state, value) {
     return (value * 0.0254).toFixed(2)
   } else {
     return (value / 0.0254).toFixed(1)
+  }
+}
+
+function convertFddCdd(state, value) {
+  // This doesn't fix the number of decimal spaces to prevent loss of precision
+  // and allows re-conversion back to the original integer value.
+  if (state.units == 'metric') {
+    return value * (5 / 9)
+  } else {
+    return value * (9 / 5)
   }
 }
 
@@ -193,7 +206,7 @@ export default {
       state.placeName = undefined
       state.results = {}
     },
-    convertResults(state) {
+    convertResults(state, onload = false) {
       // Converts all convertible units at the same time for shared report
       let conversions = [
         // This needs to be adapted after the summarized data are restored.
@@ -204,8 +217,16 @@ export default {
         { type: 'temperature', substring: '', variable: 'temperature' },
         { type: 'mm_in', substring: '', variable: 'precip_frequency' },
         { type: 'mm_in', substring: '', variable: 'hydrology' },
+        { type: 'fdd_cdd', substring: '', variable: 'heating_degree_days' },
+        { type: 'fdd_cdd', substring: '', variable: 'freezing_index' },
+        { type: 'fdd_cdd', substring: '', variable: 'thawing_index' },
       ]
       conversions.forEach(conversion => {
+        // The degree days are not converted on page load because
+        // they are already in the correct units (imperial) while all
+        // the rest of the data comes over in metric units.
+        if (onload == true && conversion['type'] == 'fdd_cdd') return
+
         state.results[conversion['variable']] = convertLeaves(
           state,
           _.cloneDeep(state.results[conversion['variable']]),
@@ -241,7 +262,7 @@ export default {
       }
       context.commit('setResults', results)
       if (context.state.units == 'imperial') {
-        context.commit('convertResults')
+        context.commit('convertResults', true)
       }
     },
     async safeModeFetch(context, key) {
@@ -253,7 +274,7 @@ export default {
       }
     },
     async fetchPlaces(context) {
-      if(process.env.safeMode) {
+      if (process.env.safeMode) {
         const places = require('~/assets/safePlaces.json')
         context.commit('setPlaces', places)
       }

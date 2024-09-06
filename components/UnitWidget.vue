@@ -45,7 +45,8 @@ export default {
           space = '&#8239;'
           break
         case 'dd':
-          symbol = '&deg;F&sdot;days'
+          symbol =
+            this.units == 'metric' ? '&deg;C&sdot;days' : '&deg;F&sdot;days'
           break
       }
       return {
