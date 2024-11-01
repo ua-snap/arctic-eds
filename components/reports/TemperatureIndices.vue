@@ -11,11 +11,10 @@
         precipitation (dryer and wetter) futures. These models have been
         statistically downscaled using the bias corrected spatial disaggregation
         (BCSD) method. The available data extent is the terrestrial area of
-        Alaska excluding the Western Aleutians. Models included are 
-        ACCESS1-3, CanESM2, CCSM4, CSIRO-Mk3-6-0, GFDL ESM2, inmcm4, MIROC5,
-        MPI-ESM-MR, and MRI CGCM3 driven by RCP 4.5 and RCP 8.5 emissions
-        scenarios. The spatial resolution (grid cell size) of all data is 12 by
-        12 km.
+        Alaska excluding the Western Aleutians. Models included are ACCESS1-3,
+        CanESM2, CCSM4, CSIRO-Mk3-6-0, GFDL ESM2, inmcm4, MIROC5, MPI-ESM-MR,
+        and MRI CGCM3 driven by RCP 4.5 and RCP 8.5 emissions scenarios. The
+        spatial resolution (grid cell size) of all data is 12 by 12 km.
       </p>
 
       <p>
@@ -70,29 +69,28 @@
             Source dataset and metadata:
             <a
               href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/f9831074-cd3f-4c06-8601-687bd2911b7e"
-              >Degree Days: Freezing Index, Thawing Index, Heating Degree Days, and Degree Days Below 0&deg;F</a
+              >Degree Days: Freezing Index, Thawing Index, Heating Degree Days,
+              and Degree Days Below 0&deg;F</a
             >
           </li>
           <li>
             Academic references:
             <blockquote>
-              Bieniek, P. A., Bhatt, U. S., Walsh, J. E., Rupp, T. S., Zhang,
-              J., Krieger, J. R. &amp; Lader, R. (2016). Dynamical Downscaling
-              of ERA-Interim Temperature and Precipitation for Alaska.
-              <i>Journal of Applied Meteorology and Climatology, 55</i>(03),
-              635–654.
-              <a href="https://doi.org/10.1175/JAMC-D-15-0153.1"
-                >https://doi.org/10.1175/JAMC-D-15-0153.1</a
+              Mizukami, N., Newman, A. J., Wood, A. W., Gutmann, E. D., and
+              Hamman, J. J. (2022). Boulder, CO: UCAR/NCAR/RAL. 21st Century
+              Hydrologic Projections for Alaska and Hawaiʻi
+              <a href="https://doi.org/10.5065/c3kn-2y77"
+                >https://doi.org/10.5065/c3kn-2y77</a
               >
             </blockquote>
             <blockquote>
-              Lader, R., Walsh, J. E., Bhatt, U. S., & Bieniek, P. A. (2017).
-              Projections of twenty-first-century climate extremes for Alaska
-              via dynamical downscaling and quantile mapping.
-              <i>Journal of Applied Meteorology and Climatology, 56</i>(9),
-              2393&ndash;2409.
-              <a href="https://doi.org/10.1175/JAMC-D-16-0415.1"
-                >https://doi.org/10.1175/JAMC-D-16-0415.1</a
+              Mizukami, N., Newman, A. J., Littell, J. S., Giambelluca, T. W.,
+              Wood, A. W., Gutmann, E. D., Hamman, J. J., Gergel, D. R.,
+              Nijsenn, B., Clark, M. P., and Arnold, J. R. (2022). New
+              projections of 21st century climate and hydrology for Alaska and
+              Hawaiʻi. Climate Services, 27, 100312.
+              <a href="https://doi.org/10.1016/j.cliser.2022.100312"
+                >https://doi.org/10.1016/j.cliser.2022.100312</a
               >
             </blockquote>
           </li>
