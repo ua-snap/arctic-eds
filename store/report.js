@@ -161,9 +161,6 @@ export default {
     isHydrologyPresent(state) {
       return Object.keys(state.results.hydrology).length != 0
     },
-    isPhysiographyPresent(state) {
-      return Object.keys(state.results.physiography).length != 0
-    },
     isPrecipitationPresent(state) {
       return Object.keys(state.results.precipitation).length != 0
     },
