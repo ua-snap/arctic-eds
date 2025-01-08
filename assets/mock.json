@@ -69406,10 +69406,6 @@
       }
     }
   },
-  "physiography": {
-    "name": "Interior Bottomlands",
-    "title": "EPA Level III Ecoregions of Alaska"
-  },
   "precip_frequency": {
     "2": {
       "10d": {

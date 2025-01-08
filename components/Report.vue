@@ -97,8 +97,11 @@
           <div class="content is-size-4 px-5 py-5 safe-mode">
             <p>
               ⚠️ There&rsquo;s ongoing system maintenance at the University of
-              Alaska datacenter. <strong>CSV downloads and links to source data files
-              are not currently available</strong>.
+              Alaska datacenter.
+              <strong
+                >CSV downloads and links to source data files are not currently
+                available</strong
+              >.
             </p>
           </div>
         </div>
@@ -281,7 +284,6 @@ export default {
       latLng: 'report/latLng',
       isElevationPresent: 'report/isElevationPresent',
       isHydrologyPresent: 'report/isHydrologyPresent',
-      isPhysiographyPresent: 'report/isPhysiographyPresent',
       isPrecipitationPresent: 'report/isPrecipitationPresent',
       isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',
       isSnowfallPresent: 'report/isSnowfallPresent',
