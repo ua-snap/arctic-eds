@@ -42,6 +42,11 @@ export default {
         'data-domains': 'arcticeds.org',
         'data-do-not-track': true,
       },
+      {
+        type: 'text/javascript',
+        src: '//script.crazyegg.com/pages/scripts/0126/7664.js',
+        async: true,
+      },
     ],
   },
 
