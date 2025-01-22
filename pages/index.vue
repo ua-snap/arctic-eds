@@ -2,7 +2,7 @@
   <div>
     <div class="main">
       <div class="container">
-        <div class="content is-size-4">
+        <div class="content clamp is-size-4">
           <p class="intro">
             Improving infrastructure resilience requires considering future
             climate conditions that may differ from the past. Historical
@@ -20,7 +20,7 @@
             >
           </p>
         </div>
-        <div class="content is-size-5">
+        <div class="content clamp is-size-5">
           <p>
             High-resolution <Term target="downscaling">downscaled</Term> climate
             models provide valuable insights into localized climate futures of
@@ -31,6 +31,18 @@
             selecting appropriate models, understanding uncertainties, and
             addressing variable spatial and temporal scales.
           </p>
+          <figure>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/QRf2Z8Ka_VQ?si=eYkt13xPPWCgE4GT"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </figure>
           <p>
             <strong>
               The Arctic Environmental and Engineering Data and Design Support
@@ -99,7 +111,8 @@
           <div class="content is-size-5">
             <p class="bigger">
               ⚠️ There&rsquo;s ongoing system maintenance at the University of
-              Alaska datacenter, and not all functionality is available at this time.
+              Alaska datacenter, and not all functionality is available at this
+              time.
             </p>
             <p>
               <strong>Choose from a pre-selected location below</strong> for an
@@ -158,11 +171,6 @@
 }
 .main {
   padding-bottom: 6rem;
-}
-.content {
-  max-width: 50rem;
-  margin: 3rem auto;
-  font-weight: 400;
 }
 .controls {
   border-top: 0.5px solid darken(#faf9f7, 50%);

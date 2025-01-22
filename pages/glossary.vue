@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="content is-size-5">
+    <div class="content clamp is-size-5">
       <h2>Glossary of terms</h2>
       <dl>
         <dt><a id="bias_correction">Bias correction</a></dt>
