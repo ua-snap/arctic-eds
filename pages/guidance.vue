@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="content is-size-5">
+    <div class="content clamp is-size-5">
       <h1>Guidance: using and interpreting Arctic-EDS data</h1>
       <h2>What is the Arctic-EDS?</h2>
       <p>
@@ -24,6 +24,19 @@
         processes are continuous in time and space, but measurements of
         Earth&rsquo;s climate are not.
       </p>
+      <h2>View our video walkthrough</h2>
+      <figure>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/_OCvLhlHQFQ?si=vcXw92WVJmx8H6Fn"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </figure>
       <h2>How can I use the data in the Arctic-EDS?</h2>
       <ul>
         <li>
@@ -71,10 +84,10 @@
             >Creating seamless gridded baseline datasets requires filling
             gaps</strong
           >. Interpolation and extrapolation based on the best available data
-          and statistical algorithms are used to create climate &ldquo;maps without
-          gaps&rdquo;&mdash;but this process is imperfect. Modeled baseline data are
-          outputs from a statistical model, not local observational
-          measurements.
+          and statistical algorithms are used to create climate &ldquo;maps
+          without gaps&rdquo;&mdash;but this process is imperfect. Modeled
+          baseline data are outputs from a statistical model, not local
+          observational measurements.
         </li>
         <li>
           <strong
@@ -95,8 +108,8 @@
           grid cell influence the value of that cell. Even with the best
           downscaling methods, climate models cannot capture all microclimate
           variability. For example, a small pond or hillock within a grid cell
-          might experience permafrost conditions and dynamics not 
-          represented by the grid cell itself.
+          might experience permafrost conditions and dynamics not represented by
+          the grid cell itself.
         </li>
         <li>
           <strong
@@ -253,6 +266,14 @@
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.85rem;
+  margin-bottom: 0.5rem;
+}
+</style>
 
 <script></script>
