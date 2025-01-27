@@ -10,6 +10,26 @@
     </div>
     <Navbar />
     <section class="section">
+      <div v-if="siteSlow">
+        <div class="container">
+          <b-message
+            title="Arctic-EDS is experiencing slow load times"
+            type="is-warning"
+            aria-close-label="Close message"
+          >
+            <p>
+              We&rsquo;re sorry! Arctic-EDS is experiencing slower load times
+              than usual. We&rsquo;re working to improve performance as soon as
+              possible, but we don&rsquo;t have an estimated time for
+              completion. Please check back soon, or reach out to us at
+              <a href="mailto:uaf-snap-data-tools@alaska.edu"
+                >uaf-snap-data-tools@alaska.edu</a
+              >
+              with questions.
+            </p>
+          </b-message>
+        </div>
+      </div>
       <Nuxt />
     </section>
     <Footer />
@@ -46,5 +66,10 @@ import Footer from '~/components/Footer'
 
 export default {
   components: { HeaderBanner, Navbar, Footer },
+  computed: {
+    siteSlow() {
+      return process.env.siteSlow
+    },
+  },
 }
 </script>
