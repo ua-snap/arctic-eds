@@ -44,7 +44,7 @@
           <p>
             Copyright &copy; {{ year }} University of Alaska Fairbanks. All
             rights reserved. The
-            <a href="www.alaska.edu">University of Alaska</a> is an Equal
+            <a href="https://www.alaska.edu/">University of Alaska</a> is an Equal
             Opportunity/Equal Access Employer and Educational Institution. The
             University is committed to a
             <a href="https://www.alaska.edu/nondiscrimination/"
