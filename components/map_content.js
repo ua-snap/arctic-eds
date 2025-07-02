@@ -169,7 +169,7 @@ export default {
         title:
           'Mean annual ground temperature at 1 m depth, 2021-2050 (5-Model Average, RCP 8.5), GIPL model',
         source: 'rasdaman',
-        wmsLayerName: 'crrel_gipl_outputs',
+        wmsLayerName: 'crrel_gipl_outputs_nc',
         style: 'arctic_eds_gipl_magt1m_nearcentury',
         legend: 'magt',
       },
@@ -178,7 +178,7 @@ export default {
         title:
           'Mean annual ground temperature at 1 m depth, 2071&ndash;2100 (5&ndash;Model Average, RCP 8.5), GIPL model',
         source: 'rasdaman',
-        wmsLayerName: 'crrel_gipl_outputs',
+        wmsLayerName: 'crrel_gipl_outputs_nc',
         style: 'arctic_eds_gipl_magt1m_latecentury',
         legend: 'magt',
       },
