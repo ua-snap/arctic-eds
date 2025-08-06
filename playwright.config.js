@@ -13,17 +13,22 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   // Limit parallel workers in CI
   workers: process.env.CI ? 1 : undefined,
+  // Enable full parallel execution for local development
+  fullyParallel: !process.env.CI,
   use: {
     // Configure browsers for headless mode in CI
-    headless: true,
+    headless: process.env.CI ? true : false,
     // Set viewport size
-    viewport: { width: 1280, height: 720 },
+    viewport: { width: 1920, height: 1080 },
     // Ignore HTTPS errors
     ignoreHTTPSErrors: true,
     // Add navigation timeout
     navigationTimeout: 30000,
     // Add action timeout
     actionTimeout: 15000,
+    // Enable screenshots and videos for debugging
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
   /* Run your local dev server before starting the tests */
   webServer: {
@@ -37,9 +42,10 @@ export default defineConfig({
   // Configure browsers
   projects: [
     {
-      name: 'chromium',
+      name: 'Chrome',
       use: {
         ...require('@playwright/test').devices['Desktop Chrome'],
+        viewport: { width: 1920, height: 1080 },
         // Disable GPU acceleration in CI
         launchOptions: {
           args: process.env.CI
@@ -53,5 +59,16 @@ export default defineConfig({
         },
       },
     },
+    {
+      name: 'Firefox',
+      use: {
+        ...require('@playwright/test').devices['Desktop Firefox'],
+        viewport: { width: 1920, height: 1080 },
+      },
+    },
   ],
+  // Configure reporters
+  reporter: process.env.CI
+    ? [['github'], ['html']]
+    : [['list'], ['html', { open: 'never' }]],
 })
