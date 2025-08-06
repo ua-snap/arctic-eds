@@ -25,17 +25,15 @@ export default defineConfig({
     // Add action timeout
     actionTimeout: 15000,
   },
-  /* Use external server in CI */
-  webServer: process.env.CI
-    ? undefined
-    : {
-        command: 'npm run dev',
-        url: 'http://127.0.0.1:3000',
-        reuseExistingServer: false,
-        timeout: 180000, // Increase to 3 minutes
-        stderr: 'pipe',
-        stdout: 'pipe',
-      },
+  /* Run your local dev server before starting the tests */
+  webServer: {
+    command: 'npm run dev',
+    url: 'http://127.0.0.1:3000',
+    reuseExistingServer: !process.env.CI,
+    timeout: 180000, // Increase to 3 minutes
+    stderr: 'pipe',
+    stdout: 'pipe',
+  },
   // Configure browsers
   projects: [
     {
