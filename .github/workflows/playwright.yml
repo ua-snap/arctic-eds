@@ -19,12 +19,22 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
+      - name: Build Nuxt app
+        run: npm run build
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
-      - name: Run Playwright tests
-        run: npx playwright test --reporter=github
+      - name: Start server in background
+        run: |
+          npm run start &
+          sleep 30
+          curl -f http://localhost:3000 || (echo "Server failed to start" && exit 1)
         env:
-          DEBUG: pw:webserver
+          CI: true
+      - name: Run Playwright tests
+        run: npx playwright test --reporter=github --max-failures=1
+        timeout-minutes: 15
+        env:
+          DEBUG: pw:browser
       - name: Debug on failure
         if: failure()
         run: |

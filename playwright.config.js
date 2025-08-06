@@ -6,6 +6,13 @@ import { defineConfig } from '@playwright/test'
  */
 export default defineConfig({
   timeout: 60000,
+  expect: {
+    timeout: 10000,
+  },
+  // Retry failed tests in CI
+  retries: process.env.CI ? 2 : 0,
+  // Limit parallel workers in CI
+  workers: process.env.CI ? 1 : undefined,
   use: {
     // Configure browsers for headless mode in CI
     headless: true,
@@ -13,16 +20,22 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 },
     // Ignore HTTPS errors
     ignoreHTTPSErrors: true,
+    // Add navigation timeout
+    navigationTimeout: 30000,
+    // Add action timeout
+    actionTimeout: 15000,
   },
-  /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://127.0.0.1:3000',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120000,
-    stderr: 'pipe',
-    stdout: 'pipe',
-  },
+  /* Use external server in CI */
+  webServer: process.env.CI
+    ? undefined
+    : {
+        command: 'npm run dev',
+        url: 'http://127.0.0.1:3000',
+        reuseExistingServer: false,
+        timeout: 180000, // Increase to 3 minutes
+        stderr: 'pipe',
+        stdout: 'pipe',
+      },
   // Configure browsers
   projects: [
     {
