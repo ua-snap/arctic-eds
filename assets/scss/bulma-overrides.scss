@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Acknowledgement';
-  src: url('~/assets/ACKNO.ttf');
+  src: url('/ACKNO.TTF');
 }
 
 // Update Bulma's global variables
@@ -13,7 +13,7 @@ $grey-dark: #312e30;
 $turquoise: #8ba09a; // sorta turquoise
 
 body {
-  background-color: #FAF9F7;
+  background-color: #faf9f7;
 }
 
 // Clamp width to improve scanning readability.
