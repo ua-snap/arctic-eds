@@ -26,27 +26,26 @@ export default defineConfig({
     navigationTimeout: 30000,
     // Add action timeout
     actionTimeout: 15000,
-    // Enable screenshots and videos for debugging
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    // Enable screenshots and videos always
+    screenshot: 'on',
+    video: 'on',
   },
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run dev',
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
-    timeout: 180000, // Increase to 3 minutes
+    timeout: 180000,
     stderr: 'pipe',
     stdout: 'pipe',
   },
-  // Configure browsers
   projects: [
     {
       name: 'Chrome',
       use: {
         ...require('@playwright/test').devices['Desktop Chrome'],
         viewport: { width: 1920, height: 1080 },
-        // Disable GPU acceleration in CI
+
         launchOptions: {
           args: process.env.CI
             ? [
