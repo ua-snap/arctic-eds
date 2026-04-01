@@ -7,7 +7,7 @@
           <li>
             &nbsp;
             <a
-              href="https://ua-snap.github.io/ardac-notebooks/lab/?path=design_freezing_index%2Fdesign_freezing_index_module.ipynb"
+              href="https://ua-snap.github.io/ardac/lab/?path=design_freezing_index%2Fdesign_freezing_index_module.ipynb"
               target="_blank"
             >
               <strong>design freezing index</strong></a
@@ -16,7 +16,7 @@
           <li>
             &nbsp;
             <a
-              href="https://ua-snap.github.io/ardac-notebooks/lab?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
+              href="https://ua-snap.github.io/ardac/lab?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
               target="_blank"
             >
               <strong>Modified Berggren frost depth</strong> calculator</a

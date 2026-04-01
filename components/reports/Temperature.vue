@@ -38,7 +38,7 @@
         <li>
           Use this dataset in a
           <a
-            href="https://ua-snap.github.io/ardac-notebooks/lab?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
+            href="https://ua-snap.github.io/ardac/lab?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
             target="_blank"
           >
             <strong>Modified Berggren frost depth</strong> calculator.</a
@@ -51,9 +51,11 @@
       <h4 class="title is-5 mb-1">Data Summary</h4>
       <div class="content is-size-5">
         The summary table below presents the minimum, mean, and maximum values
-        for a single scenario (RCP 8.5) and a 5-model average (an average derived from
-        the NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR
-        models).  Data are rounded to two (imperial units) or three (metric) significant digits, and the relative change compared to the modeled baseline (1901-2015) is shown below the value.
+        for a single scenario (RCP 8.5) and a 5-model average (an average
+        derived from the NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL
+        CM5A-LR models). Data are rounded to two (imperial units) or three
+        (metric) significant digits, and the relative change compared to the
+        modeled baseline (1901-2015) is shown below the value.
       </div>
     </div>
 
@@ -493,9 +495,9 @@
       <h4 class="title is-5 mb-1">Data preview</h4>
 
       <p class="content is-size-5 mb-1">
-        CSV download includes monthly values for both modeled baseline CRU TS 4.0
-        (1901&ndash;2015) and modeled projected (2006&ndash;2100) datasets. Data
-        are provided in metric units.
+        CSV download includes monthly values for both modeled baseline CRU TS
+        4.0 (1901&ndash;2015) and modeled projected (2006&ndash;2100) datasets.
+        Data are provided in metric units.
       </p>
       <PreviewTable
         :csvString="results.temperature.preview"
