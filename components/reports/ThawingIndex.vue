@@ -6,7 +6,7 @@
           <li>
             Use this dataset in an
             <a
-              href="https://ua-snap.github.io/ardac-notebooks/lab?path=design_thawing_index%2Fdesign_thawing_index_module.ipynb"
+              href="https://ua-snap.github.io/ardac/lab?path=design_thawing_index%2Fdesign_thawing_index_module.ipynb"
               target="_blank"
               >interactive computational module for
               <strong>design thawing index</strong>.</a
@@ -36,20 +36,26 @@
           <tr>
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
-              {{ round(results.thawing_index['summary']['2010-2039']['ddmin'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2010-2039']['ddmin'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmin']
                 "
-                :future="
-                  results.thawing_index['summary']['2010-2039']['ddmin']
-                "
+                :future="results.thawing_index['summary']['2010-2039']['ddmin']"
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2010-2039']['ddmean'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2010-2039']['ddmean'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmean']
@@ -60,35 +66,43 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2010-2039']['ddmax'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2010-2039']['ddmax'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmax']
                 "
-                :future="
-                  results.thawing_index['summary']['2010-2039']['ddmax']
-                "
+                :future="results.thawing_index['summary']['2010-2039']['ddmax']"
               />
             </td>
           </tr>
           <tr>
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
-              {{ round(results.thawing_index['summary']['2040-2069']['ddmin'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2040-2069']['ddmin'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmin']
                 "
-                :future="
-                  results.thawing_index['summary']['2040-2069']['ddmin']
-                "
+                :future="results.thawing_index['summary']['2040-2069']['ddmin']"
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2040-2069']['ddmean'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2040-2069']['ddmean'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmean']
@@ -99,35 +113,43 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2040-2069']['ddmax'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2040-2069']['ddmax'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmax']
                 "
-                :future="
-                  results.thawing_index['summary']['2040-2069']['ddmax']
-                "
+                :future="results.thawing_index['summary']['2040-2069']['ddmax']"
               />
             </td>
           </tr>
           <tr>
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
-              {{ round(results.thawing_index['summary']['2070-2099']['ddmin'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2070-2099']['ddmin'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmin']
                 "
-                :future="
-                  results.thawing_index['summary']['2070-2099']['ddmin']
-                "
+                :future="results.thawing_index['summary']['2070-2099']['ddmin']"
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2070-2099']['ddmean'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2070-2099']['ddmean'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmean']
@@ -138,15 +160,17 @@
               />
             </td>
             <td>
-              {{ round(results.thawing_index['summary']['2070-2099']['ddmax'],2)
-              }}<UnitWidget unitType="dd" /><br><Diff
+              {{
+                round(
+                  results.thawing_index['summary']['2070-2099']['ddmax'],
+                  2
+                )
+              }}<UnitWidget unitType="dd" /><br /><Diff
                 kind="pct"
                 :past="
                   results.thawing_index['summary']['modeled_baseline']['ddmax']
                 "
-                :future="
-                  results.thawing_index['summary']['2070-2099']['ddmax']
-                "
+                :future="results.thawing_index['summary']['2070-2099']['ddmax']"
               />
             </td>
           </tr>

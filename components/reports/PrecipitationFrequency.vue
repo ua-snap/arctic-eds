@@ -29,7 +29,7 @@
         <li>
           Use this dataset in an
           <a
-            href="https://ua-snap.github.io/ardac-notebooks/lab?path=design_discharge%2Fdesign_discharge.ipynb"
+            href="https://ua-snap.github.io/ardac/lab?path=design_discharge%2Fdesign_discharge.ipynb"
             target="_blank"
             >interactive computational module for
             <strong>design discharge</strong>.</a
