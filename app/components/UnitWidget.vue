@@ -13,7 +13,7 @@
 }
 </style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 export default {
   name: 'UnitWidget',
   props: {
@@ -54,8 +54,8 @@ export default {
         space: space,
       }
     },
-    ...mapGetters({
-      units: 'report/units',
+    ...mapState(useReportStore, {
+      units: 'units',
     }),
   },
 }

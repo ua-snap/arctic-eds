@@ -14,7 +14,7 @@
         @select="option => (selected = option)"
       >
         <template #empty>No results found!</template>
-        <template slot-scope="props">
+        <template #default="props">
           <div class="search-item">
             {{ props.option.name }}
             <span class="alt-name" v-if="props.option.alt_name"
@@ -50,8 +50,7 @@
 
 </style>
 <script>
-import _ from 'lodash'
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 
 export default {
   name: 'PlaceSelector',
@@ -80,8 +79,8 @@ export default {
         })
       }
     },
-    ...mapGetters({
-      places: 'report/places',
+    ...mapState(useReportStore, {
+      places: 'places',
     }),
   },
   watch: {

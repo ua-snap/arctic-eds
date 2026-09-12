@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
@@ -125,9 +125,9 @@ export default {
     PreviewTable,
   },
   computed: {
-    ...mapGetters({
-      results: 'report/results',
-      isSnowfallPresent: 'report/isSnowfallPresent',
+    ...mapState(useReportStore, {
+      results: 'results',
+      isSnowfallPresent: 'isSnowfallPresent',
     }),
   },
 }

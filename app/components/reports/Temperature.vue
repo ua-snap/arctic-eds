@@ -557,7 +557,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
@@ -591,12 +591,12 @@ export default {
       }
       return 1
     },
-    ...mapGetters({
-      units: 'report/units',
-      results: 'report/results',
-      placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      isTemperaturePresent: 'report/isTemperaturePresent',
+    ...mapState(useReportStore, {
+      units: 'units',
+      results: 'results',
+      placeName: 'placeName',
+      isPlaceDefined: 'isPlaceDefined',
+      isTemperaturePresent: 'isTemperaturePresent',
     }),
   },
 }

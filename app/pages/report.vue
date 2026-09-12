@@ -7,7 +7,7 @@
 </template>
 <style lang="scss" scoped></style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 import FullReport from '~/components/Report'
 
 export default {
@@ -16,8 +16,8 @@ export default {
     FullReport,
   },
   computed: {
-    ...mapGetters({
-      reportIsVisible: 'report/reportIsVisible',
+    ...mapState(useReportStore, {
+      reportIsVisible: 'reportIsVisible',
     }),
   },
 }

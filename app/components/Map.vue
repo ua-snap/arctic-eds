@@ -26,17 +26,14 @@
 </style>
 
 <script>
-import _ from 'lodash'
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'Map',
   props: ['mapName'],
   mounted() {
-    this.$store.commit('map/create', this.mapName)
+    useMapStore().create(this.mapName)
   },
-  destroyed() {
-    this.$store.commit('map/destroy', this.mapName)
+  unmounted() {
+    useMapStore().destroy(this.mapName)
   },
 }
 </script>

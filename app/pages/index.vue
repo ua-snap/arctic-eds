@@ -191,7 +191,7 @@ export default {
   components: {
     SearchControls,
   },
-  created() {
+  mounted() {
     // Switch back to clean URL after S3 redirect. Adapted from here:
     // https://via.studio/journal/hosting-a-reactjs-app-with-routing-on-aws-s3
     const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
@@ -201,7 +201,7 @@ export default {
   },
   computed: {
     safeMode() {
-      return process.env.safeMode
+      return this.$config.public.safeMode
     },
   },
 }

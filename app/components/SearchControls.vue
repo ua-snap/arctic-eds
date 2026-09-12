@@ -36,8 +36,15 @@ import PlaceSelector from '~/components/PlaceSelector'
 export default {
   name: 'SearchControls',
   components: { PlaceSelector, LatLngSelector },
-  async fetch() {
-    await this.$store.dispatch('report/fetchPlaces')
+  async setup() {
+    // Was the Nuxt 2 fetch() hook. useAsyncData runs it during
+    // `nuxt generate`, so the community list is serialized into the page
+    // payload as before, and on the client for client-side navigation.
+    const store = useReportStore()
+    await useAsyncData('places', async () => {
+      await store.fetchPlaces()
+      return true
+    })
   },
 }
 </script>

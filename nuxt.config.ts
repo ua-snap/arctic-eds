@@ -97,6 +97,14 @@ export default defineNuxtConfig({
 
   modules: ['@pinia/nuxt'],
 
+  build: {
+    // Buefy ships CommonJS and ESM builds but no package "exports" map, so
+    // Node's resolver (used by the prerender/server bundle) picks the CJS
+    // build, whose default import is not the plugin. Bundling it with the
+    // server code makes the ESM build win on both sides.
+    transpile: ['buefy'],
+  },
+
   hooks: {
     // Router customizations, previously `router.extendRoutes` in Nuxt 2:
     // two extra paths render the report page, and unknown paths go home.

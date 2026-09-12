@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 
 export default {
   name: 'UnitRadio',
@@ -25,8 +25,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      storeRadioUnits: 'report/units',
+    ...mapState(useReportStore, {
+      storeRadioUnits: 'units',
     }),
   },
   mounted() {
@@ -36,11 +36,11 @@ export default {
     radioUnits: function () {
       if (this.radioUnits != this.storeRadioUnits) {
         if (this.radioUnits == 'metric') {
-          this.$store.commit('report/setMetric')
+          useReportStore().setMetric()
         } else {
-          this.$store.commit('report/setImperial')
+          useReportStore().setImperial()
         }
-        this.$store.commit('report/convertResults')
+        useReportStore().convertResults()
       }
     },
   },
