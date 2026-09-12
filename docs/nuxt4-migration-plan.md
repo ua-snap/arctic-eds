@@ -239,7 +239,7 @@ Global find/replace, then per-file items:
 - [x] Jest config and deps removed (D5 recommendation); `npm test` now runs Playwright.
 
 ### Phase 7. Verification (1 day)
-- [x] Full Playwright suite green locally (Chrome + Firefox): 20/20. CI run pending the PR.
+- [x] Full Playwright suite green locally (Chrome + Firefox): 20/20. In GitHub Actions on Node 22: passed, 16 first try + 4 on retry (Chrome report loads timing out at 15 s on cold API requests; the README's known flakiness).
 - [x] `npm run generate`; route list identical to the Phase 0 baseline (six routes + fallback).
 - [x] Screenshot comparison against Phase 0 for every page; drift retuned to ≤ 0.05% in viewport captures (see results below).
 - [ ] Manual checks: `MOCK_API=True npm run dev`, `EDS_SAFE_MODE=1` (maps nav hidden, CSV links hidden, pre-baked results), `SITE_SLOW=1` banner, print stylesheet (`no-print`), the `#!` redirect, view-source of a generated page for the noscript block, MDI icons in the search box and error button, OG/meta tags.
