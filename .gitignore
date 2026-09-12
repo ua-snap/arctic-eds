@@ -95,3 +95,8 @@ playwright-report
 test-results
 # Migration baseline artifacts (Phase 0), local only
 .baseline
+
+# Nuxt 4 build output
+.output
+.nitro
+.data
