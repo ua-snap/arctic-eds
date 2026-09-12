@@ -93,3 +93,5 @@ sw.*
 # Playwright
 playwright-report
 test-results
+# Migration baseline artifacts (Phase 0), local only
+.baseline
