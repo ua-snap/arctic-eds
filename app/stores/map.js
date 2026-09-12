@@ -1,9 +1,9 @@
-import _ from 'lodash'
-import mapContent from '~/components/map_content'
-import Vue from 'vue'
+import { defineStore } from 'pinia'
+import { find } from 'lodash-es'
+import mapContent from '~/data/map_content'
 
 // These three variables needs to be outside of the Store or there's problems
-// because Leaflet mutates the state of the map, and Vuex
+// because Leaflet mutates the state of the map, and the store's reactivity
 // throws a "Don't do that" error; plus, having these objects
 // within the scope of the Nuxt/Vue reactivity decoration causes
 // unpredictable buggy behavior ("too much recursion")
@@ -17,8 +17,11 @@ var layerObjects = {}
 // Collection of legend objects, keyed like `maps` var above
 var legendControls = {}
 
-function getBaseMapAndLayers() {
-  var baseLayer = new L.tileLayer.wms(process.env.geoserverUrl, {
+// `L` is the Leaflet global, set up by plugins/leaflet.client.js. This
+// module is also loaded on the server, so Leaflet must not be imported
+// here; these functions only ever run from client-side lifecycle hooks.
+function getBaseMapAndLayers(geoserverUrl) {
+  var baseLayer = new L.tileLayer.wms(geoserverUrl, {
     transparent: true,
     srs: 'EPSG:3338',
     format: 'image/png',
@@ -71,112 +74,120 @@ function getBaseMapAndLayers() {
   return config
 }
 
-export default {
-  state() {
-    return {
-      selectedLayers: {},
+export const useMapStore = defineStore('map', () => {
+  const config = useRuntimeConfig()
+
+  // State
+  const selectedLayers = ref({})
+
+  // Getters
+  const getSelectedLayers = computed(() => {
+    return selectedLayers.value
+  })
+
+  // Actions (were Vuex mutations)
+  function create(mapName) {
+    maps[mapName] = L.map(
+      mapName,
+      getBaseMapAndLayers(config.public.geoserverUrl)
+    )
+    maps[mapName].on('drag', function () {
+      map.mapName.panInsideBounds(mapConfig.maxBounds, { animate: false })
+    })
+  }
+  function destroy(mapName) {
+    if (maps[mapName]) {
+      maps[mapName].remove()
     }
-  },
-
-  getters: {
-    getSelectedLayers(state) {
-      return state.selectedLayers
-    },
-  },
-
-  mutations: {
-    create(state, mapName) {
-      maps[mapName] = L.map(mapName, getBaseMapAndLayers())
-      maps[mapName].on('drag', function () {
-        map.mapName.panInsideBounds(mapConfig.maxBounds, { animate: false })
+  }
+  function setSelectedLayer(layerInfo) {
+    selectedLayers.value[layerInfo.mapName] = layerInfo.layer.id
+  }
+  function addLegend(mapId) {
+    if (legendControls[mapId]) {
+      legendControls[mapId].remove()
+    }
+    legendControls[mapId] = L.control({ position: 'topleft' })
+    legendControls[mapId].onAdd = map => {
+      var div = L.DomUtil.create('div', 'info legend')
+      let mapLayers = mapContent.layers[mapId]
+      let currentLayer = find(mapLayers, {
+        id: selectedLayers.value[mapId],
       })
-    },
-    destroy(state, mapName) {
-      if (maps[mapName]) {
-        maps[mapName].remove()
-      }
-    },
-    setSelectedLayer(state, layerInfo) {
-      // Because it's an object, need to use Vue.set to get
-      // proper reactivity
-      Vue.set(state.selectedLayers, layerInfo.mapName, layerInfo.layer.id)
-    },
-    addLegend(state, mapId) {
-      if (legendControls[mapId]) {
-        legendControls[mapId].remove()
-      }
-      legendControls[mapId] = L.control({ position: 'topleft' })
-      legendControls[mapId].onAdd = map => {
-        var div = L.DomUtil.create('div', 'info legend')
-        let mapLayers = mapContent.layers[mapId]
-        let currentLayer = _.find(mapLayers, {
-          id: state.selectedLayers[mapId],
-        })
-        let legend = currentLayer.legend
-        let legendItems = mapContent.legends[legend]
+      let legend = currentLayer.legend
+      let legendItems = mapContent.legends[legend]
 
-        div.innerHTML = ''
-        legendItems.forEach(legendItem => {
-          div.innerHTML +=
-            '<div class="legend-item"><div class="legend-swatch" style="background-color: ' +
-            legendItem['color'] +
-            ';"></div> ' +
-            legendItem['label'] +
-            '</div>'
-        })
-        return div
-      }
-
-      legendControls[mapId].addTo(maps[mapId])
-    },
-    toggleLayer(state, layerObj) {
-      // Remove existing layer: right now, we only
-      // want one layer to be visible on any map in the Atlas.
-      // Need to test explicitly for the existence of the
-      // layerObject because this code can get run while
-      // the full DOM is hydrating, see MapLayer / mounted().
-
-      if (
-        state.selectedLayers[layerObj.mapId] &&
-        layerObjects[layerObj.mapId]
-      ) {
-        maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
-      }
-
-      // Build configuration merging some basics with
-      // layer-specific configuration in map_content.js
-      let layer = layerObj.layer
-      let layerConfiguration = {
-        transparent: true,
-        format: 'image/png',
-        version: '1.3.0',
-        layers: layer.wmsLayerName,
-        id: layer.id,
-      }
-
-      if (layer.style) {
-        layerConfiguration.styles = layer.style
-      }
-
-      if (layer.rasdamanConfiguration) {
-        layerConfiguration = {
-          ...layerConfiguration,
-          ...layer.rasdamanConfiguration,
-        }
-      }
-
-      let wmsUrl =
-        layer.source == 'rasdaman'
-          ? process.env.rasdamanUrl
-          : process.env.geoserverUrl
-
-      layerObjects[layerObj.mapId] = L.tileLayer.wms(wmsUrl, layerConfiguration)
-      maps[layerObj.mapId].addLayer(layerObjects[layerObj.mapId])
-      this.commit('map/setSelectedLayer', {
-        mapName: layerObj.mapId,
-        layer: layer,
+      div.innerHTML = ''
+      legendItems.forEach(legendItem => {
+        div.innerHTML +=
+          '<div class="legend-item"><div class="legend-swatch" style="background-color: ' +
+          legendItem['color'] +
+          ';"></div> ' +
+          legendItem['label'] +
+          '</div>'
       })
-      this.commit('map/addLegend', layerObj.mapId)
-    },
-  },
-}
+      return div
+    }
+
+    legendControls[mapId].addTo(maps[mapId])
+  }
+  function toggleLayer(layerObj) {
+    // Remove existing layer: right now, we only
+    // want one layer to be visible on any map in the Atlas.
+    // Need to test explicitly for the existence of the
+    // layerObject because this code can get run while
+    // the full DOM is hydrating, see MapLayer / mounted().
+
+    if (
+      selectedLayers.value[layerObj.mapId] &&
+      layerObjects[layerObj.mapId]
+    ) {
+      maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
+    }
+
+    // Build configuration merging some basics with
+    // layer-specific configuration in map_content.js
+    let layer = layerObj.layer
+    let layerConfiguration = {
+      transparent: true,
+      format: 'image/png',
+      version: '1.3.0',
+      layers: layer.wmsLayerName,
+      id: layer.id,
+    }
+
+    if (layer.style) {
+      layerConfiguration.styles = layer.style
+    }
+
+    if (layer.rasdamanConfiguration) {
+      layerConfiguration = {
+        ...layerConfiguration,
+        ...layer.rasdamanConfiguration,
+      }
+    }
+
+    let wmsUrl =
+      layer.source == 'rasdaman'
+        ? config.public.rasdamanUrl
+        : config.public.geoserverUrl
+
+    layerObjects[layerObj.mapId] = L.tileLayer.wms(wmsUrl, layerConfiguration)
+    maps[layerObj.mapId].addLayer(layerObjects[layerObj.mapId])
+    setSelectedLayer({
+      mapName: layerObj.mapId,
+      layer: layer,
+    })
+    addLegend(layerObj.mapId)
+  }
+
+  return {
+    selectedLayers,
+    getSelectedLayers,
+    create,
+    destroy,
+    setSelectedLayer,
+    addLegend,
+    toggleLayer,
+  }
+})
