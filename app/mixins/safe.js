@@ -1,7 +1,7 @@
 export const safe = {
 	computed: {
 		safeMode() {
-			return process.env.safeMode
+			return useRuntimeConfig().public.safeMode
 		}
 	},
 }

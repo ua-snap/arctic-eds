@@ -24,7 +24,7 @@ import _ from 'lodash'
 import { mapGetters } from 'vuex'
 import Map from '~/components/Map'
 import LayerList from '~/components/LayerList'
-import mapContent from '~/components/map_content'
+import mapContent from '~/data/map_content'
 
 export default {
   name: 'MapBlock',

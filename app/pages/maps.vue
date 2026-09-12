@@ -209,7 +209,7 @@
 
 <script>
 import MapBlock from '~/components/MapBlock'
-import mapLayers from '~/components/map_content'
+import mapLayers from '~/data/map_content'
 import { safe } from '~/mixins/safe.js'
 
 export default {
