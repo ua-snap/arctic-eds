@@ -30,7 +30,7 @@
           </b-message>
         </div>
       </div>
-      <Nuxt />
+      <slot />
     </section>
     <Footer />
   </div>
@@ -68,7 +68,7 @@ export default {
   components: { HeaderBanner, Navbar, Footer },
   computed: {
     siteSlow() {
-      return process.env.siteSlow
+      return this.$config.public.siteSlow
     },
   },
 }

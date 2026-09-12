@@ -45,8 +45,8 @@
 </style>
 
 <script>
-import Vue from 'vue'
-import { mapGetters } from 'vuex'
+import { nextTick } from 'vue'
+import { mapState } from 'pinia'
 
 export default {
   name: 'MapLayer',
@@ -61,18 +61,18 @@ export default {
       // Otherwise, make it active if it's defaulted to be active.
       return this.layer.default
     },
-    ...mapGetters({ activeLayers: 'map/getSelectedLayers' }),
+    ...mapState(useMapStore, { activeLayers: 'getSelectedLayers' }),
   },
   mounted() {
     if (this.layer.default) {
       // We need to wait for Vue to render the full DOM which
       // includes the Leaflet elements before we can trigger this.
-      Vue.nextTick(this.toggleLayer)
+      nextTick(this.toggleLayer)
     }
   },
   methods: {
     toggleLayer() {
-      this.$store.commit('map/toggleLayer', {
+      useMapStore().toggleLayer({
         layer: this.layer,
         mapId: this.mapName,
       })

@@ -2,8 +2,8 @@
   <div>
     <div
       v-if="
-        !$fetchState.pending &&
-        !$fetchState.error &&
+        !state.pending &&
+        !state.error &&
         Object.keys(results).length > 0
       "
     >
@@ -246,7 +246,7 @@
 </template>
 <style lang="scss" scoped></style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 import UnitRadio from '~/components/UnitRadio'
 import MiniMap from '~/components/MiniMap'
 import TemperatureReport from '~/components/reports/Temperature'
@@ -273,59 +273,71 @@ export default {
     HydrologyReport,
   },
   computed: {
-    state: function () {
-      return this.$fetchState
-    },
-    ...mapGetters({
-      results: 'report/results',
-      placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      placeIsLatLng: 'report/placeIsLatLng',
-      latLng: 'report/latLng',
-      isElevationPresent: 'report/isElevationPresent',
-      isHydrologyPresent: 'report/isHydrologyPresent',
-      isPrecipitationPresent: 'report/isPrecipitationPresent',
-      isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',
-      isSnowfallPresent: 'report/isSnowfallPresent',
-      isTemperaturePresent: 'report/isTemperaturePresent',
-      isHeatingDegreeDaysPresent: 'report/isHeatingDegreeDaysPresent',
-      isFreezingIndexPresent: 'report/isFreezingIndexPresent',
-      isThawingIndexPresent: 'report/isThawingIndexPresent',
-      isPermafrostPresent: 'report/isPermafrostPresent',
-      isWetDaysPerYearPresent: 'report/isWetDaysPerYearPresent',
+    ...mapState(useReportStore, {
+      results: 'results',
+      placeName: 'placeName',
+      isPlaceDefined: 'isPlaceDefined',
+      placeIsLatLng: 'placeIsLatLng',
+      latLng: 'latLng',
+      isElevationPresent: 'isElevationPresent',
+      isHydrologyPresent: 'isHydrologyPresent',
+      isPrecipitationPresent: 'isPrecipitationPresent',
+      isPrecipitationFrequencyPresent: 'isPrecipitationFrequencyPresent',
+      isSnowfallPresent: 'isSnowfallPresent',
+      isTemperaturePresent: 'isTemperaturePresent',
+      isHeatingDegreeDaysPresent: 'isHeatingDegreeDaysPresent',
+      isFreezingIndexPresent: 'isFreezingIndexPresent',
+      isThawingIndexPresent: 'isThawingIndexPresent',
+      isPermafrostPresent: 'isPermafrostPresent',
+      isWetDaysPerYearPresent: 'isWetDaysPerYearPresent',
     }),
   },
   data: function () {
     return {
       currentURL: '',
+      // Replaces Nuxt 2's state. Starts pending so the report
+      // sections don't render against empty results before fetch() runs.
+      state: { pending: true, error: null },
     }
   },
   mounted() {
     this.currentURL = window.location.href
-    this.$fetch()
+    this.fetch()
   },
+  methods: {
+    // Was the Nuxt 2 fetch() hook, always re-run from mounted() so the
+    // report data is fetched client-side.
+    async fetch() {
+      const store = useReportStore()
+      this.state.pending = true
+      this.state.error = null
+      try {
+        // Needed here to ensure hydration works properly for
+        // direct links to specific places (mapping place names
+        // to lat/lngs).
+        await store.fetchPlaces()
 
-  async fetch() {
-    // Needed here to ensure hydration works properly for
-    // direct links to specific places (mapping place names
-    // to lat/lngs).
-    await this.$store.dispatch('report/fetchPlaces')
+        if (this.$config.public.safeMode && this.isPlaceDefined) {
+          let key = this.latLng.lat + '+' + this.latLng.lng
+          await store.safeModeFetch(key)
+        } else {
+          if (this.isPlaceDefined) {
+            let url =
+              this.$config.public.apiUrl +
+              '/eds/all/' +
+              this.latLng.lat +
+              '/' +
+              this.latLng.lng
 
-    if (process.env.safeMode && this.isPlaceDefined) {
-      let key = this.latLng.lat + '+' + this.latLng.lng
-      await this.$store.dispatch('report/safeModeFetch', key)
-    } else {
-      if (this.isPlaceDefined) {
-        let url =
-          process.env.apiUrl +
-          '/eds/all/' +
-          this.latLng.lat +
-          '/' +
-          this.latLng.lng
-
-        await this.$store.dispatch('report/apiFetch', url)
+            await store.apiFetch(url)
+          }
+        }
+      } catch (error) {
+        this.state.error = error
+      } finally {
+        this.state.pending = false
       }
-    }
+    },
   },
 }
 </script>

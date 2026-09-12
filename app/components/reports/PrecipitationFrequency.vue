@@ -197,7 +197,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import { safe } from '~/mixins/safe.js'
@@ -240,12 +240,12 @@ export default {
       }
       return res
     },
-    ...mapGetters({
-      results: 'report/results',
-      placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
-      units: 'report/units',
-      isPrecipitationFrequencyPresent: 'report/isPrecipitationFrequencyPresent',
+    ...mapState(useReportStore, {
+      results: 'results',
+      placeName: 'placeName',
+      isPlaceDefined: 'isPlaceDefined',
+      units: 'units',
+      isPrecipitationFrequencyPresent: 'isPrecipitationFrequencyPresent',
     }),
   },
 }

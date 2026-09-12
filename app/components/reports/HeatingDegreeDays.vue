@@ -220,7 +220,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
@@ -239,9 +239,9 @@ export default {
     downloadCsvText() {
       return 'Download CSV of heating degree days for ' + this.placeName
     },
-    ...mapGetters({
-      results: 'report/results',
-      placeName: 'report/placeName',
+    ...mapState(useReportStore, {
+      results: 'results',
+      placeName: 'placeName',
     }),
   },
 }

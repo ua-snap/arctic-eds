@@ -10,25 +10,25 @@
 }
 </style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 
 export default {
   name: 'DownloadCsvButton',
   props: ['text', 'endpoint'],
   computed: {
     safeMode() {
-      return process.env.safeMode
+      return this.$config.public.safeMode
     },
-    ...mapGetters({
-      placeId: 'report/placeId',
-      latLng: 'report/latLng',
+    ...mapState(useReportStore, {
+      placeId: 'placeId',
+      latLng: 'latLng',
     }),
     downloadTarget() {
       let endpointPath = this.endpoint
       let communityID = this.placeId ? '&community=' + this.placeId : ''
 
       let url =
-        process.env.apiUrl +
+        this.$config.public.apiUrl +
         '/' +
         endpointPath +
         '/' +

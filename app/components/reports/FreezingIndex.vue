@@ -233,7 +233,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import { numeric } from '~/mixins/numeric.js'
@@ -251,9 +251,9 @@ export default {
     downloadCsvText() {
       return 'Download CSV of freezing index for ' + this.placeName
     },
-    ...mapGetters({
-      results: 'report/results',
-      placeName: 'report/placeName',
+    ...mapState(useReportStore, {
+      results: 'results',
+      placeName: 'placeName',
     }),
   },
 }

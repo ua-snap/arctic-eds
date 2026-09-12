@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 import HeatingDegreeDaysReport from '~/components/reports/HeatingDegreeDays'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
@@ -116,10 +116,10 @@ export default {
     ThawingIndexReport,
   },
   computed: {
-    ...mapGetters({
-      isHeatingDegreeDaysPresent: 'report/isHeatingDegreeDaysPresent',
-      isFreezingIndexPresent: 'report/isFreezingIndexPresent',
-      isThawingIndexPresent: 'report/isThawingIndexPresent',
+    ...mapState(useReportStore, {
+      isHeatingDegreeDaysPresent: 'isHeatingDegreeDaysPresent',
+      isFreezingIndexPresent: 'isFreezingIndexPresent',
+      isThawingIndexPresent: 'isThawingIndexPresent',
     }),
   },
 }

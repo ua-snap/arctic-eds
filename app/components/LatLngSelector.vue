@@ -7,7 +7,7 @@
           <b-input
             v-model="latlngInput"
             placeholder="64.8436, -147.7230"
-            @keydown.native.enter="process"
+            @keydown.enter="process"
           ></b-input>
         </b-field>
       </div>

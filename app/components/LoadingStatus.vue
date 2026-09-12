@@ -27,20 +27,20 @@
 </template>
 <style lang="scss" scoped></style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 
 export default {
   name: 'LoadingStatus',
   props: ['state'],
   computed: {
-    ...mapGetters({
-      placeName: 'report/placeName',
-      isPlaceDefined: 'report/isPlaceDefined',
+    ...mapState(useReportStore, {
+      placeName: 'placeName',
+      isPlaceDefined: 'isPlaceDefined',
     }),
   },
   methods: {
     close() {
-      this.$store.commit('report/closeReport', this.$route.fullPath)
+      useReportStore().closeReport()
     },
   },
 }

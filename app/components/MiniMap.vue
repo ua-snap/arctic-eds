@@ -17,14 +17,14 @@
 </style>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'pinia'
 
 export default {
   name: 'MiniMap',
   computed: {
-    ...mapGetters({
-      latLng: 'report/latLng',
-      isPlaceDefined: 'report/isPlaceDefined',
+    ...mapState(useReportStore, {
+      latLng: 'latLng',
+      isPlaceDefined: 'isPlaceDefined',
     }),
   },
   data() {
@@ -41,7 +41,7 @@ export default {
       this.map.panTo(this.latLng)
     }
   },
-  destroyed() {
+  unmounted() {
     this.marker = undefined
     if (this.map) {
       this.map.remove()

@@ -20,8 +20,7 @@
 </style>
 
 <script>
-import _ from 'lodash'
-import { mapGetters } from 'vuex'
+import { filter } from 'lodash-es'
 import Map from '~/components/Map'
 import LayerList from '~/components/LayerList'
 import mapContent from '~/data/map_content'
@@ -43,7 +42,7 @@ export default {
   },
   methods: {
     selectDefaultLayer() {
-      let defaultLayer = _.filter(mapContent.layers[this.map], layer => {
+      let defaultLayer = filter(mapContent.layers[this.map], layer => {
         return layer['default']
       })[0]
     },
