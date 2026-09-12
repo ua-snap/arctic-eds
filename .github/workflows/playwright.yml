@@ -16,6 +16,12 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
+      # Node 22 bundles npm 10, whose `npm ci` rejects the lockfile because a
+      # transitive dependency (@bomb.sh/tab, via @nuxt/cli) declares optional
+      # peer deps on versions of cac/commander that the tree does not carry.
+      # npm 11+ validates optional peers correctly.
+      - name: Update npm
+        run: npm install -g npm@12
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
