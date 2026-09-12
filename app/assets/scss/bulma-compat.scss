@@ -47,3 +47,32 @@
 a:hover {
   color: hsl(0, 0%, 21%);
 }
+
+// Message (used for the SITE_SLOW banner): Bulma 1 pads the header more
+// (1em 1.25em vs 0.75em 1em), uses semibold instead of bold, colours the
+// header/body text from the message hue instead of 0.9's fixed values,
+// rounds the body with the small radius, and draws the close button darker.
+.message {
+  --bulma-message-header-padding: 0.75em 1em;
+  --bulma-message-header-weight: 700;
+}
+.message-body {
+  border-radius: 4px;
+}
+.message-header + .message-body {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.message.is-warning .message-header {
+  color: rgba(0, 0, 0, 0.7);
+}
+.message.is-warning .message-body {
+  border-color: #ffe08a;
+  color: #946c00;
+}
+.delete {
+  --bulma-delete-background-alpha: 0.2;
+}
+.delete:hover {
+  --bulma-delete-background-alpha: 0.3;
+}

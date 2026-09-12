@@ -268,7 +268,14 @@ Global find/replace, then per-file items:
 
 Residual after fixes: every viewport capture ≤ 0.05% changed pixels; full-page captures ≤ 0.2%, attributable to 1-unit colour rounding (Bulma 1 round-trips colours through HSL) and anti-aliasing. Page heights and all measured element positions match the baseline exactly.
 
-Not verified in this pass (needs your environment): the `SITE_SLOW`, safe-mode and `MOCK_API` variant builds under Nuxt 4 (baselines exist in `.baseline/screenshots/{safe,mock-slow}`; rerun `screenshot.mjs` against a variant generate to compare), and the real error banner (needs a dead API host).
+Variant builds were generated under Nuxt 4 and compared against their own Phase 0 captures:
+
+| Build | Result |
+|---|---|
+| `MOCK_API=True SITE_SLOW=1` | 0.00–0.04% per capture after the message-component fix (the banner alone had been 6–12%). Mock report renders from the lazy-loaded fixture. |
+| `EDS_SAFE_MODE=1` | 0.00–0.07% per capture. Same eleven HTML routes as Nuxt 2 (the five linked community reports get crawled; the lat/lng link does not). Safe-mode report renders from the lazy-loaded fixture; a safe-mode lat/lng URL stays on the loading screen exactly as before. |
+
+Not verified: the real error banner (needs a dead API host).
 
 ### Phase 8. Docs (1 hour)
 - [x] README: Node 22, `npm run preview`, `.output/public` + `dist` symlink, unchanged env var names.
