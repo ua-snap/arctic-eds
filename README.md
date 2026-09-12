@@ -2,6 +2,8 @@
 
 ## Build Setup
 
+Requires Node 22 (see `.nvmrc`; `nvm use` picks it up). Built with Nuxt 4.
+
 ```bash
 # install dependencies
 npm install
@@ -18,13 +20,17 @@ export SNAP_API_URL=http://localhost:5000
 export RASDAMAN_URL=https://apollo.snap.uaf.edu/rasdaman/ows
 npm run dev
 
-# build for production and launch server
-npm run build
-npm run start
-
-# generate static project -- double-check all env vars before doing this.
+# generate the static site into .output/public/ (with a dist symlink
+# for compatibility) -- double-check all env vars before doing this.
 npm run generate
+
+# preview the generated site locally
+npm run preview
 ```
+
+Environment variables are read at build/generate time, so set them before
+running `npm run generate`. `MOCK_API`, `EDS_SAFE_MODE`, and `SITE_SLOW` are
+treated as booleans: any non-empty value turns them on.
 
 ### Playwright tests
 
@@ -40,5 +46,7 @@ Make sure the local webapp is running as expected. Then, in another terminal win
 npx playwright install # Install Playwright browsers
 npx playwright test --ui
 ```
+
+`npm test` runs the same suite headlessly.
 
 Note that, due to intermittent timeouts from computationally-expensive Data API requests, especially if you are running this webapp locally against an uncached local Data API, it's very possible that some of the Playwright tests will fail even if there is nothing wrong with the code. This happens maybe ~25% of the time. If a test fails, remember that you can run the test over again individually without re-running the full suite of tests.
