@@ -233,7 +233,7 @@ Global find/replace, then per-file items:
 - [ ] Report page mini-map: USGS topo tiles + marker at the right spot.
 
 ### Phase 6. Tests and CI (½ day)
-- [x] `playwright.config.js`: unchanged. `@playwright/test` resolved to 1.63 by the fresh install; run `npx playwright install` once for its browser builds.
+- [x] `playwright.config.js`: `webServer.url` changed from `http://127.0.0.1:3000` to `http://localhost:3000`. **Found on the second CI run:** on Node 17+ Linux, `localhost` resolves to `::1` first, so `nuxt dev` listened on IPv6 and Playwright's IPv4 readiness probe never connected (180 s timeout). macOS resolves both, which is why it passed locally. `@playwright/test` resolved to 1.63 by the fresh install; run `npx playwright install` once for its browser builds.
 - [x] `.github/workflows/playwright.yml`: Node from `.nvmrc`; `NODE_ENV: test` dropped. Keep `xvfb-run`; headless is already forced in CI.
 - [x] **Found on the first CI run:** `npm ci` under Node 22's bundled npm 10.9 fails with `lock file's cac@7.0.0 does not satisfy cac@6.7.14` (and the same for `commander`). `@bomb.sh/tab`, a dependency of `@nuxt/cli`, declares *optional* peer deps that the tree doesn't carry; npm 10's `ci` validation treats them as required, npm 11+ does not. Reproduced locally. Fix: the workflow installs `npm@12` before `npm ci`; README notes it for local `npm ci` users. Alternatives considered: `--legacy-peer-deps` (also passes, but changes resolution semantics for everyone), Node 24 (contradicts D1).
 - [x] Jest config and deps removed (D5 recommendation); `npm test` now runs Playwright.

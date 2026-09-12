@@ -33,7 +33,10 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run dev',
-    url: 'http://127.0.0.1:3000',
+    // Probe by hostname, not 127.0.0.1: on Node 17+ `localhost` resolves to
+    // ::1 first on Linux, so the dev server listens on IPv6 there and an
+    // IPv4 probe never connects (CI timed out waiting for the server).
+    url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 180000,
     stderr: 'pipe',
