@@ -37,3 +37,13 @@
 .button.is-danger {
   --bulma-button-border-width: 1px;
 }
+
+// Bulma 1 renders link text at a fixed 58% lightness ("link-on-scheme")
+// rather than the link colour itself, and hovers to a lighter blue. Bulma
+// 0.9 used the link colour as is (53%) and hovered to grey-darker.
+:root {
+  --bulma-link-on-scheme-l: 53%;
+}
+a:hover {
+  color: hsl(0, 0%, 21%);
+}

@@ -24,6 +24,13 @@
   $grey-lightest: hsl(0, 0%, 93%),
   $white-ter: hsl(0, 0%, 96%),
   $white-bis: hsl(0, 0%, 98%),
+  // Bulma 1 also brightened four of the base colours; these are 0.9.3's.
+  // They drive links ($blue), is-info ($cyan), is-warning ($yellow) and
+  // is-danger ($red). Green and turquoise did not change.
+  $blue: hsl(229, 53%, 53%),
+  $cyan: hsl(207, 61%, 53%),
+  $yellow: hsl(44, 100%, 77%),
+  $red: hsl(348, 86%, 61%),
   $title-weight: 600, // Bulma 1: extrabold
   $radius-small: 2px, // Bulma 1: 0.25rem
   $radius: 4px, // Bulma 1: 0.375rem
