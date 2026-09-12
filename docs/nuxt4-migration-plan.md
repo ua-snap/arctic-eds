@@ -264,6 +264,7 @@ Global find/replace, then per-file items:
 | Bulma 1 picks `is-primary` text colour by HSL lightness | Footer button text dark instead of white | `:root { --bulma-primary-invert-l: 100% }` |
 | Bulma 1 zeroes the border on coloured buttons, and subtracts border width from button padding | Buttons 2 px smaller each way; footer 2 px higher | `--bulma-button-border-width: 1px` on coloured buttons, plus `$button-padding-horizontal: calc(1em + 1px)` so the padding lands on 0.9's values |
 | Bulma 1 defaults: title weight 800, radius 0.375 rem, blue-tinted greys (`$scheme-s: 14%`, grey scale at hue 221) | Radii, input text colour, blockquote background | 0.9 values passed in the `@use 'bulma/sass' with (...)` block (`$scheme-s: 0%`, neutral grey scale, radii, `$title-weight: 600`) |
+| Bulma 1 brightened `$blue`, `$cyan`, `$yellow`, `$red`, and renders link text at a fixed 58% lightness with a blue hover | Glossary term links and other links a different blue; warning/danger/info colours off | 0.9.3 colour values in the `with (...)` block; `--bulma-link-on-scheme-l: 53%` and the 0.9 `a:hover` grey in `bulma-compat.scss` |
 
 Residual after fixes: every viewport capture ≤ 0.05% changed pixels; full-page captures ≤ 0.2%, attributable to 1-unit colour rounding (Bulma 1 round-trips colours through HSL) and anti-aliasing. Page heights and all measured element positions match the baseline exactly.
 
