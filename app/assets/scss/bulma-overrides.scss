@@ -1,4 +1,7 @@
-@charset "utf-8";
+// Plain-CSS rules that sit alongside Bulma. This file is @used first from
+// main.scss, so it is emitted before Bulma's own CSS (same order as before).
+// Bulma's Sass variable overrides live in main.scss now, in the
+// `@use 'bulma/sass' with (...)` block, because Bulma 1 is a Sass module.
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@900&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 
@@ -6,11 +9,6 @@
   font-family: 'Acknowledgement';
   src: url('/ACKNO.TTF');
 }
-
-// Update Bulma's global variables
-$family-sans-serif: 'IBM Plex Sans', sans-serif;
-$grey-dark: #312e30;
-$turquoise: #8ba09a; // sorta turquoise
 
 body {
   background-color: #faf9f7;

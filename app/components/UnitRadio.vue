@@ -47,7 +47,7 @@ export default {
 }
 </script>
 <style scoped>
-::v-deep label {
+:deep(label) {
   display: none;
 }
 </style>

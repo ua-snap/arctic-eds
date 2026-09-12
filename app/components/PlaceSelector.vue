@@ -42,7 +42,7 @@
     font-size: 90%;
   }
 }
-::v-deep input.input {  
+:deep(input.input) {
   box-shadow: none;
   border: 3px solid #8ba09a;
   border-radius: 0;

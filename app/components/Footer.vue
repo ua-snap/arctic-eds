@@ -96,7 +96,7 @@ export default {
     font-weight: 700;
   }
 
-  ::v-deep .button {
+  :deep(.button) {
     font-weight: bold;
     &:hover {
       background-color: #312e30;

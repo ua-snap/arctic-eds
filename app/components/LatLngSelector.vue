@@ -20,13 +20,13 @@
   </div>
 </template>
 <style lang="scss" scoped>
-::v-deep input.input {
+:deep(input.input) {
   box-shadow: none;
   border: 3px solid #8ba09a;
   border-radius: 0;
   max-width: 30rem;
 }
-::v-deep button.button {
+:deep(button.button) {
   font-weight: bold;
   &:hover {
     background-color: #312e30;
