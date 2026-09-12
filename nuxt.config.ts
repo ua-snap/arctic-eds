@@ -97,6 +97,16 @@ export default defineNuxtConfig({
 
   modules: ['@pinia/nuxt'],
 
+  vue: {
+    compilerOptions: {
+      // Vue 2 (and therefore Nuxt 2) kept whitespace-only text nodes
+      // between elements; Vue 3 drops them by default. That changes the
+      // rendered gap between inline-block elements such as the navbar
+      // items, so keep the Vue 2 behaviour.
+      whitespace: 'preserve',
+    },
+  },
+
   build: {
     // Buefy ships CommonJS and ESM builds but no package "exports" map, so
     // Node's resolver (used by the prerender/server bundle) picks the CJS

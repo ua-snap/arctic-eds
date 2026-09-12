@@ -233,19 +233,44 @@ Global find/replace, then per-file items:
 - [ ] Report page mini-map: USGS topo tiles + marker at the right spot.
 
 ### Phase 6. Tests and CI (½ day)
-- [ ] `playwright.config.js`: no change required (`npm run dev` on `127.0.0.1:3000` still holds). Optionally bump `@playwright/test`.
-- [ ] `.github/workflows/playwright.yml`: `node-version: '22'`; drop `NODE_ENV: test` (Nuxt 4's dev server treats `NODE_ENV` as meaningful; the tests don't need it). Keep `xvfb-run`; headless is already forced in CI.
-- [ ] Remove Jest config/deps or add Vitest (D5).
+- [x] `playwright.config.js`: unchanged. `@playwright/test` resolved to 1.63 by the fresh install; run `npx playwright install` once for its browser builds.
+- [x] `.github/workflows/playwright.yml`: Node from `.nvmrc`; `NODE_ENV: test` dropped. Keep `xvfb-run`; headless is already forced in CI.
+- [x] Jest config and deps removed (D5 recommendation); `npm test` now runs Playwright.
 
 ### Phase 7. Verification (1 day)
-- [ ] Full Playwright suite green locally (Chrome + Firefox) and in CI.
-- [ ] `npm run generate`; diff `.output/public` route list against the Phase 0 `.baseline/dist-default/` list (six routes + fallback; no report routes in normal mode).
-- [ ] Screenshot comparison against Phase 0 for every page; sign off on any Bulma 1 drift or retune.
+- [x] Full Playwright suite green locally (Chrome + Firefox): 20/20. CI run pending the PR.
+- [x] `npm run generate`; route list identical to the Phase 0 baseline (six routes + fallback).
+- [x] Screenshot comparison against Phase 0 for every page; drift retuned to ≤ 0.05% in viewport captures (see results below).
 - [ ] Manual checks: `MOCK_API=True npm run dev`, `EDS_SAFE_MODE=1` (maps nav hidden, CSV links hidden, pre-baked results), `SITE_SLOW=1` banner, print stylesheet (`no-print`), the `#!` redirect, view-source of a generated page for the noscript block, MDI icons in the search box and error button, OG/meta tags.
-- [ ] Lighthouse/bundle sanity: `mock.json` / `safe.json` must not be in the main chunk.
+- [x] Bundle sanity: `mock.json` / `safe.json` are separate lazy chunks, not in the entry chunk.
+
+### Phase 7 results (2026-09-12)
+
+**Status: complete for the default build.** Everything below is reproducible with the tooling in `.baseline/` (`serve.py`, `screenshot.mjs`, `compare.mjs`, `measure.mjs`, `measure-diff.mjs`, `console-check.mjs`); see `.baseline/README.md`.
+
+- **Playwright suite:** 20 passed / 0 failed in 2.0 min against `nuxt dev` (was 3.0 min on Nuxt 2). Same 10 tests, Chrome + Firefox.
+- **Generate:** same six routes plus `200.html`/`404.html`; `dist` symlink present; output 5.6 MB (was 6.5 MB). The two report-data fixtures are separate lazy chunks (1.2 MB + 0.7 MB), not in the entry chunk.
+- **Console sweep** (dev server, every page + search flow + catch-all redirect): zero Vue warnings, no hydration mismatches. Only third-party YouTube-embed feature-policy noise and a dev-only Vue Router note that `#results` does not exist yet when a report route finishes navigating (same timing as before; the anchor appears after the fetch).
+- **Head/noscript:** all head tags reproduced except the empty `<meta name="description" content="">` (unhead drops empty content); noscript block at body open; `#__nuxt` carries `hide-if-noscript`; umami attributes verbatim; MDI preload link present.
+
+**Visual parity.** Pixel comparison of every page against the Phase 0 screenshots (threshold: per-channel distance > 40). First pass showed real drift; each cause was measured with element bounding boxes and fixed at the source rather than by eye:
+
+| Cause | Symptom | Fix |
+|---|---|---|
+| Bulma 1 removed `.tile` entirely | About-page images stacked; maps layer rows lost their flex layout | `bulma-tiles.scss`: Bulma 0.9.3's tile rules carried forward verbatim |
+| Vue 3 drops whitespace-only text nodes between elements | Nav items ≈4 px closer together (inline-block gaps gone) | `vue.compilerOptions.whitespace: 'preserve'` (Vue 2 behaviour) |
+| Bulma 1 dropped `.title + .subtitle { margin-top: -1.25rem }` | Report subtitle 4 px higher | `bulma-compat.scss` restores the 0.25 rem net gap |
+| Buefy 3 sets `line-height: 1.5` on `.b-radio` | Radio rows 4–6 px taller (report page +18 px) | `.b-radio.radio { line-height: 1.25 }` |
+| Bulma 1 picks `is-primary` text colour by HSL lightness | Footer button text dark instead of white | `:root { --bulma-primary-invert-l: 100% }` |
+| Bulma 1 zeroes the border on coloured buttons, and subtracts border width from button padding | Buttons 2 px smaller each way; footer 2 px higher | `--bulma-button-border-width: 1px` on coloured buttons, plus `$button-padding-horizontal: calc(1em + 1px)` so the padding lands on 0.9's values |
+| Bulma 1 defaults: title weight 800, radius 0.375 rem, blue-tinted greys (`$scheme-s: 14%`, grey scale at hue 221) | Radii, input text colour, blockquote background | 0.9 values passed in the `@use 'bulma/sass' with (...)` block (`$scheme-s: 0%`, neutral grey scale, radii, `$title-weight: 600`) |
+
+Residual after fixes: every viewport capture ≤ 0.05% changed pixels; full-page captures ≤ 0.2%, attributable to 1-unit colour rounding (Bulma 1 round-trips colours through HSL) and anti-aliasing. Page heights and all measured element positions match the baseline exactly.
+
+Not verified in this pass (needs your environment): the `SITE_SLOW`, safe-mode and `MOCK_API` variant builds under Nuxt 4 (baselines exist in `.baseline/screenshots/{safe,mock-slow}`; rerun `screenshot.mjs` against a variant generate to compare), and the real error banner (needs a dead API host).
 
 ### Phase 8. Docs (1 hour)
-- [ ] README: Node 22, `npm run preview`, `.output/public` + `dist` symlink, unchanged env var names.
+- [x] README: Node 22, `npm run preview`, `.output/public` + `dist` symlink, unchanged env var names.
 
 **Total: ≈6–7 working days**, weighted toward visual verification rather than code.
 

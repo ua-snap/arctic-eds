@@ -1,0 +1,39 @@
+// Small rules that restore Bulma 0.9 / Buefy 0.9 rendering where Bulma 1 and
+// Buefy 3 changed a default. Emitted after Bulma and Buefy. Each rule was
+// identified by measuring element boxes against the pre-migration build.
+
+// Bulma 0.9: `.title:not(.is-spaced) + .subtitle { margin-top: -1.25rem }`
+// against a 1.5rem title margin left a 0.25rem gap. Bulma 1 zeroes the
+// title margin instead, which closes the gap entirely.
+.title:not(.is-spaced) + .subtitle {
+  margin-top: 0.25rem;
+}
+
+// Buefy 3 sets `line-height: var(--bulma-control-line-height)` (1.5) on
+// .b-radio; Buefy 0.9 inherited Bulma's `.radio { line-height: 1.25 }`.
+.b-radio.radio {
+  line-height: 1.25;
+}
+
+// Bulma 1 chooses the text colour on `is-primary` elements by the primary
+// colour's HSL lightness, which makes our turquoise get dark text. Bulma 0.9
+// used relative luminance and chose white.
+:root {
+  --bulma-primary-invert-l: 100%;
+}
+
+// Bulma 0.9 gave coloured buttons a 1px transparent border; Bulma 1 sets the
+// border width to 0 on them, which makes each one 2px smaller.
+.button.is-white,
+.button.is-black,
+.button.is-light,
+.button.is-dark,
+.button.is-text,
+.button.is-primary,
+.button.is-link,
+.button.is-info,
+.button.is-success,
+.button.is-warning,
+.button.is-danger {
+  --bulma-button-border-width: 1px;
+}
