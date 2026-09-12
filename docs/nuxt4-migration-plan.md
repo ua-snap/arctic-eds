@@ -166,7 +166,7 @@ _Artifacts live in the gitignored `.baseline/` directory at the repo root: `dist
 ### Phase 1. Scaffold Nuxt 4 (1 day)
 - [ ] `package.json`: replace deps (see table below), `engines`, scripts: `dev: nuxt dev`, `build: nuxt build`, `generate: nuxt generate`, `preview: nuxt preview`, drop `start` (no server in a static build), drop or replace `test` (D5).
 - [ ] New `nuxt.config.ts` (`defineNuxtConfig`), `compatibilityDate: '2026-09-12'`:
-  - `app.head` ← old `head` (`hid` → `key`; keep umami `<script>` attrs verbatim; add the MDI 5.8.55 stylesheet `<link>` that nuxt-buefy used to inject, `rel="preload" as="style" onload="this.rel='stylesheet'"` to match).
+  - `app.head` ← old `head` (`hid` → `key`; keep umami `<script>` attrs verbatim; add the MDI 5.8.55 stylesheet `<link>` that nuxt-buefy used to inject, `rel="preload" as="style" onload="this.rel='stylesheet'"` to match). Known micro-difference: unhead drops the `<meta name="description" content="">` tag because its content is empty; every other head tag renders. Not user-visible; left as is.
   - `app.rootAttrs`, `app.head.noscript` (D4).
   - `css: ['~/assets/scss/main.scss']`.
   - `runtimeConfig.public` (D7).
@@ -192,7 +192,7 @@ removed:        @nuxt/http, @nuxtjs/axios, core-js, nuxt-buefy, nuxt-leaflet,
 ```
 
 ### Phase 2. Styles: Bulma 1 + Buefy 3 (1 day, most of it visual comparison)
-- [ ] `app/plugins/buefy.js`: `defineNuxtPlugin(({ vueApp }) => vueApp.use(Buefy))`.
+- [x] `app/plugins/buefy.js`: `defineNuxtPlugin(({ vueApp }) => vueApp.use(Buefy))`. **Gotcha found in Phase 5 testing:** Buefy 3 has no package `exports` map, so Node's resolver on the prerender/server side picks its CommonJS build, whose default import is a namespace object without `install`; Buefy silently fails to register, `<b-autocomplete>` renders as an unknown element, and its scoped slot throws (`Cannot read properties of undefined (reading 'option')`), which was the 500 on `/`. Fixed with `build.transpile: ['buefy']` so the ESM build is bundled on both sides.
 - [ ] Rewrite `main.scss`: Google Fonts `@import url()` stays first; then `@use 'bulma/sass' with ($family-sans-serif: ..., $grey-dark: #312e30, $turquoise: #8ba09a)`; then `@use 'buefy/src/scss/buefy'`; then the existing custom rules. Drop the `~` prefixes (webpack-only). Check the exact `@use` form against the Buefy 3 docs when you get here.
 - [ ] Split `bulma-overrides.scss`: the three Sass variables move into the `with (...)` block above; the `@font-face`, `body`, `table`, `.content`, radio/field spacing rules stay as plain CSS.
 - [ ] Bulma 1 emits many deprecation-free but *different* defaults; diff the generated CSS against the Phase 0 baseline for `.title`, `.button`, `.input`, `.field`, `.message`, `.progress`, `.tile`, `.columns`. Retune overrides until screenshots match.
