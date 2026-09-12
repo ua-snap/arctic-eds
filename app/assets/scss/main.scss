@@ -1,12 +1,18 @@
-// Here's where we override defaults in Bulma!
-// Note that this is where our font imports come from too.
-@import 'bulma-overrides.scss';
+// Site-wide rules and fonts. Emitted before Bulma, as before.
+@use 'bulma-overrides';
 
-// Import bulma styles
-@import '~bulma';
+// Bulma, with our global variable overrides. Bulma 1 uses the Sass module
+// system, so overrides are passed here instead of being declared before an
+// @import. Everything that @uses Bulma's utilities afterwards (Buefy
+// included) sees the same configured values.
+@use 'bulma/sass' with (
+  $family-sans-serif: ('IBM Plex Sans', sans-serif),
+  $grey-dark: #312e30,
+  $turquoise: #8ba09a // sorta turquoise
+);
 
-// Import buefy styles
-@import '~buefy/src/scss/buefy';
+// Buefy styles (Vue 3 line of Buefy, built on Bulma 1).
+@use 'buefy/src/scss/buefy';
 
 @media print {
   .no-print {

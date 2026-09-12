@@ -22,10 +22,7 @@ export default {
   cursor: help;
   border-bottom: 1px dashed black;
 }
-::v-deep {
-  a {
-
-      cursor: help;
-  }
+:deep(a) {
+  cursor: help;
 }
 </style>
