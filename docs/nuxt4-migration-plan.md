@@ -6,10 +6,11 @@ _Drafted 2026-09-12 on branch `nuxt4-migration-plan`. Goal: move to Nuxt 4 with 
 
 | Decision | Status |
 |---|---|
-| D1 Node version | **Decided 2026-09-12: Node 22** |
+| D1 Node version | **Decided 2026-09-12: Node 22. Revised 2026-09-14 in PR review: Node 24** |
 | D2 State management | **Decided 2026-09-12: Pinia** |
-| D3 UI kit | **Decided 2026-09-12: Buefy 3 + Bulma 1** |
-| D4–D11 | Open; recommendations stand until overridden |
+| D3 UI kit | **Decided 2026-09-12: Buefy 3 + Bulma 1. Refined 2026-09-14 in PR review: use Bulma 1 / Buefy 3 defaults, no 0.9 parity shims** |
+| D11 rename `Map.vue` | **Decided 2026-09-14 in PR review: renamed to `LeafletMap.vue`** |
+| D4–D10 | Open; recommendations stand until overridden |
 
 ---
 
@@ -92,7 +93,10 @@ Only the libraries that shape the app. Versions are the npm `latest` tags as of 
 
 Each one has a recommendation. Nothing in §5 starts until D1–D3 are settled; the rest can be decided as their phase comes up.
 
-### D1. Node version — DECIDED: Node 22
+### D1. Node version — DECIDED: Node 24 (revised from 22 in PR review)
+
+**Revision (2026-09-14):** the repo moved to Node 24. Node 22's bundled npm 10 could not `npm ci` the lockfile (see Phase 6), which needed an npm-upgrade step in CI; Node 24 bundles npm 11, so CI installs with the stock toolchain. `.nvmrc` = `24`, `engines.node` = `>=24.11` (Nuxt 4.5's floor on the 24 line). The original analysis follows.
+
 Nuxt 4.5 refuses Node < 22.19. Local is 18, CI is 16.
 - **Recommended: Node 22 LTS.** Add `.nvmrc` = `22`, `engines.node = ">=22.19"` in `package.json`, bump `actions/setup-node` to `22`.
 - Alternative: Node 24 LTS. Fine too; 22 has the longer track record with the Playwright container image.
@@ -102,7 +106,10 @@ Nuxt 4.5 refuses Node < 22.19. Local is 18, CI is 16.
 - Alternative: Vuex 4. Works with Vue 3 but you write the Nuxt plugin wiring yourself, lose SSR state hydration for free, and still have to replace vuex-router-sync. Not less work.
 - Non-mechanical bits either way: `closeReport` is a *mutation* that calls `this.$router.push` (becomes an action calling `navigateTo('/')`); `destroy` writes an undeclared `state.placeName`.
 
-### D3. UI kit — DECIDED: Buefy 3 + Bulma 1 (Option A)
+### D3. UI kit — DECIDED: Buefy 3 + Bulma 1 (Option A), with stock defaults
+
+**Refinement (2026-09-14):** no bridge stylesheets. Bulma 1 and Buefy 3 render with their own defaults; the only Bulma variables passed are the site's three pre-existing overrides (sans-serif family, `$grey-dark`, `$turquoise`). Markup that relied on removed Bulma 0.9 features is rewritten with Bulma 1 layout: the About page image pair uses the new `fixed-grid`, and the maps layer rows use `columns`. Visual drift from the Nuxt 2 site is accepted and will be tuned separately. The original analysis follows.
+
 Only seven Buefy components are used: `b-radio` (12×), `b-field` (7×), `b-button` (3×), `b-input`, `b-autocomplete`, `b-progress`, `b-message` (1× each).
 - **Option A (recommended): Buefy 3.1 + Bulma 1.0.4.** Least code churn: templates stay as they are, and Buefy 3 deliberately kept the 0.9 component API. Cost: Bulma 1 is a rewrite (Sass `@use` modules, CSS custom properties, some retuned defaults for titles, buttons, inputs, spacing). The two SCSS files get rewritten; variable overrides move into a `@use 'bulma/sass' with (...)` block. **Some visual drift is likely and has to be screenshot-compared page by page.** The `label.b-radio.radio span.control-label` override in `bulma-overrides.scss` targets Buefy internals and may need retuning.
 - **Option B: drop Buefy, keep Bulma 0.9.4.** Replace the seven components with plain Bulma markup plus one small autocomplete component (≈150–250 lines of new code). Zero visual drift on Bulma itself, one fewer dependency with a thin maintainer base, but it *is* new code in the search box and unit toggle, which the Playwright suite exercises heavily.
@@ -144,7 +151,7 @@ Today the live site's static payload contains the full community list, captured 
 Every component stays Options API. Vue 3 supports it fully, mixins still work, and it keeps the diff reviewable. A `<script setup>` rewrite can be a separate, later PR if wanted.
 
 ### D11. Optional clean-ups (default: **not** in this migration)
-- Rename `components/Map.vue` → `LeafletMap.vue` (component named `Map` shadows the JS global inside `MapBlock.vue`; harmless today).
+- ~~Rename `components/Map.vue` → `LeafletMap.vue`~~ **Done in PR review (2026-09-14).** (The component named `Map` shadowed the JS global inside `MapBlock.vue`.)
 - Move `components/map_content.js` out of `components/` (Nuxt 4 scans `.js` there and would register a useless `<MapContent>` component). **This one I'd do**: `app/data/map_content.js`, imports updated. No behaviour change.
 - Prettier 2 → 3, `page.$$` → locators in the Playwright suite, TypeScript. All deferred.
 
@@ -230,12 +237,13 @@ Global find/replace, then per-file items:
 ### Phase 5. Leaflet plugin and maps (½ day)
 - [ ] `app/plugins/leaflet.client.js`: same four imports inside `defineNuxtPlugin(() => {})`. Confirm `window.L.Proj.CRS` exists in the browser console (proj4leaflet through Vite's CJS interop, D6).
 - [ ] `/maps`: all six map blocks render, default layers toggle on mount (the `nextTick` path), legends appear top-left, WMS tiles load from rasdaman/geoserver with the `EPSG:3338` grid.
+- [x] **Regression found 2026-09-14 (missed by the Phase 7 pixel diff, which covered the full page but the pin is ~1,000 px of a 19,000 px capture):** the report mini-map marker was a broken image. Vite inlines `leaflet/dist/images/*.png` into `leaflet.css` as data URIs; `L.Icon.Default` derives its image folder from that CSS URL, fails on a data URI, and falls back to a bare relative `marker-icon.png`. Fix: import the three icon images in `leaflet.client.js` and pass them to `L.Icon.Default.mergeOptions`, removing the path-prefixing `_getIconUrl` (the documented pattern for Leaflet under a bundler).
 - [ ] Report page mini-map: USGS topo tiles + marker at the right spot.
 
 ### Phase 6. Tests and CI (½ day)
 - [x] `playwright.config.js`: `webServer.url` changed from `http://127.0.0.1:3000` to `http://localhost:3000`. **Found on the second CI run:** on Node 17+ Linux, `localhost` resolves to `::1` first, so `nuxt dev` listened on IPv6 and Playwright's IPv4 readiness probe never connected (180 s timeout). macOS resolves both, which is why it passed locally. `@playwright/test` resolved to 1.63 by the fresh install; run `npx playwright install` once for its browser builds.
 - [x] `.github/workflows/playwright.yml`: Node from `.nvmrc`; `NODE_ENV: test` dropped. Keep `xvfb-run`; headless is already forced in CI.
-- [x] **Found on the first CI run:** `npm ci` under Node 22's bundled npm 10.9 fails with `lock file's cac@7.0.0 does not satisfy cac@6.7.14` (and the same for `commander`). `@bomb.sh/tab`, a dependency of `@nuxt/cli`, declares *optional* peer deps that the tree doesn't carry; npm 10's `ci` validation treats them as required, npm 11+ does not. Reproduced locally. Fix: the workflow installs `npm@12` before `npm ci`; README notes it for local `npm ci` users. Alternatives considered: `--legacy-peer-deps` (also passes, but changes resolution semantics for everyone), Node 24 (contradicts D1).
+- [x] **Found on the first CI run (resolved by moving to Node 24):** `npm ci` under Node 22's bundled npm 10.9 fails with `lock file's cac@7.0.0 does not satisfy cac@6.7.14` (and the same for `commander`). `@bomb.sh/tab`, a dependency of `@nuxt/cli`, declares *optional* peer deps that the tree doesn't carry; npm 10's `ci` validation treats them as required, npm 11+ does not. Reproduced locally. Initial fix was an `npm@12` install step in CI; in PR review this was replaced by moving to Node 24 (npm 11), which needs no extra step.
 - [x] Jest config and deps removed (D5 recommendation); `npm test` now runs Playwright.
 
 ### Phase 7. Verification (1 day)
@@ -246,6 +254,8 @@ Global find/replace, then per-file items:
 - [x] Bundle sanity: `mock.json` / `safe.json` are separate lazy chunks, not in the entry chunk.
 
 ### Phase 7 results (2026-09-12)
+
+> **Superseded in part (2026-09-14).** The visual-parity work below was reverted in PR review: `bulma-tiles.scss`, `bulma-compat.scss` and the 0.9 variable overrides were removed in favour of stock Bulma 1 / Buefy 3 (see D3). The measurements are kept as a record of exactly where Bulma 1 differs from 0.9, which is the list to work from when tuning the new look. The functional results (suite, routes, console, head/noscript, variants rendering) still apply and were re-verified after the change.
 
 **Status: complete for the default build.** Everything below is reproducible with the tooling in `.baseline/` (`serve.py`, `screenshot.mjs`, `compare.mjs`, `measure.mjs`, `measure-diff.mjs`, `console-check.mjs`); see `.baseline/README.md`.
 
@@ -279,7 +289,7 @@ Variant builds were generated under Nuxt 4 and compared against their own Phase 
 Not verified: the real error banner (needs a dead API host).
 
 ### Phase 8. Docs (1 hour)
-- [x] README: Node 22, `npm run preview`, `.output/public` + `dist` symlink, unchanged env var names.
+- [x] README: Node 24, `npm run preview`, `.output/public` + `dist` symlink, unchanged env var names.
 
 **Total: ≈6–7 working days**, weighted toward visual verification rather than code.
 
@@ -294,8 +304,8 @@ Not verified: the real error banner (needs a dead API host).
 | `app.html` | delete → `app/app.vue` + `app/assets/noscript.html` + head config |
 | `.babelrc`, `jest.config.js` | delete (D5) |
 | `.gitignore` | add `.output`, `.nitro`, `.data` |
-| `.nvmrc` (new) | `22` |
-| `.github/workflows/playwright.yml` | Node 22, drop `NODE_ENV` |
+| `.nvmrc` (new) | `24` |
+| `.github/workflows/playwright.yml` | Node from `.nvmrc` (24), drop `NODE_ENV` |
 | `playwright.config.js`, `tests/test-suite.spec.js` | no change |
 | `README.md` | update build notes |
 | `static/*` → `public/*` | move |
@@ -322,7 +332,7 @@ Not verified: the real error banner (needs a dead API host).
 | `components/LoadingStatus.vue` | `mapState`; store action |
 | `components/UnitRadio.vue` | `mapState`; store actions; `:deep` |
 | `components/UnitWidget.vue`, `DownloadCsvButton.vue` | `mapState` (+ `$config` in the latter) |
-| `components/Map.vue` | `unmounted`; store actions; `:deep`; drop dead imports |
+| `components/Map.vue` → `app/components/LeafletMap.vue` | renamed; `unmounted`; store actions; `:deep`; drop dead imports |
 | `components/MapLayer.vue` | `nextTick`; `mapState`; store action |
 | `components/MapBlock.vue` | drop dead imports |
 | `components/MiniMap.vue` | `unmounted`; `mapState` |
@@ -339,6 +349,7 @@ Not verified: the real error banner (needs a dead API host).
 - `components/Diff.vue`: `typeof this.precision === undefined` compares to the value `undefined`, not the string, so the `precision = 2` default never applies. `toPrecision(undefined)` happens to behave like `toString()`, which is presumably what the tables have always shown.
 - `store/report.js` `destroy()` / `closeReport()` set `state.placeName`, which is not in `state()` (getter of the same name shadows it).
 - `components/SearchControls.vue` has `<style type="scss">` (should be `lang`); it is plain CSS so it works by accident.
+- `components/SearchControls.vue` uses `column is-one-half`, which has never been a Bulma class (0.9 and 1.0 both define `is-half`). It has no effect; the two columns split evenly because they are the only two. Found by a template-class audit during PR review.
 - `store/report.js` `fetchPlaces()` in safe mode commits `safePlaces` and then still calls the API (the early return only fires on the *next* call).
 
 None of these change during the migration. If you want any fixed, it should be a separate commit so the "no functional change" diff stays reviewable.
