@@ -352,7 +352,7 @@ Not verified: the real error banner (needs a dead API host).
 - `components/Diff.vue`: `typeof this.precision === undefined` compares to the value `undefined`, not the string, so the `precision = 2` default never applies. `toPrecision(undefined)` happens to behave like `toString()`, which is presumably what the tables have always shown.
 - `store/report.js` `destroy()` / `closeReport()` set `state.placeName`, which is not in `state()` (getter of the same name shadows it).
 - `components/SearchControls.vue` has `<style type="scss">` (should be `lang`); it is plain CSS so it works by accident.
-- `components/SearchControls.vue` uses `column is-one-half`, which has never been a Bulma class (0.9 and 1.0 both define `is-half`). It has no effect; the two columns split evenly because they are the only two. Found by a template-class audit during PR review.
+- `components/SearchControls.vue` uses `column is-one-half`, which has never been a Bulma class (0.9 and 1.0 both define `is-half`). It had no effect; the two columns split evenly because they are the only two. Found by a template-class audit during PR review, and removed at reviewer request (2026-09-14).
 - `store/report.js` `fetchPlaces()` in safe mode commits `safePlaces` and then still calls the API (the early return only fires on the *next* call).
 
 None of these change during the migration. If you want any fixed, it should be a separate commit so the "no functional change" diff stays reviewable.

@@ -1,9 +1,9 @@
 <template>
   <div class="columns">
-    <div class="column is-one-half left">
+    <div class="column left">
       <PlaceSelector></PlaceSelector>
     </div>
-    <div class="column is-one-half right">
+    <div class="column right">
       <LatLngSelector></LatLngSelector>
     </div>
   </div>
