@@ -2,10 +2,7 @@
 
 ## Build Setup
 
-Requires Node 22 (see `.nvmrc`; `nvm use` picks it up). Built with Nuxt 4.
-Note that `npm ci` needs npm 11 or newer (`npm install -g npm@12`); the npm 10
-bundled with Node 22 rejects the lockfile over an unmet *optional* peer
-dependency deep in Nuxt's CLI. Plain `npm install` works with either.
+Requires Node 24 (see `.nvmrc`; `nvm use` picks it up). Built with Nuxt 4.
 
 ```bash
 # install dependencies
