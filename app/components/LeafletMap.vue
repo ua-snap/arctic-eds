@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'Map',
+  name: 'LeafletMap',
   props: ['mapName'],
   mounted() {
     useMapStore().create(this.mapName)

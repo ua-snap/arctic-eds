@@ -8,7 +8,7 @@
       </slot>
     </div>
     <div class="column">
-      <Map :mapName="mapName" class="map" />
+      <LeafletMap :mapName="mapName" class="map" />
     </div>
   </div>
 </template>
@@ -21,14 +21,14 @@
 
 <script>
 import { filter } from 'lodash-es'
-import Map from '~/components/Map'
+import LeafletMap from '~/components/LeafletMap'
 import LayerList from '~/components/LayerList'
 import mapContent from '~/data/map_content'
 
 export default {
   name: 'MapBlock',
   components: {
-    Map,
+    LeafletMap,
     LayerList,
   },
   props: ['mapName'],
