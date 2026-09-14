@@ -14,19 +14,20 @@
       </p>
     </div>
     <div>
-      <div class="tile is-parent is-ancestor">
-        <div class="tile is-child">
-          <img
-            src="~/assets/images/atlas-cover.jpg"
-            alt="Cover of the Environmental Atlas of Alaska, April 1978"
-          />
-        </div>
-
-        <div class="tile is-child">
-          <img
-            src="~/assets/images/heating_degree_days.png"
-            alt="Image from the Environmental Atlas of Alaska, April 1978"
-          />
+      <div class="fixed-grid has-1-cols-mobile has-2-cols-tablet">
+        <div class="grid">
+          <div class="cell">
+            <img
+              src="~/assets/images/atlas-cover.jpg"
+              alt="Cover of the Environmental Atlas of Alaska, April 1978"
+            />
+          </div>
+          <div class="cell">
+            <img
+              src="~/assets/images/heating_degree_days.png"
+              alt="Image from the Environmental Atlas of Alaska, April 1978"
+            />
+          </div>
         </div>
       </div>
     </div>
