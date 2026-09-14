@@ -1,16 +1,12 @@
 <template>
-  <div
-    @click="toggleLayer"
-    class="layer tile is-ancestor is-parent"
-    :class="{ active: active }"
-  >
-    <span class="tile is-child description">
+  <div @click="toggleLayer" class="layer columns" :class="{ active: active }">
+    <span class="column description">
       <div class="layer-title">
         <slot name="title">{{ layer.title }}</slot>
       </div>
       <div class="subtext"><slot name="subtext"></slot></div>
     </span>
-    <span class="tile is-child is-1 if-active">
+    <span class="column is-1 if-active">
       <div v-if="active">&#x25b6;</div>
     </span>
   </div>
