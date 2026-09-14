@@ -2,6 +2,21 @@ import { test, expect } from '@playwright/test'
 
 const url = 'http://localhost:3000'
 
+// Navigate, then wait until Nuxt has finished hydrating before interacting.
+// page.goto resolves on the load event, but the dev server's unbundled
+// modules can hydrate after that. Interacting earlier loses events: a click
+// on the community search box before hydration means the autocomplete never
+// registers focus, so its dropdown never opens. This is the same check as
+// @nuxt/test-utils' `waitUntil: 'hydration'`.
+const gotoHydrated = async (page, target) => {
+  await page.goto(target)
+  await page.waitForFunction(
+    () => window.useNuxtApp?.().isHydrating === false,
+    null,
+    { timeout: 60000 }
+  )
+}
+
 const sectionFunctions = {
   elevation: 'checkForElevation',
   totalPrecipitation: 'checkForTotalPrecipitation',
@@ -72,7 +87,7 @@ const checkForPermafrost = async page => {
 }
 
 test('Check header links', async ({ page }) => {
-  await page.goto(url)
+  await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
 
   let elements
@@ -106,7 +121,7 @@ test('Check header links', async ({ page }) => {
 
 test('Check maps', async ({ page }) => {
   const mapUrl = url + '/maps'
-  await page.goto(mapUrl)
+  await gotoHydrated(page, mapUrl)
   await page.setViewportSize({ width: 1728, height: 1078 })
 
   // Wait to ensure all map tiles are loaded.
@@ -127,7 +142,7 @@ test('Check maps', async ({ page }) => {
 
 test('Select Anchorage and load report', async ({ page }) => {
   test.setTimeout(600000)
-  await page.goto(url)
+  await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
   await page.waitForSelector('.has-icons-left > .input')
   await page.click('.has-icons-left > .input')
@@ -166,7 +181,7 @@ test('Select Anchorage and load report', async ({ page }) => {
 
 test('Select Elmendorf Air Force Base and load report', async ({ page }) => {
   test.setTimeout(600000)
-  await page.goto(url)
+  await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
   await page.waitForSelector('.has-icons-left > .input')
   await page.click('.has-icons-left > .input')
@@ -207,7 +222,7 @@ test('Select Elmendorf Air Force Base and load report', async ({ page }) => {
 
 test('Select Fairbanks and load report', async ({ page }) => {
   test.setTimeout(600000)
-  await page.goto(url)
+  await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
   await page.waitForSelector('.has-icons-left > .input')
   await page.click('.has-icons-left > .input')
@@ -244,7 +259,7 @@ test('Select Fairbanks and load report', async ({ page }) => {
 
 test('Select Juneau and load report', async ({ page }) => {
   test.setTimeout(600000)
-  await page.goto(url)
+  await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
   await page.waitForSelector('.has-icons-left > .input')
   await page.click('.has-icons-left > .input')
@@ -280,7 +295,7 @@ test('Select Juneau and load report', async ({ page }) => {
 
 test('Select Nike Alaska Mike and load report', async ({ page }) => {
   test.setTimeout(600000)
-  await page.goto(url)
+  await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
   await page.waitForSelector('.has-icons-left > .input')
   await page.click('.has-icons-left > .input')
@@ -318,7 +333,7 @@ test('Select Nike Alaska Mike and load report', async ({ page }) => {
 
 test('Select Utqiaġvik (Barrow) and load report', async ({ page }) => {
   test.setTimeout(600000)
-  await page.goto(url)
+  await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
   await page.waitForSelector('.has-icons-left > .input')
   await page.click('.has-icons-left > .input')
@@ -356,7 +371,7 @@ test('Select Utqiaġvik (Barrow) and load report', async ({ page }) => {
 
 test('Enter 58.1234, -156.1234 and load report', async ({ page }) => {
   test.setTimeout(600000)
-  await page.goto(url)
+  await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
   await page.waitForSelector('.right .input')
   await page.click('.right .input')
@@ -393,7 +408,7 @@ test('Enter 58.1234, -156.1234 and load report', async ({ page }) => {
 test('Test permalink for Bethel', async ({ page }) => {
   test.setTimeout(600000)
   const permalinkUrl = url + '/report/community/AK36'
-  await page.goto(permalinkUrl)
+  await gotoHydrated(page, permalinkUrl)
   await page.setViewportSize({ width: 1728, height: 1078 })
 
   await expect(page.locator('#results')).toBeVisible({
