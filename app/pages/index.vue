@@ -166,6 +166,8 @@
   </div>
 </template>
 <style lang="scss" scoped>
+@use 'sass:color';
+
 .intro {
   font-weight: 500;
 }
@@ -173,7 +175,7 @@
   padding-bottom: 6rem;
 }
 .controls {
-  border-top: 0.5px solid darken(#faf9f7, 50%);
+  border-top: 0.5px solid color.adjust(#faf9f7, $lightness: -50%);
   background-color: #faf9f7;
   z-index: 100;
   position: sticky;
