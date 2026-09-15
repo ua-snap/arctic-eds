@@ -97,6 +97,22 @@ export default defineNuxtConfig({
 
   modules: ['@pinia/nuxt'],
 
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // Bulma 1.0.4 (and Buefy through it) still uses Sass features that
+          // Dart Sass deprecates, such as the global unquote() and if()
+          // functions, so every build printed their deprecation warnings.
+          // They cannot be fixed from this project. quietDeps hides warnings
+          // raised inside dependencies only; deprecated code in our own
+          // styles still warns. It does not change the compiled CSS.
+          quietDeps: true,
+        },
+      },
+    },
+  },
+
   vue: {
     compilerOptions: {
       // Vue 2 (and therefore Nuxt 2) kept whitespace-only text nodes
