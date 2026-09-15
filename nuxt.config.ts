@@ -97,6 +97,14 @@ export default defineNuxtConfig({
 
   modules: ['@pinia/nuxt'],
 
+  // Nuxt DevTools 3.4.2, the newest stable release and the version Nuxt
+  // 4.5.2 requires, registers a Vite hook that Vite 8 ignores, so every
+  // `nuxt dev` printed a warning about "nuxt:devtools:config-retriever".
+  // The fix only exists in the DevTools 4.0 alphas. DevTools is an optional
+  // in-browser developer panel (the Nuxt 2 site had none), so it is off.
+  // Set this to true to use it, and accept the warning.
+  devtools: { enabled: false },
+
   vite: {
     css: {
       preprocessorOptions: {
