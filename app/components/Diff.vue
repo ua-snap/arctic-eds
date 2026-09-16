@@ -33,7 +33,7 @@ const diff = computed(() => {
   let diff
   if (props.kind == 'abs') {
     let precision
-    if (typeof props.precision === undefined) {
+    if (typeof props.precision === 'undefined') {
       precision = 2
     } else {
       precision = props.precision
