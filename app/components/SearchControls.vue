@@ -29,22 +29,16 @@
   }
 }
 </style>
-<script>
+<script setup>
 import LatLngSelector from '~/components/LatLngSelector'
 import PlaceSelector from '~/components/PlaceSelector'
 
-export default {
-  name: 'SearchControls',
-  components: { PlaceSelector, LatLngSelector },
-  async setup() {
-    // Was the Nuxt 2 fetch() hook. useAsyncData runs it during
-    // `nuxt generate`, so the community list is serialized into the page
-    // payload as before, and on the client for client-side navigation.
-    const store = useReportStore()
-    await useAsyncData('places', async () => {
-      await store.fetchPlaces()
-      return true
-    })
-  },
-}
+// Was the Nuxt 2 fetch() hook. useAsyncData runs it during
+// `nuxt generate`, so the community list is serialized into the page
+// payload as before, and on the client for client-side navigation.
+const store = useReportStore()
+await useAsyncData('places', async () => {
+  await store.fetchPlaces()
+  return true
+})
 </script>

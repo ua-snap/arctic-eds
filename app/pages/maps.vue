@@ -207,17 +207,11 @@
 
 <style lang="scss" scoped></style>
 
-<script>
+<script setup>
+import { computed } from 'vue'
 import MapBlock from '~/components/MapBlock'
 import mapLayers from '~/data/map_content'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  mixins: [safe],
-  computed: {
-    layers: function () {
-      return mapLayers.layers
-    },
-  },
-}
+const { safeMode } = useSafeMode()
+const layers = computed(() => mapLayers.layers)
 </script>

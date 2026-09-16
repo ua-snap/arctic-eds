@@ -3,18 +3,16 @@
     <NuxtLink :to="href"><slot></slot></NuxtLink>
   </span>
 </template>
-<script>
-export default {
-  name: 'Term',
-  props: ['target'],
-  computed: {
-    href() {
-      return {
-        path: '/glossary#' + this.target
-      }
-    }
-  }
-}
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  target: String,
+})
+
+const href = computed(() => ({
+  path: '/glossary#' + props.target,
+}))
 </script>
 <style lang="scss" scoped>
 .term {

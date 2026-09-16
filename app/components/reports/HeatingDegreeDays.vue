@@ -219,32 +219,20 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
-import { numeric } from '~/mixins/numeric.js'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'HeatingDegreeDaysReport',
-  mixins: [numeric, safe],
-  components: {
-    DownloadCsvButton,
-    UnitWidget,
-    PreviewTable,
-  },
-  computed: {
-    downloadCsvText() {
-      return 'Download CSV of heating degree days for ' + this.placeName
-    },
-    ...mapState(useReportStore, {
-      results: 'results',
-      placeName: 'placeName',
-    }),
-  },
-}
+const { round } = useNumeric()
+const { safeMode } = useSafeMode()
+const { results, placeName } = storeToRefs(useReportStore())
+
+const downloadCsvText = computed(
+  () => 'Download CSV of heating degree days for ' + placeName.value
+)
 </script>
 
 <style lang="scss" scoped></style>

@@ -256,43 +256,21 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
-import { numeric } from '~/mixins/numeric.js'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'PrecipitationReport',
-  mixins: [numeric, safe],
-  components: {
-    DownloadCsvButton,
-    UnitWidget,
-    PreviewTable,
-  },
-  computed: {
-    precision() {
-      if (this.units == 'metric') {
-        return 2
-      }
-      return 3
-    },
-    deltaPrecision() {
-      if (this.units == 'metric') {
-        return 1
-      }
-      return 2
-    },
-    ...mapState(useReportStore, {
-      units: 'units',
-      results: 'results',
-      placeName: 'placeName',
-      isPlaceDefined: 'isPlaceDefined',
-    }),
-  },
-}
+const { round } = useNumeric()
+const { safeMode } = useSafeMode()
+const { units, results, placeName, isPlaceDefined } = storeToRefs(
+  useReportStore()
+)
+
+const precision = computed(() => (units.value == 'metric' ? 2 : 3))
+const deltaPrecision = computed(() => (units.value == 'metric' ? 1 : 2))
 </script>
 
 <style lang="scss" scoped></style>

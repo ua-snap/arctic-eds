@@ -109,28 +109,14 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'SnowfallReport',
-  mixins: [safe],
-  components: {
-    DownloadCsvButton,
-    UnitWidget,
-    PreviewTable,
-  },
-  computed: {
-    ...mapState(useReportStore, {
-      results: 'results',
-      isSnowfallPresent: 'isSnowfallPresent',
-    }),
-  },
-}
+const { safeMode } = useSafeMode()
+const { results, isSnowfallPresent } = storeToRefs(useReportStore())
 </script>
 
 <style lang="scss" scoped></style>

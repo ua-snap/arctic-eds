@@ -19,33 +19,15 @@
 }
 </style>
 
-<script>
-import { filter } from 'lodash-es'
+<script setup>
+import { computed } from 'vue'
 import LeafletMap from '~/components/LeafletMap'
 import LayerList from '~/components/LayerList'
 import mapContent from '~/data/map_content'
 
-export default {
-  name: 'MapBlock',
-  components: {
-    LeafletMap,
-    LayerList,
-  },
-  props: ['mapName'],
-  computed: {
-    mapTitle() {
-      return mapContent.titles[this.mapName]
-    },
-    layers() {
-      return mapContent.layers[this.mapName]
-    },
-  },
-  methods: {
-    selectDefaultLayer() {
-      let defaultLayer = filter(mapContent.layers[this.map], layer => {
-        return layer['default']
-      })[0]
-    },
-  },
-}
+const props = defineProps({
+  mapName: String,
+})
+
+const layers = computed(() => mapContent.layers[props.mapName])
 </script>

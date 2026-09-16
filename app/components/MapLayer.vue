@@ -40,39 +40,40 @@
 }
 </style>
 
-<script>
-import { nextTick } from 'vue'
-import { mapState } from 'pinia'
+<script setup>
+import { computed, nextTick, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
 
-export default {
-  name: 'MapLayer',
-  props: ['layer', 'mapName'],
-  computed: {
-    active() {
-      // Get all layers + then the active layer for this map.
-      // Need to get all layers so that reactivity works.
-      if (this.activeLayers) {
-        return this.activeLayers[this.mapName] === this.layer.id
-      }
-      // Otherwise, make it active if it's defaulted to be active.
-      return this.layer.default
-    },
-    ...mapState(useMapStore, { activeLayers: 'getSelectedLayers' }),
-  },
-  mounted() {
-    if (this.layer.default) {
-      // We need to wait for Vue to render the full DOM which
-      // includes the Leaflet elements before we can trigger this.
-      nextTick(this.toggleLayer)
-    }
-  },
-  methods: {
-    toggleLayer() {
-      useMapStore().toggleLayer({
-        layer: this.layer,
-        mapId: this.mapName,
-      })
-    },
-  },
+const props = defineProps({
+  layer: Object,
+  mapName: String,
+})
+
+const store = useMapStore()
+const { getSelectedLayers: activeLayers } = storeToRefs(store)
+
+const active = computed(() => {
+  // Get all layers + then the active layer for this map.
+  // Need to get all layers so that reactivity works.
+  if (activeLayers.value) {
+    return activeLayers.value[props.mapName] === props.layer.id
+  }
+  // Otherwise, make it active if it's defaulted to be active.
+  return props.layer.default
+})
+
+function toggleLayer() {
+  store.toggleLayer({
+    layer: props.layer,
+    mapId: props.mapName,
+  })
 }
+
+onMounted(() => {
+  if (props.layer.default) {
+    // We need to wait for Vue to render the full DOM which
+    // includes the Leaflet elements before we can trigger this.
+    nextTick(toggleLayer)
+  }
+})
 </script>

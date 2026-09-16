@@ -12,51 +12,47 @@
   }
 }
 </style>
-<script>
-import { mapState } from 'pinia'
-export default {
-  name: 'UnitWidget',
-  props: {
-    // Can be...
-    // temp = ºF / ºC
-    // mm_in (millimeters/inches)
-    // m_in (meters/inches)
-    // dd (degree days, ºF•days / ºC•days)
-    unitType: {
-      type: String,
-      default: 'temp',
-    },
-  },
-  computed: {
-    symbol() {
-      let symbol = ''
-      let space = '' // for units that start with a symbol (º), no space
+<script setup>
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 
-      switch (this.unitType) {
-        case 'temp':
-          symbol = this.units == 'metric' ? '&deg;C' : '&deg;F'
-          break
-        case 'mm_in':
-          symbol = this.units == 'metric' ? '&#x339C;' : 'in'
-          space = '&#8239;'
-          break
-        case 'm_in':
-          symbol = this.units == 'metric' ? 'm' : 'in'
-          space = '&#8239;'
-          break
-        case 'dd':
-          symbol =
-            this.units == 'metric' ? '&deg;C&sdot;days' : '&deg;F&sdot;days'
-          break
-      }
-      return {
-        symbol: symbol,
-        space: space,
-      }
-    },
-    ...mapState(useReportStore, {
-      units: 'units',
-    }),
+const props = defineProps({
+  // Can be...
+  // temp = ºF / ºC
+  // mm_in (millimeters/inches)
+  // m_in (meters/inches)
+  // dd (degree days, ºF•days / ºC•days)
+  unitType: {
+    type: String,
+    default: 'temp',
   },
-}
+})
+
+const { units } = storeToRefs(useReportStore())
+
+const symbol = computed(() => {
+  let symbol = ''
+  let space = '' // for units that start with a symbol (º), no space
+
+  switch (props.unitType) {
+    case 'temp':
+      symbol = units.value == 'metric' ? '&deg;C' : '&deg;F'
+      break
+    case 'mm_in':
+      symbol = units.value == 'metric' ? '&#x339C;' : 'in'
+      space = '&#8239;'
+      break
+    case 'm_in':
+      symbol = units.value == 'metric' ? 'm' : 'in'
+      space = '&#8239;'
+      break
+    case 'dd':
+      symbol = units.value == 'metric' ? '&deg;C&sdot;days' : '&deg;F&sdot;days'
+      break
+  }
+  return {
+    symbol: symbol,
+    space: space,
+  }
+})
 </script>
