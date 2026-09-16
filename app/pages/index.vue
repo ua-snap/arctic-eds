@@ -185,26 +185,20 @@
   font-size: 110%;
 }
 </style>
-<script>
+<script setup>
+import { onMounted } from 'vue'
 import SearchControls from '~/components/SearchControls'
 
-export default {
-  name: 'HomePage',
-  components: {
-    SearchControls,
-  },
-  mounted() {
-    // Switch back to clean URL after S3 redirect. Adapted from here:
-    // https://via.studio/journal/hosting-a-reactjs-app-with-routing-on-aws-s3
-    const path = (/#!(\/.*)$/.exec(this.$route.fullPath) || [])[1]
-    if (path) {
-      this.$router.push({ path: path })
-    }
-  },
-  computed: {
-    safeMode() {
-      return this.$config.public.safeMode
-    },
-  },
-}
+const route = useRoute()
+const router = useRouter()
+const { safeMode } = useSafeMode()
+
+onMounted(() => {
+  // Switch back to clean URL after S3 redirect. Adapted from here:
+  // https://via.studio/journal/hosting-a-reactjs-app-with-routing-on-aws-s3
+  const path = (/#!(\/.*)$/.exec(route.fullPath) || [])[1]
+  if (path) {
+    router.push({ path: path })
+  }
+})
 </script>

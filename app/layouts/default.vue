@@ -59,17 +59,12 @@
   }
 }
 </style>
-<script>
+<script setup>
+import { computed } from 'vue'
 import HeaderBanner from '~/components/HeaderBanner'
 import Navbar from '~/components/Navbar'
 import Footer from '~/components/Footer'
 
-export default {
-  components: { HeaderBanner, Navbar, Footer },
-  computed: {
-    siteSlow() {
-      return this.$config.public.siteSlow
-    },
-  },
-}
+const config = useRuntimeConfig()
+const siteSlow = computed(() => config.public.siteSlow)
 </script>

@@ -13,38 +13,22 @@
     </div>
   </div>
 </template>
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { ref, watch } from 'vue'
 
-export default {
-  name: 'UnitRadio',
-  props: ['type', 'patterns', 'variable'],
-  data() {
-    return {
-      radioUnits: this.storeRadioUnits,
+const store = useReportStore()
+const radioUnits = ref(store.units)
+
+watch(radioUnits, () => {
+  if (radioUnits.value != store.units) {
+    if (radioUnits.value == 'metric') {
+      store.setMetric()
+    } else {
+      store.setImperial()
     }
-  },
-  computed: {
-    ...mapState(useReportStore, {
-      storeRadioUnits: 'units',
-    }),
-  },
-  mounted() {
-    this.radioUnits = this.storeRadioUnits
-  },
-  watch: {
-    radioUnits: function () {
-      if (this.radioUnits != this.storeRadioUnits) {
-        if (this.radioUnits == 'metric') {
-          useReportStore().setMetric()
-        } else {
-          useReportStore().setImperial()
-        }
-        useReportStore().convertResults()
-      }
-    },
-  },
-}
+    store.convertResults()
+  }
+})
 </script>
 <style scoped>
 :deep(label) {

@@ -45,11 +45,6 @@ nav {
 }
 </style>
 
-<script>
-import { safe } from '~/mixins/safe.js'
-
-export default {
-  name: 'Navbar',
-  mixins: [safe],
-}
+<script setup>
+const { safeMode } = useSafeMode()
 </script>

@@ -232,31 +232,19 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
-import { numeric } from '~/mixins/numeric.js'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'FreezingIndexReport',
-  mixins: [numeric, safe],
-  components: {
-    DownloadCsvButton,
-    UnitWidget,
-  },
+const { round } = useNumeric()
+const { safeMode } = useSafeMode()
+const { results, placeName } = storeToRefs(useReportStore())
 
-  computed: {
-    downloadCsvText() {
-      return 'Download CSV of freezing index for ' + this.placeName
-    },
-    ...mapState(useReportStore, {
-      results: 'results',
-      placeName: 'placeName',
-    }),
-  },
-}
+const downloadCsvText = computed(
+  () => 'Download CSV of freezing index for ' + placeName.value
+)
 </script>
 
 <style lang="scss" scoped></style>

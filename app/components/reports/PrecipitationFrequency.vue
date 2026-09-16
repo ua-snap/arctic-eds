@@ -196,59 +196,48 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { computed, ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'PrecipitationFrequencyReport',
-  mixins: [safe],
-  components: {
-    DownloadCsvButton,
-    UnitWidget,
-  },
-  data() {
-    return {
-      radioEra: '2020-2049',
-      radioPrecipFreqModel: 'NCAR-CCSM4',
-    }
-  },
-  computed: {
-    pf: function () {
-      let res = {}
-      for (const return_interval in this.results.precip_frequency) {
-        const durations = this.results.precip_frequency[return_interval]
-        for (const duration in durations) {
-          const models = durations[duration]
-          for (const model in models) {
-            const eras = models[model]
-            for (const era in eras) {
-              const precips = eras[era]
-              res[`pr_${return_interval}_${duration}_${model}_${era}_min`] =
-                precips.pf_lower
+const { safeMode } = useSafeMode()
+const {
+  results,
+  placeName,
+  isPlaceDefined,
+  units,
+  isPrecipitationFrequencyPresent,
+} = storeToRefs(useReportStore())
 
-              res[`pr_${return_interval}_${duration}_${model}_${era}_mean`] =
-                precips.pf
+const radioEra = ref('2020-2049')
+const radioPrecipFreqModel = ref('NCAR-CCSM4')
 
-              res[`pr_${return_interval}_${duration}_${model}_${era}_max`] =
-                precips.pf_upper
-            }
-          }
+const pf = computed(() => {
+  let res = {}
+  for (const return_interval in results.value.precip_frequency) {
+    const durations = results.value.precip_frequency[return_interval]
+    for (const duration in durations) {
+      const models = durations[duration]
+      for (const model in models) {
+        const eras = models[model]
+        for (const era in eras) {
+          const precips = eras[era]
+          res[`pr_${return_interval}_${duration}_${model}_${era}_min`] =
+            precips.pf_lower
+
+          res[`pr_${return_interval}_${duration}_${model}_${era}_mean`] =
+            precips.pf
+
+          res[`pr_${return_interval}_${duration}_${model}_${era}_max`] =
+            precips.pf_upper
         }
       }
-      return res
-    },
-    ...mapState(useReportStore, {
-      results: 'results',
-      placeName: 'placeName',
-      isPlaceDefined: 'isPlaceDefined',
-      units: 'units',
-      isPrecipitationFrequencyPresent: 'isPrecipitationFrequencyPresent',
-    }),
-  },
-}
+    }
+  }
+  return res
+})
 </script>
 
 <style lang="scss" scoped>

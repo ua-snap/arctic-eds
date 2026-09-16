@@ -100,29 +100,18 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { storeToRefs } from 'pinia'
 import HeatingDegreeDaysReport from '~/components/reports/HeatingDegreeDays'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'TemperatureIndices',
-  mixins: [safe],
-  components: {
-    HeatingDegreeDaysReport,
-    FreezingIndexReport,
-    ThawingIndexReport,
-  },
-  computed: {
-    ...mapState(useReportStore, {
-      isHeatingDegreeDaysPresent: 'isHeatingDegreeDaysPresent',
-      isFreezingIndexPresent: 'isFreezingIndexPresent',
-      isThawingIndexPresent: 'isThawingIndexPresent',
-    }),
-  },
-}
+const { safeMode } = useSafeMode()
+const {
+  isHeatingDegreeDaysPresent,
+  isFreezingIndexPresent,
+  isThawingIndexPresent,
+} = storeToRefs(useReportStore())
 </script>
 
 <style lang="scss" scoped></style>

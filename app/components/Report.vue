@@ -1,11 +1,7 @@
 <template>
   <div>
     <div
-      v-if="
-        !state.pending &&
-        !state.error &&
-        Object.keys(results).length > 0
-      "
+      v-if="!state.pending && !state.error && Object.keys(results).length > 0"
     >
       <section class="section intro">
         <div id="results" class="container">
@@ -245,8 +241,9 @@
   </div>
 </template>
 <style lang="scss" scoped></style>
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { onMounted, reactive, ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import UnitRadio from '~/components/UnitRadio'
 import MiniMap from '~/components/MiniMap'
 import TemperatureReport from '~/components/reports/Temperature'
@@ -256,88 +253,70 @@ import PermafrostReport from '~/components/reports/Permafrost'
 import PrecipitationFrequency from '~/components/reports/PrecipitationFrequency'
 import TemperatureIndices from '~/components/reports/TemperatureIndices'
 import HydrologyReport from '~/components/reports/Hydrology'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'FullReport',
-  mixins: [safe],
-  components: {
-    UnitRadio,
-    MiniMap,
-    TemperatureReport,
-    TemperatureIndices,
-    PrecipitationReport,
-    SnowfallReport,
-    PermafrostReport,
-    PrecipitationFrequency,
-    HydrologyReport,
-  },
-  computed: {
-    ...mapState(useReportStore, {
-      results: 'results',
-      placeName: 'placeName',
-      isPlaceDefined: 'isPlaceDefined',
-      placeIsLatLng: 'placeIsLatLng',
-      latLng: 'latLng',
-      isElevationPresent: 'isElevationPresent',
-      isHydrologyPresent: 'isHydrologyPresent',
-      isPrecipitationPresent: 'isPrecipitationPresent',
-      isPrecipitationFrequencyPresent: 'isPrecipitationFrequencyPresent',
-      isSnowfallPresent: 'isSnowfallPresent',
-      isTemperaturePresent: 'isTemperaturePresent',
-      isHeatingDegreeDaysPresent: 'isHeatingDegreeDaysPresent',
-      isFreezingIndexPresent: 'isFreezingIndexPresent',
-      isThawingIndexPresent: 'isThawingIndexPresent',
-      isPermafrostPresent: 'isPermafrostPresent',
-      isWetDaysPerYearPresent: 'isWetDaysPerYearPresent',
-    }),
-  },
-  data: function () {
-    return {
-      currentURL: '',
-      // Replaces Nuxt 2's state. Starts pending so the report
-      // sections don't render against empty results before fetch() runs.
-      state: { pending: true, error: null },
-    }
-  },
-  mounted() {
-    this.currentURL = window.location.href
-    this.fetch()
-  },
-  methods: {
-    // Was the Nuxt 2 fetch() hook, always re-run from mounted() so the
-    // report data is fetched client-side.
-    async fetch() {
-      const store = useReportStore()
-      this.state.pending = true
-      this.state.error = null
-      try {
-        // Needed here to ensure hydration works properly for
-        // direct links to specific places (mapping place names
-        // to lat/lngs).
-        await store.fetchPlaces()
+const config = useRuntimeConfig()
+const { safeMode } = useSafeMode()
 
-        if (this.$config.public.safeMode && this.isPlaceDefined) {
-          let key = this.latLng.lat + '+' + this.latLng.lng
-          await store.safeModeFetch(key)
-        } else {
-          if (this.isPlaceDefined) {
-            let url =
-              this.$config.public.apiUrl +
-              '/eds/all/' +
-              this.latLng.lat +
-              '/' +
-              this.latLng.lng
+const store = useReportStore()
+const {
+  results,
+  placeName,
+  isPlaceDefined,
+  placeIsLatLng,
+  latLng,
+  isElevationPresent,
+  isHydrologyPresent,
+  isPrecipitationPresent,
+  isPrecipitationFrequencyPresent,
+  isSnowfallPresent,
+  isTemperaturePresent,
+  isHeatingDegreeDaysPresent,
+  isFreezingIndexPresent,
+  isThawingIndexPresent,
+  isPermafrostPresent,
+  isWetDaysPerYearPresent,
+} = storeToRefs(store)
 
-            await store.apiFetch(url)
-          }
-        }
-      } catch (error) {
-        this.state.error = error
-      } finally {
-        this.state.pending = false
+const currentURL = ref('')
+// Replaces Nuxt 2's state. Starts pending so the report
+// sections don't render against empty results before fetchReport() runs.
+const state = reactive({ pending: true, error: null })
+
+// Was the Nuxt 2 fetch() hook, always re-run from onMounted so the
+// report data is fetched client-side.
+async function fetchReport() {
+  state.pending = true
+  state.error = null
+  try {
+    // Needed here to ensure hydration works properly for
+    // direct links to specific places (mapping place names
+    // to lat/lngs).
+    await store.fetchPlaces()
+
+    if (config.public.safeMode && isPlaceDefined.value) {
+      let key = latLng.value.lat + '+' + latLng.value.lng
+      await store.safeModeFetch(key)
+    } else {
+      if (isPlaceDefined.value) {
+        let url =
+          config.public.apiUrl +
+          '/eds/all/' +
+          latLng.value.lat +
+          '/' +
+          latLng.value.lng
+
+        await store.apiFetch(url)
       }
-    },
-  },
+    }
+  } catch (error) {
+    state.error = error
+  } finally {
+    state.pending = false
+  }
 }
+
+onMounted(() => {
+  currentURL.value = window.location.href
+  fetchReport()
+})
 </script>

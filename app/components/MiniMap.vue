@@ -16,64 +16,56 @@
 }
 </style>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { onMounted, onUnmounted } from 'vue'
+import { storeToRefs } from 'pinia'
 
-export default {
-  name: 'MiniMap',
-  computed: {
-    ...mapState(useReportStore, {
-      latLng: 'latLng',
-      isPlaceDefined: 'isPlaceDefined',
-    }),
-  },
-  data() {
-    return {
-      map: undefined,
-      marker: undefined,
+const { latLng, isPlaceDefined } = storeToRefs(useReportStore())
+
+// Leaflet instances are kept non-reactive on purpose.
+let map
+let marker
+
+function getBaseMapAndLayers() {
+  var baseLayer = new L.tileLayer.wms(
+    'https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WmsServer?',
+    {
+      transparent: true,
+      format: 'image/png',
+      version: '1.3.0',
+      layers: ['0'],
     }
-  },
-  mounted() {
-    if (this.isPlaceDefined) {
-      this.map = L.map('report--minimmap--map', this.getBaseMapAndLayers())
+  )
 
-      this.marker = L.marker(this.latLng).addTo(this.map)
-      this.map.panTo(this.latLng)
-    }
-  },
-  unmounted() {
-    this.marker = undefined
-    if (this.map) {
-      this.map.remove()
-    }
-  },
-  methods: {
-    getBaseMapAndLayers() {
-      var baseLayer = new L.tileLayer.wms(
-        'https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WmsServer?',
-        {
-          transparent: true,
-          format: 'image/png',
-          version: '1.3.0',
-          layers: ['0'],
-        }
-      )
+  // Map base configuration
+  var config = {
+    zoom: 11,
+    minZoom: 0,
+    maxZoom: 6,
+    center: [64.7, -155],
+    scrollWheelZoom: false,
+    zoomControl: false,
+    doubleClickZoom: false,
+    attributionControl: false,
+    layers: [baseLayer],
+  }
 
-      // Map base configuration
-      var config = {
-        zoom: 11,
-        minZoom: 0,
-        maxZoom: 6,
-        center: [64.7, -155],
-        scrollWheelZoom: false,
-        zoomControl: false,
-        doubleClickZoom: false,
-        attributionControl: false,
-        layers: [baseLayer],
-      }
-
-      return config
-    },
-  },
+  return config
 }
+
+onMounted(() => {
+  if (isPlaceDefined.value) {
+    map = L.map('report--minimmap--map', getBaseMapAndLayers())
+
+    marker = L.marker(latLng.value).addTo(map)
+    map.panTo(latLng.value)
+  }
+})
+
+onUnmounted(() => {
+  marker = undefined
+  if (map) {
+    map.remove()
+  }
+})
 </script>

@@ -6,19 +6,9 @@
   </div>
 </template>
 <style lang="scss" scoped></style>
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { storeToRefs } from 'pinia'
 import FullReport from '~/components/Report'
 
-export default {
-  name: 'ReportPage',
-  components: {
-    FullReport,
-  },
-  computed: {
-    ...mapState(useReportStore, {
-      reportIsVisible: 'reportIsVisible',
-    }),
-  },
-}
+const { reportIsVisible } = storeToRefs(useReportStore())
 </script>

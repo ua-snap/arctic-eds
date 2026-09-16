@@ -47,51 +47,43 @@
   border: 3px solid #8ba09a;
   border-radius: 0;
 }
-
 </style>
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { computed, ref, watch } from 'vue'
+import { storeToRefs } from 'pinia'
 
-export default {
-  name: 'PlaceSelector',
-  data() {
-    return {
-      selected: undefined, // the actual selected place
-      selectedPlace: '', // the temporary search fragment
-    }
-  },
-  computed: {
-    filteredDataObj() {
-      // Guard in case the async loading of places isn't done yet.
-      if (this.places) {
-        return this.places.filter(option => {
-          return (
-            option.name
-              .toString()
-              .toLowerCase()
-              .indexOf(this.selectedPlace.toLowerCase()) >= 0 ||
-            (option.alt_name &&
-              option.alt_name
-                .toString()
-                .toLowerCase()
-                .indexOf(this.selectedPlace.toLowerCase()) >= 0)
-          )
-        })
-      }
-    },
-    ...mapState(useReportStore, {
-      places: 'places',
-    }),
-  },
-  watch: {
-    selected: function (selected) {
-      if (selected) {
-        this.$router.push({
-          path:
-            this.$route.path + 'report/community/' + selected.id + '#results',
-        })
-      }
-    },
-  },
-}
+const router = useRouter()
+const route = useRoute()
+
+const { places } = storeToRefs(useReportStore())
+
+const selected = ref(undefined) // the actual selected place
+const selectedPlace = ref('') // the temporary search fragment
+
+const filteredDataObj = computed(() => {
+  // Guard in case the async loading of places isn't done yet.
+  if (places.value) {
+    return places.value.filter(option => {
+      return (
+        option.name
+          .toString()
+          .toLowerCase()
+          .indexOf(selectedPlace.value.toLowerCase()) >= 0 ||
+        (option.alt_name &&
+          option.alt_name
+            .toString()
+            .toLowerCase()
+            .indexOf(selectedPlace.value.toLowerCase()) >= 0)
+      )
+    })
+  }
+})
+
+watch(selected, newSelected => {
+  if (newSelected) {
+    router.push({
+      path: route.path + 'report/community/' + newSelected.id + '#results',
+    })
+  }
+})
 </script>

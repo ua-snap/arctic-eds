@@ -31,7 +31,8 @@
         The summary tables below shows the minimum, mean and maximum values
         across two scenarios (RCP 4.5 and RCP 8.5) and three models (NCAR CCSM4,
         GFDL CM3, and a 5-model average: GFDL-CM3, NCAR-CCSM4, GISS-E2-R,
-        IPSL-CM5A-LR, MRI-CGCM3).  Temperatures are rounded to two (imperial units) or three (metric) significant digits.
+        IPSL-CM5A-LR, MRI-CGCM3). Temperatures are rounded to two (imperial
+        units) or three (metric) significant digits.
       </p>
       <table class="table">
         <caption>
@@ -60,16 +61,22 @@
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2021-2039']['gipl1kmmean'][
-                  'magt1m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2021-2039']['gipl1kmmean'][
+                    'magt1m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2021-2039']['gipl1kmmax'][
-                  'magt1m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2021-2039']['gipl1kmmax'][
+                    'magt1m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
           </tr>
@@ -77,23 +84,32 @@
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
               {{
-                round(results.permafrost['summary']['2040-2069']['gipl1kmmin'][
-                  'magt1m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmin'][
+                    'magt1m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2040-2069']['gipl1kmmean'][
-                  'magt1m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmean'][
+                    'magt1m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2040-2069']['gipl1kmmax'][
-                  'magt1m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmax'][
+                    'magt1m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
           </tr>
@@ -101,23 +117,32 @@
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
               {{
-                round(results.permafrost['summary']['2070-2099']['gipl1kmmin'][
-                  'magt1m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmin'][
+                    'magt1m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2070-2099']['gipl1kmmean'][
-                  'magt1m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmean'][
+                    'magt1m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2070-2099']['gipl1kmmax'][
-                  'magt1m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmax'][
+                    'magt1m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
           </tr>
@@ -141,23 +166,32 @@
             <th scope="row">Early Century (2010&ndash;2039)</th>
             <td>
               {{
-                round(results.permafrost['summary']['2021-2039']['gipl1kmmin'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2021-2039']['gipl1kmmin'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2021-2039']['gipl1kmmean'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2021-2039']['gipl1kmmean'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2021-2039']['gipl1kmmax'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2021-2039']['gipl1kmmax'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
           </tr>
@@ -165,23 +199,32 @@
             <th scope="row">Mid Century (2040&ndash;2069)</th>
             <td>
               {{
-                round(results.permafrost['summary']['2040-2069']['gipl1kmmin'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmin'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2040-2069']['gipl1kmmean'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmean'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2040-2069']['gipl1kmmax'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmax'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
           </tr>
@@ -189,23 +232,32 @@
             <th scope="row">Late Century (2070&ndash;2099)</th>
             <td>
               {{
-                round(results.permafrost['summary']['2070-2099']['gipl1kmmin'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmin'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2070-2099']['gipl1kmmean'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmean'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(results.permafrost['summary']['2070-2099']['gipl1kmmax'][
-                  'magt5m'
-                ],2)
+                round(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmax'][
+                    'magt5m'
+                  ],
+                  2
+                )
               }}<UnitWidget unitType="temp" />
             </td>
           </tr>
@@ -351,31 +403,17 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
-import { numeric } from '~/mixins/numeric.js'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'PermafrostReport',
-  mixins: [numeric, safe],
-  components: {
-    DownloadCsvButton,
-    UnitWidget,
-    PreviewTable,
-  },
-  computed: {
-    ...mapState(useReportStore, {
-      results: 'results',
-      placeName: 'placeName',
-      isPlaceDefined: 'isPlaceDefined',
-      isPermafrostPresent: 'isPermafrostPresent',
-    }),
-  },
-}
+const { round } = useNumeric()
+const { safeMode } = useSafeMode()
+const { results, placeName, isPlaceDefined, isPermafrostPresent } = storeToRefs(
+  useReportStore()
+)
 </script>
 
 <style lang="scss" scoped></style>

@@ -24,8 +24,4 @@
 
 <style lang="scss" scoped></style>
 
-<script>
-export default {
-  name: 'LegendItem',
-}
-</script>
+<script setup></script>

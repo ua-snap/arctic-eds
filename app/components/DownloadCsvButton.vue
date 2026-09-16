@@ -1,7 +1,5 @@
 <template>
-  <a :href="downloadTarget" class="no-print">{{
-    text
-  }}</a>
+  <a :href="downloadTarget" class="no-print">{{ text }}</a>
 </template>
 <style lang="scss" scoped>
 .single {
@@ -9,37 +7,33 @@
   max-width: 30em;
 }
 </style>
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 
-export default {
-  name: 'DownloadCsvButton',
-  props: ['text', 'endpoint'],
-  computed: {
-    safeMode() {
-      return this.$config.public.safeMode
-    },
-    ...mapState(useReportStore, {
-      placeId: 'placeId',
-      latLng: 'latLng',
-    }),
-    downloadTarget() {
-      let endpointPath = this.endpoint
-      let communityID = this.placeId ? '&community=' + this.placeId : ''
+const props = defineProps({
+  text: String,
+  endpoint: String,
+})
 
-      let url =
-        this.$config.public.apiUrl +
-        '/' +
-        endpointPath +
-        '/' +
-        this.latLng['lat'] +
-        '/' +
-        this.latLng['lng'] +
-        '?format=csv' +
-        communityID
+const config = useRuntimeConfig()
+const { placeId, latLng } = storeToRefs(useReportStore())
 
-      return url
-    },
-  },
-}
+const downloadTarget = computed(() => {
+  let endpointPath = props.endpoint
+  let communityID = placeId.value ? '&community=' + placeId.value : ''
+
+  let url =
+    config.public.apiUrl +
+    '/' +
+    endpointPath +
+    '/' +
+    latLng.value['lat'] +
+    '/' +
+    latLng.value['lng'] +
+    '?format=csv' +
+    communityID
+
+  return url
+})
 </script>

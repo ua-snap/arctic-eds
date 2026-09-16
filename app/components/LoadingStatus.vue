@@ -26,22 +26,17 @@
   </div>
 </template>
 <style lang="scss" scoped></style>
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { storeToRefs } from 'pinia'
 
-export default {
-  name: 'LoadingStatus',
-  props: ['state'],
-  computed: {
-    ...mapState(useReportStore, {
-      placeName: 'placeName',
-      isPlaceDefined: 'isPlaceDefined',
-    }),
-  },
-  methods: {
-    close() {
-      useReportStore().closeReport()
-    },
-  },
+defineProps({
+  state: Object,
+})
+
+const store = useReportStore()
+const { placeName, isPlaceDefined } = storeToRefs(store)
+
+function close() {
+  store.closeReport()
 }
 </script>

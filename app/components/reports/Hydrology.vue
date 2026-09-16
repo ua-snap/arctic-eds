@@ -99,34 +99,18 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
+<script setup>
+import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
-import { safe } from '~/mixins/safe.js'
 
-export default {
-  name: 'HydrologyReport',
-  mixins: [safe],
-  components: {
-    DownloadCsvButton,
-    UnitWidget,
-    PreviewTable,
-  },
-  data() {
-    return {
-      radioHydroModel: 'CanESM2',
-      radioHydroScenario: 'rcp45',
-    }
-  },
-  computed: {
-    ...mapState(useReportStore, {
-      results: 'results',
-      isHydrologyPresent: 'isHydrologyPresent',
-    }),
-  },
-}
+const { safeMode } = useSafeMode()
+const { results, isHydrologyPresent } = storeToRefs(useReportStore())
+
+const radioHydroModel = ref('CanESM2')
+const radioHydroScenario = ref('rcp45')
 </script>
 
 <style lang="scss" scoped></style>

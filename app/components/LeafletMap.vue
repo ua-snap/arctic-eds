@@ -25,15 +25,20 @@
 }
 </style>
 
-<script>
-export default {
-  name: 'LeafletMap',
-  props: ['mapName'],
-  mounted() {
-    useMapStore().create(this.mapName)
-  },
-  unmounted() {
-    useMapStore().destroy(this.mapName)
-  },
-}
+<script setup>
+import { onMounted, onUnmounted } from 'vue'
+
+const props = defineProps({
+  mapName: String,
+})
+
+const store = useMapStore()
+
+onMounted(() => {
+  store.create(props.mapName)
+})
+
+onUnmounted(() => {
+  store.destroy(props.mapName)
+})
 </script>
