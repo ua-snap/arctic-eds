@@ -24,6 +24,7 @@
     "pinia": "^4.0.3",
     "proj4": "^2.22.0",
     "proj4leaflet": "^1.0.2",
+    "reka-ui": "^2.10.4",
     "vue": "^3.5.42"
   },
   "devDependencies": {
