@@ -5,13 +5,13 @@
     >
       <section class="section intro">
         <div id="results" class="container">
-          <h2 class="title is-2">Downscaled Climate Model Output</h2>
+          <h1 class="title is-2">Downscaled Climate Model Output</h1>
           <h2 class="subtitle is-2" v-html="placeName"></h2>
 
-          <h3 class="subtitle is-3 pt-4">
+          <p class="subtitle is-3 pt-4">
             This report contains data from different downscaled climate models
             and geophysical models driven with downscaled climate model output.
-          </h3>
+          </p>
           <div class="content is-size-4">
             <p>
               <strong>Consult the references</strong> to the data sources and

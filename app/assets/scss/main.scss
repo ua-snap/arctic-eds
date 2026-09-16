@@ -37,3 +37,97 @@ ul.module-link {
   max-width: 65rem;
   margin: 3rem auto;
 }
+
+// Accessibility (WCAG 2.1 AA)
+
+// A visible keyboard focus indicator for every interactive element. Several
+// components remove the input box-shadow that Bulma uses as its focus ring,
+// so this is applied here, after Bulma and Buefy, instead of per component.
+// The color has at least 3:1 contrast against the page, white and the
+// turquoise accent.
+$focus-ring-color: #1a4f8b;
+
+:focus-visible {
+  outline: 3px solid $focus-ring-color !important;
+  outline-offset: 2px;
+}
+
+.input:focus-visible,
+.textarea:focus-visible {
+  outline-offset: 0;
+}
+
+// Buefy radios hide the native input and draw a .check element instead.
+.b-radio.radio input[type='radio']:focus-visible + .check {
+  outline: 3px solid $focus-ring-color;
+  outline-offset: 2px;
+}
+
+// Hides content visually while keeping it available to screen readers.
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// "Skip to main content" link, shown only when it receives keyboard focus.
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  color: #fff !important;
+  background-color: #312e30;
+  transform: translateY(-100%);
+
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+// Leaflet maps must shrink with the viewport (WCAG 1.4.10 Reflow).
+.leaflet-container {
+  max-width: 100%;
+}
+
+// Bulma's default placeholder is 30% opaque text, about 1.8:1 contrast. This
+// grey is 5:1 on white, so the example hints stay readable (WCAG 1.4.3).
+.input::placeholder,
+.textarea::placeholder {
+  color: #6b6b6b;
+  opacity: 1;
+}
+
+// Reflow at 320px wide (WCAG 1.4.10): nothing but data tables may need
+// horizontal scrolling, and those scroll inside their own container.
+iframe {
+  max-width: 100%;
+}
+iframe[src*='youtube.com'] {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+.content a,
+.footer a {
+  overflow-wrap: anywhere;
+}
+.button {
+  max-width: 100%;
+  white-space: normal;
+  height: auto;
+}
+div:has(> table) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.field.has-addons {
+  flex-wrap: wrap;
+}

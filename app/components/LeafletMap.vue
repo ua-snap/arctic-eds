@@ -1,5 +1,10 @@
 <template>
-  <div :id="mapName" class="map"></div>
+  <div
+    :id="mapName"
+    class="map"
+    role="region"
+    :aria-label="label || `${mapName} map`"
+  ></div>
 </template>
 
 <style lang="scss" scoped>
@@ -30,6 +35,8 @@ import { onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
   mapName: String,
+  // Accessible name for the map region, e.g. "Precipitation map".
+  label: String,
 })
 
 const store = useMapStore()

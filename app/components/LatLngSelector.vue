@@ -1,15 +1,28 @@
 <template>
   <div class="content is-size-5">
-    <b>OR Latitude/longitude point</b>
+    <label :for="inputId" class="search-label"
+      >OR Latitude/longitude point</label
+    >
     <div class="columns">
       <div class="column is-two-thirds">
-        <b-field :type="getFieldStatus" :message="getFieldMessage">
+        <b-field :type="getFieldStatus">
+          <!-- compat-fallthrough off puts the id on the <input> itself, not
+               on Buefy's wrapper, so the label's `for` points at it. -->
           <b-input
+            :compat-fallthrough="false"
+            :id="inputId"
             v-model="latlngInput"
             placeholder="64.8436, -147.7230"
+            :aria-invalid="getFieldMessage ? 'true' : undefined"
+            :aria-describedby="messageId"
             @keydown.enter="process"
           ></b-input>
         </b-field>
+        <!-- Rendered here rather than through b-field's message prop so the
+             input can point at it with aria-describedby. -->
+        <p :id="messageId" class="help is-danger" aria-live="polite">
+          {{ getFieldMessage }}
+        </p>
       </div>
       <div v-if="isValid" class="column">
         <b-button type="is-primary" :disabled="!isValid" @click="process"
@@ -20,6 +33,10 @@
   </div>
 </template>
 <style lang="scss" scoped>
+.search-label {
+  display: block;
+  font-weight: 700;
+}
 :deep(input.input) {
   box-shadow: none;
   border: 3px solid #8ba09a;
@@ -36,11 +53,14 @@
 }
 </style>
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, useId } from 'vue'
 import parseDMS from 'parse-dms'
 
 const router = useRouter()
 const route = useRoute()
+
+const inputId = `${useId()}-latlng`
+const messageId = `${inputId}-message`
 
 const latLng = ref(undefined)
 const latlngInput = ref('')

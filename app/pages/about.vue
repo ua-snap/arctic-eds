@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="content is-size-5">
-      <h2>About this tool</h2>
+      <h1>About this tool</h1>
       <p>
         In the late 20th century, the need for accessible environmental
         information tailored to engineers and decision&ndash;makers, led to the
@@ -112,6 +112,10 @@
 </template>
 
 <style lang="scss" scoped>
+// Same size as the h2 this heading used to be.
+h1 {
+  font-size: 1.75em;
+}
 .content {
   max-width: 40em;
   margin: 1.25rem auto;

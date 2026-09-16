@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="report--minimap--wrapper">
-      <div id="report--minimmap--map"></div>
+      <div
+        id="report--minimmap--map"
+        role="region"
+        :aria-label="`Map showing the location of ${placeName}`"
+      ></div>
     </div>
   </div>
 </template>
@@ -13,6 +17,7 @@
 #report--minimmap--map {
   height: 300px;
   width: 300px;
+  max-width: 100%;
 }
 </style>
 
@@ -20,7 +25,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { storeToRefs } from 'pinia'
 
-const { latLng, isPlaceDefined } = storeToRefs(useReportStore())
+const { latLng, isPlaceDefined, placeName } = storeToRefs(useReportStore())
 
 // Leaflet instances are kept non-reactive on purpose.
 let map

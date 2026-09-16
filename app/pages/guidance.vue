@@ -30,7 +30,7 @@
           width="560"
           height="315"
           src="https://www.youtube.com/embed/_OCvLhlHQFQ?si=vcXw92WVJmx8H6Fn"
-          title="YouTube video player"
+          title="Arctic-EDS walkthrough (YouTube video)"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"

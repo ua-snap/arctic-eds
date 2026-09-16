@@ -1,15 +1,20 @@
 <template>
   <div>
-    <HeaderBanner />
-    <div class="lead">
-      <span class="logo">Arctic-EDS</span><br />
-      <span class="name"
-        >Arctic Environmental and Engineering Data and Design Support
-        System</span
-      >
-    </div>
-    <Navbar />
-    <section class="section">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <HeaderBanner />
+      <!-- The site title is the page's h1 on the home page only; every other
+           page supplies its own h1. -->
+      <component :is="isHome ? 'h1' : 'div'" class="lead">
+        <span class="logo">Arctic-EDS</span><br />
+        <span class="name"
+          >Arctic Environmental and Engineering Data and Design Support
+          System</span
+        >
+      </component>
+      <Navbar />
+    </header>
+    <main id="main-content" class="section" tabindex="-1">
       <div v-if="siteSlow">
         <div class="container">
           <b-message
@@ -31,7 +36,7 @@
         </div>
       </div>
       <slot />
-    </section>
+    </main>
     <Footer />
   </div>
 </template>
@@ -44,6 +49,7 @@
   padding-bottom: 6px;
   margin-bottom: 0;
   line-height: 1;
+  font-weight: normal;
   .logo {
     font-family: 'Acknowledgement', sans-serif;
     font-size: 38px;
@@ -58,6 +64,9 @@
     padding-bottom: 0.75rem;
   }
 }
+#main-content:focus {
+  outline: none !important;
+}
 </style>
 <script setup>
 import { computed } from 'vue'
@@ -66,5 +75,7 @@ import Navbar from '~/components/Navbar'
 import Footer from '~/components/Footer'
 
 const config = useRuntimeConfig()
+const route = useRoute()
+const isHome = computed(() => route.path === '/')
 const siteSlow = computed(() => config.public.siteSlow)
 </script>

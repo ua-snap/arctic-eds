@@ -36,7 +36,7 @@
               width="560"
               height="315"
               src="https://www.youtube.com/embed/QRf2Z8Ka_VQ?si=eYkt13xPPWCgE4GT"
-              title="YouTube video player"
+              title="Tools in Two Minutes: Arctic-EDS (YouTube video)"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -104,6 +104,7 @@
         </div>
 
         <div v-if="!safeMode" class="controls pt-5 pb-6">
+          <h2 class="visually-hidden">Find data for a location</h2>
           <SearchControls />
         </div>
 
