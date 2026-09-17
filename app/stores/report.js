@@ -240,7 +240,7 @@ export const useReportStore = defineStore('report', () => {
   async function apiFetch(url) {
     let fetched
     if (config.public.mockApi) {
-      // Loaded on demand so the 2 MB fixture stays out of the main bundle.
+      // Loaded on demand so the 500 KB fixture stays out of the main bundle.
       const { default: mock } = await import('~/assets/mock.json')
 
       // Copy mock to results so we don't modify mock directly.
