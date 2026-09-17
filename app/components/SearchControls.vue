@@ -33,12 +33,15 @@
 import LatLngSelector from '~/components/LatLngSelector'
 import PlaceSelector from '~/components/PlaceSelector'
 
-// Was the Nuxt 2 fetch() hook. useAsyncData runs it during
-// `nuxt generate`, so the community list is serialized into the page
-// payload as before, and on the client for client-side navigation.
+// Fetch the community list in the browser only. Fetching during SSR would
+// run at `nuxt generate` time and bake a stale snapshot of the Data API's
+// places into the static payload (see issue #452).
 const store = useReportStore()
-await useAsyncData('places', async () => {
-  await store.fetchPlaces()
-  return true
+onMounted(async () => {
+  try {
+    await store.fetchPlaces()
+  } catch (error) {
+    console.error('Failed to fetch places', error)
+  }
 })
 </script>
