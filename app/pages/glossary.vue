@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="content clamp is-size-5">
-      <h2>Glossary of terms</h2>
+      <h1>Glossary of terms</h1>
       <dl>
         <dt><a id="bias_correction">Bias correction</a></dt>
         <dd>
@@ -98,6 +98,10 @@
 </template>
 
 <style lang="scss" scoped>
+// Same size as the h2 this heading used to be.
+h1 {
+  font-size: 1.75em;
+}
 dt {
   font-weight: 500;
   margin-top: 1.5rem;

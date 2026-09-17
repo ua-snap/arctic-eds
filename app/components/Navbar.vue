@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-wrapper no-print">
+  <nav class="nav-wrapper no-print" aria-label="Main">
     <ol>
       <li>
         <NuxtLink to="/"> Home </NuxtLink>

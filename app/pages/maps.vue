@@ -1,7 +1,7 @@
 <template>
   <div v-if="!safeMode">
     <div class="block">
-      <h3 class="title is-3">Statewide Climate Overview Maps</h3>
+      <h1 class="title is-3">Statewide Climate Overview Maps</h1>
       <div class="content is-size-4">
         <ul>
           <li>
@@ -23,9 +23,9 @@
       </div>
     </div>
     <div class="block">
-      <MapBlock mapName="precipitation">
+      <MapBlock mapName="precipitation" label="Precipitation map">
         <template v-slot:layers>
-          <h3 class="title is-4">Precipitation</h3>
+          <h2 class="title is-4">Precipitation</h2>
 
           <MapLayer mapName="precipitation" :layer="layers.precipitation[0]">
             <template v-slot:title
@@ -75,9 +75,9 @@
     </div>
 
     <div class="block">
-      <MapBlock mapName="permafrost">
+      <MapBlock mapName="permafrost" label="Permafrost map">
         <template v-slot:layers>
-          <h3 class="title is-4">Permafrost</h3>
+          <h2 class="title is-4">Permafrost</h2>
 
           <MapLayer mapName="permafrost" :layer="layers.permafrost[0]">
             <template v-slot:title>Permafrost extent</template>
@@ -125,9 +125,9 @@
     </div>
 
     <div class="block">
-      <MapBlock mapName="temperature">
+      <MapBlock mapName="temperature" label="Temperature map">
         <template v-slot:layers>
-          <h3 class="title is-4">Temperature</h3>
+          <h2 class="title is-4">Temperature</h2>
           <MapLayer mapName="temperature" :layer="layers.temperature[0]">
             <template v-slot:title
               >Mean annual temperature, modeled baseline</template
@@ -146,9 +146,9 @@
 
     <!-- suspend this block until WMS repair on apollo is confirmed -->
     <div class="block" v-if="false">
-      <MapBlock mapName="temperature_indices">
+      <MapBlock mapName="temperature_indices" label="Temperature indices map">
         <template v-slot:layers>
-          <h3 class="title is-4">Temperature Indices</h3>
+          <h2 class="title is-4">Temperature Indices</h2>
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[0]"

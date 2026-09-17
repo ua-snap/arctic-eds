@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <!-- A live region, so screen readers hear the loading and error states. -->
+  <div role="status">
     <div v-if="isPlaceDefined && state.pending">
       <!-- Drama dots -->
       <h4 class="title is-5">

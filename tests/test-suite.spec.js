@@ -28,15 +28,6 @@ const sectionFunctions = {
   permafrost: 'checkForPermafrost',
 }
 
-const checkElementsForSubstring = async (elements, substr) => {
-  let text
-  for (let i = 0; i < elements.length; i++) {
-    text = await elements[i].innerText()
-    return text.includes(substr)
-  }
-  return false
-}
-
 const checkForElevation = async page => {
   let elements = await page.$$('#results div:has-text("elevation") strong')
   let element = elements[elements.length - 1]
@@ -90,33 +81,19 @@ test('Check header links', async ({ page }) => {
   await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
 
-  let elements
-  let substring
-  let substringFound
-
-  await page.click('.nav-wrapper ol li:has-text("About")')
-  elements = page.locator('.content h2')
-  substring = 'About this tool'
-  substringFound = checkElementsForSubstring(elements, substring)
-  expect(substringFound).toBeTruthy()
-
-  await page.click('.nav-wrapper ol li:has-text("Glossary")')
-  elements = page.locator('.content h2')
-  substring = 'Glossary of terms'
-  substringFound = checkElementsForSubstring(elements, substring)
-  expect(substringFound).toBeTruthy()
-
-  await page.click('.nav-wrapper ol li:has-text("Guidance")')
-  elements = page.locator('.content h2')
-  substring = 'Guidance: using and interpreting Arctic-EDS data'
-  substringFound = checkElementsForSubstring(elements, substring)
-  expect(substringFound).toBeTruthy()
-
-  await page.click('.nav-wrapper ol li:has-text("Maps")')
-  elements = page.locator('.content h2')
-  substring = 'Statewide Climate Overview Maps'
-  substringFound = checkElementsForSubstring(elements, substring)
-  expect(substringFound).toBeTruthy()
+  // Each page has exactly one h1.
+  const pages = [
+    ['Home', 'Arctic Environmental and Engineering Data and Design Support'],
+    ['About', 'About this tool'],
+    ['Glossary', 'Glossary of terms'],
+    ['Guidance', 'Guidance: using and interpreting Arctic-EDS data'],
+    ['Maps', 'Statewide Climate Overview Maps'],
+  ]
+  for (const [link, heading] of pages) {
+    await page.click(`.nav-wrapper ol li:has-text("${link}")`)
+    await expect(page.locator('h1')).toHaveCount(1)
+    await expect(page.locator('h1')).toContainText(heading)
+  }
 })
 
 test('Check maps', async ({ page }) => {

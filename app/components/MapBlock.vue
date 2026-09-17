@@ -8,7 +8,7 @@
       </slot>
     </div>
     <div class="column">
-      <LeafletMap :mapName="mapName" class="map" />
+      <LeafletMap :mapName="mapName" :label="label" class="map" />
     </div>
   </div>
 </template>
@@ -27,6 +27,7 @@ import mapContent from '~/data/map_content'
 
 const props = defineProps({
   mapName: String,
+  label: String,
 })
 
 const layers = computed(() => mapContent.layers[props.mapName])

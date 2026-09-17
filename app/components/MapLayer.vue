@@ -1,12 +1,21 @@
 <template>
-  <div @click="toggleLayer" class="layer columns" :class="{ active: active }">
+  <div
+    role="button"
+    tabindex="0"
+    :aria-pressed="active ? 'true' : 'false'"
+    @click="toggleLayer"
+    @keydown.enter.prevent="toggleLayer"
+    @keydown.space.prevent="toggleLayer"
+    class="layer columns"
+    :class="{ active: active }"
+  >
     <span class="column description">
       <div class="layer-title">
         <slot name="title">{{ layer.title }}</slot>
       </div>
       <div class="subtext"><slot name="subtext"></slot></div>
     </span>
-    <span class="column is-1 if-active">
+    <span class="column is-1 if-active" aria-hidden="true">
       <div v-if="active">&#x25b6;</div>
     </span>
   </div>
@@ -19,9 +28,12 @@
   cursor: pointer;
   padding-right: 0;
 
+  // A lighter tint of the turquoise accent, with a full-strength bar at
+  // the side, keeps the text well above 4.5:1 contrast (WCAG 1.4.3).
   &.active {
     font-weight: 600;
-    background-color: #8ba09a;
+    background-color: #d3dcd9;
+    box-shadow: inset 6px 0 0 #8ba09a;
   }
 
   .if-active {
@@ -35,7 +47,7 @@
     margin-top: 0;
     padding-top: 0;
 
-    font-weight: 300;
+    font-weight: 400;
   }
 }
 </style>
