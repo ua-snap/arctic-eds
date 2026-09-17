@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div
-      v-if="!state.pending && !state.error && Object.keys(results).length > 0"
-    >
+    <div v-if="!state.pending && !state.error && hasAnyData">
       <section class="section intro">
         <div id="results" class="container">
           <h1 class="title is-2">Downscaled Climate Model Output</h1>
@@ -111,38 +109,60 @@
                 v-if="
                   isPrecipitationPresent ||
                   isPrecipitationFrequencyPresent ||
-                  isSnowfallPresent
+                  isSnowfallPresent ||
+                  isHydrologyPresent
                 "
               >
                 <a href="#precipitation">Precipitation</a>
                 <ul>
-                  <li v-if="isPrecipitationPresent">
+                  <li
+                    v-if="
+                      isPrecipitationPresent &&
+                      !failedSections.has('annual-precipitation')
+                    "
+                  >
                     <a href="#annual-precipitation"
                       >Annual Total Precipitation</a
                     >
                   </li>
-                  <li v-if="isPrecipitationFrequencyPresent">
+                  <li
+                    v-if="
+                      isPrecipitationFrequencyPresent &&
+                      !failedSections.has('precipitation-frequency')
+                    "
+                  >
                     <a href="#precipitation-frequency"
                       >Precipitation Frequency</a
                     >
                   </li>
-                  <li v-if="isSnowfallPresent">
+                  <li
+                    v-if="isSnowfallPresent && !failedSections.has('snowfall')"
+                  >
                     <a href="#snowfall">Snowfall</a>
                   </li>
-                  <li v-if="isHydrologyPresent">
+                  <li
+                    v-if="
+                      isHydrologyPresent && !failedSections.has('hydrology')
+                    "
+                  >
                     <a href="#hydrology">Hydrology</a>
                   </li>
                 </ul>
               </li>
 
-              <li v-if="isTemperaturePresent">
+              <li
+                v-if="
+                  isTemperaturePresent && !failedSections.has('temperature')
+                "
+              >
                 <a href="#temperature">Temperature</a>
               </li>
               <li
                 v-if="
-                  isHeatingDegreeDaysPresent ||
-                  isFreezingIndexPresent ||
-                  isThawingIndexPresent
+                  (isHeatingDegreeDaysPresent ||
+                    isFreezingIndexPresent ||
+                    isThawingIndexPresent) &&
+                  !failedSections.has('temperature-indices')
                 "
               >
                 <a href="#temperature-indices">Temperature Indices</a>
@@ -159,7 +179,9 @@
                 </ul>
               </li>
 
-              <li v-if="isPermafrostPresent">
+              <li
+                v-if="isPermafrostPresent && !failedSections.has('permafrost')"
+              >
                 <a href="#permafrost">Permafrost</a>
               </li>
             </ul>
@@ -171,7 +193,8 @@
         v-if="
           isPrecipitationPresent ||
           isPrecipitationFrequencyPresent ||
-          isSnowfallPresent
+          isSnowfallPresent ||
+          isHydrologyPresent
         "
       >
         <div class="container">
@@ -181,24 +204,48 @@
             <h3 id="annual-precipitation" class="title is-3 mt-6">
               Total annual precipitation
             </h3>
-            <PrecipitationReport />
+            <NuxtErrorBoundary
+              @error="onSectionError('annual-precipitation', $event)"
+            >
+              <PrecipitationReport />
+              <template #error>
+                <SectionError />
+              </template>
+            </NuxtErrorBoundary>
           </div>
 
           <div v-if="isPrecipitationFrequencyPresent">
             <h3 id="precipitation-frequency" class="title is-3 mt-6">
               Precipitation Frequency
             </h3>
-            <PrecipitationFrequency />
+            <NuxtErrorBoundary
+              @error="onSectionError('precipitation-frequency', $event)"
+            >
+              <PrecipitationFrequency />
+              <template #error>
+                <SectionError />
+              </template>
+            </NuxtErrorBoundary>
           </div>
 
           <div v-if="isSnowfallPresent">
             <h3 id="snowfall" class="title is-3 mt-6">Snowfall</h3>
-            <SnowfallReport />
+            <NuxtErrorBoundary @error="onSectionError('snowfall', $event)">
+              <SnowfallReport />
+              <template #error>
+                <SectionError />
+              </template>
+            </NuxtErrorBoundary>
           </div>
 
           <div v-if="isHydrologyPresent">
             <h3 id="hydrology" class="title is-3 mt-6">Hydrology</h3>
-            <HydrologyReport />
+            <NuxtErrorBoundary @error="onSectionError('hydrology', $event)">
+              <HydrologyReport />
+              <template #error>
+                <SectionError />
+              </template>
+            </NuxtErrorBoundary>
           </div>
         </div>
       </section>
@@ -206,7 +253,12 @@
       <section class="section temperature" v-if="isTemperaturePresent">
         <div class="container">
           <h2 id="temperature" class="title is-2">Temperature</h2>
-          <TemperatureReport />
+          <NuxtErrorBoundary @error="onSectionError('temperature', $event)">
+            <TemperatureReport />
+            <template #error>
+              <SectionError />
+            </template>
+          </NuxtErrorBoundary>
         </div>
       </section>
 
@@ -222,19 +274,31 @@
           <h2 id="temperature-indices" class="title is-2">
             Temperature Indices
           </h2>
-          <TemperatureIndices />
+          <NuxtErrorBoundary
+            @error="onSectionError('temperature-indices', $event)"
+          >
+            <TemperatureIndices />
+            <template #error>
+              <SectionError />
+            </template>
+          </NuxtErrorBoundary>
         </div>
       </section>
       <section class="section permafrost" v-if="isPermafrostPresent">
         <div class="container">
-          <PermafrostReport />
+          <NuxtErrorBoundary @error="onSectionError('permafrost', $event)">
+            <PermafrostReport />
+            <template #error>
+              <SectionError title="Permafrost" />
+            </template>
+          </NuxtErrorBoundary>
         </div>
       </section>
     </div>
     <div v-else>
       <section class="section">
         <div class="container">
-          <LoadingStatus :state="state" />
+          <LoadingStatus :state="state" @retry="fetchReport" />
         </div>
       </section>
     </div>
@@ -253,6 +317,8 @@ import PermafrostReport from '~/components/reports/Permafrost'
 import PrecipitationFrequency from '~/components/reports/PrecipitationFrequency'
 import TemperatureIndices from '~/components/reports/TemperatureIndices'
 import HydrologyReport from '~/components/reports/Hydrology'
+import SectionError from '~/components/SectionError'
+import { reportError } from '~/stores/report'
 
 const config = useRuntimeConfig()
 const { safeMode } = useSafeMode()
@@ -275,6 +341,7 @@ const {
   isThawingIndexPresent,
   isPermafrostPresent,
   isWetDaysPerYearPresent,
+  hasAnyData,
 } = storeToRefs(store)
 
 const currentURL = ref('')
@@ -282,16 +349,39 @@ const currentURL = ref('')
 // sections don't render against empty results before fetchReport() runs.
 const state = reactive({ pending: true, error: null })
 
+// Report sections that threw while rendering (e.g. an expected key is
+// missing from the API results). They're replaced with a notice by their
+// error boundary and dropped from the table of contents.
+const failedSections = reactive(new Set())
+
+function onSectionError(key, error) {
+  console.error(`Report section "${key}" failed to render`, error)
+  failedSections.add(key)
+}
+
 // Was the Nuxt 2 fetch() hook, always re-run from onMounted so the
 // report data is fetched client-side.
 async function fetchReport() {
   state.pending = true
   state.error = null
+  failedSections.clear()
   try {
     // Needed here to ensure hydration works properly for
     // direct links to specific places (mapping place names
-    // to lat/lngs).
-    await store.fetchPlaces()
+    // to lat/lngs). Reports for a lat/lng don't need the places
+    // list, so a failure there only matters for community reports.
+    try {
+      await store.fetchPlaces()
+    } catch (error) {
+      if (!placeIsLatLng.value) {
+        throw error
+      }
+      console.error('Failed to fetch places', error)
+    }
+
+    if (isPlaceDefined.value && !latLng.value) {
+      throw reportError('unknown-place', 'No community matches this report')
+    }
 
     if (config.public.safeMode && isPlaceDefined.value) {
       let key = latLng.value.lat + '+' + latLng.value.lng
@@ -308,7 +398,12 @@ async function fetchReport() {
         await store.apiFetch(url)
       }
     }
+
+    if (!hasAnyData.value) {
+      throw reportError('no-data', 'No data is available for this place')
+    }
   } catch (error) {
+    console.error('Failed to load report', error)
     state.error = error
   } finally {
     state.pending = false

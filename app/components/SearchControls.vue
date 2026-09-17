@@ -1,7 +1,17 @@
 <template>
   <div class="columns">
     <div class="column left">
-      <PlaceSelector></PlaceSelector>
+      <div
+        v-if="placesError"
+        class="content is-size-5 places-error"
+        role="alert"
+      >
+        <p>
+          Something&rsquo;s wrong and the community list cannot be loaded. Enter
+          a latitude and longitude, or try again later.
+        </p>
+      </div>
+      <PlaceSelector v-else></PlaceSelector>
     </div>
     <div class="column right">
       <LatLngSelector></LatLngSelector>
@@ -9,6 +19,10 @@
   </div>
 </template>
 <style type="scss" scoped>
+.places-error {
+  max-width: 30rem;
+  text-align: left;
+}
 .left {
   display: flex;
   justify-content: right;
@@ -30,6 +44,7 @@
 }
 </style>
 <script setup>
+import { storeToRefs } from 'pinia'
 import LatLngSelector from '~/components/LatLngSelector'
 import PlaceSelector from '~/components/PlaceSelector'
 
@@ -37,6 +52,7 @@ import PlaceSelector from '~/components/PlaceSelector'
 // run at `nuxt generate` time and bake a stale snapshot of the Data API's
 // places into the static payload (see issue #452).
 const store = useReportStore()
+const { placesError } = storeToRefs(store)
 onMounted(async () => {
   try {
     await store.fetchPlaces()
