@@ -13,7 +13,7 @@
       <li>
         <NuxtLink to="/guidance"> Guidance </NuxtLink>
       </li>
-      <li v-if="!safeMode">
+      <li>
         <NuxtLink to="/maps"> Maps </NuxtLink>
       </li>
       <li>
@@ -44,7 +44,3 @@ nav {
   }
 }
 </style>
-
-<script setup>
-const { safeMode } = useSafeMode()
-</script>

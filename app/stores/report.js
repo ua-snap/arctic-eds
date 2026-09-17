@@ -253,20 +253,7 @@ export const useReportStore = defineStore('report', () => {
       convertResults(true)
     }
   }
-  async function safeModeFetch(key) {
-    const { default: safeResults } = await import('~/assets/safe.json')
-    // Need to have a deep clone to prevent re-conversion
-    setResults(cloneDeep(safeResults[key]))
-    if (units.value == 'imperial') {
-      convertResults()
-    }
-  }
   async function fetchPlaces() {
-    if (config.public.safeMode) {
-      const { default: safePlaces } = await import('~/assets/safePlaces.json')
-      setPlaces(safePlaces)
-    }
-
     // If we've already fetched this, don't do that again.
     if (places.value) {
       return
@@ -311,7 +298,6 @@ export const useReportStore = defineStore('report', () => {
     setMetric,
     setImperial,
     apiFetch,
-    safeModeFetch,
     fetchPlaces,
   }
 })

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block">
-      <div v-if="!safeMode" class="content is-size-5">
+      <div class="content is-size-5">
         <p>Use this dataset in interactive computational modules:</p>
         <ul class="module-link">
           <li>
@@ -218,7 +218,7 @@
       />
     </div>
 
-    <div v-if="!safeMode" class="block content is-size-5 no-print">
+    <div class="block content is-size-5 no-print">
       <h4 class="title is-5 mb-1">Data download</h4>
       <ul>
         <li>
@@ -239,7 +239,6 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 
 const { round } = useNumeric()
-const { safeMode } = useSafeMode()
 const { results, placeName } = storeToRefs(useReportStore())
 
 const downloadCsvText = computed(

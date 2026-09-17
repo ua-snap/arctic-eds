@@ -10,16 +10,6 @@
             faster than the rest of the world.
           </p>
         </div>
-        <div v-if="safeMode" class="content is-size-5 safe-mode px-5 py-5">
-          <p>
-            ⚠️ There is ongoing systems maintenance at the University of Alaska
-            Fairbanks datacenter.
-            <strong
-              >The functionality of this app is currently limited to
-              pre-selected locations.</strong
-            >
-          </p>
-        </div>
         <div class="content clamp is-size-5">
           <p>
             High-resolution <Term target="downscaling">downscaled</Term> climate
@@ -96,71 +86,16 @@
             for more information.
           </p>
         </div>
-        <div v-if="!safeMode" class="content is-size-4">
+        <div class="content is-size-4">
           <p>
             To get started, enter your Alaska community or location of interest
             in the search boxes below.
           </p>
         </div>
 
-        <div v-if="!safeMode" class="controls pt-5 pb-6">
+        <div class="controls pt-5 pb-6">
           <h2 class="visually-hidden">Find data for a location</h2>
           <SearchControls />
-        </div>
-
-        <div v-if="safeMode">
-          <div class="content is-size-5">
-            <p class="bigger">
-              ⚠️ There&rsquo;s ongoing system maintenance at the University of
-              Alaska datacenter, and not all functionality is available at this
-              time.
-            </p>
-            <p>
-              <strong>Choose from a pre-selected location below</strong> for an
-              example report. When maintenance is completed, you can select from
-              over 260 communities in Alaska and any location by
-              latitude/longitude.
-            </p>
-          </div>
-          <div class="content is-size-5">
-            <ul>
-              <li>
-                <NuxtLink to="/report/community/AK124#results"
-                  >Fairbanks</NuxtLink
-                >
-              </li>
-              <li>
-                <NuxtLink to="/report/community/AK15#results"
-                  >Anchorage</NuxtLink
-                >
-              </li>
-              <li>
-                <NuxtLink to="/report/community/AK418#results"
-                  >Utqiaġvik</NuxtLink
-                >
-              </li>
-              <li>
-                <NuxtLink to="/report/community/AK211#results"
-                  >Kotzebue</NuxtLink
-                >
-              </li>
-              <li>
-                <NuxtLink to="/report/community/AK36#results">Bethel</NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/report/69.2983/-156.96#results">
-                  69.2983, -156.96</NuxtLink
-                >
-              </li>
-            </ul>
-            <p>
-              Email us at
-              <a href="mailto:uaf-snap-data-tools@alaska.edu"
-                >uaf-snap-data-tools@alaska.edu</a
-              >
-              with questions or comments.
-            </p>
-          </div>
         </div>
       </div>
     </div>
@@ -182,9 +117,6 @@
   position: sticky;
   bottom: 0;
 }
-.bigger {
-  font-size: 110%;
-}
 </style>
 <script setup>
 import { onMounted } from 'vue'
@@ -192,7 +124,6 @@ import SearchControls from '~/components/SearchControls'
 
 const route = useRoute()
 const router = useRouter()
-const { safeMode } = useSafeMode()
 
 onMounted(() => {
   // Switch back to clean URL after S3 redirect. Adapted from here:

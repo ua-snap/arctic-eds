@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!safeMode">
+  <div>
     <div class="block">
       <h1 class="title is-3">Statewide Climate Overview Maps</h1>
       <div class="content is-size-4">
@@ -212,6 +212,5 @@ import { computed } from 'vue'
 import MapBlock from '~/components/MapBlock'
 import mapLayers from '~/data/map_content'
 
-const { safeMode } = useSafeMode()
 const layers = computed(() => mapLayers.layers)
 </script>

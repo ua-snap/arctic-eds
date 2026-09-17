@@ -88,20 +88,6 @@
           </div>
         </div>
       </section>
-      <section v-if="safeMode" class="section">
-        <div class="container">
-          <div class="content is-size-4 px-5 py-5 safe-mode">
-            <p>
-              ⚠️ There&rsquo;s ongoing system maintenance at the University of
-              Alaska datacenter.
-              <strong
-                >CSV downloads and links to source data files are not currently
-                available</strong
-              >.
-            </p>
-          </div>
-        </div>
-      </section>
       <section class="section">
         <div class="container toc">
           <h2 class="title is-3">Table of Contents</h2>
@@ -255,7 +241,6 @@ import TemperatureIndices from '~/components/reports/TemperatureIndices'
 import HydrologyReport from '~/components/reports/Hydrology'
 
 const config = useRuntimeConfig()
-const { safeMode } = useSafeMode()
 
 const store = useReportStore()
 const {
@@ -293,20 +278,15 @@ async function fetchReport() {
     // to lat/lngs).
     await store.fetchPlaces()
 
-    if (config.public.safeMode && isPlaceDefined.value) {
-      let key = latLng.value.lat + '+' + latLng.value.lng
-      await store.safeModeFetch(key)
-    } else {
-      if (isPlaceDefined.value) {
-        let url =
-          config.public.apiUrl +
-          '/eds/all/' +
-          latLng.value.lat +
-          '/' +
-          latLng.value.lng
+    if (isPlaceDefined.value) {
+      let url =
+        config.public.apiUrl +
+        '/eds/all/' +
+        latLng.value.lat +
+        '/' +
+        latLng.value.lng
 
-        await store.apiFetch(url)
-      }
+      await store.apiFetch(url)
     }
   } catch (error) {
     state.error = error

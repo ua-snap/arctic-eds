@@ -34,7 +34,7 @@
         The available data extent is the terrestrial area of Alaska. The spatial
         resolution (grid cell size) of all data is 2 by 2 km.
       </p>
-      <ul v-if="!safeMode" class="module-link">
+      <ul class="module-link">
         <li>
           Use this dataset in a
           <a
@@ -511,7 +511,7 @@
       </h4>
 
       <ul>
-        <li v-if="!safeMode">
+        <li>
           CSV downloads for {{ placeName }}:
           <ul>
             <li>
@@ -522,7 +522,7 @@
             </li>
           </ul>
         </li>
-        <li v-if="!safeMode">
+        <li>
           Source datasets and metadata:
           <ul>
             <li>
@@ -564,7 +564,6 @@ import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 
 const { round } = useNumeric()
-const { safeMode } = useSafeMode()
 const { units, results, placeName, isPlaceDefined, isTemperaturePresent } =
   storeToRefs(useReportStore())
 
