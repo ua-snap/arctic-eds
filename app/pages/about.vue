@@ -4,10 +4,10 @@
       <h1>About this tool</h1>
       <p>
         In the late 20th century, the need for accessible environmental
-        information tailored to engineers and decision&ndash;makers, led to the
+        information tailored to engineers and decision-makers, led to the
         publication of the Environmental Atlas of Alaska. The publication
         compiled maps of the best data available at the time. The Atlas provided
-        a well&ndash;organized overview of the physical characteristics of the
+        a well-organized overview of the physical characteristics of the
         state alongside its waters, sunlight, and general climate. This was
         paired with engineering requirements and guidelines, as well as a
         thorough bibliography.
@@ -38,7 +38,7 @@
         frustrated engineers and planners not working along the state&rsquo;s
         road systems or rivers, and presented particular challenges to engineers
         in the far north and west. Complex topography, particularly in Southeast
-        Alaska, also made coarse&ndash;scale maps imprecise. The data also
+        Alaska, also made coarse-scale maps imprecise. The data also
         assumed a steady climatic state while modern data tells a more detailed
         story&mdash;one of significant change.
       </p>
@@ -51,7 +51,7 @@
         Alaska while addressing the old atlas&rsquo; shortcomings by providing
         finer scale data, filling data gaps, and incorporating climate
         projections. The Arctic-EDS provides easily obtainable,
-        well&ndash;vetted, and reliable engineering and environmental data in a
+        well-vetted, and reliable engineering and environmental data in a
         central website designed to meet the needs of engineering professionals.
       </p>
       <p>

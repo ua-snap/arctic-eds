@@ -21,14 +21,14 @@
         (evap), snow melt, and ice melt. The VIC hydrologic model input
         variables of maximum daily 2-m air temperature (tmax), minimum daily 2-m
         air temperature (tmin), and daily precipitation (pcp) from the NCAR 12
-        km Alaska Near Surface Meteorology Daily Averages (1950-2099) dataset
-        and the associated modeled downscaling baseline (Daymet 12 km) are
-        included in this section as well. All data represent monthly summaries
-        averaged by decade. Precipitation, snow melt, glacier melt, runoff, and
-        evaporation are monthly sums. Minimum and maximum temperatures and all
-        soil moisture values are monthly means. Ice water equivalent and snow
-        water equivalent are monthly maximums. The spatial resolution (grid cell
-        size) of all data is 12 by 12 km.
+        km Alaska Near Surface Meteorology Daily Averages (1950&ndash;2099)
+        dataset and the associated modeled downscaling baseline (Daymet 12 km)
+        are included in this section as well. All data represent monthly
+        summaries averaged by decade. Precipitation, snow melt, glacier melt,
+        runoff, and evaporation are monthly sums. Minimum and maximum
+        temperatures and all soil moisture values are monthly means. Ice water
+        equivalent and snow water equivalent are monthly maximums. The spatial
+        resolution (grid cell size) of all data is 12 by 12 km.
       </p>
 
       <p>
@@ -77,7 +77,7 @@
             <li>
               <a
                 href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/2610188c-aa38-4f47-8987-b36ec72cdd0d"
-                >Alaska VIC Hydrologic Model Output (1950-2099): Decadal
+                >Alaska VIC Hydrologic Model Output (1950&ndash;2099): Decadal
                 Averages of Monthly Summaries</a
               >
             </li>

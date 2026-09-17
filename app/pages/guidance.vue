@@ -94,7 +94,7 @@
             >Modeled and interpolated data cannot be directly compared to
             observational historical data</strong
           >. Modeled and interpolated gridded data represent broader spatial
-          extents (from 1-20 square kilometers) and incorporate variations in
+          extents (from 1&ndash;20 square kilometers) and incorporate variations in
           geography and altitude which won&rsquo;t align with point-based
           station data. See below for further guidance regarding bias correction
           to point-based observational data.

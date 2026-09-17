@@ -1,0 +1,28 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nuxt-dev",
+      "runtimeExecutable": "/Users/bruce/.nvm/versions/node/v24.21.0/bin/node",
+      "runtimeArgs": [
+        "node_modules/nuxt/bin/nuxt.mjs",
+        "dev",
+        "--port",
+        "3000"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "static-output",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4173",
+        "-d",
+        ".output/public"
+      ],
+      "port": 4173
+    }
+  ]
+}

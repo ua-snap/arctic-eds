@@ -141,7 +141,7 @@
                 pf[
                   `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_min`
                 ]
-              }}&mdash;{{
+              }}&ndash;{{
                 pf[
                   `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_max`
                 ]
@@ -185,7 +185,7 @@
           <blockquote>
             Bieniek P, Walsh J, Fresco N, Tauxe C, Redilla K. Anticipated
             changes in Alaska extreme precipitation. Journal of Applied
-            Meteorology and Climatology. 2022; 61(2):97-108.
+            Meteorology and Climatology. 2022; 61(2):97&ndash;108.
             <a href="https://doi.org/10.1175/JAMC-D-21-0106.1"
               >https://doi.org/10.1175/JAMC-D-21-0106.1</a
             >

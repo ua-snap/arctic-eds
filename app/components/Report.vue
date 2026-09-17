@@ -5,7 +5,7 @@
     >
       <section class="section intro">
         <div id="results" class="container">
-          <h1 class="title is-2">Downscaled Climate Model Output</h1>
+          <h1 class="title is-2">Downscaled climate model output</h1>
           <h2 class="subtitle is-2" v-html="placeName"></h2>
 
           <p class="subtitle is-3 pt-4">
@@ -104,7 +104,7 @@
       </section>
       <section class="section">
         <div class="container toc">
-          <h2 class="title is-3">Table of Contents</h2>
+          <h2 class="title is-3">Table of contents</h2>
           <div class="content is-size-4">
             <ul>
               <li
@@ -118,12 +118,12 @@
                 <ul>
                   <li v-if="isPrecipitationPresent">
                     <a href="#annual-precipitation"
-                      >Annual Total Precipitation</a
+                      >Total annual precipitation</a
                     >
                   </li>
                   <li v-if="isPrecipitationFrequencyPresent">
                     <a href="#precipitation-frequency"
-                      >Precipitation Frequency</a
+                      >Precipitation frequency</a
                     >
                   </li>
                   <li v-if="isSnowfallPresent">
@@ -145,16 +145,16 @@
                   isThawingIndexPresent
                 "
               >
-                <a href="#temperature-indices">Temperature Indices</a>
+                <a href="#temperature-indices">Temperature indices</a>
                 <ul>
                   <li v-if="isHeatingDegreeDaysPresent">
-                    <a href="#heating-degree-days">Heating Degree Days</a>
+                    <a href="#heating-degree-days">Heating degree days</a>
                   </li>
                   <li v-if="isFreezingIndexPresent">
-                    <a href="#freezing-index">Freezing Index</a>
+                    <a href="#freezing-index">Freezing index</a>
                   </li>
                   <li v-if="isThawingIndexPresent">
-                    <a href="#thawing-index">Thawing Index</a>
+                    <a href="#thawing-index">Thawing index</a>
                   </li>
                 </ul>
               </li>
@@ -186,7 +186,7 @@
 
           <div v-if="isPrecipitationFrequencyPresent">
             <h3 id="precipitation-frequency" class="title is-3 mt-6">
-              Precipitation Frequency
+              Precipitation frequency
             </h3>
             <PrecipitationFrequency />
           </div>
@@ -220,7 +220,7 @@
       >
         <div class="container">
           <h2 id="temperature-indices" class="title is-2">
-            Temperature Indices
+            Temperature indices
           </h2>
           <TemperatureIndices />
         </div>

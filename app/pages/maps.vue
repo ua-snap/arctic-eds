@@ -1,7 +1,7 @@
 <template>
   <div v-if="!safeMode">
     <div class="block">
-      <h1 class="title is-3">Statewide Climate Overview Maps</h1>
+      <h1 class="title is-3">Statewide climate overview maps</h1>
       <div class="content is-size-4">
         <ul>
           <li>
@@ -105,19 +105,19 @@
 
           <MapLayer mapName="permafrost" :layer="layers.permafrost[4]">
             <template v-slot:title
-              >Mean annual ground temperature at 1m</template
+              >Mean annual ground temperature at 1&#8239;m</template
             >
             <template v-slot:subtext
-              >2021&ndash;2050, 5-Model Average, RCP 8.5, GIPL model</template
+              >2021&ndash;2050, 5-model average, RCP 8.5, GIPL model</template
             >
           </MapLayer>
 
           <MapLayer mapName="permafrost" :layer="layers.permafrost[5]">
             <template v-slot:title
-              >Mean annual ground temperature at 1m</template
+              >Mean annual ground temperature at 1&#8239;m</template
             >
             <template v-slot:subtext
-              >2071&ndash;2100, 5-Model Average, RCP 8.5, GIPL model</template
+              >2071&ndash;2100, 5-model average, RCP 8.5, GIPL model</template
             >
           </MapLayer>
         </template>
@@ -148,7 +148,7 @@
     <div class="block" v-if="false">
       <MapBlock mapName="temperature_indices" label="Temperature indices map">
         <template v-slot:layers>
-          <h2 class="title is-4">Temperature Indices</h2>
+          <h2 class="title is-4">Temperature indices</h2>
           <MapLayer
             mapName="temperature_indices"
             v-bind:layer="layers.temperature_indices[0]"

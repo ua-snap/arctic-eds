@@ -20,15 +20,15 @@
       </p>
 
       <p>
-        The modeled baseline for these data is the 1901–2015 Climatic Research
-        Unit Time Series (CRU TS) dataset (version 4.0). CRU TS is a continuous,
-        gridded dataset created through interpolation of point measurements
-        based on assumptions about the spatial correlation of climate variables.
-        CRU TS is a widely used climate dataset and product of the Climate
-        Research Unit at the University of East Anglia. CRU-TS data were
-        downscaled to a 1961-1990 climatology produced by the PRISM
-        (Parameter-elevation Regressions on Independent Slopes Model) Climate
-        Group with the Northwest Alliance for Computational Science &
+        The modeled baseline for these data is the 1901&ndash;2015 Climatic
+        Research Unit Time Series (CRU TS) dataset (version 4.0). CRU TS is a
+        continuous, gridded dataset created through interpolation of point
+        measurements based on assumptions about the spatial correlation of
+        climate variables. CRU TS is a widely used climate dataset and product
+        of the Climate Research Unit at the University of East Anglia. CRU-TS
+        data were downscaled to a 1961&ndash;1990 climatology produced by the
+        PRISM (Parameter-elevation Regressions on Independent Slopes Model)
+        Climate Group with the Northwest Alliance for Computational Science &
         Engineering at Oregon State University.
       </p>
 
@@ -39,13 +39,13 @@
     </div>
 
     <div class="block">
-      <h4 class="title is-5 mb-1">Data Summary</h4>
+      <h4 class="title is-5 mb-1">Data summary</h4>
       <div class="content is-size-5">
         The summary table below shows the minimum, mean and maximum values
         across three scenarios (RCP 4.5, RCP 6.0 and RCP 8.5) and five models
         (NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL CM5A-LR), rounded
         to three (imperial) or two (metric) significant digits. The difference
-        compared to the modeled baseline (1901-2015) is shown below.
+        compared to the modeled baseline (1901&ndash;2015) is shown below.
       </div>
     </div>
 
@@ -61,7 +61,7 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <th scope="row">Early century (2010&ndash;2039)</th>
             <td>
               {{
                 round(
@@ -105,7 +105,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Mid Century (2040&ndash;2069)</th>
+            <th scope="row">Mid century (2040&ndash;2069)</th>
             <td>
               {{
                 round(
@@ -149,7 +149,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <th scope="row">Late century (2070&ndash;2099)</th>
             <td>
               {{
                 round(
@@ -245,7 +245,7 @@
             Walsh J.E., Bhatt U.S., Littell J. S., Leonawicz M., Lindgren M.,
             Kurkowski T. A., Bieniek P. A., Gray S., &amp; Rupp T. S. (2018).
             Downscaling of climate model output for Alaskan stakeholders,
-            <i>Environmental Modelling &amp; Software, 110</i>, 38–51. DOI
+            <i>Environmental Modelling &amp; Software, 110</i>, 38&ndash;51. DOI
             <a href="https://doi.org/10.1016/j.envsoft.2018.03.021"
               >10.1016/j.envsoft.2018.03.021</a
             >

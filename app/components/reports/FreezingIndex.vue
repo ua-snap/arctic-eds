@@ -29,7 +29,8 @@
         The summary table below shows the minimum, mean and maximum values
         across two scenarios (RCP 4.5, RCP 8.5) and all nine models listed in
         the introduction to this section, rounded to three significant digits.
-        The percent change from the modeled baseline (1980-2009) is shown below.
+        The percent change from the modeled baseline (1980&ndash;2009) is shown
+        below.
       </div>
     </div>
     <div class="block">
@@ -44,7 +45,7 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <th scope="row">Early century (2010&ndash;2039)</th>
             <td>
               {{
                 round(
@@ -97,7 +98,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Mid Century (2040&ndash;2069)</th>
+            <th scope="row">Mid century (2040&ndash;2069)</th>
             <td>
               {{
                 round(
@@ -150,7 +151,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <th scope="row">Late century (2070&ndash;2099)</th>
             <td>
               {{
                 round(

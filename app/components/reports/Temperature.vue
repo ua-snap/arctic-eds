@@ -14,20 +14,21 @@
       <p>
         These data are statistically downscaled and bias corrected via the delta
         method in which a model's future change at a particular location and
-        time is added to the respective baseline mean value. This “delta” value
-        is then added to a higher-resolution observationally-based climatology.
+        time is added to the respective baseline mean value. This
+        &ldquo;delta&rdquo; value is then added to a higher-resolution
+        observationally-based climatology.
       </p>
 
       <p>
-        The modeled baseline for these data is the 1901–2015 Climatic Research
-        Unit Time Series (CRU TS) dataset (version 4.0). CRU TS is a continuous,
-        gridded dataset created through interpolation of point measurements
-        based on assumptions about the spatial correlation of climate variables.
-        CRU TS is a widely used climate dataset and product of the Climate
-        Research Unit at the University of East Anglia. CRU-TS data were
-        downscaled to a 1961-1990 climatology produced by the PRISM
-        (Parameter-elevation Regressions on Independent Slopes Model) Climate
-        Group with the Northwest Alliance for Computational Science &
+        The modeled baseline for these data is the 1901&ndash;2015 Climatic
+        Research Unit Time Series (CRU TS) dataset (version 4.0). CRU TS is a
+        continuous, gridded dataset created through interpolation of point
+        measurements based on assumptions about the spatial correlation of
+        climate variables. CRU TS is a widely used climate dataset and product
+        of the Climate Research Unit at the University of East Anglia. CRU-TS
+        data were downscaled to a 1961&ndash;1990 climatology produced by the
+        PRISM (Parameter-elevation Regressions on Independent Slopes Model)
+        Climate Group with the Northwest Alliance for Computational Science &
         Engineering at Oregon State University.
       </p>
       <p>
@@ -48,19 +49,19 @@
     </div>
 
     <div class="block">
-      <h4 class="title is-5 mb-1">Data Summary</h4>
+      <h4 class="title is-5 mb-1">Data summary</h4>
       <div class="content is-size-5">
         The summary table below presents the minimum, mean, and maximum values
         for a single scenario (RCP 8.5) and a 5-model average (an average
         derived from the NCAR CCSM4, GFDL CM3, GISS E2-R, MRI CGCM3, and IPSL
         CM5A-LR models). Data are rounded to two (imperial units) or three
         (metric) significant digits, and the relative change compared to the
-        modeled baseline (1901-2015) is shown below the value.
+        modeled baseline (1901&ndash;2015) is shown below the value.
       </div>
     </div>
 
     <h4 class="title is-5 mb-1">
-      Mean Annual Temperature, 5 Model Average, RCP 8.5
+      Mean annual temperature, 5-model average, RCP 8.5
     </h4>
     <div class="block">
       <table class="table">
@@ -74,13 +75,15 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <th scope="row">Early century (2010&ndash;2039)</th>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2010-2039'].tasmin,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2010-2039'].tasmin,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -97,10 +100,12 @@
             </td>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2010-2039'].tasmean,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2010-2039'].tasmean,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -117,10 +122,12 @@
             </td>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2010-2039'].tasmax,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2010-2039'].tasmax,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -137,13 +144,15 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Mid Century (2040&ndash;2069)</th>
+            <th scope="row">Mid century (2040&ndash;2069)</th>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2040-2069'].tasmin,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2040-2069'].tasmin,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -160,10 +169,12 @@
             </td>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2040-2069'].tasmean,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2040-2069'].tasmean,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -180,10 +191,12 @@
             </td>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2040-2069'].tasmax,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2040-2069'].tasmax,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -200,13 +213,15 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <th scope="row">Late century (2070&ndash;2099)</th>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2070-2099'].tasmin,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2070-2099'].tasmin,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -223,10 +238,12 @@
             </td>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2070-2099'].tasmean,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2070-2099'].tasmean,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -243,10 +260,12 @@
             </td>
             <td>
               {{
-                round(
-                  results.temperature.summary.projected['5ModelAvg'].rcp85
-                    .Annual['2070-2099'].tasmax,
-                  precision
+                minus(
+                  round(
+                    results.temperature.summary.projected['5ModelAvg'].rcp85
+                      .Annual['2070-2099'].tasmax,
+                    precision
+                  )
                 )
               }}<UnitWidget /><br /><Diff
                 kind="abs"
@@ -266,7 +285,7 @@
       </table>
     </div>
 
-    <h4 class="title is-5 mb-1">Monthly Temperatures</h4>
+    <h4 class="title is-5 mb-1">Monthly temperatures</h4>
     <div class="content is-size-5">
       The table below shows the mean monthly temperature, as well as the
       minimum/maximum monthly temperatures, for the specified era and selected
@@ -340,7 +359,7 @@
         </thead>
         <tbody>
           <tr class="historical">
-            <th scope="row">Modeled Baseline<br />(1901&ndash;2015)</th>
+            <th scope="row">Modeled baseline<br />(1901&ndash;2015)</th>
             <td
               v-for="(month, index) in [
                 'January',
@@ -359,25 +378,31 @@
               :key="index"
             >
               {{
-                results.temperature.summary.historical['CRU-TS'].historical[
-                  `${month}`
-                ].tasmean
-              }}<UnitWidget /><br />
-              <span class="small-text">
-                {{
+                minus(
                   results.temperature.summary.historical['CRU-TS'].historical[
                     `${month}`
-                  ].tasmin
+                  ].tasmean
+                )
+              }}<UnitWidget /><br />
+              <span class="small-text">
+                {{
+                  minus(
+                    results.temperature.summary.historical['CRU-TS'].historical[
+                      `${month}`
+                    ].tasmin
+                  )
                 }}&ndash;{{
-                  results.temperature.summary.historical['CRU-TS'].historical[
-                    `${month}`
-                  ].tasmax
+                  minus(
+                    results.temperature.summary.historical['CRU-TS'].historical[
+                      `${month}`
+                    ].tasmax
+                  )
                 }}
               </span>
             </td>
           </tr>
           <tr>
-            <th scope="row">Early Century <br />(2010&ndash;2039)</th>
+            <th scope="row">Early century <br />(2010&ndash;2039)</th>
             <td
               v-for="(month, index) in [
                 'January',
@@ -396,25 +421,31 @@
               :key="index"
             >
               {{
-                results.temperature.summary.projected[`${radioTempModel}`][
-                  `${radioTempScenario}`
-                ][`${month}`]['2010-2039'].tasmean
+                minus(
+                  results.temperature.summary.projected[`${radioTempModel}`][
+                    `${radioTempScenario}`
+                  ][`${month}`]['2010-2039'].tasmean
+                )
               }}<UnitWidget /><br />
               <span class="small-text">
                 {{
-                  results.temperature.summary.projected[`${radioTempModel}`][
-                    `${radioTempScenario}`
-                  ][`${month}`]['2010-2039'].tasmin
+                  minus(
+                    results.temperature.summary.projected[`${radioTempModel}`][
+                      `${radioTempScenario}`
+                    ][`${month}`]['2010-2039'].tasmin
+                  )
                 }}&ndash;{{
-                  results.temperature.summary.projected[`${radioTempModel}`][
-                    `${radioTempScenario}`
-                  ][`${month}`]['2010-2039'].tasmax
+                  minus(
+                    results.temperature.summary.projected[`${radioTempModel}`][
+                      `${radioTempScenario}`
+                    ][`${month}`]['2010-2039'].tasmax
+                  )
                 }}
               </span>
             </td>
           </tr>
           <tr>
-            <th scope="row">Mid Century <br />(2040&ndash;2069)</th>
+            <th scope="row">Mid century <br />(2040&ndash;2069)</th>
             <td
               v-for="(month, index) in [
                 'January',
@@ -433,25 +464,31 @@
               :key="index"
             >
               {{
-                results.temperature.summary.projected[`${radioTempModel}`][
-                  `${radioTempScenario}`
-                ][`${month}`]['2040-2069'].tasmean
+                minus(
+                  results.temperature.summary.projected[`${radioTempModel}`][
+                    `${radioTempScenario}`
+                  ][`${month}`]['2040-2069'].tasmean
+                )
               }}<UnitWidget /><br />
               <span class="small-text">
                 {{
-                  results.temperature.summary.projected[`${radioTempModel}`][
-                    `${radioTempScenario}`
-                  ][`${month}`]['2040-2069'].tasmin
+                  minus(
+                    results.temperature.summary.projected[`${radioTempModel}`][
+                      `${radioTempScenario}`
+                    ][`${month}`]['2040-2069'].tasmin
+                  )
                 }}&ndash;{{
-                  results.temperature.summary.projected[`${radioTempModel}`][
-                    `${radioTempScenario}`
-                  ][`${month}`]['2040-2069'].tasmax
+                  minus(
+                    results.temperature.summary.projected[`${radioTempModel}`][
+                      `${radioTempScenario}`
+                    ][`${month}`]['2040-2069'].tasmax
+                  )
                 }}
               </span>
             </td>
           </tr>
           <tr>
-            <th scope="row">Late Century <br />(2070&ndash;2099)</th>
+            <th scope="row">Late century <br />(2070&ndash;2099)</th>
             <td
               v-for="(month, index) in [
                 'January',
@@ -470,19 +507,25 @@
               :key="index"
             >
               {{
-                results.temperature.summary.projected[`${radioTempModel}`][
-                  `${radioTempScenario}`
-                ][`${month}`]['2070-2099'].tasmean
+                minus(
+                  results.temperature.summary.projected[`${radioTempModel}`][
+                    `${radioTempScenario}`
+                  ][`${month}`]['2070-2099'].tasmean
+                )
               }}<UnitWidget /><br />
               <span class="small-text">
                 {{
-                  results.temperature.summary.projected[`${radioTempModel}`][
-                    `${radioTempScenario}`
-                  ][`${month}`]['2070-2099'].tasmin
+                  minus(
+                    results.temperature.summary.projected[`${radioTempModel}`][
+                      `${radioTempScenario}`
+                    ][`${month}`]['2070-2099'].tasmin
+                  )
                 }}&ndash;{{
-                  results.temperature.summary.projected[`${radioTempModel}`][
-                    `${radioTempScenario}`
-                  ][`${month}`]['2070-2099'].tasmax
+                  minus(
+                    results.temperature.summary.projected[`${radioTempModel}`][
+                      `${radioTempScenario}`
+                    ][`${month}`]['2070-2099'].tasmax
+                  )
                 }}
               </span>
             </td>
@@ -545,7 +588,7 @@
             Walsh J.E., Bhatt U.S., Littell J. S., Leonawicz M., Lindgren M.,
             Kurkowski T. A., Bieniek P. A., Gray S., &amp; Rupp T. S. (2018).
             Downscaling of climate model output for Alaskan stakeholders,
-            <i>Environmental Modelling &amp; Software, 110</i>, 38–51. DOI
+            <i>Environmental Modelling &amp; Software, 110</i>, 38&ndash;51. DOI
             <a href="https://doi.org/10.1016/j.envsoft.2018.03.021"
               >10.1016/j.envsoft.2018.03.021</a
             >
@@ -563,7 +606,7 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 
-const { round } = useNumeric()
+const { round, minus } = useNumeric()
 const { safeMode } = useSafeMode()
 const { units, results, placeName, isPlaceDefined, isTemperaturePresent } =
   storeToRefs(useReportStore())

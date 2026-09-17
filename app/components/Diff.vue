@@ -29,6 +29,16 @@ const props = defineProps({
   },
 })
 
+// Renders the sign as a typographic character rather than the ASCII
+// hyphen-minus a plain Number gives us, so that +3.2 and &minus;3.2 are a
+// matched pair. Safe to emit as entities because this is rendered with v-html.
+function signed(value) {
+  if (value > 0) {
+    return '&plus;' + value
+  }
+  return String(value).replace(/^-/, '&minus;')
+}
+
 const diff = computed(() => {
   let diff
   if (props.kind == 'abs') {
@@ -45,16 +55,11 @@ const diff = computed(() => {
       precision = 2
     }
 
-    diff = Number(Number(props.future - props.past).toPrecision(precision))
-
-    if (diff > 0) {
-      diff = '&plus;' + diff
-    }
+    diff = signed(
+      Number(Number(props.future - props.past).toPrecision(precision))
+    )
   } else {
-    diff = (((props.future - props.past) / props.past) * 100).toFixed(0)
-    if (diff > 0) {
-      diff = '&plus;' + diff
-    }
+    diff = signed((((props.future - props.past) / props.past) * 100).toFixed(0))
     diff += '%'
   }
 
