@@ -216,13 +216,13 @@
       </h4>
 
       <ul>
-        <li v-if="!safeMode">
+        <li>
           <DownloadCsvButton
             text="Download this data as CSV"
             endpoint="precipitation"
           />
         </li>
-        <li v-if="!safeMode">
+        <li>
           Source datasets and metadata:
           <ul>
             <li>
@@ -264,7 +264,6 @@ import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 
 const { round } = useNumeric()
-const { safeMode } = useSafeMode()
 const { units, results, placeName, isPlaceDefined } = storeToRefs(
   useReportStore()
 )

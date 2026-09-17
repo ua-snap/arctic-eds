@@ -371,13 +371,13 @@
       </h4>
 
       <ul>
-        <li v-if="!safeMode">
+        <li>
           <DownloadCsvButton
             text="Download this data as CSV"
             endpoint="permafrost/point"
           />
         </li>
-        <li v-if="!safeMode">
+        <li>
           Source dataset and metadata:
           <a
             href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/c24a957b-8a56-40bf-bc09-43a567182d36"
@@ -410,7 +410,6 @@ import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 
 const { round } = useNumeric()
-const { safeMode } = useSafeMode()
 const { results, placeName, isPlaceDefined, isPermafrostPresent } = storeToRefs(
   useReportStore()
 )

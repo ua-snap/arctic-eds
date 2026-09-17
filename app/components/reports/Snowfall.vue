@@ -60,13 +60,13 @@
       </h4>
 
       <ul>
-        <li v-if="!safeMode">
+        <li>
           <DownloadCsvButton
             text="Download snowfall water equivalent data as CSV"
             endpoint="snow/snowfallequivalent"
           />
         </li>
-        <li v-if="!safeMode">
+        <li>
           Source datasets and metadata:
           <ul>
             <li>
@@ -115,7 +115,6 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 
-const { safeMode } = useSafeMode()
 const { results, isSnowfallPresent } = storeToRefs(useReportStore())
 </script>
 

@@ -90,7 +90,6 @@ export default defineNuxtConfig({
       rasdamanUrl:
         process.env.RASDAMAN_URL || 'https://maps.earthmaps.io/rasdaman/ows',
       mockApi: !!process.env.MOCK_API,
-      safeMode: !!process.env.EDS_SAFE_MODE,
     },
   },
 

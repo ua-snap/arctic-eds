@@ -65,13 +65,13 @@
       </h4>
 
       <ul>
-        <li v-if="!safeMode">
+        <li>
           <DownloadCsvButton
             text="Download hydrology data as CSV"
             endpoint="hydrology/point"
           />
         </li>
-        <li v-if="!safeMode">
+        <li>
           Source datasets and metadata:
           <ul>
             <li>
@@ -106,7 +106,6 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 
-const { safeMode } = useSafeMode()
 const { results, isHydrologyPresent } = storeToRefs(useReportStore())
 
 const radioHydroModel = ref('CanESM2')

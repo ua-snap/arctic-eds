@@ -65,7 +65,7 @@
           freezing index and thawing index.
         </p>
         <ul>
-          <li v-if="!safeMode">
+          <li>
             Source dataset and metadata:
             <a
               href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/f9831074-cd3f-4c06-8601-687bd2911b7e"
@@ -106,7 +106,6 @@ import HeatingDegreeDaysReport from '~/components/reports/HeatingDegreeDays'
 import FreezingIndexReport from '~/components/reports/FreezingIndex'
 import ThawingIndexReport from '~/components/reports/ThawingIndex'
 
-const { safeMode } = useSafeMode()
 const {
   isHeatingDegreeDaysPresent,
   isFreezingIndexPresent,

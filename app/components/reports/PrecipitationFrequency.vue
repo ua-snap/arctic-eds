@@ -25,7 +25,7 @@
         through 60-day durations at 1-year through 1,000-year average recurrence
         intervals.
       </p>
-      <ul v-if="!safeMode" class="module-link">
+      <ul class="module-link">
         <li>
           Use this dataset in an
           <a
@@ -158,7 +158,7 @@
       </h4>
 
       <ul>
-        <li v-if="!safeMode">
+        <li>
           <DownloadCsvButton
             text="Download this data as CSV"
             endpoint="precipitation/frequency/point"
@@ -173,7 +173,7 @@
           >
           used to prepare this dataset
         </li>
-        <li v-if="!safeMode">
+        <li>
           Source dataset and metadata:
           <a
             href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
@@ -202,7 +202,6 @@ import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 
-const { safeMode } = useSafeMode()
 const {
   results,
   placeName,
