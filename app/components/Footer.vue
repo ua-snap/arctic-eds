@@ -30,15 +30,7 @@
             <a href="mailto:uaf-snap-data-tools@alaska.edu"
               >uaf-snap-data-tools@alaska.edu</a
             >
-            with questions or comments.<br />
-            <b-button
-              tag="a"
-              type="is-primary"
-              href="https://uaf.us10.list-manage.com/subscribe?u=e42f589030a3adcaddd9b3304&id=a7b255fdd5"
-              class="mt-5"
-            >
-              Keep me updated on Arctic-EDS developments
-            </b-button>
+            with questions or comments.
           </p>
 
           <p>

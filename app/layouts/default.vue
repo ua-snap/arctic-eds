@@ -15,26 +15,6 @@
       <Navbar />
     </header>
     <main id="main-content" class="section" tabindex="-1">
-      <div v-if="siteSlow">
-        <div class="container">
-          <b-message
-            title="Arctic-EDS is experiencing slow load times"
-            type="is-warning"
-            aria-close-label="Close message"
-          >
-            <p>
-              We&rsquo;re sorry! Arctic-EDS is experiencing slower load times
-              than usual. We&rsquo;re working to improve performance as soon as
-              possible, but we don&rsquo;t have an estimated time for
-              completion. Please check back soon, or reach out to us at
-              <a href="mailto:uaf-snap-data-tools@alaska.edu"
-                >uaf-snap-data-tools@alaska.edu</a
-              >
-              with questions.
-            </p>
-          </b-message>
-        </div>
-      </div>
       <slot />
     </main>
     <Footer />
@@ -74,8 +54,6 @@ import HeaderBanner from '~/components/HeaderBanner'
 import Navbar from '~/components/Navbar'
 import Footer from '~/components/Footer'
 
-const config = useRuntimeConfig()
 const route = useRoute()
 const isHome = computed(() => route.path === '/')
-const siteSlow = computed(() => config.public.siteSlow)
 </script>

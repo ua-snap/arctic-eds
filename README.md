@@ -29,7 +29,7 @@ npm run preview
 ```
 
 Environment variables are read at build/generate time, so set them before
-running `npm run generate`. `MOCK_API`, `EDS_SAFE_MODE`, and `SITE_SLOW` are
+running `npm run generate`. `MOCK_API` and `EDS_SAFE_MODE` are
 treated as booleans: any non-empty value turns them on.
 
 ### Playwright tests
