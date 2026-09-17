@@ -76,6 +76,50 @@ function convertFddCdd(units, value) {
   }
 }
 
+// Top-level sections the /eds/all endpoint is expected to return.
+const RESULT_SECTIONS = [
+  'elevation',
+  'freezing_index',
+  'heating_degree_days',
+  'hydrology',
+  'permafrost',
+  'precip_frequency',
+  'precipitation',
+  'snowfall',
+  'temperature',
+  'thawing_index',
+  'wet_days_per_year',
+]
+
+function isPlainObject(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value)
+}
+
+// Errors carry a `kind` so the UI can tell failures apart:
+// 'network', 'malformed', 'unknown-place', 'no-data'.
+export function reportError(kind, message, cause) {
+  const error = new Error(message)
+  error.kind = kind
+  error.cause = cause
+  return error
+}
+
+// Guards against unexpected API returns: a non-object body (e.g. JSON that
+// failed to parse, which $fetch hands back as a string) is rejected, and any
+// missing or non-object section is replaced with an empty object.
+export function normalizeResults(raw) {
+  if (!isPlainObject(raw)) {
+    throw reportError('malformed', 'Report data is not a JSON object')
+  }
+  const normalized = { ...raw }
+  RESULT_SECTIONS.forEach(section => {
+    if (!isPlainObject(normalized[section])) {
+      normalized[section] = {}
+    }
+  })
+  return normalized
+}
+
 export const useReportStore = defineStore('report', () => {
   const route = useRoute()
   const router = useRouter()
@@ -83,6 +127,9 @@ export const useReportStore = defineStore('report', () => {
 
   // State
   const places = ref(undefined)
+  // Set when the community list can't be fetched, so the search controls can
+  // say so instead of silently offering an autocomplete that can't work.
+  const placesError = ref(null)
   const results = ref({})
   const units = ref('imperial')
 
@@ -149,39 +196,38 @@ export const useReportStore = defineStore('report', () => {
       return false
     }
   })
+  function hasSection(key) {
+    const section = results.value?.[key]
+    return isPlainObject(section) && Object.keys(section).length != 0
+  }
   const isElevationPresent = computed(() => {
-    return Object.keys(results.value.elevation).length != 0
+    const elevation = results.value?.elevation
+    return (
+      isPlainObject(elevation) &&
+      ['min', 'max', 'mean'].every(key => typeof elevation[key] === 'number')
+    )
   })
-  const isHydrologyPresent = computed(() => {
-    return Object.keys(results.value.hydrology).length != 0
-  })
-  const isPrecipitationPresent = computed(() => {
-    return Object.keys(results.value.precipitation).length != 0
-  })
-  const isPrecipitationFrequencyPresent = computed(() => {
-    return Object.keys(results.value.precip_frequency).length != 0
-  })
-  const isSnowfallPresent = computed(() => {
-    return Object.keys(results.value.snowfall).length != 0
-  })
-  const isTemperaturePresent = computed(() => {
-    return Object.keys(results.value.temperature).length != 0
-  })
-  const isHeatingDegreeDaysPresent = computed(() => {
-    return Object.keys(results.value.heating_degree_days).length != 0
-  })
-  const isFreezingIndexPresent = computed(() => {
-    return Object.keys(results.value.freezing_index).length != 0
-  })
-  const isThawingIndexPresent = computed(() => {
-    return Object.keys(results.value.thawing_index).length != 0
-  })
-  const isPermafrostPresent = computed(() => {
-    return Object.keys(results.value.permafrost).length != 0
-  })
-  const isWetDaysPerYearPresent = computed(() => {
-    return Object.keys(results.value.wet_days_per_year).length != 0
-  })
+  const isHydrologyPresent = computed(() => hasSection('hydrology'))
+  const isPrecipitationPresent = computed(() => hasSection('precipitation'))
+  const isPrecipitationFrequencyPresent = computed(() =>
+    hasSection('precip_frequency')
+  )
+  const isSnowfallPresent = computed(() => hasSection('snowfall'))
+  const isTemperaturePresent = computed(() => hasSection('temperature'))
+  const isHeatingDegreeDaysPresent = computed(() =>
+    hasSection('heating_degree_days')
+  )
+  const isFreezingIndexPresent = computed(() => hasSection('freezing_index'))
+  const isThawingIndexPresent = computed(() => hasSection('thawing_index'))
+  const isPermafrostPresent = computed(() => hasSection('permafrost'))
+  const isWetDaysPerYearPresent = computed(() =>
+    hasSection('wet_days_per_year')
+  )
+  // True when any section beyond elevation has data. Points outside the data
+  // extent (e.g. the ocean) come back as HTTP 200 with every section empty.
+  const hasAnyData = computed(() =>
+    RESULT_SECTIONS.some(key => key != 'elevation' && hasSection(key))
+  )
 
   // Actions (Vuex mutations and actions both become plain functions)
   function destroy() {
@@ -246,9 +292,13 @@ export const useReportStore = defineStore('report', () => {
       // Copy mock to results so we don't modify mock directly.
       fetched = { ...mock }
     } else {
-      fetched = await $fetch(url)
+      try {
+        fetched = await $fetch(url)
+      } catch (error) {
+        throw reportError('network', 'Report data could not be fetched', error)
+      }
     }
-    setResults(fetched)
+    setResults(normalizeResults(fetched))
     if (units.value == 'imperial') {
       convertResults(true)
     }
@@ -256,12 +306,13 @@ export const useReportStore = defineStore('report', () => {
   async function safeModeFetch(key) {
     const { default: safeResults } = await import('~/assets/safe.json')
     // Need to have a deep clone to prevent re-conversion
-    setResults(cloneDeep(safeResults[key]))
+    setResults(normalizeResults(cloneDeep(safeResults[key])))
     if (units.value == 'imperial') {
       convertResults()
     }
   }
   async function fetchPlaces() {
+    placesError.value = null
     if (config.public.safeMode) {
       const { default: safePlaces } = await import('~/assets/safePlaces.json')
       setPlaces(safePlaces)
@@ -272,9 +323,25 @@ export const useReportStore = defineStore('report', () => {
       return
     }
 
-    // TODO: add error handling here for 404 (no data) etc.
     let queryUrl = config.public.apiUrl + '/places/communities?tags=eds'
-    let fetched = await $fetch(queryUrl)
+    let fetched
+    try {
+      fetched = await $fetch(queryUrl)
+    } catch (error) {
+      placesError.value = reportError(
+        'network',
+        'Places could not be fetched',
+        error
+      )
+      throw placesError.value
+    }
+    if (!Array.isArray(fetched)) {
+      placesError.value = reportError(
+        'malformed',
+        'Places data is not a JSON array'
+      )
+      throw placesError.value
+    }
     let filteredPlaces = filter(fetched, p => {
       return p.region == 'Alaska'
     })
@@ -283,6 +350,7 @@ export const useReportStore = defineStore('report', () => {
 
   return {
     places,
+    placesError,
     results,
     units,
     latLng,
@@ -303,6 +371,7 @@ export const useReportStore = defineStore('report', () => {
     isThawingIndexPresent,
     isPermafrostPresent,
     isWetDaysPerYearPresent,
+    hasAnyData,
     destroy,
     closeReport,
     convertResults,
