@@ -5,9 +5,9 @@
         The following results include three cumulative degree day metrics
         (heating degree days, air freezing index, air thawing index) computed
         from the NCAR 12 km Alaska Near Surface Meteorology Daily Averages
-        (1950-2099) dataset and the associated modeled downscaling baseline
-        (Daymet 12 km). The climate simulation data represent CMIP5 models
-        chosen to bracket a range of temperature (cooler and hotter) and
+        (1950&ndash;2099) dataset and the associated modeled downscaling
+        baseline (Daymet 12 km). The climate simulation data represent CMIP5
+        models chosen to bracket a range of temperature (cooler and hotter) and
         precipitation (dryer and wetter) futures. These models have been
         statistically downscaled using the bias corrected spatial disaggregation
         (BCSD) method. The available data extent is the terrestrial area of
@@ -42,16 +42,16 @@
     <div class="ml-5 mb-5">
       <div class="block" v-if="isHeatingDegreeDaysPresent">
         <h3 id="heating-degree-days" class="title is-4 mb-3">
-          Heating Degree Days
+          Heating degree days
         </h3>
         <HeatingDegreeDaysReport />
       </div>
       <div class="block mt-6" v-if="isFreezingIndexPresent">
-        <h3 id="freezing-index" class="title is-4">Freezing Index</h3>
+        <h3 id="freezing-index" class="title is-4">Freezing index</h3>
         <FreezingIndexReport />
       </div>
       <div class="block mt-6" v-if="isThawingIndexPresent">
-        <h3 id="thawing-index" class="title is-4">Thawing Index</h3>
+        <h3 id="thawing-index" class="title is-4">Thawing index</h3>
         <ThawingIndexReport />
       </div>
     </div>

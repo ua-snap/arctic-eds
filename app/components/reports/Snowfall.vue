@@ -22,15 +22,15 @@
       </p>
 
       <p>
-        The modeled baseline for these data is the 1910–2009 Climatic Research
-        Unit Time Series (CRU TS) dataset (version 3.1). CRU TS is a continuous,
-        gridded dataset created through interpolation of point measurements
-        based on assumptions about the spatial correlation of climate variables.
-        CRU TS is a widely used climate dataset and product of the Climate
-        Research Unit at the University of East Anglia. CRU-TS data were
-        downscaled to a 1971–2000 climatology produced by the PRISM
-        (Parameter-elevation Regressions on Independent Slopes Model) Climate
-        Group with the Northwest Alliance for Computational Science &
+        The modeled baseline for these data is the 1910&ndash;2009 Climatic
+        Research Unit Time Series (CRU TS) dataset (version 3.1). CRU TS is a
+        continuous, gridded dataset created through interpolation of point
+        measurements based on assumptions about the spatial correlation of
+        climate variables. CRU TS is a widely used climate dataset and product
+        of the Climate Research Unit at the University of East Anglia. CRU-TS
+        data were downscaled to a 1971&ndash;2000 climatology produced by the
+        PRISM (Parameter-elevation Regressions on Independent Slopes Model)
+        Climate Group with the Northwest Alliance for Computational Science &
         Engineering at Oregon State University.
       </p>
 

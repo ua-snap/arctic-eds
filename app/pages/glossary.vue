@@ -66,7 +66,7 @@
         <dt><a id="gcm">Global climate model (GCM)</a></dt>
         <dd>
           A global climate model (GCM) is a mathematical representation of the
-          interactions and energy balance among Earth’s atmosphere, land
+          interactions and energy balance among Earth&rsquo;s atmosphere, land
           surface, ocean, and sea ice. Climate models divide the globe into a
           three-dimensional grid of cells that interact with one another as a
           coupled system. Outputs from GCMs provide long-term climate

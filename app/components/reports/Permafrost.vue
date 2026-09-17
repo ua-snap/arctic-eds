@@ -48,100 +48,118 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <th scope="row">Early century (2010&ndash;2039)</th>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2021-2039']['gipl1kmmin'][
-                    'magt1m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2021-2039']['gipl1kmmin'][
+                      'magt1m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2021-2039']['gipl1kmmean'][
-                    'magt1m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2021-2039']['gipl1kmmean'][
+                      'magt1m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2021-2039']['gipl1kmmax'][
-                    'magt1m'
-                  ],
-                  2
-                )
-              }}<UnitWidget unitType="temp" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Mid Century (2040&ndash;2069)</th>
-            <td>
-              {{
-                round(
-                  results.permafrost['summary']['2040-2069']['gipl1kmmin'][
-                    'magt1m'
-                  ],
-                  2
-                )
-              }}<UnitWidget unitType="temp" />
-            </td>
-            <td>
-              {{
-                round(
-                  results.permafrost['summary']['2040-2069']['gipl1kmmean'][
-                    'magt1m'
-                  ],
-                  2
-                )
-              }}<UnitWidget unitType="temp" />
-            </td>
-            <td>
-              {{
-                round(
-                  results.permafrost['summary']['2040-2069']['gipl1kmmax'][
-                    'magt1m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2021-2039']['gipl1kmmax'][
+                      'magt1m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
           </tr>
           <tr>
-            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <th scope="row">Mid century (2040&ndash;2069)</th>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2070-2099']['gipl1kmmin'][
-                    'magt1m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2040-2069']['gipl1kmmin'][
+                      'magt1m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2070-2099']['gipl1kmmean'][
-                    'magt1m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2040-2069']['gipl1kmmean'][
+                      'magt1m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2070-2099']['gipl1kmmax'][
-                    'magt1m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2040-2069']['gipl1kmmax'][
+                      'magt1m'
+                    ],
+                    2
+                  )
+                )
+              }}<UnitWidget unitType="temp" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late century (2070&ndash;2099)</th>
+            <td>
+              {{
+                minus(
+                  round(
+                    results.permafrost['summary']['2070-2099']['gipl1kmmin'][
+                      'magt1m'
+                    ],
+                    2
+                  )
+                )
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                minus(
+                  round(
+                    results.permafrost['summary']['2070-2099']['gipl1kmmean'][
+                      'magt1m'
+                    ],
+                    2
+                  )
+                )
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                minus(
+                  round(
+                    results.permafrost['summary']['2070-2099']['gipl1kmmax'][
+                      'magt1m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
@@ -163,100 +181,118 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <th scope="row">Early century (2010&ndash;2039)</th>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2021-2039']['gipl1kmmin'][
-                    'magt5m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2021-2039']['gipl1kmmin'][
+                      'magt5m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2021-2039']['gipl1kmmean'][
-                    'magt5m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2021-2039']['gipl1kmmean'][
+                      'magt5m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2021-2039']['gipl1kmmax'][
-                    'magt5m'
-                  ],
-                  2
-                )
-              }}<UnitWidget unitType="temp" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Mid Century (2040&ndash;2069)</th>
-            <td>
-              {{
-                round(
-                  results.permafrost['summary']['2040-2069']['gipl1kmmin'][
-                    'magt5m'
-                  ],
-                  2
-                )
-              }}<UnitWidget unitType="temp" />
-            </td>
-            <td>
-              {{
-                round(
-                  results.permafrost['summary']['2040-2069']['gipl1kmmean'][
-                    'magt5m'
-                  ],
-                  2
-                )
-              }}<UnitWidget unitType="temp" />
-            </td>
-            <td>
-              {{
-                round(
-                  results.permafrost['summary']['2040-2069']['gipl1kmmax'][
-                    'magt5m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2021-2039']['gipl1kmmax'][
+                      'magt5m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
           </tr>
           <tr>
-            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <th scope="row">Mid century (2040&ndash;2069)</th>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2070-2099']['gipl1kmmin'][
-                    'magt5m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2040-2069']['gipl1kmmin'][
+                      'magt5m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2070-2099']['gipl1kmmean'][
-                    'magt5m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2040-2069']['gipl1kmmean'][
+                      'magt5m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
             <td>
               {{
-                round(
-                  results.permafrost['summary']['2070-2099']['gipl1kmmax'][
-                    'magt5m'
-                  ],
-                  2
+                minus(
+                  round(
+                    results.permafrost['summary']['2040-2069']['gipl1kmmax'][
+                      'magt5m'
+                    ],
+                    2
+                  )
+                )
+              }}<UnitWidget unitType="temp" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late century (2070&ndash;2099)</th>
+            <td>
+              {{
+                minus(
+                  round(
+                    results.permafrost['summary']['2070-2099']['gipl1kmmin'][
+                      'magt5m'
+                    ],
+                    2
+                  )
+                )
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                minus(
+                  round(
+                    results.permafrost['summary']['2070-2099']['gipl1kmmean'][
+                      'magt5m'
+                    ],
+                    2
+                  )
+                )
+              }}<UnitWidget unitType="temp" />
+            </td>
+            <td>
+              {{
+                minus(
+                  round(
+                    results.permafrost['summary']['2070-2099']['gipl1kmmax'][
+                      'magt5m'
+                    ],
+                    2
+                  )
                 )
               }}<UnitWidget unitType="temp" />
             </td>
@@ -278,74 +314,92 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Early Century (2010&ndash;2039)</th>
+            <th scope="row">Early century (2010&ndash;2039)</th>
             <td>
               {{
-                results.permafrost['summary']['2021-2039']['gipl1kmmin'][
-                  'permafrosttop'
-                ]
+                minus(
+                  results.permafrost['summary']['2021-2039']['gipl1kmmin'][
+                    'permafrosttop'
+                  ]
+                )
               }}<UnitWidget unitType="m_in" />
             </td>
             <td>
               {{
-                results.permafrost['summary']['2021-2039']['gipl1kmmean'][
-                  'permafrosttop'
-                ]
+                minus(
+                  results.permafrost['summary']['2021-2039']['gipl1kmmean'][
+                    'permafrosttop'
+                  ]
+                )
               }}<UnitWidget unitType="m_in" />
             </td>
             <td>
               {{
-                results.permafrost['summary']['2021-2039']['gipl1kmmax'][
-                  'permafrosttop'
-                ]
-              }}<UnitWidget unitType="m_in" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Mid Century (2040&ndash;2069)</th>
-            <td>
-              {{
-                results.permafrost['summary']['2040-2069']['gipl1kmmin'][
-                  'permafrosttop'
-                ]
-              }}<UnitWidget unitType="m_in" />
-            </td>
-            <td>
-              {{
-                results.permafrost['summary']['2040-2069']['gipl1kmmean'][
-                  'permafrosttop'
-                ]
-              }}<UnitWidget unitType="m_in" />
-            </td>
-            <td>
-              {{
-                results.permafrost['summary']['2040-2069']['gipl1kmmax'][
-                  'permafrosttop'
-                ]
+                minus(
+                  results.permafrost['summary']['2021-2039']['gipl1kmmax'][
+                    'permafrosttop'
+                  ]
+                )
               }}<UnitWidget unitType="m_in" />
             </td>
           </tr>
           <tr>
-            <th scope="row">Late Century (2070&ndash;2099)</th>
+            <th scope="row">Mid century (2040&ndash;2069)</th>
             <td>
               {{
-                results.permafrost['summary']['2070-2099']['gipl1kmmin'][
-                  'permafrosttop'
-                ]
+                minus(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmin'][
+                    'permafrosttop'
+                  ]
+                )
               }}<UnitWidget unitType="m_in" />
             </td>
             <td>
               {{
-                results.permafrost['summary']['2070-2099']['gipl1kmmean'][
-                  'permafrosttop'
-                ]
+                minus(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmean'][
+                    'permafrosttop'
+                  ]
+                )
               }}<UnitWidget unitType="m_in" />
             </td>
             <td>
               {{
-                results.permafrost['summary']['2070-2099']['gipl1kmmax'][
-                  'permafrosttop'
-                ]
+                minus(
+                  results.permafrost['summary']['2040-2069']['gipl1kmmax'][
+                    'permafrosttop'
+                  ]
+                )
+              }}<UnitWidget unitType="m_in" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Late century (2070&ndash;2099)</th>
+            <td>
+              {{
+                minus(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmin'][
+                    'permafrosttop'
+                  ]
+                )
+              }}<UnitWidget unitType="m_in" />
+            </td>
+            <td>
+              {{
+                minus(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmean'][
+                    'permafrosttop'
+                  ]
+                )
+              }}<UnitWidget unitType="m_in" />
+            </td>
+            <td>
+              {{
+                minus(
+                  results.permafrost['summary']['2070-2099']['gipl1kmmax'][
+                    'permafrosttop'
+                  ]
+                )
               }}<UnitWidget unitType="m_in" />
             </td>
           </tr>
@@ -392,7 +446,7 @@
             <i
               >Ninth International Conference on Permafrost, Online Proceedings,
               Volume 2</i
-            >, 1125–1130. Accessed 2023-09-08 from
+            >, 1125&ndash;1130. Accessed 2023-09-08 from
             <a href="https://www.permafrost.org/event/icop9/"
               >https://www.permafrost.org/event/icop9/</a
             >
@@ -409,7 +463,7 @@ import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
 
-const { round } = useNumeric()
+const { round, minus } = useNumeric()
 const { safeMode } = useSafeMode()
 const { results, placeName, isPlaceDefined, isPermafrostPresent } = storeToRefs(
   useReportStore()

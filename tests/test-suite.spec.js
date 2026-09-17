@@ -87,7 +87,7 @@ test('Check header links', async ({ page }) => {
     ['About', 'About this tool'],
     ['Glossary', 'Glossary of terms'],
     ['Guidance', 'Guidance: using and interpreting Arctic-EDS data'],
-    ['Maps', 'Statewide Climate Overview Maps'],
+    ['Maps', 'Statewide climate overview maps'],
   ]
   for (const [link, heading] of pages) {
     await page.click(`.nav-wrapper ol li:has-text("${link}")`)
