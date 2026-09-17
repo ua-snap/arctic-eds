@@ -410,3 +410,112 @@ test('Test permalink for Bethel', async ({ page }) => {
     }
   }
 })
+
+// Resilience against unexpected API returns (issues #351, #361). These fake
+// the /eds/all response with page.route, using the mock fixture as a known
+// good payload, so they don't depend on the live Data API.
+const reportFixture = require('../app/assets/mock.json')
+const resilienceReportUrl = url + '/report/64.8378/-147.7164'
+const systemProblemText =
+  'something’s wrong on our end and the app isn’t working right now'
+
+const fulfillReport = (page, body, options = {}) =>
+  page.route('**/eds/all/**', route =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: typeof body === 'string' ? body : JSON.stringify(body),
+      ...options,
+    })
+  )
+
+test('Malformed JSON shows an error instead of breaking the app', async ({
+  page,
+}) => {
+  await fulfillReport(page, '<html>Bad gateway</html>')
+  await gotoHydrated(page, resilienceReportUrl)
+
+  await expect(page.locator('text=couldn’t be loaded')).toBeVisible()
+  await expect(page.locator(`text=${systemProblemText}`)).toBeVisible()
+  await expect(
+    page.locator('a[href="mailto:uaf-snap-data-tools@alaska.edu"]').first()
+  ).toBeVisible()
+  await expect(page.locator('#results')).toHaveCount(0)
+  await expect(page.locator('footer')).toBeVisible()
+})
+
+test('Server error can be retried', async ({ page }) => {
+  await fulfillReport(page, 'Internal Server Error', {
+    status: 500,
+    contentType: 'text/plain',
+  })
+  await gotoHydrated(page, resilienceReportUrl)
+
+  await expect(page.locator(`text=${systemProblemText}`)).toBeVisible()
+
+  await page.unroute('**/eds/all/**')
+  await fulfillReport(page, reportFixture)
+  await page.click('button:has-text("Try again")')
+
+  await expect(page.locator('#results')).toBeVisible()
+})
+
+test('Missing report section is skipped', async ({ page }) => {
+  const { temperature, ...withoutTemperature } = reportFixture
+  await fulfillReport(page, withoutTemperature)
+  await gotoHydrated(page, resilienceReportUrl)
+
+  await expect(page.locator('#results')).toBeVisible()
+  await expect(page.locator('h2#temperature')).toHaveCount(0)
+  await expect(page.locator('.toc a[href="#temperature"]')).toHaveCount(0)
+  await checkForTotalPrecipitation(page)
+})
+
+test('Missing nested key only breaks its own section', async ({ page }) => {
+  const results = {
+    ...reportFixture,
+    temperature: { preview: reportFixture.temperature.preview },
+  }
+  await fulfillReport(page, results)
+  await gotoHydrated(page, resilienceReportUrl)
+
+  await expect(page.locator('#results')).toBeVisible()
+  await expect(
+    page.locator('.temperature >> text=couldn’t be displayed')
+  ).toBeVisible()
+  await expect(page.locator('.toc a[href="#temperature"]')).toHaveCount(0)
+  await checkForTotalPrecipitation(page)
+})
+
+test('Place with no data shows a no-data message', async ({ page }) => {
+  // What the API returns for a point in the ocean.
+  const empty = Object.fromEntries(
+    Object.keys(reportFixture).map(key => [key, {}])
+  )
+  empty.elevation = { max: null, mean: null, min: null }
+  await fulfillReport(page, empty)
+  await gotoHydrated(page, url + '/report/51.5000/-146.0000')
+
+  await expect(page.locator('text=No data available for')).toBeVisible()
+  await expect(page.locator(`text=${systemProblemText}`)).toBeVisible()
+  await expect(page.locator('.toc')).toHaveCount(0)
+  await expect(page.locator('button:has-text("Try again")')).toHaveCount(0)
+})
+
+test('Unknown community shows a not-found message', async ({ page }) => {
+  await gotoHydrated(page, url + '/report/community/NOPE')
+
+  await expect(page.locator('text=couldn’t find this place')).toBeVisible()
+})
+
+test('Community list failure hides the autocomplete', async ({ page }) => {
+  await page.route('**/places/communities**', route => route.abort())
+  await gotoHydrated(page, url)
+
+  await expect(
+    page.locator('text=the community list cannot be loaded')
+  ).toBeVisible()
+  await expect(page.locator('text=Alaska community name')).toHaveCount(0)
+  // The lat/lng search is the remaining way in, so it has to stay.
+  await expect(page.locator('.right .input')).toBeVisible()
+})
