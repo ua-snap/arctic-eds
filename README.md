@@ -32,6 +32,20 @@ Environment variables are read at build/generate time, so set them before
 running `npm run generate`. `MOCK_API` and `EDS_SAFE_MODE` are
 treated as booleans: any non-empty value turns them on.
 
+### Refreshing the mock data
+
+`MOCK_API` serves `app/assets/mock.json`, a captured `/eds/all` response for
+Fairbanks. If the API's response shape changes, the report will break against
+the stale fixture, so re-capture it:
+
+```bash
+curl -s https://earthmaps.io/eds/all/64.8378/-147.716 \
+  | python3 -m json.tool --indent 2 > app/assets/mock.json
+```
+
+Then run the site with `MOCK_API=True` and page through the whole report to
+confirm every section still renders.
+
 ### Playwright tests
 
 To run the Playwright tests for this webapp, set any necessary environment variables, then run the webapp:
