@@ -19,7 +19,7 @@
             located at the
             <a href="https://uaf-iarc.org"
               >International Arctic Research Center</a
-            >. Funding provided by the U.S. Department of Defense
+            >. Funding provided by the U.S. Department of War
             <a href="https://serdp-estcp.org"
               >Environmental Security Technology Certification Program</a
             >.

@@ -1,126 +1,41 @@
 <template>
   <div>
-    <div class="main">
-      <div class="container">
-        <div class="content clamp is-size-4">
-          <p class="intro">
-            Improving infrastructure resilience requires considering future
-            climate conditions that may differ from the past. Historical
-            observations are insufficient&mdash;the Arctic is warming four times
-            faster than the rest of the world.
-          </p>
-        </div>
-        <div class="content clamp is-size-5">
-          <p>
-            High-resolution <Term target="downscaling">downscaled</Term> climate
-            models provide valuable insights into localized climate futures of
-            temperature, precipitation, and other environmental conditions such
-            as permafrost, but their output introduces uncertainties to
-            engineering applications. A systematic approach is needed to
-            integrate future climate trends into engineering, including
-            selecting appropriate models, understanding uncertainties, and
-            addressing variable spatial and temporal scales.
-          </p>
-          <figure>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/QRf2Z8Ka_VQ?si=eYkt13xPPWCgE4GT"
-              title="Tools in Two Minutes: Arctic-EDS (YouTube video)"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-          </figure>
-          <p>
-            <strong>
-              The Arctic Environmental and Engineering Data and Design Support
-              System (Arctic-EDS) streamlines the process of using downscaled
-              <Term target="gcm">climate models</Term> for engineering.
-            </strong>
-            The Arctic-EDS simplifies and centralizes the process of finding,
-            selecting, extracting, and formatting downscaled climate model
-            output: it pre-selects relevant models, simplifies data extraction,
-            and provides reports with future projections of climate variables
-            and indices. Data is available for download in a tabular format,
-            with links to source datasets and academic references. Example
-            computational notebooks demonstrate how to apply the data to
-            engineering applications.
-          </p>
-          <p>
-            All downscaled climate model outputs are vulnerable to various
-            sources of uncertainty, including:
-          </p>
-          <ul>
-            <li>Natural climate variability</li>
-            <li>
-              Limited historical climate station data from which to interpolate
-              gridded baseline datasets and validate modeled gridded data
-            </li>
-            <li>Model assumptions and parameterizations</li>
-            <li>
-              Uncertainty regarding future societal and economic behaviors
-            </li>
-            <li>Spatial and temporal resolutions of downscaled climate data</li>
-          </ul>
-          <p>The Arctic-EDS regulates these uncertainties by:</p>
-          <ul>
-            <li>
-              Presenting <Term target="gridded_dataset">gridded</Term> data from
-              multiple climate models and emissions scenarios
-            </li>
-            <li>Stating spatial and temporal scales of each dataset</li>
-            <li>
-              Presenting
-              <Term target="bias_correction">bias-corrected</Term> data
-            </li>
-          </ul>
-          <p>
-            No climate model or data processing technique can entirely eliminate
-            uncertainty, but the Arctic-EDS unlocks data that shows how future
-            climate conditions might differ from the past. Each engineering
-            application may require additional steps to interpret results and
-            apply them to a specific design&mdash;see the
-            <strong><NuxtLink to="/guidance">Guidance</NuxtLink></strong> page
-            for more information.
-          </p>
-        </div>
-        <div class="content is-size-4">
-          <p>
-            To get started, enter your Alaska community or location of interest
-            in the search boxes below.
-          </p>
-        </div>
+    <section class="hero-search has-text-centered">
+      <h1 class="title is-1">See how far your design values shift.</h1>
+      <p class="subtitle is-5 has-text-grey-dark">
+        Projected change from the historical record at any Alaska site, and how
+        closely the models agree.
+      </p>
+      <PlaceSearch class="search" />
+      <p class="try has-text-grey-dark">
+        Try
+        <template v-for="(place, index) in tryPlaces" :key="place.id">
+          <NuxtLink :to="`/report/community/${place.id}#results`">{{
+            place.name
+          }}</NuxtLink
+          ><span v-if="index < tryPlaces.length - 1" aria-hidden="true">
+            ·
+          </span>
+        </template>
+      </p>
+    </section>
 
-        <div class="controls pt-5 pb-6">
-          <h2 class="visually-hidden">Find data for a location</h2>
-          <SearchControls />
-        </div>
-      </div>
+    <div class="example">
+      <ShiftExample />
+    </div>
+
+    <div class="projects">
+      <ProjectTypes />
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-@use 'sass:color';
 
-.intro {
-  font-weight: 500;
-}
-.main {
-  padding-bottom: 6rem;
-}
-.controls {
-  border-top: 0.5px solid color.adjust(#faf9f7, $lightness: -50%);
-  background-color: #faf9f7;
-  z-index: 100;
-  position: sticky;
-  bottom: 0;
-}
-</style>
 <script setup>
 import { onMounted } from 'vue'
-import SearchControls from '~/components/SearchControls'
+import PlaceSearch from '~/components/PlaceSearch'
+import ShiftExample from '~/components/home/ShiftExample'
+import ProjectTypes from '~/components/home/ProjectTypes'
+import { tryPlaces } from '~/data/home'
 
 const route = useRoute()
 const router = useRouter()
@@ -134,3 +49,37 @@ onMounted(() => {
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.hero-search {
+  padding: 2.5rem 0 2.5rem;
+
+  .title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.02;
+  }
+  .subtitle {
+    max-width: 45rem;
+    margin: 1rem auto 0;
+  }
+  .search {
+    max-width: 48rem;
+    margin: 2rem auto 0;
+  }
+  .try {
+    margin-top: 1rem;
+  }
+}
+.example {
+  padding-bottom: 3.5rem;
+}
+.projects {
+  // Full-bleed band behind the project types, inside the layout's section.
+  margin: 0 -1.5rem -3rem;
+  padding: 3rem 1.5rem 3.5rem;
+  background: #f4f2ee;
+  border-top: 1px solid #e4e1dc;
+}
+</style>

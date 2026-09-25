@@ -83,17 +83,22 @@ test('Check header links', async ({ page }) => {
 
   // Each page has exactly one h1.
   const pages = [
-    ['Home', 'Arctic Environmental and Engineering Data and Design Support'],
     ['About', 'About this tool'],
-    ['Glossary', 'Glossary of terms'],
     ['Guidance', 'Guidance: using and interpreting Arctic-EDS data'],
-    ['Maps', 'Statewide Climate Overview Maps'],
+    ['Data sources', 'Data sources'],
   ]
   for (const [link, heading] of pages) {
-    await page.click(`.nav-wrapper ol li:has-text("${link}")`)
+    await page.click(`.navbar-menu a:has-text("${link}")`)
     await expect(page.locator('h1')).toHaveCount(1)
     await expect(page.locator('h1')).toContainText(heading)
   }
+
+  // The logo leads back home.
+  await page.click('.navbar-brand a')
+  await expect(page.locator('h1')).toHaveCount(1)
+  await expect(page.locator('h1')).toContainText(
+    'See how far your design values shift'
+  )
 })
 
 test('Check maps', async ({ page }) => {
@@ -350,9 +355,10 @@ test('Enter 58.1234, -156.1234 and load report', async ({ page }) => {
   test.setTimeout(600000)
   await gotoHydrated(page, url)
   await page.setViewportSize({ width: 1728, height: 1078 })
-  await page.waitForSelector('.right .input')
-  await page.click('.right .input')
-  await page.fill('.right .input', '58.1234, -156.1234')
+  // The same search box takes places and coordinates.
+  await page.waitForSelector('.place-search .input')
+  await page.click('.place-search .input')
+  await page.fill('.place-search .input', '58.1234, -156.1234')
   await page.keyboard.press('Enter')
 
   await expect(page.locator('#results')).toBeVisible({
