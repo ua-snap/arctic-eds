@@ -165,6 +165,12 @@ import {
 } from 'reka-ui'
 import { placeAliases } from '~/data/home'
 
+const props = defineProps({
+  // A topic slug (see data/topics.js). The report opens with that topic's
+  // sections suggested first.
+  lens: { type: String, default: undefined },
+})
+
 const router = useRouter()
 const store = useReportStore()
 const { places } = storeToRefs(store)
@@ -272,7 +278,11 @@ watch(isOpen, open => {
 })
 
 function go(option) {
-  router.push({ path: option.path, hash: '#results' })
+  router.push({
+    path: option.path,
+    query: props.lens ? { for: props.lens } : undefined,
+    hash: '#results',
+  })
 }
 
 watch(selected, option => {

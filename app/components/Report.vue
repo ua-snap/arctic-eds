@@ -7,6 +7,7 @@
         <div id="results" class="container">
           <h1 class="title is-2">Downscaled Climate Model Output</h1>
           <h2 class="subtitle is-2" v-html="placeName"></h2>
+          <ReportLens />
 
           <p class="subtitle is-3 pt-4">
             This report contains data from different downscaled climate models
@@ -232,6 +233,7 @@ import { onMounted, reactive, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import UnitRadio from '~/components/UnitRadio'
 import MiniMap from '~/components/MiniMap'
+import ReportLens from '~/components/ReportLens'
 import TemperatureReport from '~/components/reports/Temperature'
 import PrecipitationReport from '~/components/reports/Precipitation'
 import SnowfallReport from '~/components/reports/Snowfall'

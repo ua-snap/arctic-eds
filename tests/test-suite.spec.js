@@ -97,7 +97,7 @@ test('Check header links', async ({ page }) => {
   await page.click('.navbar-brand a')
   await expect(page.locator('h1')).toHaveCount(1)
   await expect(page.locator('h1')).toContainText(
-    'See how far your design values shift'
+    'See how far your design parameters shift'
   )
 })
 

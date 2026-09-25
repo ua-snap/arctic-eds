@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="hero-search has-text-centered">
-      <h1 class="title is-1">See how far your design values shift.</h1>
+      <h1 class="title is-1">See how far your design parameters shift.</h1>
       <p class="subtitle is-5 has-text-grey-dark">
         Projected change from the historical record at any Alaska site, and how
         closely the models agree.
@@ -76,10 +76,19 @@ onMounted(() => {
   padding-bottom: 3.5rem;
 }
 .projects {
-  // Full-bleed band behind the project types, inside the layout's section.
+  // A full-bleed band: cancel the layout's <main class="section"> padding
+  // (Bulma's 3rem top/bottom, 1.5rem sides, 3rem sides from desktop up) so
+  // it runs edge to edge and down to the footer.
   margin: 0 -1.5rem -3rem;
   padding: 3rem 1.5rem 3.5rem;
   background: #f4f2ee;
   border-top: 1px solid #e4e1dc;
+
+  @media screen and (min-width: 1024px) {
+    margin-left: -3rem;
+    margin-right: -3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 </style>
