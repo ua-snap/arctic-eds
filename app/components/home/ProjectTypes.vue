@@ -1,14 +1,5 @@
 <template>
   <section class="project-types" aria-labelledby="project-types-title">
-    <div class="project-types-header">
-      <h2 id="project-types-title" class="title is-3 mb-0">
-        What engineers use it for
-      </h2>
-      <p class="has-text-grey-dark">
-        Every report covers every dataset, whatever you’re building.
-      </p>
-    </div>
-
     <ul class="columns is-multiline">
       <li
         v-for="topic in topics"
@@ -27,17 +18,6 @@
         </NuxtLink>
       </li>
     </ul>
-
-    <div class="notification something-else">
-      <p>
-        <strong>Working on something else?</strong> Search any Alaska site
-        above. Every report includes temperature, precipitation, design storms,
-        snowfall, hydrology, degree days and permafrost.
-      </p>
-      <NuxtLink to="/data-sources" class="button is-primary is-outlined"
-        >Browse the data sources</NuxtLink
-      >
-    </div>
   </section>
 </template>
 
