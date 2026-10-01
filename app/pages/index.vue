@@ -21,7 +21,7 @@
     </section>
 
     <div class="example">
-      <ShiftExample />
+      <SampleReport />
     </div>
 
     <div class="projects">
@@ -33,7 +33,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import PlaceSearch from '~/components/PlaceSearch'
-import ShiftExample from '~/components/home/ShiftExample'
+import SampleReport from '~/components/home/SampleReport'
 import ProjectTypes from '~/components/home/ProjectTypes'
 import { tryPlaces } from '~/data/home'
 
@@ -51,6 +51,22 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+// A band that runs edge to edge: cancel the layout's <main class="section">
+// side padding (Bulma's 1.5rem, 3rem from desktop up) and put it back inside.
+@mixin full-bleed {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @media screen and (min-width: 1024px) {
+    margin-left: -3rem;
+    margin-right: -3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
 .hero-search {
   padding: 2.5rem 0 2.5rem;
 
@@ -72,13 +88,23 @@ onMounted(() => {
     margin-top: 1rem;
   }
 }
+// The sample on its own lighter band, well clear of the search.
 .example {
-  padding-bottom: 3.5rem;
+  @include full-bleed;
+  margin-top: 2.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4.5rem;
+  background: #fff;
+  border-top: 1px solid #ebe8e3;
+  // The sample image fades into the band, not the page.
+  --sample-fade-to: #fff;
 }
 .projects {
-  // Full-bleed band behind the project types, inside the layout's section.
-  margin: 0 -1.5rem -3rem;
-  padding: 3rem 1.5rem 3.5rem;
+  @include full-bleed;
+  // Down to the footer: cancel the layout section's bottom padding.
+  margin-bottom: -3rem;
+  padding-top: 3rem;
+  padding-bottom: 3.5rem;
   background: #f4f2ee;
   border-top: 1px solid #e4e1dc;
 }
