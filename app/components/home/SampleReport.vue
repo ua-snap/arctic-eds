@@ -4,8 +4,8 @@
       Reports show how physical and environmental parameters are changing
     </h2>
     <p class="lede">
-      Each report sets projections beside the historical record for your site,
-      parameter by parameter, with the range across climate models.
+      Each report sets projections beside modeled historical baselines for your
+      site and shows the range across models.
     </p>
 
     <!--
