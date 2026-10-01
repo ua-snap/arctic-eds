@@ -42,6 +42,21 @@ $focus-ring-color: #1a4f8b;
   outline-offset: 0;
 }
 
+// Links are underlined, so they don't rely on color alone to stand out from
+// the text around them (WCAG 1.4.1). :where() keeps the specificity low, so
+// the exceptions below win: menu items, which mark the current page with a
+// bar; topic cards, which underline their question on hover; and glossary
+// terms, which have a dashed underline of their own.
+a:where([href]) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.navbar-item,
+.card,
+.term a {
+  text-decoration: none;
+}
+
 // Hides content visually while keeping it available to screen readers.
 .visually-hidden {
   position: absolute !important;

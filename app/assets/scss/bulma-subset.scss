@@ -13,9 +13,16 @@
 // Bulma 1 uses the Sass module system, so overrides are passed here instead
 // of being declared before an @import. Everything that @uses Bulma's
 // utilities afterwards sees the same configured values.
+//
+// $link is a mid blue, 6.7:1 on white and 6:1 on the home page's darkest
+// band, instead of Bulma's electric blue.
 @use 'bulma/sass/utilities' with (
-  $family-sans-serif: ('IBM Plex Sans', sans-serif),
+  $family-sans-serif: (
+    'IBM Plex Sans',
+    sans-serif,
+  ),
   $grey-dark: #312e30,
+  $link: #275d9b,
   $turquoise: #8ba09a // sorta turquoise
 );
 
