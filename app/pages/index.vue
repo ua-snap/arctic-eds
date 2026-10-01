@@ -27,6 +27,10 @@
     <div class="projects">
       <ProjectTypes />
     </div>
+
+    <div class="about">
+      <AboutArcticEds />
+    </div>
   </div>
 </template>
 
@@ -35,6 +39,7 @@ import { onMounted } from 'vue'
 import PlaceSearch from '~/components/PlaceSearch'
 import SampleReport from '~/components/home/SampleReport'
 import ProjectTypes from '~/components/home/ProjectTypes'
+import AboutArcticEds from '~/components/home/AboutArcticEds'
 import { tryPlaces } from '~/data/home'
 
 const route = useRoute()
@@ -101,11 +106,19 @@ onMounted(() => {
 }
 .projects {
   @include full-bleed;
-  // Down to the footer: cancel the layout section's bottom padding.
-  margin-bottom: -3rem;
   padding-top: 3rem;
   padding-bottom: 3.5rem;
   background: #f4f2ee;
+  border-top: 1px solid #e4e1dc;
+}
+.about {
+  @include full-bleed;
+  // The last band runs down to the footer: cancel the layout section's
+  // bottom padding.
+  margin-bottom: -3rem;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+  background: #fff;
   border-top: 1px solid #e4e1dc;
 }
 </style>
