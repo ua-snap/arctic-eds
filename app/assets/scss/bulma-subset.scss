@@ -12,7 +12,7 @@
 //
 // Bulma 1 uses the Sass module system, so overrides are passed here instead
 // of being declared before an @import. Everything that @uses Bulma's
-// utilities afterwards (Buefy included) sees the same configured values.
+// utilities afterwards sees the same configured values.
 @use 'bulma/sass/utilities' with (
   $family-sans-serif: ('IBM Plex Sans', sans-serif),
   $grey-dark: #312e30,
@@ -36,7 +36,6 @@
 
 @use 'bulma/sass/form/shared';
 @use 'bulma/sass/form/input-textarea';
-@use 'bulma/sass/form/checkbox-radio';
 @use 'bulma/sass/form/tools';
 
 @use 'bulma/sass/components/breadcrumb';

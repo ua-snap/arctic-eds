@@ -4,14 +4,6 @@
 // The parts of Bulma the site uses, with our global variable overrides.
 @use 'bulma-subset';
 
-// Styles for the Buefy components registered in plugins/buefy.js (Vue 3
-// line of Buefy, built on Bulma 1), instead of all of 'buefy/src/scss/buefy'.
-// Each component's styles are its own module, so they need distinct names.
-@use 'buefy/src/scss/utils/all' as buefy;
-@use 'buefy/src/scss/components/form' as buefy-form;
-@use 'buefy/src/scss/components/progress' as buefy-progress;
-@use 'buefy/src/scss/components/radio' as buefy-radio;
-
 @media print {
   .no-print {
     display: none !important;
@@ -35,7 +27,7 @@ ul.module-link {
 
 // A visible keyboard focus indicator for every interactive element. Several
 // components remove the input box-shadow that Bulma uses as its focus ring,
-// so this is applied here, after Bulma and Buefy, instead of per component.
+// so this is applied here, after Bulma, instead of per component.
 // The color has at least 3:1 contrast against the page, white and the
 // turquoise accent.
 $focus-ring-color: #1a4f8b;
@@ -48,12 +40,6 @@ $focus-ring-color: #1a4f8b;
 .input:focus-visible,
 .textarea:focus-visible {
   outline-offset: 0;
-}
-
-// Buefy radios hide the native input and draw a .check element instead.
-.b-radio.radio input[type='radio']:focus-visible + .check {
-  outline: 3px solid $focus-ring-color;
-  outline-offset: 2px;
 }
 
 // Hides content visually while keeping it available to screen readers.

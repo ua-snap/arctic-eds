@@ -8,7 +8,7 @@
         {{ placeName }}&hellip;
       </h4>
       <p>Hang on, this could take up to a few minutes!</p>
-      <b-progress type="is-info"></b-progress>
+      <progress class="progress is-info"></progress>
     </div>
 
     <div v-if="state && state.error" class="error">
