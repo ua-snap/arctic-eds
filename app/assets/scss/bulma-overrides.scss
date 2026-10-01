@@ -3,12 +3,16 @@
 // Bulma's Sass variable overrides live in main.scss now, in the
 // `@use 'bulma/sass' with (...)` block, because Bulma 1 is a Sass module.
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@900&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+// Every family, weight and style the site's CSS asks for. IBM Plex Sans stops
+// at 700, so Bulma's titles and content headings, which ask for 800, get 700.
+// Overpass is for table captions.
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@900&family=IBM+Plex+Mono:wght@300;400;500;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Overpass:wght@400&display=swap');
 
-@font-face {
-  font-family: 'Acknowledgement';
-  src: url('/ACKNO.TTF');
-}
+// Google's standard IBM Plex Sans files leave out two arrows the site uses
+// at weight 600: → in home page links and ↪ before report module links. This
+// file holds just those two, and the browser only downloads it on a page that
+// shows one. Add a weight here if an arrow appears at another weight.
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&text=%E2%86%92%E2%86%AA&display=swap');
 
 body {
   background-color: #faf9f7;

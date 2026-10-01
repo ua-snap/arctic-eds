@@ -80,14 +80,5 @@ const year = new Date().getFullYear()
     font-size: 1.5rem;
     font-weight: 700;
   }
-
-  :deep(.button) {
-    font-weight: bold;
-    &:hover {
-      background-color: #312e30;
-      color: white;
-      font-weight: bold;
-    }
-  }
 }
 </style>

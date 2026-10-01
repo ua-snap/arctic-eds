@@ -55,7 +55,6 @@ watch(
   border-bottom: 1px solid #dcd8d2;
 }
 .brand .logo {
-  font-family: 'Acknowledgement', sans-serif;
   font-size: 32px;
   line-height: 1;
   color: #312e30;
