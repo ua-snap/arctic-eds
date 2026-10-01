@@ -87,6 +87,24 @@
   display: none;
 }
 
+// A dark sage, darker than Bulma's primary (the site's light turquoise), so
+// white text reads at about 6.6:1 and the button stands out from the page
+// at about 6:1.
+.button.is-primary {
+  background-color: #3f625b;
+  border-color: transparent;
+  color: #fff;
+
+  &:hover {
+    background-color: #35534d;
+    color: #fff;
+  }
+  &:active {
+    background-color: #2c4540;
+    color: #fff;
+  }
+}
+
 // Phones: stack the button under the input, both full width.
 @media (max-width: 768px) {
   .field.has-addons {

@@ -100,3 +100,6 @@ test-results
 .output
 .nitro
 .data
+
+# Local dev-server config for Claude Code (machine-specific Node path, mock API)
+.claude/launch.json
