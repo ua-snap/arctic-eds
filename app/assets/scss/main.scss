@@ -5,7 +5,11 @@
 // system, so overrides are passed here instead of being declared before an
 // @import. Everything that @uses Bulma's utilities afterwards (Buefy
 // included) sees the same configured values.
-@use 'bulma/sass' with (
+//
+// This is Bulma's build without dark mode: the full build switches to a dark
+// theme whenever the operating system is set to dark, which the site isn't
+// designed for. It is otherwise the same as 'bulma/sass'.
+@use 'bulma/versions/bulma-no-dark-mode' with (
   $family-sans-serif: ('IBM Plex Sans', sans-serif),
   $grey-dark: #312e30,
   $turquoise: #8ba09a // sorta turquoise
