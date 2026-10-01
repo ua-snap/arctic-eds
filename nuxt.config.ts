@@ -50,18 +50,10 @@ export default defineNuxtConfig({
         { property: 'og:description', content: metas.description },
         { property: 'og:site_name', content: metas.title },
       ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        // Material Design Icons for Buefy. The nuxt-buefy module used to
-        // inject this: an async preload that promotes itself to a stylesheet.
-        {
-          type: 'text/css',
-          href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css',
-          rel: 'preload',
-          as: 'style',
-          onload: "this.rel='stylesheet'",
-        },
-      ],
+      // No icon font: the site's two icons are inline SVGs from Material
+      // Design Icons (PlaceSearch.vue, LoadingStatus.vue). The full font
+      // that Buefy is set up for was about 360 KB to download.
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
       script: [
         {
           async: true,

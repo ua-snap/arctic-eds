@@ -1,22 +1,16 @@
 // Site-wide rules and fonts. Emitted before Bulma, as before.
 @use 'bulma-overrides';
 
-// Bulma, with our global variable overrides. Bulma 1 uses the Sass module
-// system, so overrides are passed here instead of being declared before an
-// @import. Everything that @uses Bulma's utilities afterwards (Buefy
-// included) sees the same configured values.
-//
-// This is Bulma's build without dark mode: the full build switches to a dark
-// theme whenever the operating system is set to dark, which the site isn't
-// designed for. It is otherwise the same as 'bulma/sass'.
-@use 'bulma/versions/bulma-no-dark-mode' with (
-  $family-sans-serif: ('IBM Plex Sans', sans-serif),
-  $grey-dark: #312e30,
-  $turquoise: #8ba09a // sorta turquoise
-);
+// The parts of Bulma the site uses, with our global variable overrides.
+@use 'bulma-subset';
 
-// Buefy styles (Vue 3 line of Buefy, built on Bulma 1).
-@use 'buefy/src/scss/buefy';
+// Styles for the Buefy components registered in plugins/buefy.js (Vue 3
+// line of Buefy, built on Bulma 1), instead of all of 'buefy/src/scss/buefy'.
+// Each component's styles are its own module, so they need distinct names.
+@use 'buefy/src/scss/utils/all' as buefy;
+@use 'buefy/src/scss/components/form' as buefy-form;
+@use 'buefy/src/scss/components/progress' as buefy-progress;
+@use 'buefy/src/scss/components/radio' as buefy-radio;
 
 @media print {
   .no-print {

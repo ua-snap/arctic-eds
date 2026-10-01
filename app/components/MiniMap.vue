@@ -30,6 +30,7 @@ const { latLng, isPlaceDefined, placeName } = storeToRefs(useReportStore())
 // Leaflet instances are kept non-reactive on purpose.
 let map
 let marker
+let unmounted = false
 
 function getBaseMapAndLayers() {
   var baseLayer = new L.tileLayer.wms(
@@ -58,8 +59,13 @@ function getBaseMapAndLayers() {
   return config
 }
 
-onMounted(() => {
+onMounted(async () => {
   if (isPlaceDefined.value) {
+    // Sets the `L` global used here; Leaflet is loaded on demand.
+    await loadLeaflet()
+    if (unmounted) {
+      return
+    }
     map = L.map('report--minimmap--map', getBaseMapAndLayers())
 
     marker = L.marker(latLng.value).addTo(map)
@@ -68,6 +74,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  unmounted = true
   marker = undefined
   if (map) {
     map.remove()

@@ -17,9 +17,13 @@ var layerObjects = {}
 // Collection of legend objects, keyed like `maps` var above
 var legendControls = {}
 
-// `L` is the Leaflet global, set up by plugins/leaflet.client.js. This
-// module is also loaded on the server, so Leaflet must not be imported
-// here; these functions only ever run from client-side lifecycle hooks.
+// Promises that resolve once each map is created, keyed like `maps` var
+// above. Leaflet is loaded on demand, so maps are created asynchronously.
+var mapsReady = {}
+
+// `L` is the Leaflet global, set once loadLeaflet() resolves. This module
+// is also loaded on the server, so Leaflet must not be imported here; the
+// functions below that use `L` only run after create() has loaded it.
 function getBaseMapAndLayers(geoserverUrl) {
   var baseLayer = new L.tileLayer.wms(geoserverUrl, {
     transparent: true,
@@ -87,15 +91,24 @@ export const useMapStore = defineStore('map', () => {
 
   // Actions (were Vuex mutations)
   function create(mapName) {
-    maps[mapName] = L.map(
-      mapName,
-      getBaseMapAndLayers(config.public.geoserverUrl)
-    )
-    maps[mapName].on('drag', function () {
-      map.mapName.panInsideBounds(mapConfig.maxBounds, { animate: false })
+    const ready = loadLeaflet().then(() => {
+      // Skip it if the map was destroyed, or created again, while Leaflet
+      // was loading.
+      if (mapsReady[mapName] !== ready) {
+        return
+      }
+      maps[mapName] = L.map(
+        mapName,
+        getBaseMapAndLayers(config.public.geoserverUrl)
+      )
+      maps[mapName].on('drag', function () {
+        map.mapName.panInsideBounds(mapConfig.maxBounds, { animate: false })
+      })
     })
+    mapsReady[mapName] = ready
   }
   function destroy(mapName) {
+    delete mapsReady[mapName]
     if (maps[mapName]) {
       maps[mapName].remove()
     }
@@ -131,7 +144,16 @@ export const useMapStore = defineStore('map', () => {
 
     legendControls[mapId].addTo(maps[mapId])
   }
-  function toggleLayer(layerObj) {
+  async function toggleLayer(layerObj) {
+    // The default layer is toggled as soon as the page mounts, which can be
+    // before Leaflet has loaded and the map exists.
+    const ready = mapsReady[layerObj.mapId]
+    await ready
+    // Skip it if the map was destroyed while Leaflet was loading.
+    if (mapsReady[layerObj.mapId] !== ready) {
+      return
+    }
+
     // Remove existing layer: right now, we only
     // want one layer to be visible on any map in the Atlas.
     // Need to test explicitly for the existence of the

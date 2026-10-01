@@ -14,15 +14,15 @@
       </p>
     </div>
     <div>
-      <div class="fixed-grid has-1-cols-mobile has-2-cols-tablet">
-        <div class="grid">
-          <div class="cell">
+      <div class="atlas-images">
+        <div class="atlas-images-grid">
+          <div>
             <img
               src="~/assets/images/atlas-cover.jpg"
               alt="Cover of the Environmental Atlas of Alaska, April 1978"
             />
           </div>
-          <div class="cell">
+          <div>
             <img
               src="~/assets/images/heating_degree_days.png"
               alt="Image from the Environmental Atlas of Alaska, April 1978"
@@ -122,6 +122,22 @@ h1 {
 }
 img {
   padding: 1rem;
+}
+// The two Atlas images, side by side unless the page content is 768px wide
+// or less. The same layout as the Bulma fixed-grid this used to be; Bulma's
+// grid styles aren't included (see assets/scss/bulma-subset.scss).
+.atlas-images {
+  container-type: inline-size;
+}
+.atlas-images-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+@container (width <= 768px) {
+  .atlas-images-grid {
+    grid-template-columns: 1fr;
+  }
 }
 h3 {
   margin-top: 1.5rem;

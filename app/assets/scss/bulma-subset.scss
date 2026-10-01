@@ -1,0 +1,69 @@
+// The parts of Bulma the site uses, with our global variable overrides.
+//
+// This follows Bulma's build without dark mode
+// (bulma/versions/bulma-no-dark-mode.scss), in the same order, but leaves out
+// the modules no template uses. The full build is about 700 KB of CSS,
+// mostly helper classes such as a text and background color class for every
+// shade of every color (.has-text-primary-35 and so on); this subset is about
+// a third of that. To use a part of Bulma that isn't listed, add its module
+// below, in Bulma's order. The full build's dark theme is left out because
+// it switches the site to dark colors whenever the operating system is set
+// to dark, which the site isn't designed for.
+//
+// Bulma 1 uses the Sass module system, so overrides are passed here instead
+// of being declared before an @import. Everything that @uses Bulma's
+// utilities afterwards (Buefy included) sees the same configured values.
+@use 'bulma/sass/utilities' with (
+  $family-sans-serif: ('IBM Plex Sans', sans-serif),
+  $grey-dark: #312e30,
+  $turquoise: #8ba09a // sorta turquoise
+);
+
+@use 'bulma/sass/base/minireset';
+@use 'bulma/sass/base/generic';
+@use 'bulma/sass/base/animations';
+
+@use 'bulma/sass/elements/block';
+@use 'bulma/sass/elements/box';
+@use 'bulma/sass/elements/button';
+@use 'bulma/sass/elements/content';
+@use 'bulma/sass/elements/icon';
+@use 'bulma/sass/elements/notification';
+@use 'bulma/sass/elements/progress';
+@use 'bulma/sass/elements/table';
+@use 'bulma/sass/elements/tag';
+@use 'bulma/sass/elements/title';
+
+@use 'bulma/sass/form/shared';
+@use 'bulma/sass/form/input-textarea';
+@use 'bulma/sass/form/checkbox-radio';
+@use 'bulma/sass/form/tools';
+
+@use 'bulma/sass/components/breadcrumb';
+@use 'bulma/sass/components/card';
+@use 'bulma/sass/components/dropdown';
+@use 'bulma/sass/components/navbar';
+
+@use 'bulma/sass/grid/columns';
+
+@use 'bulma/sass/layout/container';
+@use 'bulma/sass/layout/footer';
+@use 'bulma/sass/layout/section';
+
+@use 'bulma/sass/helpers/spacing';
+@use 'bulma/sass/helpers/typography';
+@use 'bulma/sass/helpers/visibility';
+
+@use 'bulma/sass/themes/light';
+@use 'bulma/sass/themes/setup';
+
+// The one color helper the templates use, instead of Bulma's whole set
+// (bulma/sass/helpers/color).
+.has-text-grey-dark {
+  color: utilities.$grey-dark !important;
+}
+
+:root {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}
