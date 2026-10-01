@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="report--minimap--wrapper">
+    <div class="mt-5 mb-6">
       <div
         id="report--minimmap--map"
         role="region"
@@ -11,9 +11,7 @@
 </template>
 
 <style lang="scss" scoped>
-.report--minimap--wrapper {
-  margin: 2rem 0 3rem;
-}
+// Leaflet needs the map's size set.
 #report--minimmap--map {
   height: 300px;
   width: 300px;

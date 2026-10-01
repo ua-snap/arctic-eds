@@ -1,16 +1,24 @@
 <template>
   <!-- Shown when the report was opened from a topic page (?for=<slug>). -->
-  <aside v-if="topic" class="notification report-lens" aria-label="Start here">
-    <p class="lens-title">
+  <aside
+    v-if="topic"
+    class="notification is-primary is-light my-5"
+    aria-label="Start here"
+  >
+    <p class="is-size-5 mb-2">
       For <strong>{{ topic.name.toLowerCase() }}</strong
       >, start with:
     </p>
-    <ul class="lens-sections">
-      <li v-for="key in topic.datasets" :key="key">
-        <a :href="`#${datasets[key].section}`">{{ datasets[key].name }}</a>
+    <ul class="is-flex is-flex-wrap-wrap mb-3">
+      <li v-for="key in topic.datasets" :key="key" class="mr-5">
+        <a
+          class="is-size-5 has-text-weight-semibold"
+          :href="`#${datasets[key].section}`"
+          >{{ datasets[key].name }}</a
+        >
       </li>
     </ul>
-    <p class="lens-back">
+    <p class="is-size-7">
       <NuxtLink :to="`/for/${topic.slug}`"
         >More {{ topic.name.toLowerCase() }} questions</NuxtLink
       >
@@ -25,30 +33,3 @@ import { datasets, findTopic } from '~/data/topics'
 const route = useRoute()
 const topic = computed(() => findTopic(route.query.for))
 </script>
-
-<style lang="scss" scoped>
-.report-lens {
-  background: #e6eeec;
-  border-left: 0;
-  margin: 1.5rem 0;
-}
-.lens-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-.lens-sections {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-  margin: 0 0 0.75rem;
-
-  a {
-    font-size: 1.15rem;
-    font-weight: 600;
-  }
-}
-.lens-back {
-  font-size: 0.9rem;
-}
-</style>

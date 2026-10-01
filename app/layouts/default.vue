@@ -6,19 +6,24 @@
       <!-- Every page, the home page included, supplies its own h1. -->
       <Navbar />
     </header>
-    <main id="main-content" class="section" tabindex="-1">
+    <!--
+      Pages made of full-width bands (route meta "bands") supply their own
+      Bulma sections; everything else sits in one.
+    -->
+    <main
+      id="main-content"
+      :class="{ section: !route.meta.bands }"
+      tabindex="-1"
+    >
       <slot />
     </main>
     <Footer />
   </div>
 </template>
-<style lang="scss" scoped>
-#main-content:focus {
-  outline: none !important;
-}
-</style>
 <script setup>
 import HeaderBanner from '~/components/HeaderBanner'
 import Navbar from '~/components/Navbar'
 import Footer from '~/components/Footer'
+
+const route = useRoute()
 </script>

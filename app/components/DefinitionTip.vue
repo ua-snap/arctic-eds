@@ -5,7 +5,7 @@
     and from the keyboard, unlike a hover-only tooltip.
   -->
   <PopoverRoot>
-    <PopoverTrigger class="definition-trigger">
+    <PopoverTrigger class="button is-primary is-light is-rounded">
       <slot>{{ term }}</slot>
     </PopoverTrigger>
     <PopoverPortal>
@@ -19,7 +19,6 @@
         <p>
           <strong>{{ term }}:</strong> {{ definition }}
         </p>
-        <PopoverArrow class="definition-arrow" :width="14" :height="7" />
       </PopoverContent>
     </PopoverPortal>
   </PopoverRoot>
@@ -27,7 +26,6 @@
 
 <script setup>
 import {
-  PopoverArrow,
   PopoverContent,
   PopoverPortal,
   PopoverRoot,
@@ -41,24 +39,10 @@ defineProps({
 </script>
 
 <style lang="scss">
-// Not scoped: the content is portalled to the end of <body>.
-.definition-trigger {
-  padding: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: inherit;
-  text-align: inherit;
-  cursor: help;
-  border-bottom: 2px dotted currentColor;
-}
+// Not scoped: Reka renders the popup at the end of <body>. A Bulma box is as
+// wide as its text; keep long definitions to a readable width.
 .definition-content {
   max-width: min(22rem, calc(100vw - 2rem));
   z-index: 120;
-  font-size: 0.95rem;
-  line-height: 1.45;
-}
-.definition-arrow {
-  fill: #fff;
 }
 </style>

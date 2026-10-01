@@ -8,16 +8,10 @@
       </slot>
     </div>
     <div class="column">
-      <LeafletMap :mapName="mapName" :label="label" class="map" />
+      <LeafletMap :mapName="mapName" :label="label" />
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.map {
-  width: 100%;
-}
-</style>
 
 <script setup>
 import { computed } from 'vue'

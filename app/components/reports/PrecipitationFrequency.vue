@@ -67,11 +67,11 @@
       Projected precipitation frequency, {{ radioPrecipFreqModel }},
       {{ radioEra }}
     </h4>
-    <table class="table">
+    <table class="table is-fullwidth">
       <thead>
         <tr>
-          <th class="no-border">Duration</th>
-          <th class="no-border" colspan="9">Annual exceedance probability</th>
+          <th>Duration</th>
+          <th colspan="9">Annual exceedance probability</th>
         </tr>
         <tr>
           <th></th>
@@ -119,7 +119,7 @@
                 `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_mean`
               ]
             }}<UnitWidget unitType="mm_in" /><br />
-            <span class="small-text">
+            <span class="is-size-7">
               {{
                 pf[
                   `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_min`
@@ -232,16 +232,3 @@ const pf = computed(() => {
   return res
 })
 </script>
-
-<style lang="scss" scoped>
-table.table {
-  width: 100%;
-  table-layout: fixed;
-  .small-text {
-    font-size: 85%;
-  }
-  .no-border {
-    border: none;
-  }
-}
-</style>

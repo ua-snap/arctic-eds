@@ -1,7 +1,6 @@
 // Plain-CSS rules that sit alongside Bulma. This file is @used first from
-// main.scss, so it is emitted before Bulma's own CSS (same order as before).
-// Bulma's Sass variable overrides live in main.scss now, in the
-// `@use 'bulma/sass' with (...)` block, because Bulma 1 is a Sass module.
+// main.scss, so it is emitted before Bulma's own CSS. Bulma's settings live
+// in bulma-subset.scss.
 
 // Every family, weight and style the site's CSS asks for. IBM Plex Sans stops
 // at 700, so Bulma's titles and content headings, which ask for 800, get 700.
@@ -14,22 +13,12 @@
 // shows one. Add a weight here if an arrow appears at another weight.
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&text=%E2%86%92%E2%86%AA&display=swap');
 
-body {
-  background-color: #faf9f7;
-}
-
 // Clamp width to improve scanning readability.
 .content {
   max-width: 50em;
 }
 
-// General stuff for data summary/preview tables + report sections
-.content blockquote {
-  font-size: 1.15rem;
-  padding: 0.75rem 1rem !important;
-  margin: 0.5rem 0rem;
-}
-
+// Report tables: numbers in Plex Mono, headings in Plex Sans.
 table {
   font-family: 'IBM Plex Mono', monospace;
   line-height: 1;
@@ -54,32 +43,4 @@ table {
       padding-bottom: 0.75em !important;
     }
   }
-}
-
-table.preview {
-  background-color: #fff;
-  td,
-  th {
-    font-size: 0.85rem;
-    padding: 0.5rem;
-    border: 1px solid #888;
-  }
-  th {
-    font-weight: bold;
-  }
-  tfoot td {
-    border: none;
-  }
-}
-
-// vertical ellipsis
-.vellip {
-  font-size: 120%;
-  font-weight: bold;
-  text-align: center;
-}
-
-// snuggle nested ul's inside li's
-li ul {
-  margin-top: 0 !important;
 }

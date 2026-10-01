@@ -1,6 +1,6 @@
 <template>
-  <form class="place-search" novalidate @submit.prevent="submit">
-    <label :for="inputId" class="visually-hidden"
+  <form class="place-search has-text-left" novalidate @submit.prevent="submit">
+    <label :for="inputId" class="is-sr-only"
       >Installation, community, or latitude and longitude</label
     >
     <div class="field has-addons">
@@ -42,9 +42,9 @@
           position="popper"
           side="bottom"
           :side-offset="4"
-          class="dropdown-content search-results"
+          class="dropdown is-flex-direction-column search-results"
         >
-          <ComboboxViewport class="search-viewport">
+          <ComboboxViewport class="dropdown-content">
             <ComboboxItem
               v-for="option in options"
               :key="option.key"
@@ -52,9 +52,9 @@
               :text-value="option.label"
               class="dropdown-item"
             >
-              <div class="search-item">
+              <div class="search-item has-text-weight-semibold">
                 {{ option.label }}
-                <span class="alt-name" v-if="option.altName"
+                <span class="has-text-weight-normal" v-if="option.altName"
                   >({{ option.altName }})</span
                 >
               </div>
@@ -66,110 +66,56 @@
         </ComboboxContent>
       </ComboboxRoot>
       <div class="control">
-        <button class="button is-primary is-large" type="submit">
+        <button class="button is-primary is-large is-fullwidth" type="submit">
           Show the shift
         </button>
       </div>
     </div>
-    <span :id="hintId" class="visually-hidden"
+    <span :id="hintId" class="is-sr-only"
       >Type a place name and use the up and down arrow keys to choose one, or
       type a latitude and longitude and press Enter.</span
     >
     <p :id="messageId" class="help is-danger is-size-6" aria-live="polite">
       {{ message }}
     </p>
-    <div class="visually-hidden" role="status" aria-live="polite">
+    <div class="is-sr-only" role="status" aria-live="polite">
       {{ statusMessage }}
     </div>
   </form>
 </template>
 
 <style lang="scss" scoped>
-.place-search {
-  text-align: left;
-}
-.help:empty {
-  display: none;
-}
-
-// A dark sage, darker than Bulma's primary (the site's light turquoise), so
-// white text reads at about 6.6:1 and the button stands out from the page
-// at about 6:1.
-.button.is-primary {
-  background-color: #3f625b;
-  border-color: transparent;
-  color: #fff;
-
-  &:hover {
-    background-color: #35534d;
-    color: #fff;
-  }
-  &:active {
-    background-color: #2c4540;
-    color: #fff;
-  }
-}
-
-// Phones: stack the button under the input, both full width.
-@media (max-width: 768px) {
+// Phones: stack the button under the input, each with four rounded corners.
+// Bulma's addons stay side by side at every width, which leaves the input too
+// narrow to read, and square off the inner corners with more specific rules
+// (hence !important).
+@media screen and (max-width: 768px) {
   .field.has-addons {
     flex-direction: column;
     gap: 0.5rem;
 
-    .control {
-      width: 100%;
-    }
     .input,
     .button {
-      border-radius: var(--bulma-radius);
-    }
-    .button {
-      width: 100%;
+      border-radius: var(--bulma-radius) !important;
     }
   }
 }
 </style>
 
 <style lang="scss">
-// Not scoped: Reka renders the popup content inside its own wrapper element.
-// Bulma only defines its dropdown CSS variables inside .dropdown, so the list
-// look is spelled out here.
+// Not scoped: Reka renders the list at the end of <body>. It takes the search
+// box's width, scrolls within the room below it, and marks the option the
+// arrow keys are on (Bulma only styles hovered links in a dropdown).
 .search-results {
   width: var(--reka-combobox-trigger-width);
-  max-width: 100vw;
   z-index: 110;
-  padding: 0.5rem 0;
-  background-color: #fff;
-  border-radius: var(--bulma-radius);
-  box-shadow: var(--bulma-shadow);
 
-  .search-viewport {
+  .dropdown-content {
     max-height: min(280px, var(--reka-combobox-content-available-height));
   }
-  .dropdown-item {
-    display: block;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #312e30;
-    cursor: pointer;
-    white-space: normal;
-
-    &.is-disabled {
-      cursor: default;
-    }
-
-    // Visible "current option" marker for keyboard and mouse users.
-    &[data-highlighted] {
-      background-color: #d3dcd9;
-      box-shadow: inset 4px 0 0 #312e30;
-    }
-  }
-  .search-item {
-    font-weight: 600;
-  }
-  .alt-name {
-    font-weight: 400;
+  .dropdown-item[data-highlighted] {
+    background-color: var(--bulma-primary-light);
+    box-shadow: inset 4px 0 0 var(--bulma-text);
   }
 }
 </style>

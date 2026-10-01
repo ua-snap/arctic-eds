@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container is-max-desktop">
     <div class="content is-size-5">
       <h1>About this tool</h1>
       <p>
@@ -13,22 +13,18 @@
         thorough bibliography.
       </p>
     </div>
-    <div>
-      <div class="atlas-images">
-        <div class="atlas-images-grid">
-          <div>
-            <img
-              src="~/assets/images/atlas-cover.jpg"
-              alt="Cover of the Environmental Atlas of Alaska, April 1978"
-            />
-          </div>
-          <div>
-            <img
-              src="~/assets/images/heating_degree_days.png"
-              alt="Image from the Environmental Atlas of Alaska, April 1978"
-            />
-          </div>
-        </div>
+    <div class="columns my-5">
+      <div class="column">
+        <img
+          src="~/assets/images/atlas-cover.jpg"
+          alt="Cover of the Environmental Atlas of Alaska, April 1978"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="~/assets/images/heating_degree_days.png"
+          alt="Image from the Environmental Atlas of Alaska, April 1978"
+        />
       </div>
     </div>
     <div class="content is-size-5">
@@ -110,38 +106,3 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-// Same size as the h2 this heading used to be.
-h1 {
-  font-size: 1.75em;
-}
-.content {
-  max-width: 40em;
-  margin: 1.25rem auto;
-}
-img {
-  padding: 1rem;
-}
-// The two Atlas images, side by side unless the page content is 768px wide
-// or less. The same layout as the Bulma fixed-grid this used to be; Bulma's
-// grid styles aren't included (see assets/scss/bulma-subset.scss).
-.atlas-images {
-  container-type: inline-size;
-}
-.atlas-images-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-}
-@container (width <= 768px) {
-  .atlas-images-grid {
-    grid-template-columns: 1fr;
-  }
-}
-h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-</style>
-

@@ -122,7 +122,7 @@ export const useMapStore = defineStore('map', () => {
     }
     legendControls[mapId] = L.control({ position: 'topleft' })
     legendControls[mapId].onAdd = map => {
-      var div = L.DomUtil.create('div', 'info legend')
+      var div = L.DomUtil.create('div', 'box p-3')
       let mapLayers = mapContent.layers[mapId]
       let currentLayer = find(mapLayers, {
         id: selectedLayers.value[mapId],
@@ -133,9 +133,10 @@ export const useMapStore = defineStore('map', () => {
       div.innerHTML = ''
       legendItems.forEach(legendItem => {
         div.innerHTML +=
-          '<div class="legend-item"><div class="legend-swatch" style="background-color: ' +
+          '<div class="is-flex is-align-items-center is-size-6 my-1">' +
+          '<span class="icon mr-2 legend-swatch" style="background-color: ' +
           legendItem['color'] +
-          ';"></div> ' +
+          ';"></span>' +
           legendItem['label'] +
           '</div>'
       })
@@ -160,10 +161,7 @@ export const useMapStore = defineStore('map', () => {
     // layerObject because this code can get run while
     // the full DOM is hydrating, see MapLayer / mounted().
 
-    if (
-      selectedLayers.value[layerObj.mapId] &&
-      layerObjects[layerObj.mapId]
-    ) {
+    if (selectedLayers.value[layerObj.mapId] && layerObjects[layerObj.mapId]) {
       maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
     }
 

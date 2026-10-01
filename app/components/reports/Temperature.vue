@@ -291,10 +291,10 @@
       </div>
     </div>
     <div class="block">
-      <table class="table months mt-3">
+      <table class="table is-fullwidth is-narrow mt-3">
         <thead>
           <tr>
-            <th scope="col" class="eraCol"></th>
+            <th scope="col"></th>
             <th scope="col">January</th>
             <th scope="col">February</th>
             <th scope="col">March</th>
@@ -334,7 +334,7 @@
                   `${month}`
                 ].tasmean
               }}<UnitWidget /><br />
-              <span class="small-text">
+              <span class="is-size-7">
                 {{
                   results.temperature.summary.historical['CRU-TS'].historical[
                     `${month}`
@@ -371,7 +371,7 @@
                   `${radioTempScenario}`
                 ][`${month}`]['2010-2039'].tasmean
               }}<UnitWidget /><br />
-              <span class="small-text">
+              <span class="is-size-7">
                 {{
                   results.temperature.summary.projected[`${radioTempModel}`][
                     `${radioTempScenario}`
@@ -408,7 +408,7 @@
                   `${radioTempScenario}`
                 ][`${month}`]['2040-2069'].tasmean
               }}<UnitWidget /><br />
-              <span class="small-text">
+              <span class="is-size-7">
                 {{
                   results.temperature.summary.projected[`${radioTempModel}`][
                     `${radioTempScenario}`
@@ -445,7 +445,7 @@
                   `${radioTempScenario}`
                 ][`${month}`]['2070-2099'].tasmean
               }}<UnitWidget /><br />
-              <span class="small-text">
+              <span class="is-size-7">
                 {{
                   results.temperature.summary.projected[`${radioTempModel}`][
                     `${radioTempScenario}`
@@ -555,25 +555,3 @@ const radioTempScenario = ref('rcp45')
 const precision = computed(() => (units.value == 'metric' ? 3 : 2))
 const deltaPrecision = computed(() => (units.value == 'metric' ? 2 : 1))
 </script>
-
-<style lang="scss" scoped>
-.small-text {
-  font-size: 80%;
-}
-table.months {
-  width: 100%;
-  table-layout: fixed;
-  td,
-  th {
-    padding: 0.5em 0.4em;
-
-    &.eraCol {
-      width: 10%;
-    }
-  }
-  th[scope='row'] {
-    line-height: 1.2;
-    font-size: 1em;
-  }
-}
-</style>

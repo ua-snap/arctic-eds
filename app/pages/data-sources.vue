@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container is-max-desktop">
     <div class="content is-size-5">
       <h1>Data sources</h1>
       <p>

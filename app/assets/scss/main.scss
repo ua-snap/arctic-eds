@@ -18,18 +18,12 @@ ul.module-link {
   }
 }
 
-.clamp {
-  max-width: 65rem;
-  margin: 3rem auto;
-}
-
 // Accessibility (WCAG 2.1 AA)
 
 // A visible keyboard focus indicator for every interactive element. Several
 // components remove the input box-shadow that Bulma uses as its focus ring,
 // so this is applied here, after Bulma, instead of per component.
-// The color has at least 3:1 contrast against the page, white and the
-// turquoise accent.
+// The color has at least 3:1 contrast against the page and white.
 $focus-ring-color: #1a4f8b;
 
 :focus-visible {
@@ -45,29 +39,14 @@ $focus-ring-color: #1a4f8b;
 // Links are underlined, so they don't rely on color alone to stand out from
 // the text around them (WCAG 1.4.1). :where() keeps the specificity low, so
 // the exceptions below win: menu items, which mark the current page with a
-// bar; topic cards, which underline their question on hover; and glossary
-// terms, which have a dashed underline of their own.
+// bar, and the home page's topic cards, which are whole-card links.
 a:where([href]) {
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
 .navbar-item,
-.card,
-.term a {
+.card {
   text-decoration: none;
-}
-
-// Hides content visually while keeping it available to screen readers.
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
 }
 
 // "Skip to main content" link, shown only when it receives keyboard focus.
@@ -85,6 +64,10 @@ a:where([href]) {
   &:focus {
     transform: translateY(0);
   }
+}
+// The skip link moves focus to <main>, which needs no ring of its own.
+#main-content:focus {
+  outline: none !important;
 }
 
 // Leaflet maps must shrink with the viewport (WCAG 1.4.10 Reflow).

@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="content clamp is-size-5">
+  <div class="container is-max-desktop">
+    <div class="content is-size-5">
       <h1>Guidance: using and interpreting Arctic-EDS data</h1>
       <h2>What is the Arctic-EDS?</h2>
       <p>
@@ -265,14 +265,3 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-h1 {
-  font-size: 2rem;
-}
-h2 {
-  font-size: 1.85rem;
-  margin-bottom: 0.5rem;
-}
-</style>
-
