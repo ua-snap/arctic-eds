@@ -2,19 +2,25 @@
   <div class="radio-units no-print">
     <p>You can display these results in Imperial or Metric units.</p>
     <div>
-      <b-field label="Units">
-        <b-radio v-model="radioUnits" name="radioUnits" native-value="imperial">
-          Imperial
-        </b-radio>
-        <b-radio v-model="radioUnits" name="radioUnits" native-value="metric">
-          Metric
-        </b-radio>
-      </b-field>
+      <!-- The sentence above says what the choice is, so the label is only
+           for screen readers. -->
+      <LabeledRadioGroup
+        v-model="radioUnits"
+        label="Units"
+        hide-label
+        :options="unitOptions"
+      />
     </div>
   </div>
 </template>
 <script setup>
 import { ref, watch } from 'vue'
+import LabeledRadioGroup from '~/components/LabeledRadioGroup'
+
+const unitOptions = [
+  { value: 'imperial', label: 'Imperial' },
+  { value: 'metric', label: 'Metric' },
+]
 
 const store = useReportStore()
 const radioUnits = ref(store.units)
@@ -30,8 +36,3 @@ watch(radioUnits, () => {
   }
 })
 </script>
-<style scoped>
-:deep(label) {
-  display: none;
-}
-</style>

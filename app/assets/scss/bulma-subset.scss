@@ -1,0 +1,116 @@
+// The parts of Bulma the site uses, with our global variable overrides.
+//
+// This follows Bulma's build without dark mode
+// (bulma/versions/bulma-no-dark-mode.scss), in the same order, but leaves out
+// the modules no template uses. The full build is about 700 KB of CSS,
+// mostly helper classes such as a text and background color class for every
+// shade of every color (.has-text-primary-35 and so on); this subset is about
+// a third of that. To use a part of Bulma that isn't listed, add its module
+// below, in Bulma's order. The full build's dark theme is left out because
+// it switches the site to dark colors whenever the operating system is set
+// to dark, which the site isn't designed for.
+//
+// Bulma 1 uses the Sass module system, so overrides are passed here instead
+// of being declared before an @import. Everything that @uses Bulma's
+// utilities afterwards sees the same configured values.
+//
+// - $family-secondary is Barlow, for headlines (.is-family-secondary).
+// - $grey-dark is the text color, $grey muted text (5.3:1 on the page) and
+//   $white-ter the home page's shaded band.
+// - $primary is a dark sage: white text on it is 6.8:1, and its light
+//   version (.is-primary.is-light) is the pale sage of tags and notes.
+// - $link is a mid blue, 6.7:1 on white and 6:1 on the home page's darkest
+//   band, instead of Bulma's electric blue.
+@use 'bulma/sass/utilities' with (
+  $family-sans-serif: (
+    'IBM Plex Sans',
+    sans-serif,
+  ),
+  $family-secondary: (
+    'Barlow',
+    sans-serif,
+  ),
+  $grey-dark: #312e30,
+  $grey: #6b6866,
+  $white-ter: #f4f2ee,
+  $primary: #3f625b,
+  $link: #275d9b
+);
+
+@use 'bulma/sass/base/minireset';
+@use 'bulma/sass/base/generic' with (
+  $body-background-color: #faf9f7
+);
+@use 'bulma/sass/base/animations';
+
+@use 'bulma/sass/elements/block';
+@use 'bulma/sass/elements/box';
+@use 'bulma/sass/elements/button';
+@use 'bulma/sass/elements/content';
+@use 'bulma/sass/elements/icon';
+@use 'bulma/sass/elements/notification';
+@use 'bulma/sass/elements/progress';
+@use 'bulma/sass/elements/table';
+@use 'bulma/sass/elements/tag';
+@use 'bulma/sass/elements/title';
+
+@use 'bulma/sass/form/shared';
+@use 'bulma/sass/form/input-textarea';
+@use 'bulma/sass/form/tools';
+
+@use 'bulma/sass/components/breadcrumb';
+@use 'bulma/sass/components/card';
+@use 'bulma/sass/components/dropdown';
+// The menu marks the current page with a bar in the text color, not blue.
+@use 'bulma/sass/components/navbar' with (
+  $navbar-tab-active-color: utilities.$grey-dark,
+  $navbar-tab-active-border-bottom-color: utilities.$grey-dark,
+  $navbar-tab-hover-border-bottom-color: utilities.$grey
+);
+
+@use 'bulma/sass/grid/columns';
+
+@use 'bulma/sass/layout/container';
+@use 'bulma/sass/layout/footer';
+@use 'bulma/sass/layout/section';
+
+@use 'bulma/sass/helpers/aspect-ratio';
+@use 'bulma/sass/helpers/flexbox';
+@use 'bulma/sass/helpers/spacing';
+@use 'bulma/sass/helpers/typography';
+@use 'bulma/sass/helpers/visibility';
+@use 'bulma/sass/helpers/other';
+
+@use 'bulma/sass/themes/light';
+@use 'bulma/sass/themes/setup';
+
+// The few color helpers the templates use, with Bulma's names. Bulma's own
+// set (bulma/sass/helpers/color) has a class for every shade of every color
+// and would add about 11 KB (gzipped) to every page.
+@each $name,
+  $color
+    in (
+      'grey-dark': utilities.$grey-dark,
+      'grey': utilities.$grey,
+      'white': utilities.$white,
+      'white-ter': utilities.$white-ter
+    )
+{
+  .has-text-#{$name} {
+    color: $color !important;
+  }
+  .has-background-#{$name} {
+    background-color: $color !important;
+  }
+}
+.has-text-link {
+  color: var(--bulma-link-text) !important;
+}
+.has-background-primary-light {
+  background-color: var(--bulma-primary-light) !important;
+}
+
+:root {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}

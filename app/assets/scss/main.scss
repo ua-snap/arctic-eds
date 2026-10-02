@@ -1,18 +1,8 @@
 // Site-wide rules and fonts. Emitted before Bulma, as before.
 @use 'bulma-overrides';
 
-// Bulma, with our global variable overrides. Bulma 1 uses the Sass module
-// system, so overrides are passed here instead of being declared before an
-// @import. Everything that @uses Bulma's utilities afterwards (Buefy
-// included) sees the same configured values.
-@use 'bulma/sass' with (
-  $family-sans-serif: ('IBM Plex Sans', sans-serif),
-  $grey-dark: #312e30,
-  $turquoise: #8ba09a // sorta turquoise
-);
-
-// Buefy styles (Vue 3 line of Buefy, built on Bulma 1).
-@use 'buefy/src/scss/buefy';
+// The parts of Bulma the site uses, with our global variable overrides.
+@use 'bulma-subset';
 
 @media print {
   .no-print {
@@ -28,18 +18,12 @@ ul.module-link {
   }
 }
 
-.clamp {
-  max-width: 65rem;
-  margin: 3rem auto;
-}
-
 // Accessibility (WCAG 2.1 AA)
 
 // A visible keyboard focus indicator for every interactive element. Several
 // components remove the input box-shadow that Bulma uses as its focus ring,
-// so this is applied here, after Bulma and Buefy, instead of per component.
-// The color has at least 3:1 contrast against the page, white and the
-// turquoise accent.
+// so this is applied here, after Bulma, instead of per component.
+// The color has at least 3:1 contrast against the page and white.
 $focus-ring-color: #1a4f8b;
 
 :focus-visible {
@@ -52,23 +36,17 @@ $focus-ring-color: #1a4f8b;
   outline-offset: 0;
 }
 
-// Buefy radios hide the native input and draw a .check element instead.
-.b-radio.radio input[type='radio']:focus-visible + .check {
-  outline: 3px solid $focus-ring-color;
-  outline-offset: 2px;
+// Links are underlined, so they don't rely on color alone to stand out from
+// the text around them (WCAG 1.4.1). :where() keeps the specificity low, so
+// the exceptions below win: menu items, which mark the current page with a
+// bar, and the home page's topic cards, which are whole-card links.
+a:where([href]) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
-
-// Hides content visually while keeping it available to screen readers.
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
+.navbar-item,
+.card {
+  text-decoration: none;
 }
 
 // "Skip to main content" link, shown only when it receives keyboard focus.
@@ -86,6 +64,10 @@ $focus-ring-color: #1a4f8b;
   &:focus {
     transform: translateY(0);
   }
+}
+// The skip link moves focus to <main>, which needs no ring of its own.
+#main-content:focus {
+  outline: none !important;
 }
 
 // Leaflet maps must shrink with the viewport (WCAG 1.4.10 Reflow).
