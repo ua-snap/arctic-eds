@@ -1,30 +1,40 @@
 <template>
   <!--
     A labeled group of radio buttons, e.g. "Model: 5 Model Average / GFDL CM3
-    / NCAR CCSM4". Native radio buttons in a fieldset: the group is announced
-    by its legend, it takes one tab stop, and the arrow keys move the
-    selection. Bulma's .radios and .radio classes lay them out.
+    / NCAR CCSM4". Reka UI's RadioGroup provides the behavior: one tab stop,
+    arrow keys move the selection, and the group is announced by its label.
+    Bulma draws the options as a row of joined buttons, the selected one in
+    the primary color.
   -->
-  <fieldset class="field">
-    <legend class="label mt-4 mb-1" :class="{ 'is-sr-only': hideLabel }">
+  <div class="field">
+    <div
+      :id="labelId"
+      class="label mt-4 mb-1"
+      :class="{ 'is-sr-only': hideLabel }"
+    >
       {{ label }}
-    </legend>
-    <div class="radios">
-      <label v-for="option in options" :key="option.value" class="radio">
-        <input
-          v-model="model"
-          type="radio"
-          :name="name"
-          :value="option.value"
-        />
-        {{ option.label }}
-      </label>
     </div>
-  </fieldset>
+    <RadioGroupRoot
+      v-model="model"
+      :aria-labelledby="labelId"
+      class="buttons has-addons"
+    >
+      <RadioGroupItem
+        v-for="option in options"
+        :key="option.value"
+        :value="option.value"
+        class="button"
+        :class="{ 'is-primary is-selected': option.value === model }"
+      >
+        {{ option.label }}
+      </RadioGroupItem>
+    </RadioGroupRoot>
+  </div>
 </template>
 
 <script setup>
 import { useId } from 'vue'
+import { RadioGroupItem, RadioGroupRoot } from 'reka-ui'
 
 defineProps({
   // Names the group, e.g. "Model".
@@ -38,5 +48,5 @@ defineProps({
 // The selected option's value.
 const model = defineModel()
 
-const name = useId()
+const labelId = useId()
 </script>

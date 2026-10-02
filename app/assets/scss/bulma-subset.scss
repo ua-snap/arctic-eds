@@ -56,7 +56,6 @@
 
 @use 'bulma/sass/form/shared';
 @use 'bulma/sass/form/input-textarea';
-@use 'bulma/sass/form/checkbox-radio';
 @use 'bulma/sass/form/tools';
 
 @use 'bulma/sass/components/breadcrumb';
@@ -114,8 +113,4 @@
 :root {
   @include light.light-theme;
   @include setup.setup-theme;
-
-  // Native form controls, such as the report's radio buttons, in the
-  // primary color rather than the browser's blue.
-  accent-color: var(--bulma-primary);
 }
