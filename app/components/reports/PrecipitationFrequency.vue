@@ -1,234 +1,223 @@
 <template>
-  <div class="pf" v-if="isPrecipitationFrequencyPresent">
-    <div class="data-intro content is-size-5">
-      <p>
-        The following results are precipitation frequencies by duration and
-        exceedance probability derived from two CMIP5 climate simulations
-        (GFDL-CM3 and NCAR-CCSM4) and one emissions scenario (RCP 8.5). Model
-        selection was based on the models' superior historical performance for
-        the Alaska region for three variables: surface air temperature,
-        precipitation, and sea level pressure. Data are summarized by three
-        future eras. The available data extent is the terrestrial area of
-        Alaska.
-      </p>
+  <ReportSection
+    id="precipitation-frequency"
+    title="Design storms (precipitation frequency)"
+  >
+    <template #lede>{{ lede }}</template>
 
-      <p>
-        These data were dynamically downscaled using the Advanced Research
-        version of the Weather Research and Forecasting (WRF) Model configured
-        with specific physical parameterizations for Alaska. The WRF Model is a
-        mesoscale numerical weather prediction system designed for both
-        atmospheric research and operational forecasting applications and is
-        supported by the National Center for Atmospheric Research. Data were
-        then further statistically downscaled and bias corrected via the delta
-        method using the NOAA Atlas 14 (Volume 7, Version 2.0: Alaska) dataset
-        which provides precipitation frequency estimates for Alaska for 5-minute
-        through 60-day durations at 1-year through 1,000-year average recurrence
-        intervals.
+    <div class="chart-controls">
+      <SegmentedControl
+        v-model="era"
+        label="Era"
+        hide-label
+        :options="eraOptions"
+      />
+      <label class="chart-select">
+        <span>Duration</span>
+        <select v-model="duration">
+          <option v-for="d in durations" :key="d.key" :value="d.key">
+            {{ d.name }}
+          </option>
+        </select>
+      </label>
+    </div>
+    <ReturnPeriodChart
+      :title="`${durationName} precipitation depth by return period, ${eraLabel}, RCP 8.5, for each model with its 95% confidence interval`"
+      :periods="periods"
+      :series="series"
+      :unit="unit.depth"
+    />
+    <p class="chart-note">
+      {{ durationName }} depth, RCP 8.5, {{ eraLabel }}. Shading is each
+      model&rsquo;s 95% confidence interval.
+    </p>
+
+    <details class="chart-table">
+      <summary>Show the numbers</summary>
+      <p class="is-size-7 mb-3">
+        Depth in {{ unit.depth }} by duration and annual exceedance probability,
+        {{ eraLabel }}, with the 95% confidence interval below each value.
       </p>
-      <ul class="module-link">
-        <li>
-          Use this dataset in an
-          <a
-            href="https://ua-snap.github.io/ardac/lab?path=design_discharge%2Fdesign_discharge.ipynb"
-            target="_blank"
-            >interactive computational module for
-            <strong>design discharge</strong>.</a
-          >
-        </li>
-      </ul>
-      <p>
-        Each table entry below shows the maximum expected precipitation at your
-        chosen location over the duration specified for that row (60 minutes to
-        60 days), at an exceedance probability specified for that column. A 95%
-        confidence interval appears below this value. See the report and
-        academic paper, linked below, for more information. The spatial
-        resolution (grid cell size) of all data is 481 m by 481 m.
-      </p>
-    </div>
-    <div class="radio-units no-print">
-      <div>
-        <LabeledRadioGroup
-          v-model="radioEra"
-          label="Era"
-          :options="eraOptions"
-        />
-      </div>
-    </div>
-    <div class="radio-units no-print">
-      <div>
-        <LabeledRadioGroup
-          v-model="radioPrecipFreqModel"
-          label="Model"
-          :options="modelOptions"
-        />
-      </div>
-    </div>
-    <h4 class="title is-4 mt-6">
-      Projected precipitation frequency, {{ radioPrecipFreqModel }},
-      {{ radioEra }}
-    </h4>
-    <table class="table is-fullwidth">
-      <thead>
-        <tr>
-          <th>Duration</th>
-          <th colspan="9">Annual exceedance probability</th>
-        </tr>
-        <tr>
-          <th></th>
-          <th
-            v-for="(interval, intIndex) in [
-              2, 5, 10, 25, 50, 100, 200, 500, 1000,
-            ]"
-            :key="intIndex"
-            width="10%"
-          >
-            {{ (1 / interval) * 100 }}%
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(duration, durIndex) in [
-            '60m',
-            '2h',
-            '3h',
-            '6h',
-            '12h',
-            '24h',
-            '2d',
-            '3d',
-            '4d',
-            '7d',
-            '10d',
-            '20d',
-            '30d',
-            '45d',
-            '60d',
-          ]"
-          :key="durIndex"
-        >
-          <td>{{ duration }}</td>
-          <td
-            v-for="(interval, intIndex) in [
-              2, 5, 10, 25, 50, 100, 200, 500, 1000,
-            ]"
-            :key="intIndex"
-          >
+      <div v-for="model in models" :key="model.key" class="table-container">
+        <table class="table is-narrow is-fullwidth">
+          <caption>
             {{
-              pf[
-                `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_mean`
-              ]
-            }}<UnitWidget unitType="mm_in" /><br />
-            <span class="is-size-7">
-              {{
-                pf[
-                  `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_min`
-                ]
-              }}&mdash;{{
-                pf[
-                  `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_max`
-                ]
-              }}
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              model.label
+            }},
+            {{
+              eraLabel
+            }}
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Duration</th>
+              <th v-for="period in periods" :key="period" scope="col">
+                {{ period }}-yr<br /><span class="range"
+                  >{{ formatNumber(100 / period, period > 100 ? 1 : 0) }}%</span
+                >
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="d in durations" :key="d.key">
+              <th scope="row">{{ d.short }}</th>
+              <td v-for="period in periods" :key="period">
+                {{ fmt(value(period, d.key, model.key).pf) }}
+                <span class="range"
+                  >{{ fmt(value(period, d.key, model.key).pf_lower) }} to
+                  {{ fmt(value(period, d.key, model.key).pf_upper) }}</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
 
-    <div class="block data-outro content is-size-5 no-print">
-      <h4 class="title is-5 no-print">
-        Data access &amp; additional information
-      </h4>
-
-      <ul>
-        <li>
-          <DownloadCsvButton
-            text="Download this data as CSV"
-            endpoint="precipitation/frequency/point"
-          />
-        </li>
-        <li>
-          Read a
-          <a
-            href="https://uaf-snap.org/wp-content/uploads/2021/05/dot-precip_FINAL-REPORT_20210526.pdf"
-            >detailed report and overview of the data preparation and research
-            methodology</a
-          >
-          used to prepare this dataset
-        </li>
-        <li>
-          Source dataset and metadata:
-          <a
-            href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
-            >Annual maximum precipitation projections for Alaska</a
-          >
-        </li>
-        <li>
-          Academic reference:
-          <blockquote>
-            Bieniek P, Walsh J, Fresco N, Tauxe C, Redilla K. Anticipated
-            changes in Alaska extreme precipitation. Journal of Applied
-            Meteorology and Climatology. 2022; 61(2):97-108.
-            <a href="https://doi.org/10.1175/JAMC-D-21-0106.1"
-              >https://doi.org/10.1175/JAMC-D-21-0106.1</a
-            >
-          </blockquote>
-        </li>
-      </ul>
-    </div>
-  </div>
+    <template #panel>
+      <DataPanel
+        topic="design storm"
+        :downloads="[{ endpoint: 'precipitation/frequency/point' }]"
+        note="Depth by duration × return period, per model and era, with 95% confidence intervals · CSV"
+        :calculations="[
+          {
+            label: 'Design discharge',
+            href: 'https://ua-snap.github.io/ardac/lab?path=design_discharge%2Fdesign_discharge.ipynb',
+          },
+        ]"
+        :made="[
+          ['Models', 'GFDL CM3, NCAR CCSM4'],
+          ['Scenario', 'RCP 8.5'],
+          ['Baseline', 'NOAA Atlas 14, Vol. 7 (Alaska)'],
+          ['Grid', '481 m'],
+          [
+            'Method',
+            'WRF dynamical downscaling, then delta method to Atlas 14',
+          ],
+          ['Coverage', '60 min–60 days; 2- to 1,000-year return periods'],
+        ]"
+        :sources="[
+          {
+            label: 'Annual maximum precipitation projections for Alaska',
+            href: 'https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6',
+          },
+          {
+            label: 'Methods report (PDF)',
+            href: 'https://uaf-snap.org/wp-content/uploads/2021/05/dot-precip_FINAL-REPORT_20210526.pdf',
+          },
+        ]"
+        :references="[bieniek2022]"
+      />
+    </template>
+  </ReportSection>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import DownloadCsvButton from '~/components/DownloadCsvButton'
-import UnitWidget from '~/components/UnitWidget'
-import LabeledRadioGroup from '~/components/LabeledRadioGroup'
+import ReportSection from '~/components/report/ReportSection'
+import DataPanel from '~/components/report/DataPanel'
+import SegmentedControl from '~/components/report/SegmentedControl'
+import ReturnPeriodChart from '~/components/charts/ReturnPeriodChart'
+import { formatNumber, palette } from '~/utils/chart'
+import { bieniek2022 } from '~/data/references'
 
-const {
-  results,
-  placeName,
-  isPlaceDefined,
-  units,
-  isPrecipitationFrequencyPresent,
-} = storeToRefs(useReportStore())
+const { results } = storeToRefs(useReportStore())
+const unit = useUnitLabels()
 
+const periods = [2, 5, 10, 25, 50, 100, 200, 500, 1000]
+const durations = [
+  ['60m', '60-minute', '60 min'],
+  ['2h', '2-hour', '2 hr'],
+  ['3h', '3-hour', '3 hr'],
+  ['6h', '6-hour', '6 hr'],
+  ['12h', '12-hour', '12 hr'],
+  ['24h', '24-hour', '24 hr'],
+  ['2d', '2-day', '2 days'],
+  ['3d', '3-day', '3 days'],
+  ['4d', '4-day', '4 days'],
+  ['7d', '7-day', '7 days'],
+  ['10d', '10-day', '10 days'],
+  ['20d', '20-day', '20 days'],
+  ['30d', '30-day', '30 days'],
+  ['45d', '45-day', '45 days'],
+  ['60d', '60-day', '60 days'],
+].map(([key, name, short]) => ({ key, name, short }))
+const models = [
+  {
+    key: 'GFDL-CM3',
+    label: 'GFDL CM3',
+    color: palette.warm,
+    band: palette.warmBand,
+  },
+  {
+    key: 'NCAR-CCSM4',
+    label: 'NCAR CCSM4',
+    color: palette.cool,
+    band: palette.coolBand,
+  },
+]
 const eraOptions = [
   { value: '2020-2049', label: '2020–2049' },
   { value: '2050-2079', label: '2050–2079' },
   { value: '2080-2099', label: '2080–2099' },
 ]
-const modelOptions = [
-  { value: 'NCAR-CCSM4', label: 'NCAR CCSM4' },
-  { value: 'GFDL-CM3', label: 'GFDL CM3' },
-]
 
-const radioEra = ref('2020-2049')
-const radioPrecipFreqModel = ref('NCAR-CCSM4')
+const era = ref('2050-2079')
+const duration = ref('24h')
+const eraLabel = computed(() => era.value.replace('-', '–'))
+const durationName = computed(
+  () => durations.find(d => d.key == duration.value).name
+)
 
-const pf = computed(() => {
-  let res = {}
-  for (const return_interval in results.value.precip_frequency) {
-    const durations = results.value.precip_frequency[return_interval]
-    for (const duration in durations) {
-      const models = durations[duration]
-      for (const model in models) {
-        const eras = models[model]
-        for (const era in eras) {
-          const precips = eras[era]
-          res[`pr_${return_interval}_${duration}_${model}_${era}_min`] =
-            precips.pf_lower
+function value(period, durationKey, model) {
+  return results.value.precip_frequency[period][durationKey][model][era.value]
+}
 
-          res[`pr_${return_interval}_${duration}_${model}_${era}_mean`] =
-            precips.pf
-
-          res[`pr_${return_interval}_${duration}_${model}_${era}_max`] =
-            precips.pf_upper
-        }
-      }
+const series = computed(() =>
+  models.map(model => {
+    const at = periods.map(p => value(p, duration.value, model.key))
+    return {
+      label: model.label,
+      color: model.color,
+      band: model.band,
+      values: at.map(v => v.pf),
+      lower: at.map(v => v.pf_lower),
+      upper: at.map(v => v.pf_upper),
     }
+  })
+)
+
+function fmt(v) {
+  return formatNumber(v, unit.value.metric ? 0 : 2)
+}
+
+// "The 24-hour, 100-year storm is 3.4 in (NCAR CCSM4) to 6.1 in (GFDL CM3)
+// in 2050–2079; the two models disagree widely."
+const lede = computed(() => {
+  const [low, high] = models
+    .map(model => ({
+      label: model.label,
+      depth: value(100, duration.value, model.key).pf,
+    }))
+    .sort((a, b) => a.depth - b.depth)
+  const digits = unit.value.metric ? 0 : 1
+  const depth = d => `${formatNumber(d, digits)} ${unit.value.depth}`
+  const ratio = high.depth / low.depth
+  let agreement
+  if (ratio >= 1.4) {
+    agreement = 'the two models disagree widely'
+  } else if (ratio >= 1.15) {
+    agreement = `the higher is ${Math.round(
+      (ratio - 1) * 100
+    )}% above the lower`
+  } else {
+    agreement = 'the two models agree closely'
   }
-  return res
+  return (
+    `The ${durationName.value}, 100-year storm is ${depth(low.depth)} ` +
+    `(${low.label}) to ${depth(high.depth)} (${high.label}) in ` +
+    `${eraLabel.value}; ${agreement}.`
+  )
 })
 </script>

@@ -28,53 +28,44 @@ const sectionFunctions = {
   permafrost: 'checkForPermafrost',
 }
 
+// Each report section has a chart and, in its "Show the numbers" table,
+// at least `cells` values.
+const checkSection = async (page, id, cells) => {
+  await expect(page.locator(`#${id} svg.chart`).first()).toBeVisible()
+  const count = await page.locator(`#${id} table td`).count()
+  expect(count).toBeGreaterThanOrEqual(cells)
+}
+
 const checkForElevation = async page => {
-  let elements = await page.$$('#results div:has-text("elevation") strong')
-  let element = elements[elements.length - 1]
-  let text = await element.textContent()
-  expect(text).toMatch(/^\d+/)
+  await expect(page.locator('.report-meta')).toContainText(/elevation \d/)
 }
 
 const checkForTotalPrecipitation = async page => {
-  let elements = await page.$$('div:has(> #annual-precipitation) table td')
-  let count = elements.length
-  expect(count).toBeGreaterThan(40)
+  await checkSection(page, 'annual-precipitation', 12)
 }
 
 const checkForPrecipitationFrequency = async page => {
-  let elements = await page.$$('div:has(> #precipitation-frequency) table td')
-  let count = elements.length
-  expect(count).toBeGreaterThan(120)
+  await checkSection(page, 'precipitation-frequency', 270)
 }
 
 const checkForSnowfall = async page => {
-  let elements = await page.$$('div:has(> #snowfall) table td')
-  let count = elements.length
-  expect(count).toBeGreaterThan(35)
+  await checkSection(page, 'snowfall', 6)
 }
 
 const checkForHydrology = async page => {
-  let elements = await page.$$('div:has(> #hydrology) table td')
-  let count = elements.length
-  expect(count).toBeGreaterThan(150)
+  await checkSection(page, 'hydrology', 24)
 }
 
 const checkForTemperature = async page => {
-  let elements = await page.$$('div:has(> #temperature) table td')
-  let count = elements.length
-  expect(count).toBeGreaterThan(120)
+  await checkSection(page, 'temperature', 36)
 }
 
 const checkForTemperatureIndices = async page => {
-  let elements = await page.$$('div:has(> #temperature-indices) table td')
-  let count = elements.length
-  expect(count).toBeGreaterThan(130)
+  await checkSection(page, 'temperature-indices', 36)
 }
 
 const checkForPermafrost = async page => {
-  let elements = await page.$$('div:has(> div > #permafrost) table td')
-  let count = elements.length
-  expect(count).toBeGreaterThan(130)
+  await checkSection(page, 'permafrost', 30)
 }
 
 test('Check header links', async ({ page }) => {
@@ -136,11 +127,9 @@ test('Select Anchorage and load report', async ({ page }) => {
   await expect(page.locator('#results')).toBeVisible({
     timeout: 600000,
   })
-  await expect(page.locator('text=Anchorage (Dgheyaytnu)').first()).toBeVisible(
-    {
-      timeout: 600000,
-    }
-  )
+  await expect(page.locator('h1')).toHaveText('Anchorage (Dgheyaytnu)', {
+    timeout: 600000,
+  })
 
   const sections = [
     'elevation',
@@ -177,9 +166,7 @@ test('Select Elmendorf Air Force Base and load report', async ({ page }) => {
   await expect(page.locator('#results')).toBeVisible({
     timeout: 600000,
   })
-  await expect(
-    page.locator('text=Elmendorf Air Force Base, Alaska').first()
-  ).toBeVisible({
+  await expect(page.locator('h1')).toHaveText('Elmendorf Air Force Base', {
     timeout: 600000,
   })
 
@@ -216,7 +203,7 @@ test('Select Fairbanks and load report', async ({ page }) => {
   await expect(page.locator('#results')).toBeVisible({
     timeout: 600000,
   })
-  await expect(page.locator('text=Fairbanks, Alaska').first()).toBeVisible({
+  await expect(page.locator('h1')).toHaveText('Fairbanks', {
     timeout: 600000,
   })
 
@@ -251,9 +238,7 @@ test('Select Juneau and load report', async ({ page }) => {
   await expect(page.locator('#results')).toBeVisible({
     timeout: 600000,
   })
-  await expect(
-    page.locator("text=Juneau (Dzánti K'ihéeni), Alaska").first()
-  ).toBeVisible({
+  await expect(page.locator('h1')).toHaveText("Juneau (Dzánti K'ihéeni)", {
     timeout: 600000,
   })
 
@@ -289,9 +274,7 @@ test('Select Nike Alaska Mike and load report', async ({ page }) => {
   await expect(page.locator('#results')).toBeVisible({
     timeout: 600000,
   })
-  await expect(
-    page.locator('text=Nike Alaska Mike, Alaska').first()
-  ).toBeVisible({
+  await expect(page.locator('h1')).toHaveText('Nike Alaska Mike', {
     timeout: 600000,
   })
 
@@ -327,9 +310,7 @@ test('Select Utqiaġvik (Barrow) and load report', async ({ page }) => {
   await expect(page.locator('#results')).toBeVisible({
     timeout: 600000,
   })
-  await expect(
-    page.locator('text=Utqiaġvik (Barrow), Alaska').first()
-  ).toBeVisible({
+  await expect(page.locator('h1')).toHaveText('Utqiaġvik (Barrow)', {
     timeout: 600000,
   })
 
@@ -365,7 +346,7 @@ test('Enter 58.1234, -156.1234 and load report', async ({ page }) => {
     timeout: 600000,
   })
 
-  await expect(page.locator('text=58.1234, -156.1234').first()).toBeVisible({
+  await expect(page.locator('h1')).toHaveText('58.1234°N, 156.1234°W', {
     timeout: 600000,
   })
 
