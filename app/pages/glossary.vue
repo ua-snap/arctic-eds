@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
-    <div class="content clamp is-size-5">
+  <div class="container is-max-desktop">
+    <div class="content is-size-5">
       <h1>Glossary of terms</h1>
       <dl>
-        <dt><a id="bias_correction">Bias correction</a></dt>
+        <dt id="bias_correction" class="has-text-weight-semibold mt-5">
+          Bias correction
+        </dt>
         <dd>
           Bias-correction is the process of mathematically scaling climate model
           outputs to account for their systematic errors, in order to improve
@@ -15,7 +17,9 @@
           for point locations. Bias correction is applied to most modeled
           climate data.
         </dd>
-        <dt><a id="downscaling">Downscaling</a></dt>
+        <dt id="downscaling" class="has-text-weight-semibold mt-5">
+          Downscaling
+        </dt>
         <dd>
           Downscaling is a collection of methods which can transform
           lower-resolution (coarser, more pixelated) datasets into
@@ -24,14 +28,24 @@
           two broad categories: dynamical and statistical.
 
           <dl>
-            <dt><a id="dynamical-downscaling">Dynamical downscaling</a></dt>
+            <dt
+              id="dynamical-downscaling"
+              class="has-text-weight-semibold mt-5"
+            >
+              Dynamical downscaling
+            </dt>
             <dd>
               Dynamical downscaling involves setting up boundary conditions for
               a region using a relatively coarse Global Climate Model (GCM),
               then creating a higher resolution regional model based on physical
               principles. This method is computationally intensive.
             </dd>
-            <dt><a id="statistical-downscaling">Statistical downscaling</a></dt>
+            <dt
+              id="statistical-downscaling"
+              class="has-text-weight-semibold mt-5"
+            >
+              Statistical downscaling
+            </dt>
             <dd>
               Statistical downscaling involves defining a mathematical
               relationship between historic observed climate data and the output
@@ -41,7 +55,9 @@
           </dl>
         </dd>
 
-        <dt><a id="emissions-scenario">Emissions scenario</a></dt>
+        <dt id="emissions-scenario" class="has-text-weight-semibold mt-5">
+          Emissions scenario
+        </dt>
         <dd>
           Emission scenarios reflect plausible future human greenhouse gas and
           other aerosol emissions. In the past, the Intergovernmental Panel on
@@ -56,14 +72,18 @@
           Pathways, or SSPs. SSPs include information about demographics and
           policy, which underlie each scenario.
         </dd>
-        <dt><a id="exceedance-probability">Exceedance probability</a></dt>
+        <dt id="exceedance-probability" class="has-text-weight-semibold mt-5">
+          Exceedance probability
+        </dt>
         <dd>
           Exceedance probability is the statistically determined probability
           that a certain value will be exceeded in a specified future time
           period. In hydrology, the exceedance probability is the inverse of the
           annual recurrence interval, return interval, or return period.
         </dd>
-        <dt><a id="gcm">Global climate model (GCM)</a></dt>
+        <dt id="gcm" class="has-text-weight-semibold mt-5">
+          Global climate model (GCM)
+        </dt>
         <dd>
           A global climate model (GCM) is a mathematical representation of the
           interactions and energy balance among Earth’s atmosphere, land
@@ -72,7 +92,9 @@
           coupled system. Outputs from GCMs provide long-term climate
           projections.
         </dd>
-        <dt><a id="gridded_dataset">Gridded dataset</a></dt>
+        <dt id="gridded_dataset" class="has-text-weight-semibold mt-5">
+          Gridded dataset
+        </dt>
         <dd>
           A gridded dataset is a continuous grid-based representation of a
           variable (e.g. temperature) in two dimensions (e.g latitude and
@@ -84,7 +106,9 @@
           datasets, mathematical interpolation and modeling is required.
         </dd>
 
-        <dt><a id="reanalaysis">Reanalysis</a></dt>
+        <dt id="reanalaysis" class="has-text-weight-semibold mt-5">
+          Reanalysis
+        </dt>
         <dd>
           Climate reanalyses combine past weather observations with models to
           generate time series of climate variables. ERA5 is the latest climate
@@ -96,20 +120,3 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-// Same size as the h2 this heading used to be.
-h1 {
-  font-size: 1.75em;
-}
-dt {
-  font-weight: 500;
-  margin-top: 1.5rem;
-
-  a {
-    color: black !important;
-    cursor: default;
-  }
-}
-</style>
-

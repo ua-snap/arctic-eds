@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="report--minimap--wrapper">
+    <div class="mt-5 mb-6">
       <div
         id="report--minimmap--map"
         role="region"
@@ -11,9 +11,7 @@
 </template>
 
 <style lang="scss" scoped>
-.report--minimap--wrapper {
-  margin: 2rem 0 3rem;
-}
+// Leaflet needs the map's size set.
 #report--minimmap--map {
   height: 300px;
   width: 300px;
@@ -30,6 +28,7 @@ const { latLng, isPlaceDefined, placeName } = storeToRefs(useReportStore())
 // Leaflet instances are kept non-reactive on purpose.
 let map
 let marker
+let unmounted = false
 
 function getBaseMapAndLayers() {
   var baseLayer = new L.tileLayer.wms(
@@ -58,8 +57,13 @@ function getBaseMapAndLayers() {
   return config
 }
 
-onMounted(() => {
+onMounted(async () => {
   if (isPlaceDefined.value) {
+    // Sets the `L` global used here; Leaflet is loaded on demand.
+    await loadLeaflet()
+    if (unmounted) {
+      return
+    }
     map = L.map('report--minimmap--map', getBaseMapAndLayers())
 
     marker = L.marker(latLng.value).addTo(map)
@@ -68,6 +72,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  unmounted = true
   marker = undefined
   if (map) {
     map.remove()

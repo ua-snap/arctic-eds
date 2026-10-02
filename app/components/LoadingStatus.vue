@@ -8,7 +8,7 @@
         {{ placeName }}&hellip;
       </h4>
       <p>Hang on, this could take up to a few minutes!</p>
-      <b-progress type="is-info"></b-progress>
+      <progress class="progress is-info"></progress>
     </div>
 
     <div v-if="state && state.error" class="error content is-size-5">
@@ -60,7 +60,6 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped></style>
 <script setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'

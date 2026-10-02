@@ -47,48 +47,31 @@
     </div>
     <div class="radio-units no-print">
       <div>
-        <b-field label="Era">
-          <b-radio v-model="radioEra" name="radioEra" native-value="2020-2049">
-            2020&ndash;2049
-          </b-radio>
-          <b-radio v-model="radioEra" name="radioEra" native-value="2050-2079">
-            2050&ndash;2079
-          </b-radio>
-          <b-radio v-model="radioEra" name="radioEra" native-value="2080-2099">
-            2080&ndash;2099
-          </b-radio>
-        </b-field>
+        <LabeledRadioGroup
+          v-model="radioEra"
+          label="Era"
+          :options="eraOptions"
+        />
       </div>
     </div>
     <div class="radio-units no-print">
       <div>
-        <b-field label="Model">
-          <b-radio
-            v-model="radioPrecipFreqModel"
-            name="radioPrecipFreqModel"
-            native-value="NCAR-CCSM4"
-          >
-            NCAR CCSM4
-          </b-radio>
-          <b-radio
-            v-model="radioPrecipFreqModel"
-            name="radioPrecipFreqModel"
-            native-value="GFDL-CM3"
-          >
-            GFDL CM3
-          </b-radio>
-        </b-field>
+        <LabeledRadioGroup
+          v-model="radioPrecipFreqModel"
+          label="Model"
+          :options="modelOptions"
+        />
       </div>
     </div>
     <h4 class="title is-4 mt-6">
       Projected precipitation frequency, {{ radioPrecipFreqModel }},
       {{ radioEra }}
     </h4>
-    <table class="table">
+    <table class="table is-fullwidth">
       <thead>
         <tr>
-          <th class="no-border">Duration</th>
-          <th class="no-border" colspan="9">Annual exceedance probability</th>
+          <th>Duration</th>
+          <th colspan="9">Annual exceedance probability</th>
         </tr>
         <tr>
           <th></th>
@@ -136,7 +119,7 @@
                 `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_mean`
               ]
             }}<UnitWidget unitType="mm_in" /><br />
-            <span class="small-text">
+            <span class="is-size-7">
               {{
                 pf[
                   `pr_${interval}_${duration}_${radioPrecipFreqModel}_${radioEra}_min`
@@ -201,6 +184,7 @@ import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
+import LabeledRadioGroup from '~/components/LabeledRadioGroup'
 
 const {
   results,
@@ -209,6 +193,16 @@ const {
   units,
   isPrecipitationFrequencyPresent,
 } = storeToRefs(useReportStore())
+
+const eraOptions = [
+  { value: '2020-2049', label: '2020–2049' },
+  { value: '2050-2079', label: '2050–2079' },
+  { value: '2080-2099', label: '2080–2099' },
+]
+const modelOptions = [
+  { value: 'NCAR-CCSM4', label: 'NCAR CCSM4' },
+  { value: 'GFDL-CM3', label: 'GFDL CM3' },
+]
 
 const radioEra = ref('2020-2049')
 const radioPrecipFreqModel = ref('NCAR-CCSM4')
@@ -238,16 +232,3 @@ const pf = computed(() => {
   return res
 })
 </script>
-
-<style lang="scss" scoped>
-table.table {
-  width: 100%;
-  table-layout: fixed;
-  .small-text {
-    font-size: 85%;
-  }
-  .no-border {
-    border: none;
-  }
-}
-</style>

@@ -6,51 +6,27 @@
     @click="toggleLayer"
     @keydown.enter.prevent="toggleLayer"
     @keydown.space.prevent="toggleLayer"
-    class="layer columns"
-    :class="{ active: active }"
+    class="columns is-size-5 is-clickable"
+    :class="{
+      'has-background-primary-light has-text-weight-semibold': active,
+    }"
   >
-    <span class="column description">
+    <span class="column">
       <div class="layer-title">
         <slot name="title">{{ layer.title }}</slot>
       </div>
-      <div class="subtext"><slot name="subtext"></slot></div>
+      <div class="has-text-weight-normal">
+        <slot name="subtext"></slot>
+      </div>
     </span>
-    <span class="column is-1 if-active" aria-hidden="true">
+    <span
+      class="column is-1 is-flex is-align-items-center is-size-4"
+      aria-hidden="true"
+    >
       <div v-if="active">&#x25b6;</div>
     </span>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.layer {
-  line-height: 1.2;
-  font-size: 1.25rem;
-  cursor: pointer;
-  padding-right: 0;
-
-  // A lighter tint of the turquoise accent, with a full-strength bar at
-  // the side, keeps the text well above 4.5:1 contrast (WCAG 1.4.3).
-  &.active {
-    font-weight: 600;
-    background-color: #d3dcd9;
-    box-shadow: inset 6px 0 0 #8ba09a;
-  }
-
-  .if-active {
-    display: flex;
-    align-items: center;
-    font-size: 125%;
-  }
-
-  .subtext {
-    display: block;
-    margin-top: 0;
-    padding-top: 0;
-
-    font-weight: 400;
-  }
-}
-</style>
 
 <script setup>
 import { computed, nextTick, onMounted } from 'vue'

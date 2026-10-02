@@ -1,17 +1,9 @@
 <template>
   <span class="units">
     <span v-html="symbol.space"></span
-    ><span class="light" v-html="symbol.symbol"></span>
+    ><span class="has-text-grey" v-html="symbol.symbol"></span>
   </span>
 </template>
-<style lang="scss" scoped>
-.light {
-  color: #888;
-  @media print {
-    color: #666;
-  }
-}
-</style>
 <script setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'

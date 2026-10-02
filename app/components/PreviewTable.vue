@@ -1,8 +1,10 @@
 <template>
-  <table class="preview">
+  <table class="table is-bordered is-narrow is-size-7">
     <thead>
       <tr>
-        <th scope="col" v-for="col in csvHeader">{{ col }}</th>
+        <th scope="col" v-for="col in csvHeader" class="has-text-weight-bold">
+          {{ col }}
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -10,7 +12,12 @@
         <td v-for="value in row">{{ value }}</td>
       </tr>
       <tr>
-        <td :colspan="csvHeader.length" class="vellip">&#8942;</td>
+        <td
+          :colspan="csvHeader.length"
+          class="has-text-centered has-text-weight-bold is-size-6"
+        >
+          &#8942;
+        </td>
       </tr>
       <tr v-for="row in csvTail">
         <td v-for="value in row">{{ value }}</td>
@@ -18,7 +25,9 @@
     </tbody>
     <tfoot>
       <tr>
-        <td :colspan="csvHeader.length">{{ sizeBlurb }}</td>
+        <td :colspan="csvHeader.length" class="has-text-grey">
+          {{ sizeBlurb }}
+        </td>
       </tr>
     </tfoot>
   </table>

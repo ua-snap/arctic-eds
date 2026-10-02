@@ -274,56 +274,27 @@
     </div>
     <div class="radio-units no-print">
       <div>
-        <b-field label="Model">
-          <b-radio
-            v-model="radioTempModel"
-            name="radioTempModel"
-            native-value="5ModelAvg"
-          >
-            5 Model Average
-          </b-radio>
-          <b-radio
-            v-model="radioTempModel"
-            name="radioTempModel"
-            native-value="GFDL-CM3"
-          >
-            GFDL CM3
-          </b-radio>
-          <b-radio
-            v-model="radioTempModel"
-            name="radioTempModel"
-            native-value="NCAR-CCSM4"
-          >
-            NCAR CCSM4
-          </b-radio>
-        </b-field>
+        <LabeledRadioGroup
+          v-model="radioTempModel"
+          label="Model"
+          :options="modelOptions"
+        />
       </div>
     </div>
     <div class="radio-units no-print">
       <div>
-        <b-field label="Scenario">
-          <b-radio
-            v-model="radioTempScenario"
-            name="radioTempScenario"
-            native-value="rcp45"
-          >
-            RCP 4.5
-          </b-radio>
-          <b-radio
-            v-model="radioTempScenario"
-            name="radioTempScenario"
-            native-value="rcp85"
-          >
-            RCP 8.5
-          </b-radio>
-        </b-field>
+        <LabeledRadioGroup
+          v-model="radioTempScenario"
+          label="Scenario"
+          :options="scenarioOptions"
+        />
       </div>
     </div>
     <div class="block">
-      <table class="table months mt-3">
+      <table class="table is-fullwidth is-narrow mt-3">
         <thead>
           <tr>
-            <th scope="col" class="eraCol"></th>
+            <th scope="col"></th>
             <th scope="col">January</th>
             <th scope="col">February</th>
             <th scope="col">March</th>
@@ -363,7 +334,7 @@
                   `${month}`
                 ].tasmean
               }}<UnitWidget /><br />
-              <span class="small-text">
+              <span class="is-size-7">
                 {{
                   results.temperature.summary.historical['CRU-TS'].historical[
                     `${month}`
@@ -400,7 +371,7 @@
                   `${radioTempScenario}`
                 ][`${month}`]['2010-2039'].tasmean
               }}<UnitWidget /><br />
-              <span class="small-text">
+              <span class="is-size-7">
                 {{
                   results.temperature.summary.projected[`${radioTempModel}`][
                     `${radioTempScenario}`
@@ -437,7 +408,7 @@
                   `${radioTempScenario}`
                 ][`${month}`]['2040-2069'].tasmean
               }}<UnitWidget /><br />
-              <span class="small-text">
+              <span class="is-size-7">
                 {{
                   results.temperature.summary.projected[`${radioTempModel}`][
                     `${radioTempScenario}`
@@ -474,7 +445,7 @@
                   `${radioTempScenario}`
                 ][`${month}`]['2070-2099'].tasmean
               }}<UnitWidget /><br />
-              <span class="small-text">
+              <span class="is-size-7">
                 {{
                   results.temperature.summary.projected[`${radioTempModel}`][
                     `${radioTempScenario}`
@@ -562,10 +533,21 @@ import { storeToRefs } from 'pinia'
 import DownloadCsvButton from '~/components/DownloadCsvButton'
 import UnitWidget from '~/components/UnitWidget'
 import PreviewTable from '~/components/PreviewTable'
+import LabeledRadioGroup from '~/components/LabeledRadioGroup'
 
 const { round } = useNumeric()
 const { units, results, placeName, isPlaceDefined, isTemperaturePresent } =
   storeToRefs(useReportStore())
+
+const modelOptions = [
+  { value: '5ModelAvg', label: '5 Model Average' },
+  { value: 'GFDL-CM3', label: 'GFDL CM3' },
+  { value: 'NCAR-CCSM4', label: 'NCAR CCSM4' },
+]
+const scenarioOptions = [
+  { value: 'rcp45', label: 'RCP 4.5' },
+  { value: 'rcp85', label: 'RCP 8.5' },
+]
 
 const radioTempModel = ref('5ModelAvg')
 const radioTempScenario = ref('rcp45')
@@ -573,25 +555,3 @@ const radioTempScenario = ref('rcp45')
 const precision = computed(() => (units.value == 'metric' ? 3 : 2))
 const deltaPrecision = computed(() => (units.value == 'metric' ? 2 : 1))
 </script>
-
-<style lang="scss" scoped>
-.small-text {
-  font-size: 80%;
-}
-table.months {
-  width: 100%;
-  table-layout: fixed;
-  td,
-  th {
-    padding: 0.5em 0.4em;
-
-    &.eraCol {
-      width: 10%;
-    }
-  }
-  th[scope='row'] {
-    line-height: 1.2;
-    font-size: 1em;
-  }
-}
-</style>

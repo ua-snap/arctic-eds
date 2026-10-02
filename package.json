@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^1.0.2",
-    "buefy": "^3.1.0",
     "bulma": "^1.0.4",
     "leaflet": "^1.9.4",
     "lodash-es": "^4.18.1",

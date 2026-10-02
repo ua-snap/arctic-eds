@@ -50,18 +50,10 @@ export default defineNuxtConfig({
         { property: 'og:description', content: metas.description },
         { property: 'og:site_name', content: metas.title },
       ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        // Material Design Icons for Buefy. The nuxt-buefy module used to
-        // inject this: an async preload that promotes itself to a stylesheet.
-        {
-          type: 'text/css',
-          href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css',
-          rel: 'preload',
-          as: 'style',
-          onload: "this.rel='stylesheet'",
-        },
-      ],
+      // No icon font: the site's two icons are inline SVGs from Material
+      // Design Icons (PlaceSearch.vue, LoadingStatus.vue). The full icon
+      // font was about 360 KB to download.
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
       script: [
         {
           async: true,
@@ -107,12 +99,12 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          // Bulma 1.0.4 (and Buefy through it) still uses Sass features that
-          // Dart Sass deprecates, such as the global unquote() and if()
-          // functions, so every build printed their deprecation warnings.
-          // They cannot be fixed from this project. quietDeps hides warnings
-          // raised inside dependencies only; deprecated code in our own
-          // styles still warns. It does not change the compiled CSS.
+          // Bulma 1.0.4 still uses Sass features that Dart Sass deprecates,
+          // such as the global unquote() and if() functions, so every build
+          // printed their deprecation warnings. They cannot be fixed from
+          // this project. quietDeps hides warnings raised inside dependencies
+          // only; deprecated code in our own styles still warns. It does not
+          // change the compiled CSS.
           quietDeps: true,
         },
       },
@@ -127,14 +119,6 @@ export default defineNuxtConfig({
       // items, so keep the Vue 2 behaviour.
       whitespace: 'preserve',
     },
-  },
-
-  build: {
-    // Buefy ships CommonJS and ESM builds but no package "exports" map, so
-    // Node's resolver (used by the prerender/server bundle) picks the CJS
-    // build, whose default import is not the plugin. Bundling it with the
-    // server code makes the ESM build win on both sides.
-    transpile: ['buefy'],
   },
 
   hooks: {

@@ -1,12 +1,6 @@
 <template>
   <a :href="downloadTarget" class="no-print">{{ text }}</a>
 </template>
-<style lang="scss" scoped>
-.single {
-  display: block;
-  max-width: 30em;
-}
-</style>
 <script setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'

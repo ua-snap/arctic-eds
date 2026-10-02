@@ -1,12 +1,6 @@
 <template>
-  <span class="diff" v-html="diff"></span>
+  <span class="is-block has-text-weight-medium" v-html="diff"></span>
 </template>
-<style lang="scss" scoped>
-.diff {
-  display: block;
-  font-weight: 500;
-}
-</style>
 <script setup>
 import { computed } from 'vue'
 

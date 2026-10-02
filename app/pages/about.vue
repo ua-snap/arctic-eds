@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container is-max-desktop">
     <div class="content is-size-5">
       <h1>About this tool</h1>
       <p>
@@ -13,22 +13,18 @@
         thorough bibliography.
       </p>
     </div>
-    <div>
-      <div class="fixed-grid has-1-cols-mobile has-2-cols-tablet">
-        <div class="grid">
-          <div class="cell">
-            <img
-              src="~/assets/images/atlas-cover.jpg"
-              alt="Cover of the Environmental Atlas of Alaska, April 1978"
-            />
-          </div>
-          <div class="cell">
-            <img
-              src="~/assets/images/heating_degree_days.png"
-              alt="Image from the Environmental Atlas of Alaska, April 1978"
-            />
-          </div>
-        </div>
+    <div class="columns my-5">
+      <div class="column">
+        <img
+          src="~/assets/images/atlas-cover.jpg"
+          alt="Cover of the Environmental Atlas of Alaska, April 1978"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="~/assets/images/heating_degree_days.png"
+          alt="Image from the Environmental Atlas of Alaska, April 1978"
+        />
       </div>
     </div>
     <div class="content is-size-5">
@@ -110,22 +106,3 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-// Same size as the h2 this heading used to be.
-h1 {
-  font-size: 1.75em;
-}
-.content {
-  max-width: 40em;
-  margin: 1.25rem auto;
-}
-img {
-  padding: 1rem;
-}
-h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-</style>
-
