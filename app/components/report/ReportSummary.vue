@@ -10,13 +10,13 @@
       id="summary-title"
       class="title is-4 is-size-5-mobile mb-4 has-text-weight-normal"
     >
-      Mid-century (2040&ndash;2069) vs. modeled historical baseline
+      Mid-century (2040&ndash;2069) vs. 1980&ndash;2009 baseline
     </h2>
 
     <table class="shift-table">
       <caption class="is-sr-only">
-        Mean projected shift from the modeled historical baseline, with the
-        range across models.
+        Mean projected shift from the 1980&ndash;2009 baseline, with the range
+        across models and scenarios.
       </caption>
       <thead>
         <tr>
@@ -65,8 +65,16 @@
       </tbody>
     </table>
 
-    <p class="summary-footer">
-      Bar = low to high across models and scenarios &middot; dot = mean
+    <p v-if="designStorm" class="design-storm">
+      <a href="#precipitation-frequency" class="name">Design storm</a>
+      (24-hour, 100-year, 2050&ndash;2079): {{ designStorm }} across the two
+      models. No historical design storm is available to compare with.
+    </p>
+
+    <p v-if="rows.some(row => row.bar)" class="summary-footer">
+      Each model and scenario&rsquo;s 2040&ndash;2069 average vs. the
+      1980&ndash;2009 baseline &middot; bar = lowest to highest &middot; dot =
+      mean
     </p>
   </section>
 </template>
@@ -88,14 +96,20 @@ const unit = useUnitLabels()
 
 const percent = value => formatSigned(value * 100) + '%'
 
-// Degree days: the mean shift compares means, and the range compares the
-// lowest and highest values with the baseline's lowest and highest, as the
-// report's earlier summary tables did.
-function degreeDayRow(key, row) {
-  const { modeled_baseline: base, '2040-2069': mid } =
-    results.value[key].summary
-  const changes = [mid.ddmin / base.ddmin - 1, mid.ddmax / base.ddmax - 1]
-  const mean = mid.ddmean / base.ddmean - 1
+// Every row uses one method: each model and scenario's 2040–2069 mean is
+// compared with the 1980–2009 baseline mean. The dot is the average of those
+// changes and the bar runs from the lowest to the highest. Without the API's
+// per-model means (model_means), the row shows the pooled mean and no range.
+function shiftRow(row, baseline, pooledMean, modelMeans) {
+  const means = Object.values(modelMeans ?? {}).flatMap(scenarios =>
+    Object.values(scenarios)
+  )
+  if (!means.length) {
+    const mean = pooledMean / baseline - 1
+    return { ...row, bar: false, shift: percent(mean), note: row.note ?? '—' }
+  }
+  const changes = means.map(value => value / baseline - 1)
+  const mean = changes.reduce((sum, c) => sum + c, 0) / changes.length
   const [low, high] = [Math.min(...changes), Math.max(...changes)]
   return {
     ...row,
@@ -108,49 +122,48 @@ function degreeDayRow(key, row) {
   }
 }
 
-// Precipitation: the range is the change in the lowest and highest annual
-// totals, shown in depth and placed on the bar as a share of the baseline
-// mean.
-function precipitationRow() {
-  const { historical: base, '2040-2069': mid } =
-    results.value.precipitation.summary
-  const changes = [mid.prmin - base.prmin, mid.prmax - base.prmax]
-  const [low, high] = [Math.min(...changes), Math.max(...changes)]
-  const digits = unit.value.metric ? 0 : 1
-  const depth = value => formatSigned(value, digits)
-  const mean = mid.prmean / base.prmean - 1
-  return {
-    name: 'Annual precipitation',
-    use: 'drainage, water supply',
-    section: 'annual-precipitation',
-    tone: 'wet',
-    bar: true,
-    mean,
-    low: low / base.prmean,
-    high: high / base.prmean,
-    shift: percent(mean),
-    note: `${depth(low)} to ${depth(high)} ${unit.value.depth}`,
-  }
+function degreeDayRow(key, row) {
+  const { summary, model_means } = results.value[key]
+  return shiftRow(
+    row,
+    summary.modeled_baseline.ddmean,
+    summary['2040-2069'].ddmean,
+    model_means?.['2040-2069']
+  )
 }
 
-// Design storm: the 24-hour, 100-year depth from each model, 2050–2079.
-function designStormRow() {
+function precipitationRow() {
+  const { summary, model_means } = results.value.precipitation
+  // The API's 1980–2009 summary matches the degree days' baseline years;
+  // older responses only have the full 1901–2015 record.
+  const baseline = summary['1980-2009'] ?? summary.historical
+  return shiftRow(
+    {
+      name: 'Annual precipitation',
+      use: 'drainage, water supply',
+      section: 'annual-precipitation',
+      tone: 'wet',
+      ...(!summary['1980-2009'] && { note: 'vs. the 1901–2015 average' }),
+    },
+    baseline.prmean,
+    summary['2040-2069'].prmean,
+    model_means?.['2040-2069']
+  )
+}
+
+// Design storm: the 24-hour, 100-year depth from each model, 2050–2079. The
+// API has no historical design storm to compare with, so this sits under the
+// table rather than in it.
+const designStorm = computed(() => {
+  if (!isPrecipitationFrequencyPresent.value) return null
   const models = results.value.precip_frequency['100']['24h']
   const depths = Object.values(models)
     .map(eras => eras['2050-2079'].pf)
     .sort((a, b) => a - b)
   const digits = unit.value.metric ? 0 : 1
   const range = depths.map(d => formatNumber(d, digits)).join('–')
-  return {
-    name: 'Design storm',
-    use: '24-hour, 100-year · culverts',
-    section: 'precipitation-frequency',
-    tone: 'wet',
-    bar: false,
-    shift: `${range} ${unit.value.depth}`,
-    note: 'Two models, 2050–2079; see design storms below',
-  }
-}
+  return `${range} ${unit.value.depth}`
+})
 
 const rows = computed(() =>
   [
@@ -176,7 +189,6 @@ const rows = computed(() =>
         tone: 'warm',
       }),
     isPrecipitationPresent.value && precipitationRow(),
-    isPrecipitationFrequencyPresent.value && designStormRow(),
   ].filter(Boolean)
 )
 
@@ -325,6 +337,16 @@ $rule: #ebe8e3;
     border: 2px solid #fff;
     border-radius: 7px;
     background: var(--tone);
+  }
+}
+
+.design-storm {
+  padding: 0.9rem 0;
+  border-top: 1px solid $rule;
+  font-size: 0.875rem;
+
+  .name {
+    font-weight: 600;
   }
 }
 
