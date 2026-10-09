@@ -204,31 +204,48 @@ function temperatureRow() {
   }
 }
 
+// A row whose data is missing or unexpected is left out rather than taking
+// the whole summary down; its own section shows the error.
+function safely(build) {
+  try {
+    return build()
+  } catch (error) {
+    console.error('Summary row failed', error)
+    return null
+  }
+}
+
 const rows = computed(() =>
   [
-    isTemperaturePresent.value && temperatureRow(),
+    isTemperaturePresent.value && safely(temperatureRow),
     isFreezingIndexPresent.value &&
-      degreeDayRow('freezing_index', {
-        name: 'Freezing index',
-        use: 'roads, embankments, frost depth',
-        section: 'freezing-index',
-        tone: 'cold',
-      }),
+      safely(() =>
+        degreeDayRow('freezing_index', {
+          name: 'Freezing index',
+          use: 'roads, embankments, frost depth',
+          section: 'freezing-index',
+          tone: 'cold',
+        })
+      ),
     isThawingIndexPresent.value &&
-      degreeDayRow('thawing_index', {
-        name: 'Thawing index',
-        use: 'permafrost, thaw settlement',
-        section: 'thawing-index',
-        tone: 'warm',
-      }),
+      safely(() =>
+        degreeDayRow('thawing_index', {
+          name: 'Thawing index',
+          use: 'permafrost, thaw settlement',
+          section: 'thawing-index',
+          tone: 'warm',
+        })
+      ),
     isHeatingDegreeDaysPresent.value &&
-      degreeDayRow('heating_degree_days', {
-        name: 'Heating degree days',
-        use: 'building energy, fuel',
-        section: 'heating-degree-days',
-        tone: 'warm',
-      }),
-    isPrecipitationPresent.value && precipitationRow(),
+      safely(() =>
+        degreeDayRow('heating_degree_days', {
+          name: 'Heating degree days',
+          use: 'building energy, fuel',
+          section: 'heating-degree-days',
+          tone: 'warm',
+        })
+      ),
+    isPrecipitationPresent.value && safely(precipitationRow),
   ].filter(Boolean)
 )
 

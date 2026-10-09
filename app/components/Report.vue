@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="!state.pending && !state.error && Object.keys(results).length > 0"
+    v-if="!state.pending && !state.error && hasAnyData"
     class="report-layout"
   >
     <ReportHeader class="report-head" />
@@ -11,15 +11,82 @@
       :place-label="placeLabel"
     />
     <div id="results" class="report-body">
-      <ReportSummary v-if="isSummaryPresent" />
+      <!--
+        Each section has an error boundary: one that throws while rendering
+        (e.g. an expected key is missing from the API results) is replaced
+        with a notice and dropped from the contents list.
+      -->
+      <NuxtErrorBoundary
+        v-if="isSummaryPresent"
+        @error="onSectionError('summary', $event)"
+      >
+        <ReportSummary />
+        <template #error><SectionError :title="label('summary')" /></template>
+      </NuxtErrorBoundary>
       <ReportLens />
-      <TemperatureReport v-if="isTemperaturePresent" />
-      <DegreeDaysReport v-if="isDegreeDaysPresent" />
-      <PrecipitationFrequency v-if="isPrecipitationFrequencyPresent" />
-      <PermafrostReport v-if="isPermafrostPresent" />
-      <PrecipitationReport v-if="isPrecipitationPresent" />
-      <SnowfallReport v-if="isSnowfallPresent" />
-      <HydrologyReport v-if="isHydrologyPresent" />
+      <NuxtErrorBoundary
+        v-if="isTemperaturePresent"
+        @error="onSectionError('temperature', $event)"
+      >
+        <TemperatureReport />
+        <template #error>
+          <SectionError :title="label('temperature')" />
+        </template>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary
+        v-if="isDegreeDaysPresent"
+        @error="onSectionError('temperature-indices', $event)"
+      >
+        <DegreeDaysReport />
+        <template #error>
+          <SectionError :title="label('temperature-indices')" />
+        </template>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary
+        v-if="isPrecipitationFrequencyPresent"
+        @error="onSectionError('precipitation-frequency', $event)"
+      >
+        <PrecipitationFrequency />
+        <template #error>
+          <SectionError :title="label('precipitation-frequency')" />
+        </template>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary
+        v-if="isPermafrostPresent"
+        @error="onSectionError('permafrost', $event)"
+      >
+        <PermafrostReport />
+        <template #error>
+          <SectionError :title="label('permafrost')" />
+        </template>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary
+        v-if="isPrecipitationPresent"
+        @error="onSectionError('annual-precipitation', $event)"
+      >
+        <PrecipitationReport />
+        <template #error>
+          <SectionError :title="label('annual-precipitation')" />
+        </template>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary
+        v-if="isSnowfallPresent"
+        @error="onSectionError('snowfall', $event)"
+      >
+        <SnowfallReport />
+        <template #error>
+          <SectionError :title="label('snowfall')" />
+        </template>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary
+        v-if="isHydrologyPresent"
+        @error="onSectionError('hydrology', $event)"
+      >
+        <HydrologyReport />
+        <template #error>
+          <SectionError :title="label('hydrology')" />
+        </template>
+      </NuxtErrorBoundary>
 
       <aside class="report-about" aria-labelledby="about-these-data">
         <h2 id="about-these-data" class="eyebrow">About these data</h2>
@@ -38,7 +105,7 @@
   </div>
   <section v-else class="section">
     <div class="container">
-      <LoadingStatus :state="state" />
+      <LoadingStatus :state="state" @retry="fetchReport" />
     </div>
   </section>
 </template>
@@ -57,12 +124,13 @@ import PermafrostReport from '~/components/reports/Permafrost'
 import PrecipitationReport from '~/components/reports/Precipitation'
 import SnowfallReport from '~/components/reports/Snowfall'
 import HydrologyReport from '~/components/reports/Hydrology'
+import SectionError from '~/components/SectionError'
+import { reportError } from '~/stores/report'
 
 const config = useRuntimeConfig()
 
 const store = useReportStore()
 const {
-  results,
   latLng,
   isPlaceDefined,
   getPlaceById,
@@ -76,6 +144,7 @@ const {
   isFreezingIndexPresent,
   isThawingIndexPresent,
   isPermafrostPresent,
+  hasAnyData,
 } = storeToRefs(store)
 
 const isDegreeDaysPresent = computed(
@@ -163,7 +232,19 @@ const sections = computed(() => [
     downloads: [{ endpoint: 'hydrology/point', name: 'Hydrology' }],
   },
 ])
-const entries = computed(() => sections.value.filter(s => s.present))
+// Sections that threw while rendering; see onSectionError.
+const failedSections = reactive(new Set())
+
+function onSectionError(id, error) {
+  console.error(`Report section "${id}" failed to render`, error)
+  failedSections.add(id)
+}
+
+const label = id => sections.value.find(s => s.id == id)?.label
+
+const entries = computed(() =>
+  sections.value.filter(s => s.present && !failedSections.has(s.id))
+)
 const downloads = computed(() => entries.value.flatMap(s => s.downloads))
 
 const placeLabel = computed(() => {
@@ -183,11 +264,24 @@ const state = reactive({ pending: true, error: null })
 async function fetchReport() {
   state.pending = true
   state.error = null
+  failedSections.clear()
   try {
     // Needed here to ensure hydration works properly for
     // direct links to specific places (mapping place names
-    // to lat/lngs).
-    await store.fetchPlaces()
+    // to lat/lngs). Reports for a lat/lng don't need the places
+    // list, so a failure there only matters for community reports.
+    try {
+      await store.fetchPlaces()
+    } catch (error) {
+      if (!placeIsLatLng.value) {
+        throw error
+      }
+      console.error('Failed to fetch places', error)
+    }
+
+    if (isPlaceDefined.value && !latLng.value) {
+      throw reportError('unknown-place', 'No community matches this report')
+    }
 
     if (isPlaceDefined.value) {
       let url =
@@ -199,7 +293,12 @@ async function fetchReport() {
 
       await store.apiFetch(url)
     }
+
+    if (!hasAnyData.value) {
+      throw reportError('no-data', 'No data is available for this place')
+    }
   } catch (error) {
+    console.error('Failed to load report', error)
     state.error = error
   } finally {
     state.pending = false

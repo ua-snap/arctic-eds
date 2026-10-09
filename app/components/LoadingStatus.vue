@@ -11,34 +11,76 @@
       <progress class="progress is-info"></progress>
     </div>
 
-    <div v-if="state && state.error" class="error">
-      <p class="content is-size-5">
-        Oh no! Something&rsquo;s amiss and the report for this place
-        couldn&rsquo;t be loaded.
-      </p>
-      <button type="button" class="button is-warning" v-on:click="close">
-        <span class="icon is-small" aria-hidden="true">
-          <!-- "emoticon-sad-outline" from Material Design Icons -->
-          <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z"
-            />
-          </svg>
-        </span>
-        <span><strong>We&rsquo;re sorry</strong>, please try again</span>
-      </button>
+    <div v-if="state && state.error" class="error content is-size-5">
+      <template v-if="errorKind == 'unknown-place'">
+        <h2 class="title is-4">We couldn&rsquo;t find this place</h2>
+        <p>
+          There&rsquo;s no community matching this link. Please search for the
+          place again.
+        </p>
+      </template>
+
+      <template v-else-if="errorKind == 'no-data'">
+        <h2 class="title is-4">No data available for {{ placeName }}</h2>
+        <p>
+          Data is available for land areas of Alaska, excluding the Western
+          Aleutians. If this place is within that area, we&rsquo;re sorry:
+          something&rsquo;s wrong on our end and the app isn&rsquo;t working
+          right now. Please try again later, or email us at
+          <a :href="`mailto:${contactEmail}`">{{ contactEmail }}</a> if you have
+          any questions.
+        </p>
+      </template>
+
+      <template v-else>
+        <h2 class="title is-4">
+          The report for {{ placeName }} couldn&rsquo;t be loaded
+        </h2>
+        <p>
+          We&rsquo;re sorry, something&rsquo;s wrong on our end and the app
+          isn&rsquo;t working right now. Please try again later, or email us at
+          <a :href="`mailto:${contactEmail}`">{{ contactEmail }}</a> if you have
+          any questions.
+        </p>
+      </template>
+
+      <div class="buttons">
+        <button
+          v-if="canRetry"
+          type="button"
+          class="button is-warning"
+          v-on:click="emit('retry')"
+        >
+          <strong>Try again</strong>
+        </button>
+        <button type="button" class="button" v-on:click="close">
+          Back to search
+        </button>
+      </div>
     </div>
   </div>
 </template>
 <script setup>
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 
-defineProps({
+const props = defineProps({
   state: Object,
 })
+const emit = defineEmits(['retry'])
+
+// Same address as the footer.
+const contactEmail = 'uaf-snap-data-tools@alaska.edu'
 
 const store = useReportStore()
 const { placeName, isPlaceDefined } = storeToRefs(store)
+
+const errorKind = computed(() => props.state?.error?.kind)
+// Retrying helps when the data service failed or returned something
+// unexpected, not when the place itself is the problem.
+const canRetry = computed(
+  () => !['unknown-place', 'no-data'].includes(errorKind.value)
+)
 
 function close() {
   store.closeReport()
