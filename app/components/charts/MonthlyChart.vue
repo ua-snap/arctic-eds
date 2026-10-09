@@ -2,6 +2,7 @@
   <!-- Twelve months of one or more series, labeled at their December end. -->
   <div ref="box">
     <svg
+      ref="svgEl"
       :width="width"
       :height="height"
       :viewBox="`0 0 ${width} ${height}`"
@@ -88,18 +89,20 @@
         {{ narrow ? month[0] : month }}
       </text>
     </svg>
+    <ChartDownload :svg="svgEl" :title="title" />
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
+import ChartDownload from '~/components/charts/ChartDownload'
+import { scaleLinear } from 'd3-scale'
 import {
   bandPath,
   formatNumber,
   linePath,
   niceTicks,
   palette,
-  scaleLinear,
   spreadLabels,
   tickDigits,
 } from '~/utils/chart'
@@ -134,6 +137,7 @@ const months = [
 ]
 
 const box = ref(null)
+const svgEl = ref(null)
 const width = useElementWidth(box)
 
 // Room on the right for the series labels.
@@ -155,12 +159,13 @@ const y = computed(() => {
   return niceTicks(Math.min(...finite), Math.max(...finite), 6)
 })
 
-const xScale = computed(() => scaleLinear([0, 11], [m.value.left, right.value]))
+const xScale = computed(() =>
+  scaleLinear().domain([0, 11]).range([m.value.left, right.value])
+)
 const yScale = computed(() =>
-  scaleLinear(
-    [y.value.min, y.value.max],
-    [props.height - m.value.bottom, m.value.top]
-  )
+  scaleLinear()
+    .domain([y.value.min, y.value.max])
+    .range([props.height - m.value.bottom, m.value.top])
 )
 
 function points(values) {

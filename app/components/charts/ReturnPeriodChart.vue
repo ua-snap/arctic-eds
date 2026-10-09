@@ -5,6 +5,7 @@
   -->
   <div ref="box">
     <svg
+      ref="svgEl"
       :width="width"
       :height="height"
       :viewBox="`0 0 ${width} ${height}`"
@@ -101,19 +102,20 @@
         Return period, years (log scale)
       </text>
     </svg>
+    <ChartDownload :svg="svgEl" :title="title" />
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
+import ChartDownload from '~/components/charts/ChartDownload'
+import { scaleLinear, scaleLog } from 'd3-scale'
 import {
   bandPath,
   formatNumber,
   linePath,
   niceTicks,
   palette,
-  scaleLinear,
-  scaleLog,
   spreadLabels,
   tickDigits,
 } from '~/utils/chart'
@@ -132,6 +134,7 @@ const props = defineProps({
 })
 
 const box = ref(null)
+const svgEl = ref(null)
 const width = useElementWidth(box)
 
 const m = computed(() => ({
@@ -148,16 +151,14 @@ const y = computed(() => {
 })
 
 const xScale = computed(() =>
-  scaleLog(
-    [props.periods[0], props.periods[props.periods.length - 1]],
-    [m.value.left, right.value]
-  )
+  scaleLog()
+    .domain([props.periods[0], props.periods[props.periods.length - 1]])
+    .range([m.value.left, right.value])
 )
 const yScale = computed(() =>
-  scaleLinear(
-    [y.value.min, y.value.max],
-    [props.height - m.value.bottom, m.value.top]
-  )
+  scaleLinear()
+    .domain([y.value.min, y.value.max])
+    .range([props.height - m.value.bottom, m.value.top])
 )
 
 function points(values) {

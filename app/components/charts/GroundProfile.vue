@@ -11,6 +11,7 @@
       </li>
     </ul>
     <svg
+      ref="svgEl"
       :width="width"
       :height="height"
       :viewBox="`0 0 ${width} ${height}`"
@@ -109,17 +110,23 @@
         />
       </g>
     </svg>
+    <ChartDownload
+      :svg="svgEl"
+      :title="title"
+      :legend="series.map(s => ({ label: s.label, color: s.color }))"
+    />
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
+import ChartDownload from '~/components/charts/ChartDownload'
+import { scaleLinear } from 'd3-scale'
 import {
   formatNumber,
   linePath,
   niceTicks,
   palette,
-  scaleLinear,
   tickDigits,
 } from '~/utils/chart'
 
@@ -137,6 +144,7 @@ const props = defineProps({
 })
 
 const box = ref(null)
+const svgEl = ref(null)
 const width = useElementWidth(box)
 
 const m = { top: 30, right: 16, bottom: 8, left: 64 }
@@ -154,10 +162,10 @@ const x = computed(() => {
 const maxDepth = computed(() => Math.max(...props.depths.map(d => d.depth)))
 
 const xScale = computed(() =>
-  scaleLinear([x.value.min, x.value.max], [m.left, right.value])
+  scaleLinear().domain([x.value.min, x.value.max]).range([m.left, right.value])
 )
 const yScale = computed(() =>
-  scaleLinear([0, maxDepth.value], [m.top, plotBottom.value])
+  scaleLinear().domain([0, maxDepth.value]).range([m.top, plotBottom.value])
 )
 
 function points(values) {

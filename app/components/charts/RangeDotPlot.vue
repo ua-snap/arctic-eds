@@ -6,6 +6,7 @@
   -->
   <div ref="box">
     <svg
+      ref="svgEl"
       :width="width"
       :height="height"
       :viewBox="`0 0 ${width} ${height}`"
@@ -79,18 +80,15 @@
         {{ formatNumber(tick, tickDigits(x.ticks)) }}
       </text>
     </svg>
+    <ChartDownload :svg="svgEl" :title="title" />
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
-import {
-  formatNumber,
-  niceTicks,
-  palette,
-  scaleLinear,
-  tickDigits,
-} from '~/utils/chart'
+import ChartDownload from '~/components/charts/ChartDownload'
+import { scaleLinear } from 'd3-scale'
+import { formatNumber, niceTicks, palette, tickDigits } from '~/utils/chart'
 
 const props = defineProps({
   // Accessible name for the chart.
@@ -102,6 +100,7 @@ const props = defineProps({
 })
 
 const box = ref(null)
+const svgEl = ref(null)
 const width = useElementWidth(box)
 
 const rowHeight = 26
@@ -120,10 +119,9 @@ const x = computed(() => {
   return niceTicks(lo, hi, width.value < 480 ? 3 : 4)
 })
 const xScale = computed(() =>
-  scaleLinear(
-    [x.value.min, x.value.max],
-    [labelWidth.value, width.value - rightMargin.value]
-  )
+  scaleLinear()
+    .domain([x.value.min, x.value.max])
+    .range([labelWidth.value, width.value - rightMargin.value])
 )
 
 function rowY(i) {

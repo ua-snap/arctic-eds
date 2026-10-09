@@ -1,4 +1,8 @@
-// Small helpers for the report's hand-drawn SVG charts.
+// Helpers for the report's SVG charts: D3 for scales, ticks and paths, plus
+// formatting and label layout.
+
+import { scaleLinear } from 'd3-scale'
+import { area, line } from 'd3-shape'
 
 // Chart colors. Text uses the site's text greys. Lines and dots that carry
 // data are at least 3:1 against white; bars and bands behind them are
@@ -23,37 +27,16 @@ export const palette = {
   ],
 }
 
-// Maps a value in [d0, d1] onto [r0, r1].
-export function scaleLinear([d0, d1], [r0, r1]) {
-  return v => r0 + ((v - d0) / (d1 - d0)) * (r1 - r0)
-}
-
-// Same, on a log scale.
-export function scaleLog([d0, d1], [r0, r1]) {
-  const l0 = Math.log(d0)
-  const l1 = Math.log(d1)
-  return v => r0 + ((Math.log(v) - l0) / (l1 - l0)) * (r1 - r0)
-}
-
-// Round tick steps (1, 2, 2.5 or 5 × a power of ten) covering [min, max] in
-// about `count` steps. Returns the widened domain and its ticks.
+// Round ticks covering [min, max] in about `count` steps, from D3's nice
+// scale. Returns the widened domain and its ticks.
 export function niceTicks(min, max, count = 5) {
   if (min === max) {
     min -= 1
     max += 1
   }
-  const raw = (max - min) / count
-  const power = 10 ** Math.floor(Math.log10(raw))
-  const step =
-    [1, 2, 2.5, 5, 10].map(m => m * power).find(s => s >= raw) ?? 10 * power
-  const lo = Math.floor(min / step) * step
-  const hi = Math.ceil(max / step) * step
-  const ticks = []
-  for (let t = lo; t <= hi + step / 2; t += step) {
-    // Avoid 0.30000000000000004 and -0.
-    ticks.push(Number(t.toFixed(10)) + 0)
-  }
-  return { min: lo, max: hi, ticks }
+  const scale = scaleLinear().domain([min, max]).nice(count)
+  const [lo, hi] = scale.domain()
+  return { min: lo, max: hi, ticks: scale.ticks(count) }
 }
 
 // How many decimals tick labels need, e.g. 1 for 0, 0.2, 0.4….
@@ -112,30 +95,21 @@ export function formatPercentChange(past, future) {
   return formatSigned(((future - past) / past) * 100) + '%'
 }
 
-// Draws an SVG path through points, skipping missing values.
+const defined = ([x, y]) => x != null && y != null && !Number.isNaN(y)
+
+// Draws an SVG path through [x, y] points, skipping missing values.
 export function linePath(points) {
-  let d = ''
-  let pen = false
-  for (const [x, y] of points) {
-    if (x == null || y == null || Number.isNaN(y)) {
-      pen = false
-      continue
-    }
-    d += (pen ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1)
-    pen = true
-  }
-  return d
+  return line().defined(defined).digits(1)(points) ?? ''
 }
 
-// A filled band between a lower and an upper line.
+// A filled band between a lower and an upper line, point for point.
 export function bandPath(lower, upper) {
   return (
-    linePath(upper) +
-    'L' +
-    [...lower]
-      .reverse()
-      .map(([x, y]) => x.toFixed(1) + ' ' + y.toFixed(1))
-      .join('L') +
-    'Z'
+    area()
+      .defined((p, i) => defined(p) && defined(upper[i]))
+      .x(p => p[0])
+      .y0(p => p[1])
+      .y1((p, i) => upper[i][1])
+      .digits(1)(lower) ?? ''
   )
 }
