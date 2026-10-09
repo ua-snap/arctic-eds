@@ -85,9 +85,12 @@ const isDegreeDaysPresent = computed(
     isThawingIndexPresent.value
 )
 
-// The summary leads with the degree days and precipitation.
+// The summary leads with air temperature, the degree days and precipitation.
 const isSummaryPresent = computed(
-  () => isDegreeDaysPresent.value || isPrecipitationPresent.value
+  () =>
+    isTemperaturePresent.value ||
+    isDegreeDaysPresent.value ||
+    isPrecipitationPresent.value
 )
 
 // The report's sections in page order, with the CSVs each one offers (for

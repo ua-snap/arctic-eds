@@ -46,16 +46,20 @@
                 class="range-bar"
                 :class="`is-${row.tone}`"
                 :style="{
-                  left: position(row.low) + '%',
-                  width: position(row.high) - position(row.low) + '%',
+                  left: position(row, row.low) + '%',
+                  width: position(row, row.high) - position(row, row.low) + '%',
                 }"
               ></span>
               <span
                 class="range-mean"
                 :class="`is-${row.tone}`"
-                :style="{ left: `calc(${position(row.mean)}% - 7px)` }"
+                :style="{ left: `calc(${position(row, row.mean)}% - 7px)` }"
               ></span>
             </div>
+            <span v-if="row.bar && row.scale" class="row-scale"
+              ><span>{{ row.scale.low }}</span
+              ><span>{{ row.scale.high }}</span></span
+            >
           </td>
           <td class="note">
             <span v-if="row.bar" class="note-label">Range across models: </span
@@ -68,7 +72,9 @@
     <p v-if="rows.some(row => row.bar)" class="summary-footer">
       Each model and scenario&rsquo;s 2040&ndash;2069 average vs. the
       1980&ndash;2009 baseline &middot; bar = lowest to highest &middot; dot =
-      mean
+      mean<template v-if="rows.some(row => row.bar && row.scale)">
+        &middot; air temperature changes in degrees, on its own scale</template
+      >
     </p>
   </section>
 </template>
@@ -80,11 +86,13 @@ import { formatSigned } from '~/utils/chart'
 
 const {
   results,
+  isTemperaturePresent,
   isFreezingIndexPresent,
   isThawingIndexPresent,
   isHeatingDegreeDaysPresent,
   isPrecipitationPresent,
 } = storeToRefs(useReportStore())
+const unit = useUnitLabels()
 
 const percent = value => formatSigned(value * 100) + '%'
 
@@ -143,8 +151,62 @@ function precipitationRow() {
   )
 }
 
+// Air temperature: a change in degrees rather than a percentage, which means
+// little near 0°. The API summarizes each model by month, so a model's annual
+// mean is the mean of its twelve monthly means; the 5-model average isn't a
+// model and is left out. The bar has its own scale, ±5° or wider in 5° steps.
+function temperatureRow() {
+  const { summary } = results.value.temperature
+  const recent = summary['1980-2009']?.Annual
+  const baseline =
+    recent?.tasmean ?? summary.historical['CRU-TS'].historical.Annual.tasmean
+  const degrees = value => formatSigned(value, 1) + unit.value.temp
+  const means = Object.entries(summary.projected)
+    .filter(([model]) => model !== '5ModelAvg')
+    .flatMap(([, scenarios]) => Object.values(scenarios))
+    .map(months =>
+      Object.entries(months)
+        .filter(([month]) => month !== 'Annual')
+        .map(([, eras]) => eras['2040-2069']?.tasmean)
+    )
+    .filter(values => values.length === 12 && values.every(Number.isFinite))
+    .map(values => values.reduce((sum, v) => sum + v, 0) / 12)
+  const row = {
+    name: 'Air temperature',
+    use: 'design temperatures, building energy',
+    section: 'temperature',
+    tone: 'warm',
+  }
+  if (!means.length) {
+    return { ...row, bar: false, shift: '—', note: '—' }
+  }
+  const changes = means.map(value => value - baseline)
+  const mean = changes.reduce((sum, c) => sum + c, 0) / changes.length
+  const [low, high] = [Math.min(...changes), Math.max(...changes)]
+  // Sized from the values as shown (to 0.1°), so +10.0° fits a ±10° scale.
+  const extreme = Number(Math.max(Math.abs(low), Math.abs(high)).toFixed(1))
+  const half = Math.max(5, Math.ceil(extreme / 5) * 5)
+  return {
+    ...row,
+    bar: true,
+    mean,
+    low,
+    high,
+    scale: {
+      half,
+      low: `−${half}${unit.value.temp}`,
+      high: `+${half}${unit.value.temp}`,
+    },
+    shift: degrees(mean),
+    note: recent
+      ? `${degrees(low)} to ${degrees(high)}`
+      : `${degrees(low)} to ${degrees(high)} vs. the 1901–2015 average`,
+  }
+}
+
 const rows = computed(() =>
   [
+    isTemperaturePresent.value && temperatureRow(),
     isFreezingIndexPresent.value &&
       degreeDayRow('freezing_index', {
         name: 'Freezing index',
@@ -170,19 +232,22 @@ const rows = computed(() =>
   ].filter(Boolean)
 )
 
-// The bars run from −scale% to +scale%: 60%, or wider in steps of 20% when a
-// range runs past it.
+// The percentage bars run from −scale% to +scale%: 60%, or wider in steps of
+// 20% when a range runs past it.
 const scale = computed(() => {
   const extremes = rows.value
-    .filter(row => row.bar)
+    .filter(row => row.bar && !row.scale)
     .flatMap(row => [row.low, row.high])
     .map(v => Math.abs(v * 100))
   return Math.max(60, Math.ceil(Math.max(0, ...extremes) / 20) * 20)
 })
 
-// Maps a change (0.26 for +26%) onto the bar, as a percent of its width.
-const position = change =>
-  ((change * 100 + scale.value) / (2 * scale.value)) * 100
+// Maps a change onto its row's bar, as a percent of the bar's width: 0.26
+// for +26% on the shared scale, or degrees on a row's own scale.
+function position(row, change) {
+  if (row.scale) return ((change / row.scale.half + 1) / 2) * 100
+  return ((change * 100 + scale.value) / (2 * scale.value)) * 100
+}
 </script>
 
 <style lang="scss" scoped>
@@ -278,6 +343,15 @@ $rule: #ebe8e3;
 .is-wet {
   color: $wet;
   --tone: #{$wet};
+}
+
+// The ends of a row's own scale, under its bar.
+.row-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  line-height: 1;
+  color: $muted;
 }
 
 .range {

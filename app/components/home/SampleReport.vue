@@ -29,9 +29,9 @@
       <img
         :src="sampleReportImage"
         width="2360"
-        height="994"
+        height="1144"
         loading="lazy"
-        alt="Sample report summary for Fairbanks, mid-century versus the 1980 to 2009 baseline: freezing index down 26% (models range from down 39% to down 13%), thawing index up 21% (up 8% to up 37%), heating degree days down 14% (down 22% to down 7%) and annual precipitation up 30% (up 18% to up 61%)."
+        alt="Sample report summary for Fairbanks, mid-century versus the 1980 to 2009 baseline: air temperature up 7.5°F (models range from up 4.7°F to up 10.0°F), freezing index down 26% (down 39% to down 13%), thawing index up 21% (up 8% to up 37%), heating degree days down 14% (down 22% to down 7%) and annual precipitation up 30% (up 18% to up 61%)."
       />
     </figure>
 
