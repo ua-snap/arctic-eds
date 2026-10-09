@@ -65,15 +65,6 @@
       </tbody>
     </table>
 
-    <p v-if="exceedance" class="exceedance">
-      <a href="#precipitation-frequency" class="name"
-        >Annual exceedance probability</a
-      >
-      (24-hour, 1% or 100-year, 2050&ndash;2079): {{ exceedance }} across the
-      two models. No historical annual exceedance probability depths are
-      available to compare with.
-    </p>
-
     <p v-if="rows.some(row => row.bar)" class="summary-footer">
       Each model and scenario&rsquo;s 2040&ndash;2069 average vs. the
       1980&ndash;2009 baseline &middot; bar = lowest to highest &middot; dot =
@@ -85,7 +76,7 @@
 <script setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { formatNumber, formatSigned } from '~/utils/chart'
+import { formatSigned } from '~/utils/chart'
 
 const {
   results,
@@ -93,9 +84,7 @@ const {
   isThawingIndexPresent,
   isHeatingDegreeDaysPresent,
   isPrecipitationPresent,
-  isPrecipitationFrequencyPresent,
 } = storeToRefs(useReportStore())
-const unit = useUnitLabels()
 
 const percent = value => formatSigned(value * 100) + '%'
 
@@ -153,20 +142,6 @@ function precipitationRow() {
     model_means?.['2040-2069']
   )
 }
-
-// Annual exceedance probability: the 24-hour, 1% (100-year) depth from each
-// model, 2050–2079. The API has no historical depths to compare with, so this
-// sits under the table rather than in it.
-const exceedance = computed(() => {
-  if (!isPrecipitationFrequencyPresent.value) return null
-  const models = results.value.precip_frequency['100']['24h']
-  const depths = Object.values(models)
-    .map(eras => eras['2050-2079'].pf)
-    .sort((a, b) => a - b)
-  const digits = unit.value.metric ? 0 : 1
-  const range = depths.map(d => formatNumber(d, digits)).join('–')
-  return `${range} ${unit.value.depth}`
-})
 
 const rows = computed(() =>
   [
@@ -340,16 +315,6 @@ $rule: #ebe8e3;
     border: 2px solid #fff;
     border-radius: 7px;
     background: var(--tone);
-  }
-}
-
-.exceedance {
-  padding: 0.9rem 0;
-  border-top: 1px solid $rule;
-  font-size: 0.875rem;
-
-  .name {
-    font-weight: 600;
   }
 }
 
