@@ -11,12 +11,7 @@
     <div class="report-title">
       <p class="eyebrow">Report</p>
       <h1 class="title is-1 mb-2">{{ name }}</h1>
-      <p class="report-meta">
-        {{ coordinates
-        }}<template v-if="elevation">
-          &middot; elevation {{ elevation }} within 1&nbsp;km</template
-        >
-      </p>
+      <p class="report-meta">{{ meta }}</p>
     </div>
     <div class="report-tools no-print">
       <SegmentedControl
@@ -68,6 +63,17 @@ const elevation = computed(() => {
   }
   const ft = m => formatNumber(m * 3.28084)
   return `${ft(min)}–${ft(max)} ft`
+})
+
+// Coordinates and elevation. A point report's heading is already its
+// coordinates, so they aren't repeated.
+const meta = computed(() => {
+  const parts = []
+  if (name.value != coordinates.value) parts.push(coordinates.value)
+  if (elevation.value)
+    parts.push(`elevation ${elevation.value} within 1\u00a0km`)
+  const text = parts.join(' · ')
+  return text.charAt(0).toUpperCase() + text.slice(1)
 })
 
 const dot = computed(() => outline.project(lat.value, lng.value))

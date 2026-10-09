@@ -11,6 +11,7 @@
       :place-label="placeLabel"
     />
     <div id="results" class="report-body">
+      <ReportSummary v-if="isSummaryPresent" />
       <ReportLens />
       <TemperatureReport v-if="isTemperaturePresent" />
       <DegreeDaysReport v-if="isDegreeDaysPresent" />
@@ -47,6 +48,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import ReportHeader from '~/components/report/ReportHeader'
 import ReportToc from '~/components/report/ReportToc'
+import ReportSummary from '~/components/report/ReportSummary'
 import ReportLens from '~/components/ReportLens'
 import TemperatureReport from '~/components/reports/Temperature'
 import DegreeDaysReport from '~/components/reports/DegreeDays'
@@ -83,9 +85,23 @@ const isDegreeDaysPresent = computed(
     isThawingIndexPresent.value
 )
 
+// The summary leads with the degree days, precipitation and design storm.
+const isSummaryPresent = computed(
+  () =>
+    isDegreeDaysPresent.value ||
+    isPrecipitationPresent.value ||
+    isPrecipitationFrequencyPresent.value
+)
+
 // The report's sections in page order, with the CSVs each one offers (for
 // the "All data" ZIP).
 const sections = computed(() => [
+  {
+    id: 'summary',
+    label: 'Summary',
+    present: isSummaryPresent.value,
+    downloads: [],
+  },
   {
     id: 'temperature',
     label: 'Air temperature',

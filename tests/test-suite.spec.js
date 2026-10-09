@@ -37,7 +37,7 @@ const checkSection = async (page, id, cells) => {
 }
 
 const checkForElevation = async page => {
-  await expect(page.locator('.report-meta')).toContainText(/elevation \d/)
+  await expect(page.locator('.report-meta')).toContainText(/elevation \d/i)
 }
 
 const checkForTotalPrecipitation = async page => {
