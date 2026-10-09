@@ -8,6 +8,122 @@
     "units": "meters difference from sea level"
   },
   "freezing_index": {
+    "model_means": {
+      "2010-2039": {
+        "ACCESS1-3": {
+          "rcp45": 3969,
+          "rcp85": 3805
+        },
+        "CCSM4": {
+          "rcp45": 4049,
+          "rcp85": 4151
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 4776,
+          "rcp85": 4659
+        },
+        "CanESM2": {
+          "rcp45": 3948,
+          "rcp85": 3769
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 3878,
+          "rcp85": 4186
+        },
+        "MIROC5": {
+          "rcp45": 4138,
+          "rcp85": 4161
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 4231,
+          "rcp85": 4012
+        },
+        "MRI-CGCM3": {
+          "rcp45": 4358,
+          "rcp85": 4282
+        },
+        "inmcm4": {
+          "rcp45": 4440,
+          "rcp85": 4135
+        }
+      },
+      "2040-2069": {
+        "ACCESS1-3": {
+          "rcp45": 3220,
+          "rcp85": 2922
+        },
+        "CCSM4": {
+          "rcp45": 3738,
+          "rcp85": 3274
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 3753,
+          "rcp85": 3597
+        },
+        "CanESM2": {
+          "rcp45": 3440,
+          "rcp85": 3086
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 4161,
+          "rcp85": 3591
+        },
+        "MIROC5": {
+          "rcp45": 4117,
+          "rcp85": 3703
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 3555,
+          "rcp85": 3080
+        },
+        "MRI-CGCM3": {
+          "rcp45": 3757,
+          "rcp85": 3649
+        },
+        "inmcm4": {
+          "rcp45": 3771,
+          "rcp85": 3612
+        }
+      },
+      "2070-2099": {
+        "ACCESS1-3": {
+          "rcp45": 2984,
+          "rcp85": 1970
+        },
+        "CCSM4": {
+          "rcp45": 3549,
+          "rcp85": 2600
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 3765,
+          "rcp85": 2991
+        },
+        "CanESM2": {
+          "rcp45": 3365,
+          "rcp85": 2129
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 4057,
+          "rcp85": 3347
+        },
+        "MIROC5": {
+          "rcp45": 3556,
+          "rcp85": 2744
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 3066,
+          "rcp85": 1841
+        },
+        "MRI-CGCM3": {
+          "rcp45": 3480,
+          "rcp85": 2985
+        },
+        "inmcm4": {
+          "rcp45": 3648,
+          "rcp85": 2843
+        }
+      }
+    },
     "preview": "model,scenario,year,dd\r\ndaymet,modeled_baseline,1980,4900\r\ndaymet,modeled_baseline,1981,3317\r\ndaymet,modeled_baseline,1982,5519\r\ndaymet,modeled_baseline,1983,4999\r\ndaymet,modeled_baseline,1984,5190\r\ninmcm4,rcp85,2095,2198\r\ninmcm4,rcp85,2096,2434\r\ninmcm4,rcp85,2097,1653\r\ninmcm4,rcp85,2098,3110\r\ninmcm4,rcp85,2099,3089\r\n",
     "summary": {
       "2010-2039": {
@@ -33,6 +149,122 @@
     }
   },
   "heating_degree_days": {
+    "model_means": {
+      "2010-2039": {
+        "ACCESS1-3": {
+          "rcp45": 12129,
+          "rcp85": 11797
+        },
+        "CCSM4": {
+          "rcp45": 12252,
+          "rcp85": 12288
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 13179,
+          "rcp85": 13014
+        },
+        "CanESM2": {
+          "rcp45": 11909,
+          "rcp85": 11644
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 12192,
+          "rcp85": 12601
+        },
+        "MIROC5": {
+          "rcp45": 12222,
+          "rcp85": 12106
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 12516,
+          "rcp85": 12231
+        },
+        "MRI-CGCM3": {
+          "rcp45": 12581,
+          "rcp85": 12574
+        },
+        "inmcm4": {
+          "rcp45": 12680,
+          "rcp85": 12397
+        }
+      },
+      "2040-2069": {
+        "ACCESS1-3": {
+          "rcp45": 10862,
+          "rcp85": 10362
+        },
+        "CCSM4": {
+          "rcp45": 11699,
+          "rcp85": 10975
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 11753,
+          "rcp85": 11497
+        },
+        "CanESM2": {
+          "rcp45": 11010,
+          "rcp85": 10500
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 12416,
+          "rcp85": 11611
+        },
+        "MIROC5": {
+          "rcp45": 11973,
+          "rcp85": 11343
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 11433,
+          "rcp85": 10745
+        },
+        "MRI-CGCM3": {
+          "rcp45": 11903,
+          "rcp85": 11646
+        },
+        "inmcm4": {
+          "rcp45": 11797,
+          "rcp85": 11581
+        }
+      },
+      "2070-2099": {
+        "ACCESS1-3": {
+          "rcp45": 10579,
+          "rcp85": 8601
+        },
+        "CCSM4": {
+          "rcp45": 11354,
+          "rcp85": 9773
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 11611,
+          "rcp85": 10322
+        },
+        "CanESM2": {
+          "rcp45": 10817,
+          "rcp85": 8866
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 12314,
+          "rcp85": 11144
+        },
+        "MIROC5": {
+          "rcp45": 11152,
+          "rcp85": 9761
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 10722,
+          "rcp85": 8795
+        },
+        "MRI-CGCM3": {
+          "rcp45": 11445,
+          "rcp85": 10611
+        },
+        "inmcm4": {
+          "rcp45": 11649,
+          "rcp85": 10293
+        }
+      }
+    },
     "preview": "model,scenario,year,dd\r\ndaymet,modeled_baseline,1980,13600\r\ndaymet,modeled_baseline,1981,12008\r\ndaymet,modeled_baseline,1982,14234\r\ndaymet,modeled_baseline,1983,13726\r\ndaymet,modeled_baseline,1984,13938\r\ninmcm4,rcp85,2095,9288\r\ninmcm4,rcp85,2096,9697\r\ninmcm4,rcp85,2097,8255\r\ninmcm4,rcp85,2098,10618\r\ninmcm4,rcp85,2099,10485\r\n",
     "summary": {
       "2010-2039": {
@@ -19482,8 +19714,96 @@
     }
   },
   "precipitation": {
+    "model_means": {
+      "2010-2039": {
+        "GFDL-CM3": {
+          "rcp45": 371,
+          "rcp60": 365,
+          "rcp85": 371
+        },
+        "GISS-E2-R": {
+          "rcp45": 342,
+          "rcp60": 329,
+          "rcp85": 331
+        },
+        "IPSL-CM5A-LR": {
+          "rcp45": 336,
+          "rcp60": 322,
+          "rcp85": 342
+        },
+        "MRI-CGCM3": {
+          "rcp45": 327,
+          "rcp60": 323,
+          "rcp85": 334
+        },
+        "NCAR-CCSM4": {
+          "rcp45": 337,
+          "rcp60": 329,
+          "rcp85": 340
+        }
+      },
+      "2040-2069": {
+        "GFDL-CM3": {
+          "rcp45": 417,
+          "rcp60": 402,
+          "rcp85": 454
+        },
+        "GISS-E2-R": {
+          "rcp45": 356,
+          "rcp60": 332,
+          "rcp85": 371
+        },
+        "IPSL-CM5A-LR": {
+          "rcp45": 350,
+          "rcp60": 348,
+          "rcp85": 338
+        },
+        "MRI-CGCM3": {
+          "rcp45": 333,
+          "rcp60": 348,
+          "rcp85": 359
+        },
+        "NCAR-CCSM4": {
+          "rcp45": 349,
+          "rcp60": 352,
+          "rcp85": 370
+        }
+      },
+      "2070-2099": {
+        "GFDL-CM3": {
+          "rcp45": 439,
+          "rcp60": 466,
+          "rcp85": 510
+        },
+        "GISS-E2-R": {
+          "rcp45": 356,
+          "rcp60": 355,
+          "rcp85": 391
+        },
+        "IPSL-CM5A-LR": {
+          "rcp45": 364,
+          "rcp60": 352,
+          "rcp85": 405
+        },
+        "MRI-CGCM3": {
+          "rcp45": 356,
+          "rcp60": 371,
+          "rcp85": 412
+        },
+        "NCAR-CCSM4": {
+          "rcp45": 359,
+          "rcp60": 353,
+          "rcp85": 406
+        }
+      }
+    },
     "preview": "model,scenario,year,pr\r\nCRU-TS,historical,1901,293\r\nCRU-TS,historical,1902,293\r\nCRU-TS,historical,1903,185\r\nCRU-TS,historical,1904,196\r\nCRU-TS,historical,1905,351\r\nNCAR-CCSM4,rcp85,2096,417\r\nNCAR-CCSM4,rcp85,2097,543\r\nNCAR-CCSM4,rcp85,2098,402\r\nNCAR-CCSM4,rcp85,2099,433\r\nNCAR-CCSM4,rcp85,2100,442\r\n",
     "summary": {
+      "1980-2009": {
+        "prmax": 443,
+        "prmean": 281,
+        "prmin": 202
+      },
       "2010-2039": {
         "prmax": 505,
         "prmean": 340,
@@ -20859,6 +21179,122 @@
     }
   },
   "thawing_index": {
+    "model_means": {
+      "2010-2039": {
+        "ACCESS1-3": {
+          "rcp45": 3950,
+          "rcp85": 4128
+        },
+        "CCSM4": {
+          "rcp45": 3925,
+          "rcp85": 3987
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 3710,
+          "rcp85": 3752
+        },
+        "CanESM2": {
+          "rcp45": 4200,
+          "rcp85": 4290
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 3784,
+          "rcp85": 3686
+        },
+        "MIROC5": {
+          "rcp45": 4034,
+          "rcp85": 4208
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 3818,
+          "rcp85": 3876
+        },
+        "MRI-CGCM3": {
+          "rcp45": 3877,
+          "rcp85": 3806
+        },
+        "inmcm4": {
+          "rcp45": 3846,
+          "rcp85": 3825
+        }
+      },
+      "2040-2069": {
+        "ACCESS1-3": {
+          "rcp45": 4533,
+          "rcp85": 4820
+        },
+        "CCSM4": {
+          "rcp45": 4176,
+          "rcp85": 4514
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 4148,
+          "rcp85": 4251
+        },
+        "CanESM2": {
+          "rcp45": 4670,
+          "rcp85": 4899
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 3870,
+          "rcp85": 4137
+        },
+        "MIROC5": {
+          "rcp45": 4299,
+          "rcp85": 4559
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 4256,
+          "rcp85": 4495
+        },
+        "MRI-CGCM3": {
+          "rcp45": 3964,
+          "rcp85": 4128
+        },
+        "inmcm4": {
+          "rcp45": 4067,
+          "rcp85": 4131
+        }
+      },
+      "2070-2099": {
+        "ACCESS1-3": {
+          "rcp45": 4619,
+          "rcp85": 5860
+        },
+        "CCSM4": {
+          "rcp45": 4403,
+          "rcp85": 5296
+        },
+        "CSIRO-Mk3-6-0": {
+          "rcp45": 4320,
+          "rcp85": 4993
+        },
+        "CanESM2": {
+          "rcp45": 4832,
+          "rcp85": 5898
+        },
+        "GFDL-ESM2M": {
+          "rcp45": 3877,
+          "rcp85": 4416
+        },
+        "MIROC5": {
+          "rcp45": 4596,
+          "rcp85": 5396
+        },
+        "MPI-ESM-MR": {
+          "rcp45": 4492,
+          "rcp85": 5316
+        },
+        "MRI-CGCM3": {
+          "rcp45": 4147,
+          "rcp85": 4538
+        },
+        "inmcm4": {
+          "rcp45": 4099,
+          "rcp85": 4707
+        }
+      }
+    },
     "preview": "model,scenario,year,dd\r\ndaymet,modeled_baseline,1980,3381\r\ndaymet,modeled_baseline,1981,3354\r\ndaymet,modeled_baseline,1982,3364\r\ndaymet,modeled_baseline,1983,3381\r\ndaymet,modeled_baseline,1984,3336\r\ninmcm4,rcp85,2095,5268\r\ninmcm4,rcp85,2096,4888\r\ninmcm4,rcp85,2097,5640\r\ninmcm4,rcp85,2098,4615\r\ninmcm4,rcp85,2099,4754\r\n",
     "summary": {
       "2010-2039": {
