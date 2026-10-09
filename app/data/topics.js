@@ -5,8 +5,8 @@
 // The datasets behind the report, keyed for reuse by topics. `section` is
 // the id of the report heading the dataset appears under.
 export const datasets = {
-  designStorms: {
-    name: 'Design storms',
+  exceedanceProbability: {
+    name: 'Annual exceedance probability',
     what: 'Rainfall depth for durations from 60 minutes to 60 days at 2- to 1,000-year return periods, with 95% confidence intervals.',
     detail:
       '2 models, RCP 8.5 · adjusted to NOAA Atlas 14 · 481 m grid · 2020–2049, 2050–2079, 2080–2099',
@@ -67,19 +67,19 @@ export const topics = [
   {
     slug: 'drainage',
     name: 'Culverts & drainage',
-    question: 'Will it still pass the design storm?',
+    question: 'Will it still pass the 1% annual exceedance probability storm?',
     summary:
-      'Design storms from 1 hour to 60 days, up to the 1,000-year event; runoff and snowmelt.',
+      'Annual exceedance probability depths from 1 hour to 60 days, down to 0.1% (the 1,000-year event); runoff and snowmelt.',
     intro:
-      'Sizing culverts, ditches and storm drains starts with the design storm and the spring runoff. See how both are projected to move at your site.',
+      'Sizing culverts, ditches and storm drains starts with the annual exceedance probability storm and the spring runoff. See how both are projected to move at your site.',
     questions: [
       {
-        text: 'Will this culvert still pass the design storm?',
-        datasets: ['designStorms'],
+        text: 'Will this culvert still pass the 1% annual exceedance probability storm?',
+        datasets: ['exceedanceProbability'],
       },
       {
         text: 'How much deeper is the 25-, 50- or 100-year storm by mid-century?',
-        datasets: ['designStorms'],
+        datasets: ['exceedanceProbability'],
       },
       {
         text: 'Is spring breakup runoff arriving earlier, or getting larger?',
@@ -94,7 +94,12 @@ export const topics = [
         datasets: ['hydrology', 'precipitation'],
       },
     ],
-    datasets: ['designStorms', 'hydrology', 'precipitation', 'snowfall'],
+    datasets: [
+      'exceedanceProbability',
+      'hydrology',
+      'precipitation',
+      'snowfall',
+    ],
   },
   {
     slug: 'roads',
@@ -118,7 +123,7 @@ export const topics = [
       },
       {
         text: 'Will heavier rain overwhelm roadside ditches and culverts?',
-        datasets: ['designStorms'],
+        datasets: ['exceedanceProbability'],
       },
       {
         text: 'How warm will construction seasons get?',
@@ -130,7 +135,7 @@ export const topics = [
       'thawingIndex',
       'permafrost',
       'temperature',
-      'designStorms',
+      'exceedanceProbability',
     ],
   },
   {
@@ -257,7 +262,7 @@ export const topics = [
       },
       {
         text: 'Will lagoons and treatment ponds take on more rain?',
-        datasets: ['precipitation', 'designStorms'],
+        datasets: ['precipitation', 'exceedanceProbability'],
       },
       {
         text: 'How much frost protection do lines and tanks need?',
@@ -272,7 +277,7 @@ export const topics = [
       'hydrology',
       'precipitation',
       'freezingIndex',
-      'designStorms',
+      'exceedanceProbability',
       'permafrost',
     ],
   },

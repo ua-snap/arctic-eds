@@ -65,10 +65,13 @@
       </tbody>
     </table>
 
-    <p v-if="designStorm" class="design-storm">
-      <a href="#precipitation-frequency" class="name">Design storm</a>
-      (24-hour, 100-year, 2050&ndash;2079): {{ designStorm }} across the two
-      models. No historical design storm is available to compare with.
+    <p v-if="exceedance" class="exceedance">
+      <a href="#precipitation-frequency" class="name"
+        >Annual exceedance probability</a
+      >
+      (24-hour, 1% or 100-year, 2050&ndash;2079): {{ exceedance }} across the
+      two models. No historical annual exceedance probability depths are
+      available to compare with.
     </p>
 
     <p v-if="rows.some(row => row.bar)" class="summary-footer">
@@ -151,10 +154,10 @@ function precipitationRow() {
   )
 }
 
-// Design storm: the 24-hour, 100-year depth from each model, 2050–2079. The
-// API has no historical design storm to compare with, so this sits under the
-// table rather than in it.
-const designStorm = computed(() => {
+// Annual exceedance probability: the 24-hour, 1% (100-year) depth from each
+// model, 2050–2079. The API has no historical depths to compare with, so this
+// sits under the table rather than in it.
+const exceedance = computed(() => {
   if (!isPrecipitationFrequencyPresent.value) return null
   const models = results.value.precip_frequency['100']['24h']
   const depths = Object.values(models)
@@ -340,7 +343,7 @@ $rule: #ebe8e3;
   }
 }
 
-.design-storm {
+.exceedance {
   padding: 0.9rem 0;
   border-top: 1px solid $rule;
   font-size: 0.875rem;

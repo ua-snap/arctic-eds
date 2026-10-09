@@ -1,7 +1,7 @@
 <template>
   <ReportSection
     id="precipitation-frequency"
-    title="Design storms (precipitation frequency)"
+    title="Annual exceedance probability (precipitation frequency)"
   >
     <template #lede>{{ lede }}</template>
 
@@ -76,7 +76,7 @@
 
     <template #panel>
       <DataPanel
-        topic="design storm"
+        topic="annual exceedance probability"
         :downloads="[{ endpoint: 'precipitation/frequency/point' }]"
         note="Depth by duration × return period, per model and era, with 95% confidence intervals · CSV"
         :calculations="[

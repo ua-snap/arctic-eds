@@ -85,7 +85,8 @@ const isDegreeDaysPresent = computed(
     isThawingIndexPresent.value
 )
 
-// The summary leads with the degree days, precipitation and design storm.
+// The summary leads with the degree days, precipitation and annual
+// exceedance probability.
 const isSummaryPresent = computed(
   () =>
     isDegreeDaysPresent.value ||
@@ -129,10 +130,13 @@ const sections = computed(() => [
   },
   {
     id: 'precipitation-frequency',
-    label: 'Design storms (precipitation frequency)',
+    label: 'Annual exceedance probability (precipitation frequency)',
     present: isPrecipitationFrequencyPresent.value,
     downloads: [
-      { endpoint: 'precipitation/frequency/point', name: 'Design storms' },
+      {
+        endpoint: 'precipitation/frequency/point',
+        name: 'Annual exceedance probability',
+      },
     ],
   },
   {

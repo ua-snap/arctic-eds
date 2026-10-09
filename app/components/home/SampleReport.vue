@@ -29,9 +29,9 @@
       <img
         :src="sampleReportImage"
         width="2360"
-        height="1096"
+        height="1138"
         loading="lazy"
-        alt="Sample report summary for Fairbanks, mid-century versus the 1980 to 2009 baseline: freezing index down 26% (models range from down 39% to down 13%), thawing index up 21% (up 8% to up 37%), heating degree days down 14% (down 22% to down 7%) and annual precipitation up 30% (up 18% to up 61%), and a 24-hour, 100-year design storm of 3.4 to 6.1 inches."
+        alt="Sample report summary for Fairbanks, mid-century versus the 1980 to 2009 baseline: freezing index down 26% (models range from down 39% to down 13%), thawing index up 21% (up 8% to up 37%), heating degree days down 14% (down 22% to down 7%) and annual precipitation up 30% (up 18% to up 61%), and a 24-hour, 1% annual exceedance probability (100-year) depth of 3.4 to 6.1 inches."
       />
     </figure>
 
