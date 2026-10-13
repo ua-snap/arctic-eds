@@ -5,8 +5,8 @@
 // The datasets behind the report, keyed for reuse by topics. `section` is
 // the id of the report heading the dataset appears under.
 export const datasets = {
-  designStorms: {
-    name: 'Design storms',
+  exceedanceProbability: {
+    name: 'Annual exceedance probability',
     what: 'Rainfall depth for durations from 60 minutes to 60 days at 2- to 1,000-year return periods, with 95% confidence intervals.',
     detail:
       '2 models, RCP 8.5 · adjusted to NOAA Atlas 14 · 481 m grid · 2020–2049, 2050–2079, 2080–2099',
@@ -66,214 +66,186 @@ export const datasets = {
 export const topics = [
   {
     slug: 'drainage',
-    name: 'Culverts & drainage',
-    question: 'Will it still pass the design storm?',
-    summary:
-      'Design storms from 1 hour to 60 days, up to the 1,000-year event; runoff and snowmelt.',
+    name: 'Culverts & Drainage',
+    question: 'Is the culvert big enough?',
     intro:
-      'Sizing culverts, ditches and storm drains starts with the design storm and the spring runoff. See how both are projected to move at your site.',
+      'Sizing culverts, ditches and storm drains starts with the precipitation exceedance and the spring runoff. See how both are projected to change at your site.',
     questions: [
       {
-        text: 'Will this culvert still pass the design storm?',
-        datasets: ['designStorms'],
+        text: 'Will existing culverts be inadequate during the design life of this road?',
+        datasets: ['exceedanceProbability'],
       },
       {
-        text: 'How much deeper is the 25-, 50- or 100-year storm by mid-century?',
-        datasets: ['designStorms'],
+        text: 'How much are maximum daily flows likely to change in the next thirty years?',
+        datasets: ['hydrology'],
       },
       {
-        text: 'Is spring breakup runoff arriving earlier, or getting larger?',
-        datasets: ['hydrology', 'snowfall'],
+        text: 'Will peak snowmelt shift from April to March?',
+        datasets: ['hydrology'],
       },
       {
-        text: 'Will more of the year’s precipitation fall as rain?',
-        datasets: ['precipitation', 'snowfall'],
-      },
-      {
-        text: 'Will total runoff through the year go up or down?',
-        datasets: ['hydrology', 'precipitation'],
+        text: 'What one-hour rainfall (in inches) has an annual exceedance probability of 1%?',
+        datasets: ['exceedanceProbability'],
       },
     ],
-    datasets: ['designStorms', 'hydrology', 'precipitation', 'snowfall'],
+    datasets: ['exceedanceProbability', 'hydrology', 'precipitation'],
   },
   {
     slug: 'roads',
-    name: 'Roads & airfields',
-    question: 'How deep will frost reach?',
-    summary: 'Freezing and thawing index; depth to permafrost.',
+    name: 'Roads, Rail, Airfields, Trails',
+    question: 'Is the runway safe?',
     intro:
-      'Pavement sections, embankments and runways are designed around frost depth and the thaw season. See how both are projected to shift under your alignment.',
+      'The challenge of designing and maintaining transportation corridors in Alaska requires long-term projections of permafrost thaw and seasonal frost cycles.',
     questions: [
       {
-        text: 'How deep will seasonal frost reach under the pavement?',
-        datasets: ['freezingIndex'],
-      },
-      {
-        text: 'Will the thaw season get longer and warmer?',
-        datasets: ['thawingIndex'],
-      },
-      {
-        text: 'Is there permafrost under the alignment, and how will it change?',
+        text: 'Is there permafrost underlying this rail corridor?',
         datasets: ['permafrost'],
       },
       {
-        text: 'Will heavier rain overwhelm roadside ditches and culverts?',
-        datasets: ['designStorms'],
+        text: 'Can I predict the design thawing index for this site for the next two decades?',
+        datasets: ['thawingIndex'],
       },
       {
-        text: 'How warm will construction seasons get?',
-        datasets: ['temperature'],
+        text: 'What is the average depth of the permafrost under this section of roadway?',
+        datasets: ['permafrost'],
+      },
+      {
+        text: 'Can this airfield be re-sited to more stable ground?',
+        datasets: ['permafrost'],
+      },
+      {
+        text: 'In what seasons is this trail likely to be usable by 2060?',
+        datasets: ['freezingIndex', 'thawingIndex'],
       },
     ],
-    datasets: [
-      'freezingIndex',
-      'thawingIndex',
-      'permafrost',
-      'temperature',
-      'designStorms',
-    ],
+    datasets: ['permafrost', 'freezingIndex', 'thawingIndex'],
   },
   {
     slug: 'foundations',
     name: 'Foundations',
-    question: 'Will the ground stay frozen?',
-    summary: 'Ground temperature at 1 m and 5 m; top and base of permafrost.',
+    question: 'Are the pilings stable?',
     intro:
-      'Piles, slabs and thermosyphons depend on how cold the ground stays over the life of the structure. See how ground temperature and permafrost are projected to change.',
+      'Construction choices depend not only on current ground stability and drainage, but also on how that is likely to change during the life of a building or installation. Mistakes can be costly.',
     questions: [
       {
-        text: 'Will the ground under this foundation stay frozen?',
+        text: 'Do basements in this area need to be designed to protect frozen soil?',
         datasets: ['permafrost'],
       },
       {
-        text: 'How warm will the ground get at pile depth?',
-        datasets: ['permafrost'],
+        text: 'What is likely to be the maximum depth of ground-frost penetration in another forty or fifty years?',
+        datasets: ['freezingIndex'],
       },
       {
-        text: 'How deep will the thawed layer above permafrost get?',
-        datasets: ['permafrost', 'thawingIndex'],
+        text: 'Can I calculate the maximum likely design thawing index for the life of this building?',
+        datasets: ['thawingIndex'],
       },
       {
-        text: 'Could a talik form beneath the structure?',
-        datasets: ['permafrost'],
-      },
-      {
-        text: 'How will seasonal frost, and frost heave, change?',
+        text: 'Will I need to use Frost Protected Shallow Foundations (FPSF) to prevent frost heave?',
         datasets: ['freezingIndex'],
       },
     ],
-    datasets: ['permafrost', 'thawingIndex', 'freezingIndex', 'temperature'],
+    datasets: ['permafrost', 'freezingIndex', 'thawingIndex'],
   },
   {
     slug: 'buildings',
-    name: 'Buildings & utilities',
-    question: 'How much will heating demand drop?',
-    summary: 'Heating degree days; monthly air temperature; snowfall.',
+    name: 'Building Design',
+    question: 'Will the roof collapse?',
     intro:
-      'Heating plants, envelopes and buried utilities are sized for local winters and ground conditions. See how heating demand, temperature and the ground are projected to change.',
+      'Key challenges of ensuring structural safety and comfort depend on anticipating change over the life of residential, public, and commercial properties.',
     questions: [
       {
-        text: 'How much will heating demand drop?',
-        datasets: ['heatingDegreeDays'],
-      },
-      {
-        text: 'How cold will the coldest months still get?',
+        text: 'Do we need to install air conditioning?',
         datasets: ['temperature'],
       },
       {
-        text: 'Will annual snowfall go up or down?',
+        text: 'Will the anticipated snow load cause safety issues in another thirty years?',
         datasets: ['snowfall'],
       },
       {
-        text: 'How much frost protection do water and sewer lines need?',
-        datasets: ['freezingIndex'],
+        text: 'Can we plan for fewer heating degree days at this location?',
+        datasets: ['heatingDegreeDays'],
       },
       {
-        text: 'Will the ground under utilidors and buried lines stay frozen?',
-        datasets: ['permafrost'],
+        text: 'In what months will we need to operate a cooling system?',
+        datasets: ['temperature'],
+      },
+      {
+        text: 'Will the extra insulation pay for itself over the life of the building?',
+        datasets: ['heatingDegreeDays'],
       },
     ],
     datasets: [
+      'snowfall',
+      'exceedanceProbability',
       'heatingDegreeDays',
       'temperature',
-      'snowfall',
-      'freezingIndex',
-      'permafrost',
     ],
   },
   {
     slug: 'training-lands',
-    name: 'Training lands',
+    name: 'Training Lands',
     question: 'When can vehicles cross?',
-    summary: 'Thaw season, snowfall, soil moisture, permafrost.',
     intro:
-      'Maneuver areas, ranges and trails depend on frozen ground, snow cover and soil moisture. See how the seasons that allow training are projected to shift.',
+      'Effective cold-weather training and year-round readiness are priorities on military training lands. Both require planning for shifting seasonality and changes to frozen ground.',
     questions: [
       {
-        text: 'When can vehicles cross, and for how long?',
-        datasets: ['freezingIndex', 'thawingIndex'],
+        text: 'When in the fall will the ground surface be solidly frozen enough to support maneuvers?',
+        datasets: ['freezingIndex'],
       },
       {
-        text: 'Will soils be wetter during the training season?',
+        text: 'Is seasonal snowfall of a foot or more likely to occur before or after adequate ground freezing?',
+        datasets: ['snowfall', 'freezingIndex'],
+      },
+      {
+        text: 'What will be the likely frequency of extreme cold days for cold weather testing?',
+        datasets: ['temperature'],
+      },
+      {
+        text: 'Is the timing of snowmelt changing?',
         datasets: ['hydrology'],
-      },
-      {
-        text: 'Will snow cover for winter training shrink or grow?',
-        datasets: ['snowfall', 'hydrology'],
-      },
-      {
-        text: 'Will trails and ranges thaw deeper each summer?',
-        datasets: ['permafrost', 'thawingIndex'],
-      },
-      {
-        text: 'Will more rain fall across the year?',
-        datasets: ['precipitation'],
       },
     ],
     datasets: [
-      'thawingIndex',
       'freezingIndex',
-      'hydrology',
+      'thawingIndex',
       'snowfall',
+      'hydrology',
       'permafrost',
-      'precipitation',
     ],
   },
   {
     slug: 'water',
-    name: 'Water & wastewater',
-    question: 'Will supply or freeze risk change?',
-    summary: 'Runoff, annual precipitation, freezing index.',
+    name: 'Water Supply & Wastewater',
+    question: 'Will the sewage lagoon overflow?',
     intro:
-      'Intakes, lagoons, tanks and lines depend on runoff timing and on keeping water from freezing. See how supply and freeze risk are projected to change.',
+      'For communities and remote installations, safe drinking water and effective sanitation require planning for shifts in drainage and soil stability.',
     questions: [
       {
-        text: 'Will supply or freeze risk change?',
-        datasets: ['hydrology', 'freezingIndex'],
-      },
-      {
-        text: 'How will the timing of runoff and snowmelt shift through the year?',
+        text: 'Is peak runoff likely to become greater?',
         datasets: ['hydrology'],
       },
       {
-        text: 'Will lagoons and treatment ponds take on more rain?',
-        datasets: ['precipitation', 'designStorms'],
+        text: 'Will storm events that have caused wastewater problems in the past become more common?',
+        datasets: ['exceedanceProbability'],
       },
       {
-        text: 'How much frost protection do lines and tanks need?',
-        datasets: ['freezingIndex'],
+        text: 'Will the season of peak runoff shift?',
+        datasets: ['hydrology'],
       },
       {
-        text: 'Will permafrost under tanks and lines stay stable?',
+        text: 'Is local permafrost thaw likely to change long-term drainage patterns?',
+        datasets: ['permafrost'],
+      },
+      {
+        text: 'Is ground thawing near freshwater sources?',
         datasets: ['permafrost'],
       },
     ],
     datasets: [
-      'hydrology',
+      'exceedanceProbability',
       'precipitation',
       'freezingIndex',
-      'designStorms',
-      'permafrost',
+      'hydrology',
     ],
   },
 ]

@@ -1,7 +1,7 @@
 // Leaflet, set up for this site: its stylesheet, the proj4leaflet extension
 // that provides L.Proj.CRS for the Alaska Albers projection (it loads proj4
 // itself), and working default marker images. Leaflet registers itself as
-// the `L` global used by the map store and MiniMap.
+// the `L` global used by the map store.
 //
 // Don't import this module directly. loadLeaflet() (utils/loadLeaflet.js)
 // loads it on demand, so pages without a map don't download Leaflet and
