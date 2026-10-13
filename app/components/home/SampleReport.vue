@@ -5,12 +5,8 @@
         id="sample-report-title"
         class="title is-2 is-size-3-mobile is-spaced has-text-weight-light"
       >
-        Reports show how physical and environmental parameters are changing
+        Reports include summarized data, maps, and streamlined data access.
       </h2>
-      <p class="subtitle is-5">
-        Each report sets projections beside modeled historical baselines for
-        your site and shows the range across models.
-      </p>
     </div>
 
     <!--
@@ -19,9 +15,9 @@
       a screenshot of the Fairbanks report's summary (report/ReportSummary.vue)
       at 1180px wide and 2x, with "Fairbanks" in place of its "Summary" label.
     -->
-    <p class="has-text-right mb-2" aria-hidden="true">
+    <p class="mb-2" aria-hidden="true">
       <span
-        class="tag has-background-grey-dark has-text-white is-uppercase has-text-weight-semibold"
+        class="tag has-background-grey has-text-white is-uppercase has-text-weight-semibold"
         >Sample</span
       >
     </p>
@@ -35,7 +31,9 @@
       />
     </figure>
 
-    <p class="has-text-centered has-text-weight-semibold">
+    <p
+      class="is-size-4 is-size-5-mobile has-text-centered has-text-weight-semibold"
+    >
       <NuxtLink :to="exampleSite.path"
         >Open the full Fairbanks report →</NuxtLink
       >
