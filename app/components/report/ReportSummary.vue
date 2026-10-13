@@ -37,14 +37,13 @@
             <a :href="`#${row.section}`" class="name">{{ row.name }}</a>
             <span class="use">{{ row.use }}</span>
           </th>
-          <td class="value" :class="`is-${row.tone}`">{{ row.shift }}</td>
+          <td class="value">{{ row.shift }}</td>
           <td class="range-cell" aria-hidden="true">
             <div v-if="row.bar" class="range">
               <span class="range-track"></span>
               <span class="range-zero"></span>
               <span
                 class="range-bar"
-                :class="`is-${row.tone}`"
                 :style="{
                   left: position(row, row.low) + '%',
                   width: position(row, row.high) - position(row, row.low) + '%',
@@ -52,7 +51,6 @@
               ></span>
               <span
                 class="range-mean"
-                :class="`is-${row.tone}`"
                 :style="{ left: `calc(${position(row, row.mean)}% - 7px)` }"
               ></span>
             </div>
@@ -142,7 +140,6 @@ function precipitationRow() {
       name: 'Annual precipitation',
       use: 'drainage, water supply',
       section: 'annual-precipitation',
-      tone: 'wet',
       ...(!summary['1980-2009'] && { note: 'vs. the 1901–2015 average' }),
     },
     baseline.prmean,
@@ -175,7 +172,6 @@ function temperatureRow() {
     name: 'Air temperature',
     use: 'design temperatures, building energy',
     section: 'temperature',
-    tone: 'warm',
   }
   if (!means.length) {
     return { ...row, bar: false, shift: '—', note: '—' }
@@ -224,7 +220,6 @@ const rows = computed(() =>
           name: 'Freezing index',
           use: 'roads, embankments, frost depth',
           section: 'freezing-index',
-          tone: 'cold',
         })
       ),
     isThawingIndexPresent.value &&
@@ -233,7 +228,6 @@ const rows = computed(() =>
           name: 'Thawing index',
           use: 'permafrost, thaw settlement',
           section: 'thawing-index',
-          tone: 'warm',
         })
       ),
     isHeatingDegreeDaysPresent.value &&
@@ -242,7 +236,6 @@ const rows = computed(() =>
           name: 'Heating degree days',
           use: 'building energy, fuel',
           section: 'heating-degree-days',
-          tone: 'warm',
         })
       ),
     isPrecipitationPresent.value && safely(precipitationRow),
@@ -268,10 +261,8 @@ function position(row, change) {
 </script>
 
 <style lang="scss" scoped>
-$cold: #2f5f8a;
-$warm: #b4532a;
-$wet: #2f64a0;
 $muted: #5c5a58;
+$bar: #4d4d4d;
 $rule: #ebe8e3;
 
 .report-summary {
@@ -349,19 +340,6 @@ $rule: #ebe8e3;
   justify-content: space-between;
 }
 
-.is-cold {
-  color: $cold;
-  --tone: #{$cold};
-}
-.is-warm {
-  color: $warm;
-  --tone: #{$warm};
-}
-.is-wet {
-  color: $wet;
-  --tone: #{$wet};
-}
-
 // The ends of a row's own scale, under its bar.
 .row-scale {
   display: flex;
@@ -396,7 +374,7 @@ $rule: #ebe8e3;
     top: 7px;
     height: 12px;
     border-radius: 6px;
-    background: var(--tone);
+    background: $bar;
     opacity: 0.28;
   }
   .range-mean {
@@ -405,7 +383,7 @@ $rule: #ebe8e3;
     height: 14px;
     border: 2px solid #fff;
     border-radius: 7px;
-    background: var(--tone);
+    background: $bar;
   }
 }
 
