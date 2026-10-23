@@ -17,8 +17,12 @@
 // - $family-secondary is Barlow, for headlines (.is-family-secondary).
 // - $grey-dark is the text color, $grey muted text (5.3:1 on the page) and
 //   $white-ter the home page's shaded band.
-// - $primary is a dark sage: white text on it is 6.8:1, and its light
-//   version (.is-primary.is-light) is the pale sage of tags and notes.
+// - $primary is a slate blue: white text on it is 6.9:1, and its light
+//   version (.is-primary.is-light) is the pale slate of tags and notes.
+// - "accent" is an amber for the few things that should stand out: the
+//   search button, the Sample label and the report's current-section marker
+//   (.is-accent). Bulma draws its text in a dark amber, 5.1:1. It is kept
+//   out of charts, where orange means warmer.
 // - $link is a mid blue, 6.7:1 on white and 6:1 on the home page's darkest
 //   band, instead of Bulma's electric blue.
 @use 'bulma/sass/utilities' with (
@@ -33,8 +37,17 @@
   $grey-dark: #312e30,
   $grey: #6b6866,
   $white-ter: #f4f2ee,
-  $primary: #3f625b,
-  $link: #275d9b
+  $primary: #3d5d7c,
+  $link: #275d9b,
+  // A (color, text color) pair; without the dark text color Bulma would
+  // put white text on it, at 2:1.
+  $custom-colors:
+    (
+      'accent': (
+        #f0a830,
+        #312e30,
+      ),
+    )
 );
 
 @use 'bulma/sass/base/minireset';

@@ -57,7 +57,7 @@ const datasets = [
     url: catalog + 'f44595c8-5384-4c02-9ab4-f7a9c43e92eb',
   },
   {
-    topic: 'Design storms',
+    topic: 'Annual exceedance probability',
     name: 'Annual maximum precipitation projections for Alaska',
     url: catalog + '304b6d89-961e-417d-b6ba-4139c7fe5ff6',
   },

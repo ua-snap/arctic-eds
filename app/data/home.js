@@ -17,7 +17,7 @@ export const placeAliases = {
 
 // The site pictured in assets/images/sample-report.png. Its values are from
 // the /eds/all response that app/assets/mock.json captures (mid-century vs.
-// the modeled baseline); retake the picture if those change.
+// the 1980–2009 baseline); retake the picture if those change.
 export const exampleSite = {
   name: 'Fairbanks',
   // The point report, so the full report shows the same grid cells.

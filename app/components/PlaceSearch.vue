@@ -22,7 +22,7 @@
             :id="inputId"
             v-model="searchTerm"
             class="input is-large"
-            placeholder="Installation, community, or lat, lon"
+            :placeholder="placeholder"
             autocomplete="off"
             :display-value="() => searchTerm"
             :aria-describedby="`${hintId} ${messageId}`"
@@ -66,7 +66,7 @@
         </ComboboxContent>
       </ComboboxRoot>
       <div class="control">
-        <button class="button is-primary is-large is-fullwidth" type="submit">
+        <button class="button is-accent is-large is-fullwidth" type="submit">
           Show the shift
         </button>
       </div>
@@ -75,6 +75,10 @@
       >Type a place name and use the up and down arrow keys to choose one, or
       type a latitude and longitude and press Enter.</span
     >
+    <p v-if="placesError" class="help is-size-6" role="alert">
+      Something&rsquo;s wrong and the community list cannot be loaded. Enter a
+      latitude and longitude, or try again later.
+    </p>
     <p :id="messageId" class="help is-danger is-size-6" aria-live="polite">
       {{ message }}
     </p>
@@ -142,7 +146,14 @@ const props = defineProps({
 
 const router = useRouter()
 const store = useReportStore()
-const { places } = storeToRefs(store)
+const { places, placesError } = storeToRefs(store)
+
+// Without the community list, a lat/lng is the only way in.
+const placeholder = computed(() =>
+  placesError.value
+    ? 'Latitude, longitude'
+    : 'Installation, community, or lat, lon'
+)
 
 const selected = ref(undefined)
 const searchTerm = ref('')
@@ -275,6 +286,11 @@ function submit() {
   }
   if (options.value.length > 0) {
     go(options.value[0])
+    return
+  }
+  if (placesError.value) {
+    message.value =
+      'The community list cannot be loaded. Enter a latitude and longitude instead.'
     return
   }
   message.value = places.value
