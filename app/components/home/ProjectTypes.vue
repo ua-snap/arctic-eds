@@ -36,7 +36,6 @@
             >
               {{ topic.question }}
             </h3>
-            <p>{{ topic.summary }}</p>
             <p
               class="mt-auto pt-5 has-text-link has-text-weight-semibold"
               aria-hidden="true"

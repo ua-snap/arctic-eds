@@ -42,15 +42,16 @@ function convertTemperature(units, value) {
 function convertMillimetersInches(units, variable, value) {
   // If the variable is precip_frequency, we want the metric and
   // imperial units to be set to 2 decimal places to match
-  // the DOT Projected Precipitation application.
+  // the DOT Projected Precipitation application. Monthly hydrology values
+  // are often well under an inch, so they keep 2 decimal places too.
   if (units == 'metric') {
-    if (variable == 'precip_frequency') {
+    if (variable == 'precip_frequency' || variable == 'hydrology') {
       return (value * 25.4).toFixed(2)
     } else {
       return (value * 25.4).toFixed(0)
     }
   } else {
-    if (variable == 'precip_frequency') {
+    if (variable == 'precip_frequency' || variable == 'hydrology') {
       return (value / 25.4).toFixed(2)
     } else {
       return (value / 25.4).toFixed(1)
