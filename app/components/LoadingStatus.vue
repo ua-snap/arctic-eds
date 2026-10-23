@@ -45,17 +45,17 @@
       </template>
 
       <div class="buttons">
-        <b-button
+        <button
           v-if="canRetry"
+          type="button"
+          class="button is-warning"
           v-on:click="emit('retry')"
-          class="is-warning"
-          icon-left="refresh"
         >
           <strong>Try again</strong>
-        </b-button>
-        <b-button v-on:click="close" icon-left="magnify">
+        </button>
+        <button type="button" class="button" v-on:click="close">
           Back to search
-        </b-button>
+        </button>
       </div>
     </div>
   </div>

@@ -9,8 +9,8 @@
         </h1>
         <div class="container is-max-tablet">
           <p class="subtitle is-5">
-            Projected change from the historical record at any Alaska site, and
-            how closely the models agree.
+            Explore the range of projected changes from the historical record at
+            any&nbsp;Alaska&nbsp;site.
           </p>
           <PlaceSearch class="mt-5" />
           <p class="mt-4">

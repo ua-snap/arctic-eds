@@ -4,32 +4,31 @@
       id="about-title"
       class="title is-2 is-size-3-mobile has-text-weight-light has-text-centered mb-6"
     >
-      How Arctic-EDS works
+      Arctic-EDS Functionality
     </h2>
 
-    <ul class="columns mb-6">
-      <li class="column">
-        <strong class="is-block is-size-5 mb-2"
-          >Future conditions, ready for design.</strong
-        >
-        Arctic-EDS gathers model projections for Alaska, picks the ones that
-        perform best here, and puts them in one report for your site.
-      </li>
-      <li class="column">
-        <strong class="is-block is-size-5 mb-2"
-          >Change, not a single number.</strong
-        >
-        Each report compares the future with the model’s own historical
-        baseline, so you see how far a parameter moves and how much the models
-        agree.
-      </li>
-      <li class="column">
-        <strong class="is-block is-size-5 mb-2">Everything traceable.</strong>
-        Every section links to its source data, references and a CSV download,
-        and the <NuxtLink to="/guidance">Guidance</NuxtLink> page covers
-        applying it to a design.
-      </li>
-    </ul>
+    <div class="content is-size-5 mx-auto mb-6">
+      <ul>
+        <li>
+          Arctic-EDS gathers the best available model projections for Alaska and
+          puts them in one report for your site.
+        </li>
+        <li>
+          Each report offers data from multiple models and compares projections
+          with each model’s own historical baseline, so you see how far a
+          parameter moves and how much the models agree.
+        </li>
+        <li>
+          Every section links to its source data, applicable scientific
+          references, and a CSV download.
+        </li>
+        <li>
+          The <NuxtLink to="/guidance">Guidance</NuxtLink> page offers support
+          and examples for applying report data to a plan, decision-making
+          process, or design.
+        </li>
+      </ul>
+    </div>
 
     <div class="has-text-centered">
       <h3
