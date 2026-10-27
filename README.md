@@ -20,6 +20,11 @@ export SNAP_API_URL=http://localhost:5000
 export RASDAMAN_URL=https://apollo.snap.uaf.edu/rasdaman/ows
 npm run dev
 
+# the experimental Snow-17 report section only appears when this points to a
+# data-api that has the /snow17 endpoint (its snow17-draft branch)
+export SNOW17_API_URL=http://localhost:5000
+npm run dev
+
 # generate the static site into .output/public/ (with a dist symlink
 # for compatibility) -- double-check all env vars before doing this.
 npm run generate

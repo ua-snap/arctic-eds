@@ -44,3 +44,9 @@ export const marchenko2008 = {
   href: 'https://www.permafrost.org/event/icop9/',
   linkText: 'Proceedings',
 }
+
+export const hosking1990 = {
+  text: 'Hosking (1990), J. Royal Statistical Society B 52(1)',
+  full: 'Hosking, J.R.M. (1990). L-moments: analysis and estimation of distributions using linear combinations of order statistics. Journal of the Royal Statistical Society, Series B, 52(1), 105–124.',
+  href: 'https://doi.org/10.1111/j.2517-6161.1990.tb01775.x',
+}

@@ -5,7 +5,12 @@
   -->
   <section :id="id" class="report-section" :aria-labelledby="`${id}-title`">
     <div class="report-section-main">
-      <h2 :id="`${id}-title`" class="title is-3 mb-3">{{ title }}</h2>
+      <h2 :id="`${id}-title`" class="title is-3 mb-3">
+        {{ title }}
+        <span v-if="badge" class="tag is-accent section-badge">{{
+          badge
+        }}</span>
+      </h2>
       <p class="lede"><slot name="lede" /></p>
       <div class="chart-card">
         <slot />
@@ -20,5 +25,7 @@ defineProps({
   // Anchor for the contents list and topic links.
   id: String,
   title: String,
+  // Optional tag after the heading, e.g. "Experimental".
+  badge: String,
 })
 </script>

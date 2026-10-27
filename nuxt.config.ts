@@ -82,6 +82,10 @@ export default defineNuxtConfig({
       rasdamanUrl:
         process.env.RASDAMAN_URL || 'https://maps.earthmaps.io/rasdaman/ows',
       mockApi: !!process.env.MOCK_API,
+      // A data-api with the experimental /snow17 endpoint (e.g. a local
+      // checkout of its snow17-draft branch). The report's Snow-17 section
+      // only appears when this is set.
+      snow17ApiUrl: process.env.SNOW17_API_URL || '',
     },
   },
 

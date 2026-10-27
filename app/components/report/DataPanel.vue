@@ -4,9 +4,10 @@
     <h3 class="panel-heading">Get the data</h3>
     <a
       v-for="download in downloads"
-      :key="download.endpoint"
+      :key="download.endpoint || download.href"
       class="button is-primary is-fullwidth download-button no-print"
-      :href="csvUrl(download.endpoint)"
+      :href="download.href || csvUrl(download.endpoint)"
+      :download="download.filename"
     >
       <span>{{ download.label || 'Download CSV' }}</span>
       <span aria-hidden="true">&darr;</span>
@@ -56,7 +57,8 @@
 const props = defineProps({
   // Names the panel for screen readers, e.g. "air temperature".
   topic: String,
-  // [{ endpoint, label }]: CSV downloads from the API.
+  // [{ endpoint, label }]: CSV downloads from the API, or
+  // [{ href, filename, label }] for a file built in the page.
   downloads: Array,
   // What the download holds, e.g. "Monthly min / mean / max · CSV, ~363 kB".
   note: String,

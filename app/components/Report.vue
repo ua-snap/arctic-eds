@@ -74,6 +74,15 @@
         </template>
       </NuxtErrorBoundary>
       <NuxtErrorBoundary
+        v-if="isSnow17Enabled"
+        @error="onSectionError('snowpack', $event)"
+      >
+        <Snow17Report />
+        <template #error>
+          <SectionError :title="label('snowpack')" />
+        </template>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary
         v-if="isHydrologyPresent"
         @error="onSectionError('hydrology', $event)"
       >
@@ -106,7 +115,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, defineAsyncComponent, onMounted, reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import ReportHeader from '~/components/report/ReportHeader'
 import ReportToc from '~/components/report/ReportToc'
@@ -119,6 +128,10 @@ import PermafrostReport from '~/components/reports/Permafrost'
 import PrecipitationReport from '~/components/reports/Precipitation'
 import SnowfallReport from '~/components/reports/Snowfall'
 import HydrologyReport from '~/components/reports/Hydrology'
+// Experimental, and only on when its API is configured, so it loads on demand.
+const Snow17Report = defineAsyncComponent(() =>
+  import('~/components/reports/Snow17')
+)
 import SectionError from '~/components/SectionError'
 import { reportError } from '~/stores/report'
 
@@ -147,6 +160,10 @@ const isDegreeDaysPresent = computed(
     isFreezingIndexPresent.value ||
     isThawingIndexPresent.value
 )
+
+// The experimental Snow-17 section runs the model through its own API, apart
+// from /eds/all, and loads its data itself once the rest of the report is up.
+const isSnow17Enabled = !!config.public.snow17ApiUrl
 
 // The summary leads with air temperature, the degree days and precipitation.
 const isSummaryPresent = computed(
@@ -192,6 +209,11 @@ const sections = computed(() => [
     id: 'snowfall',
     label: 'Snowfall',
     present: isSnowfallPresent.value,
+  },
+  {
+    id: 'snowpack',
+    label: 'Snowpack (Snow-17, experimental)',
+    present: isSnow17Enabled,
   },
   {
     id: 'hydrology',
