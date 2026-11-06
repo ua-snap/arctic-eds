@@ -74,6 +74,15 @@
         </template>
       </NuxtErrorBoundary>
       <NuxtErrorBoundary
+        v-if="isAzcotPresent"
+        @error="onSectionError('cold-weather', $event)"
+      >
+        <ColdWeatherReport />
+        <template #error>
+          <SectionError :title="label('cold-weather')" />
+        </template>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary
         v-if="isHydrologyPresent"
         @error="onSectionError('hydrology', $event)"
       >
@@ -119,6 +128,7 @@ import PermafrostReport from '~/components/reports/Permafrost'
 import PrecipitationReport from '~/components/reports/Precipitation'
 import SnowfallReport from '~/components/reports/Snowfall'
 import HydrologyReport from '~/components/reports/Hydrology'
+import ColdWeatherReport from '~/components/reports/ColdWeather'
 import SectionError from '~/components/SectionError'
 import { reportError } from '~/stores/report'
 
@@ -138,6 +148,7 @@ const {
   isFreezingIndexPresent,
   isThawingIndexPresent,
   isPermafrostPresent,
+  isAzcotPresent,
   hasAnyData,
 } = storeToRefs(store)
 
@@ -192,6 +203,11 @@ const sections = computed(() => [
     id: 'snowfall',
     label: 'Snowfall',
     present: isSnowfallPresent.value,
+  },
+  {
+    id: 'cold-weather',
+    label: 'Cold-weather operations',
+    present: isAzcotPresent.value,
   },
   {
     id: 'hydrology',
@@ -249,7 +265,12 @@ async function fetchReport() {
         '/' +
         latLng.value.lng
 
-      await store.apiFetch(url)
+      await Promise.all([
+        store.apiFetch(url),
+        store.fetchAzcot().catch(error => {
+          console.error('Failed to load AZCOT data', error)
+        }),
+      ])
     }
 
     if (!hasAnyData.value) {
@@ -631,6 +652,15 @@ svg.chart {
   }
   a {
     color: $primary;
+  }
+}
+.caveats {
+  padding-left: 1rem;
+  list-style: disc;
+  color: $muted;
+
+  li + li {
+    margin-top: 0.4rem;
   }
 }
 .citation {
