@@ -41,3 +41,14 @@ const unitSymbols = {
 export function unitSymbol(units) {
   return unitSymbols[units] ?? units
 }
+
+// Tidies the plain-text units and comparisons in the API's descriptions,
+// e.g. "lbf/ft2" to "lb/ft²" and ">= 23.36 degF" to "≥ 23.36°F".
+export function tidyText(text) {
+  if (typeof text !== 'string') return text
+  return text
+    .replace(/\blbf?\/ft2\b/g, 'lb/ft²')
+    .replace(/ ?degF\b/g, '°F')
+    .replace(/>=/g, '≥')
+    .replace(/<=/g, '≤')
+}

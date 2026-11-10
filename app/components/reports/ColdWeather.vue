@@ -26,7 +26,7 @@
           <span class="verdict" :class="verdictClass(key)">{{
             verdictLabel(key)
           }}</span>
-          {{ text }}
+          {{ verdictDefinitions[key] ?? tidyText(text) }}
         </li>
       </ul>
       <div class="table-container">
@@ -51,13 +51,14 @@
               </th>
             </tr>
             <tr v-for="item in group.items" :key="item.id">
-              <th scope="row">{{ item.item }}</th>
-              <td class="verdict-limit">{{ limitText(item) }}</td>
-              <td
-                v-for="month in seasonMonths"
-                :key="month.key"
-                :title="evidenceText(item, month)"
-              >
+              <th scope="row">{{ itemName(item) }}</th>
+              <td class="verdict-limit">
+                {{ limitText(item) }}
+                <span v-if="limitMeasure(item)" class="verdict-measure">{{
+                  limitMeasure(item)
+                }}</span>
+              </td>
+              <td v-for="month in seasonMonths" :key="month.key">
                 <span
                   class="verdict"
                   :class="verdictClass(item.by_month?.[month.key])"
@@ -75,10 +76,7 @@
           </tbody>
         </table>
       </div>
-      <p class="chart-note">
-        {{ verdicts.description }} Hover a month for the 30-year record and how
-        often the limit was reached.
-      </p>
+      <p class="chart-note">{{ tidyText(verdicts.description) }}</p>
     </template>
 
     <!-- Design cold and cold zones -->
@@ -122,17 +120,19 @@
       <SeasonTable
         caption="Share of hours at or below each air temperature, %"
         row-heading="At or below"
-        :rows="thresholdRows(exceedance.air_temperature_at_or_below, '°F')"
+        :rows="
+          thresholdRows(exceedance.air_temperature_at_or_below, '°F', 'below')
+        "
       />
       <SeasonTable
         caption="Freeze–thaw days (above and below 32°F on the same day), days per year"
-        :rows="[{ label: 'Freeze–thaw days', ...freezeThaw }]"
+        :rows="[{ label: 'Freeze–thaw days', ...freezeThaw, digits: 0 }]"
       />
       <p class="chart-note">
         Design cold follows MIL-HDBK-310: the temperature that only 1%, 5% or
         10% of the month&rsquo;s hours are colder than. Design type:
-        {{ zones.ar70_38_design_type.basis }}. Cold zone:
-        {{ zones.atp_cold_zone.basis }}.
+        {{ tidyText(zones.ar70_38_design_type.basis) }}. Cold zone:
+        {{ tidyText(zones.atp_cold_zone.basis) }}.
       </p>
     </template>
 
@@ -147,12 +147,14 @@
               :key="option.value"
               :value="option.value"
             >
-              {{ option.label }}
+              {{ option.label }} ({{
+                unitSymbol(climatology[option.value].units)
+              }})
             </option>
           </select>
         </label>
       </div>
-      <h3 class="chart-heading">{{ daily.title }}</h3>
+      <h3 class="chart-heading">{{ dailyTitle }} ({{ dailyUnit }})</h3>
       <div class="chart-legend" aria-hidden="true">
         <span
           ><span class="swatch" :style="{ background: palette.cool }" />Mean for
@@ -166,7 +168,7 @@
         >
       </div>
       <SeasonChart
-        :title="`${daily.title}, ${dailyUnit}, by day, 1991–2020`"
+        :title="`${dailyTitle}, ${dailyUnit}, by day, 1991–2020`"
         :line="{
           label: 'Mean for the day',
           values: dailyValues(daily.mean.daily),
@@ -179,16 +181,16 @@
           color: palette.coolBand,
         }"
         :references="dailyReferences"
-        :unit="dailyUnit"
+        :unit="dailyUnit.startsWith('°') ? dailyUnit : ` ${dailyUnit}`"
       />
       <p class="chart-note">
         Each day pools 720 hourly values (30 years &times; 24 hours).
-        <template v-if="daily.caveat">{{ daily.caveat }}</template>
+        <template v-if="daily.caveat">{{ tidyText(daily.caveat) }}</template>
       </p>
       <details class="chart-table">
         <summary>Show the monthly numbers</summary>
         <SeasonTable
-          :caption="`${daily.title}, ${dailyUnit}, by month`"
+          :caption="`${dailyTitle} by month, ${dailyUnit}`"
           :rows="[
             { label: 'Lowest', ...daily.min },
             { label: 'Mean', ...daily.mean },
@@ -200,7 +202,9 @@
 
     <!-- Wind chill and frostbite -->
     <template v-else-if="view == 'frostbite'">
-      <h3 class="chart-heading">{{ frostbite.title }}, share of hours</h3>
+      <h3 class="chart-heading">
+        {{ tidyText(frostbite.title) }}, share of hours
+      </h3>
       <div class="chart-legend">
         <span v-for="cls in frostbiteClasses" :key="cls.key"
           ><span
@@ -230,10 +234,6 @@
                 width: `${row.shares[cls.key]}%`,
                 background: cls.color,
               }"
-              :title="`${cls.label}: ${formatNumber(
-                row.shares[cls.key],
-                1
-              )}% of hours`"
             />
           </span>
           <span class="frostbite-time"
@@ -243,7 +243,7 @@
       </div>
       <p class="chart-note">
         Right: shortest time to frostbite in any hour of 30 years.
-        {{ frostbite.description }}
+        {{ tidyText(frostbite.description) }}
       </p>
       <details class="chart-table">
         <summary>Show the numbers</summary>
@@ -270,9 +270,11 @@
       <SeasonTable
         caption="Share of hours with wind chill at or below each temperature, %"
         row-heading="At or below"
-        :rows="thresholdRows(exceedance.wind_chill_at_or_below, '°F')"
+        :rows="thresholdRows(exceedance.wind_chill_at_or_below, '°F', 'below')"
       />
-      <p class="chart-note">{{ exceedance.wind_chill_at_or_below.caveat }}</p>
+      <p class="chart-note">
+        {{ tidyText(exceedance.wind_chill_at_or_below.caveat) }}
+      </p>
     </template>
 
     <!-- Snow and wind loads -->
@@ -283,22 +285,25 @@
         :rows="snowfallRows"
       />
       <p class="chart-note">
-        {{ snowfall.description }} Storms: {{ snowfall.storm_definition }}
+        {{ tidyText(snowfall.description) }} Storms:
+        {{ tidyText(snowfall.storm_definition) }}
       </p>
       <SeasonTable
         caption="Share of hours with snowpack load at or above each value, %"
         row-heading="At or above"
-        :rows="thresholdRows(exceedance.snow_load_at_or_above, ' lb/ft²')"
+        :rows="
+          thresholdRows(exceedance.snow_load_at_or_above, ' lb/ft²', 'above')
+        "
       />
       <SeasonTable
         caption="Share of hours with snow depth above each value, %"
         row-heading="Above"
-        :rows="thresholdRows(exceedance.snow_depth_above, ' in')"
+        :rows="thresholdRows(exceedance.snow_depth_above, ' in', 'above')"
       />
       <SeasonTable
         caption="Share of hours with hourly-mean 10 m wind above each speed, %"
         row-heading="Above"
-        :rows="thresholdRows(exceedance.wind_speed_above, ' kn')"
+        :rows="thresholdRows(exceedance.wind_speed_above, ' kn', 'above')"
       />
     </template>
 
@@ -319,7 +324,7 @@
           ],
           ['Method', 'ERDC/CRREL TR-26-5 and SR-25-2'],
         ]"
-        :caveats="meta.caveats"
+        :caveats="meta.caveats.map(tidyText)"
         :sources="[
           {
             label: 'AZCOT data processing (GitHub)',
@@ -340,7 +345,7 @@ import SegmentedControl from '~/components/report/SegmentedControl'
 import SeasonTable from '~/components/report/SeasonTable'
 import SeasonChart from '~/components/charts/SeasonChart'
 import { formatNumber, palette } from '~/utils/chart'
-import { dailyValues, seasonMonths, unitSymbol } from '~/utils/azcot'
+import { dailyValues, seasonMonths, tidyText, unitSymbol } from '~/utils/azcot'
 
 const { azcot } = storeToRefs(useReportStore())
 
@@ -376,6 +381,15 @@ const verdictClass = verdict =>
     NO: 'is-no',
   }[verdict] ?? 'is-na')
 
+// Our own wording for the verdicts, so each stands on its own. Any other
+// verdict the API adds falls back to its legend text.
+const verdictDefinitions = {
+  OK: 'The 30-year record never reaches the limit in that month.',
+  CAUTION:
+    'The limit is reached, but in no more than 1% of the month’s hours (no more than 10% of years for single-storm snowfall loads).',
+  NO: 'The limit is reached in more than 1% of the month’s hours (more than 10% of years for single-storm snowfall loads).',
+}
+
 const verdictGroups = computed(() => {
   const groups = []
   for (const item of verdicts.value.items) {
@@ -394,16 +408,17 @@ function limitText(item) {
   return `${formatNumber(item.limit.value, 0)} ${unitSymbol(item.limit.units)}`
 }
 
-function evidenceText(item, month) {
-  const evidence = item.evidence
-  if (!evidence) return item.basis ?? ''
-  const units = unitSymbol(item.limit.units)
-  const record = evidence.record_by_month[month.key]
-  const share = evidence.share_by_month[month.key]
-  return (
-    `${month.name}: 30-year record ${formatNumber(record, 1)} ${units}; ` +
-    `${formatNumber(share, 2)}${evidence.share_definition.slice(1)}`
-  )
+// Item names without the limit in parentheses, which the Limit column
+// already shows, e.g. "Life-sustaining structures (25 lbf/ft2)".
+const itemName = item => item.item.replace(/\s*\([^)]*\)\s*$/, '')
+
+// What the limit is compared with, from its test, e.g. "one storm total at
+// or above the limit" becomes "storm total".
+function limitMeasure(item) {
+  if (item.limit.value == null || !item.limit.test) return ''
+  return item.limit.test
+    .replace(/^one /, '')
+    .replace(/ (at or )?above the limit$/, '')
 }
 
 const designColdRows = computed(() =>
@@ -414,24 +429,48 @@ const designColdRows = computed(() =>
 )
 const freezeThaw = computed(() => climatology.value.freeze_thaw_days.value)
 
-// Rows for an exceedance table, coldest or largest threshold last.
-function thresholdRows(block, suffix) {
-  return Object.entries(block.thresholds).map(([threshold, values]) => ({
-    label: `${formatNumber(Number(threshold), 0)}${suffix}`,
-    monthly: values.monthly,
-    seasonal: values.seasonal,
-  }))
+// Rows for an exceedance table, sorted by threshold rather than key order:
+// JavaScript lists keys like "0" and "32" before "-20", whatever the API's
+// order. 'below' runs warmest first, 'above' smallest first, so the shares
+// shrink down the table either way.
+function thresholdRows(block, suffix, direction) {
+  const sign = direction == 'below' ? -1 : 1
+  return Object.entries(block.thresholds)
+    .map(([threshold, values]) => ({ threshold: Number(threshold), values }))
+    .sort((a, b) => sign * (a.threshold - b.threshold))
+    .map(({ threshold, values }) => ({
+      label: `${formatNumber(threshold, 0)}${suffix}`,
+      monthly: values.monthly,
+      seasonal: values.seasonal,
+    }))
 }
 
+// Short names for the menu, and titles for the chart and table in place of
+// the API's longer ones.
 const variableOptions = [
-  { value: 'air_temperature', label: 'Air temperature' },
-  { value: 'wind_chill', label: 'Wind chill' },
-  { value: 'wind_speed', label: 'Wind speed' },
-  { value: 'snow_depth', label: 'Snow depth' },
-  { value: 'snow_load', label: 'Snowpack load' },
+  {
+    value: 'air_temperature',
+    label: 'Air temperature',
+    title: 'Air temperature',
+  },
+  { value: 'wind_chill', label: 'Wind chill', title: 'Wind chill' },
+  {
+    value: 'wind_speed',
+    label: 'Wind speed',
+    title: 'Wind speed, hourly mean at 10 m',
+  },
+  { value: 'snow_depth', label: 'Snow depth', title: 'Snow depth' },
+  {
+    value: 'snow_load',
+    label: 'Snow load',
+    title: 'Snow load on a flat surface',
+  },
 ]
 const variable = ref('air_temperature')
 const daily = computed(() => climatology.value[variable.value])
+const dailyTitle = computed(
+  () => variableOptions.find(o => o.value == variable.value).title
+)
 const dailyUnit = computed(() => unitSymbol(daily.value.units))
 const dailyReferences = computed(() =>
   ['air_temperature', 'wind_chill'].includes(variable.value)
@@ -449,9 +488,11 @@ const frostbiteClasses = computed(() =>
   ['red', 'amber', 'green', 'none'].map(key => ({
     key,
     label: frostbite.value.classes[key].label,
-    minutes: frostbite.value.classes[key].minutes.replace(
-      /FT/g,
-      'minutes to frostbite'
+    minutes: tidyText(
+      frostbite.value.classes[key].minutes.replace(
+        /FT/g,
+        'minutes to frostbite'
+      )
     ),
     color: frostbiteColors[key],
   }))
@@ -487,7 +528,6 @@ const snowfallRows = computed(() =>
     const variable = snowfall.value.variables[key]
     return {
       label,
-      title: variable.title,
       monthly: variable.value.monthly,
       seasonal: variable.value.seasonal,
     }
@@ -550,14 +590,19 @@ $muted: #6b6866;
   text-align: center;
   color: #312e30;
 
+  // Okabe–Ito colorblind-safe colors. Text is whichever of white or ink
+  // contrasts more: white on blue 5.2:1, ink on yellow 10.2:1, white on
+  // vermillion 3.9:1.
   &.is-ok {
-    background: #e2efdc;
+    background: #0072b2;
+    color: #fff;
   }
   &.is-caution {
-    background: #fbe6bd;
+    background: #f0e442;
   }
   &.is-no {
-    background: #f5cfc8;
+    background: #d55e00;
+    color: #fff;
   }
   &.is-na {
     background: #efedea;
@@ -595,6 +640,13 @@ $muted: #6b6866;
 }
 .verdict-limit {
   white-space: nowrap;
+}
+.verdict-measure {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.72rem;
+  color: $muted;
 }
 
 .stat-tiles {

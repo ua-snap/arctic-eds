@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr v-for="row in rows" :key="row.label">
-          <th scope="row" :title="row.title">{{ row.label }}</th>
+          <th scope="row">{{ row.label }}</th>
           <td
             v-for="month in seasonMonths"
             :key="month.key"
@@ -44,7 +44,7 @@ const props = defineProps({
   caption: String,
   // Heading over the row labels, e.g. "Threshold".
   rowHeading: { type: String, default: '' },
-  // [{ label, title, monthly: { oct, ..., mar }, seasonal, digits }]
+  // [{ label, monthly: { oct, ..., mar }, seasonal, digits }]
   rows: Array,
   // Decimal places, unless a row sets its own.
   digits: { type: Number, default: 1 },
@@ -66,6 +66,12 @@ function show(value, row) {
 }
 .season-table {
   font-size: 0.85rem;
+
+  // Tables are set to line-height 1 site-wide, which clips the degree sign
+  // on the first line of a wrapped caption.
+  caption {
+    line-height: 1.35;
+  }
 
   th[scope='row'] {
     line-height: 1.25;
