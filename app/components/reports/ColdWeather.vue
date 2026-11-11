@@ -20,7 +20,7 @@
 
     <!-- Climate-limit verdicts -->
     <template v-if="view == 'limits'">
-      <h3 class="chart-heading">{{ verdicts.title }}, October&ndash;March</h3>
+      <h3 class="chart-heading">Climate limits, October&ndash;March</h3>
       <ul class="verdict-legend">
         <li v-for="(text, key) in verdicts.legend" :key="key">
           <span class="verdict" :class="verdictClass(key)">{{
@@ -76,7 +76,7 @@
           </tbody>
         </table>
       </div>
-      <p class="chart-note">{{ tidyText(verdicts.description) }}</p>
+      <p class="chart-note">{{ limitsNote }}</p>
     </template>
 
     <!-- Design cold and cold zones -->
@@ -112,9 +112,13 @@
       </dl>
 
       <SeasonTable
-        caption="Design cold: air temperature colder than this for 1%, 5% and 10% of hours, °F"
-        row-heading="Hours colder"
-        :rows="designColdRows"
+        caption="Design cold: the coldest 1% of hours are below this, °F"
+        :rows="[
+          {
+            label: '1% design cold',
+            monthly: zones.design_cold.monthly['1pct'],
+          },
+        ]"
         :digits="0"
       />
       <SeasonTable
@@ -128,12 +132,8 @@
         caption="Freeze–thaw days (above and below 32°F on the same day), days per year"
         :rows="[{ label: 'Freeze–thaw days', ...freezeThaw, digits: 0 }]"
       />
-      <p class="chart-note">
-        Design cold follows MIL-HDBK-310: the temperature that only 1%, 5% or
-        10% of the month&rsquo;s hours are colder than. Design type:
-        {{ tidyText(zones.ar70_38_design_type.basis) }}. Cold zone:
-        {{ tidyText(zones.atp_cold_zone.basis) }}.
-      </p>
+      <p class="chart-note">{{ designColdNote }}</p>
+      <p class="chart-note">References: {{ designColdReferences }}</p>
     </template>
 
     <!-- Daily climatology -->
@@ -143,7 +143,7 @@
           Variable
           <select v-model="variable">
             <option
-              v-for="option in variableOptions"
+              v-for="option in dailyVariables"
               :key="option.value"
               :value="option.value"
             >
@@ -154,7 +154,7 @@
           </select>
         </label>
       </div>
-      <h3 class="chart-heading">{{ dailyTitle }} ({{ dailyUnit }})</h3>
+      <h3 class="chart-heading">{{ dailyVariable.title }} ({{ dailyUnit }})</h3>
       <div class="chart-legend" aria-hidden="true">
         <span
           ><span class="swatch" :style="{ background: palette.cool }" />Mean for
@@ -168,7 +168,7 @@
         >
       </div>
       <SeasonChart
-        :title="`${dailyTitle}, ${dailyUnit}, by day, 1991–2020`"
+        :title="`${dailyVariable.title}, ${dailyUnit}, by day, 1991–2020`"
         :line="{
           label: 'Mean for the day',
           values: dailyValues(daily.mean.daily),
@@ -185,12 +185,18 @@
       />
       <p class="chart-note">
         Each day pools 720 hourly values (30 years &times; 24 hours).
-        <template v-if="daily.caveat">{{ tidyText(daily.caveat) }}</template>
+        {{ dailyVariable.note }}
       </p>
+      <SeasonTable
+        v-if="variable == 'wind_speed'"
+        caption="Share of hours with hourly-mean 10 m wind above each speed, %"
+        row-heading="Above"
+        :rows="thresholdRows(exceedance.wind_speed_above, ' kn', 'above')"
+      />
       <details class="chart-table">
         <summary>Show the monthly numbers</summary>
         <SeasonTable
-          :caption="`${dailyTitle} by month, ${dailyUnit}`"
+          :caption="`${dailyVariable.title} by month, ${dailyUnit}`"
           :rows="[
             { label: 'Lowest', ...daily.min },
             { label: 'Mean', ...daily.mean },
@@ -202,9 +208,7 @@
 
     <!-- Wind chill and frostbite -->
     <template v-else-if="view == 'frostbite'">
-      <h3 class="chart-heading">
-        {{ tidyText(frostbite.title) }}, share of hours
-      </h3>
+      <h3 class="chart-heading">{{ frostbiteTitle }}, share of hours</h3>
       <div class="chart-legend">
         <span v-for="cls in frostbiteClasses" :key="cls.key"
           ><span
@@ -217,7 +221,7 @@
       <div
         class="frostbite-rows"
         role="img"
-        :aria-label="`${frostbite.title}: share of hours in each danger level by month; see the table below for values`"
+        :aria-label="`${frostbiteTitle}: share of hours in each danger level by month; see the table below for values`"
       >
         <div
           v-for="row in frostbiteRows"
@@ -236,58 +240,29 @@
               }"
             />
           </span>
-          <span class="frostbite-time"
-            >{{ formatNumber(row.shortest, 1) }} min</span
-          >
         </div>
       </div>
-      <p class="chart-note">
-        Right: shortest time to frostbite in any hour of 30 years.
-        {{ tidyText(frostbite.description) }}
-      </p>
-      <details class="chart-table">
-        <summary>Show the numbers</summary>
-        <SeasonTable
-          caption="Share of hours in each frostbite danger level, %"
-          row-heading="Danger level"
-          :rows="
-            frostbiteClasses.map(cls => ({
-              label: cls.label,
-              ...frostbite.share[cls.key],
-            }))
-          "
-        />
-        <SeasonTable
-          caption="Shortest time to frostbite, minutes"
-          :rows="[
-            {
-              label: 'Shortest time',
-              ...frostbite.shortest_time_to_frostbite.value,
-            },
-          ]"
-        />
-      </details>
+      <p class="chart-note">{{ frostbiteNote }}</p>
+      <SeasonTable
+        caption="Share of hours in each frostbite danger level, %"
+        row-heading="Danger level"
+        :rows="
+          frostbiteClasses.map(cls => ({
+            label: cls.label,
+            ...frostbite.share[cls.key],
+          }))
+        "
+      />
       <SeasonTable
         caption="Share of hours with wind chill at or below each temperature, %"
         row-heading="At or below"
         :rows="thresholdRows(exceedance.wind_chill_at_or_below, '°F', 'below')"
       />
-      <p class="chart-note">
-        {{ tidyText(exceedance.wind_chill_at_or_below.caveat) }}
-      </p>
+      <p class="chart-note">{{ windChillNote }}</p>
     </template>
 
-    <!-- Snow and wind loads -->
+    <!-- Snow loads -->
     <template v-else-if="view == 'snow'">
-      <SeasonTable
-        caption="Snowfall design loads, lb/ft²"
-        row-heading="Load"
-        :rows="snowfallRows"
-      />
-      <p class="chart-note">
-        {{ tidyText(snowfall.description) }} Storms:
-        {{ tidyText(snowfall.storm_definition) }}
-      </p>
       <SeasonTable
         caption="Share of hours with snowpack load at or above each value, %"
         row-heading="At or above"
@@ -300,11 +275,7 @@
         row-heading="Above"
         :rows="thresholdRows(exceedance.snow_depth_above, ' in', 'above')"
       />
-      <SeasonTable
-        caption="Share of hours with hourly-mean 10 m wind above each speed, %"
-        row-heading="Above"
-        :rows="thresholdRows(exceedance.wind_speed_above, ' kn', 'above')"
-      />
+      <p class="chart-note">{{ snowLoadNote }}</p>
     </template>
 
     <template #panel>
@@ -324,7 +295,7 @@
           ],
           ['Method', 'ERDC/CRREL TR-26-5 and SR-25-2'],
         ]"
-        :caveats="meta.caveats.map(tidyText)"
+        :caveats="caveats"
         :sources="[
           {
             label: 'AZCOT data processing (GitHub)',
@@ -345,7 +316,27 @@ import SegmentedControl from '~/components/report/SegmentedControl'
 import SeasonTable from '~/components/report/SeasonTable'
 import SeasonChart from '~/components/charts/SeasonChart'
 import { formatNumber, palette } from '~/utils/chart'
-import { dailyValues, seasonMonths, tidyText, unitSymbol } from '~/utils/azcot'
+import {
+  cellSize,
+  dailyValues,
+  gridDegrees,
+  seasonMonths,
+  tidyText,
+  unitSymbol,
+} from '~/utils/azcot'
+import {
+  caveats,
+  dailyVariables,
+  designColdNote,
+  designColdReferences,
+  frostbiteNote,
+  frostbiteTimes,
+  frostbiteTitle,
+  limitsNote,
+  snowLoadNote,
+  verdictDefinitions,
+  windChillNote,
+} from '~/data/azcot'
 
 const { azcot } = storeToRefs(useReportStore())
 
@@ -354,7 +345,6 @@ const climatology = computed(() => azcot.value.climatology)
 const zones = computed(() => azcot.value.design_and_zones)
 const exceedance = computed(() => azcot.value.exceedance)
 const frostbite = computed(() => azcot.value.frostbite)
-const snowfall = computed(() => azcot.value.snowfall_loads)
 const verdicts = computed(() => azcot.value.climate_limit_verdicts)
 
 const viewOptions = [
@@ -362,7 +352,7 @@ const viewOptions = [
   { value: 'cold', label: 'Design cold' },
   { value: 'daily', label: 'Daily climate' },
   { value: 'frostbite', label: 'Wind chill & frostbite' },
-  { value: 'snow', label: 'Snow & wind loads' },
+  { value: 'snow', label: 'Snow loads' },
 ]
 const view = ref('limits')
 
@@ -380,15 +370,6 @@ const verdictClass = verdict =>
     CAUTION: 'is-caution',
     NO: 'is-no',
   }[verdict] ?? 'is-na')
-
-// Our own wording for the verdicts, so each stands on its own. Any other
-// verdict the API adds falls back to its legend text.
-const verdictDefinitions = {
-  OK: 'The 30-year record never reaches the limit in that month.',
-  CAUTION:
-    'The limit is reached, but in no more than 1% of the month’s hours (no more than 10% of years for single-storm snowfall loads).',
-  NO: 'The limit is reached in more than 1% of the month’s hours (more than 10% of years for single-storm snowfall loads).',
-}
 
 const verdictGroups = computed(() => {
   const groups = []
@@ -421,12 +402,6 @@ function limitMeasure(item) {
     .replace(/ (at or )?above the limit$/, '')
 }
 
-const designColdRows = computed(() =>
-  ['1pct', '5pct', '10pct'].map(key => ({
-    label: `${key.replace('pct', '')}% of hours`,
-    monthly: zones.value.design_cold.monthly[key],
-  }))
-)
 const freezeThaw = computed(() => climatology.value.freeze_thaw_days.value)
 
 // Rows for an exceedance table, sorted by threshold rather than key order:
@@ -445,31 +420,10 @@ function thresholdRows(block, suffix, direction) {
     }))
 }
 
-// Short names for the menu, and titles for the chart and table in place of
-// the API's longer ones.
-const variableOptions = [
-  {
-    value: 'air_temperature',
-    label: 'Air temperature',
-    title: 'Air temperature',
-  },
-  { value: 'wind_chill', label: 'Wind chill', title: 'Wind chill' },
-  {
-    value: 'wind_speed',
-    label: 'Wind speed',
-    title: 'Wind speed, hourly mean at 10 m',
-  },
-  { value: 'snow_depth', label: 'Snow depth', title: 'Snow depth' },
-  {
-    value: 'snow_load',
-    label: 'Snow load',
-    title: 'Snow load on a flat surface',
-  },
-]
 const variable = ref('air_temperature')
 const daily = computed(() => climatology.value[variable.value])
-const dailyTitle = computed(
-  () => variableOptions.find(o => o.value == variable.value).title
+const dailyVariable = computed(() =>
+  dailyVariables.find(v => v.value == variable.value)
 )
 const dailyUnit = computed(() => unitSymbol(daily.value.units))
 const dailyReferences = computed(() =>
@@ -488,24 +442,18 @@ const frostbiteClasses = computed(() =>
   ['red', 'amber', 'green', 'none'].map(key => ({
     key,
     label: frostbite.value.classes[key].label,
-    minutes: tidyText(
-      frostbite.value.classes[key].minutes.replace(
-        /FT/g,
-        'minutes to frostbite'
-      )
-    ),
+    minutes:
+      frostbiteTimes[key] ?? tidyText(frostbite.value.classes[key].minutes),
     color: frostbiteColors[key],
   }))
 )
 const frostbiteRows = computed(() => {
   const share = frostbite.value.share
-  const shortest = frostbite.value.shortest_time_to_frostbite.value
   const row = (label, get) => ({
     label,
     shares: Object.fromEntries(
       ['red', 'amber', 'green', 'none'].map(key => [key, get(share[key])])
     ),
-    shortest: get(shortest),
   })
   return [
     ...seasonMonths.map(month =>
@@ -514,25 +462,6 @@ const frostbiteRows = computed(() => {
     row('Season', values => values.seasonal),
   ]
 })
-
-const snowfallLabels = {
-  sf24_max: '24-hour snowfall, record',
-  sf24_mean_annual_max: '24-hour snowfall, typical yearly max',
-  sf72_max: '72-hour snowfall, record',
-  sf72_mean_annual_max: '72-hour snowfall, typical yearly max',
-  storm_max: 'Storm total, record',
-  storm_mean_annual_max: 'Storm total, typical yearly max',
-}
-const snowfallRows = computed(() =>
-  Object.entries(snowfallLabels).map(([key, label]) => {
-    const variable = snowfall.value.variables[key]
-    return {
-      label,
-      monthly: variable.value.monthly,
-      seasonal: variable.value.seasonal,
-    }
-  })
-)
 
 function gridCellText(cell) {
   return (
@@ -543,20 +472,21 @@ function gridCellText(cell) {
   )
 }
 
-// How many limits the season reaches, and how cold the design hour is.
+// How many limits the season reaches and how cold the design hour is, with
+// the grid cell's size up front: these data are coarse.
 const lede = computed(() => {
   const items = verdicts.value.items
   const failing = items.filter(i => i.verdict == 'NO').length
   const caution = items.filter(i => i.verdict == 'CAUTION').length
+  const cell = meta.value.grid_cell
+  const size = cellSize(cell.lat, gridDegrees(cell))
   const designCold = temp(zones.value.design_cold.coldest_month['1pct'])
-  const limits =
-    `${failing} of ${items.length} equipment and shelter limits are exceeded` +
-    (caution ? ` and ${caution} more need caution` : '') +
-    ' in at least one month'
   return (
-    `${coldestMonthName.value} is coldest, with a 1% design temperature of ` +
-    `${designCold} (${zones.value.ar70_38_design_type.value}); ` +
-    `${limits}, October–March 1991–2020.`
+    `At this ~${formatNumber(size.ns, 0)} × ${formatNumber(size.ew, 0)} km ` +
+    `grid cell, ${failing} of ${items.length} equipment and shelter limits ` +
+    `are exceeded in at least one month` +
+    (caution ? ` (${caution} more need caution)` : '') +
+    ` and the 1% design temperature is ${designCold}.`
   )
 })
 </script>
@@ -688,7 +618,7 @@ $muted: #6b6866;
 }
 .frostbite-row {
   display: grid;
-  grid-template-columns: 3.5rem minmax(0, 1fr) 4.5rem;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
   align-items: center;
   gap: 0.75rem;
   font-size: 0.85rem;
@@ -707,9 +637,5 @@ $muted: #6b6866;
   &[style*='width: 0%'] {
     display: none;
   }
-}
-.frostbite-time {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
 }
 </style>

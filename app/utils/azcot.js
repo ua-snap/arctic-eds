@@ -42,6 +42,22 @@ export function unitSymbol(units) {
   return unitSymbols[units] ?? units
 }
 
+// The grid spacing in degrees, read from the API's grid description, e.g.
+// "ERA5 0.25 degree (EPSG:4326, cell centre)". Falls back to ERA5's 0.25°.
+export function gridDegrees(cell) {
+  const match = /([\d.]+) degree/.exec(cell?.grid ?? '')
+  return match ? Number(match[1]) : 0.25
+}
+
+// The approximate size of a latitude–longitude grid cell centred at `lat`:
+// north–south and east–west in km, and its area in km².
+export function cellSize(lat, degrees) {
+  const kmPerDegree = 111.2
+  const ns = degrees * kmPerDegree
+  const ew = ns * Math.cos((lat * Math.PI) / 180)
+  return { ns, ew, area: ns * ew }
+}
+
 // Tidies the plain-text units and comparisons in the API's descriptions,
 // e.g. "lbf/ft2" to "lb/ft²" and ">= 23.36 degF" to "≥ 23.36°F".
 export function tidyText(text) {
