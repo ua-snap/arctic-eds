@@ -9,6 +9,37 @@
       report until the API is available.
     </p>
 
+    <div class="grid-cell">
+      <ClientOnly>
+        <GridCellMap
+          :label="`Map of the ${grid.cell.ns} × ${grid.cell.ew} km grid cell around ${meta.query.name}`"
+          :point="meta.query"
+          :point-label="meta.query.name"
+          :cells="[
+            {
+              ...meta.grid_cell,
+              degrees: gridDegrees(meta.grid_cell),
+              label: 'ERA5 cell',
+              color: '#1f1d1b',
+            },
+            {
+              ...meta.snow_depth_grid_cell,
+              degrees: gridDegrees(meta.snow_depth_grid_cell),
+              label: 'Snow depth cell',
+              color: '#0072b2',
+              dashed: true,
+            },
+          ]"
+        />
+      </ClientOnly>
+      <div class="grid-cell-note">
+        <h3 class="chart-heading">Coarse, area-wide data</h3>
+        <p v-for="paragraph in gridParagraphs" :key="paragraph">
+          {{ paragraph }}
+        </p>
+      </div>
+    </div>
+
     <div class="chart-controls">
       <SegmentedControl
         v-model="view"
@@ -287,11 +318,11 @@
           ['Period', meta.climatology_period],
           [
             'Grid',
-            `ERA5 0.25° (~28 km); cell centre ${gridCellText(
-              meta.grid_cell
-            )}. Snow depth: ERA5-Land 0.1°, ${gridCellText(
-              meta.snow_depth_grid_cell
-            )}`,
+            `ERA5 ${gridCellText(meta.grid_cell, grid.cell)}. ` +
+              `Snow depth: ERA5-Land ${gridCellText(
+                meta.snow_depth_grid_cell,
+                grid.snowCell
+              )}`,
           ],
           ['Method', 'ERDC/CRREL TR-26-5 and SR-25-2'],
         ]"
@@ -315,6 +346,7 @@ import DataPanel from '~/components/report/DataPanel'
 import SegmentedControl from '~/components/report/SegmentedControl'
 import SeasonTable from '~/components/report/SeasonTable'
 import SeasonChart from '~/components/charts/SeasonChart'
+import GridCellMap from '~/components/report/GridCellMap'
 import { formatNumber, palette } from '~/utils/chart'
 import {
   cellSize,
@@ -332,6 +364,7 @@ import {
   frostbiteNote,
   frostbiteTimes,
   frostbiteTitle,
+  gridNote,
   limitsNote,
   snowLoadNote,
   verdictDefinitions,
@@ -463,12 +496,29 @@ const frostbiteRows = computed(() => {
   ]
 })
 
-function gridCellText(cell) {
+// The size of the ERA5 cell and the finer snow-depth cell, formatted for
+// text: whole km, or one decimal under 10 km; area to two significant
+// figures.
+function sizeText(cell) {
+  const size = cellSize(cell.lat, gridDegrees(cell))
+  const km = value => formatNumber(value, value < 10 ? 1 : 0)
+  const area = Number(size.area.toPrecision(2))
+  return { ns: km(size.ns), ew: km(size.ew), area: formatNumber(area, 0) }
+}
+const grid = computed(() => ({
+  cell: sizeText(meta.value.grid_cell),
+  snowCell: sizeText(meta.value.snow_depth_grid_cell),
+}))
+const gridParagraphs = computed(() =>
+  gridNote(grid.value.cell, grid.value.snowCell)
+)
+
+// The panel's description of a cell: its spacing, size and centre.
+function gridCellText(cell, size) {
   return (
-    `${formatNumber(cell.lat, 2)}° N, ${formatNumber(
-      Math.abs(cell.lon),
-      2
-    )}° W, ` + `${formatNumber(cell.distance_km, 1)} km away`
+    `${gridDegrees(cell)}° cell, about ${size.ns} × ${size.ew} km ` +
+    `(${size.area} km²), centred at ${formatNumber(cell.lat, 2)}° N, ` +
+    `${formatNumber(Math.abs(cell.lon), 2)}° W`
   )
 }
 
@@ -478,11 +528,10 @@ const lede = computed(() => {
   const items = verdicts.value.items
   const failing = items.filter(i => i.verdict == 'NO').length
   const caution = items.filter(i => i.verdict == 'CAUTION').length
-  const cell = meta.value.grid_cell
-  const size = cellSize(cell.lat, gridDegrees(cell))
+  const size = grid.value.cell
   const designCold = temp(zones.value.design_cold.coldest_month['1pct'])
   return (
-    `At this ~${formatNumber(size.ns, 0)} × ${formatNumber(size.ew, 0)} km ` +
+    `At this ~${size.ns} × ${size.ew} km ` +
     `grid cell, ${failing} of ${items.length} equipment and shelter limits ` +
     `are exceeded in at least one month` +
     (caution ? ` (${caution} more need caution)` : '') +
@@ -501,6 +550,25 @@ $muted: #6b6866;
   border-left: 4px solid #f0a830;
   background: #fdf6e7;
   font-size: 0.9rem;
+}
+
+.grid-cell {
+  display: grid;
+  grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.grid-cell-note {
+  font-size: 0.9rem;
+
+  p + p {
+    margin-top: 0.5rem;
+  }
 }
 
 .verdict-legend {

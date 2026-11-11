@@ -75,8 +75,19 @@ export const windChillNote = dailyVariables.find(
 export const snowLoadNote =
   'Snow load is the weight of the accumulated snowpack on a flat surface. Single-storm and 24-hour snowfall loads are checked under Climate limits.'
 
+// Shown beside the grid-cell map at the top of the section, so nobody reads
+// these values as a forecast for the exact site. `cell` and `snowCell` are
+// the sizes from cellSize(), already formatted: { ns, ew, area }.
+export function gridNote(cell, snowCell) {
+  return [
+    `Every value here describes the whole grid cell outlined on the map, about ${cell.ns} × ${cell.ew} km (${cell.area} km²), not the exact point. The data come from ERA5, a global dataset that averages the valleys, ridges, lakes and towns inside each cell together.`,
+    `Local conditions can differ a lot: winter temperature inversions can leave a valley floor much colder than the cell, and wind varies with terrain and shelter. Use these values to plan and compare places, and check them against local observations before designing for a specific site.`,
+    `Snow depth comes from a finer ERA5-Land cell, about ${snowCell.ns} × ${snowCell.ew} km (dashed outline).`,
+  ]
+}
+
 export const caveats = [
-  'Every value describes a ~28 km ERA5 grid cell, not your exact site. Valleys and ridges inside the cell can differ a lot, especially under winter temperature inversions.',
+  'Every value describes an ERA5 grid cell about 28 km north to south, not your exact site. Valleys and ridges inside the cell can differ a lot, especially under winter temperature inversions.',
   'Wind chill was computed from ground-surface temperature rather than air temperature, so it runs colder than standard wind chill.',
   'Storm totals depend on how storms are told apart: here, a dry spell longer than 12 hours ends a storm.',
   'Wind is the hourly mean 10 m above the ground; gusts are not included.',

@@ -24,7 +24,8 @@ var mapsReady = {}
 // `L` is the Leaflet global, set once loadLeaflet() resolves. This module
 // is also loaded on the server, so Leaflet must not be imported here; the
 // functions below that use `L` only run after create() has loaded it.
-function getBaseMapAndLayers(geoserverUrl) {
+// getBaseMapAndLayers is also used by the report's grid-cell map.
+export function getBaseMapAndLayers(geoserverUrl) {
   var baseLayer = new L.tileLayer.wms(geoserverUrl, {
     transparent: true,
     srs: 'EPSG:3338',

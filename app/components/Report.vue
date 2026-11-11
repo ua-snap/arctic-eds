@@ -96,8 +96,10 @@
         <h2 id="about-these-data" class="eyebrow">About these data</h2>
         <p>
           Every value is for the grid cell containing this point, and grid cells
-          range from 481&nbsp;m to 12&nbsp;km across, so they summarize an area
-          that can vary in elevation, slope, aspect and nearness to water.
+          range from 481&nbsp;m to
+          {{ isAzcotPresent ? 'about 28' : '12' }}&nbsp;km across, so they
+          summarize an area that can vary in elevation, slope, aspect and
+          nearness to water.
           Modeled baselines won&rsquo;t match a nearby weather station exactly.
           All projections are
           <Term target="bias_correction">bias corrected</Term>; see each
