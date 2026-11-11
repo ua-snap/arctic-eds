@@ -208,7 +208,7 @@ const sections = computed(() => [
   },
   {
     id: 'cold-weather',
-    label: 'Cold-weather operations',
+    label: 'Cold-season design climate',
     present: isAzcotPresent.value,
   },
   {

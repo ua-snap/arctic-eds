@@ -1,5 +1,5 @@
 <template>
-  <ReportSection id="cold-weather" title="Cold-Weather Operations">
+  <ReportSection id="cold-weather" title="Cold-Season Design Climate">
     <template #lede>{{ lede }}</template>
 
     <!-- TODO: Remove this when the API endpoint is generated. -->
@@ -51,7 +51,7 @@
 
     <!-- Climate-limit verdicts -->
     <template v-if="view == 'limits'">
-      <h3 class="chart-heading">Climate limits, October&ndash;March</h3>
+      <h3 class="chart-heading">Snow and wind checks, October&ndash;March</h3>
       <ul class="verdict-legend">
         <li v-for="(text, key) in verdicts.legend" :key="key">
           <span class="verdict" :class="verdictClass(key)">{{
@@ -63,11 +63,11 @@
       <div class="table-container">
         <table class="table is-narrow is-fullwidth verdict-table">
           <caption class="is-sr-only">
-            Climate-limit verdicts by month
+            Snow and wind checks by month
           </caption>
           <thead>
             <tr>
-              <th scope="col">Item</th>
+              <th scope="col">Check</th>
               <th scope="col">Limit</th>
               <th v-for="month in seasonMonths" :key="month.key" scope="col">
                 {{ month.label }}
@@ -78,7 +78,7 @@
           <tbody v-for="group in verdictGroups" :key="group.category">
             <tr class="verdict-group">
               <th :colspan="seasonMonths.length + 3" scope="rowgroup">
-                {{ group.category }}
+                {{ limitCategories[group.category] ?? group.category }}
               </th>
             </tr>
             <tr v-for="item in group.items" :key="item.id">
@@ -110,16 +110,16 @@
       <p class="chart-note">{{ limitsNote }}</p>
     </template>
 
-    <!-- Design cold and cold zones -->
+    <!-- Design temperatures -->
     <template v-else-if="view == 'cold'">
       <dl class="stat-tiles">
         <div class="stat-tile">
-          <dt>AR 70-38 design type</dt>
-          <dd>{{ zones.ar70_38_design_type.value }}</dd>
+          <dt>1% design temperature, {{ coldestMonthName }}</dt>
+          <dd>{{ temp(zones.design_cold.coldest_month['1pct']) }}</dd>
         </div>
         <div class="stat-tile">
-          <dt>1% design cold, {{ coldestMonthName }}</dt>
-          <dd>{{ temp(zones.design_cold.coldest_month['1pct']) }}</dd>
+          <dt>Mean temperature, {{ coldestMonthName }}</dt>
+          <dd>{{ temp(zones.coldest_month.mean_air_temperature) }}</dd>
         </div>
         <div class="stat-tile">
           <dt>Record low, 1991&ndash;2020</dt>
@@ -131,22 +131,16 @@
           </dd>
         </div>
         <div class="stat-tile">
-          <dt>ATP 3-90.96 cold zone</dt>
-          <dd>
-            {{ zones.atp_cold_zone.typical }}
-            <span class="stat-detail"
-              >typical &middot; {{ zones.atp_cold_zone.design }} design &middot;
-              {{ zones.atp_cold_zone.record }} record</span
-            >
-          </dd>
+          <dt>Freeze&ndash;thaw days, October&ndash;March</dt>
+          <dd>{{ formatNumber(freezeThaw.seasonal, 0) }}</dd>
         </div>
       </dl>
 
       <SeasonTable
-        caption="Design cold: the coldest 1% of hours are below this, °F"
+        caption="1% design temperature: the coldest 1% of hours are below this, °F"
         :rows="[
           {
-            label: '1% design cold',
+            label: '1% design temperature',
             monthly: zones.design_cold.monthly['1pct'],
           },
         ]"
@@ -159,12 +153,12 @@
           thresholdRows(exceedance.air_temperature_at_or_below, '°F', 'below')
         "
       />
+      <p class="chart-note">{{ designColdNote }}</p>
       <SeasonTable
         caption="Freeze–thaw days (above and below 32°F on the same day), days per year"
         :rows="[{ label: 'Freeze–thaw days', ...freezeThaw, digits: 0 }]"
       />
-      <p class="chart-note">{{ designColdNote }}</p>
-      <p class="chart-note">References: {{ designColdReferences }}</p>
+      <p class="chart-note">{{ freezeThawNote }}</p>
     </template>
 
     <!-- Daily climatology -->
@@ -294,6 +288,30 @@
 
     <!-- Snow loads -->
     <template v-else-if="view == 'snow'">
+      <dl class="stat-tiles">
+        <div class="stat-tile">
+          <dt>Heaviest snowpack, 1991&ndash;2020</dt>
+          <dd>
+            {{ load(climatology.snow_load.max.seasonal) }}
+            <span class="stat-detail">{{
+              monthName(maxMonth(climatology.snow_load.max.monthly))
+            }}</span>
+          </dd>
+        </div>
+        <div class="stat-tile">
+          <dt>Deepest snow, 1991&ndash;2020</dt>
+          <dd>
+            {{ formatNumber(climatology.snow_depth.max.seasonal, 0) }}&nbsp;in
+            <span class="stat-detail">{{
+              monthName(maxMonth(climatology.snow_depth.max.monthly))
+            }}</span>
+          </dd>
+        </div>
+        <div class="stat-tile">
+          <dt>Largest 24-hour snowfall, as a load</dt>
+          <dd>{{ load(snowfall.sf24_max.value.seasonal) }}</dd>
+        </div>
+      </dl>
       <SeasonTable
         caption="Share of hours with snowpack load at or above each value, %"
         row-heading="At or above"
@@ -311,10 +329,10 @@
 
     <template #panel>
       <DataPanel
-        topic="cold-weather operations"
+        topic="cold-season design climate"
         note="AZCOT point data are not yet available to download. Values are in US customary units whatever the report's units setting."
         :made="[
-          ['Data', 'ERA5 hourly reanalysis, reprocessed for AZCOT'],
+          ['Data', 'ERA5 hourly reanalysis, processed with the AZCOT method'],
           ['Period', meta.climatology_period],
           [
             'Grid',
@@ -360,11 +378,13 @@ import {
   caveats,
   dailyVariables,
   designColdNote,
-  designColdReferences,
   frostbiteNote,
   frostbiteTimes,
+  freezeThawNote,
   frostbiteTitle,
   gridNote,
+  limitCategories,
+  limitItems,
   limitsNote,
   snowLoadNote,
   verdictDefinitions,
@@ -379,18 +399,25 @@ const zones = computed(() => azcot.value.design_and_zones)
 const exceedance = computed(() => azcot.value.exceedance)
 const frostbite = computed(() => azcot.value.frostbite)
 const verdicts = computed(() => azcot.value.climate_limit_verdicts)
+const snowfall = computed(() => azcot.value.snowfall_loads.variables)
 
+// Design values first; the snow and wind checks follow.
 const viewOptions = [
-  { value: 'limits', label: 'Climate limits' },
-  { value: 'cold', label: 'Design cold' },
+  { value: 'cold', label: 'Design temperatures' },
+  { value: 'snow', label: 'Snow loads' },
+  { value: 'limits', label: 'Snow & wind checks' },
   { value: 'daily', label: 'Daily climate' },
   { value: 'frostbite', label: 'Wind chill & frostbite' },
-  { value: 'snow', label: 'Snow loads' },
 ]
-const view = ref('limits')
+const view = ref('cold')
 
 const monthName = key => seasonMonths.find(m => m.key == key)?.name ?? key
 const temp = value => `${formatNumber(value, 0)}°F`
+const load = value => `${formatNumber(value, 0)} lb/ft²`
+
+// The key of the month with the largest value, e.g. "mar".
+const maxMonth = monthly =>
+  Object.keys(monthly).reduce((a, b) => (monthly[b] > monthly[a] ? b : a))
 const coldestMonthName = computed(() =>
   monthName(zones.value.coldest_month.month)
 )
@@ -422,9 +449,10 @@ function limitText(item) {
   return `${formatNumber(item.limit.value, 0)} ${unitSymbol(item.limit.units)}`
 }
 
-// Item names without the limit in parentheses, which the Limit column
-// already shows, e.g. "Life-sustaining structures (25 lbf/ft2)".
-const itemName = item => item.item.replace(/\s*\([^)]*\)\s*$/, '')
+// Engineering names where there are any; otherwise the API's name without
+// the limit in parentheses, which the Limit column already shows.
+const itemName = item =>
+  limitItems[item.id] ?? item.item.replace(/\s*\([^)]*\)\s*$/, '')
 
 // What the limit is compared with, from its test, e.g. "one storm total at
 // or above the limit" becomes "storm total".
@@ -465,10 +493,11 @@ const dailyReferences = computed(() =>
     : []
 )
 
+// The check colors (No, Caution, OK), which are colorblind safe.
 const frostbiteColors = {
-  red: '#b8322a',
-  amber: '#e08a1e',
-  green: '#5a9a4a',
+  red: '#d55e00',
+  amber: '#f0e442',
+  green: '#0072b2',
   none: '#e3dfd8',
 }
 const frostbiteClasses = computed(() =>
@@ -522,20 +551,16 @@ function gridCellText(cell, size) {
   )
 }
 
-// How many limits the season reaches and how cold the design hour is, with
-// the grid cell's size up front: these data are coarse.
+// The two headline design values, with the grid cell's size up front:
+// these data are coarse.
 const lede = computed(() => {
-  const items = verdicts.value.items
-  const failing = items.filter(i => i.verdict == 'NO').length
-  const caution = items.filter(i => i.verdict == 'CAUTION').length
   const size = grid.value.cell
   const designCold = temp(zones.value.design_cold.coldest_month['1pct'])
+  const snowpack = load(climatology.value.snow_load.max.seasonal)
   return (
-    `At this ~${size.ns} × ${size.ew} km ` +
-    `grid cell, ${failing} of ${items.length} equipment and shelter limits ` +
-    `are exceeded in at least one month` +
-    (caution ? ` (${caution} more need caution)` : '') +
-    ` and the 1% design temperature is ${designCold}.`
+    `At this ~${size.ns} × ${size.ew} km grid cell, the 1% design ` +
+    `temperature for ${coldestMonthName.value} is ${designCold} and the ` +
+    `heaviest snowpack on flat ground in 30 years weighed ${snowpack}.`
   )
 })
 </script>

@@ -11,14 +11,35 @@ export const verdictDefinitions = {
   NO: 'The limit is reached in more than 1% of the month’s hours (more than 10% of years for single-storm snowfall loads).',
 }
 
+// The design checks, renamed for general engineering. The API's item names
+// and categories come from Army field guidance; these are keyed by item id
+// and category, and any not listed fall back to the API's wording.
+export const limitCategories = {
+  'Vehicles in snow': 'Site access in snow',
+  Shelter: 'Temporary structures',
+}
+
+export const limitItems = {
+  T3a: 'Two-wheel-drive vehicle',
+  T3b: 'Four-wheel-drive vehicle',
+  T3c: 'Four-wheel-drive vehicle with chains',
+  T3d: 'Tracked vehicle',
+  T3e: 'Snow machine or other over-snow vehicle',
+  SLa: 'Tents and light portable structures',
+  SLb: 'Temporary rigid structures',
+  SLc: 'Occupied temporary structures',
+  SLd: 'Relocatable (demountable) buildings',
+  WNa: 'Occupied temporary structures',
+}
+
 export const limitsNote =
-  'Each verdict compares a design limit with 30 years of hourly data (1991–2020) for this grid cell. It covers snow and wind loads on structures and vehicles in snow; equipment, clothing and fuel limits are not included.'
+  'Each check compares a rated limit with 30 years of hourly data (1991–2020) for this grid cell: the snow depth a vehicle can drive through, and the snow and wind loads that temporary structures are rated for. These are field ratings, not building-code loads; use them to judge how demanding the site is for access and temporary works.'
 
 export const designColdNote =
-  'Design cold is the temperature that the coldest 1% of a month’s hours fall below, the usual design value for cold-weather equipment. The design type comes from the coldest month’s 1% value: C1 if it is −25°F or warmer, C2 down to −50°F, C3 down to −60°F, C4 down to −70°F. Cold zones place the coldest-month mean (typical), the 1% value (design) and the 30-year record low (record) on a scale from 1 (mildest) to 5C.'
+  'The 1% design temperature is the temperature that the coldest 1% of a month’s hours fall below, about 7 hours in a typical January. It is a monthly value, so it is usually colder than the annual heating design temperatures published by ASHRAE (99.6% and 99% of the year’s hours); use those for sizing heating systems where a nearby station is listed, and this value for equipment and materials that must work through the coldest month.'
 
-export const designColdReferences =
-  'MIL-HDBK-310; AR 70-38; ATP 3-90.96; ERDC/CRREL TR-26-5.'
+export const freezeThawNote =
+  'A freeze–thaw day has hours both below and above 32°F. Freeze–thaw cycling drives frost damage in pavements, concrete and masonry, and is most frequent in the shoulder months.'
 
 // The daily-climate variables: a short name for the menu, a title for the
 // chart and table, and a note under the chart.
@@ -66,14 +87,14 @@ export const frostbiteTimes = {
 }
 
 export const frostbiteNote =
-  'How quickly exposed, dry skin on the face would freeze, worked out for every hour from air temperature and wind speed, then grouped by danger level.'
+  'How quickly exposed, dry skin on the face would freeze, worked out for every hour from air temperature and wind speed, then grouped by danger level. Use it to plan outdoor work: crew rotations, warm-up breaks and protective clothing.'
 
 export const windChillNote = dailyVariables.find(
   v => v.value == 'wind_chill'
 ).note
 
 export const snowLoadNote =
-  'Snow load is the weight of the accumulated snowpack on a flat surface. Single-storm and 24-hour snowfall loads are checked under Climate limits.'
+  'The snowpack load is the weight of snow on flat, open ground, the quantity building codes call the ground snow load. Codes design for a rarer value than a 30-year record (ASCE 7 uses a 50-year return period, or risk-targeted values in ASCE 7-22), and local building officials set the design value. Use these numbers to gauge the scale of snow loading, not as a design load.'
 
 // Shown beside the grid-cell map at the top of the section, so nobody reads
 // these values as a forecast for the exact site. `cell` and `snowCell` are
@@ -90,5 +111,5 @@ export const caveats = [
   'Every value describes an ERA5 grid cell about 28 km north to south, not your exact site. Valleys and ridges inside the cell can differ a lot, especially under winter temperature inversions.',
   'Wind chill was computed from ground-surface temperature rather than air temperature, so it runs colder than standard wind chill.',
   'Storm totals depend on how storms are told apart: here, a dry spell longer than 12 hours ends a storm.',
-  'Wind is the hourly mean 10 m above the ground; gusts are not included.',
+  'Wind is the hourly mean 10 m above the ground; gusts are not included. Building codes use 3-second gusts, which are considerably higher.',
 ]
