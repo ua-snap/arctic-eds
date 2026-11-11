@@ -465,10 +465,11 @@ const dailyReferences = computed(() =>
     : []
 )
 
+// The Climate limits colors (No, Caution, OK), which are colorblind safe.
 const frostbiteColors = {
-  red: '#b8322a',
-  amber: '#e08a1e',
-  green: '#5a9a4a',
+  red: '#d55e00',
+  amber: '#f0e442',
+  green: '#0072b2',
   none: '#e3dfd8',
 }
 const frostbiteClasses = computed(() =>
