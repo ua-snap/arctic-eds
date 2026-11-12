@@ -18,6 +18,10 @@
         <ReportSummary />
         <template #error><SectionError :title="label('summary')" /></template>
       </NuxtErrorBoundary>
+      <NuxtErrorBoundary @error="onSectionError('hazard', $event)">
+        <HazardMap />
+        <template #error><SectionError :title="label('hazard')" /></template>
+      </NuxtErrorBoundary>
       <ReportLens />
       <NuxtErrorBoundary
         v-if="isTemperaturePresent"
@@ -111,6 +115,7 @@ import { storeToRefs } from 'pinia'
 import ReportHeader from '~/components/report/ReportHeader'
 import ReportToc from '~/components/report/ReportToc'
 import ReportSummary from '~/components/report/ReportSummary'
+import HazardMap from '~/components/report/HazardMap'
 import ReportLens from '~/components/ReportLens'
 import TemperatureReport from '~/components/reports/Temperature'
 import DegreeDaysReport from '~/components/reports/DegreeDays'
@@ -162,6 +167,11 @@ const sections = computed(() => [
     id: 'summary',
     label: 'Summary',
     present: isSummaryPresent.value,
+  },
+  {
+    id: 'hazard',
+    label: 'Environmental hazard',
+    present: true,
   },
   {
     id: 'temperature',
