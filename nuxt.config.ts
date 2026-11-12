@@ -82,6 +82,9 @@ export default defineNuxtConfig({
       rasdamanUrl:
         process.env.RASDAMAN_URL || 'https://maps.earthmaps.io/rasdaman/ows',
       mockApi: !!process.env.MOCK_API,
+      // The AZCOT point API isn't live yet, so its mock response is used
+      // unless AZCOT_LIVE_API is set.
+      azcotMockApi: !process.env.AZCOT_LIVE_API,
     },
   },
 

@@ -1,0 +1,70 @@
+// Helpers for the AZCOT cold-season data, which covers October to March.
+
+// The season's months in order, with their API keys. February has 28 days
+// because the climatology leaves out February 29.
+export const seasonMonths = [
+  { key: 'oct', label: 'Oct', name: 'October', days: 31 },
+  { key: 'nov', label: 'Nov', name: 'November', days: 30 },
+  { key: 'dec', label: 'Dec', name: 'December', days: 31 },
+  { key: 'jan', label: 'Jan', name: 'January', days: 31 },
+  { key: 'feb', label: 'Feb', name: 'February', days: 28 },
+  { key: 'mar', label: 'Mar', name: 'March', days: 31 },
+]
+
+// The daily keys, oct_01 to mar_31 (182 days).
+export const seasonDays = seasonMonths.flatMap(month =>
+  Array.from(
+    { length: month.days },
+    (_, i) => `${month.key}_${String(i + 1).padStart(2, '0')}`
+  )
+)
+
+// A daily object ({ oct_01: value, ... }) as an array in season order.
+export function dailyValues(daily) {
+  return seasonDays.map(day => daily?.[day] ?? null)
+}
+
+// Unit symbols for the API's unit names.
+const unitSymbols = {
+  degF: '°F',
+  knots: 'kn',
+  kn: 'kn',
+  inches: 'in',
+  in: 'in',
+  'lbf/ft2': 'lb/ft²',
+  '% of hours': '%',
+  '% of years': '% of years',
+  minutes: 'min',
+  days: 'days',
+}
+
+export function unitSymbol(units) {
+  return unitSymbols[units] ?? units
+}
+
+// The grid spacing in degrees, read from the API's grid description, e.g.
+// "ERA5 0.25 degree (EPSG:4326, cell centre)". Falls back to ERA5's 0.25°.
+export function gridDegrees(cell) {
+  const match = /([\d.]+) degree/.exec(cell?.grid ?? '')
+  return match ? Number(match[1]) : 0.25
+}
+
+// The approximate size of a latitude–longitude grid cell centred at `lat`:
+// north–south and east–west in km, and its area in km².
+export function cellSize(lat, degrees) {
+  const kmPerDegree = 111.2
+  const ns = degrees * kmPerDegree
+  const ew = ns * Math.cos((lat * Math.PI) / 180)
+  return { ns, ew, area: ns * ew }
+}
+
+// Tidies the plain-text units and comparisons in the API's descriptions,
+// e.g. "lbf/ft2" to "lb/ft²" and ">= 23.36 degF" to "≥ 23.36°F".
+export function tidyText(text) {
+  if (typeof text !== 'string') return text
+  return text
+    .replace(/\blbf?\/ft2\b/g, 'lb/ft²')
+    .replace(/ ?degF\b/g, '°F')
+    .replace(/>=/g, '≥')
+    .replace(/<=/g, '≤')
+}

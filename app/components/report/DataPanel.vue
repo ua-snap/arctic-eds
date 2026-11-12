@@ -35,6 +35,14 @@
       </template>
     </dl>
 
+    <template v-if="caveats && caveats.length">
+      <hr />
+      <h3 class="panel-heading">Caveats</h3>
+      <ul class="caveats">
+        <li v-for="caveat in caveats" :key="caveat">{{ caveat }}</li>
+      </ul>
+    </template>
+
     <hr />
     <h3 class="panel-heading">Sources</h3>
     <ul class="sources">
@@ -57,13 +65,15 @@ const props = defineProps({
   // Names the panel for screen readers, e.g. "air temperature".
   topic: String,
   // [{ endpoint, label }]: CSV downloads from the API.
-  downloads: Array,
+  downloads: { type: Array, default: () => [] },
   // What the download holds, e.g. "Monthly min / mean / max · CSV, ~363 kB".
   note: String,
   // [{ label, href }]: ARDAC notebooks that use this data.
   calculations: Array,
   // [[term, detail]]: models, scenarios, baseline, grid, method.
   made: Array,
+  // Strings: limits of the data worth knowing before using it.
+  caveats: Array,
   // [{ label, href }]: catalog records and reports.
   sources: Array,
   // [{ text, full, href, linkText }]: a short citation, the full one, and

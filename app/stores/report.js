@@ -132,6 +132,8 @@ export const useReportStore = defineStore('report', () => {
   // say so instead of silently offering an autocomplete that can't work.
   const placesError = ref(null)
   const results = ref({})
+  // AZCOT cold-season point data, fetched separately from /eds/all.
+  const azcot = ref({})
   const units = ref('imperial')
 
   // Getters. The place is defined by the current route (previously read
@@ -221,6 +223,11 @@ export const useReportStore = defineStore('report', () => {
   const isFreezingIndexPresent = computed(() => hasSection('freezing_index'))
   const isThawingIndexPresent = computed(() => hasSection('thawing_index'))
   const isPermafrostPresent = computed(() => hasSection('permafrost'))
+  const isAzcotPresent = computed(
+    () =>
+      isPlainObject(azcot.value.metadata) &&
+      isPlainObject(azcot.value.climate_limit_verdicts)
+  )
   const isWetDaysPerYearPresent = computed(() =>
     hasSection('wet_days_per_year')
   )
@@ -233,6 +240,7 @@ export const useReportStore = defineStore('report', () => {
   // Actions (Vuex mutations and actions both become plain functions)
   function destroy() {
     results.value = {}
+    azcot.value = {}
   }
   function closeReport() {
     router.push({
@@ -304,6 +312,34 @@ export const useReportStore = defineStore('report', () => {
       convertResults(true)
     }
   }
+  // AZCOT point data for the report's place. Values come over in US
+  // customary units and aren't converted with the units setting.
+  async function fetchAzcot() {
+    azcot.value = {}
+    let fetched
+    if (config.public.azcotMockApi) {
+      // Until the AZCOT API is live, every place shows the Fairbanks mock
+      // response from github.com/ua-snap/AZCOT (mock_api/fairbanks_ak.json).
+      const { default: mock } = await import('~/assets/azcot_mock.json')
+      fetched = mock
+    } else {
+      const url =
+        config.public.apiUrl +
+        '/azcot/point/' +
+        latLng.value.lat +
+        '/' +
+        latLng.value.lng
+      try {
+        fetched = await $fetch(url)
+      } catch (error) {
+        throw reportError('network', 'AZCOT data could not be fetched', error)
+      }
+    }
+    if (!isPlainObject(fetched)) {
+      throw reportError('malformed', 'AZCOT data is not a JSON object')
+    }
+    azcot.value = fetched
+  }
   async function fetchPlaces() {
     // If we've already fetched this, don't do that again.
     if (places.value) {
@@ -339,6 +375,7 @@ export const useReportStore = defineStore('report', () => {
     places,
     placesError,
     results,
+    azcot,
     units,
     latLng,
     placeId,
@@ -358,6 +395,7 @@ export const useReportStore = defineStore('report', () => {
     isThawingIndexPresent,
     isPermafrostPresent,
     isWetDaysPerYearPresent,
+    isAzcotPresent,
     hasAnyData,
     destroy,
     closeReport,
@@ -367,6 +405,7 @@ export const useReportStore = defineStore('report', () => {
     setMetric,
     setImperial,
     apiFetch,
+    fetchAzcot,
     fetchPlaces,
   }
 })
